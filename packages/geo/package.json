@@ -1,6 +1,6 @@
 {
   "name": "@noridotcom/geo",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "geospatial utilities",
   "main": "index.js",
   "license": "MIT",
