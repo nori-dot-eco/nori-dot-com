@@ -29,3 +29,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# build files for npm
+dist
