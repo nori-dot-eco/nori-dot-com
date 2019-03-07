@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
