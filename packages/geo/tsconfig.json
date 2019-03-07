@@ -1,5 +1,7 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
+    "watch": true,
     "target": "ES2018",
     "declaration": true,
     "moduleResolution": "node",
