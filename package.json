@@ -4,5 +4,5 @@
     "lerna": "^3.13.1",
     "typescript-eslint-parser": "^22.0.0"
   },
-  "name": "noridotcom"
+  "name": "nori-dot-com"
 }

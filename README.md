@@ -1,1 +1,1 @@
-# noridotcom
+# nori-dot-com
