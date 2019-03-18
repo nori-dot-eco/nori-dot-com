@@ -3,6 +3,7 @@
   "name": "nori-dot-com",
   "devDependencies": {
     "@types/jest": "^23.3.9",
+    "codecov": "^3.2.0",
     "eslint-plugin-typescript": "^0.14.0",
     "jest": "^24.5.0",
     "lerna": "^3.13.1",
