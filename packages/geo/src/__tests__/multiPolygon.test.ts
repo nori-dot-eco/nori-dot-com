@@ -46,7 +46,8 @@ describe('multiPolygonToPolygon', () => {
     );
   });
   describe('after converting a multi-polygon to a polygon', () => {
-    it('will be a polygon', () => {
+    it('will be a polygon', async () => {
+      await true;
       expect(getType(redrawnPolygon)).toBe('Polygon');
     });
   });

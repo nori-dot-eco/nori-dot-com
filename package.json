@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "nori-dot-com",
   "devDependencies": {
     "@types/jest": "^23.3.9",
@@ -13,13 +14,16 @@
     "build": "tsc",
     "test": "jest"
   },
+  "workspaces": [
+    "packages/geo"
+  ],
   "jest": {
     "verbose": true,
     "projects": [
       {
         "displayName": "geo",
         "testMatch": [
-          "<rootDir>/packages/geo/**/__tests__/**.test.js"
+          "./packages/geo/**/__tests__/**.test.js"
         ],
         "transform": {
           "^.+\\.tsx?$": "ts-jest",
@@ -34,7 +38,7 @@
         "globals": {
           "ts-jest": {
             "diagnostics": true,
-            "tsConfig": "./packages/geo/tsconfig.json",
+            "tsConfig": "tsconfig.json",
             "babelConfig": true,
             "disableSourceMapSupport": true
           }

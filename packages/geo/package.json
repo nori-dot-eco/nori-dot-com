@@ -2,7 +2,7 @@
   "name": "@nori-dot-com/geo",
   "version": "0.0.1-alpha.1",
   "description": "geospatial utilities",
-  "main": "index.js",
+  "main": "src/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc"
