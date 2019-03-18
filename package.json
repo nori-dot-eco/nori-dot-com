@@ -1,8 +1,45 @@
 {
+  "name": "nori-dot-com",
   "devDependencies": {
+    "@types/jest": "^23.3.9",
     "eslint-plugin-typescript": "^0.14.0",
+    "jest": "^24.5.0",
     "lerna": "^3.13.1",
+    "ts-jest": "^24.0.0",
     "typescript-eslint-parser": "^22.0.0"
   },
-  "name": "nori-dot-com"
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "projects": [
+      {
+        "displayName": "geo",
+        "testMatch": [
+          "<rootDir>/packages/geo/**/__tests__/**.test.js"
+        ],
+        "transform": {
+          "^.+\\.tsx?$": "ts-jest",
+          "^.+\\.ts?$": "ts-jest"
+        },
+        "moduleFileExtensions": [
+          "ts",
+          "js",
+          "json",
+          "node"
+        ],
+        "globals": {
+          "ts-jest": {
+            "diagnostics": true,
+            "tsConfig": "./packages/geo/tsconfig.json",
+            "babelConfig": true,
+            "disableSourceMapSupport": true
+          }
+        }
+      }
+    ],
+    "preset": "ts-jest"
+  }
 }
