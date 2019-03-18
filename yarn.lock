@@ -985,6 +985,14 @@
   dependencies:
     "@turf/helpers" "^5.1.5"
 
+"@turf/bbox@*":
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/@turf/bbox/-/bbox-6.0.1.tgz#b966075771475940ee1c16be2a12cf389e6e923a"
+  integrity sha512-EGgaRLettBG25Iyx7VyUINsPpVj1x3nFQFiGS3ER8KCI1MximzNLsam3eXRabqQDjyAKyAE1bJ4EZEpGvspQxw==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/meta" "6.x"
+
 "@turf/bbox@5.1.x", "@turf/bbox@^5.1.5":
   version "5.1.5"
   resolved "https://registry.npmjs.org/@turf/bbox/-/bbox-5.1.5.tgz#3051df514ad4c50f4a4f9b8a2d15fd8b6840eda3"
@@ -1047,6 +1055,17 @@
     "@turf/line-intersect" "^5.1.5"
     "@turf/polygon-to-line" "^5.1.5"
 
+"@turf/boolean-crosses@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/@turf/boolean-crosses/-/boolean-crosses-6.0.1.tgz#4458cce89647c477602b3f8dc68e4caa6aa0d23f"
+  integrity sha512-t7F7joMMI0s2y/HOr3r1t74BV37TJZj+nNUnM2rMIvGUDKHdEhBcQYeh+bvs+oyv/laOyqTLT5ds6hkXd4kHgQ==
+  dependencies:
+    "@turf/boolean-point-in-polygon" "6.x"
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
+    "@turf/line-intersect" "6.x"
+    "@turf/polygon-to-line" "6.x"
+
 "@turf/boolean-disjoint@5.1.x":
   version "5.1.6"
   resolved "https://registry.npmjs.org/@turf/boolean-disjoint/-/boolean-disjoint-5.1.6.tgz#3fbd87084b269133f5fd15725deb3c6675fb8a9d"
@@ -1057,6 +1076,17 @@
     "@turf/line-intersect" "^5.1.5"
     "@turf/meta" "^5.1.5"
     "@turf/polygon-to-line" "^5.1.5"
+
+"@turf/boolean-disjoint@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@turf/boolean-disjoint/-/boolean-disjoint-6.0.2.tgz#5d6d0f4b4b8d5fe03004d74d978044c7529b294f"
+  integrity sha512-xgdqPOXhvCwetoybkYZwBLKro1XxqZgS+xk6Ygb2Jt6btR5P/t0lJ5n85fN0YQuJlR8hEVvCGTYZ0IRTyIEvsQ==
+  dependencies:
+    "@turf/boolean-point-in-polygon" "6.x"
+    "@turf/helpers" "6.x"
+    "@turf/line-intersect" "6.x"
+    "@turf/meta" "6.x"
+    "@turf/polygon-to-line" "6.x"
 
 "@turf/boolean-equal@5.1.x":
   version "5.1.5"
@@ -1097,6 +1127,14 @@
   dependencies:
     "@turf/helpers" "^5.1.5"
     "@turf/invariant" "^5.1.5"
+
+"@turf/boolean-point-in-polygon@6.x":
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/@turf/boolean-point-in-polygon/-/boolean-point-in-polygon-6.0.1.tgz#5836677afd77d2ee391af0056a0c29b660edfa32"
+  integrity sha512-FKLOZ124vkJhjzNSDcqpwp2NvfnsbYoUOt5iAE7uskt4svix5hcjIEgX9sELFTJpbLGsD1mUbKdfns8tZxcMNg==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
 
 "@turf/boolean-point-on-line@5.1.x", "@turf/boolean-point-on-line@^5.1.5":
   version "5.1.5"
@@ -1519,6 +1557,17 @@
     "@turf/meta" "^5.1.5"
     geojson-rbush "2.1.0"
 
+"@turf/line-intersect@6.x":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@turf/line-intersect/-/line-intersect-6.0.2.tgz#b45b7a4e7e08c39a0e4e91099580ed377ef7335f"
+  integrity sha512-pfL/lBu7ukBPdTjvSCmcNUzZ83V4R95htwqs5NqU8zeS4R+5KTwacbrOYKztjpmHBwUmPEIIpSbqkUoD0Fp7kg==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
+    "@turf/line-segment" "6.x"
+    "@turf/meta" "6.x"
+    geojson-rbush "3.x"
+
 "@turf/line-offset@5.1.x":
   version "5.1.5"
   resolved "https://registry.npmjs.org/@turf/line-offset/-/line-offset-5.1.5.tgz#2ab5b2f089f8c913e231d994378e79dca90b5a1e"
@@ -1549,6 +1598,15 @@
     "@turf/helpers" "^5.1.5"
     "@turf/invariant" "^5.1.5"
     "@turf/meta" "^5.1.5"
+
+"@turf/line-segment@6.x":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@turf/line-segment/-/line-segment-6.0.2.tgz#e280bcde70d28b694028ec1623dc406c928e59b6"
+  integrity sha512-8AkzDHoNw3X68y115josal+lvdAi4b2P1K0YNTKGyLRBaUhPXVSuMBpMd53FRF1hYEb9UJgMbugF9ZE7m5L6zg==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
+    "@turf/meta" "6.x"
 
 "@turf/line-slice-along@5.1.x", "@turf/line-slice-along@^5.1.5":
   version "5.1.5"
@@ -1737,6 +1795,14 @@
   dependencies:
     "@turf/helpers" "^5.1.5"
     "@turf/invariant" "^5.1.5"
+
+"@turf/polygon-to-line@6.x":
+  version "6.0.3"
+  resolved "https://registry.npmjs.org/@turf/polygon-to-line/-/polygon-to-line-6.0.3.tgz#a7c5416f61651d5d25ff51ee006522725cb1adf1"
+  integrity sha512-cJUy7VYLAhgnTBOtYFjNzh5bSlAS/qM8gUHXRGrIxI22RUJk4FXs/X2MEJ4Ki2flCiSeOjRIUEawEslNe7w7RA==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/invariant" "6.x"
 
 "@turf/polygonize@5.1.x":
   version "5.1.5"
@@ -3760,6 +3826,16 @@ geojson-rbush@2.1.0:
   dependencies:
     "@turf/helpers" "*"
     "@turf/meta" "*"
+    rbush "*"
+
+geojson-rbush@3.x:
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/geojson-rbush/-/geojson-rbush-3.1.1.tgz#dd40bdd26e92813d888d7b489e8d2980695a49b4"
+  integrity sha512-Bl6U75yDCsERl2P6PiBkvxIoXsSv5SEEiDJy+a7JarcEe17jEm8zamAmi82KLRcIlcuRZxgeVCl1xw5UkxOREw==
+  dependencies:
+    "@turf/bbox" "*"
+    "@turf/helpers" "6.x"
+    "@turf/meta" "6.x"
     rbush "*"
 
 get-caller-file@^1.0.1:
