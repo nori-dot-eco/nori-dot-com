@@ -30,7 +30,7 @@ jobs:
       - save_cache:
           key: v-0-0-1-node_modules_dir-{{ checksum "yarn.lock" }}
           paths:
-            - packages/hooks/node_modules
+            - packages/geo/node_modules
             - node_modules
             - ~/.cache
   run-regular-tests:
