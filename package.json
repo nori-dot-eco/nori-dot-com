@@ -24,8 +24,10 @@
     "typescript-eslint-parser": "^22.0.0"
   },
   "scripts": {
+    "build": "cd packages/hooks && tsc",
     "test": "jest",
-    "bootstrap": "lerna bootstrap"
+    "bootstrap": "lerna bootstrap",
+    "prepare": "cd packages/hooks && tsc"
   },
   "workspaces": [
     "packages/hooks"
