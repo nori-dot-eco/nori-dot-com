@@ -5,15 +5,18 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "rootDir": "src",
-    "outDir": "dist",
     "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
     "lib": ["esnext", "dom"],
     "types": ["node", "jest"],
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
+      "*": [
+        "node_modules/*",
+        "packages/hooks/node_modules/*",
+        "packages/hooks/src/@types/*"
+      ]
     }
   },
-  "include": ["src/**/*"]
+  "include": ["packages/hooks/src/**/*"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
