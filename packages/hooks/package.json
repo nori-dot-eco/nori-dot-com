@@ -8,7 +8,7 @@
   "author": "jaycen horton <jaycen@nori.com>",
   "homepage": "http://nori.com",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist/**/*"
   ],
@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
-    "prepare": "tsc"
+    "prepare": "tsc",
+    "watch": "tsc -w -p ."
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
