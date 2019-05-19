@@ -30,6 +30,7 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
+    "graphql": "^14.3.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-hooks-testing-library": "^0.4.1",
