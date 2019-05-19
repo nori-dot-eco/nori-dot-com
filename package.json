@@ -51,7 +51,7 @@
         "globals": {
           "ts-jest": {
             "diagnostics": true,
-            "tsConfig": "tsconsfig.json",
+            "tsConfig": "tsconfig.json",
             "disableSourceMapSupport": true
           }
         }
