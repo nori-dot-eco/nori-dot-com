@@ -30,8 +30,13 @@
     "react-dom": "^16.8.0"
   },
   "devDependencies": {
+    "graphql": "^14.3.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-hooks-testing-library": "^0.4.1"
+    "react-hooks-testing-library": "^0.4.1",
+    "relay-test-utils": "^4.0.0"
+  },
+  "dependencies": {
+    "react-relay": "^4.0.0"
   }
 }

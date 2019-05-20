@@ -6,7 +6,7 @@
     "declaration": true,
     "baseUrl": ".",
     "paths": {
-      "hooks": ["src/@types/hooks.d.ts"]
+      "index": ["src/@types/index.d.ts"]
     }
   },
   "include": ["src/**/*"],
