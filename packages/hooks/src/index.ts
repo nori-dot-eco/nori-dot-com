@@ -129,5 +129,5 @@ export const useSubscription = (
   }
   useEffect(() => {
     buildSubscription(subscription, relayEnvironment, options);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [options, relayEnvironment, subscription]);
 };
