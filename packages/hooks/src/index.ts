@@ -129,5 +129,5 @@ export const useSubscription = (
   }
   useEffect(() => {
     buildSubscription(subscription, relayEnvironment, options);
-  }, [options, relayEnvironment, subscription]);
+  }, []); //eslint-disable-line
 };
