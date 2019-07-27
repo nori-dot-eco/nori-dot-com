@@ -128,6 +128,13 @@ export const useSubscription = (
     throw new Error('You must specify a subscription');
   }
   useEffect(() => {
-    buildSubscription(subscription, relayEnvironment, options);
+    const observable = buildSubscription(
+      subscription,
+      relayEnvironment,
+      options
+    );
+    return () => {
+      observable.dispose();
+    };
   }, []); //eslint-disable-line
 };
