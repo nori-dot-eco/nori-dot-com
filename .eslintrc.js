@@ -147,7 +147,7 @@ module.exports = {
           { selector: 'class', format: ['PascalCase'] },
           {
             selector: 'default',
-            format: ['camelCase'],
+            format: ['camelCase', 'UPPER_CASE'],
             leadingUnderscore: 'allow',
           },
           { selector: 'typeLike', format: ['PascalCase'] },
@@ -157,10 +157,11 @@ module.exports = {
           'warn',
           { allowExpressions: true, allowTypedFunctionExpressions: true },
         ],
-        '@typescript-eslint/no-explicit-any': [
-          'error',
-          { ignoreRestArgs: true },
-        ],
+        // '@typescript-eslint/no-explicit-any': [
+        //   'error',
+        //   { ignoreRestArgs: true },
+        // ],
+        '@typescript-eslint/ban-types': ['warn'],
         'no-use-before-define': 'off',
         '@typescript-eslint/no-use-before-define': [
           'error',
