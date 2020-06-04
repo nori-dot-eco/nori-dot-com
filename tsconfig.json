@@ -1,21 +1,9 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
     "target": "ES2018",
     "declaration": true,
     "moduleResolution": "node",
-    "noImplicitAny": false,
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
-    "lib": ["esnext", "dom"],
-    "types": ["node", "jest"],
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "packages/hooks/node_modules/*",
-        "packages/hooks/src/@types/*"
-      ]
-    }
-  },
-  "include": ["packages/hooks/src/**/*"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+    "noImplicitAny": true
+  }
 }
