@@ -1,14 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "declaration": true,
-    "baseUrl": ".",
-    "paths": {
-      "index": ["src/@types/index.d.ts"]
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+    "outDir": "dist"
+  }
 }
