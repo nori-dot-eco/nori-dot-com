@@ -4,7 +4,6 @@
   "name": "nori-dot-com",
   "devDependencies": {
     "@rushstack/eslint-config": "^0.5.8",
-    "@types/node": "^13.7.7",
     "@typescript-eslint/eslint-plugin": "^3.1.0",
     "@typescript-eslint/parser": "^3.1.0",
     "codecov": "^3.7.0",
