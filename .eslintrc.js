@@ -104,6 +104,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
+    'relay/generated-flow-types': 0,
   },
   overrides: [
     {
