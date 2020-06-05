@@ -1,0 +1,15 @@
+.next
+__generated__
+_next
+lib
+dist
+node_modules
+sessions
+k8s-*
+*.tgx
+*.xml
+*.jpg
+*.png
+*.pdf
+*.svg
+*.lock
