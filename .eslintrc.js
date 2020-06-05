@@ -108,18 +108,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**_spec.js', '**.test.js', '**/__mocks__/**.js'],
-      rules: {
-        // See https://github.com/benmosher/eslint-plugin-import/issues/458
-        'import/no-extraneous-dependencies': 0,
-        'dot-notation': [0],
-      },
-      env: {
-        node: true,
-        jest: true,
-      },
-    },
-    {
       files: ['**/cypress/**/*.js'],
       rules: {
         'spaced-comment': 0,
@@ -202,6 +190,28 @@ module.exports = {
             env: 'apollo',
           },
         ],
+      },
+    },
+    {
+      files: ['**_spec.js', '**.test.js', '**/__mocks__/**.js'],
+      rules: {
+        // See https://github.com/benmosher/eslint-plugin-import/issues/458
+        'import/no-extraneous-dependencies': 0,
+        'dot-notation': [0],
+      },
+      env: {
+        node: true,
+        jest: true,
+      },
+    },
+    {
+      files: ['**.test.ts'],
+      rules: {
+        'dot-notation': [0],
+      },
+      env: {
+        node: true,
+        jest: true,
       },
     },
   ],
