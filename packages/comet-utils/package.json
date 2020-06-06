@@ -1,0 +1,39 @@
+{
+  "name": "@nori-dot-com/comet-utils",
+  "version": "0.4.0",
+  "description": "utilities for interacting with COMET farm files",
+  "keywords": [
+    "nori",
+    "COMET farm",
+    "COMET",
+    "co2",
+    "carbon",
+    "carbon removal"
+  ],
+  "author": "jaycenhorton <jaycen@nori.com>",
+  "homepage": "https://nori.com",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "tsc",
+    "watch": "tsc -w -p ."
+  },
+  "bugs": {
+    "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
+  },
+  "dependencies": {
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.5"
+  }
+}
