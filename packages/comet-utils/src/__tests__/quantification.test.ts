@@ -1,4 +1,4 @@
-import { getGrandfatherableTonnes } from '../index';
+import { getQuantificationSummary } from '../index';
 
 import { outputFile } from './example-output';
 
@@ -6,13 +6,16 @@ type AnyFunction = (...args: any[]) => any;
 type Resolved<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
 type ResolvedReturnType<T extends AnyFunction> = Resolved<ReturnType<T>>;
 
-describe('getGrandfatherableTonnes', () => {
+describe('getQuantificationSummary', () => {
   it('will get the tonnes that are grandfatherable given a COMET output file', async () => {
-    expect(await getGrandfatherableTonnes(outputFile)).toStrictEqual<
-      ResolvedReturnType<typeof getGrandfatherableTonnes>
+    expect(await getQuantificationSummary(outputFile)).toStrictEqual<
+      ResolvedReturnType<typeof getQuantificationSummary>
     >({
-      consideredYears: ['2018', '2019'],
-      totalsForMapUnits: [
+      tenYearProjectedTonnesPerYearPerAcre: 1.596496630978367,
+      tenYearProjectedTonnesTotalEstimate: 633.2335959999999,
+      somscAverageTonnesTotalEstimate: 125.13443329040572,
+      grandfatherableYears: ['2018', '2019'],
+      somscTenYearTonnesPerMapUnit: [
         {
           '2018': 12.737037932264577,
           '2019': 12.28984872581657,
@@ -26,22 +29,24 @@ describe('getGrandfatherableTonnes', () => {
           '2027': 41.6559506335108,
         },
       ],
-      somscAnnualsConsidered: {
+      somscGrandfatherableTonnesPerYear: {
         '2018': 12.737037932264577,
         '2019': 12.28984872581657,
       },
-      baselineTotal: -2.7783504,
-      co2PerYearPerAcre: 0.3154865794068197,
-      futureTotal: -66.10171,
+      tenYearProjectedBaselineTonnesPerYear: 2.7783504,
+      grandfatheredTonnesPerYearPerAcre: 0.3154865794068197,
+      tenYearProjectedFutureTonnesPerYear: 66.10171,
       grandfatheredTonnes: 25.026886658081146,
       grandfatheredYears: 2,
-      somscAverage: 12.513443329040573,
+      somscGrandfatherableTonnesPerYearAverage: 12.513443329040573,
       switchYear: '2018',
       grandfatheredTonnesPerYear: 12.513443329040573,
-      tenYearSummaryTotal: 63.323359599999996,
+      tenYearProjectedTonnesPerYear: 63.323359599999996,
       totalAcres: 39.66394815452514,
       totalM2: 160514.55112007097,
-      totalType: 'Using value computed from somsc',
+      grandfatheringMethod: 'Using value computed from somsc',
+      tenYearProjectedFutureTonnesPerYearPerAcre: 1.666543878649626,
+      tenYearProjectedBaselineTonnesPerYearPerAcre: 0.07004724767125903,
     });
   });
 });

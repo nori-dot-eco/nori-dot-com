@@ -221,19 +221,24 @@ export interface ScenarioSummaries {
   baseline: Array<string[]>;
   future: Array<string[]>;
 }
-export interface GrandfatherableSummary {
-  totalsForMapUnits: MapUnitTotal[];
-  somscAnnualsConsidered: MapUnitTotal;
-  consideredYears: string[];
+export interface QuantificationSummary {
+  tenYearProjectedTonnesTotalEstimate: number;
+  tenYearProjectedTonnesPerYear: number;
+  tenYearProjectedTonnesPerYearPerAcre: number;
+  somscAverageTonnesTotalEstimate: number;
+  somscTenYearTonnesPerMapUnit: MapUnitTotal[];
+  somscGrandfatherableTonnesPerYear: MapUnitTotal;
+  grandfatherableYears: string[];
   grandfatheredTonnes: number;
-  co2PerYearPerAcre: number;
+  grandfatheredTonnesPerYearPerAcre: number;
   grandfatheredTonnesPerYear: number;
-  totalType: string;
-  somscAverage: number;
-  tenYearSummaryTotal: number;
-  futureTotal: number;
+  grandfatheringMethod: string;
+  somscGrandfatherableTonnesPerYearAverage: number;
   switchYear: string;
-  baselineTotal: number;
+  tenYearProjectedFutureTonnesPerYear: number;
+  tenYearProjectedFutureTonnesPerYearPerAcre: number;
+  tenYearProjectedBaselineTonnesPerYear: number;
+  tenYearProjectedBaselineTonnesPerYearPerAcre: number;
   totalM2: number;
   totalAcres: number;
   grandfatheredYears: number;
@@ -241,9 +246,9 @@ export interface GrandfatherableSummary {
 const CURRENT_YEAR = new Date().getFullYear();
 const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
 
-const createGrandfatherableSummary = async (
+const createQuantificationSummary = async (
   jsonData: OutputJSON
-): Promise<GrandfatherableSummary> => {
+): Promise<QuantificationSummary> => {
   const {
     Day: {
       Cropland: [{ ModelRun: runs }],
@@ -313,7 +318,7 @@ const createGrandfatherableSummary = async (
     mapUnitObjects.push(mapUnitObject);
   });
   const comparisons: MapUnitYearSummary[] = [];
-  const totalsForMapUnits: MapUnitTotal[] = [];
+  const somscTenYearTonnesPerMapUnit: MapUnitTotal[] = [];
   mapUnitObjects.forEach((mapUnitObject) => {
     const comparison: MapUnitYearSummary = {};
     const totalsForMapUnit: MapUnitTotal = {};
@@ -342,10 +347,10 @@ const createGrandfatherableSummary = async (
       }
     );
     comparisons.push(comparison);
-    totalsForMapUnits.push(totalsForMapUnit);
+    somscTenYearTonnesPerMapUnit.push(totalsForMapUnit);
   });
 
-  const years = Object.keys(totalsForMapUnits[0]);
+  const years = Object.keys(somscTenYearTonnesPerMapUnit[0]);
   const startYearIndex =
     years.findIndex(
       (e) => e === (CURRENT_YEAR - MAXIMUM_GRANDFATHERABLE_YEARS).toString()
@@ -355,69 +360,88 @@ const createGrandfatherableSummary = async (
         )
       : 0;
 
-  const yearsToCheck = years.slice(
+  const grandfatherableYears = years.slice(
     startYearIndex,
     years.findIndex((e) => e === CURRENT_YEAR.toString())
   );
-  const totalsForEachYear: MapUnitTotal = {};
-  totalsForMapUnits.forEach((totalForMapUnit) => {
-    for (let i = 0; i < yearsToCheck.length; i++) {
-      if (yearsToCheck[i]) {
-        if (!totalsForEachYear[yearsToCheck[i]]) {
-          totalsForEachYear[yearsToCheck[i]] = totalForMapUnit[yearsToCheck[i]];
+  const somscGrandfatherableTonnesPerYear: MapUnitTotal = {};
+  somscTenYearTonnesPerMapUnit.forEach((totalForMapUnit) => {
+    for (let i = 0; i < grandfatherableYears.length; i++) {
+      if (grandfatherableYears[i]) {
+        if (!somscGrandfatherableTonnesPerYear[grandfatherableYears[i]]) {
+          somscGrandfatherableTonnesPerYear[grandfatherableYears[i]] =
+            totalForMapUnit[grandfatherableYears[i]];
         } else {
-          totalsForEachYear[yearsToCheck[i]] +=
-            totalForMapUnit[yearsToCheck[i]];
+          somscGrandfatherableTonnesPerYear[grandfatherableYears[i]] +=
+            totalForMapUnit[grandfatherableYears[i]];
         }
       }
     }
   });
-  let totalForAllYears = 0;
-  Object.values(totalsForEachYear).forEach((totalForYear) => {
-    totalForAllYears += totalForYear;
+  let somscGrandfatherableTonnesTotal = 0;
+  Object.values(somscGrandfatherableTonnesPerYear).forEach((totalForYear) => {
+    somscGrandfatherableTonnesTotal += totalForYear;
   });
-  const somscAverage = totalForAllYears / yearsToCheck.length;
+  const somscGrandfatherableTonnesPerYearAverage =
+    somscGrandfatherableTonnesTotal / grandfatherableYears.length;
 
-  const baselineTotal: number = [...[].concat(summaryObject.baseline)].reduce(
-    (accumulator, currentValue) => {
+  const tenYearProjectedBaselineTonnesPerYear: number =
+    [...[].concat(summaryObject.baseline)].reduce(
+      (accumulator, currentValue) => {
+        return accumulator + parseFloat(currentValue);
+      },
+      0
+    ) * -1;
+
+  const tenYearProjectedFutureTonnesPerYear: number =
+    [...[].concat(summaryObject.future)].reduce((accumulator, currentValue) => {
       return accumulator + parseFloat(currentValue);
-    },
-    0
-  );
+    }, 0) * -1;
 
-  const futureTotal: number = [...[].concat(summaryObject.future)].reduce(
-    (accumulator, currentValue) => {
-      return accumulator + parseFloat(currentValue);
-    },
-    0
-  );
-
-  const tenYearSummaryTotal =
-    baselineTotal < 0 ? (futureTotal - baselineTotal) * -1 : futureTotal * -1;
+  const tenYearProjectedTonnesPerYear =
+    tenYearProjectedBaselineTonnesPerYear > 0
+      ? tenYearProjectedFutureTonnesPerYear -
+        tenYearProjectedBaselineTonnesPerYear
+      : tenYearProjectedFutureTonnesPerYear;
   const totalAcres = totalM2 * 0.000247105;
-  const grandfatheredYears = CURRENT_YEAR - Number(yearsToCheck[0]);
+  const grandfatheredYears = CURRENT_YEAR - Number(grandfatherableYears[0]);
 
-  const switchYear = yearsToCheck[0];
-  const totalType =
-    tenYearSummaryTotal < somscAverage
+  const switchYear = grandfatherableYears[0];
+  const grandfatheringMethod =
+    tenYearProjectedTonnesPerYear < somscGrandfatherableTonnesPerYearAverage
       ? 'Using value computed from 10 year summary'
       : 'Using value computed from somsc';
   const grandfatheredTonnesPerYear =
-    tenYearSummaryTotal < somscAverage ? tenYearSummaryTotal : somscAverage;
-  const co2PerYearPerAcre = grandfatheredTonnesPerYear / totalAcres;
+    tenYearProjectedTonnesPerYear < somscGrandfatherableTonnesPerYearAverage
+      ? tenYearProjectedTonnesPerYear
+      : somscGrandfatherableTonnesPerYearAverage;
+  const grandfatheredTonnesPerYearPerAcre =
+    grandfatheredTonnesPerYear / totalAcres;
   const grandfatheredTonnes = grandfatheredTonnesPerYear * grandfatheredYears;
+
   return {
-    totalsForMapUnits,
-    somscAnnualsConsidered: totalsForEachYear,
-    consideredYears: yearsToCheck,
+    tenYearProjectedTonnesTotalEstimate:
+      tenYearProjectedTonnesPerYear * years.length,
+    somscAverageTonnesTotalEstimate:
+      somscGrandfatherableTonnesPerYearAverage * years.length,
+    somscGrandfatherableTonnesPerYearAverage,
+    tenYearProjectedTonnesPerYear,
+    tenYearProjectedTonnesPerYearPerAcre:
+      tenYearProjectedTonnesPerYear / totalAcres,
+    somscTenYearTonnesPerMapUnit,
+    somscGrandfatherableTonnesPerYear,
+    grandfatherableYears,
     grandfatheredTonnes,
-    co2PerYearPerAcre,
+    grandfatheredTonnesPerYearPerAcre,
     grandfatheredTonnesPerYear,
-    totalType,
-    somscAverage,
-    tenYearSummaryTotal,
-    futureTotal,
-    baselineTotal,
+    grandfatheringMethod,
+    // todo multiply all negative numbers like this by -1 for consistency
+    tenYearProjectedFutureTonnesPerYear,
+    tenYearProjectedFutureTonnesPerYearPerAcre:
+      tenYearProjectedFutureTonnesPerYear / totalAcres,
+    tenYearProjectedBaselineTonnesPerYear,
+    tenYearProjectedBaselineTonnesPerYearPerAcre:
+      tenYearProjectedBaselineTonnesPerYear / totalAcres,
     totalM2,
     totalAcres,
     grandfatheredYears,
@@ -430,9 +454,9 @@ const generateJsonData = async (xmlData: string): Promise<OutputJSON> => {
   return parser.parseStringPromise(xmlData);
 };
 
-export const getGrandfatherableTonnes = async (
+export const getQuantificationSummary = async (
   xmlData: string
-): Promise<GrandfatherableSummary> => {
+): Promise<QuantificationSummary> => {
   const jsonData = await generateJsonData(xmlData);
-  return createGrandfatherableSummary(jsonData);
+  return createQuantificationSummary(jsonData);
 };
