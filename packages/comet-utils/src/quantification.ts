@@ -325,22 +325,24 @@ const createQuantificationSummary = async (
     Object.entries(mapUnitObject['Future : FILE RESULTS']).forEach(
       ([key, mapUnit]) => {
         comparison[key] = [];
-        mapUnit.socChanges.forEach((socChange, j) => {
+        mapUnit.socChanges.forEach((future, j) => {
+          const baselineAmount =
+            mapUnitObject['Baseline : FILE RESULTS'][key].socChanges[j].amount;
           const additional =
-            (((socChange.amount -
-              mapUnitObject['Baseline : FILE RESULTS'][key].socChanges[j]
-                .amount) *
+            (((baselineAmount > 0
+              ? future.amount - baselineAmount
+              : future.amount) *
               Number(mapUnitObject['Baseline : FILE RESULTS'][key].area)) /
               1000000) *
             (44 / 12);
-          if (totalsForMapUnit[socChange.year]) {
-            totalsForMapUnit[socChange.year] += additional;
+          if (totalsForMapUnit[future.year]) {
+            totalsForMapUnit[future.year] += additional;
           } else {
-            totalsForMapUnit[socChange.year] = additional;
+            totalsForMapUnit[future.year] = additional;
           }
           comparison[key].push({
             area: mapUnitObject['Baseline : FILE RESULTS'][key].area,
-            year: socChange.year,
+            year: future.year,
             additional,
           });
         });
