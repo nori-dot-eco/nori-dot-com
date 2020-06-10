@@ -140,6 +140,7 @@ module.exports = {
             leadingUnderscore: 'allow',
           },
           { selector: 'typeLike', format: ['PascalCase'] },
+          { selector: 'property', format: ['camelCase', 'PascalCase'] },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/explicit-function-return-type': [
