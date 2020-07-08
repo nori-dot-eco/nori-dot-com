@@ -40,6 +40,6 @@
     "relay-test-utils": "^9.1.0"
   },
   "dependencies": {
-    "react-relay": "^6.0.0"
+    "react-relay": "^9.1.0"
   }
 }
