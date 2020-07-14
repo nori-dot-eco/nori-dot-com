@@ -1,0 +1,36 @@
+{
+  "name": "@nori-dot-com/project",
+  "version": "0.5.1",
+  "description": "Nori supplier project specification and utilities",
+  "keywords": [
+    "nori"
+  ],
+  "author": "jaycenhorton <jaycen@nori.com>",
+  "homepage": "https://nori.com",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts DataImport -o ./src/json/specification.json --strictNullChecks=true --required=true",
+    "build": "tsc && yarn run make:schema",
+    "prepare": "yarn run build",
+    "watch": "tsc -w -p ."
+  },
+  "bugs": {
+    "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.7"
+  },
+  "dependencies": {
+    "ajv": "^6.12.3",
+    "typescript-json-schema": "^0.42.0"
+  }
+}
