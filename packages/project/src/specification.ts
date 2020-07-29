@@ -16,25 +16,25 @@ export interface Project {
   /** @nullable */
   projectName?: string; // todo consider removing
   fields: Field[];
+  energyUse?: any | null;
 }
 
 export interface Field {
   fieldName: string;
-  /** @nullable */
-  owners?: string[] | null; // todo will we use this
+  owners: string[]; // todo will we use this
   // Field location and boundary
   /** @nullable */
-  state?: string; // todo should we just infer from polygon?
+  state?: any;
   /** @nullable */
-  county?: string; // todo should we just infer from polygon?
-  /** @nullable */
-  area?: number; // in acres // todo should we just infer from polygon?
-  // todo required if area is specified
-  /** @nullable */
-  geometry: GeoJSON; // todo geojson type
-
+  county?: any;
+  area: number;
+  areaUnit: string;
+  srid: string;
+  geometry: GeoJSON;
+  clus: any[];
   // All management details are grouped by the crop planting year
   cropYears: CropYear[];
+  rotation?: any;
 }
 
 export interface CropYear {
@@ -46,8 +46,8 @@ export interface CropYear {
 
 export interface Crop {
   // todo when null: should this instead be the crop name of the crop the events happened to?
-  name: string | null; // list of known crops at go.nori.com/inputs
-  type:
+  cropName: string | null; // list of known crops at go.nori.com/inputs
+  cropType:
     | 'annual crop'
     | 'annual cover'
     | 'perennial'
@@ -56,15 +56,12 @@ export interface Crop {
     | null;
   continueFromPreviousYear: YesOrNo; // Only set to be "Yes" for perennials
   datePlanted: string | null; // mm/dd/yyyy, must be same year as plantingYear
-
   // Order crops in order they were planted from oldest to most recent
   cropNumber: 1 | 2 | 3;
-
   // If an orchard or vineyard, did you prune, renew or clear?
   prune: YesOrNo;
   /** @nullable */
   renewOrClear?: YesOrNo;
-
   // • None of the following events should have dates in previous years
   //   or dates prior to the last harvest date of previous crops.
   // • All inputs should be ordered oldest to most recent
@@ -83,17 +80,14 @@ export interface HarvestOrKillEvent {
   // separately after grain / fruit / tuber harvest, do NOT add this as
   // a second harvest. Instead, enter the percent of the remaining residue
   // that was removed on the grain harvest, regardless of removal date.
-
   date: string; // mm/dd/yyyy, must be same year or year after plantingYear
   yield: number | null;
   yieldNumeratorUnit: string | null;
   yieldDenominatorUnit: string | null;
-
   // Grain / fruit / tuber:
   // • Select “Yes” if the crop was harvested for grain, fruit, or tuber
   // • Select “No” if the crop was harvested before maturity for silage or haylage
   grainFruitTuber: YesOrNo;
-
   // Residue removed:
   // • Enter 0% if the crop was only harvested for grain / fruit / tuber
   // • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
@@ -128,7 +122,6 @@ export interface FertilizerEvent {
   // Amount of N applied in lbs/ac is preferred
   /** @nullable */
   lbsOfNPerAcre: number;
-
   // If unable to compute Lbs of N / acre, provide as much of the following as you can
   /** @nullable */
   NPK?: string;
@@ -145,7 +138,7 @@ export interface FertilizerEvent {
     | 'gal'
     | '1000gal';
   /** @nullable */
-  productDensity?: number; // in lbs / gal
+  productDensity?: string; // in lbs / gal
   /** @nullable */
   area?: number;
   /** @nullable */
@@ -154,8 +147,7 @@ export interface FertilizerEvent {
 
 export interface OrganicMatterEvent {
   date: string; // mm/dd/yyyy
-  type: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
-
+  productName: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
   // Amount of manure applied (ton/acre is preferred)
   amountPerAcre: number;
   amountUnit:
@@ -167,16 +159,15 @@ export interface OrganicMatterEvent {
     | 'lb/acre'
     | 'gal/acre'
     | '1000gal/acre';
-
+  productDensity?: any;
   // Attributes of the manure
-  percentNitrogen: number | null;
-  // todo why do we ask for percentAmmoniumNitrogen?
-  // percentAmmoniumNitrogen?: number | null;
-  // todo why do we ask for percentMoisture?
-  // percentMoisture?: number | null;
-  carbonNitrogenRatio: number | null;
-  quantity: number; // todo remove
-  quantityUnit: string; // todo remove
+  percentN?: number;
+  cnRatio?: any;
+  quantity: number;
+  quantityUnit: string;
+  area: number;
+  areaUnit: string;
+  applicationMethod: string;
 }
 
 export interface IrrigationEvent {
@@ -197,13 +188,12 @@ export interface IrrigationEvent {
 
 export interface LimingEvent {
   date: string; // mm/dd/yyyy
-  type:
-    | 'none'
-    | 'crushed Limestone'
-    | 'calcitic Limestone'
-    | 'dolomitic Limestone'
-    | 'other';
+  productName: string;
   tonsPerAcre: number;
+  quantity: number;
+  quantityUnit: string;
+  area: number;
+  areaUnit: string;
 }
 
 export interface GrazingEvent {
