@@ -16,25 +16,24 @@ export interface Project {
   /** @nullable */
   projectName?: string; // todo consider removing
   fields: Field[];
-  energyUse?: any | null;
 }
 
 export interface Field {
   fieldName: string;
-  owners: string[]; // todo will we use this
+  /** @nullable */
+  owners?: string[] | null; // todo will we use this
   // Field location and boundary
   /** @nullable */
-  state?: any;
+  state?: string; // todo should we just infer from polygon?
   /** @nullable */
-  county?: any;
-  area: number;
-  areaUnit: string;
-  srid: string;
-  geometry: GeoJSON;
-  clus: any[];
+  county?: string; // todo should we just infer from polygon?
+  /** @nullable */
+  area?: number; // in acres // todo should we just infer from polygon?
+  // todo required if area is specified
+  /** @nullable */
+  geometry: GeoJSON; // todo geojson type
   // All management details are grouped by the crop planting year
   cropYears: CropYear[];
-  rotation?: any;
 }
 
 export interface CropYear {
@@ -46,8 +45,8 @@ export interface CropYear {
 
 export interface Crop {
   // todo when null: should this instead be the crop name of the crop the events happened to?
-  cropName: string | null; // list of known crops at go.nori.com/inputs
-  cropType:
+  name: string | null; // list of known crops at go.nori.com/inputs
+  type:
     | 'annual crop'
     | 'annual cover'
     | 'perennial'
@@ -138,7 +137,7 @@ export interface FertilizerEvent {
     | 'gal'
     | '1000gal';
   /** @nullable */
-  productDensity?: string; // in lbs / gal
+  productDensity?: number; // in lbs / gal
   /** @nullable */
   area?: number;
   /** @nullable */
@@ -147,7 +146,7 @@ export interface FertilizerEvent {
 
 export interface OrganicMatterEvent {
   date: string; // mm/dd/yyyy
-  productName: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
+  type: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
   // Amount of manure applied (ton/acre is preferred)
   amountPerAcre: number;
   amountUnit:
@@ -159,15 +158,15 @@ export interface OrganicMatterEvent {
     | 'lb/acre'
     | 'gal/acre'
     | '1000gal/acre';
-  productDensity?: any;
   // Attributes of the manure
-  percentN?: number;
-  cnRatio?: any;
-  quantity: number;
-  quantityUnit: string;
-  area: number;
-  areaUnit: string;
-  applicationMethod: string;
+  percentNitrogen: number | null;
+  // todo why do we ask for percentAmmoniumNitrogen?
+  // percentAmmoniumNitrogen?: number | null;
+  // todo why do we ask for percentMoisture?
+  // percentMoisture?: number | null;
+  carbonNitrogenRatio: number | null;
+  quantity: number; // todo remove
+  quantityUnit: string; // todo remove
 }
 
 export interface IrrigationEvent {
@@ -188,12 +187,13 @@ export interface IrrigationEvent {
 
 export interface LimingEvent {
   date: string; // mm/dd/yyyy
-  productName: string;
+  type:
+    | 'none'
+    | 'crushed Limestone'
+    | 'calcitic Limestone'
+    | 'dolomitic Limestone'
+    | 'other';
   tonsPerAcre: number;
-  quantity: number;
-  quantityUnit: string;
-  area: number;
-  areaUnit: string;
 }
 
 export interface GrazingEvent {
