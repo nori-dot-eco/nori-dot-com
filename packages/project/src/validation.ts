@@ -1,16 +1,3 @@
-// import * as TJS from 'typescript-json-schema';
-// import { resolve } from 'path';
-// const settings: TJS.PartialArgs = {
-//   required: true,
-// };
-// const compilerOptions: TJS.CompilerOptions = {
-//   strictNullChecks: true,
-// };
-// const program = TJS.getProgramFromFiles(
-//   [resolve(__dirname, './specification')],
-//   compilerOptions
-// );
-// const schema = TJS.generateSchema(program, 'DataImport', settings);
 import * as Ajv from 'ajv';
 
 import * as schema from './json/specification.json';

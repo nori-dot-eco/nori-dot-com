@@ -29,7 +29,8 @@ export interface Field {
   county?: string; // todo should we just infer from polygon?
   /** @nullable */
   area?: number; // in acres // todo should we just infer from polygon?
-  // todo required if area is specified  /** @nullable */
+  // todo required if area is specified
+  /** @nullable */
   geometry: GeoJSON; // todo geojson type
 
   // All management details are grouped by the crop planting year
