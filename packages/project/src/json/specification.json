@@ -5,9 +5,9 @@
             "properties": {
                 "type": {
                     "enum": [
-                        "No burning",
-                        "Yes, after harvesting",
-                        "Yes, before planting"
+                        "no burning",
+                        "yes, after harvesting",
+                        "yes, before planting"
                     ],
                     "type": "string"
                 }
@@ -45,9 +45,6 @@
                             "type": "null"
                         }
                     ]
-                },
-                "crop": {
-                    "type": "string"
                 },
                 "cropNumber": {
                     "enum": [
@@ -128,6 +125,12 @@
                         }
                     ]
                 },
+                "name": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
                 "organicMatterEvents": {
                     "anyOf": [
                         {
@@ -163,6 +166,9 @@
                                 "yes"
                             ],
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         },
                         {
                             "type": "null"
@@ -203,7 +209,6 @@
             "required": [
                 "burningEvents",
                 "continueFromPreviousYear",
-                "crop",
                 "cropNumber",
                 "datePlanted",
                 "fertilizerEvents",
@@ -211,6 +216,7 @@
                 "harvestOrKillEvents",
                 "irrigationEvents",
                 "limingEvents",
+                "name",
                 "organicMatterEvents",
                 "prune",
                 "tillageEvents",
@@ -236,138 +242,45 @@
             ],
             "type": "object"
         },
-        "Energy": {
-            "properties": {
-                "CNG": {
-                    "type": "number"
-                },
-                "LNG": {
-                    "type": "number"
-                },
-                "biodiesel": {
-                    "items": {
-                        "properties": {
-                            "amount": {
-                                "type": "number"
-                            },
-                            "type": {
-                                "enum": [
-                                    "B10",
-                                    "B100",
-                                    "B2",
-                                    "B20",
-                                    "B5"
-                                ],
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "amount",
-                            "type"
-                        ],
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "diesel": {
-                    "type": "number"
-                },
-                "electricity": {
-                    "type": "number"
-                },
-                "energyYear": {
-                    "type": "number"
-                },
-                "farmSize": {
-                    "type": "number"
-                },
-                "gasoline": {
-                    "type": "number"
-                },
-                "heatFromWaste": {
-                    "properties": {
-                        "amount": {
-                            "type": "number"
-                        },
-                        "type": {
-                            "type": "string"
-                        },
-                        "volume": {
-                            "type": "number"
-                        }
-                    },
-                    "required": [
-                        "amount",
-                        "type",
-                        "volume"
-                    ],
-                    "type": "object"
-                },
-                "naturalGas": {
-                    "type": "number"
-                },
-                "propane": {
-                    "type": "number"
-                },
-                "vegetableOil": {
-                    "type": "number"
-                }
-            },
-            "required": [
-                "CNG",
-                "LNG",
-                "biodiesel",
-                "diesel",
-                "electricity",
-                "energyYear",
-                "farmSize",
-                "gasoline",
-                "heatFromWaste",
-                "naturalGas",
-                "propane",
-                "vegetableOil"
-            ],
-            "type": "object"
-        },
         "FertilizerEvent": {
             "properties": {
                 "NPK": {
-                    "type": "string"
-                },
-                "amount": {
-                    "type": "number"
-                },
-                "amountUnit": {
-                    "enum": [
-                        "1000gal",
-                        "1000gal/acre",
-                        "gal",
-                        "gal/acre",
-                        "lb",
-                        "lb/acre",
-                        "ton",
-                        "ton/acre"
-                    ],
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "applicationMethod": {
                     "anyOf": [
                         {
                             "enum": [
-                                "Aerial",
-                                "Fertigation",
-                                "Incoprate",
-                                "Inject",
-                                "Sidedress",
-                                "Spray",
-                                "Spread",
-                                "Surface band"
+                                "aerial",
+                                "fertigation",
+                                "incorporate",
+                                "inject",
+                                "planting",
+                                "sidedress",
+                                "spray",
+                                "spread",
+                                "surface band"
                             ],
                             "type": "string"
                         },
                         {
                             "type": "null"
                         }
+                    ]
+                },
+                "area": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "areaUnit": {
+                    "type": [
+                        "string",
+                        "null"
                     ]
                 },
                 "date": {
@@ -389,40 +302,69 @@
                     ]
                 },
                 "lbsOfNPerAcre": {
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "productDensity": {
                     "type": [
-                        "null",
-                        "number"
+                        "number",
+                        "null"
                     ]
                 },
-                "type": {
+                "productName": {
                     "type": "string"
+                },
+                "quantity": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "quantityUnit": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "1000gal",
+                                "1000gal/acre",
+                                "gal",
+                                "gal/acre",
+                                "lb",
+                                "lb/acre",
+                                "ton",
+                                "ton/acre"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 }
             },
             "required": [
                 "applicationMethod",
                 "date",
                 "enhancedEfficiency",
-                "type"
+                "lbsOfNPerAcre",
+                "productName"
             ],
             "type": "object"
         },
         "Field": {
             "properties": {
                 "area": {
-                    "type": "number"
-                },
-                "areaUnit": {
-                    "enum": [
-                        "ac",
-                        "ha"
-                    ],
-                    "type": "string"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "county": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "cropYears": {
                     "items": {
@@ -475,20 +417,23 @@
                         },
                         {
                             "type": "null"
+                        },
+                        {
+                            "type": "null"
                         }
                     ]
                 },
-                "srid": {
-                    "type": "string"
-                },
                 "state": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "cropYears",
                 "fieldName",
-                "owners"
+                "geometry"
             ],
             "type": "object"
         },
@@ -1787,30 +1732,56 @@
                     "type": "string"
                 },
                 "depth": {
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "depthUnits": {
-                    "enum": [
-                        "cm",
-                        "in"
-                    ],
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "cm",
+                                "in"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "endDate": {
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "frequency": {
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "volume": {
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "volumeUnits": {
-                    "enum": [
-                        "cm",
-                        "in"
-                    ],
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "cm",
+                                "in"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 }
             },
             "required": [
@@ -1820,43 +1791,33 @@
         },
         "LimingEvent": {
             "properties": {
-                "amount": {
-                    "type": "number"
-                },
-                "amountUnit": {
-                    "enum": [
-                        "lb",
-                        "lb/acre",
-                        "ton",
-                        "ton/acre"
-                    ],
-                    "type": "string"
-                },
                 "date": {
                     "type": "string"
                 },
+                "tonsPerAcre": {
+                    "type": "number"
+                },
                 "type": {
                     "enum": [
-                        "Calcitic Limestone",
-                        "Crushed Limestone",
-                        "Dolomitic Limestone",
-                        "None",
-                        "Other"
+                        "calcitic Limestone",
+                        "crushed Limestone",
+                        "dolomitic Limestone",
+                        "none",
+                        "other"
                     ],
                     "type": "string"
                 }
             },
             "required": [
-                "amount",
-                "amountUnit",
                 "date",
+                "tonsPerAcre",
                 "type"
             ],
             "type": "object"
         },
         "OrganicMatterEvent": {
             "properties": {
-                "amount": {
+                "amountPerAcre": {
                     "type": "number"
                 },
                 "amountUnit": {
@@ -1872,22 +1833,6 @@
                     ],
                     "type": "string"
                 },
-                "applicationMethod": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "aerial",
-                                "inject",
-                                "spray",
-                                "spread"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
                 "carbonNitrogenRatio": {
                     "type": [
                         "null",
@@ -1897,37 +1842,30 @@
                 "date": {
                     "type": "string"
                 },
-                "percentAmmoniumNitrogen": {
-                    "type": [
-                        "null",
-                        "number"
-                    ]
-                },
-                "percentMoisture": {
-                    "type": [
-                        "null",
-                        "number"
-                    ]
-                },
                 "percentNitrogen": {
                     "type": [
                         "null",
                         "number"
                     ]
                 },
+                "quantity": {
+                    "type": "number"
+                },
+                "quantityUnit": {
+                    "type": "string"
+                },
                 "type": {
                     "type": "string"
                 }
             },
             "required": [
-                "amount",
+                "amountPerAcre",
                 "amountUnit",
-                "applicationMethod",
                 "carbonNitrogenRatio",
                 "date",
-                "percentAmmoniumNitrogen",
-                "percentMoisture",
                 "percentNitrogen",
+                "quantity",
+                "quantityUnit",
                 "type"
             ],
             "type": "object"
@@ -1950,13 +1888,10 @@
     },
     "properties": {
         "accountName": {
-            "type": "string"
-        },
-        "energyUse": {
-            "items": {
-                "$ref": "#/definitions/Energy"
-            },
-            "type": "array"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "fields": {
             "items": {
@@ -1965,7 +1900,10 @@
             "type": "array"
         },
         "projectName": {
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "required": [

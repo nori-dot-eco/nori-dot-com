@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts DataImport -o ./src/json/specification.json --strictNullChecks=true --required=true",
+    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true",
     "build": "tsc && yarn run make:schema",
     "prepare": "yarn run build",
     "watch": "tsc -w -p ."

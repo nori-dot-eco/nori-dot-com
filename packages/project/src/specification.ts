@@ -3,28 +3,34 @@ import type { GeoJSON } from 'geojson';
 // todo
 // * why did we include clus?
 // * readme on how to build schema
-
+// * why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
+// * address semantic inconsistency between amount and quantity
+// * drop quantity, quantity unit, area, areaUnit from liming
+// * rename productName to type in liming
+// * document srid = 4326
 export type YesOrNo = 'yes' | 'no' | null;
 
-export interface DataImport {
-  accountName?: string;
-  projectName?: string;
+export interface Project {
+  /** @nullable */
+  accountName?: string; // todo consider removing
+  /** @nullable */
+  projectName?: string; // todo consider removing
   fields: Field[];
-  energyUse?: Energy[];
 }
 
 export interface Field {
   fieldName: string;
-  owners: string[] | null;
-
+  /** @nullable */
+  owners?: string[] | null; // todo will we use this
   // Field location and boundary
-  state?: string;
-  county?: string;
-  area?: number;
-  // todo required if area is specified
-  areaUnit?: 'ac' | 'ha';
-  srid?: string; // SRID of projection; 4326 (NAD83) is recommended
-  geometry?: GeoJSON;
+  /** @nullable */
+  state?: string; // todo should we just infer from polygon?
+  /** @nullable */
+  county?: string; // todo should we just infer from polygon?
+  /** @nullable */
+  area?: number; // in acres // todo should we just infer from polygon?
+  // todo required if area is specified  /** @nullable */
+  geometry: GeoJSON; // todo geojson type
 
   // All management details are grouped by the crop planting year
   cropYears: CropYear[];
@@ -32,14 +38,14 @@ export interface Field {
 
 export interface CropYear {
   plantingYear: number; // YYYY >= 2000
-
   // Perennial crops: Enter the crop each year it was on the field.
   // You only need to provide the planting date for the initial planting.
   crops: Crop[];
 }
 
 export interface Crop {
-  crop: string; // list of known crops at go.nori.com/inputs
+  // todo when null: should this instead be the crop name of the crop the events happened to?
+  name: string | null; // list of known crops at go.nori.com/inputs
   type:
     | 'annual crop'
     | 'annual cover'
@@ -55,6 +61,7 @@ export interface Crop {
 
   // If an orchard or vineyard, did you prune, renew or clear?
   prune: YesOrNo;
+  /** @nullable */
   renewOrClear?: YesOrNo;
 
   // • None of the following events should have dates in previous years
@@ -100,30 +107,34 @@ export interface TillageEvent {
 
 export interface FertilizerEvent {
   date: string; // mm/dd/yyyy
-  type: string;
+  productName: string;
   applicationMethod:
-    | 'Aerial'
-    | 'Fertigation'
-    | 'Incoprate'
-    | 'Inject'
-    | 'Sidedress'
-    | 'Spray'
-    | 'Spread'
-    | 'Surface band'
+    | 'planting' // todo what is this application method type (added by jaycen because it existed in granular export example2.json)
+    | 'aerial'
+    | 'fertigation'
+    | 'incorporate'
+    | 'inject'
+    | 'sidedress'
+    | 'spray'
+    | 'spread'
+    | 'surface band'
     | null;
   enhancedEfficiency:
     | 'None'
     | 'Slow release'
     | 'Nitrification Inhibitor'
     | null;
-
-  // Amount of N applied in lbs/ac is prefered
-  lbsOfNPerAcre?: number;
+  // Amount of N applied in lbs/ac is preferred
+  /** @nullable */
+  lbsOfNPerAcre: number;
 
   // If unable to compute Lbs of N / acre, provide as much of the following as you can
+  /** @nullable */
   NPK?: string;
-  amount?: number;
-  amountUnit?:
+  /** @nullable */
+  quantity?: number;
+  /** @nullable */
+  quantityUnit?:
     | 'lb/acre'
     | 'ton/acre'
     | 'gal/acre'
@@ -132,15 +143,20 @@ export interface FertilizerEvent {
     | 'ton'
     | 'gal'
     | '1000gal';
-  productDensity?: number | null; // in lbs / gal
+  /** @nullable */
+  productDensity?: number; // in lbs / gal
+  /** @nullable */
+  area?: number;
+  /** @nullable */
+  areaUnit?: string;
 }
 
 export interface OrganicMatterEvent {
   date: string; // mm/dd/yyyy
   type: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
 
-  // Amount of manure applied (ton/acre is prefered)
-  amount: number;
+  // Amount of manure applied (ton/acre is preferred)
+  amountPerAcre: number;
   amountUnit:
     | 'ton'
     | 'lb'
@@ -152,35 +168,41 @@ export interface OrganicMatterEvent {
     | '1000gal/acre';
 
   // Attributes of the manure
-  applicationMethod: 'aerial' | 'inject' | 'spray' | 'spread' | null;
   percentNitrogen: number | null;
-  percentAmmoniumNitrogen: number | null;
-  percentMoisture: number | null;
+  // todo why do we ask for percentAmmoniumNitrogen?
+  // percentAmmoniumNitrogen?: number | null;
+  // todo why do we ask for percentMoisture?
+  // percentMoisture?: number | null;
   carbonNitrogenRatio: number | null;
+  quantity: number; // todo remove
+  quantityUnit: string; // todo remove
 }
 
 export interface IrrigationEvent {
   date: string; // mm/dd/yyyy
+  /** @nullable */
   volume?: number;
+  /** @nullable */
   volumeUnits?: 'in' | 'cm';
+  /** @nullable */
   depth?: number; // 0 if applied to surface
+  /** @nullable */
   depthUnits?: 'in' | 'cm';
+  /** @nullable */
   endDate?: string; // mm/dd/yyyy
+  /** @nullable */
   frequency?: number;
 }
 
 export interface LimingEvent {
   date: string; // mm/dd/yyyy
   type:
-    | 'None'
-    | 'Crushed Limestone'
-    | 'Calcitic Limestone'
-    | 'Dolomitic Limestone'
-    | 'Other';
-
-  // Tons/acre is prefered
-  amount: number;
-  amountUnit: 'lb' | 'ton' | 'lb/acre' | 'ton/acre';
+    | 'none'
+    | 'crushed Limestone'
+    | 'calcitic Limestone'
+    | 'dolomitic Limestone'
+    | 'other';
+  tonsPerAcre: number;
 }
 
 export interface GrazingEvent {
@@ -191,38 +213,5 @@ export interface GrazingEvent {
 }
 
 export interface BurningEvent {
-  type: 'No burning' | 'Yes, before planting' | 'Yes, after harvesting';
-}
-
-export interface Energy {
-  // Go back to 3 years before earliest qualified practice switch
-  energyYear: number;
-
-  // Size of total opperation for that year so we can compute the
-  // percent of the numbers that applies to the fields enrolled
-  farmSize: number;
-
-  // Liquid fuels
-  diesel: number; // No. 2 diesel (US gal)
-  gasoline: number; // (US gal)
-  biodiesel: {
-    type: 'B2' | 'B5' | 'B10' | 'B20' | 'B100';
-    amount: number; // (US gal)
-  }[];
-  vegetableOil: number; // SVO (US gal)
-
-  // Gas fuels
-  propane: number; // mmBTU
-  naturalGas: number; // mmBTU
-  CNG: number; // mmBTU
-  LNG: number; // mmBTU
-
-  // Electricity
-  electricity: number; // kWh
-
-  heatFromWaste: {
-    type: string;
-    amount: number; // mmBTU
-    volume: number; // tons
-  };
+  type: 'no burning' | 'yes, before planting' | 'yes, after harvesting';
 }
