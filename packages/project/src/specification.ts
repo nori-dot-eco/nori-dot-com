@@ -8,30 +8,21 @@ import type { GeoJSON } from 'geojson';
 // * drop quantity, quantity unit, area, areaUnit from liming
 // * rename productName to type in liming
 // * document srid = 4326
+
 export type YesOrNo = 'yes' | 'no' | null;
 
 export interface Project {
-  /** @nullable */
-  accountName?: string; // todo consider removing
-  /** @nullable */
-  projectName?: string; // todo consider removing
+  version: string; // todo enum
   fields: Field[];
 }
 
 export interface Field {
   fieldName: string;
   /** @nullable */
-  owners?: string[] | null; // todo will we use this
-  // Field location and boundary
-  /** @nullable */
-  state?: string; // todo should we just infer from polygon?
-  /** @nullable */
-  county?: string; // todo should we just infer from polygon?
-  /** @nullable */
-  area?: number; // in acres // todo should we just infer from polygon?
+  acres?: number; // in acres // todo should we just infer from polygon?
   // todo required if area is specified
   /** @nullable */
-  geometry: GeoJSON; // todo geojson type
+  geojson: GeoJSON; // todo geojson type
   // All management details are grouped by the crop planting year
   cropYears: CropYear[];
 }
@@ -44,7 +35,8 @@ export interface CropYear {
 }
 
 export interface Crop {
-  // todo when null: should this instead be the crop name of the crop the events happened to?
+  // todo why can name be null?
+  // todo crop name enum
   name: string | null; // list of known crops at go.nori.com/inputs
   type:
     | 'annual crop'
@@ -52,26 +44,25 @@ export interface Crop {
     | 'perennial'
     | 'orchard'
     | 'vineyard'
-    | null;
+    | null; // todo why can this be null
+  // todo if continueFromPreviousYear is only for perennial, we can just infer the value
   continueFromPreviousYear: YesOrNo; // Only set to be "Yes" for perennials
-  datePlanted: string | null; // mm/dd/yyyy, must be same year as plantingYear
-  // Order crops in order they were planted from oldest to most recent
-  cropNumber: 1 | 2 | 3;
+  plantingDate: string | null; // mm/dd/yyyy, must be same year as plantingYear
   // If an orchard or vineyard, did you prune, renew or clear?
-  prune: YesOrNo;
+  /** @nullable */
+  prune?: YesOrNo;
   /** @nullable */
   renewOrClear?: YesOrNo;
   // • None of the following events should have dates in previous years
   //   or dates prior to the last harvest date of previous crops.
-  // • All inputs should be ordered oldest to most recent
   harvestOrKillEvents: HarvestOrKillEvent[] | null;
   tillageEvents: TillageEvent[] | null;
   fertilizerEvents: FertilizerEvent[] | null;
   organicMatterEvents: OrganicMatterEvent[] | null;
   irrigationEvents: IrrigationEvent[] | null;
-  limingEvents: LimingEvent[] | null;
+  limingEvents: LimingEvent[] | null; // todo this should be singular, or we should handle aggregating them into one during import
   grazingEvents: GrazingEvent[] | null;
-  burningEvents: BurningEvent[] | null;
+  burningEvent: BurningEvent | null;
 }
 
 export interface HarvestOrKillEvent {
@@ -81,7 +72,7 @@ export interface HarvestOrKillEvent {
   // that was removed on the grain harvest, regardless of removal date.
   date: string; // mm/dd/yyyy, must be same year or year after plantingYear
   yield: number | null;
-  yieldNumeratorUnit: string | null;
+  yieldNumeratorUnit: string | null; // todo merge numerator and denominator into one enum
   yieldDenominatorUnit: string | null;
   // Grain / fruit / tuber:
   // • Select “Yes” if the crop was harvested for grain, fruit, or tuber
@@ -96,12 +87,16 @@ export interface HarvestOrKillEvent {
 
 export interface TillageEvent {
   date: string; // mm/dd/yyyy
+  // todo enum
   type: string; // list of known methods at go.nori.com/inputs
 }
 
 export interface FertilizerEvent {
   date: string; // mm/dd/yyyy
-  productName: string;
+  /** @nullable */
+  productName?: string; // todo deprecate when sheet is gone (just an alias)
+  /** @nullable */
+  type: string; // todo is it reasonable to ask for this?
   applicationMethod:
     | 'planting' // todo what is this application method type (added by jaycen because it existed in granular export example2.json)
     | 'aerial'
@@ -114,9 +109,9 @@ export interface FertilizerEvent {
     | 'surface band'
     | null;
   enhancedEfficiency:
-    | 'None'
-    | 'Slow release'
-    | 'Nitrification Inhibitor'
+    | 'none'
+    | 'slow release'
+    | 'nitrification inhibitor'
     | null;
   // Amount of N applied in lbs/ac is preferred
   /** @nullable */
@@ -137,38 +132,24 @@ export interface FertilizerEvent {
     | 'gal'
     | '1000gal';
   /** @nullable */
-  productDensity?: number; // in lbs / gal
+  density?: number; // in lbs / gal
   /** @nullable */
   area?: number;
   /** @nullable */
-  areaUnit?: string;
+  areaUnit?: string; // todo enum
 }
 
 export interface OrganicMatterEvent {
   date: string; // mm/dd/yyyy
   type: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
-  // Amount of manure applied (ton/acre is preferred)
+  // Amount of manure applied
   amountPerAcre: number;
-  amountUnit:
-    | 'ton'
-    | 'lb'
-    | 'gal'
-    | '1000gal'
-    | 'ton/acre'
-    | 'lb/acre'
-    | 'gal/acre'
-    | '1000gal/acre';
   // Attributes of the manure
   percentNitrogen: number | null;
-  // todo why do we ask for percentAmmoniumNitrogen?
-  // percentAmmoniumNitrogen?: number | null;
-  // todo why do we ask for percentMoisture?
-  // percentMoisture?: number | null;
   carbonNitrogenRatio: number | null;
-  quantity: number; // todo remove
-  quantityUnit: string; // todo remove
 }
 
+// todo which of these should be defaulted/required
 export interface IrrigationEvent {
   date: string; // mm/dd/yyyy
   /** @nullable */
@@ -189,9 +170,9 @@ export interface LimingEvent {
   date: string; // mm/dd/yyyy
   type:
     | 'none'
-    | 'crushed Limestone'
-    | 'calcitic Limestone'
-    | 'dolomitic Limestone'
+    | 'crushed limestone'
+    | 'calcitic limestone'
+    | 'dolomitic limestone'
     | 'other';
   tonsPerAcre: number;
 }

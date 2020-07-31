@@ -19,13 +19,10 @@
         },
         "Crop": {
             "properties": {
-                "burningEvents": {
+                "burningEvent": {
                     "anyOf": [
                         {
-                            "items": {
-                                "$ref": "#/definitions/BurningEvent"
-                            },
-                            "type": "array"
+                            "$ref": "#/definitions/BurningEvent"
                         },
                         {
                             "type": "null"
@@ -44,20 +41,6 @@
                         {
                             "type": "null"
                         }
-                    ]
-                },
-                "cropNumber": {
-                    "enum": [
-                        1,
-                        2,
-                        3
-                    ],
-                    "type": "number"
-                },
-                "datePlanted": {
-                    "type": [
-                        "null",
-                        "string"
                     ]
                 },
                 "fertilizerEvents": {
@@ -144,6 +127,12 @@
                         }
                     ]
                 },
+                "plantingDate": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
                 "prune": {
                     "anyOf": [
                         {
@@ -152,6 +141,9 @@
                                 "yes"
                             ],
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         },
                         {
                             "type": "null"
@@ -207,10 +199,8 @@
                 }
             },
             "required": [
-                "burningEvents",
+                "burningEvent",
                 "continueFromPreviousYear",
-                "cropNumber",
-                "datePlanted",
                 "fertilizerEvents",
                 "grazingEvents",
                 "harvestOrKillEvents",
@@ -218,7 +208,7 @@
                 "limingEvents",
                 "name",
                 "organicMatterEvents",
-                "prune",
+                "plantingDate",
                 "tillageEvents",
                 "type"
             ],
@@ -286,13 +276,19 @@
                 "date": {
                     "type": "string"
                 },
+                "density": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
                 "enhancedEfficiency": {
                     "anyOf": [
                         {
                             "enum": [
-                                "Nitrification Inhibitor",
-                                "None",
-                                "Slow release"
+                                "nitrification inhibitor",
+                                "none",
+                                "slow release"
                             ],
                             "type": "string"
                         },
@@ -307,14 +303,11 @@
                         "null"
                     ]
                 },
-                "productDensity": {
+                "productName": {
                     "type": [
-                        "number",
+                        "string",
                         "null"
                     ]
-                },
-                "productName": {
-                    "type": "string"
                 },
                 "quantity": {
                     "type": [
@@ -341,6 +334,12 @@
                             "type": "null"
                         }
                     ]
+                },
+                "type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -348,21 +347,15 @@
                 "date",
                 "enhancedEfficiency",
                 "lbsOfNPerAcre",
-                "productName"
+                "type"
             ],
             "type": "object"
         },
         "Field": {
             "properties": {
-                "area": {
+                "acres": {
                     "type": [
                         "number",
-                        "null"
-                    ]
-                },
-                "county": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -375,7 +368,7 @@
                 "fieldName": {
                     "type": "string"
                 },
-                "geometry": {
+                "geojson": {
                     "anyOf": [
                         {
                             "$ref": "#/definitions/GeoJSON.Point"
@@ -403,37 +396,18 @@
                         },
                         {
                             "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "description": "Union of GeoJSON objects."
-                },
-                "owners": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "state": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 }
             },
             "required": [
                 "cropYears",
                 "fieldName",
-                "geometry"
+                "geojson"
             ],
             "type": "object"
         },
@@ -1799,9 +1773,9 @@
                 },
                 "type": {
                     "enum": [
-                        "calcitic Limestone",
-                        "crushed Limestone",
-                        "dolomitic Limestone",
+                        "calcitic limestone",
+                        "crushed limestone",
+                        "dolomitic limestone",
                         "none",
                         "other"
                     ],
@@ -1820,19 +1794,6 @@
                 "amountPerAcre": {
                     "type": "number"
                 },
-                "amountUnit": {
-                    "enum": [
-                        "1000gal",
-                        "1000gal/acre",
-                        "gal",
-                        "gal/acre",
-                        "lb",
-                        "lb/acre",
-                        "ton",
-                        "ton/acre"
-                    ],
-                    "type": "string"
-                },
                 "carbonNitrogenRatio": {
                     "type": [
                         "null",
@@ -1848,24 +1809,15 @@
                         "number"
                     ]
                 },
-                "quantity": {
-                    "type": "number"
-                },
-                "quantityUnit": {
-                    "type": "string"
-                },
                 "type": {
                     "type": "string"
                 }
             },
             "required": [
                 "amountPerAcre",
-                "amountUnit",
                 "carbonNitrogenRatio",
                 "date",
                 "percentNitrogen",
-                "quantity",
-                "quantityUnit",
                 "type"
             ],
             "type": "object"
@@ -1887,27 +1839,19 @@
         }
     },
     "properties": {
-        "accountName": {
-            "type": [
-                "string",
-                "null"
-            ]
-        },
         "fields": {
             "items": {
                 "$ref": "#/definitions/Field"
             },
             "type": "array"
         },
-        "projectName": {
-            "type": [
-                "string",
-                "null"
-            ]
+        "version": {
+            "type": "string"
         }
     },
     "required": [
-        "fields"
+        "fields",
+        "version"
     ],
     "type": "object"
 }
