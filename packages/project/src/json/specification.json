@@ -29,20 +29,6 @@
                         }
                     ]
                 },
-                "continueFromPreviousYear": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "no",
-                                "yes"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
                 "fertilizerEvents": {
                     "anyOf": [
                         {
@@ -144,9 +130,6 @@
                         },
                         {
                             "type": "null"
-                        },
-                        {
-                            "type": "null"
                         }
                     ]
                 },
@@ -158,9 +141,6 @@
                                 "yes"
                             ],
                             "type": "string"
-                        },
-                        {
-                            "type": "null"
                         },
                         {
                             "type": "null"
@@ -200,7 +180,6 @@
             },
             "required": [
                 "burningEvent",
-                "continueFromPreviousYear",
                 "fertilizerEvents",
                 "grazingEvents",
                 "harvestOrKillEvents",
@@ -209,6 +188,8 @@
                 "name",
                 "organicMatterEvents",
                 "plantingDate",
+                "prune",
+                "renewOrClear",
                 "tillageEvents",
                 "type"
             ],
@@ -234,68 +215,8 @@
         },
         "FertilizerEvent": {
             "properties": {
-                "NPK": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "applicationMethod": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "aerial",
-                                "fertigation",
-                                "incorporate",
-                                "inject",
-                                "planting",
-                                "sidedress",
-                                "spray",
-                                "spread",
-                                "surface band"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "area": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "areaUnit": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "date": {
                     "type": "string"
-                },
-                "density": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "enhancedEfficiency": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "nitrification inhibitor",
-                                "none",
-                                "slow release"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
                 },
                 "lbsOfNPerAcre": {
                     "type": [
@@ -309,32 +230,6 @@
                         "null"
                     ]
                 },
-                "quantity": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "quantityUnit": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "1000gal",
-                                "1000gal/acre",
-                                "gal",
-                                "gal/acre",
-                                "lb",
-                                "lb/acre",
-                                "ton",
-                                "ton/acre"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
                 "type": {
                     "type": [
                         "string",
@@ -343,9 +238,7 @@
                 }
             },
             "required": [
-                "applicationMethod",
                 "date",
-                "enhancedEfficiency",
                 "lbsOfNPerAcre",
                 "type"
             ],
@@ -1694,7 +1587,6 @@
                 "date",
                 "grainFruitTuber",
                 "residueRemoved",
-                "yield",
                 "yieldDenominatorUnit",
                 "yieldNumeratorUnit"
             ],
@@ -1759,7 +1651,13 @@
                 }
             },
             "required": [
-                "date"
+                "date",
+                "depth",
+                "depthUnits",
+                "endDate",
+                "frequency",
+                "volume",
+                "volumeUnits"
             ],
             "type": "object"
         },

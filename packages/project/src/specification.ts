@@ -1,13 +1,27 @@
 import type { GeoJSON } from 'geojson';
 
-// todo
+// todo spec
 // * why did we include clus?
-// * readme on how to build schema
 // * why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
-// * address semantic inconsistency between amount and quantity
+// * why did granular provide liming quantity + quantity unit alongside tonsPerAcre
+// * how realistic is it to expect partners to use enums for types
+// * which properties inclusion are dependent on another values property? (or, which properties should be non-nullable and instead specify "n/a")
+// * use n/a instead of null as the default?
+// * historic practices (per county, technically) -- regenerative start year as well
+// * null crop names: work with rebekah to build an input file that has no crop name defined in the comet XML file
+
+// todo importer
+// * order events by date
+// * check implication of removing cropNumber
+
+// todo validation
+// * readme on how to build schema
+
+// todo import file changes
 // * drop quantity, quantity unit, area, areaUnit from liming
-// * rename productName to type in liming
-// * document srid = 4326
+
+// todo module
+// * independent versioning
 
 export type YesOrNo = 'yes' | 'no' | null;
 
@@ -44,35 +58,32 @@ export interface Crop {
     | 'perennial'
     | 'orchard'
     | 'vineyard'
-    | null; // todo why can this be null
+    | null; // todo can be null only if name is null
   // todo if continueFromPreviousYear is only for perennial, we can just infer the value
-  continueFromPreviousYear: YesOrNo; // Only set to be "Yes" for perennials
-  plantingDate: string | null; // mm/dd/yyyy, must be same year as plantingYear
+  plantingDate: string | null; // mm/dd/yyyy
   // If an orchard or vineyard, did you prune, renew or clear?
-  /** @nullable */
-  prune?: YesOrNo;
-  /** @nullable */
-  renewOrClear?: YesOrNo;
-  // • None of the following events should have dates in previous years
-  //   or dates prior to the last harvest date of previous crops.
+  prune: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
+  renewOrClear: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
   harvestOrKillEvents: HarvestOrKillEvent[] | null;
   tillageEvents: TillageEvent[] | null;
   fertilizerEvents: FertilizerEvent[] | null;
   organicMatterEvents: OrganicMatterEvent[] | null;
   irrigationEvents: IrrigationEvent[] | null;
-  limingEvents: LimingEvent[] | null; // todo this should be singular, or we should handle aggregating them into one during import
+  limingEvents: LimingEvent[] | null;
   grazingEvents: GrazingEvent[] | null;
   burningEvent: BurningEvent | null;
 }
 
 export interface HarvestOrKillEvent {
+  // todo think about this:
   // Straw / Stover harvest exception: If the hay or stover was removed
   // separately after grain / fruit / tuber harvest, do NOT add this as
   // a second harvest. Instead, enter the percent of the remaining residue
   // that was removed on the grain harvest, regardless of removal date.
   date: string; // mm/dd/yyyy, must be same year or year after plantingYear
-  yield: number | null;
-  yieldNumeratorUnit: string | null; // todo merge numerator and denominator into one enum
+  /** @nullable */
+  yield?: number | null; // todo look into deprecating entirely as it doesnt currently have an impact on quantification
+  yieldNumeratorUnit: string | null; // todo merge numerator and denominator into one enum // todo only needed when yield !== null
   yieldDenominatorUnit: string | null;
   // Grain / fruit / tuber:
   // • Select “Yes” if the crop was harvested for grain, fruit, or tuber
@@ -96,47 +107,10 @@ export interface FertilizerEvent {
   /** @nullable */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /** @nullable */
-  type: string; // todo is it reasonable to ask for this?
-  applicationMethod:
-    | 'planting' // todo what is this application method type (added by jaycen because it existed in granular export example2.json)
-    | 'aerial'
-    | 'fertigation'
-    | 'incorporate'
-    | 'inject'
-    | 'sidedress'
-    | 'spray'
-    | 'spread'
-    | 'surface band'
-    | null;
-  enhancedEfficiency:
-    | 'none'
-    | 'slow release'
-    | 'nitrification inhibitor'
-    | null;
+  type: string; // todo default to mixed blends
   // Amount of N applied in lbs/ac is preferred
   /** @nullable */
-  lbsOfNPerAcre: number;
-  // If unable to compute Lbs of N / acre, provide as much of the following as you can
-  /** @nullable */
-  NPK?: string;
-  /** @nullable */
-  quantity?: number;
-  /** @nullable */
-  quantityUnit?:
-    | 'lb/acre'
-    | 'ton/acre'
-    | 'gal/acre'
-    | '1000gal/acre'
-    | 'lb'
-    | 'ton'
-    | 'gal'
-    | '1000gal';
-  /** @nullable */
-  density?: number; // in lbs / gal
-  /** @nullable */
-  area?: number;
-  /** @nullable */
-  areaUnit?: string; // todo enum
+  lbsOfNPerAcre: number; // todo this is really the only useful information for quantification currently
 }
 
 export interface OrganicMatterEvent {
@@ -150,20 +124,21 @@ export interface OrganicMatterEvent {
 }
 
 // todo which of these should be defaulted/required
+// todo any reason to support cm? if not, remove units and assume inches
 export interface IrrigationEvent {
   date: string; // mm/dd/yyyy
   /** @nullable */
-  volume?: number;
+  volume: number;
   /** @nullable */
-  volumeUnits?: 'in' | 'cm';
+  volumeUnits: 'in' | 'cm';
   /** @nullable */
-  depth?: number; // 0 if applied to surface
+  depth: number; // 0 if applied to surface
   /** @nullable */
-  depthUnits?: 'in' | 'cm';
+  depthUnits: 'in' | 'cm';
   /** @nullable */
-  endDate?: string; // mm/dd/yyyy
+  endDate: string; // mm/dd/yyyy
   /** @nullable */
-  frequency?: number;
+  frequency: number;
 }
 
 export interface LimingEvent {
