@@ -2,7 +2,7 @@ import * as Ajv from 'ajv';
 
 import * as data from '../example/example2.json';
 
-import * as schema from './json/specification.json';
+import * as schema from './json/project.specification.json';
 
 const ajv = new Ajv({ allErrors: true }); // options can be passed, e.g. {allErrors: true}
 const toLowercase = (key: any, value: any) =>

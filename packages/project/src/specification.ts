@@ -1,3 +1,26 @@
+/**
+ * ## About
+ * Provides the definitions for [Nori project](../interfaces/_specification_.project.md) data using typescript interfaces.
+ *
+ * ## Usage
+ * ### Use in creating [Nori project](../interfaces/_specification_.project.md) import JSON files
+ *
+ * The [project specification](../interfaces/_specification_.project.md) interfaces can be used as a guide to create project imports.
+ * For example, the highest level interface of the specification if the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
+ *
+ * You can find an example of a full implementation [here](../../example/example2.json).
+ *
+ * Basic (incomplete) example:
+ * ```JSON
+ * {
+ *  "version": "0.1.0",
+ *  "fields": [] // define fields in this array
+ * }
+ * ```
+ *
+ * Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index)
+ * @packageDocumentation
+ */
 import type { GeoJSON } from 'geojson';
 
 // todo spec
@@ -26,14 +49,34 @@ import type { GeoJSON } from 'geojson';
 // * pre-commit make docs
 
 export type YesOrNo = 'yes' | 'no' | null;
+
 /**
- * Represents the document sent to the customer for payment.
+ * ### A supplier project entity which encapsulates a set of fields
+ * This top-level interface defines all necessary properties for a supplier project created manually or via a data import
  */
 export interface Project {
+  /**
+   * The specification version. This information is used to determine the logic Nori uses to import a project.
+   */
   version: string; // todo enum
+  /**
+   * An array of fields defining annual crop practices
+   */
   fields: Field[];
 }
 
+/**
+ * A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.
+ * @example
+ * ```json
+ * {
+ *  "fieldName": "Pumpkin Pines",
+ *  "acres": 100,
+ *  "geojson": {},
+ *  "cropYears": [] // a list of annual crop practices
+ * }
+ * ```
+ */
 export interface Field {
   fieldName: string;
   /** @nullable */

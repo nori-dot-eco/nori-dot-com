@@ -1,3 +1,0 @@
-## cropYears Type
-
-unknown\[]

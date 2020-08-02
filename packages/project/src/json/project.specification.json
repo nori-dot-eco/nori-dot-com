@@ -1,0 +1,591 @@
+{
+    "$ref": "#/definitions/Project",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "BurningEvent": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "no burning",
+                        "yes, after harvesting",
+                        "yes, before planting"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "BurningEvent",
+            "type": "object"
+        },
+        "Crop": {
+            "properties": {
+                "burningEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurningEvent"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "burningEvent"
+                },
+                "fertilizerEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/FertilizerEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "fertilizerEvents"
+                },
+                "grazingEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/GrazingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grazingEvents"
+                },
+                "harvestOrKillEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/HarvestOrKillEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "harvestOrKillEvents"
+                },
+                "irrigationEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/IrrigationEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "irrigationEvents"
+                },
+                "limingEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/LimingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "limingEvents"
+                },
+                "name": {
+                    "title": "name",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "organicMatterEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/OrganicMatterEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "organicMatterEvents"
+                },
+                "plantingDate": {
+                    "title": "plantingDate",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "prune": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "no",
+                                "yes"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "prune"
+                },
+                "renewOrClear": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "no",
+                                "yes"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "renewOrClear"
+                },
+                "tillageEvents": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/definitions/TillageEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "tillageEvents"
+                },
+                "type": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "annual cover",
+                                "annual crop",
+                                "orchard",
+                                "perennial",
+                                "vineyard"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "type"
+                }
+            },
+            "required": [
+                "burningEvent",
+                "fertilizerEvents",
+                "grazingEvents",
+                "harvestOrKillEvents",
+                "irrigationEvents",
+                "limingEvents",
+                "name",
+                "organicMatterEvents",
+                "plantingDate",
+                "prune",
+                "renewOrClear",
+                "tillageEvents",
+                "type"
+            ],
+            "title": "Crop",
+            "type": "object"
+        },
+        "CropYear": {
+            "properties": {
+                "crops": {
+                    "items": {
+                        "$ref": "#/definitions/Crop"
+                    },
+                    "title": "crops",
+                    "type": "array"
+                },
+                "plantingYear": {
+                    "title": "plantingYear",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "crops",
+                "plantingYear"
+            ],
+            "title": "CropYear",
+            "type": "object"
+        },
+        "FertilizerEvent": {
+            "properties": {
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "lbsOfNPerAcre": {
+                    "title": "lbsOfNPerAcre",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "productName": {
+                    "title": "productName",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "title": "type",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "date",
+                "lbsOfNPerAcre",
+                "type"
+            ],
+            "title": "FertilizerEvent",
+            "type": "object"
+        },
+        "Field": {
+            "properties": {
+                "acres": {
+                    "title": "acres",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cropYears": {
+                    "items": {
+                        "$ref": "#/definitions/CropYear"
+                    },
+                    "title": "cropYears",
+                    "type": "array"
+                },
+                "fieldName": {
+                    "title": "fieldName",
+                    "type": "string"
+                },
+                "geojson": {
+                    "anyOf": [
+                        {
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "geojson"
+                }
+            },
+            "required": [
+                "cropYears",
+                "fieldName",
+                "geojson"
+            ],
+            "title": "Field",
+            "type": "object"
+        },
+        "GrazingEvent": {
+            "properties": {
+                "endDate": {
+                    "title": "endDate",
+                    "type": "string"
+                },
+                "restPeriod": {
+                    "title": "restPeriod",
+                    "type": "number"
+                },
+                "startDate": {
+                    "title": "startDate",
+                    "type": "string"
+                },
+                "utilization": {
+                    "title": "utilization",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "endDate",
+                "restPeriod",
+                "startDate",
+                "utilization"
+            ],
+            "title": "GrazingEvent",
+            "type": "object"
+        },
+        "HarvestOrKillEvent": {
+            "properties": {
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "grainFruitTuber": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "no",
+                                "yes"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grainFruitTuber"
+                },
+                "residueRemoved": {
+                    "title": "residueRemoved",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "yield": {
+                    "title": "yield",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "yieldDenominatorUnit": {
+                    "title": "yieldDenominatorUnit",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "yieldNumeratorUnit": {
+                    "title": "yieldNumeratorUnit",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            },
+            "required": [
+                "date",
+                "grainFruitTuber",
+                "residueRemoved",
+                "yieldDenominatorUnit",
+                "yieldNumeratorUnit"
+            ],
+            "title": "HarvestOrKillEvent",
+            "type": "object"
+        },
+        "IrrigationEvent": {
+            "properties": {
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "depth": {
+                    "title": "depth",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "depthUnits": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "cm",
+                                "in"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "depthUnits"
+                },
+                "endDate": {
+                    "title": "endDate",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "frequency": {
+                    "title": "frequency",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "volume": {
+                    "title": "volume",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "volumeUnits": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "cm",
+                                "in"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "volumeUnits"
+                }
+            },
+            "required": [
+                "date",
+                "depth",
+                "depthUnits",
+                "endDate",
+                "frequency",
+                "volume",
+                "volumeUnits"
+            ],
+            "title": "IrrigationEvent",
+            "type": "object"
+        },
+        "LimingEvent": {
+            "properties": {
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "tonsPerAcre": {
+                    "title": "tonsPerAcre",
+                    "type": "number"
+                },
+                "type": {
+                    "enum": [
+                        "calcitic limestone",
+                        "crushed limestone",
+                        "dolomitic limestone",
+                        "none",
+                        "other"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "tonsPerAcre",
+                "type"
+            ],
+            "title": "LimingEvent",
+            "type": "object"
+        },
+        "OrganicMatterEvent": {
+            "properties": {
+                "amountPerAcre": {
+                    "title": "amountPerAcre",
+                    "type": "number"
+                },
+                "carbonNitrogenRatio": {
+                    "title": "carbonNitrogenRatio",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "percentNitrogen": {
+                    "title": "percentNitrogen",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "type": {
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amountPerAcre",
+                "carbonNitrogenRatio",
+                "date",
+                "percentNitrogen",
+                "type"
+            ],
+            "title": "OrganicMatterEvent",
+            "type": "object"
+        },
+        "Project": {
+            "description": "### A supplier project entity which encapsulates a set of fields\nThis top-level interface defines all necessary properties for a supplier project created manually or via a data import",
+            "properties": {
+                "fields": {
+                    "items": {
+                        "$ref": "#/definitions/Field"
+                    },
+                    "title": "fields",
+                    "type": "array"
+                },
+                "version": {
+                    "title": "version",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "fields",
+                "version"
+            ],
+            "title": "Project",
+            "type": "object"
+        },
+        "TillageEvent": {
+            "properties": {
+                "date": {
+                    "title": "date",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "type"
+            ],
+            "title": "TillageEvent",
+            "type": "object"
+        }
+    }
+}
+
