@@ -9,12 +9,14 @@
                         "yes, after harvesting",
                         "yes, before planting"
                     ],
+                    "title": "type",
                     "type": "string"
                 }
             },
             "required": [
                 "type"
             ],
+            "title": "BurningEvent",
             "type": "object"
         },
         "Crop": {
@@ -27,7 +29,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "burningEvent"
                 },
                 "fertilizerEvents": {
                     "anyOf": [
@@ -40,7 +43,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "fertilizerEvents"
                 },
                 "grazingEvents": {
                     "anyOf": [
@@ -53,7 +57,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "grazingEvents"
                 },
                 "harvestOrKillEvents": {
                     "anyOf": [
@@ -66,7 +71,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "harvestOrKillEvents"
                 },
                 "irrigationEvents": {
                     "anyOf": [
@@ -79,7 +85,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "irrigationEvents"
                 },
                 "limingEvents": {
                     "anyOf": [
@@ -92,9 +99,11 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "limingEvents"
                 },
                 "name": {
+                    "title": "name",
                     "type": [
                         "null",
                         "string"
@@ -111,9 +120,11 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "organicMatterEvents"
                 },
                 "plantingDate": {
+                    "title": "plantingDate",
                     "type": [
                         "null",
                         "string"
@@ -131,7 +142,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "prune"
                 },
                 "renewOrClear": {
                     "anyOf": [
@@ -145,7 +157,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "renewOrClear"
                 },
                 "tillageEvents": {
                     "anyOf": [
@@ -158,7 +171,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "tillageEvents"
                 },
                 "type": {
                     "anyOf": [
@@ -175,7 +189,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "type"
                 }
             },
             "required": [
@@ -193,6 +208,7 @@
                 "tillageEvents",
                 "type"
             ],
+            "title": "Crop",
             "type": "object"
         },
         "CropYear": {
@@ -201,9 +217,11 @@
                     "items": {
                         "$ref": "#/definitions/Crop"
                     },
+                    "title": "crops",
                     "type": "array"
                 },
                 "plantingYear": {
+                    "title": "plantingYear",
                     "type": "number"
                 }
             },
@@ -211,26 +229,31 @@
                 "crops",
                 "plantingYear"
             ],
+            "title": "CropYear",
             "type": "object"
         },
         "FertilizerEvent": {
             "properties": {
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "lbsOfNPerAcre": {
+                    "title": "lbsOfNPerAcre",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "productName": {
+                    "title": "productName",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "type": {
+                    "title": "type",
                     "type": [
                         "string",
                         "null"
@@ -242,11 +265,13 @@
                 "lbsOfNPerAcre",
                 "type"
             ],
+            "title": "FertilizerEvent",
             "type": "object"
         },
         "Field": {
             "properties": {
                 "acres": {
+                    "title": "acres",
                     "type": [
                         "number",
                         "null"
@@ -256,45 +281,26 @@
                     "items": {
                         "$ref": "#/definitions/CropYear"
                     },
+                    "title": "cropYears",
                     "type": "array"
                 },
                 "fieldName": {
+                    "title": "fieldName",
                     "type": "string"
                 },
                 "geojson": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                            "additionalProperties": true,
+                            "properties": {
+                            },
+                            "type": "object"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "description": "Union of GeoJSON objects."
+                    "title": "geojson"
                 }
             },
             "required": [
@@ -302,1232 +308,25 @@
                 "fieldName",
                 "geojson"
             ],
-            "type": "object"
-        },
-        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
-            "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "geometry": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
-                        }
-                    ],
-                    "description": "The feature's geometry"
-                },
-                "id": {
-                    "description": "A value that uniquely identifies this feature in a\nhttps://tools.ietf.org/html/rfc7946#section-3.2.",
-                    "type": [
-                        "string",
-                        "number"
-                    ]
-                },
-                "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {
-                            },
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Properties associated with this feature."
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Feature"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "geometry",
-                "properties",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1": {
-            "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "geometry": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
-                        }
-                    ],
-                    "description": "The feature's geometry"
-                },
-                "id": {
-                    "description": "A value that uniquely identifies this feature in a\nhttps://tools.ietf.org/html/rfc7946#section-3.2.",
-                    "type": [
-                        "string",
-                        "number"
-                    ]
-                },
-                "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {
-                            },
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Properties associated with this feature."
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Feature"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "geometry",
-                "properties",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
-            "description": "A collection of feature objects.\n  https://tools.ietf.org/html/rfc7946#section-3.3",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "features": {
-                    "items": {
-                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "FeatureCollection"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "features",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.GeometryCollection": {
-            "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "geometries": {
-                    "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/definitions/GeoJSON.Point"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiPoint"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.LineString"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiLineString"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.Polygon"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.GeometryCollection"
-                            }
-                        ]
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "GeometryCollection"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "geometries",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.LineString": {
-            "description": "LineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.4",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "items": {
-                        "items": {
-                            "type": "number"
-                        },
-                        "type": "array"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "LineString"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.MultiLineString": {
-            "description": "MultiLineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.5",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "items": {
-                        "items": {
-                            "items": {
-                                "type": "number"
-                            },
-                            "type": "array"
-                        },
-                        "type": "array"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiLineString"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.MultiPoint": {
-            "description": "MultiPoint geometry object.\n  https://tools.ietf.org/html/rfc7946#section-3.1.3",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "items": {
-                        "items": {
-                            "type": "number"
-                        },
-                        "type": "array"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiPoint"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.MultiPolygon": {
-            "description": "MultiPolygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.7",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "items": {
-                        "items": {
-                            "items": {
-                                "items": {
-                                    "type": "number"
-                                },
-                                "type": "array"
-                            },
-                            "type": "array"
-                        },
-                        "type": "array"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiPolygon"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.Point": {
-            "description": "Point geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.2",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
-                    "items": {
-                        "type": "number"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Point"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
-            "type": "object"
-        },
-        "GeoJSON.Polygon": {
-            "description": "Polygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.6",
-            "properties": {
-                "bbox": {
-                    "anyOf": [
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 4,
-                            "type": "array"
-                        },
-                        {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
-                            "items": [
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "type": "number"
-                                }
-                            ],
-                            "minItems": 6,
-                            "type": "array"
-                        }
-                    ],
-                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5"
-                },
-                "coordinates": {
-                    "items": {
-                        "items": {
-                            "items": {
-                                "type": "number"
-                            },
-                            "type": "array"
-                        },
-                        "type": "array"
-                    },
-                    "type": "array"
-                },
-                "type": {
-                    "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Polygon"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "coordinates",
-                "type"
-            ],
+            "title": "Field",
             "type": "object"
         },
         "GrazingEvent": {
             "properties": {
                 "endDate": {
+                    "title": "endDate",
                     "type": "string"
                 },
                 "restPeriod": {
+                    "title": "restPeriod",
                     "type": "number"
                 },
                 "startDate": {
+                    "title": "startDate",
                     "type": "string"
                 },
                 "utilization": {
+                    "title": "utilization",
                     "type": "number"
                 }
             },
@@ -1537,11 +336,13 @@
                 "startDate",
                 "utilization"
             ],
+            "title": "GrazingEvent",
             "type": "object"
         },
         "HarvestOrKillEvent": {
             "properties": {
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "grainFruitTuber": {
@@ -1556,27 +357,32 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "grainFruitTuber"
                 },
                 "residueRemoved": {
+                    "title": "residueRemoved",
                     "type": [
                         "null",
                         "number"
                     ]
                 },
                 "yield": {
+                    "title": "yield",
                     "type": [
                         "null",
                         "number"
                     ]
                 },
                 "yieldDenominatorUnit": {
+                    "title": "yieldDenominatorUnit",
                     "type": [
                         "null",
                         "string"
                     ]
                 },
                 "yieldNumeratorUnit": {
+                    "title": "yieldNumeratorUnit",
                     "type": [
                         "null",
                         "string"
@@ -1590,14 +396,17 @@
                 "yieldDenominatorUnit",
                 "yieldNumeratorUnit"
             ],
+            "title": "HarvestOrKillEvent",
             "type": "object"
         },
         "IrrigationEvent": {
             "properties": {
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "depth": {
+                    "title": "depth",
                     "type": [
                         "number",
                         "null"
@@ -1615,21 +424,25 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "depthUnits"
                 },
                 "endDate": {
+                    "title": "endDate",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "frequency": {
+                    "title": "frequency",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "volume": {
+                    "title": "volume",
                     "type": [
                         "number",
                         "null"
@@ -1647,7 +460,8 @@
                         {
                             "type": "null"
                         }
-                    ]
+                    ],
+                    "title": "volumeUnits"
                 }
             },
             "required": [
@@ -1659,14 +473,17 @@
                 "volume",
                 "volumeUnits"
             ],
+            "title": "IrrigationEvent",
             "type": "object"
         },
         "LimingEvent": {
             "properties": {
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "tonsPerAcre": {
+                    "title": "tonsPerAcre",
                     "type": "number"
                 },
                 "type": {
@@ -1677,6 +494,7 @@
                         "none",
                         "other"
                     ],
+                    "title": "type",
                     "type": "string"
                 }
             },
@@ -1685,29 +503,35 @@
                 "tonsPerAcre",
                 "type"
             ],
+            "title": "LimingEvent",
             "type": "object"
         },
         "OrganicMatterEvent": {
             "properties": {
                 "amountPerAcre": {
+                    "title": "amountPerAcre",
                     "type": "number"
                 },
                 "carbonNitrogenRatio": {
+                    "title": "carbonNitrogenRatio",
                     "type": [
                         "null",
                         "number"
                     ]
                 },
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "percentNitrogen": {
+                    "title": "percentNitrogen",
                     "type": [
                         "null",
                         "number"
                     ]
                 },
                 "type": {
+                    "title": "type",
                     "type": "string"
                 }
             },
@@ -1718,14 +542,17 @@
                 "percentNitrogen",
                 "type"
             ],
+            "title": "OrganicMatterEvent",
             "type": "object"
         },
         "TillageEvent": {
             "properties": {
                 "date": {
+                    "title": "date",
                     "type": "string"
                 },
                 "type": {
+                    "title": "type",
                     "type": "string"
                 }
             },
@@ -1733,17 +560,21 @@
                 "date",
                 "type"
             ],
+            "title": "TillageEvent",
             "type": "object"
         }
     },
+    "description": "Represents the document sent to the customer for payment.",
     "properties": {
         "fields": {
             "items": {
                 "$ref": "#/definitions/Field"
             },
+            "title": "fields",
             "type": "array"
         },
         "version": {
+            "title": "version",
             "type": "string"
         }
     },

@@ -9,6 +9,7 @@ import type { GeoJSON } from 'geojson';
 // * use n/a instead of null as the default?
 // * historic practices (per county, technically) -- regenerative start year as well
 // * null crop names: work with rebekah to build an input file that has no crop name defined in the comet XML file
+// * is liming and burning more appropriate at the field level?
 
 // todo importer
 // * order events by date
@@ -22,9 +23,12 @@ import type { GeoJSON } from 'geojson';
 
 // todo module
 // * independent versioning
+// * pre-commit make docs
 
 export type YesOrNo = 'yes' | 'no' | null;
-
+/**
+ * Represents the document sent to the customer for payment.
+ */
 export interface Project {
   version: string; // todo enum
   fields: Field[];
@@ -36,7 +40,7 @@ export interface Field {
   acres?: number; // in acres // todo should we just infer from polygon?
   // todo required if area is specified
   /** @nullable */
-  geojson: GeoJSON; // todo geojson type
+  geojson: object; // todo geojson type
   // All management details are grouped by the crop planting year
   cropYears: CropYear[];
 }
@@ -64,14 +68,22 @@ export interface Crop {
   // If an orchard or vineyard, did you prune, renew or clear?
   prune: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
   renewOrClear: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
-  harvestOrKillEvents: HarvestOrKillEvent[] | null;
-  tillageEvents: TillageEvent[] | null;
-  fertilizerEvents: FertilizerEvent[] | null;
-  organicMatterEvents: OrganicMatterEvent[] | null;
-  irrigationEvents: IrrigationEvent[] | null;
-  limingEvents: LimingEvent[] | null;
-  grazingEvents: GrazingEvent[] | null;
-  burningEvent: BurningEvent | null;
+  /** @nullable */
+  harvestOrKillEvents: HarvestOrKillEvent[];
+  /** @nullable */
+  tillageEvents: TillageEvent[];
+  /** @nullable */
+  fertilizerEvents: FertilizerEvent[];
+  /** @nullable */
+  organicMatterEvents: OrganicMatterEvent[];
+  /** @nullable */
+  irrigationEvents: IrrigationEvent[];
+  /** @nullable */
+  limingEvents: LimingEvent[];
+  /** @nullable */
+  grazingEvents: GrazingEvent[];
+  /** @nullable */
+  burningEvent: BurningEvent;
 }
 
 export interface HarvestOrKillEvent {

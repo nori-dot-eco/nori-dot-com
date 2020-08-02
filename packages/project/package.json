@@ -18,8 +18,9 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true",
-    "build": "tsc && yarn run make:schema",
+    "make:docs": "yarn run jsonschema2md -d ./src/json -e \"json\" -o ./docs -h false --aliasRefs --uniqueNames --topRef",
+    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles",
+    "build": "tsc && yarn run make:schema && yarn run make:docs",
     "prepare": "yarn run build",
     "watch": "tsc -w -p ."
   },
@@ -27,7 +28,10 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "devDependencies": {
-    "@types/geojson": "^7946.0.7"
+    "@adobe/jsonschema2md": "^4.1.6",
+    "@types/geojson": "^7946.0.7",
+    "typedoc": "^0.17.8",
+    "typedoc-plugin-markdown": "^2.3.2"
   },
   "dependencies": {
     "ajv": "^6.12.3",
