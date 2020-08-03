@@ -22,7 +22,7 @@ Liming event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:332](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L332)*
+*Defined in [specification.ts:340](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L340)*
 
 The date the liming event occurred (formatted as MM/DD/YYYY)
 
@@ -32,7 +32,7 @@ ___
 
 • **tonsPerAcre**: *number*
 
-*Defined in [specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L345)*
+*Defined in [specification.ts:353](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L353)*
 
 The liming amount (in tons per acre)
 
@@ -42,6 +42,6 @@ ___
 
 • **type**: *"none" | "crushed limestone" | "calcitic limestone" | "dolomitic limestone" | "other"*
 
-*Defined in [specification.ts:336](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L336)*
+*Defined in [specification.ts:344](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L344)*
 
 The liming type

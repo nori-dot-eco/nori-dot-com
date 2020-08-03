@@ -33,7 +33,7 @@ A field defining annual crop practices. Fields are defined by geographic boundar
 
 • **acres**: *number*
 
-*Defined in [specification.ts:90](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L90)*
+*Defined in [specification.ts:98](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L98)*
 
 **`nullable`** 
 The number of acres that use the herein defined crop practices (via `cropYears`).
@@ -45,7 +45,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:98](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L98)*
+*Defined in [specification.ts:106](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L106)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -55,7 +55,7 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L84)*
+*Defined in [specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L92)*
 
 The name of the field
 
@@ -65,6 +65,6 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:94](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L94)*
+*Defined in [specification.ts:102](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L102)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop practices.

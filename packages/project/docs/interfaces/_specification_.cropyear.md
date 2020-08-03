@@ -21,7 +21,7 @@ Crop management details grouped by a planting year.
 
 • **crops**: *[Crop](_specification_.crop.md)[]*
 
-*Defined in [specification.ts:115](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L115)*
+*Defined in [specification.ts:123](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L123)*
 
 A list of crops (maximum 3) for a given planting year.
 
@@ -33,7 +33,7 @@ ___
 
 • **plantingYear**: *number*
 
-*Defined in [specification.ts:110](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L110)*
+*Defined in [specification.ts:118](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L118)*
 
 The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop practices be mapped to a particular planting year as early as year 2000.
 

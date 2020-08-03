@@ -20,6 +20,6 @@ Burning event details
 
 • **type**: *"no burning" | "yes, before planting" | "yes, after harvesting"*
 
-*Defined in [specification.ts:382](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L382)*
+*Defined in [specification.ts:390](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L390)*
 
 The type of burning, if applicable.

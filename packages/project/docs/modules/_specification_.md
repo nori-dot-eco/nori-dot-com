@@ -3,15 +3,21 @@
 # Module: "specification"
 
 ## About
+
 Provides the definitions for [Nori project](../interfaces/_specification_.project.md) data using typescript interfaces.
 
 ## Usage
-### Use in creating [Nori project](../interfaces/_specification_.project.md) import JSON files
+
+### Use in creating Nori [project](../interfaces/_specification_.project.md) import JSON files
 
 The [project specification](../interfaces/_specification_.project.md) interfaces can be used as a guide to create project imports.
 For example, the highest level interface of the specification if the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
 
+#### Example
+
 You can find an example of a full implementation [here](../../example/example2.json).
+
+## Navigation
 
 Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index)
 
