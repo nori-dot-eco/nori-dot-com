@@ -33,7 +33,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:103](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L103)*
+*Defined in [specification.ts:105](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L105)*
 
 **`nullable`** 
 
@@ -46,7 +46,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:111](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L111)*
+*Defined in [specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L113)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -56,7 +56,7 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:96](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L96)*
+*Defined in [specification.ts:98](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L98)*
 
 The name of the field
 
@@ -71,6 +71,6 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:107](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L107)*
+*Defined in [specification.ts:109](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L109)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.

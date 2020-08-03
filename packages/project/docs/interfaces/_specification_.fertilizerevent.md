@@ -23,7 +23,7 @@ Fertilizer event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:265](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L265)*
+*Defined in [specification.ts:283](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L283)*
 
 The date the fertilizer application happened (formatted as MM/DD/YYYY)
 
@@ -33,9 +33,10 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:280](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L280)*
+*Defined in [specification.ts:301](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L301)*
 
 **`nullable`** 
+
 Amount of nitrogen applied in lbs/ac
 
 ___
@@ -44,9 +45,10 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:270](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L270)*
+*Defined in [specification.ts:289](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L289)*
 
 **`nullable`** 
+
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
 ___
@@ -55,7 +57,8 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:275](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L275)*
+*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L295)*
 
 **`nullable`** 
+
 The fertilizer classification type

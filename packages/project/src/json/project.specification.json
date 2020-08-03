@@ -2,20 +2,198 @@
     "$ref": "#/definitions/Project",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "AnnualCrop": {
+            "description": "Crop management details and events",
+            "properties": {
+                "burningEvent": {
+                    "$ref": "#/definitions/BurningEvent",
+                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "description": "Burning event details",
+                    "title": "burningEvent"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "description": "A list of grazing events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "title": "grazingEvents",
+                    "type": "array"
+                },
+                "harvestOrKillEvents": {
+                    "description": "A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/HarvestOrKillEvent"
+                    },
+                    "title": "harvestOrKillEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",
+                    "items": {
+                        "$ref": "#/definitions/LimingEvent"
+                    },
+                    "title": "limingEvents",
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)",
+                    "title": "name",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "organicMatterEvents": {
+                    "description": "A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/OrganicMatterEvent"
+                    },
+                    "title": "organicMatterEvents",
+                    "type": "array"
+                },
+                "plantingDate": {
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY)",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "tillageEvents": {
+                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/TillageEvent"
+                    },
+                    "title": "tillageEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The crop type",
+                    "enum": [
+                        "annual cover",
+                        "annual crop",
+                        "perennial"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "plantingDate",
+                "type"
+            ],
+            "title": "AnnualCrop",
+            "type": "object"
+        },
+        "BurningEvent": {
+            "description": "Burning event details",
+            "properties": {
+                "type": {
+                    "description": "The type of burning, if applicable.",
+                    "enum": [
+                        "after harvesting",
+                        "before planting"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "BurningEvent",
+            "type": "object"
+        },
         "CropYear": {
             "description": "Crop management details grouped by a planting year.",
             "properties": {
                 "crops": {
-                    "description": "A list of crops (maximum 3) for a given planting year.",
-                    "items": {
-                        "maximum": 3
+                    "additionalItems": {
+                        "anyOf": [
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            }
+                        ]
                     },
+                    "items": [
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        }
+                    ],
+                    "minItems": 1,
                     "title": "crops",
                     "type": "array"
                 },
                 "plantingYear": {
-                    "description": "The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
-                    "minimum": 2000,
+                    "minimum": "2000\n\nThe planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
                     "title": "plantingYear",
                     "type": "number"
                 }
@@ -25,6 +203,44 @@
                 "plantingYear"
             ],
             "title": "CropYear",
+            "type": "object"
+        },
+        "FertilizerEvent": {
+            "description": "Fertilizer event details",
+            "properties": {
+                "date": {
+                    "description": "The date the fertilizer application happened (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "lbsOfNPerAcre": {
+                    "title": "lbsOfNPerAcre",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "productName": {
+                    "title": "productName",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "title": "type",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "date",
+                "lbsOfNPerAcre",
+                "type"
+            ],
+            "title": "FertilizerEvent",
             "type": "object"
         },
         "Field": {
@@ -1349,6 +1565,317 @@
             "title": "GeoJSON.Polygon",
             "type": "object"
         },
+        "GrazingEvent": {
+            "description": "Grazing event details",
+            "properties": {
+                "endDate": {
+                    "description": "The last date that grazing occurred (formatted as MM/DD/YYYY)",
+                    "title": "endDate",
+                    "type": "string"
+                },
+                "restPeriod": {
+                    "maximum": "365\n\nThe grazing rest period in days",
+                    "minimum": 0,
+                    "title": "restPeriod",
+                    "type": "number"
+                },
+                "startDate": {
+                    "description": "The first date that grazing occurred (formatted as MM/DD/YYYY)",
+                    "title": "startDate",
+                    "type": "string"
+                },
+                "utilization": {
+                    "maximum": "100\n\nThe grazing utilization percentage",
+                    "minimum": 0,
+                    "title": "utilization",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "endDate",
+                "restPeriod",
+                "startDate",
+                "utilization"
+            ],
+            "title": "GrazingEvent",
+            "type": "object"
+        },
+        "HarvestOrKillEvent": {
+            "description": "Harvest/kill event details\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+            "properties": {
+                "date": {
+                    "description": "The date the harvest or kill event happened (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "grainFruitTuber": {
+                    "description": "Whether the crop was harvest for grain, fruit or tuber\n• Select “yes” if the crop was harvested for grain, fruit, or tuber\n• Select “no” if the crop was harvested before maturity for silage or haylage\n• Select \"n/a\" if this does not apply",
+                    "enum": [
+                        "n/a",
+                        "no",
+                        "yes"
+                    ],
+                    "title": "grainFruitTuber",
+                    "type": "string"
+                },
+                "residueRemoved": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "n/a"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "description": "Residue removed\n• Enter 0% if the crop was only harvested for grain / fruit / tuber\n• Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest\n• Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage\n• Enter 'n/a' if it does not apply",
+                    "title": "residueRemoved"
+                },
+                "yield": {
+                    "title": "yield",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "yieldUnit": {
+                    "title": "yieldUnit",
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            },
+            "required": [
+                "date",
+                "grainFruitTuber",
+                "residueRemoved"
+            ],
+            "title": "HarvestOrKillEvent",
+            "type": "object"
+        },
+        "IrrigationEvent": {
+            "description": "Irrigation event details",
+            "properties": {
+                "date": {
+                    "description": "The date that irrigation began (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "depth": {
+                    "description": "The irrigation depth in inches. This should be set to 0 if it was applied at the surface.",
+                    "title": "depth",
+                    "type": "number"
+                },
+                "endDate": {
+                    "description": "The date that irrigation ended (formatted as MM/DD/YYYY)",
+                    "title": "endDate",
+                    "type": "string"
+                },
+                "frequency": {
+                    "description": "The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7",
+                    "title": "frequency",
+                    "type": "number"
+                },
+                "volume": {
+                    "description": "The irrigation volume in inches",
+                    "title": "volume",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "date",
+                "depth",
+                "endDate",
+                "frequency",
+                "volume"
+            ],
+            "title": "IrrigationEvent",
+            "type": "object"
+        },
+        "LimingEvent": {
+            "description": "Liming event details",
+            "properties": {
+                "date": {
+                    "description": "The date the liming event occurred (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "tonsPerAcre": {
+                    "description": "The liming amount (in tons per acre)",
+                    "title": "tonsPerAcre",
+                    "type": "number"
+                },
+                "type": {
+                    "description": "The liming type",
+                    "enum": [
+                        "calcitic limestone",
+                        "crushed limestone",
+                        "dolomitic limestone",
+                        "none",
+                        "other"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "tonsPerAcre",
+                "type"
+            ],
+            "title": "LimingEvent",
+            "type": "object"
+        },
+        "OrchardOrVineyardCrop": {
+            "properties": {
+                "burningEvent": {
+                    "$ref": "#/definitions/BurningEvent",
+                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "description": "Burning event details",
+                    "title": "burningEvent"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "description": "A list of grazing events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "title": "grazingEvents",
+                    "type": "array"
+                },
+                "harvestOrKillEvents": {
+                    "description": "A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/HarvestOrKillEvent"
+                    },
+                    "title": "harvestOrKillEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",
+                    "items": {
+                        "$ref": "#/definitions/LimingEvent"
+                    },
+                    "title": "limingEvents",
+                    "type": "array"
+                },
+                "organicMatterEvents": {
+                    "description": "A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/OrganicMatterEvent"
+                    },
+                    "title": "organicMatterEvents",
+                    "type": "array"
+                },
+                "prune": {
+                    "description": "Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
+                    "enum": [
+                        "n/a",
+                        "no",
+                        "yes"
+                    ],
+                    "title": "prune",
+                    "type": "string"
+                },
+                "renewOrClear": {
+                    "description": "Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
+                    "enum": [
+                        "n/a",
+                        "no",
+                        "yes"
+                    ],
+                    "title": "renewOrClear",
+                    "type": "string"
+                },
+                "tillageEvents": {
+                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/TillageEvent"
+                    },
+                    "title": "tillageEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The crop type",
+                    "enum": [
+                        "orchard",
+                        "vineyard"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "prune",
+                "renewOrClear",
+                "type"
+            ],
+            "title": "OrchardOrVineyardCrop",
+            "type": "object"
+        },
+        "OrganicMatterEvent": {
+            "description": "Organic matter (OMAD) and manure event details",
+            "properties": {
+                "amountPerAcre": {
+                    "description": "Amount of organic matter or manure applied per acre",
+                    "title": "amountPerAcre",
+                    "type": "number"
+                },
+                "carbonNitrogenRatio": {
+                    "description": "The carbon to nitrogen ratio in the organic matter or manure",
+                    "title": "carbonNitrogenRatio",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "date": {
+                    "description": "The date the organic matter or manure application happened (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "percentNitrogen": {
+                    "description": "The nitrogen percent makeup in the organic matter or manure",
+                    "title": "percentNitrogen",
+                    "type": [
+                        "null",
+                        "number"
+                    ]
+                },
+                "type": {
+                    "description": "The organic matter or manure classification type",
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amountPerAcre",
+                "carbonNitrogenRatio",
+                "date",
+                "percentNitrogen",
+                "type"
+            ],
+            "title": "OrganicMatterEvent",
+            "type": "object"
+        },
         "Project": {
             "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import",
             "properties": {
@@ -1371,6 +1898,27 @@
                 "version"
             ],
             "title": "Project",
+            "type": "object"
+        },
+        "TillageEvent": {
+            "description": "Tillage event details",
+            "properties": {
+                "date": {
+                    "description": "The date the tillage event happened (formatted as MM/DD/YYYY)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The tillage classification type",
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "type"
+            ],
+            "title": "TillageEvent",
             "type": "object"
         }
     }
