@@ -23,9 +23,11 @@ Grazing event details
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:394](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L394)*
+*Defined in [specification.ts:419](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L419)*
 
-The last date that grazing occurred (formatted as MM/DD/YYYY)
+**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+The last date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
 
 ___
 
@@ -33,7 +35,7 @@ ___
 
 • **restPeriod**: *number*
 
-*Defined in [specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L401)*
+*Defined in [specification.ts:426](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L426)*
 
 **`minimum`** 0
 
@@ -47,9 +49,11 @@ ___
 
 • **startDate**: *string*
 
-*Defined in [specification.ts:390](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L390)*
+*Defined in [specification.ts:413](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L413)*
 
-The first date that grazing occurred (formatted as MM/DD/YYYY)
+**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+The first date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
 
 ___
 
@@ -57,7 +61,7 @@ ___
 
 • **utilization**: *number*
 
-*Defined in [specification.ts:408](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L408)*
+*Defined in [specification.ts:433](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L433)*
 
 **`minimum`** 0
 

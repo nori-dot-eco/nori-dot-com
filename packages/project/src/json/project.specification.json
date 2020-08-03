@@ -3,7 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "AnnualCrop": {
-            "description": "Crop management details and events",
+            "description": "Crop management details and events for annual and cover crops",
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
@@ -68,7 +68,7 @@
                     "type": "array"
                 },
                 "plantingDate": {
-                    "description": "The date the crop was planted (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "plantingDate",
                     "type": "string"
                 },
@@ -209,7 +209,7 @@
             "description": "Fertilizer event details",
             "properties": {
                 "date": {
-                    "description": "The date the fertilizer application happened (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the fertilizer application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -221,11 +221,9 @@
                     ]
                 },
                 "productName": {
+                    "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",
                     "title": "productName",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "type": {
                     "title": "type",
@@ -1569,7 +1567,7 @@
             "description": "Grazing event details",
             "properties": {
                 "endDate": {
-                    "description": "The last date that grazing occurred (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "endDate",
                     "type": "string"
                 },
@@ -1580,7 +1578,7 @@
                     "type": "number"
                 },
                 "startDate": {
-                    "description": "The first date that grazing occurred (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "startDate",
                     "type": "string"
                 },
@@ -1604,7 +1602,7 @@
             "description": "Harvest/kill event details\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
             "properties": {
                 "date": {
-                    "description": "The date the harvest or kill event happened (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the harvest or kill event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -1659,18 +1657,13 @@
         "IrrigationEvent": {
             "description": "Irrigation event details",
             "properties": {
-                "date": {
-                    "description": "The date that irrigation began (formatted as MM/DD/YYYY)",
-                    "title": "date",
-                    "type": "string"
-                },
                 "depth": {
                     "description": "The irrigation depth in inches. This should be set to 0 if it was applied at the surface.",
                     "title": "depth",
                     "type": "number"
                 },
                 "endDate": {
-                    "description": "The date that irrigation ended (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date that irrigation ended (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "endDate",
                     "type": "string"
                 },
@@ -1679,6 +1672,11 @@
                     "title": "frequency",
                     "type": "number"
                 },
+                "startDate": {
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date that irrigation began (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "title": "startDate",
+                    "type": "string"
+                },
                 "volume": {
                     "description": "The irrigation volume in inches",
                     "title": "volume",
@@ -1686,10 +1684,10 @@
                 }
             },
             "required": [
-                "date",
                 "depth",
                 "endDate",
                 "frequency",
+                "startDate",
                 "volume"
             ],
             "title": "IrrigationEvent",
@@ -1699,7 +1697,7 @@
             "description": "Liming event details",
             "properties": {
                 "date": {
-                    "description": "The date the liming event occurred (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the liming event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -1730,6 +1728,7 @@
             "type": "object"
         },
         "OrchardOrVineyardCrop": {
+            "description": "Crop management details and events for orchard and vineyard crops",
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
@@ -1788,7 +1787,6 @@
                 "prune": {
                     "description": "Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
                     "enum": [
-                        "n/a",
                         "no",
                         "yes"
                     ],
@@ -1798,7 +1796,6 @@
                 "renewOrClear": {
                     "description": "Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
                     "enum": [
-                        "n/a",
                         "no",
                         "yes"
                     ],
@@ -1848,7 +1845,7 @@
                     ]
                 },
                 "date": {
-                    "description": "The date the organic matter or manure application happened (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the organic matter or manure application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -1904,7 +1901,7 @@
             "description": "Tillage event details",
             "properties": {
                 "date": {
-                    "description": "The date the tillage event happened (formatted as MM/DD/YYYY)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the tillage event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },

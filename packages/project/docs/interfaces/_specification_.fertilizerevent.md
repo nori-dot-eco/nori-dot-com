@@ -23,9 +23,11 @@ Fertilizer event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:283](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L283)*
+*Defined in [specification.ts:298](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L298)*
 
-The date the fertilizer application happened (formatted as MM/DD/YYYY)
+**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+The date the fertilizer application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
 
 ___
 
@@ -33,7 +35,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:301](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L301)*
+*Defined in [specification.ts:314](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L314)*
 
 **`nullable`** 
 
@@ -45,9 +47,7 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:289](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L289)*
-
-**`nullable`** 
+*Defined in [specification.ts:302](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L302)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -57,7 +57,7 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/376c30c/packages/project/src/specification.ts#L295)*
+*Defined in [specification.ts:308](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L308)*
 
 **`nullable`** 
 
