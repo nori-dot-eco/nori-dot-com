@@ -21,7 +21,7 @@ Tillage event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:245](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L245)*
+*Defined in [specification.ts:249](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L249)*
 
 The date the tillage event happened (formatted as MM/DD/YYYY)
 
@@ -31,6 +31,6 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:250](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L250)*
+*Defined in [specification.ts:254](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L254)*
 
 The tillage classification type

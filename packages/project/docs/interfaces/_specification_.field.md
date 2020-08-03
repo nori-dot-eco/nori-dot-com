@@ -2,7 +2,7 @@
 
 # Interface: Field
 
-A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.
+A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
 
 **`example`** 
 ```js
@@ -10,7 +10,7 @@ A field defining annual crop practices. Fields are defined by geographic boundar
  "fieldName": "Pumpkin Pines",
  "acres": 100,
  "geojson": {},
- "cropYears": [] // a list of annual crop practices
+ "cropYears": [] // a list of annual crop management practices
 }
 ```
 
@@ -33,10 +33,10 @@ A field defining annual crop practices. Fields are defined by geographic boundar
 
 • **acres**: *number*
 
-*Defined in [specification.ts:98](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L98)*
+*Defined in [specification.ts:102](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L102)*
 
 **`nullable`** 
-The number of acres that use the herein defined crop practices (via `cropYears`).
+The number of acres that use the herein defined crop management practices (via `cropYears`).
 When acres is defined as null in an import file it will instead be inferred from the geojson.
 
 ___
@@ -45,7 +45,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:106](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L106)*
+*Defined in [specification.ts:110](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L110)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -55,9 +55,14 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L92)*
+*Defined in [specification.ts:96](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L96)*
 
 The name of the field
+
+**`example`** 
+```js
+"fieldName": "PumpkinPines"
+```
 
 ___
 
@@ -65,6 +70,6 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:102](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L102)*
+*Defined in [specification.ts:106](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L106)*
 
-The geographic boundaries (defined as GeoJSON) associated with crop practices.
+The geographic boundaries (defined as GeoJSON) associated with crop management practices.

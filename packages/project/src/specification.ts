@@ -8,7 +8,7 @@
  * ### Nori [project](../interfaces/_specification_.project.md) import JSON files
  *
  * The [project specification](../interfaces/_specification_.project.md) interfaces can be used as a guide to create project imports.
- * For example, the highest level interface of the specification if the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
+ * For example, the highest level interface of the specification is the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
  *
  * #### Example
  *
@@ -23,11 +23,11 @@
 import type { GeoJSON } from 'geojson';
 
 // todo spec
+// * who external should we include in a spec review?
 // * why did we include clus?
 // * why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
 // * why did granular provide liming quantity + quantity unit alongside tonsPerAcre
 // * how realistic is it to expect partners to use enums for types
-// * which properties inclusion are dependent on another values property? (or, which properties should be non-nullable and instead specify "n/a")
 // * use n/a instead of null as the default?
 // * historic practices (per county, technically) -- regenerative start year as well
 // * null crop names: work with rebekah to build an input file that has no crop name defined in the comet XML file
@@ -68,36 +68,40 @@ export interface Project {
    */
   version: string; // todo enum
   /**
-   * An array of fields defining annual crop practices
+   * An array of fields defining annual crop management practices
    */
   fields: Field[];
 }
 
 /**
- * A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.
+ * A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
  * @example
  * ```js
  * {
  *  "fieldName": "Pumpkin Pines",
  *  "acres": 100,
  *  "geojson": {},
- *  "cropYears": [] // a list of annual crop practices
+ *  "cropYears": [] // a list of annual crop management practices
  * }
  * ```
  */
 export interface Field {
   /**
    * The name of the field
+   * @example
+   * ```js
+   * "fieldName": "PumpkinPines"
+   * ```
    */
   fieldName: string;
   /**
    * @nullable
-   * The number of acres that use the herein defined crop practices (via `cropYears`).
+   * The number of acres that use the herein defined crop management practices (via `cropYears`).
    * When acres is defined as null in an import file it will instead be inferred from the geojson.
    */
   acres: number;
   /**
-   * The geographic boundaries (defined as GeoJSON) associated with crop practices.
+   * The geographic boundaries (defined as GeoJSON) associated with crop management practices.
    */
   geojson: GeoJSON;
   /**
@@ -112,7 +116,7 @@ export interface Field {
  */
 export interface CropYear {
   /**
-   * The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop practices be mapped to a particular planting year as early as year 2000.
+   * The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
    * @minimum 2000
    */
   plantingYear: number;

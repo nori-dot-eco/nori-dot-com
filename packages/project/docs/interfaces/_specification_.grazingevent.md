@@ -23,7 +23,7 @@ Grazing event details
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:368](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L368)*
+*Defined in [specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L372)*
 
 The last date that grazing occurred (formatted as MM/DD/YYYY)
 
@@ -33,7 +33,7 @@ ___
 
 • **restPeriod**: *number*
 
-*Defined in [specification.ts:374](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L374)*
+*Defined in [specification.ts:378](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L378)*
 
 The grazing rest period in days
 
@@ -47,7 +47,7 @@ ___
 
 • **startDate**: *string*
 
-*Defined in [specification.ts:364](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L364)*
+*Defined in [specification.ts:368](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L368)*
 
 The first date that grazing occurred (formatted as MM/DD/YYYY)
 
@@ -57,7 +57,7 @@ ___
 
 • **utilization**: *number*
 
-*Defined in [specification.ts:380](https://github.com/nori-dot-eco/nori-dot-com/blob/ee6dedb/packages/project/src/specification.ts#L380)*
+*Defined in [specification.ts:384](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L384)*
 
 The grazing utilization percentage
 
