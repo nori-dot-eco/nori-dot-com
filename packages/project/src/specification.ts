@@ -22,34 +22,32 @@
  */
 import type { GeoJSON } from 'geojson';
 
-// todo spec
-// * who external should we include in a spec review?
-// * why did we include clus?
-// * why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
-// * why did granular provide liming quantity + quantity unit alongside tonsPerAcre
-// * how realistic is it to expect partners to use enums for types
-// * use n/a instead of null as the default?
-// * historic practices (per county, technically) -- regenerative start year as well
-// * null crop names: work with rebekah to build an input file that has no crop name defined in the comet XML file
-// * is liming and burning more appropriate at the field level?
-// * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
-
-// todo importer
-// * order events by date
-// * check implication of removing cropNumber
-// * if we remove the restriction of defining all of the crop events (i.e., harvests) based on the year they are defined in, we will need to account for this when uploading to the sheet
-
-// todo validation
-// * readme on how to build schema
-
-// todo import file changes
-// * drop quantity, quantity unit, area, areaUnit from liming
-// * dropped nullable for events, if null instead exclude
-
-// todo module
-// * independent versioning
-// * pre-commit make docs
-// * rename file as project-specification
+/** todo
+ * ! specification
+ * * who external should we include in a spec review?
+ * * why did we initially include clus?
+ * * how realistic is it to expect partners to use enums for types
+ * * historic practices (per county, technically) -- regenerative start year as well
+ * * is liming and burning more appropriate at the field level?
+ * * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
+ * * extend planting date?
+ * * extend event date?
+ * ! importer logic
+ * * order events by date
+ * * check implication of removing cropNumber
+ * * if we remove the restriction of defining all of the crop events (i.e., harvests) based on the year they are defined in, we will need to account for this when uploading to the sheet
+ * ! validation library
+ * * readme on how to build schema
+ * ! import file example changes
+ * * drop quantity, quantity unit, area, areaUnit from liming
+ * * dropped nullable for events, if null instead exclude
+ * * merge yield numerator and denominator into one enum
+ * ! specification module
+ * * independent versioning
+ * * * enum for project.version
+ * * pre-commit make docs
+ * * rename file as project-specification
+ */
 
 /**
  *
@@ -97,10 +95,9 @@ export interface Field {
    */
   fieldName: string;
   /**
-   * @nullable
+   * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
    *
    * The number of acres that use the herein defined crop management practices (via `cropYears`).
-   * When acres is defined as null in an import file it will instead be inferred from the geojson.
    */
   acres: number;
   /**
@@ -116,6 +113,20 @@ export interface Field {
 // todo should we allow them to define all events for a crop (specifically perennials) even if they fall outside of the planting year?
 /**
  * Crop management details grouped by a planting year.
+ *
+ * @example <caption>For crop management practices in 2000</caption>
+ *
+ * ```js
+ * {
+ *  "plantingYear": 2000,
+ *  "crops": [
+ *    // ... crops that were planted in year 2000
+ *  ],
+ *  "renewOrClear": "yes"
+ *  // ...CropEvents
+ * }
+ * ```
+ *
  */
 export interface CropYear {
   /**
@@ -139,8 +150,41 @@ export interface CropYear {
 
 // todo any min/maxes?
 // todo guidance on when event arrays can be excluded
+// todo why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
 /**
  * Crop management details and events
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  harvestOrKillEvents": [
+ *    // ...
+ *  ]
+ *  tillageEvents": [
+ *    // ...
+ *  ]
+ *  fertilizerEvents": [
+ *    // ...
+ *  ]
+ *  organicMatterEvents": [
+ *    // ...
+ *  ]
+ *  irrigationEvents": [
+ *    // ...
+ *  ]
+ *  limingEvents": [
+ *    // ...
+ *  ]
+ *  grazingEvents": [
+ *    // ...
+ *  ]
+ *  burningEvent": {
+ *    // ...
+ *  }
+ * }
+ * ```
+ *
  */
 export interface CropEvents {
   /**
@@ -183,36 +227,105 @@ export interface CropEvents {
   burningEvent?: BurningEvent;
 }
 
+// todo does example make sense? can both prune and renewOrClear be yes?
 // todo does it make sense to group together orchard vineyard or should it be separated out?
 /**
  * Crop management details and events for orchard and vineyard crops
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "type": "orchard",
+ *  "prune": "yes",
+ *  "renewOrClear": "yes",
+ *  "plantingDate": "01/01/2000"
+ *  // ...CropEvents
+ * }
+ * ```
+ *
  */
 export interface OrchardOrVineyardCrop extends CropEvents {
   /**
    * The crop type
+   *
+   * @example <caption>When the crop is an orchard</caption>
+   *
+   * ```js
+   * "type": "orchard"
+   * ```
+   * @example <caption>When the crop is a vineyard</caption>
+   *
+   * ```js
+   * "type": "vineyard"
+   * ```
+   *
    */
   type: 'orchard' | 'vineyard'; // todo guidance on how to find this // todo can crops have multiple types?
   /**
-   * Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
+   * Indicates if the crop was pruned
+   *
+   * @example <caption>When the crop was renewed</caption>
+   *
+   * ```js
+   * "renewOrClear": "yes"
+   * ```
+   * @example <caption>When the crop was not renewed</caption>
+   *
+   * ```js
+   * "renewOrClear": "no"
+   * ```
+   *
    */
-  prune: 'yes' | 'no'; // todo can this ever be something other than no/yes for orchard/vineyard?
+  prune: 'yes' | 'no'; // todo is it always yes if orchard/vine? // todo can this ever be something other than no/yes for orchard/vineyard?
   /**
-   * Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
+   * Indicates if the crop was renewed or cleared
+   *
+   * @example <caption>When the crop was renewed</caption>
+   *
+   * ```js
+   * "renewOrClear": "yes"
+   * ```
+   * @example <caption>When the crop was not renewed</caption>
+   *
+   * ```js
+   * "renewOrClear": "no"
+   * ```
+   *
    */
-  renewOrClear: 'yes' | 'no'; // todo can this ever be something other than no/yes for orchard/vineyard?
+  renewOrClear: 'yes' | 'no'; // todo is it always yes if orchard/vine?  // todo can this ever be something other than no/yes for orchard/vineyard?
+  /**
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   */
+  plantingDate: string; // todo clarity on when a crop is "replanted" in a year outside the parent plantingYear
 }
 
 // todo perennial crop type?
 // todo does it make sense to group together annual crop and annual cover and perennial, or should they be separated out
+// todo null crop names: when is this possible? work with rebekah to build an input file that has no crop name defined in the comet XML file
 /**
  * Crop management details and events for annual and cover crops
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "name": "corn",
+ *  "type": "annual crop",
+ *  "plantingDate": "01/01/2000"
+ *  // ...CropEvents
+ * }
+ * ```
+ *
  */
 export interface AnnualCrop extends CropEvents {
   // todo crop name enum
   /**
    * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
    */
-  name: string | null; // todo why can this be null // todo if it can be null, use n/a instead
+  name: string | null; // todo if it can be null, use n/a instead
   /**
    * The crop type
    */
@@ -225,6 +338,7 @@ export interface AnnualCrop extends CropEvents {
   plantingDate: string; // todo clarity on when a crop is "replanted" in a year outside the parent plantingYear
 }
 
+// todo can we force a yield unit or is there a reason to support different units other than convenience?
 /**
  * Harvest/kill event details
  *
@@ -232,6 +346,19 @@ export interface AnnualCrop extends CropEvents {
  * separately after grain / fruit / tuber harvest, do NOT add this as
  * a second harvest. Instead, enter the percent of the remaining residue
  * that was removed on the grain harvest, regardless of removal date.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "yield": 100,
+ *  "yieldUnit": "bu/ac", // todo confirm yield unit is allowed
+ *  "grainFruitTuber": "n/a",
+ *  "residueRemoved": "n/a",
+ * }
+ * ```
+ *
  */
 export interface HarvestOrKillEvent {
   /**
@@ -241,17 +368,14 @@ export interface HarvestOrKillEvent {
    */
   date: string;
   /**
-   * @nullable
-   *
    * The crop yield
    */
-  yield?: number | null; // todo look into deprecating entirely as it doesnt currently have an impact on quantification // todo n/a?
+  yield?: number; // todo look into deprecating entirely as it doesnt currently have an impact on quantification // todo n/a? // todo why would there be a harvest/kil event if there was no yield
   /**
-   * @nullable
-   *
    * The crop yield units
    */
-  yieldUnit?: string | null; // todo merge numerator and denominator into one enum // todo only needed when yield !== null // todo n/a?
+  yieldUnit?: string; // todo only needed when yield !== null // todo n/a?  // todo why would there be a harvest/kil event if there was no yield
+  // todo use example tag
   /**
    * Whether the crop was harvest for grain, fruit or tuber
    * • Select “yes” if the crop was harvested for grain, fruit, or tuber
@@ -259,6 +383,7 @@ export interface HarvestOrKillEvent {
    * • Select "n/a" if this does not apply
    */
   grainFruitTuber: 'yes' | 'no' | 'n/a'; // todo default n/a? // todo when is this property applicable? is it based on crop name or crop type?
+  // todo use example tag
   /**
    * Residue removed
    * • Enter 0% if the crop was only harvested for grain / fruit / tuber
@@ -271,6 +396,16 @@ export interface HarvestOrKillEvent {
 
 /**
  * Tillage event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "type": "mow",
+ * }
+ * ```
+ *
  */
 export interface TillageEvent {
   /**
@@ -288,6 +423,18 @@ export interface TillageEvent {
 
 /**
  * Fertilizer event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "productName": "Joe's fertilizer",
+ *  "type": "mixed blends",
+ *  "lbsOfNPerAcre": 10
+ * }
+ * ```
+ *
  */
 export interface FertilizerEvent {
   /**
@@ -301,14 +448,11 @@ export interface FertilizerEvent {
    */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /**
-   * @nullable
-   *
+   * @default "mixed blends"
    * The fertilizer classification type
    */
   type: string; // todo default to mixed blends
   /**
-   * @nullable
-   *
    * Amount of nitrogen applied in lbs/ac
    */
   lbsOfNPerAcre: number; // todo this is really the only useful information for quantification currently
@@ -316,6 +460,19 @@ export interface FertilizerEvent {
 
 /**
  * Organic matter (OMAD) and manure event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "type": "surface broadcast", // todo use example allowed type
+ *  "amountPerAcre": 100, // todo reasonable example
+ *  "percentNitrogen": 1, // todo reasonable example
+ *  "carbonNitrogenRatio": 1, // todo reasonable example
+ * }
+ * ```
+ *
  */
 export interface OrganicMatterEvent {
   /**
@@ -335,13 +492,14 @@ export interface OrganicMatterEvent {
   /**
    * The nitrogen percent makeup in the organic matter or manure
    */
-  percentNitrogen: number | null; // todo min/max? // todo why null
+  percentNitrogen: number | null; // todo min/max? // todo why null? // todo if null is actually allowed use n/a
   /**
    * The carbon to nitrogen ratio in the organic matter or manure
    */
-  carbonNitrogenRatio: number | null; // min/max //todo why null
+  carbonNitrogenRatio: number | null; // min/max //todo why null // todo if null is actually allowed use n/a
 }
 
+// todo example
 // todo is irrigation applicable just to a crop or would this be better defined at the field level?
 /**
  * Irrigation event details
@@ -375,6 +533,8 @@ export interface IrrigationEvent {
   frequency: number;
 }
 
+// todo example
+// todo why did granular provide liming quantity + quantity unit alongside tonsPerAcre
 /**
  * Liming event details
  */
@@ -400,6 +560,7 @@ export interface LimingEvent {
   tonsPerAcre: number; // todo minimum, maximum
 }
 
+// todo example
 // todo look at comet spec, would this be better as a list of events instead of a start/end date and frequency?
 /**
  * Grazing event details
@@ -433,6 +594,7 @@ export interface GrazingEvent {
   utilization: number;
 }
 
+// todo example
 /**
  * Burning event details
  */

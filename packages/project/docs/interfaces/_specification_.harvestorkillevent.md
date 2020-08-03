@@ -9,6 +9,18 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
+**`example`** 
+
+```js
+{
+ "date": "10/01/2000",
+ "yield": 100,
+ "yieldUnit": "bu/ac", // todo confirm yield unit is allowed
+ "grainFruitTuber": "n/a",
+ "residueRemoved": "n/a",
+}
+```
+
 ## Hierarchy
 
 * **HarvestOrKillEvent**
@@ -29,7 +41,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 • **date**: *string*
 
-*Defined in [specification.ts:242](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L242)*
+*Defined in [specification.ts:368](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L368)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -41,7 +53,7 @@ ___
 
 • **grainFruitTuber**: *"yes" | "no" | "n/a"*
 
-*Defined in [specification.ts:261](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L261)*
+*Defined in [specification.ts:384](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L384)*
 
 Whether the crop was harvest for grain, fruit or tuber
 • Select “yes” if the crop was harvested for grain, fruit, or tuber
@@ -54,7 +66,7 @@ ___
 
 • **residueRemoved**: *number | "n/a"*
 
-*Defined in [specification.ts:269](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L269)*
+*Defined in [specification.ts:393](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L393)*
 
 Residue removed
 • Enter 0% if the crop was only harvested for grain / fruit / tuber
@@ -66,11 +78,9 @@ ___
 
 ### `Optional` yield
 
-• **yield**? : *number | null*
+• **yield**? : *number*
 
-*Defined in [specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L248)*
-
-**`nullable`** 
+*Defined in [specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L372)*
 
 The crop yield
 
@@ -78,10 +88,8 @@ ___
 
 ### `Optional` yieldUnit
 
-• **yieldUnit**? : *string | null*
+• **yieldUnit**? : *string*
 
-*Defined in [specification.ts:254](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L254)*
-
-**`nullable`** 
+*Defined in [specification.ts:376](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L376)*
 
 The crop yield units

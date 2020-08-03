@@ -214,11 +214,9 @@
                     "type": "string"
                 },
                 "lbsOfNPerAcre": {
+                    "description": "Amount of nitrogen applied in lbs/ac",
                     "title": "lbsOfNPerAcre",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "type": "number"
                 },
                 "productName": {
                     "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",
@@ -226,11 +224,9 @@
                     "type": "string"
                 },
                 "type": {
+                    "default": "\"mixed blends\"\nThe fertilizer classification type",
                     "title": "type",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
@@ -1632,18 +1628,14 @@
                     "title": "residueRemoved"
                 },
                 "yield": {
+                    "description": "The crop yield",
                     "title": "yield",
-                    "type": [
-                        "null",
-                        "number"
-                    ]
+                    "type": "number"
                 },
                 "yieldUnit": {
+                    "description": "The crop yield units",
                     "title": "yieldUnit",
-                    "type": [
-                        "null",
-                        "string"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
@@ -1784,8 +1776,13 @@
                     "title": "organicMatterEvents",
                     "type": "array"
                 },
+                "plantingDate": {
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
                 "prune": {
-                    "description": "Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
+                    "description": "Indicates if the crop was pruned",
                     "enum": [
                         "no",
                         "yes"
@@ -1794,7 +1791,7 @@
                     "type": "string"
                 },
                 "renewOrClear": {
-                    "description": "Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'",
+                    "description": "Indicates if the crop was renewed or cleared",
                     "enum": [
                         "no",
                         "yes"
@@ -1821,6 +1818,7 @@
                 }
             },
             "required": [
+                "plantingDate",
                 "prune",
                 "renewOrClear",
                 "type"

@@ -4,6 +4,19 @@
 
 Crop management details grouped by a planting year.
 
+**`example`** <caption>For crop management practices in 2000</caption>
+
+```js
+{
+ "plantingYear": 2000,
+ "crops": [
+   // ... crops that were planted in year 2000
+ ],
+ "renewOrClear": "yes"
+ // ...CropEvents
+}
+```
+
 ## Hierarchy
 
 * **CropYear**
@@ -21,7 +34,7 @@ Crop management details grouped by a planting year.
 
 • **crops**: *[[AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md)]*
 
-*Defined in [specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L133)*
+*Defined in [specification.ts:143](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L143)*
 
 **`items.maximum`** 3
 
@@ -35,7 +48,7 @@ ___
 
 • **plantingYear**: *number*
 
-*Defined in [specification.ts:126](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L126)*
+*Defined in [specification.ts:136](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L136)*
 
 **`minimum`** 2000
 

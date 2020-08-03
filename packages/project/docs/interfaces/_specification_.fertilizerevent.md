@@ -4,6 +4,17 @@
 
 Fertilizer event details
 
+**`example`** 
+
+```js
+{
+ "date": "10/01/2000",
+ "productName": "Joe's fertilizer",
+ "type": "mixed blends",
+ "lbsOfNPerAcre": 10
+}
+```
+
 ## Hierarchy
 
 * **FertilizerEvent**
@@ -23,7 +34,7 @@ Fertilizer event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:298](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L298)*
+*Defined in [specification.ts:444](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L444)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -35,9 +46,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:314](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L314)*
-
-**`nullable`** 
+*Defined in [specification.ts:457](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L457)*
 
 Amount of nitrogen applied in lbs/ac
 
@@ -47,7 +56,7 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:302](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L302)*
+*Defined in [specification.ts:448](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L448)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -57,8 +66,7 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:308](https://github.com/nori-dot-eco/nori-dot-com/blob/fd385e2/packages/project/src/specification.ts#L308)*
+*Defined in [specification.ts:453](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L453)*
 
-**`nullable`** 
-
+**`default`** "mixed blends"
 The fertilizer classification type
