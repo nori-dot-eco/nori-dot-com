@@ -24,7 +24,7 @@ Irrigation event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:316](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L316)*
+*Defined in [specification.ts:317](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L317)*
 
 The date that irrigation began (formatted as MM/DD/YYYY)
 
@@ -34,7 +34,7 @@ ___
 
 • **depth**: *number*
 
-*Defined in [specification.ts:325](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L325)*
+*Defined in [specification.ts:326](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L326)*
 
 The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
 
@@ -44,7 +44,7 @@ ___
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:330](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L330)*
+*Defined in [specification.ts:331](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L331)*
 
 The date that irrigation ended (formatted as MM/DD/YYYY)
 
@@ -54,7 +54,7 @@ ___
 
 • **frequency**: *number*
 
-*Defined in [specification.ts:334](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L334)*
+*Defined in [specification.ts:335](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L335)*
 
 The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7
 
@@ -64,6 +64,6 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:320](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L320)*
+*Defined in [specification.ts:321](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L321)*
 
 The irrigation volume in inches

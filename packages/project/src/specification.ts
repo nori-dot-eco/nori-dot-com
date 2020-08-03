@@ -96,6 +96,7 @@ export interface Field {
   fieldName: string;
   /**
    * @nullable
+   *
    * The number of acres that use the herein defined crop management practices (via `cropYears`).
    * When acres is defined as null in an import file it will instead be inferred from the geojson.
    */

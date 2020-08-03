@@ -28,7 +28,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 • **date**: *string*
 
-*Defined in [specification.ts:214](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L214)*
+*Defined in [specification.ts:215](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L215)*
 
 The date the harvest or kill event happened (formatted as MM/DD/YYYY)
 
@@ -38,7 +38,7 @@ ___
 
 • **grainFruitTuber**: *"yes" | "no" | "n/a"*
 
-*Defined in [specification.ts:231](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L231)*
+*Defined in [specification.ts:232](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L232)*
 
 Whether the crop was harvest for grain, fruit or tuber
 • Select “yes” if the crop was harvested for grain, fruit, or tuber
@@ -51,7 +51,7 @@ ___
 
 • **residueRemoved**: *number | "n/a"*
 
-*Defined in [specification.ts:239](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L239)*
+*Defined in [specification.ts:240](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L240)*
 
 Residue removed
 • Enter 0% if the crop was only harvested for grain / fruit / tuber
@@ -65,7 +65,7 @@ ___
 
 • **yield**? : *number | null*
 
-*Defined in [specification.ts:219](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L219)*
+*Defined in [specification.ts:220](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L220)*
 
 **`nullable`** 
 The crop yield
@@ -76,7 +76,7 @@ ___
 
 • **yieldUnit**? : *string | null*
 
-*Defined in [specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/758366f/packages/project/src/specification.ts#L224)*
+*Defined in [specification.ts:225](https://github.com/nori-dot-eco/nori-dot-com/blob/a4f827b/packages/project/src/specification.ts#L225)*
 
 **`nullable`** 
 The crop yield units

@@ -14,7 +14,7 @@
                     "type": "array"
                 },
                 "plantingYear": {
-                    "description": "The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop practices be mapped to a particular planting year as early as year 2000.",
+                    "description": "The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
                     "minimum": 2000,
                     "title": "plantingYear",
                     "type": "number"
@@ -28,7 +28,7 @@
             "type": "object"
         },
         "Field": {
-            "description": "A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.",
+            "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
             "properties": {
                 "acres": {
                     "title": "acres",
@@ -80,7 +80,7 @@
                             "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
                         }
                     ],
-                    "description": "The geographic boundaries (defined as GeoJSON) associated with crop practices.",
+                    "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.",
                     "title": "geojson"
                 }
             },
@@ -1353,7 +1353,7 @@
             "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import",
             "properties": {
                 "fields": {
-                    "description": "An array of fields defining annual crop practices",
+                    "description": "An array of fields defining annual crop management practices",
                     "items": {
                         "$ref": "#/definitions/Field"
                     },
