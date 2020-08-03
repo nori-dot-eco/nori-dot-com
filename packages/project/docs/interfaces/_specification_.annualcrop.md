@@ -19,6 +19,8 @@ Crop management details and events for annual and cover crops
 
 * [CropEvents](_specification_.cropevents.md)
 
+* [PlantedCrop](_specification_.plantedcrop.md)
+
   ↳ **AnnualCrop**
 
 ## Index
@@ -28,8 +30,9 @@ Crop management details and events for annual and cover crops
 * [burningEvent](_specification_.annualcrop.md#optional-burningevent)
 * [fertilizerEvents](_specification_.annualcrop.md#optional-fertilizerevents)
 * [grazingEvents](_specification_.annualcrop.md#optional-grazingevents)
-* [harvestOrKillEvents](_specification_.annualcrop.md#optional-harvestorkillevents)
+* [harvestEvents](_specification_.annualcrop.md#optional-harvestevents)
 * [irrigationEvents](_specification_.annualcrop.md#optional-irrigationevents)
+* [killEvents](_specification_.annualcrop.md#optional-killevents)
 * [limingEvents](_specification_.annualcrop.md#optional-limingevents)
 * [name](_specification_.annualcrop.md#name)
 * [organicMatterEvents](_specification_.annualcrop.md#optional-organicmatterevents)
@@ -45,7 +48,7 @@ Crop management details and events for annual and cover crops
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[burningEvent](_specification_.cropevents.md#optional-burningevent)*
 
-*Defined in [specification.ts:226](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L226)*
+*Defined in [specification.ts:276](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L276)*
 
 **`default`** 
 
@@ -63,7 +66,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[fertilizerEvents](_specification_.cropevents.md#optional-fertilizerevents)*
 
-*Defined in [specification.ts:200](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L200)*
+*Defined in [specification.ts:250](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L250)*
 
 A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
 
@@ -75,21 +78,26 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[grazingEvents](_specification_.cropevents.md#optional-grazingevents)*
 
-*Defined in [specification.ts:216](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L216)*
+*Defined in [specification.ts:266](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L266)*
 
 A list of grazing events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
-### `Optional` harvestOrKillEvents
+### `Optional` harvestEvents
 
-• **harvestOrKillEvents**? : *[HarvestOrKillEvent](_specification_.harvestorkillevent.md)[]*
+• **harvestEvents**? : *[HarvestEvent](_specification_.harvestevent.md)[]*
 
-*Inherited from [CropEvents](_specification_.cropevents.md).[harvestOrKillEvents](_specification_.cropevents.md#optional-harvestorkillevents)*
+*Inherited from [CropEvents](_specification_.cropevents.md).[harvestEvents](_specification_.cropevents.md#optional-harvestevents)*
 
-*Defined in [specification.ts:192](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L192)*
+*Defined in [specification.ts:242](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L242)*
 
-A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.
+A list of harvest events, if applicable. When it is not applicable it can be defined as null.
+
+Straw / Stover harvest exception: If the hay or stover was removed
+separately after grain / fruit / tuber harvest, do NOT add this as
+a second harvest. Instead, enter the percent of the remaining residue
+that was removed on the grain harvest, regardless of removal date.
 
 ___
 
@@ -99,9 +107,21 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[irrigationEvents](_specification_.cropevents.md#optional-irrigationevents)*
 
-*Defined in [specification.ts:208](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L208)*
+*Defined in [specification.ts:258](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L258)*
 
 A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
+
+___
+
+### `Optional` killEvents
+
+• **killEvents**? : *[KillEvent](_specification_.killevent.md)[]*
+
+*Inherited from [CropEvents](_specification_.cropevents.md).[killEvents](_specification_.cropevents.md#optional-killevents)*
+
+*Defined in [specification.ts:232](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L232)*
+
+A list of kill events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -111,7 +131,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[limingEvents](_specification_.cropevents.md#optional-limingevents)*
 
-*Defined in [specification.ts:212](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L212)*
+*Defined in [specification.ts:262](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L262)*
 
 A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
 
@@ -119,9 +139,9 @@ ___
 
 ###  name
 
-• **name**: *string | null*
+• **name**: *string*
 
-*Defined in [specification.ts:327](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L327)*
+*Defined in [specification.ts:385](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L385)*
 
 The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
 
@@ -133,7 +153,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[organicMatterEvents](_specification_.cropevents.md#optional-organicmatterevents)*
 
-*Defined in [specification.ts:204](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L204)*
+*Defined in [specification.ts:254](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L254)*
 
 A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
 
@@ -143,7 +163,9 @@ ___
 
 • **plantingDate**: *string*
 
-*Defined in [specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L337)*
+*Inherited from [PlantedCrop](_specification_.plantedcrop.md).[plantingDate](_specification_.plantedcrop.md#plantingdate)*
+
+*Defined in [specification.ts:186](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L186)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -157,7 +179,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[tillageEvents](_specification_.cropevents.md#optional-tillageevents)*
 
-*Defined in [specification.ts:196](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L196)*
+*Defined in [specification.ts:246](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L246)*
 
 A list of tillage events, if applicable. When it is not applicable it can be defined as null.
 
@@ -165,8 +187,8 @@ ___
 
 ###  type
 
-• **type**: *"annual crop" | "annual cover" | "perennial"*
+• **type**: *"annual crop" | "annual cover"*
 
-*Defined in [specification.ts:331](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L331)*
+*Defined in [specification.ts:389](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L389)*
 
 The crop type

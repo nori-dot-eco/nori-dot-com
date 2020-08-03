@@ -4,9 +4,21 @@
 
 Liming event details
 
+**`example`** 
+
+```js
+{
+ "date": "01/01/2000",
+ "type": "crushed limestone",
+ "tonsPerAcre": 10,
+}
+```
+
 ## Hierarchy
 
-* **LimingEvent**
+* [CropEvent](_specification_.cropevent.md)
+
+  ↳ **LimingEvent**
 
 ## Index
 
@@ -22,11 +34,13 @@ Liming event details
 
 • **date**: *string*
 
-*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L546)*
+*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
+
+*Defined in [specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L401)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-The date the liming event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
 
 ___
 
@@ -34,7 +48,7 @@ ___
 
 • **tonsPerAcre**: *number*
 
-*Defined in [specification.ts:559](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L559)*
+*Defined in [specification.ts:660](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L660)*
 
 The liming amount (in tons per acre)
 
@@ -44,6 +58,6 @@ ___
 
 • **type**: *"none" | "crushed limestone" | "calcitic limestone" | "dolomitic limestone" | "other"*
 
-*Defined in [specification.ts:550](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L550)*
+*Defined in [specification.ts:651](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L651)*
 
 The liming type

@@ -4,6 +4,14 @@
 
 Burning event details
 
+**`example`** 
+
+```js
+{
+ "type": "before planting"
+}
+```
+
 ## Hierarchy
 
 * **BurningEvent**
@@ -20,6 +28,6 @@ Burning event details
 
 • **type**: *"before planting" | "after harvesting"*
 
-*Defined in [specification.ts:604](https://github.com/nori-dot-eco/nori-dot-com/blob/955580b/packages/project/src/specification.ts#L604)*
+*Defined in [specification.ts:712](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L712)*
 
 The type of burning, if applicable.

@@ -27,12 +27,12 @@
                     "title": "grazingEvents",
                     "type": "array"
                 },
-                "harvestOrKillEvents": {
-                    "description": "A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.",
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable. When it is not applicable it can be defined as null.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
                     "items": {
-                        "$ref": "#/definitions/HarvestOrKillEvent"
+                        "$ref": "#/definitions/HarvestEvent"
                     },
-                    "title": "harvestOrKillEvents",
+                    "title": "harvestEvents",
                     "type": "array"
                 },
                 "irrigationEvents": {
@@ -41,6 +41,14 @@
                         "$ref": "#/definitions/IrrigationEvent"
                     },
                     "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "killEvents": {
+                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/KillEvent"
+                    },
+                    "title": "killEvents",
                     "type": "array"
                 },
                 "limingEvents": {
@@ -54,10 +62,7 @@
                 "name": {
                     "description": "The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)",
                     "title": "name",
-                    "type": [
-                        "null",
-                        "string"
-                    ]
+                    "type": "string"
                 },
                 "organicMatterEvents": {
                     "description": "A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.",
@@ -84,8 +89,7 @@
                     "description": "The crop type",
                     "enum": [
                         "annual cover",
-                        "annual crop",
-                        "perennial"
+                        "annual crop"
                     ],
                     "title": "type",
                     "type": "string"
@@ -130,14 +134,7 @@
                                         "$ref": "#/definitions/OrchardOrVineyardCrop"
                                     },
                                     {
-                                        "$ref": "#/definitions/AnnualCrop"
-                                    }
-                                ]
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                        "$ref": "#/definitions/PerennialCrop"
                                     },
                                     {
                                         "$ref": "#/definitions/AnnualCrop"
@@ -148,6 +145,22 @@
                                 "anyOf": [
                                     {
                                         "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/PerennialCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/PerennialCrop"
                                     },
                                     {
                                         "$ref": "#/definitions/AnnualCrop"
@@ -163,14 +176,7 @@
                                     "$ref": "#/definitions/OrchardOrVineyardCrop"
                                 },
                                 {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        },
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    "$ref": "#/definitions/PerennialCrop"
                                 },
                                 {
                                     "$ref": "#/definitions/AnnualCrop"
@@ -181,6 +187,22 @@
                             "anyOf": [
                                 {
                                     "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/PerennialCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/PerennialCrop"
                                 },
                                 {
                                     "$ref": "#/definitions/AnnualCrop"
@@ -209,7 +231,7 @@
             "description": "Fertilizer event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the fertilizer application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -224,15 +246,14 @@
                     "type": "string"
                 },
                 "type": {
-                    "default": "\"mixed blends\"\nThe fertilizer classification type",
+                    "default": "\"mixed blends\"\n\nThe fertilizer classification type",
                     "title": "type",
-                    "type": "string"
+                    "type": "null"
                 }
             },
             "required": [
                 "date",
-                "lbsOfNPerAcre",
-                "type"
+                "lbsOfNPerAcre"
             ],
             "title": "FertilizerEvent",
             "type": "object"
@@ -292,13 +313,25 @@
                     ],
                     "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.",
                     "title": "geojson"
+                },
+                "historicLangManagement": {
+                    "$ref": "#/definitions/HistoricLandManagement",
+                    "description": "Details surrounding how the field was managed before year 2000",
+                    "title": "historicLangManagement"
+                },
+                "regenerativeStartYear": {
+                    "description": "The year that regenerative practices started",
+                    "title": "regenerativeStartYear",
+                    "type": "number"
                 }
             },
             "required": [
                 "acres",
                 "cropYears",
                 "fieldName",
-                "geojson"
+                "geojson",
+                "historicLangManagement",
+                "regenerativeStartYear"
             ],
             "title": "Field",
             "type": "object"
@@ -1563,7 +1596,7 @@
             "description": "Grazing event details",
             "properties": {
                 "endDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "endDate",
                     "type": "string"
                 },
@@ -1574,7 +1607,7 @@
                     "type": "number"
                 },
                 "startDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "startDate",
                     "type": "string"
                 },
@@ -1594,18 +1627,17 @@
             "title": "GrazingEvent",
             "type": "object"
         },
-        "HarvestOrKillEvent": {
-            "description": "Harvest/kill event details\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+        "HarvestEvent": {
+            "description": "Harvest event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the harvest or kill event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
                 "grainFruitTuber": {
                     "description": "Whether the crop was harvest for grain, fruit or tuber\n• Select “yes” if the crop was harvested for grain, fruit, or tuber\n• Select “no” if the crop was harvested before maturity for silage or haylage\n• Select \"n/a\" if this does not apply",
                     "enum": [
-                        "n/a",
                         "no",
                         "yes"
                     ],
@@ -1624,7 +1656,8 @@
                             "type": "number"
                         }
                     ],
-                    "description": "Residue removed\n• Enter 0% if the crop was only harvested for grain / fruit / tuber\n• Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest\n• Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage\n• Enter 'n/a' if it does not apply",
+                    "maximum": "100\n\nResidue removed\n• Enter 0% if the crop was only harvested for grain / fruit / tuber\n• Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest\n• Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage\n• Enter 'n/a' if it does not apply",
+                    "minimum": 0,
                     "title": "residueRemoved"
                 },
                 "yield": {
@@ -1634,6 +1667,12 @@
                 },
                 "yieldUnit": {
                     "description": "The crop yield units",
+                    "enum": [
+                        "bu/ac",
+                        "cwt/ac",
+                        "lbs/ac",
+                        "tons/ac"
+                    ],
                     "title": "yieldUnit",
                     "type": "string"
                 }
@@ -1641,9 +1680,16 @@
             "required": [
                 "date",
                 "grainFruitTuber",
-                "residueRemoved"
+                "residueRemoved",
+                "yield",
+                "yieldUnit"
             ],
-            "title": "HarvestOrKillEvent",
+            "title": "HarvestEvent",
+            "type": "object"
+        },
+        "HistoricLandManagement": {
+            "description": "Details surrounding how the field was managed before year 2000",
+            "title": "HistoricLandManagement",
             "type": "object"
         },
         "IrrigationEvent": {
@@ -1655,7 +1701,7 @@
                     "type": "number"
                 },
                 "endDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date that irrigation ended (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "endDate",
                     "type": "string"
                 },
@@ -1665,7 +1711,7 @@
                     "type": "number"
                 },
                 "startDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date that irrigation began (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "startDate",
                     "type": "string"
                 },
@@ -1685,11 +1731,43 @@
             "title": "IrrigationEvent",
             "type": "object"
         },
+        "KillEvent": {
+            "description": "Kill event details",
+            "properties": {
+                "date": {
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "title": "date",
+                    "type": "string"
+                },
+                "residueRemoved": {
+                    "anyOf": [
+                        {
+                            "enum": [
+                                "n/a"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "number"
+                        }
+                    ],
+                    "maximum": "100\n\nResidue removed\n• Enter 0% if the crop was only harvested for grain / fruit / tuber\n• Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest\n• Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage\n• Enter 'n/a' if it does not apply",
+                    "minimum": 0,
+                    "title": "residueRemoved"
+                }
+            },
+            "required": [
+                "date",
+                "residueRemoved"
+            ],
+            "title": "KillEvent",
+            "type": "object"
+        },
         "LimingEvent": {
             "description": "Liming event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the liming event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
@@ -1744,12 +1822,12 @@
                     "title": "grazingEvents",
                     "type": "array"
                 },
-                "harvestOrKillEvents": {
-                    "description": "A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.",
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable. When it is not applicable it can be defined as null.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
                     "items": {
-                        "$ref": "#/definitions/HarvestOrKillEvent"
+                        "$ref": "#/definitions/HarvestEvent"
                     },
-                    "title": "harvestOrKillEvents",
+                    "title": "harvestEvents",
                     "type": "array"
                 },
                 "irrigationEvents": {
@@ -1758,6 +1836,14 @@
                         "$ref": "#/definitions/IrrigationEvent"
                     },
                     "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "killEvents": {
+                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/KillEvent"
+                    },
+                    "title": "killEvents",
                     "type": "array"
                 },
                 "limingEvents": {
@@ -1782,7 +1868,7 @@
                     "type": "string"
                 },
                 "prune": {
-                    "description": "Indicates if the crop was pruned",
+                    "default": "\"no\"\n\nIndicates if the crop was pruned",
                     "enum": [
                         "no",
                         "yes"
@@ -1791,7 +1877,7 @@
                     "type": "string"
                 },
                 "renewOrClear": {
-                    "description": "Indicates if the crop was renewed or cleared",
+                    "default": "\"no\"\n\nIndicates if the crop was renewed or cleared",
                     "enum": [
                         "no",
                         "yes"
@@ -1830,30 +1916,26 @@
             "description": "Organic matter (OMAD) and manure event details",
             "properties": {
                 "amountPerAcre": {
-                    "description": "Amount of organic matter or manure applied per acre",
+                    "maximum": "200 // todo confirm max\nAmount of organic matter or manure applied per acre",
+                    "minimum": 0,
                     "title": "amountPerAcre",
                     "type": "number"
                 },
                 "carbonNitrogenRatio": {
                     "description": "The carbon to nitrogen ratio in the organic matter or manure",
                     "title": "carbonNitrogenRatio",
-                    "type": [
-                        "null",
-                        "number"
-                    ]
+                    "type": "number"
                 },
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the organic matter or manure application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },
                 "percentNitrogen": {
-                    "description": "The nitrogen percent makeup in the organic matter or manure",
+                    "maximum": "100\nThe nitrogen percent makeup in the organic matter or manure",
+                    "minimum": 0,
                     "title": "percentNitrogen",
-                    "type": [
-                        "null",
-                        "number"
-                    ]
+                    "type": "number"
                 },
                 "type": {
                     "description": "The organic matter or manure classification type",
@@ -1869,6 +1951,106 @@
                 "type"
             ],
             "title": "OrganicMatterEvent",
+            "type": "object"
+        },
+        "PerennialCrop": {
+            "description": "Perennial crop details",
+            "properties": {
+                "burningEvent": {
+                    "$ref": "#/definitions/BurningEvent",
+                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "description": "Burning event details",
+                    "title": "burningEvent"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "description": "A list of grazing events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "title": "grazingEvents",
+                    "type": "array"
+                },
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable. When it is not applicable it can be defined as null.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "$ref": "#/definitions/HarvestEvent"
+                    },
+                    "title": "harvestEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "killEvents": {
+                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/KillEvent"
+                    },
+                    "title": "killEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",
+                    "items": {
+                        "$ref": "#/definitions/LimingEvent"
+                    },
+                    "title": "limingEvents",
+                    "type": "array"
+                },
+                "name": {
+                    "description": "The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)",
+                    "title": "name",
+                    "type": "string"
+                },
+                "organicMatterEvents": {
+                    "description": "A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/OrganicMatterEvent"
+                    },
+                    "title": "organicMatterEvents",
+                    "type": "array"
+                },
+                "plantingDate": {
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "tillageEvents": {
+                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                    "items": {
+                        "$ref": "#/definitions/TillageEvent"
+                    },
+                    "title": "tillageEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The crop type",
+                    "enum": [
+                        "perennial"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "plantingDate",
+                "type"
+            ],
+            "title": "PerennialCrop",
             "type": "object"
         },
         "Project": {
@@ -1899,7 +2081,7 @@
             "description": "Tillage event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the tillage event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
                     "title": "date",
                     "type": "string"
                 },

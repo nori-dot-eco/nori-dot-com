@@ -23,30 +23,36 @@
 import type { GeoJSON } from 'geojson';
 
 /** todo
- * ! specification
- * * who external should we include in a spec review?
- * * why did we initially include clus?
- * * how realistic is it to expect partners to use enums for types
- * * historic practices (per county, technically) -- regenerative start year as well
- * * is liming and burning more appropriate at the field level?
+ * ! topics to discuss with partners in a specification review
  * * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
- * * extend planting date?
+ * * include: conservis, granular, truterra (jamie)
+ * * how realistic is it to expect partners to use enums for types
+ *
+ * ! specification
  * * extend event date?
+ *
  * ! importer logic
  * * order events by date
  * * check implication of removing cropNumber
  * * if we remove the restriction of defining all of the crop events (i.e., harvests) based on the year they are defined in, we will need to account for this when uploading to the sheet
+ *
  * ! validation library
  * * readme on how to build schema
+ *
  * ! import file example changes
  * * drop quantity, quantity unit, area, areaUnit from liming
  * * dropped nullable for events, if null instead exclude
  * * merge yield numerator and denominator into one enum
+ * * remove volumeUnits and depthUnits
+ *
  * ! specification module
  * * independent versioning
  * * * enum for project.version
  * * pre-commit make docs
  * * rename file as project-specification
+ *
+ * ! misc
+ * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
  */
 
 /**
@@ -74,6 +80,18 @@ export interface Project {
 }
 
 /**
+ * Details surrounding how the field was managed before year 2000
+ */
+export interface HistoricLandManagement {
+  // todo
+  // * CRP
+  // * CRPType
+  // * Year1980-2000
+  // * Year1980-2000_Tillage
+  // * Pre-1980
+}
+
+/**
  * A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
  * @example
  * ```js
@@ -86,6 +104,15 @@ export interface Project {
  * ```
  */
 export interface Field {
+  // todo guidance // todo min/max // todo default
+  /**
+   * The year that regenerative practices started
+   */
+  regenerativeStartYear: number;
+  /**
+   * Details surrounding how the field was managed before year 2000
+   */
+  historicLangManagement: HistoricLandManagement;
   /**
    * The name of the field
    * @example
@@ -110,7 +137,6 @@ export interface Field {
   cropYears: CropYear[];
 }
 
-// todo should we allow them to define all events for a crop (specifically perennials) even if they fall outside of the planting year?
 /**
  * Crop management details grouped by a planting year.
  *
@@ -142,15 +168,24 @@ export interface CropYear {
    * A list of crops for a given planting year.
    */
   crops: [
-    AnnualCrop | OrchardOrVineyardCrop, // todo is the minimum really 1?
-    (AnnualCrop | OrchardOrVineyardCrop)?,
-    (AnnualCrop | OrchardOrVineyardCrop)?
+    AnnualCrop | OrchardOrVineyardCrop | PerennialCrop,
+    (AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)?,
+    (AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)?
   ];
 }
 
-// todo any min/maxes?
-// todo guidance on when event arrays can be excluded
-// todo why did granular provide quantity and quantity unit for omad? these numbers are just amountPerAcre * area
+/**
+ * Crop properties relevant to planted crops
+ */
+export interface PlantedCrop {
+  /**
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   */
+  plantingDate: string; // todo if a crop is replanted, redfine the crop and also define the harvestorkill event
+}
+
 /**
  * Crop management details and events
  *
@@ -158,28 +193,31 @@ export interface CropYear {
  *
  * ```js
  * {
- *  harvestOrKillEvents": [
+ *  "killEvents": [
  *    // ...
  *  ]
- *  tillageEvents": [
+ *  "harvestEvents": [
  *    // ...
  *  ]
- *  fertilizerEvents": [
+ *  "tillageEvents": [
  *    // ...
  *  ]
- *  organicMatterEvents": [
+ *  "fertilizerEvents": [
  *    // ...
  *  ]
- *  irrigationEvents": [
+ *  "organicMatterEvents": [
  *    // ...
  *  ]
- *  limingEvents": [
+ *  "irrigationEvents": [
  *    // ...
  *  ]
- *  grazingEvents": [
+ *  "limingEvents": [
  *    // ...
  *  ]
- *  burningEvent": {
+ *  "grazingEvents": [
+ *    // ...
+ *  ]
+ *  "burningEvent": {
  *    // ...
  *  }
  * }
@@ -188,13 +226,24 @@ export interface CropYear {
  */
 export interface CropEvents {
   /**
-   * A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.
+   * A list of kill events, if applicable. When it is not applicable it can be defined as null.
+   *
    */
-  harvestOrKillEvents?: HarvestOrKillEvent[];
+  killEvents?: KillEvent[]; // todo multiple kill events allowed?
+  /**
+   * A list of harvest events, if applicable. When it is not applicable it can be defined as null.
+   *
+   * Straw / Stover harvest exception: If the hay or stover was removed
+   * separately after grain / fruit / tuber harvest, do NOT add this as
+   * a second harvest. Instead, enter the percent of the remaining residue
+   * that was removed on the grain harvest, regardless of removal date.
+   *
+   */
+  harvestEvents?: HarvestEvent[];
   /**
    * A list of tillage events, if applicable. When it is not applicable it can be defined as null.
    */
-  tillageEvents?: TillageEvent[]; // todo is tillage associated with a crop? if not, can we define it some other way?
+  tillageEvents?: TillageEvent[];
   /**
    * A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
    */
@@ -227,8 +276,6 @@ export interface CropEvents {
   burningEvent?: BurningEvent;
 }
 
-// todo does example make sense? can both prune and renewOrClear be yes?
-// todo does it make sense to group together orchard vineyard or should it be separated out?
 /**
  * Crop management details and events for orchard and vineyard crops
  *
@@ -245,7 +292,7 @@ export interface CropEvents {
  * ```
  *
  */
-export interface OrchardOrVineyardCrop extends CropEvents {
+export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
   /**
    * The crop type
    *
@@ -261,24 +308,29 @@ export interface OrchardOrVineyardCrop extends CropEvents {
    * ```
    *
    */
-  type: 'orchard' | 'vineyard'; // todo guidance on how to find this // todo can crops have multiple types?
+  type: 'orchard' | 'vineyard'; // todo guidance on how to find this (look at go/inputs)
+  // todo add guidance saying that if a crop changes types during the history of a field, then redefine the crop. limitation: likely only happens when the crop switches from annual -> perennial
   /**
+   * @default "no"
+   *
    * Indicates if the crop was pruned
    *
-   * @example <caption>When the crop was renewed</caption>
+   * @example <caption>When the crop was pruned</caption>
    *
    * ```js
-   * "renewOrClear": "yes"
+   * "pruned": "yes"
    * ```
-   * @example <caption>When the crop was not renewed</caption>
+   * @example <caption>When the crop was not pruned</caption>
    *
    * ```js
-   * "renewOrClear": "no"
+   * "pruned": "no"
    * ```
    *
    */
-  prune: 'yes' | 'no'; // todo is it always yes if orchard/vine? // todo can this ever be something other than no/yes for orchard/vineyard?
+  prune: 'yes' | 'no';
   /**
+   * @default "no"
+   *
    * Indicates if the crop was renewed or cleared
    *
    * @example <caption>When the crop was renewed</caption>
@@ -293,18 +345,24 @@ export interface OrchardOrVineyardCrop extends CropEvents {
    * ```
    *
    */
-  renewOrClear: 'yes' | 'no'; // todo is it always yes if orchard/vine?  // todo can this ever be something other than no/yes for orchard/vineyard?
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  plantingDate: string; // todo clarity on when a crop is "replanted" in a year outside the parent plantingYear
+  renewOrClear: 'yes' | 'no';
 }
 
-// todo perennial crop type?
-// todo does it make sense to group together annual crop and annual cover and perennial, or should they be separated out
-// todo null crop names: when is this possible? work with rebekah to build an input file that has no crop name defined in the comet XML file
+/**
+ * Perennial crop details
+ */
+export interface PerennialCrop extends CropEvents, PlantedCrop {
+  // todo crop name enum
+  /**
+   * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
+   */
+  name: string;
+  /**
+   * The crop type
+   */
+  type: 'perennial';
+}
+
 /**
  * Crop management details and events for annual and cover crops
  *
@@ -320,32 +378,49 @@ export interface OrchardOrVineyardCrop extends CropEvents {
  * ```
  *
  */
-export interface AnnualCrop extends CropEvents {
-  // todo crop name enum
+export interface AnnualCrop extends CropEvents, PlantedCrop {
   /**
    * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
    */
-  name: string | null; // todo if it can be null, use n/a instead
+  name: string; // todo enum
   /**
    * The crop type
    */
-  type: 'annual crop' | 'annual cover' | 'perennial'; // todo guidance on how to find this
+  type: 'annual crop' | 'annual cover'; // todo note about how to find this in the inputs tab
+}
+
+/**
+ * A crop event that happened on a particular date
+ */
+export interface CropEvent {
   /**
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
    */
-  plantingDate: string; // todo clarity on when a crop is "replanted" in a year outside the parent plantingYear
+  date: string;
 }
 
-// todo can we force a yield unit or is there a reason to support different units other than convenience?
 /**
- * Harvest/kill event details
- *
- * Straw / Stover harvest exception: If the hay or stover was removed
- * separately after grain / fruit / tuber harvest, do NOT add this as
- * a second harvest. Instead, enter the percent of the remaining residue
- * that was removed on the grain harvest, regardless of removal date.
+ * A crop event that has a start and end date
+ */
+export interface CropEventRange {
+  /**
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   */
+  startDate: string;
+  /**
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   */
+  endDate: string;
+}
+
+/**
+ * Harvest event details
  *
  * @example
  *
@@ -353,28 +428,22 @@ export interface AnnualCrop extends CropEvents {
  * {
  *  "date": "10/01/2000",
  *  "yield": 100,
- *  "yieldUnit": "bu/ac", // todo confirm yield unit is allowed
+ *  "yieldUnit": "bu/ac",
  *  "grainFruitTuber": "n/a",
  *  "residueRemoved": "n/a",
  * }
  * ```
  *
  */
-export interface HarvestOrKillEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the harvest or kill event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  date: string;
+export interface HarvestEvent extends CropEvent {
   /**
    * The crop yield
    */
-  yield?: number; // todo look into deprecating entirely as it doesnt currently have an impact on quantification // todo n/a? // todo why would there be a harvest/kil event if there was no yield
+  yield: number;
   /**
    * The crop yield units
    */
-  yieldUnit?: string; // todo only needed when yield !== null // todo n/a?  // todo why would there be a harvest/kil event if there was no yield
+  yieldUnit: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
   // todo use example tag
   /**
    * Whether the crop was harvest for grain, fruit or tuber
@@ -382,18 +451,55 @@ export interface HarvestOrKillEvent {
    * • Select “no” if the crop was harvested before maturity for silage or haylage
    * • Select "n/a" if this does not apply
    */
-  grainFruitTuber: 'yes' | 'no' | 'n/a'; // todo default n/a? // todo when is this property applicable? is it based on crop name or crop type?
+  grainFruitTuber: 'yes' | 'no';
   // todo use example tag
   /**
+   * @minimum 0
+   * @maximum 100
+   *
    * Residue removed
    * • Enter 0% if the crop was only harvested for grain / fruit / tuber
    * • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
    * • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
    * • Enter 'n/a' if it does not apply
    */
-  residueRemoved: number | 'n/a'; // todo min/max?  // todo when is this property applicable? is it based on crop name or crop type?
+  residueRemoved: number | 'n/a';
 }
 
+// todo reasonable example?
+/**
+ *
+ * Kill event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "residueRemoved": 5,
+ *  "yieldUnit": "bu/ac",
+ *  "grainFruitTuber": "n/a",
+ *  "residueRemoved": "n/a",
+ * }
+ * ```
+ *
+ */
+export interface KillEvent extends CropEvent {
+  // todo use example tag
+  /**
+   * @minimum 0
+   * @maximum 100
+   *
+   * Residue removed
+   * • Enter 0% if the crop was only harvested for grain / fruit / tuber
+   * • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
+   * • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
+   * • Enter 'n/a' if it does not apply
+   */
+  residueRemoved: number | 'n/a'; // todo how to fix guidance talking about amounts harvested when this is about kill events
+}
+
+// todo harvest units are different depending on if it's annual vs cover (cover only allows tons/ac)
 /**
  * Tillage event details
  *
@@ -407,14 +513,7 @@ export interface HarvestOrKillEvent {
  * ```
  *
  */
-export interface TillageEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the tillage event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  date: string;
-  // todo enum
+export interface TillageEvent extends CropEvent {
   /**
    * The tillage classification type
    */
@@ -436,28 +535,24 @@ export interface TillageEvent {
  * ```
  *
  */
-export interface FertilizerEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the fertilizer application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  date: string;
+export interface FertilizerEvent extends CropEvent {
   /**
    * The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
    */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /**
    * @default "mixed blends"
+   *
    * The fertilizer classification type
    */
-  type: string; // todo default to mixed blends
+  type?: null; // todo guidance on why it's optional  // todo think through how to exclude from the spec (we need it for comet, but not for imports)
   /**
    * Amount of nitrogen applied in lbs/ac
    */
-  lbsOfNPerAcre: number; // todo this is really the only useful information for quantification currently
+  lbsOfNPerAcre: number;
 }
 
+// todo the unit is sometimes gallons per acre, sometimes tons
 /**
  * Organic matter (OMAD) and manure event details
  *
@@ -466,90 +561,95 @@ export interface FertilizerEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  "type": "surface broadcast", // todo use example allowed type
- *  "amountPerAcre": 100, // todo reasonable example
- *  "percentNitrogen": 1, // todo reasonable example
- *  "carbonNitrogenRatio": 1, // todo reasonable example
+ *  "type": "surface broadcast", // todo get string from spreadsheet
+ *  "amountPerAcre": 2, // tons
+ *  "percentNitrogen": 9,
+ *  "carbonNitrogenRatio": 30,
  * }
  * ```
  *
  */
-export interface OrganicMatterEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the organic matter or manure application happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  date: string;
+export interface OrganicMatterEvent extends CropEvent {
   /**
    * The organic matter or manure classification type
    */
   type: string; // todo List of known manures is here go.nori.com/inputs; doesn't have to be one of these
   /**
+   * @minimum 0
+   * @maximum 200 // todo confirm max
    * Amount of organic matter or manure applied per acre
    */
-  amountPerAcre: number; // todo min/max?
+  amountPerAcre: number;
+  // todo guidance on defaults
   /**
+   * @minimum 0
+   * @maximum 100
    * The nitrogen percent makeup in the organic matter or manure
+   *
    */
-  percentNitrogen: number | null; // todo min/max? // todo why null? // todo if null is actually allowed use n/a
+  percentNitrogen: number;
+  // todo guidance on defaults
   /**
    * The carbon to nitrogen ratio in the organic matter or manure
    */
-  carbonNitrogenRatio: number | null; // min/max //todo why null // todo if null is actually allowed use n/a
+  carbonNitrogenRatio: number;
 }
 
-// todo example
-// todo is irrigation applicable just to a crop or would this be better defined at the field level?
+// todo reasonable example?
 /**
  * Irrigation event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "volume": 1,
+ *  "depth": 100,
+ *  "frequency": 7,
+ *  "startDate": "01/01/2000",
+ *  "endDate": "12/31/2000"
+ * }
+ * ```
+ *
  */
-export interface IrrigationEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date that irrigation began (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  startDate: string;
+export interface IrrigationEvent extends CropEventRange {
   /**
    * The irrigation volume in inches
    */
-  volume: number;
-  // volumeUnits: 'in' | 'cm'; // todo remove this from example file
+  volume: number; // todo min/max?
   /**
    * The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
    */
   depth: number; // 0 if applied to surface // todo min/max?
-  // depthUnits: 'in' | 'cm'; // todo remove this from example file
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date that irrigation ended (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  endDate: string;
   /**
    * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7
    */
-  frequency: number;
+  frequency: number; // todo min/max?
 }
 
-// todo example
 // todo why did granular provide liming quantity + quantity unit alongside tonsPerAcre
 /**
  * Liming event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "01/01/2000",
+ *  "type": "crushed limestone",
+ *  "tonsPerAcre": 10,
+ * }
+ * ```
+ *
  */
-export interface LimingEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The date the liming event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  date: string; // todo is this required? since comet only allows one, and we end up aggregating them when it's not, does the date actually matter?
+export interface LimingEvent extends CropEvent {
+  // todo is date required? since comet only allows one, and we end up aggregating them when it's not, does the date actually matter?
+  // todo if date is NOT required, then we should not extend CropEvent
   /**
    * The liming type
    */
   type:
-    | 'none'
+    | 'none' // todo if none, can we exclude instead?
     | 'crushed limestone'
     | 'calcitic limestone'
     | 'dolomitic limestone'
@@ -560,24 +660,23 @@ export interface LimingEvent {
   tonsPerAcre: number; // todo minimum, maximum
 }
 
-// todo example
-// todo look at comet spec, would this be better as a list of events instead of a start/end date and frequency?
+// todo reasonable example?
 /**
  * Grazing event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "restPeriod": 0,
+ *  "utilization": 100,
+ *  "startDate": "01/01/2000",
+ *  "endDate": "12/31/2000"
+ * }
+ * ```
+ *
  */
-export interface GrazingEvent {
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The first date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  startDate: string;
-  /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * The last date that grazing occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
-   */
-  endDate: string;
+export interface GrazingEvent extends CropEventRange {
   /**
    * @minimum 0
    * @maximum 365
@@ -594,9 +693,17 @@ export interface GrazingEvent {
   utilization: number;
 }
 
-// todo example
 /**
  * Burning event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "type": "before planting"
+ * }
+ * ```
+ *
  */
 export interface BurningEvent {
   /**
