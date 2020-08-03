@@ -90,7 +90,7 @@ export interface Field {
    * The name of the field
    * @example
    * ```js
-   * "fieldName": "PumpkinPines"
+   * "fieldName": "Pumpkin Pines"
    * ```
    */
   fieldName: string;
