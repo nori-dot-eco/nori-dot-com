@@ -2,6 +2,8 @@
 
 # Interface: GrazingEvent
 
+Grazing event details
+
 ## Hierarchy
 
 * **GrazingEvent**
@@ -21,7 +23,9 @@
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:212](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L212)*
+*Defined in [specification.ts:360](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L360)*
+
+The last date that grazing occurred (formatted as MM/DD/YYYY)
 
 ___
 
@@ -29,7 +33,13 @@ ___
 
 • **restPeriod**: *number*
 
-*Defined in [specification.ts:213](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L213)*
+*Defined in [specification.ts:366](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L366)*
+
+The grazing rest period in days
+
+**`minimum`** 0
+
+**`maximum`** 365
 
 ___
 
@@ -37,7 +47,9 @@ ___
 
 • **startDate**: *string*
 
-*Defined in [specification.ts:211](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L211)*
+*Defined in [specification.ts:356](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L356)*
+
+The first date that grazing occurred (formatted as MM/DD/YYYY)
 
 ___
 
@@ -45,4 +57,10 @@ ___
 
 • **utilization**: *number*
 
-*Defined in [specification.ts:214](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L214)*
+*Defined in [specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L372)*
+
+The grazing utilization percentage
+
+**`minimum`** 0
+
+**`maximum`** 100

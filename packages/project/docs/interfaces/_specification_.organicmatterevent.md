@@ -2,6 +2,8 @@
 
 # Interface: OrganicMatterEvent
 
+Organic matter (OMAD) and manure event details
+
 ## Hierarchy
 
 * **OrganicMatterEvent**
@@ -22,7 +24,9 @@
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:175](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L175)*
+*Defined in [specification.ts:285](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L285)*
+
+Amount of organic matter or manure applied per acre
 
 ___
 
@@ -30,7 +34,9 @@ ___
 
 • **carbonNitrogenRatio**: *number | null*
 
-*Defined in [specification.ts:178](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L178)*
+*Defined in [specification.ts:293](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L293)*
+
+The carbon to nitrogen ratio in the organic matter or manure
 
 ___
 
@@ -38,7 +44,9 @@ ___
 
 • **date**: *string*
 
-*Defined in [specification.ts:172](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L172)*
+*Defined in [specification.ts:277](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L277)*
+
+The date the organic matter or manure application happened (formatted as MM/DD/YYYY)
 
 ___
 
@@ -46,7 +54,9 @@ ___
 
 • **percentNitrogen**: *number | null*
 
-*Defined in [specification.ts:177](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L177)*
+*Defined in [specification.ts:289](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L289)*
+
+The nitrogen percent makeup in the organic matter or manure
 
 ___
 
@@ -54,4 +64,6 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:173](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L173)*
+*Defined in [specification.ts:281](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L281)*
+
+The organic matter or manure classification type

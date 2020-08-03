@@ -2,6 +2,8 @@
 
 # Interface: IrrigationEvent
 
+Irrigation event details
+
 ## Hierarchy
 
 * **IrrigationEvent**
@@ -12,11 +14,9 @@
 
 * [date](_specification_.irrigationevent.md#date)
 * [depth](_specification_.irrigationevent.md#depth)
-* [depthUnits](_specification_.irrigationevent.md#depthunits)
 * [endDate](_specification_.irrigationevent.md#enddate)
 * [frequency](_specification_.irrigationevent.md#frequency)
 * [volume](_specification_.irrigationevent.md#volume)
-* [volumeUnits](_specification_.irrigationevent.md#volumeunits)
 
 ## Properties
 
@@ -24,7 +24,9 @@
 
 • **date**: *string*
 
-*Defined in [specification.ts:184](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L184)*
+*Defined in [specification.ts:304](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L304)*
+
+The date that irrigation began (formatted as MM/DD/YYYY)
 
 ___
 
@@ -32,19 +34,9 @@ ___
 
 • **depth**: *number*
 
-*Defined in [specification.ts:190](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L190)*
+*Defined in [specification.ts:313](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L313)*
 
-**`nullable`** 
-
-___
-
-###  depthUnits
-
-• **depthUnits**: *"in" | "cm"*
-
-*Defined in [specification.ts:192](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L192)*
-
-**`nullable`** 
+The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
 
 ___
 
@@ -52,9 +44,9 @@ ___
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:194](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L194)*
+*Defined in [specification.ts:318](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L318)*
 
-**`nullable`** 
+The date that irrigation ended (formatted as MM/DD/YYYY)
 
 ___
 
@@ -62,9 +54,9 @@ ___
 
 • **frequency**: *number*
 
-*Defined in [specification.ts:196](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L196)*
+*Defined in [specification.ts:322](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L322)*
 
-**`nullable`** 
+The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7
 
 ___
 
@@ -72,16 +64,6 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:186](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L186)*
+*Defined in [specification.ts:308](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L308)*
 
-**`nullable`** 
-
-___
-
-###  volumeUnits
-
-• **volumeUnits**: *"in" | "cm"*
-
-*Defined in [specification.ts:188](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L188)*
-
-**`nullable`**
+The irrigation volume in inches

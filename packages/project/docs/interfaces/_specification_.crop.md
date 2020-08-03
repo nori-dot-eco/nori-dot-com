@@ -2,6 +2,8 @@
 
 # Interface: Crop
 
+Crop management details and events
+
 ## Hierarchy
 
 * **Crop**
@@ -30,9 +32,10 @@
 
 • **burningEvent**: *[BurningEvent](_specification_.burningevent.md)*
 
-*Defined in [specification.ts:129](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L129)*
+*Defined in [specification.ts:188](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L188)*
 
 **`nullable`** 
+A burning event, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -40,9 +43,10 @@ ___
 
 • **fertilizerEvents**: *[FertilizerEvent](_specification_.fertilizerevent.md)[]*
 
-*Defined in [specification.ts:119](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L119)*
+*Defined in [specification.ts:163](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L163)*
 
 **`nullable`** 
+A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -50,9 +54,10 @@ ___
 
 • **grazingEvents**: *[GrazingEvent](_specification_.grazingevent.md)[]*
 
-*Defined in [specification.ts:127](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L127)*
+*Defined in [specification.ts:183](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L183)*
 
 **`nullable`** 
+A list of grazing events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -60,9 +65,10 @@ ___
 
 • **harvestOrKillEvents**: *[HarvestOrKillEvent](_specification_.harvestorkillevent.md)[]*
 
-*Defined in [specification.ts:115](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L115)*
+*Defined in [specification.ts:153](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L153)*
 
 **`nullable`** 
+A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -70,9 +76,10 @@ ___
 
 • **irrigationEvents**: *[IrrigationEvent](_specification_.irrigationevent.md)[]*
 
-*Defined in [specification.ts:123](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L123)*
+*Defined in [specification.ts:173](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L173)*
 
 **`nullable`** 
+A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
@@ -80,9 +87,10 @@ ___
 
 • **limingEvents**: *[LimingEvent](_specification_.limingevent.md)[]*
 
-*Defined in [specification.ts:125](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L125)*
+*Defined in [specification.ts:178](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L178)*
 
 **`nullable`** 
+A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
 
 ___
 
@@ -90,7 +98,9 @@ ___
 
 • **name**: *string | null*
 
-*Defined in [specification.ts:101](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L101)*
+*Defined in [specification.ts:126](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L126)*
+
+The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
 
 ___
 
@@ -98,33 +108,40 @@ ___
 
 • **organicMatterEvents**: *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
 
-*Defined in [specification.ts:121](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L121)*
+*Defined in [specification.ts:168](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L168)*
 
 **`nullable`** 
+A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
 ###  plantingDate
 
-• **plantingDate**: *string | null*
+• **plantingDate**: *string*
 
-*Defined in [specification.ts:110](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L110)*
+*Defined in [specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L140)*
+
+The date the crop was planted (formatted as MM/DD/YYYY)
 
 ___
 
 ###  prune
 
-• **prune**: *[YesOrNo](../modules/_specification_.md#yesorno)*
+• **prune**: *"yes" | "no" | "n/a"*
 
-*Defined in [specification.ts:112](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L112)*
+*Defined in [specification.ts:144](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L144)*
+
+Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
 
 ___
 
 ###  renewOrClear
 
-• **renewOrClear**: *[YesOrNo](../modules/_specification_.md#yesorno)*
+• **renewOrClear**: *"yes" | "no" | "n/a"*
 
-*Defined in [specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L113)*
+*Defined in [specification.ts:148](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L148)*
+
+Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
 
 ___
 
@@ -132,14 +149,17 @@ ___
 
 • **tillageEvents**: *[TillageEvent](_specification_.tillageevent.md)[]*
 
-*Defined in [specification.ts:117](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L117)*
+*Defined in [specification.ts:158](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L158)*
 
 **`nullable`** 
+A list of tillage events, if applicable. When it is not applicable it can be defined as null.
 
 ___
 
 ###  type
 
-• **type**: *"annual crop" | "annual cover" | "perennial" | "orchard" | "vineyard" | null*
+• **type**: *"annual crop" | "annual cover" | "perennial" | "orchard" | "vineyard" | "n/a"*
 
-*Defined in [specification.ts:102](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L102)*
+*Defined in [specification.ts:130](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L130)*
+
+The crop type

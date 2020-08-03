@@ -10,14 +10,6 @@
  *
  * You can find an example of a full implementation [here](../../example/example2.json).
  *
- * Basic (incomplete) example:
- * ```JSON
- * {
- *  "version": "0.1.0",
- *  "fields": [] // define fields in this array
- * }
- * ```
- *
  * Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index)
  * @packageDocumentation
  */
@@ -33,6 +25,7 @@ import type { GeoJSON } from 'geojson';
 // * historic practices (per county, technically) -- regenerative start year as well
 // * null crop names: work with rebekah to build an input file that has no crop name defined in the comet XML file
 // * is liming and burning more appropriate at the field level?
+// * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
 
 // todo importer
 // * order events by date
@@ -48,11 +41,18 @@ import type { GeoJSON } from 'geojson';
 // * independent versioning
 // * pre-commit make docs
 
-export type YesOrNo = 'yes' | 'no' | null;
-
 /**
- * ### A supplier project entity which encapsulates a set of fields
- * This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+ *
+ * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+ * @example
+ * ```js
+ * {
+ *  "version": "0.1.0",
+ *  "fields": [
+ *    // define fields in this array
+ *  ]
+ * }
+ * ```
  */
 export interface Project {
   /**
@@ -68,7 +68,7 @@ export interface Project {
 /**
  * A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.
  * @example
- * ```json
+ * ```js
  * {
  *  "fieldName": "Pumpkin Pines",
  *  "acres": 100,
@@ -78,142 +78,306 @@ export interface Project {
  * ```
  */
 export interface Field {
+  /**
+   * The name of the field
+   */
   fieldName: string;
-  /** @nullable */
-  acres?: number; // in acres // todo should we just infer from polygon?
-  // todo required if area is specified
-  /** @nullable */
-  geojson: object; // todo geojson type
-  // All management details are grouped by the crop planting year
+  /**
+   * @nullable
+   * The number of acres that use the herein defined crop practices (via `cropYears`).
+   * When acres is defined as null in an import file it will instead be inferred from the geojson.
+   */
+  acres: number;
+  /**
+   * The geographic boundaries (defined as GeoJSON) associated with crop practices.
+   */
+  geojson: GeoJSON;
+  /**
+   * A list of crop management details grouped by the crop planting year.
+   */
   cropYears: CropYear[];
 }
 
+// todo should we allow them to define all events for a crop (specifically perennials) even if they fall outside of the planting year?
+/**
+ * Crop management details grouped by a planting year.
+ */
 export interface CropYear {
-  plantingYear: number; // YYYY >= 2000
-  // Perennial crops: Enter the crop each year it was on the field.
-  // You only need to provide the planting date for the initial planting.
-  crops: Crop[];
+  /**
+   * The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop practices be mapped to a particular planting year as early as year 2000.
+   * @minimum 2000
+   */
+  plantingYear: number;
+  /**
+   * A list of crops (maximum 3) for a given planting year.
+   * @items.maximum 3
+   */
+  crops: Crop[]; // todo perennial guidance
 }
 
+/**
+ * Crop management details and events
+ */
 export interface Crop {
-  // todo why can name be null?
   // todo crop name enum
-  name: string | null; // list of known crops at go.nori.com/inputs
+  /**
+   * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
+   */
+  name: string | null; // todo why can this be null
+  /**
+   * The crop type
+   */
   type:
     | 'annual crop'
     | 'annual cover'
     | 'perennial'
     | 'orchard'
     | 'vineyard'
-    | null; // todo can be null only if name is null
-  // todo if continueFromPreviousYear is only for perennial, we can just infer the value
-  plantingDate: string | null; // mm/dd/yyyy
-  // If an orchard or vineyard, did you prune, renew or clear?
-  prune: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
-  renewOrClear: YesOrNo; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
-  /** @nullable */
+    | 'n/a'; // todo guidance on how to find this
+  /**
+   * The date the crop was planted (formatted as MM/DD/YYYY)
+   */
+  plantingDate: string; // todo pattern
+  /**
+   * Indicates if the crop was pruned. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
+   */
+  prune: 'yes' | 'no' | 'n/a';
+  /**
+   * Indicates if the crop was renewed or cleared. Only applicable if the crop is an orchard or vineyard. When it is not, use 'n/a'
+   */
+  renewOrClear: 'yes' | 'no' | 'n/a'; // can only be yes if orchard/vineyard, otherwise n/a. explicitly require to n/a
+  /**
+   * @nullable
+   * A list of harvest or kill events, if applicable. When it is not applicable it can be defined as null.
+   */
   harvestOrKillEvents: HarvestOrKillEvent[];
-  /** @nullable */
-  tillageEvents: TillageEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A list of tillage events, if applicable. When it is not applicable it can be defined as null.
+   */
+  tillageEvents: TillageEvent[]; // todo is tillage associated with a crop? if not, can we define it some other way?
+  /**
+   * @nullable
+   * A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
+   */
   fertilizerEvents: FertilizerEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
+   */
   organicMatterEvents: OrganicMatterEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
+   */
   irrigationEvents: IrrigationEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
+   */
   limingEvents: LimingEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A list of grazing events, if applicable. When it is not applicable it can be defined as null.
+   */
   grazingEvents: GrazingEvent[];
-  /** @nullable */
+  /**
+   * @nullable
+   * A burning event, if applicable. When it is not applicable it can be defined as null.
+   */
   burningEvent: BurningEvent;
 }
 
+/**
+ * Harvest/kill event details
+ * Straw / Stover harvest exception: If the hay or stover was removed
+ * separately after grain / fruit / tuber harvest, do NOT add this as
+ * a second harvest. Instead, enter the percent of the remaining residue
+ * that was removed on the grain harvest, regardless of removal date.
+ */
 export interface HarvestOrKillEvent {
-  // todo think about this:
-  // Straw / Stover harvest exception: If the hay or stover was removed
-  // separately after grain / fruit / tuber harvest, do NOT add this as
-  // a second harvest. Instead, enter the percent of the remaining residue
-  // that was removed on the grain harvest, regardless of removal date.
-  date: string; // mm/dd/yyyy, must be same year or year after plantingYear
-  /** @nullable */
-  yield?: number | null; // todo look into deprecating entirely as it doesnt currently have an impact on quantification
-  yieldNumeratorUnit: string | null; // todo merge numerator and denominator into one enum // todo only needed when yield !== null
-  yieldDenominatorUnit: string | null;
-  // Grain / fruit / tuber:
-  // • Select “Yes” if the crop was harvested for grain, fruit, or tuber
-  // • Select “No” if the crop was harvested before maturity for silage or haylage
-  grainFruitTuber: YesOrNo;
-  // Residue removed:
-  // • Enter 0% if the crop was only harvested for grain / fruit / tuber
-  // • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
-  // • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
-  residueRemoved: number | null; // 0-100%
+  /**
+   * The date the harvest or kill event happened (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern // todo ? must be same year or year after plantingYear
+  /**
+   * @nullable
+   * The crop yield
+   */
+  yield?: number | null; // todo look into deprecating entirely as it doesnt currently have an impact on quantification // todo n/a?
+  /**
+   * @nullable
+   * The crop yield units
+   */
+  yieldUnit?: string | null; // todo merge numerator and denominator into one enum // todo only needed when yield !== null // todo n/a?
+  /**
+   * Whether the crop was harvest for grain, fruit or tuber
+   * • Select “yes” if the crop was harvested for grain, fruit, or tuber
+   * • Select “no” if the crop was harvested before maturity for silage or haylage
+   * • Select "n/a" if this does not apply
+   */
+  grainFruitTuber: 'yes' | 'no' | 'n/a'; // todo default n/a?
+  /**
+   * Residue removed
+   * • Enter 0% if the crop was only harvested for grain / fruit / tuber
+   * • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
+   * • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
+   * • Enter 'n/a' if it does not apply
+   */
+  residueRemoved: number | 'n/a'; // todo min/max?
 }
 
+/**
+ * Tillage event details
+ */
 export interface TillageEvent {
-  date: string; // mm/dd/yyyy
+  /**
+   * The date the tillage event happened (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern
   // todo enum
-  type: string; // list of known methods at go.nori.com/inputs
+  /**
+   * The tillage classification type
+   */
+  type: string; // todo enum // todo list of known methods at go.nori.com/inputs
 }
 
+/**
+ * Fertilizer event details
+ */
 export interface FertilizerEvent {
-  date: string; // mm/dd/yyyy
-  /** @nullable */
+  /**
+   * The date the fertilizer application happened (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern
+  /**
+   * @nullable
+   * The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
+   */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
-  /** @nullable */
+  /**
+   * @nullable
+   * The fertilizer classification type
+   */
   type: string; // todo default to mixed blends
-  // Amount of N applied in lbs/ac is preferred
-  /** @nullable */
+  /**
+   * @nullable
+   * Amount of nitrogen applied in lbs/ac
+   */
   lbsOfNPerAcre: number; // todo this is really the only useful information for quantification currently
 }
 
+/**
+ * Organic matter (OMAD) and manure event details
+ */
 export interface OrganicMatterEvent {
-  date: string; // mm/dd/yyyy
-  type: string; // List of known manures is here go.nori.com/inputs; doesn't have to be one of these
-  // Amount of manure applied
-  amountPerAcre: number;
-  // Attributes of the manure
-  percentNitrogen: number | null;
-  carbonNitrogenRatio: number | null;
+  /**
+   * The date the organic matter or manure application happened (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern
+  /**
+   * The organic matter or manure classification type
+   */
+  type: string; // todo List of known manures is here go.nori.com/inputs; doesn't have to be one of these
+  /**
+   * Amount of organic matter or manure applied per acre
+   */
+  amountPerAcre: number; // todo min/max?
+  /**
+   * The nitrogen percent makeup in the organic matter or manure
+   */
+  percentNitrogen: number | null; // todo min/max? // todo why null
+  /**
+   * The carbon to nitrogen ratio in the organic matter or manure
+   */
+  carbonNitrogenRatio: number | null; // min/max //todo why null
 }
 
-// todo which of these should be defaulted/required
-// todo any reason to support cm? if not, remove units and assume inches
+// todo is irrigation applicable just to a crop or would this be better defined at the field level?
+/**
+ * Irrigation event details
+ */
 export interface IrrigationEvent {
-  date: string; // mm/dd/yyyy
-  /** @nullable */
+  /**
+   * The date that irrigation began (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern
+  /**
+   * The irrigation volume in inches
+   */
   volume: number;
-  /** @nullable */
-  volumeUnits: 'in' | 'cm';
-  /** @nullable */
-  depth: number; // 0 if applied to surface
-  /** @nullable */
-  depthUnits: 'in' | 'cm';
-  /** @nullable */
-  endDate: string; // mm/dd/yyyy
-  /** @nullable */
+  // volumeUnits: 'in' | 'cm'; // todo remove this from example file
+  /**
+   * The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
+   */
+  depth: number; // 0 if applied to surface // todo min/max?
+  // depthUnits: 'in' | 'cm'; // todo remove this from example file
+  /**
+   * The date that irrigation ended (formatted as MM/DD/YYYY)
+   */
+  endDate: string; // todo pattern
+  /**
+   * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7
+   */
   frequency: number;
 }
 
+/**
+ * Liming event details
+ */
 export interface LimingEvent {
-  date: string; // mm/dd/yyyy
+  /**
+   * The date the liming event occurred (formatted as MM/DD/YYYY)
+   */
+  date: string; // todo pattern // todo is this required? since comet only allows one, and we end up aggregating them when it's not, does the date actually matter?
+  /**
+   * The liming type
+   */
   type:
     | 'none'
     | 'crushed limestone'
     | 'calcitic limestone'
     | 'dolomitic limestone'
-    | 'other';
-  tonsPerAcre: number;
+    | 'other'; // todo type guidance
+  /**
+   * The liming amount (in tons per acre)
+   */
+  tonsPerAcre: number; // todo minimum, maximum
 }
 
+// todo look at comet spec, would this be better as a list of events instead of a start/end date and frequency?
+/**
+ * Grazing event details
+ */
 export interface GrazingEvent {
-  startDate: string; // mm/dd/yyyy
-  endDate: string; // mm/dd/yyyy
-  restPeriod: number; // 0-365 days
-  utilization: number; // 0-100%
+  /**
+   * The first date that grazing occurred (formatted as MM/DD/YYYY)
+   */
+  startDate: string; // todo pattern
+  /**
+   * The last date that grazing occurred (formatted as MM/DD/YYYY)
+   */
+  endDate: string; // todo pattern
+  /**
+   * The grazing rest period in days
+   * @minimum 0
+   * @maximum 365
+   */
+  restPeriod: number;
+  /**
+   * The grazing utilization percentage
+   * @minimum 0
+   * @maximum 100
+   */
+  utilization: number;
 }
 
+/**
+ * Burning event details
+ */
 export interface BurningEvent {
-  type: 'no burning' | 'yes, before planting' | 'yes, after harvesting';
+  /**
+   * The type of burning, if applicable.
+   */
+  type: 'no burning' | 'yes, before planting' | 'yes, after harvesting'; // todo default no?
 }

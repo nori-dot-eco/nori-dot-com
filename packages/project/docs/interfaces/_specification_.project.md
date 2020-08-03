@@ -2,8 +2,17 @@
 
 # Interface: Project
 
-### A supplier project entity which encapsulates a set of fields
-This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+
+**`example`** 
+```js
+{
+ "version": "0.1.0",
+ "fields": [
+   // define fields in this array
+ ]
+}
+```
 
 ## Hierarchy
 
@@ -22,7 +31,7 @@ This top-level interface defines all necessary properties for a supplier project
 
 • **fields**: *[Field](_specification_.field.md)[]*
 
-*Defined in [specification.ts:65](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L65)*
+*Defined in [specification.ts:65](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L65)*
 
 An array of fields defining annual crop practices
 
@@ -32,6 +41,6 @@ ___
 
 • **version**: *string*
 
-*Defined in [specification.ts:61](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L61)*
+*Defined in [specification.ts:61](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L61)*
 
 The specification version. This information is used to determine the logic Nori uses to import a project.

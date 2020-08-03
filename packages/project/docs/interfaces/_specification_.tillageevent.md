@@ -2,6 +2,8 @@
 
 # Interface: TillageEvent
 
+Tillage event details
+
 ## Hierarchy
 
 * **TillageEvent**
@@ -19,7 +21,9 @@
 
 • **date**: *string*
 
-*Defined in [specification.ts:155](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L155)*
+*Defined in [specification.ts:237](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L237)*
+
+The date the tillage event happened (formatted as MM/DD/YYYY)
 
 ___
 
@@ -27,4 +31,6 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:157](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L157)*
+*Defined in [specification.ts:242](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L242)*
+
+The tillage classification type

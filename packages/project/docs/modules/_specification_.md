@@ -13,14 +13,6 @@ For example, the highest level interface of the specification if the Project int
 
 You can find an example of a full implementation [here](../../example/example2.json).
 
-Basic (incomplete) example:
-```JSON
-{
- "version": "0.1.0",
- "fields": [] // define fields in this array
-}
-```
-
 Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index)
 
 ## Index
@@ -39,15 +31,3 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 * [OrganicMatterEvent](../interfaces/_specification_.organicmatterevent.md)
 * [Project](../interfaces/_specification_.project.md)
 * [TillageEvent](../interfaces/_specification_.tillageevent.md)
-
-### Type aliases
-
-* [YesOrNo](_specification_.md#yesorno)
-
-## Type aliases
-
-###  YesOrNo
-
-Ƭ **YesOrNo**: *"yes" | "no" | null*
-
-*Defined in [specification.ts:51](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L51)*

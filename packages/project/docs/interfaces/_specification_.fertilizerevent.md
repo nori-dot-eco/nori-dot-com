@@ -2,6 +2,8 @@
 
 # Interface: FertilizerEvent
 
+Fertilizer event details
+
 ## Hierarchy
 
 * **FertilizerEvent**
@@ -21,7 +23,9 @@
 
 • **date**: *string*
 
-*Defined in [specification.ts:161](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L161)*
+*Defined in [specification.ts:252](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L252)*
+
+The date the fertilizer application happened (formatted as MM/DD/YYYY)
 
 ___
 
@@ -29,9 +33,10 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:168](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L168)*
+*Defined in [specification.ts:267](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L267)*
 
 **`nullable`** 
+Amount of nitrogen applied in lbs/ac
 
 ___
 
@@ -39,9 +44,10 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:163](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L163)*
+*Defined in [specification.ts:257](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L257)*
 
 **`nullable`** 
+The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
 ___
 
@@ -49,6 +55,7 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:165](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L165)*
+*Defined in [specification.ts:262](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L262)*
 
-**`nullable`**
+**`nullable`** 
+The fertilizer classification type

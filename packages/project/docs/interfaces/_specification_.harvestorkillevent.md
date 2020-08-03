@@ -2,6 +2,12 @@
 
 # Interface: HarvestOrKillEvent
 
+Harvest/kill event details
+Straw / Stover harvest exception: If the hay or stover was removed
+separately after grain / fruit / tuber harvest, do NOT add this as
+a second harvest. Instead, enter the percent of the remaining residue
+that was removed on the grain harvest, regardless of removal date.
+
 ## Hierarchy
 
 * **HarvestOrKillEvent**
@@ -14,8 +20,7 @@
 * [grainFruitTuber](_specification_.harvestorkillevent.md#grainfruittuber)
 * [residueRemoved](_specification_.harvestorkillevent.md#residueremoved)
 * [yield](_specification_.harvestorkillevent.md#optional-yield)
-* [yieldDenominatorUnit](_specification_.harvestorkillevent.md#yielddenominatorunit)
-* [yieldNumeratorUnit](_specification_.harvestorkillevent.md#yieldnumeratorunit)
+* [yieldUnit](_specification_.harvestorkillevent.md#optional-yieldunit)
 
 ## Properties
 
@@ -23,23 +28,36 @@
 
 • **date**: *string*
 
-*Defined in [specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L138)*
+*Defined in [specification.ts:202](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L202)*
+
+The date the harvest or kill event happened (formatted as MM/DD/YYYY)
 
 ___
 
 ###  grainFruitTuber
 
-• **grainFruitTuber**: *[YesOrNo](../modules/_specification_.md#yesorno)*
+• **grainFruitTuber**: *"yes" | "no" | "n/a"*
 
-*Defined in [specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L146)*
+*Defined in [specification.ts:219](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L219)*
+
+Whether the crop was harvest for grain, fruit or tuber
+• Select “yes” if the crop was harvested for grain, fruit, or tuber
+• Select “no” if the crop was harvested before maturity for silage or haylage
+• Select "n/a" if this does not apply
 
 ___
 
 ###  residueRemoved
 
-• **residueRemoved**: *number | null*
+• **residueRemoved**: *number | "n/a"*
 
-*Defined in [specification.ts:151](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L151)*
+*Defined in [specification.ts:227](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L227)*
+
+Residue removed
+• Enter 0% if the crop was only harvested for grain / fruit / tuber
+• Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
+• Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
+• Enter 'n/a' if it does not apply
 
 ___
 
@@ -47,22 +65,18 @@ ___
 
 • **yield**? : *number | null*
 
-*Defined in [specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L140)*
+*Defined in [specification.ts:207](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L207)*
 
 **`nullable`** 
+The crop yield
 
 ___
 
-###  yieldDenominatorUnit
+### `Optional` yieldUnit
 
-• **yieldDenominatorUnit**: *string | null*
+• **yieldUnit**? : *string | null*
 
-*Defined in [specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L142)*
+*Defined in [specification.ts:212](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L212)*
 
-___
-
-###  yieldNumeratorUnit
-
-• **yieldNumeratorUnit**: *string | null*
-
-*Defined in [specification.ts:141](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L141)*
+**`nullable`** 
+The crop yield units

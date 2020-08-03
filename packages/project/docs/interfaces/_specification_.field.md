@@ -5,7 +5,7 @@
 A field defining annual crop practices. Fields are defined by geographic boundaries that contain crop practices that are identical across the whole of that boundary.
 
 **`example`** 
-```json
+```js
 {
  "fieldName": "Pumpkin Pines",
  "acres": 100,
@@ -22,20 +22,22 @@ A field defining annual crop practices. Fields are defined by geographic boundar
 
 ### Properties
 
-* [acres](_specification_.field.md#optional-acres)
+* [acres](_specification_.field.md#acres)
 * [cropYears](_specification_.field.md#cropyears)
 * [fieldName](_specification_.field.md#fieldname)
 * [geojson](_specification_.field.md#geojson)
 
 ## Properties
 
-### `Optional` acres
+###  acres
 
-• **acres**? : *number*
+• **acres**: *number*
 
-*Defined in [specification.ts:83](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L83)*
+*Defined in [specification.ts:90](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L90)*
 
 **`nullable`** 
+The number of acres that use the herein defined crop practices (via `cropYears`).
+When acres is defined as null in an import file it will instead be inferred from the geojson.
 
 ___
 
@@ -43,7 +45,9 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:88](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L88)*
+*Defined in [specification.ts:98](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L98)*
+
+A list of crop management details grouped by the crop planting year.
 
 ___
 
@@ -51,14 +55,16 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:81](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L81)*
+*Defined in [specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L84)*
+
+The name of the field
 
 ___
 
 ###  geojson
 
-• **geojson**: *object*
+• **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:86](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L86)*
+*Defined in [specification.ts:94](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L94)*
 
-**`nullable`**
+The geographic boundaries (defined as GeoJSON) associated with crop practices.

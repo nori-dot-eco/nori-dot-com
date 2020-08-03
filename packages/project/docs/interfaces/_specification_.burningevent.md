@@ -2,6 +2,8 @@
 
 # Interface: BurningEvent
 
+Burning event details
+
 ## Hierarchy
 
 * **BurningEvent**
@@ -18,4 +20,6 @@
 
 • **type**: *"no burning" | "yes, before planting" | "yes, after harvesting"*
 
-*Defined in [specification.ts:218](https://github.com/nori-dot-eco/nori-dot-com/blob/49f839c/packages/project/src/specification.ts#L218)*
+*Defined in [specification.ts:382](https://github.com/nori-dot-eco/nori-dot-com/blob/feda5f8/packages/project/src/specification.ts#L382)*
+
+The type of burning, if applicable.
