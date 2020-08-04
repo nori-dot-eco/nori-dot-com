@@ -38,11 +38,12 @@ Organic matter (OMAD) and manure event details
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:582](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L582)*
+*Defined in [specification.ts:731](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L731)*
 
 **`minimum`** 0
 
 **`maximum`** 200 // todo confirm max
+
 Amount of organic matter or manure applied per acre
 
 ___
@@ -51,9 +52,13 @@ ___
 
 • **carbonNitrogenRatio**: *number*
 
-*Defined in [specification.ts:595](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L595)*
+*Defined in [specification.ts:749](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L749)*
+
+**`nullable`** during import (when defined as null, a default value will be assigned)
 
 The carbon to nitrogen ratio in the organic matter or manure
+
+You can find a list of default values per `type` [here](go.nori.com/inputs)
 
 ___
 
@@ -63,7 +68,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L401)*
+*Defined in [specification.ts:461](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L461)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -75,12 +80,17 @@ ___
 
 • **percentNitrogen**: *number*
 
-*Defined in [specification.ts:590](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L590)*
+*Defined in [specification.ts:741](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L741)*
 
 **`minimum`** 0
 
 **`maximum`** 100
+
+**`nullable`** during import (when defined as null, a default value will be assigned)
+
 The nitrogen percent makeup in the organic matter or manure
+
+You can find a list of default values per `type` [here](go.nori.com/inputs)
 
 ___
 
@@ -88,6 +98,6 @@ ___
 
 • **type**: *string*
 
-*Defined in [specification.ts:576](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L576)*
+*Defined in [specification.ts:723](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L723)*
 
 The organic matter or manure classification type

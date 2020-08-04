@@ -1,16 +1,14 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [KillEvent](_specification_.killevent.md)
+[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [CropManagementEvent](_specification_.cropmanagementevent.md)
 
-# Interface: KillEvent
+# Interface: CropManagementEvent
 
-Kill event details
+Harvest event details
 
 **`example`** 
 
 ```js
 {
  "date": "10/01/2000",
- "residueRemoved": 5,
- "yieldUnit": "bu/ac",
  "grainFruitTuber": "n/a",
  "residueRemoved": "n/a",
 }
@@ -20,14 +18,17 @@ Kill event details
 
 * [CropEvent](_specification_.cropevent.md)
 
-  ↳ **KillEvent**
+  ↳ **CropManagementEvent**
+
+  ↳ [AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md)
 
 ## Index
 
 ### Properties
 
-* [date](_specification_.killevent.md#date)
-* [residueRemoved](_specification_.killevent.md#residueremoved)
+* [date](_specification_.cropmanagementevent.md#date)
+* [grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)
+* [residueRemoved](_specification_.cropmanagementevent.md#residueremoved)
 
 ## Properties
 
@@ -45,11 +46,33 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 ___
 
+###  grainFruitTuber
+
+• **grainFruitTuber**: *"yes" | "no"*
+
+*Defined in [specification.ts:513](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L513)*
+
+Whether the crop was harvest for grain, fruit or tuber
+
+**`example`** <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber</caption>
+
+```js
+"grainFruitTuber": "yes"
+```
+
+**`example`** <caption>Select “no” if the crop was harvested before maturity for silage or haylage</caption>
+
+```js
+"grainFruitTuber": "no"
+```
+
+___
+
 ###  residueRemoved
 
 • **residueRemoved**: *number | "n/a"*
 
-*Defined in [specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L628)*
+*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L546)*
 
 **`minimum`** 0
 

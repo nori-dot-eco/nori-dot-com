@@ -28,9 +28,6 @@ import type { GeoJSON } from 'geojson';
  * * include: conservis, granular, truterra (jamie)
  * * how realistic is it to expect partners to use enums for types
  *
- * ! specification
- * * extend event date?
- *
  * ! importer logic
  * * order events by date
  * * check implication of removing cropNumber
@@ -52,7 +49,10 @@ import type { GeoJSON } from 'geojson';
  * * rename file as project-specification
  *
  * ! misc
- * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
+ * * need from rebekah:
+ * * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
+ * * * * this allows me to add guidance on things like how to find crop type (i.e. when a crop is a valid orchard/vineyard)
+ * * * solid v slurry manure types
  */
 
 /**
@@ -72,28 +72,57 @@ export interface Project {
   /**
    * The specification version. This information is used to determine the logic Nori uses to import a project.
    */
-  version: string; // todo enum
+  version: string;
   /**
    * An array of fields defining annual crop management practices
    */
   fields: Field[];
 }
 
+// todo how to handle allowed type selection (based on LRR on the sheet)
+// todo defaults
+// todo when is each field applicable?
 /**
  * Details surrounding how the field was managed before year 2000
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  // todo example
+ * }
+ * ```
+ *
  */
 export interface HistoricLandManagement {
-  // todo
-  // * CRP
-  // * CRPType
-  // * Year1980-2000
-  // * Year1980-2000_Tillage
-  // * Pre-1980
+  crp: 'yes' | 'no';
+  crpType: 'no' | 'yes, 100% grass' | 'yes, grass / legume mixture';
+  preYear1980:
+    | 'upland non-irrigated (pre 1980s)'
+    | 'irrigation (pre 1980s)'
+    | 'lowland non-irrigated (pre 1980s)';
+  tillageForYears1980To2000:
+    | 'intensive tillage'
+    | 'reduced tillage'
+    | 'no till';
+  year1980To2000:
+    | 'none'
+    | 'irrigated: annual crops in rotation'
+    | 'irrigated: continuous hay'
+    | 'non-irrigated: annual crops with hay/pasture in rotation'
+    | 'non-irrigated: continuous hay'
+    | 'non-irrigated: livestock grazing'
+    | 'irrigated: annual crops with hay/pasture in rotation'
+    | 'non-irrigated: annual crops in rotation'
+    | 'non-irrigated: fallow-grain'
+    | 'irrigated: orchard or vineyard';
 }
 
 /**
  * A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
+ *
  * @example
+ *
  * ```js
  * {
  *  "fieldName": "Pumpkin Pines",
@@ -102,6 +131,7 @@ export interface HistoricLandManagement {
  *  "cropYears": [] // a list of annual crop management practices
  * }
  * ```
+ *
  */
 export interface Field {
   // todo guidance // todo min/max // todo default
@@ -115,10 +145,13 @@ export interface Field {
   historicLangManagement: HistoricLandManagement;
   /**
    * The name of the field
+   *
    * @example
+   *
    * ```js
    * "fieldName": "Pumpkin Pines"
    * ```
+   *
    */
   fieldName: string;
   /**
@@ -182,8 +215,10 @@ export interface PlantedCrop {
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
    * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   *
+   * If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`
    */
-  plantingDate: string; // todo if a crop is replanted, redfine the crop and also define the harvestorkill event
+  plantingDate: string;
 }
 
 /**
@@ -239,7 +274,7 @@ export interface CropEvents {
    * that was removed on the grain harvest, regardless of removal date.
    *
    */
-  harvestEvents?: HarvestEvent[];
+  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
   /**
    * A list of tillage events, if applicable. When it is not applicable it can be defined as null.
    */
@@ -296,6 +331,10 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
   /**
    * The crop type
    *
+   * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+   *
+   * Note: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types.
+   *
    * @example <caption>When the crop is an orchard</caption>
    *
    * ```js
@@ -308,8 +347,7 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
    * ```
    *
    */
-  type: 'orchard' | 'vineyard'; // todo guidance on how to find this (look at go/inputs)
-  // todo add guidance saying that if a crop changes types during the history of a field, then redefine the crop. limitation: likely only happens when the crop switches from annual -> perennial
+  type: 'orchard' | 'vineyard'; // todo when a crop switches types (i.e. annual -> perennial) and the user redefines the crop, does the user need to do anything to signify the end of the initial crop type? (i.e. a kill or harvest event?)
   /**
    * @default "no"
    *
@@ -350,15 +388,33 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
 
 /**
  * Perennial crop details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "name": "annual rye",
+ *  "type": "perennial",
+ *  "plantingDate": "01/01/2000"
+ *  // ...CropEvents
+ * }
+ * ```
+ *
  */
 export interface PerennialCrop extends CropEvents, PlantedCrop {
-  // todo crop name enum
+  // todo crop name enum (which crops can be defined as perennial?)
   /**
-   * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
+   * The name of the crop.
+   *
+   * You can find a list of accepted crops [here](go.nori.com/inputs)
    */
   name: string;
   /**
+   * @default "perennial"
+   *
    * The crop type
+   *
+   * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
    */
   type: 'perennial';
 }
@@ -380,13 +436,17 @@ export interface PerennialCrop extends CropEvents, PlantedCrop {
  */
 export interface AnnualCrop extends CropEvents, PlantedCrop {
   /**
-   * The name of the crop. You can find a list of accepted crops [here](go.nori.com/inputs)
+   * The name of the crop.
+   *
+   * You can find a list of accepted crops [here](go.nori.com/inputs)
    */
   name: string; // todo enum
   /**
    * The crop type
+   *
+   * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
    */
-  type: 'annual crop' | 'annual cover'; // todo note about how to find this in the inputs tab
+  type: 'annual crop' | 'annual cover';
 }
 
 /**
@@ -427,6 +487,73 @@ export interface CropEventRange {
  * ```js
  * {
  *  "date": "10/01/2000",
+ *  "grainFruitTuber": "n/a",
+ *  "residueRemoved": "n/a",
+ * }
+ * ```
+ *
+ */
+export interface CropManagementEvent extends CropEvent {
+  /**
+   * Whether the crop was harvest for grain, fruit or tuber
+   *
+   * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber</caption>
+   *
+   * ```js
+   * "grainFruitTuber": "yes"
+   * ```
+   *
+   * @example <caption>Select “no” if the crop was harvested before maturity for silage or haylage</caption>
+   *
+   * ```js
+   * "grainFruitTuber": "no"
+   * ```
+   *
+   */
+  grainFruitTuber: 'yes' | 'no'; // todo why does this need to be defined for every event? wouldnt it be better at the crop level?
+  // todo are examples reasonable for harvest events? are any of them kill specific?
+  /**
+   * @minimum 0
+   * @maximum 100
+   *
+   * Crop residue removed
+   *
+   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber</caption>
+   *
+   * ```js
+   * "residueRemoved": 0
+   * ```
+   *
+   * @example <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest</caption>
+   *
+   * ```js
+   * "residueRemoved": 5
+   * ```
+   *
+   * @example <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage</caption>
+   *
+   * ```js
+   * "residueRemoved": 10
+   * ```
+   *
+   * @example <caption>Enter 'n/a' if it does not apply</caption>
+   *
+   * ```js
+   * "residueRemoved": "n/a"
+   * ```
+   *
+   */
+  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string
+}
+
+/**
+ * An annual crop's harvest event details
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
  *  "yield": 100,
  *  "yieldUnit": "bu/ac",
  *  "grainFruitTuber": "n/a",
@@ -435,7 +562,7 @@ export interface CropEventRange {
  * ```
  *
  */
-export interface HarvestEvent extends CropEvent {
+export interface AnnualCropHarvestEvent extends CropManagementEvent {
   /**
    * The crop yield
    */
@@ -444,26 +571,6 @@ export interface HarvestEvent extends CropEvent {
    * The crop yield units
    */
   yieldUnit: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
-  // todo use example tag
-  /**
-   * Whether the crop was harvest for grain, fruit or tuber
-   * • Select “yes” if the crop was harvested for grain, fruit, or tuber
-   * • Select “no” if the crop was harvested before maturity for silage or haylage
-   * • Select "n/a" if this does not apply
-   */
-  grainFruitTuber: 'yes' | 'no';
-  // todo use example tag
-  /**
-   * @minimum 0
-   * @maximum 100
-   *
-   * Residue removed
-   * • Enter 0% if the crop was only harvested for grain / fruit / tuber
-   * • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
-   * • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
-   * • Enter 'n/a' if it does not apply
-   */
-  residueRemoved: number | 'n/a';
 }
 
 // todo reasonable example?
@@ -485,21 +592,42 @@ export interface HarvestEvent extends CropEvent {
  *
  */
 export interface KillEvent extends CropEvent {
-  // todo use example tag
+  // todo are examples reasonable for kill events? are any of them harvest event specific?
+  // todo if residue removed options are identical for kill and harvest, then separate into its own interface to de-duplicate docs
   /**
    * @minimum 0
    * @maximum 100
    *
-   * Residue removed
-   * • Enter 0% if the crop was only harvested for grain / fruit / tuber
-   * • Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest
-   * • Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage
-   * • Enter 'n/a' if it does not apply
+   * Crop residue removed
+   *
+   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber</caption>
+   *
+   * ```js
+   * "residueRemoved": 0
+   * ```
+   *
+   * @example <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest</caption>
+   *
+   * ```js
+   * "residueRemoved": 5
+   * ```
+   *
+   * @example <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage</caption>
+   *
+   * ```js
+   * "residueRemoved": 10
+   * ```
+   *
+   * @example <caption>Enter 'n/a' if it does not apply</caption>
+   *
+   * ```js
+   * "residueRemoved": "n/a"
+   * ```
+   *
    */
-  residueRemoved: number | 'n/a'; // todo how to fix guidance talking about amounts harvested when this is about kill events
+  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string
 }
 
-// todo harvest units are different depending on if it's annual vs cover (cover only allows tons/ac)
 /**
  * Tillage event details
  *
@@ -515,9 +643,25 @@ export interface KillEvent extends CropEvent {
  */
 export interface TillageEvent extends CropEvent {
   /**
-   * The tillage classification type
+   * The name/alias that the tillage practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    */
-  type: string; // todo enum // todo list of known methods at go.nori.com/inputs
+  name?: string; // todo deprecate when sheet is gone (just an alias)
+  /**
+   * The tillage classification type
+   *
+   * You can find a list of common equivalents [here](go.nori.com/inputs)
+   *
+   */
+  type:
+    | 'Reduced Tillage'
+    | 'Mulch Tillage'
+    | 'Ridge Tillage'
+    | 'Strip Tillage'
+    | 'No Tillage'
+    | 'Growing Season Cultivation'
+    | 'Mow'
+    | 'Crimp'
+    | 'Broad-spectrum herbicide';
 }
 
 /**
@@ -541,18 +685,21 @@ export interface FertilizerEvent extends CropEvent {
    */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /**
+   *
    * @default "mixed blends"
    *
    * The fertilizer classification type
+   *
+   * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled
    */
-  type?: null; // todo guidance on why it's optional  // todo think through how to exclude from the spec (we need it for comet, but not for imports)
+  type?: string;
   /**
    * Amount of nitrogen applied in lbs/ac
    */
   lbsOfNPerAcre: number;
 }
 
-// todo the unit is sometimes gallons per acre, sometimes tons
+// todo the unit is sometimes gallons per acre, sometimes tons (depends on solid v slurry)
 /**
  * Organic matter (OMAD) and manure event details
  *
@@ -577,22 +724,29 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * @minimum 0
    * @maximum 200 // todo confirm max
+   *
    * Amount of organic matter or manure applied per acre
+   *
    */
   amountPerAcre: number;
-  // todo guidance on defaults
   /**
    * @minimum 0
    * @maximum 100
+   * @nullable during import (when defined as null, a default value will be assigned)
+   *
    * The nitrogen percent makeup in the organic matter or manure
    *
+   * You can find a list of default values per `type` [here](go.nori.com/inputs)
    */
   percentNitrogen: number;
-  // todo guidance on defaults
   /**
+   * @nullable during import (when defined as null, a default value will be assigned)
+   *
    * The carbon to nitrogen ratio in the organic matter or manure
+   *
+   * You can find a list of default values per `type` [here](go.nori.com/inputs)
    */
-  carbonNitrogenRatio: number;
+  carbonNitrogenRatio: number; // todo min/max
 }
 
 // todo reasonable example?
@@ -627,7 +781,6 @@ export interface IrrigationEvent extends CropEventRange {
   frequency: number; // todo min/max?
 }
 
-// todo why did granular provide liming quantity + quantity unit alongside tonsPerAcre
 /**
  * Liming event details
  *
@@ -653,7 +806,7 @@ export interface LimingEvent extends CropEvent {
     | 'crushed limestone'
     | 'calcitic limestone'
     | 'dolomitic limestone'
-    | 'other'; // todo type guidance
+    | 'other';
   /**
    * The liming amount (in tons per acre)
    */

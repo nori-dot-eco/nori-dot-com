@@ -24,6 +24,7 @@ Tillage event details
 ### Properties
 
 * [date](_specification_.tillageevent.md#date)
+* [name](_specification_.tillageevent.md#optional-name)
 * [type](_specification_.tillageevent.md#type)
 
 ## Properties
@@ -34,7 +35,7 @@ Tillage event details
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L401)*
+*Defined in [specification.ts:461](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L461)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -42,10 +43,22 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 ___
 
+### `Optional` name
+
+• **name**? : *string*
+
+*Defined in [specification.ts:648](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L648)*
+
+The name/alias that the tillage practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
+
+___
+
 ###  type
 
-• **type**: *string*
+• **type**: *"Reduced Tillage" | "Mulch Tillage" | "Ridge Tillage" | "Strip Tillage" | "No Tillage" | "Growing Season Cultivation" | "Mow" | "Crimp" | "Broad-spectrum herbicide"*
 
-*Defined in [specification.ts:520](https://github.com/nori-dot-eco/nori-dot-com/blob/dae8aba/packages/project/src/specification.ts#L520)*
+*Defined in [specification.ts:655](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L655)*
 
 The tillage classification type
+
+You can find a list of common equivalents [here](go.nori.com/inputs)

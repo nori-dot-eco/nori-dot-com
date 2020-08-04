@@ -26,15 +26,16 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 ### Interfaces
 
 * [AnnualCrop](../interfaces/_specification_.annualcrop.md)
+* [AnnualCropHarvestEvent](../interfaces/_specification_.annualcropharvestevent.md)
 * [BurningEvent](../interfaces/_specification_.burningevent.md)
 * [CropEvent](../interfaces/_specification_.cropevent.md)
 * [CropEventRange](../interfaces/_specification_.cropeventrange.md)
 * [CropEvents](../interfaces/_specification_.cropevents.md)
+* [CropManagementEvent](../interfaces/_specification_.cropmanagementevent.md)
 * [CropYear](../interfaces/_specification_.cropyear.md)
 * [FertilizerEvent](../interfaces/_specification_.fertilizerevent.md)
 * [Field](../interfaces/_specification_.field.md)
 * [GrazingEvent](../interfaces/_specification_.grazingevent.md)
-* [HarvestEvent](../interfaces/_specification_.harvestevent.md)
 * [HistoricLandManagement](../interfaces/_specification_.historiclandmanagement.md)
 * [IrrigationEvent](../interfaces/_specification_.irrigationevent.md)
 * [KillEvent](../interfaces/_specification_.killevent.md)
