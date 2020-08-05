@@ -49,10 +49,14 @@ import type { GeoJSON } from 'geojson';
  * * rename file as project-specification
  *
  * ! misc
- * * need from rebekah:
+ * * need to have descriptions above all @jsdoc tags
+ * ? need from rebekah:
  * * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
  * * * * this allows me to add guidance on things like how to find crop type (i.e. when a crop is a valid orchard/vineyard)
  * * * solid v slurry manure types
+ * * when is a crop grain/fruit/tuber? should this be a separate crop type?
+ * * what is "winter killed" and where does this need to be specified?
+ * * all planting dates need an associated tillage task?
  */
 
 /**
@@ -71,10 +75,26 @@ import type { GeoJSON } from 'geojson';
 export interface Project {
   /**
    * The specification version. This information is used to determine the logic Nori uses to import a project.
+   *
+   * @example
+   *
+   * ```js
+   * "version": "0.1.0"
+   * ```
+   *
    */
   version: string;
   /**
    * An array of fields defining annual crop management practices
+   *
+   * @example
+   *
+   * ```js
+   * "fields": [
+   *  // ...Field
+   * ]
+   * ```
+   *
    */
   fields: Field[];
 }
@@ -95,18 +115,61 @@ export interface Project {
  *
  */
 export interface HistoricLandManagement {
+  /**
+   * Whether the field participated in CRP or not
+   *
+   * @example <caption>When the field participated in CRP</caption>
+   *
+   * ```js
+   * "crp": "yes"
+   * ```
+   *
+   * @example <caption>When the field did not participate in CRP</caption>
+   *
+   * ```js
+   * "crp": "no"
+   * ```
+   *
+   */
   crp: 'yes' | 'no';
-  crpType: 'no' | 'yes, 100% grass' | 'yes, grass / legume mixture';
+  /**
+   * The type of CRP the field participated in. Only applicable if `crp` is set to yes // todo maybe separate interfaces, or if not, make the property optional, default to no
+   *
+   * // todo what does "100% grass mean"
+   *
+   * @example <caption>When the field participated in 100% grass CRP</caption>
+   *
+   * ```js
+   * "crpType": "100% grass"
+   * ```
+   *
+   * @example <caption>When the field participated in grass/legume mixture CRP</caption>
+   *
+   * ```js
+   * "crpType": "grass / legume mixture"
+   * ```
+   *
+   */
+  crpType: '100% grass' | 'grass / legume mixture'; // todo what does "100% grass mean" // todo what about grass/legume mixture?
+  /**
+   * A description of how the land was managed before 1980
+   */
   preYear1980:
     | 'upland non-irrigated (pre 1980s)'
     | 'irrigation (pre 1980s)'
     | 'lowland non-irrigated (pre 1980s)';
+  /**
+   * The type of tillage used on the field between 1980 and 2000
+   */
   tillageForYears1980To2000:
     | 'intensive tillage'
     | 'reduced tillage'
     | 'no till';
+  /**
+   * A description of how the land was managed between 1980 and 2000
+   */
   year1980To2000:
-    | 'none'
+    | 'none' // todo when can this be "none"
     | 'irrigated: annual crops in rotation'
     | 'irrigated: continuous hay'
     | 'non-irrigated: annual crops with hay/pasture in rotation'
@@ -128,7 +191,9 @@ export interface HistoricLandManagement {
  *  "fieldName": "Pumpkin Pines",
  *  "acres": 100,
  *  "geojson": {},
- *  "cropYears": [] // a list of annual crop management practices
+ *  "cropYears": [
+ *    // a list of annual crop management practices
+ *  ]
  * }
  * ```
  *
@@ -137,6 +202,13 @@ export interface Field {
   // todo guidance // todo min/max // todo default
   /**
    * The year that regenerative practices started
+   *
+   * @example <caption>When regenerative practices started in year 2015</caption>
+   *
+   * ```js
+   * "regenerativeStartYear": 2015
+   * ```
+   *
    */
   regenerativeStartYear: number;
   /**
@@ -155,9 +227,16 @@ export interface Field {
    */
   fieldName: string;
   /**
+   *  The number of acres that use the herein defined crop management practices (via `cropYears`).
+   *
    * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
    *
-   * The number of acres that use the herein defined crop management practices (via `cropYears`).
+   * @example <caption>When the field's legal area is 100 acres</caption>
+   *
+   * ```js
+   * "acres": 100
+   * ```
+   *
    */
   acres: number;
   /**
@@ -222,49 +301,19 @@ export interface PlantedCrop {
 }
 
 /**
- * Crop management details and events
- *
+ * Crop harvest events
  * @example
  *
  * ```js
  * {
- *  "killEvents": [
- *    // ...
- *  ]
  *  "harvestEvents": [
  *    // ...
- *  ]
- *  "tillageEvents": [
- *    // ...
- *  ]
- *  "fertilizerEvents": [
- *    // ...
- *  ]
- *  "organicMatterEvents": [
- *    // ...
- *  ]
- *  "irrigationEvents": [
- *    // ...
- *  ]
- *  "limingEvents": [
- *    // ...
- *  ]
- *  "grazingEvents": [
- *    // ...
- *  ]
- *  "burningEvent": {
- *    // ...
- *  }
+ *  ],
  * }
  * ```
  *
  */
-export interface CropEvents {
-  /**
-   * A list of kill events, if applicable. When it is not applicable it can be defined as null.
-   *
-   */
-  killEvents?: KillEvent[]; // todo multiple kill events allowed?
+export interface HarvestableCropEvents {
   /**
    * A list of harvest events, if applicable. When it is not applicable it can be defined as null.
    *
@@ -275,6 +324,48 @@ export interface CropEvents {
    *
    */
   harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
+}
+
+/**
+ * Crop management details and events
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "killEvent": {
+ *    // ...
+ *  },
+ *  "tillageEvents": [
+ *    // ...
+ *  ],
+ *  "fertilizerEvents": [
+ *    // ...
+ *  ],
+ *  "organicMatterEvents": [
+ *    // ...
+ *  ],
+ *  "irrigationEvents": [
+ *    // ...
+ *  ],
+ *  "limingEvents": [
+ *    // ...
+ *  ],
+ *  "grazingEvents": [
+ *    // ...
+ *  ],
+ *  "burningEvent": {
+ *    // ...
+ *  },
+ * }
+ * ```
+ *
+ */
+export interface CropEvents {
+  /**
+   * A kill event, if applicable. When it is not applicable it can be excluded
+   */
+  killEvent?: KillEvent;
   /**
    * A list of tillage events, if applicable. When it is not applicable it can be defined as null.
    */
@@ -300,11 +391,7 @@ export interface CropEvents {
    */
   grazingEvents?: GrazingEvent[];
   /**
-   * @default
-   *
-   * {
-   *  "type": "no burning"
-   * }
+   * @default { "type": "no burning" }
    *
    * A burning event, if applicable. When it is not applicable it can be defined as null.
    */
@@ -327,7 +414,10 @@ export interface CropEvents {
  * ```
  *
  */
-export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
+export interface OrchardOrVineyardCrop
+  extends CropEvents,
+    HarvestableCropEvents,
+    PlantedCrop {
   /**
    * The crop type
    *
@@ -349,9 +439,9 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
    */
   type: 'orchard' | 'vineyard'; // todo when a crop switches types (i.e. annual -> perennial) and the user redefines the crop, does the user need to do anything to signify the end of the initial crop type? (i.e. a kill or harvest event?)
   /**
-   * @default "no"
-   *
    * Indicates if the crop was pruned
+   *
+   * @default "no"
    *
    * @example <caption>When the crop was pruned</caption>
    *
@@ -367,9 +457,9 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
    */
   prune: 'yes' | 'no';
   /**
-   * @default "no"
-   *
    * Indicates if the crop was renewed or cleared
+   *
+   *  @default "no"
    *
    * @example <caption>When the crop was renewed</caption>
    *
@@ -401,7 +491,10 @@ export interface OrchardOrVineyardCrop extends CropEvents, PlantedCrop {
  * ```
  *
  */
-export interface PerennialCrop extends CropEvents, PlantedCrop {
+export interface PerennialCrop
+  extends CropEvents,
+    HarvestableCropEvents,
+    PlantedCrop {
   // todo crop name enum (which crops can be defined as perennial?)
   /**
    * The name of the crop.
@@ -420,7 +513,39 @@ export interface PerennialCrop extends CropEvents, PlantedCrop {
 }
 
 /**
- * Crop management details and events for annual and cover crops
+ * Crop management details and events for cover crops
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "name": "corn",
+ *  "type": "annual cover",
+ *  "plantingDate": "01/01/2000"
+ *  // ...CropEvents
+ * }
+ * ```
+ *
+ */
+export interface CoverCrop extends CropEvents, PlantedCrop {
+  /**
+   * The name of the crop.
+   *
+   * You can find a list of accepted crops [here](go.nori.com/inputs)
+   */
+  name: string; // todo enum
+  /**
+   * @default "annual cover"
+   *
+   * The crop type
+   *
+   * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+   */
+  type: 'annual cover';
+}
+
+/**
+ * Crop management details and events for annual crops
  *
  * @example
  *
@@ -434,7 +559,10 @@ export interface PerennialCrop extends CropEvents, PlantedCrop {
  * ```
  *
  */
-export interface AnnualCrop extends CropEvents, PlantedCrop {
+export interface AnnualCrop
+  extends CropEvents,
+    HarvestableCropEvents,
+    PlantedCrop {
   /**
    * The name of the crop.
    *
@@ -442,11 +570,13 @@ export interface AnnualCrop extends CropEvents, PlantedCrop {
    */
   name: string; // todo enum
   /**
+   * @default "annual crop"
+   *
    * The crop type
    *
    * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
    */
-  type: 'annual crop' | 'annual cover';
+  type: 'annual crop';
 }
 
 /**
@@ -576,7 +706,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
 // todo reasonable example?
 /**
  *
- * Kill event details
+ * Details surrounding the crop "kill" event
  *
  * @example
  *
@@ -708,7 +838,7 @@ export interface FertilizerEvent extends CropEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  "type": "surface broadcast", // todo get string from spreadsheet
+ *  "type": "alfalfa meal",
  *  "amountPerAcre": 2, // tons
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
@@ -718,33 +848,61 @@ export interface FertilizerEvent extends CropEvent {
  */
 export interface OrganicMatterEvent extends CropEvent {
   /**
+   * The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
+   */
+  name?: string; // todo deprecate when sheet is gone (just an alias)
+  /**
    * The organic matter or manure classification type
    */
-  type: string; // todo List of known manures is here go.nori.com/inputs; doesn't have to be one of these
+  type:
+    | 'Alfalfa Meal'
+    | 'Beef Manure, Solid'
+    | 'Beef Slurry'
+    | 'Blood, Dried'
+    | 'Bone Meal'
+    | 'Chicken - Broiler (litter), Solid'
+    | 'Chicken - Broiler Slurry'
+    | 'Chicken - Layer Slurry'
+    | 'Chicken - Layer, Solid'
+    | 'Compost or Composted Manure, Solid'
+    | 'Dairy Manure, Solid'
+    | 'Dairy Slurry'
+    | 'Farmyard Manure, Solid'
+    | 'Feather Meal'
+    | 'Fish Emulsion'
+    | 'Fish Scrap'
+    | 'Guano'
+    | 'Horse Manure, Solid'
+    | 'Other Manure, Solid'
+    | 'Sheep Manure, Solid'
+    | 'Soybean Meal'
+    | 'Swine Manure, Slurry'
+    | 'Swine Manure, Solid';
   /**
-   * @minimum 0
-   * @maximum 200 // todo confirm max
    *
    * Amount of organic matter or manure applied per acre
+   * @minimum 0
+   * @maximum 200 // todo confirm max
    *
    */
   amountPerAcre: number;
   /**
+   * The nitrogen percent makeup in the organic matter or manure
+   *
+   * You can find a list of default values per `type` [here](go.nori.com/inputs)
+   *
    * @minimum 0
    * @maximum 100
    * @nullable during import (when defined as null, a default value will be assigned)
    *
-   * The nitrogen percent makeup in the organic matter or manure
-   *
-   * You can find a list of default values per `type` [here](go.nori.com/inputs)
    */
   percentNitrogen: number;
   /**
-   * @nullable during import (when defined as null, a default value will be assigned)
-   *
    * The carbon to nitrogen ratio in the organic matter or manure
    *
    * You can find a list of default values per `type` [here](go.nori.com/inputs)
+   *
+   * @nullable during import (when defined as null, a default value will be assigned)
    */
   carbonNitrogenRatio: number; // todo min/max
 }

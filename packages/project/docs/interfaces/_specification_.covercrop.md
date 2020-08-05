@@ -1,16 +1,15 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md)
+[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [CoverCrop](_specification_.covercrop.md)
 
-# Interface: OrchardOrVineyardCrop
+# Interface: CoverCrop
 
-Crop management details and events for orchard and vineyard crops
+Crop management details and events for cover crops
 
 **`example`** 
 
 ```js
 {
- "type": "orchard",
- "prune": "yes",
- "renewOrClear": "yes",
+ "name": "corn",
+ "type": "annual cover",
  "plantingDate": "01/01/2000"
  // ...CropEvents
 }
@@ -20,29 +19,25 @@ Crop management details and events for orchard and vineyard crops
 
 * [CropEvents](_specification_.cropevents.md)
 
-* [HarvestableCropEvents](_specification_.harvestablecropevents.md)
-
 * [PlantedCrop](_specification_.plantedcrop.md)
 
-  ↳ **OrchardOrVineyardCrop**
+  ↳ **CoverCrop**
 
 ## Index
 
 ### Properties
 
-* [burningEvent](_specification_.orchardorvineyardcrop.md#optional-burningevent)
-* [fertilizerEvents](_specification_.orchardorvineyardcrop.md#optional-fertilizerevents)
-* [grazingEvents](_specification_.orchardorvineyardcrop.md#optional-grazingevents)
-* [harvestEvents](_specification_.orchardorvineyardcrop.md#optional-harvestevents)
-* [irrigationEvents](_specification_.orchardorvineyardcrop.md#optional-irrigationevents)
-* [killEvent](_specification_.orchardorvineyardcrop.md#optional-killevent)
-* [limingEvents](_specification_.orchardorvineyardcrop.md#optional-limingevents)
-* [organicMatterEvents](_specification_.orchardorvineyardcrop.md#optional-organicmatterevents)
-* [plantingDate](_specification_.orchardorvineyardcrop.md#plantingdate)
-* [prune](_specification_.orchardorvineyardcrop.md#prune)
-* [renewOrClear](_specification_.orchardorvineyardcrop.md#reneworclear)
-* [tillageEvents](_specification_.orchardorvineyardcrop.md#optional-tillageevents)
-* [type](_specification_.orchardorvineyardcrop.md#type)
+* [burningEvent](_specification_.covercrop.md#optional-burningevent)
+* [fertilizerEvents](_specification_.covercrop.md#optional-fertilizerevents)
+* [grazingEvents](_specification_.covercrop.md#optional-grazingevents)
+* [irrigationEvents](_specification_.covercrop.md#optional-irrigationevents)
+* [killEvent](_specification_.covercrop.md#optional-killevent)
+* [limingEvents](_specification_.covercrop.md#optional-limingevents)
+* [name](_specification_.covercrop.md#name)
+* [organicMatterEvents](_specification_.covercrop.md#optional-organicmatterevents)
+* [plantingDate](_specification_.covercrop.md#plantingdate)
+* [tillageEvents](_specification_.covercrop.md#optional-tillageevents)
+* [type](_specification_.covercrop.md#type)
 
 ## Properties
 
@@ -84,23 +79,6 @@ A list of grazing events, if applicable. When it is not applicable it can be def
 
 ___
 
-### `Optional` harvestEvents
-
-• **harvestEvents**? : *[AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md)[]*
-
-*Inherited from [HarvestableCropEvents](_specification_.harvestablecropevents.md).[harvestEvents](_specification_.harvestablecropevents.md#optional-harvestevents)*
-
-*Defined in [specification.ts:326](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L326)*
-
-A list of harvest events, if applicable. When it is not applicable it can be defined as null.
-
-Straw / Stover harvest exception: If the hay or stover was removed
-separately after grain / fruit / tuber harvest, do NOT add this as
-a second harvest. Instead, enter the percent of the remaining residue
-that was removed on the grain harvest, regardless of removal date.
-
-___
-
 ### `Optional` irrigationEvents
 
 • **irrigationEvents**? : *[IrrigationEvent](_specification_.irrigationevent.md)[]*
@@ -137,6 +115,18 @@ A list of liming events, if applicable. When it is not applicable it can be defi
 
 ___
 
+###  name
+
+• **name**: *string*
+
+*Defined in [specification.ts:536](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L536)*
+
+The name of the crop.
+
+You can find a list of accepted crops [here](go.nori.com/inputs)
+
+___
+
 ### `Optional` organicMatterEvents
 
 • **organicMatterEvents**? : *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
@@ -165,54 +155,6 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 ___
 
-###  prune
-
-• **prune**: *"yes" | "no"*
-
-*Defined in [specification.ts:458](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L458)*
-
-Indicates if the crop was pruned
-
-**`default`** "no"
-
-**`example`** <caption>When the crop was pruned</caption>
-
-```js
-"pruned": "yes"
-```
-
-**`example`** <caption>When the crop was not pruned</caption>
-
-```js
-"pruned": "no"
-```
-
-___
-
-###  renewOrClear
-
-• **renewOrClear**: *"yes" | "no"*
-
-*Defined in [specification.ts:476](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L476)*
-
-Indicates if the crop was renewed or cleared
-
-**`default`** "no"
-
-**`example`** <caption>When the crop was renewed</caption>
-
-```js
-"renewOrClear": "yes"
-```
-
-**`example`** <caption>When the crop was not renewed</caption>
-
-```js
-"renewOrClear": "no"
-```
-
-___
-
 ### `Optional` tillageEvents
 
 • **tillageEvents**? : *[TillageEvent](_specification_.tillageevent.md)[]*
@@ -227,24 +169,12 @@ ___
 
 ###  type
 
-• **type**: *"orchard" | "vineyard"*
+• **type**: *"annual cover"*
 
-*Defined in [specification.ts:440](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L440)*
+*Defined in [specification.ts:544](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L544)*
+
+**`default`** "annual cover"
 
 The crop type
 
 You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
-
-Note: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types.
-
-**`example`** <caption>When the crop is an orchard</caption>
-
-```js
-"type": "orchard"
-```
-
-**`example`** <caption>When the crop is a vineyard</caption>
-
-```js
-"type": "vineyard"
-```

@@ -3,11 +3,11 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "AnnualCrop": {
-            "description": "Crop management details and events for annual and cover crops",
+            "description": "Crop management details and events for annual crops",
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
                     "description": "Burning event details",
                     "title": "burningEvent"
                 },
@@ -50,13 +50,10 @@
                     "title": "irrigationEvents",
                     "type": "array"
                 },
-                "killEvents": {
-                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
-                    "items": {
-                        "$ref": "#/definitions/KillEvent"
-                    },
-                    "title": "killEvents",
-                    "type": "array"
+                "killEvent": {
+                    "$ref": "#/definitions/KillEvent",
+                    "description": "A kill event, if applicable. When it is not applicable it can be excluded",
+                    "title": "killEvent"
                 },
                 "limingEvents": {
                     "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",
@@ -93,9 +90,8 @@
                     "type": "array"
                 },
                 "type": {
-                    "description": "The crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
+                    "default": "\"annual crop\"\n\nThe crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
                     "enum": [
-                        "annual cover",
                         "annual crop"
                     ],
                     "title": "type",
@@ -371,6 +367,7 @@
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
             "properties": {
                 "acres": {
+                    "description": "The number of acres that use the herein defined crop management practices (via `cropYears`).",
                     "title": "acres",
                     "type": [
                         "number",
@@ -1740,6 +1737,7 @@
             "description": "Details surrounding how the field was managed before year 2000",
             "properties": {
                 "crp": {
+                    "description": "Whether the field participated in CRP or not",
                     "enum": [
                         "no",
                         "yes"
@@ -1748,15 +1746,16 @@
                     "type": "string"
                 },
                 "crpType": {
+                    "description": "The type of CRP the field participated in. Only applicable if `crp` is set to yes // todo maybe separate interfaces, or if not, make the property optional, default to no\n\n// todo what does \"100% grass mean\"",
                     "enum": [
-                        "no",
-                        "yes, 100% grass",
-                        "yes, grass / legume mixture"
+                        "100% grass",
+                        "grass / legume mixture"
                     ],
                     "title": "crpType",
                     "type": "string"
                 },
                 "preYear1980": {
+                    "description": "A description of how the land was managed before 1980",
                     "enum": [
                         "irrigation (pre 1980s)",
                         "lowland non-irrigated (pre 1980s)",
@@ -1766,6 +1765,7 @@
                     "type": "string"
                 },
                 "tillageForYears1980To2000": {
+                    "description": "The type of tillage used on the field between 1980 and 2000",
                     "enum": [
                         "intensive tillage",
                         "no till",
@@ -1775,6 +1775,7 @@
                     "type": "string"
                 },
                 "year1980To2000": {
+                    "description": "A description of how the land was managed between 1980 and 2000",
                     "enum": [
                         "irrigated: annual crops in rotation",
                         "irrigated: annual crops with hay/pasture in rotation",
@@ -1841,7 +1842,7 @@
             "type": "object"
         },
         "KillEvent": {
-            "description": "Kill event details",
+            "description": "Details surrounding the crop \"kill\" event",
             "properties": {
                 "date": {
                     "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
@@ -1911,7 +1912,7 @@
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
                     "description": "Burning event details",
                     "title": "burningEvent"
                 },
@@ -1954,13 +1955,10 @@
                     "title": "irrigationEvents",
                     "type": "array"
                 },
-                "killEvents": {
-                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
-                    "items": {
-                        "$ref": "#/definitions/KillEvent"
-                    },
-                    "title": "killEvents",
-                    "type": "array"
+                "killEvent": {
+                    "$ref": "#/definitions/KillEvent",
+                    "description": "A kill event, if applicable. When it is not applicable it can be excluded",
+                    "title": "killEvent"
                 },
                 "limingEvents": {
                     "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",
@@ -1984,7 +1982,8 @@
                     "type": "string"
                 },
                 "prune": {
-                    "default": "\"no\"\n\nIndicates if the crop was pruned",
+                    "default": "no",
+                    "description": "Indicates if the crop was pruned",
                     "enum": [
                         "no",
                         "yes"
@@ -1993,7 +1992,8 @@
                     "type": "string"
                 },
                 "renewOrClear": {
-                    "default": "\"no\"\n\nIndicates if the crop was renewed or cleared",
+                    "default": "no",
+                    "description": "Indicates if the crop was renewed or cleared",
                     "enum": [
                         "no",
                         "yes"
@@ -2032,12 +2032,14 @@
             "description": "Organic matter (OMAD) and manure event details",
             "properties": {
                 "amountPerAcre": {
-                    "maximum": "200 // todo confirm max\n\nAmount of organic matter or manure applied per acre",
+                    "description": "Amount of organic matter or manure applied per acre",
+                    "maximum": "200 // todo confirm max",
                     "minimum": 0,
                     "title": "amountPerAcre",
                     "type": "number"
                 },
                 "carbonNitrogenRatio": {
+                    "description": "The carbon to nitrogen ratio in the organic matter or manure\n\nYou can find a list of default values per `type` [here](go.nori.com/inputs)",
                     "title": "carbonNitrogenRatio",
                     "type": [
                         "number",
@@ -2049,9 +2051,15 @@
                     "title": "date",
                     "type": "string"
                 },
+                "name": {
+                    "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
                 "percentNitrogen": {
                     "anyOf": [
                         {
+                            "description": "The nitrogen percent makeup in the organic matter or manure\n\nYou can find a list of default values per `type` [here](go.nori.com/inputs)",
                             "maximum": 100,
                             "minimum": 0,
                             "type": "number"
@@ -2064,6 +2072,31 @@
                 },
                 "type": {
                     "description": "The organic matter or manure classification type",
+                    "enum": [
+                        "Alfalfa Meal",
+                        "Beef Manure, Solid",
+                        "Beef Slurry",
+                        "Blood, Dried",
+                        "Bone Meal",
+                        "Chicken - Broiler (litter), Solid",
+                        "Chicken - Broiler Slurry",
+                        "Chicken - Layer Slurry",
+                        "Chicken - Layer, Solid",
+                        "Compost or Composted Manure, Solid",
+                        "Dairy Manure, Solid",
+                        "Dairy Slurry",
+                        "Farmyard Manure, Solid",
+                        "Feather Meal",
+                        "Fish Emulsion",
+                        "Fish Scrap",
+                        "Guano",
+                        "Horse Manure, Solid",
+                        "Other Manure, Solid",
+                        "Sheep Manure, Solid",
+                        "Soybean Meal",
+                        "Swine Manure, Slurry",
+                        "Swine Manure, Solid"
+                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -2083,7 +2116,7 @@
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{\n \"type\": \"no burning\"\n}\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
+                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
                     "description": "Burning event details",
                     "title": "burningEvent"
                 },
@@ -2126,13 +2159,10 @@
                     "title": "irrigationEvents",
                     "type": "array"
                 },
-                "killEvents": {
-                    "description": "A list of kill events, if applicable. When it is not applicable it can be defined as null.",
-                    "items": {
-                        "$ref": "#/definitions/KillEvent"
-                    },
-                    "title": "killEvents",
-                    "type": "array"
+                "killEvent": {
+                    "$ref": "#/definitions/KillEvent",
+                    "description": "A kill event, if applicable. When it is not applicable it can be excluded",
+                    "title": "killEvent"
                 },
                 "limingEvents": {
                     "description": "A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.",

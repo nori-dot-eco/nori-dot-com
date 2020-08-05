@@ -11,7 +11,9 @@ A field defining annual crop management practices. Fields are defined by geograp
  "fieldName": "Pumpkin Pines",
  "acres": 100,
  "geojson": {},
- "cropYears": [] // a list of annual crop management practices
+ "cropYears": [
+   // a list of annual crop management practices
+ ]
 }
 ```
 
@@ -36,11 +38,17 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:162](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L162)*
+*Defined in [specification.ts:241](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L241)*
+
+ The number of acres that use the herein defined crop management practices (via `cropYears`).
 
 **`nullable`** during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
 
-The number of acres that use the herein defined crop management practices (via `cropYears`).
+**`example`** <caption>When the field's legal area is 100 acres</caption>
+
+```js
+"acres": 100
+```
 
 ___
 
@@ -48,7 +56,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:170](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L170)*
+*Defined in [specification.ts:249](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L249)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -58,7 +66,7 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:156](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L156)*
+*Defined in [specification.ts:228](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L228)*
 
 The name of the field
 
@@ -74,7 +82,7 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L166)*
+*Defined in [specification.ts:245](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L245)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
@@ -84,7 +92,7 @@ ___
 
 • **historicLangManagement**: *[HistoricLandManagement](_specification_.historiclandmanagement.md)*
 
-*Defined in [specification.ts:145](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L145)*
+*Defined in [specification.ts:217](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L217)*
 
 Details surrounding how the field was managed before year 2000
 
@@ -94,6 +102,12 @@ ___
 
 • **regenerativeStartYear**: *number*
 
-*Defined in [specification.ts:141](https://github.com/nori-dot-eco/nori-dot-com/blob/b3777b5/packages/project/src/specification.ts#L141)*
+*Defined in [specification.ts:213](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L213)*
 
 The year that regenerative practices started
+
+**`example`** <caption>When regenerative practices started in year 2015</caption>
+
+```js
+"regenerativeStartYear": 2015
+```
