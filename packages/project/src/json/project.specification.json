@@ -53,7 +53,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/CropEvent",
+                    "$ref": "#/definitions/KillEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },
@@ -188,22 +188,6 @@
                 "type"
             ],
             "title": "BurningEvent",
-            "type": "object"
-        },
-        "CropEvent": {
-            "description": "A crop event that happened on a particular date",
-            "properties": {
-                "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "date"
-            ],
-            "title": "CropEvent",
             "type": "object"
         },
         "CropManagementEvent": {
@@ -1879,6 +1863,22 @@
             "title": "IrrigationEvent",
             "type": "object"
         },
+        "KillEvent": {
+            "description": "Details surrounding the crop \"kill\" event",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "title": "KillEvent",
+            "type": "object"
+        },
         "LimingEvent": {
             "description": "Liming event details",
             "properties": {
@@ -1964,7 +1964,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/CropEvent",
+                    "$ref": "#/definitions/KillEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },
@@ -2178,7 +2178,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/CropEvent",
+                    "$ref": "#/definitions/KillEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },

@@ -40,6 +40,7 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 * [HarvestableCropEvents](../interfaces/_specification_.harvestablecropevents.md)
 * [HistoricLandManagement](../interfaces/_specification_.historiclandmanagement.md)
 * [IrrigationEvent](../interfaces/_specification_.irrigationevent.md)
+* [KillEvent](../interfaces/_specification_.killevent.md)
 * [LimingEvent](../interfaces/_specification_.limingevent.md)
 * [OrchardOrVineyardCrop](../interfaces/_specification_.orchardorvineyardcrop.md)
 * [OrganicMatterEvent](../interfaces/_specification_.organicmatterevent.md)
@@ -47,26 +48,3 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 * [PlantedCrop](../interfaces/_specification_.plantedcrop.md)
 * [Project](../interfaces/_specification_.project.md)
 * [SoilOrCropDisturbanceEvent](../interfaces/_specification_.soilorcropdisturbanceevent.md)
-
-### Type aliases
-
-* [KillEvent](_specification_.md#killevent)
-
-## Type aliases
-
-###  KillEvent
-
-Ƭ **KillEvent**: *[CropEvent](../interfaces/_specification_.cropevent.md)*
-
-*Defined in [specification.ts:882](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L882)*
-
-Details surrounding the crop "kill" event
-
-**`example`** 
-
-```js
-{
- "date": "10/01/2000",
- // "residueRemoved": 5, // todo potentially needs to be "n/a"
-}
-```

@@ -52,7 +52,6 @@ import type { GeoJSON } from 'geojson';
  * ! misc
  * ? jaycen
  * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
- * * jsdoc lint
  * ? need from rebekah:
  * * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
  * * * * this allows me to add guidance on things like how to find crop type (i.e. when a crop is a valid orchard/vineyard)
@@ -879,7 +878,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
  * ```
  *
  */
-export type KillEvent = CropEvent;
+export interface KillEvent extends CropEvent {}
 
 /**
  * Soil or crop disturbance event event details

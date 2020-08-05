@@ -66,7 +66,7 @@ Crop management details and events
 
 • **burningEvent**? : *[BurningEvent](_specification_.burningevent.md)*
 
-*Defined in [specification.ts:547](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L547)*
+*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L546)*
 
 A burning event, if applicable. When it is not applicable it can be defined as null.
 
@@ -78,7 +78,7 @@ ___
 
 • **fertilizerEvents**? : *[FertilizerEvent](_specification_.fertilizerevent.md)[]*
 
-*Defined in [specification.ts:524](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L524)*
+*Defined in [specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L523)*
 
 A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
 
@@ -88,7 +88,7 @@ ___
 
 • **grazingEvents**? : *[GrazingEvent](_specification_.grazingevent.md)[]*
 
-*Defined in [specification.ts:540](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L540)*
+*Defined in [specification.ts:539](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L539)*
 
 A list of grazing events, if applicable. When it is not applicable it can be defined as null.
 
@@ -98,7 +98,7 @@ ___
 
 • **irrigationEvents**? : *[IrrigationEvent](_specification_.irrigationevent.md)[]*
 
-*Defined in [specification.ts:532](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L532)*
+*Defined in [specification.ts:531](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L531)*
 
 A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
 
@@ -106,9 +106,9 @@ ___
 
 ### `Optional` killEvent
 
-• **killEvent**? : *[KillEvent](../modules/_specification_.md#killevent)*
+• **killEvent**? : *[KillEvent](_specification_.killevent.md)*
 
-*Defined in [specification.ts:513](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L513)*
+*Defined in [specification.ts:512](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L512)*
 
 A kill event, if applicable. When it is not applicable it can be excluded
 
@@ -118,7 +118,7 @@ ___
 
 • **limingEvents**? : *[LimingEvent](_specification_.limingevent.md)[]*
 
-*Defined in [specification.ts:536](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L536)*
+*Defined in [specification.ts:535](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L535)*
 
 A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
 
@@ -128,7 +128,7 @@ ___
 
 • **organicMatterEvents**? : *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
 
-*Defined in [specification.ts:528](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L528)*
+*Defined in [specification.ts:527](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L527)*
 
 A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
 
@@ -138,7 +138,7 @@ ___
 
 • **soilOrCropDisturbanceEvents**: *[SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)[]*
 
-*Defined in [specification.ts:520](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L520)*
+*Defined in [specification.ts:519](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L519)*
 
 A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.
 
