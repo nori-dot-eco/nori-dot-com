@@ -2,7 +2,7 @@
 
 # Interface: OrchardOrVineyardCrop
 
-Crop management details and events for orchard and vineyard crops
+Crop management details and events for orchard and vineyard crops.
 
 **`example`** 
 
@@ -52,11 +52,19 @@ Crop management details and events for orchard and vineyard crops
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[burningEvent](_specification_.cropevents.md#optional-burningevent)*
 
-*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L546)*
+*Defined in [specification.ts:630](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L630)*
 
 A burning event, if applicable. When it is not applicable it can be defined as null.
 
 **`default`** { "type": "no burning" }
+
+**`example`** <caption>When burning occurred after harvesting</caption>
+
+```js
+{
+ "type": "after harvesting"
+}
+```
 
 ___
 
@@ -66,9 +74,17 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[fertilizerEvents](_specification_.cropevents.md#optional-fertilizerevents)*
 
-*Defined in [specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L523)*
+*Defined in [specification.ts:557](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L557)*
 
 A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
+
+**`example`** <caption>When some fertilizer events occurred</caption>
+
+```js
+[
+// todo
+]
+```
 
 ___
 
@@ -78,9 +94,23 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[grazingEvents](_specification_.cropevents.md#optional-grazingevents)*
 
-*Defined in [specification.ts:539](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L539)*
+*Defined in [specification.ts:615](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L615)*
 
 A list of grazing events, if applicable. When it is not applicable it can be defined as null.
+
+**`example`** <caption>When some grazing events occurred</caption>
+
+```js
+[
+ {
+  "restPeriod": 0,
+  "utilization": 20,
+  "startDate": "01/01/2000",
+  "endDate": "12/31/2000"
+ }
+ // .. additional grazing events
+]
+```
 
 ___
 
@@ -90,7 +120,7 @@ ___
 
 *Inherited from [HarvestableCropEvents](_specification_.harvestablecropevents.md).[harvestEvents](_specification_.harvestablecropevents.md#optional-harvestevents)*
 
-*Defined in [specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L470)*
+*Defined in [specification.ts:485](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L485)*
 
 A list of harvest events, if applicable. When it is not applicable it can be defined as null.
 
@@ -135,9 +165,17 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[irrigationEvents](_specification_.cropevents.md#optional-irrigationevents)*
 
-*Defined in [specification.ts:531](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L531)*
+*Defined in [specification.ts:583](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L583)*
 
 A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
+
+**`example`** <caption>When some irrigation events occurred</caption>
+
+```js
+[
+// todo
+]
+```
 
 ___
 
@@ -147,9 +185,11 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[killEvent](_specification_.cropevents.md#optional-killevent)*
 
-*Defined in [specification.ts:512](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L512)*
+*Defined in [specification.ts:529](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L529)*
 
-A kill event, if applicable. When it is not applicable it can be excluded
+A kill event, if applicable. When it is not applicable it can be excluded.
+
+**`example`** 
 
 ___
 
@@ -159,9 +199,17 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[limingEvents](_specification_.cropevents.md#optional-limingevents)*
 
-*Defined in [specification.ts:535](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L535)*
+*Defined in [specification.ts:596](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L596)*
 
 A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
+
+**`example`** <caption>When some liming events occurred</caption>
+
+```js
+[
+// todo
+]
+```
 
 ___
 
@@ -171,9 +219,17 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[organicMatterEvents](_specification_.cropevents.md#optional-organicmatterevents)*
 
-*Defined in [specification.ts:527](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L527)*
+*Defined in [specification.ts:570](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L570)*
 
 A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
+
+**`example`** <caption>When some organic matter was applied</caption>
+
+```js
+[
+// todo
+]
+```
 
 ___
 
@@ -183,11 +239,11 @@ ___
 
 *Inherited from [PlantedCrop](_specification_.plantedcrop.md).[plantingDate](_specification_.plantedcrop.md#plantingdate)*
 
-*Defined in [specification.ts:426](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L426)*
+*Defined in [specification.ts:439](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L439)*
 
-The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
-If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`
+If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -203,9 +259,9 @@ ___
 
 • **prune**: *"yes" | "no"*
 
-*Defined in [specification.ts:608](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L608)*
+*Defined in [specification.ts:692](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L692)*
 
-Indicates if the crop was pruned
+Indicates if the crop was pruned.
 
 **`default`** "no"
 
@@ -227,9 +283,9 @@ ___
 
 • **renewOrClear**: *"yes" | "no"*
 
-*Defined in [specification.ts:627](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L627)*
+*Defined in [specification.ts:711](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L711)*
 
-Indicates if the crop was renewed or cleared
+Indicates if the crop was renewed or cleared.
 
 **`default`** "no"
 
@@ -253,11 +309,19 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[soilOrCropDisturbanceEvents](_specification_.cropevents.md#soilorcropdisturbanceevents)*
 
-*Defined in [specification.ts:519](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L519)*
+*Defined in [specification.ts:544](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L544)*
 
 A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.
 
-All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`
+All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
+
+**`example`** <caption>When some soil or crop disturbance events occurred</caption>
+
+```js
+[
+// todo
+]
+```
 
 ___
 
@@ -265,13 +329,13 @@ ___
 
 • **type**: *"orchard" | "vineyard"*
 
-*Defined in [specification.ts:589](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L589)*
+*Defined in [specification.ts:673](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L673)*
 
-The crop type
+The crop type.
 
-You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
 
-Note: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
+Note: if a crop ever changes types during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
 
 **`example`** <caption>When the crop is an orchard</caption>
 

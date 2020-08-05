@@ -2,7 +2,7 @@
 
 # Interface: CropManagementEvent
 
-Harvest event details
+Harvest event details.
 
 **`example`** 
 
@@ -38,11 +38,17 @@ Harvest event details
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:746](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L746)*
+*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L878)*
 
-The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+**`example`** <caption>When the crop event occurred on January 1st of 2000</caption>
+
+```js
+"date": "01/01/2000"
+```
 
 ___
 
@@ -50,9 +56,9 @@ ___
 
 • **grainFruitTuber**: *"yes" | "no"*
 
-*Defined in [specification.ts:800](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L800)*
+*Defined in [specification.ts:954](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L954)*
 
-Whether the crop was harvest for grain, fruit or tuber
+Whether the crop was harvest for grain, fruit or tuber.
 
 **`example`** <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber</caption>
 
@@ -72,9 +78,9 @@ ___
 
 • **residueRemoved**: *number | "n/a"*
 
-*Defined in [specification.ts:833](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L833)*
+*Defined in [specification.ts:987](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L987)*
 
-Crop residue removed
+Crop residue removed.
 
 **`minimum`** 0
 

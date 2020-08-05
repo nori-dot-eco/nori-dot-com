@@ -15,11 +15,11 @@ For example, the highest level interface of the specification is the Project int
 
 #### Example
 
-You can find an example of a full implementation [here](../../example/example2.json).
+You can find an example of a full implementation [here](../../example/example2.json)
 
 ## Navigation
 
-Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index)
+Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
 
 ## Index
 

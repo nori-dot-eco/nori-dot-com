@@ -2,7 +2,9 @@
 
 # Interface: HarvestableCropEvents
 
-Crop harvest events
+Crop harvest events.
+
+**`example`** 
 
 ## Hierarchy
 
@@ -26,7 +28,7 @@ Crop harvest events
 
 • **harvestEvents**? : *[AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md)[]*
 
-*Defined in [specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L470)*
+*Defined in [specification.ts:485](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L485)*
 
 A list of harvest events, if applicable. When it is not applicable it can be defined as null.
 

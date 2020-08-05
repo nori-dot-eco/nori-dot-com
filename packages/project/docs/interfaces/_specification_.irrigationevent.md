@@ -2,7 +2,7 @@
 
 # Interface: IrrigationEvent
 
-Irrigation event details
+Irrigation event details.
 
 **`example`** 
 
@@ -38,11 +38,13 @@ Irrigation event details
 
 • **depth**: *number*
 
-*Defined in [specification.ts:1066](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L1066)*
+*Defined in [specification.ts:1271](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1271)*
 
 The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
 
 **`minimum`** 0
+
+**`example`** 
 
 ___
 
@@ -52,11 +54,17 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[endDate](_specification_.cropeventrange.md#enddate)*
 
-*Defined in [specification.ts:766](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L766)*
+*Defined in [specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L920)*
 
-The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+**`example`** <caption>When the end date of the event range was on December 31st of 2000</caption>
+
+```js
+"endDate": "12/31/2000"
+```
 
 ___
 
@@ -64,15 +72,17 @@ ___
 
 • **frequency**? : *number*
 
-*Defined in [specification.ts:1075](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L1075)*
+*Defined in [specification.ts:1281](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1281)*
 
 The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
 
-// todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based)
+// todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
 
 **`minimum`** 1
 
 **`maximum`** 365
+
+**`example`** 
 
 ___
 
@@ -82,11 +92,17 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[startDate](_specification_.cropeventrange.md#startdate)*
 
-*Defined in [specification.ts:759](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L759)*
+*Defined in [specification.ts:907](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L907)*
 
-The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+
+**`example`** <caption>When the start date of the event range was on January 1st of 2000</caption>
+
+```js
+"startDate": "01/01/2000"
+```
 
 ___
 
@@ -94,8 +110,10 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:1059](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L1059)*
+*Defined in [specification.ts:1264](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1264)*
 
-The irrigation volume in inches. If volume is 0, simply do not define an irrigation event
+The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 
 **`minimum`** 0
+
+**`example`**

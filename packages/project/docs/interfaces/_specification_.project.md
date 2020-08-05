@@ -2,7 +2,7 @@
 
 # Interface: Project
 
-A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import.
 
 **`example`** 
 ```js
@@ -31,9 +31,9 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 • **fields**: *[Field](_specification_.field.md)[]*
 
-*Defined in [specification.ts:100](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L100)*
+*Defined in [specification.ts:105](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L105)*
 
-An array of fields defining annual crop management practices
+An array of fields defining annual crop management practices.
 
 **`example`** 
 
@@ -49,9 +49,9 @@ ___
 
 • **version**: *string*
 
-*Defined in [specification.ts:87](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L87)*
+*Defined in [specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L92)*
 
-The specification version. This information is used to determine the logic Nori uses to import a project.
+The specification version. This information is used to determine the logic Nori uses to import a project
 
 **`example`** 
 

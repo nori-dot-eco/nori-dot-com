@@ -16,7 +16,6 @@ module.exports = {
     'prettier',
     'prettier/react',
     'plugin:prettier/recommended',
-    'plugin:jsdoc/recommended',
   ],
   plugins: [
     'import',
@@ -37,8 +36,80 @@ module.exports = {
         extensions: allExtensions,
       },
     },
+    jsdoc: {
+      mode: 'typescript',
+    },
   },
   rules: {
+    // 'jsdoc/check-examples': [
+    //   'error',
+    //   { exampleCodeRegex: '/^```(?:js|javascript|json)\\n([\\s\\S]*?)```$/gm' },
+    // ],
+    'jsdoc/require-example': [
+      'error',
+      {
+        contexts: ['any'],
+        exemptedBy: ['inheritdoc', 'packageDocumentation'],
+      },
+    ],
+    'jsdoc/check-alignment': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/check-indentation': 1,
+    'jsdoc/check-syntax': 1,
+    'jsdoc/check-tag-names': 1,
+    'jsdoc/check-types': 1,
+    'jsdoc/implements-on-classes': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/match-description': [
+      'error',
+      {
+        mainDescription: false,
+        contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
+      },
+    ],
+    'jsdoc/newline-after-description': 1,
+    'jsdoc/no-types': 1,
+    'jsdoc/no-undefined-types': 1,
+    'jsdoc/require-description': 1,
+    'jsdoc/require-jsdoc': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/require-returns': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/require-returns-check': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/require-returns-description': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/require-returns-type': [
+      'error',
+      {
+        contexts: ['any'],
+      },
+    ],
+    'jsdoc/valid-types': 1, // Recommended
     'no-else-return': [0],
     'one-var': 0,
     'no-underscore-dangle': 0,

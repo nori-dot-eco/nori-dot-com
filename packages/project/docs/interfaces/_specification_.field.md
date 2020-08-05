@@ -20,7 +20,7 @@ A field defining annual crop management practices. Fields are defined by geograp
  },
  "cropYears": [
    // a list of annual crop management practices
- ]
+ ],
  "historicLangManagement": {
    // ...HistoricLandManagement
  }
@@ -48,7 +48,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:302](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L302)*
+*Defined in [specification.ts:310](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L310)*
 
 The number of acres that use the herein defined crop management practices (via `cropYears`).
 
@@ -66,7 +66,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:335](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L335)*
+*Defined in [specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L343)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -89,9 +89,9 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:289](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L289)*
+*Defined in [specification.ts:297](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L297)*
 
-The name of the field
+The name of the field.
 
 **`example`** <caption>When a field is named "Pumpkin Pines"</caption>
 
@@ -105,7 +105,7 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:317](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L317)*
+*Defined in [specification.ts:325](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L325)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
@@ -125,9 +125,9 @@ ___
 
 • **historicLangManagement**: *[HistoricLandManagement](_specification_.historiclandmanagement.md)*
 
-*Defined in [specification.ts:278](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L278)*
+*Defined in [specification.ts:286](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L286)*
 
-Details surrounding how the field was managed before year 2000
+Details surrounding how the field was managed before year 2000.
 
 **`example`** 
 
@@ -143,9 +143,11 @@ ___
 
 • **regenerativeStartYear**: *number*
 
-*Defined in [specification.ts:265](https://github.com/nori-dot-eco/nori-dot-com/blob/6a6c60d/packages/project/src/specification.ts#L265)*
+*Defined in [specification.ts:273](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L273)*
 
-The year that regenerative practices started
+Year of practice switch - there can be more than one. We tend to use the earliest one that is after 2010 and meets our verification requirements.
+
+For more information on how to select a start year see [here](https://go.nori.com/years).
 
 **`minimum`** 2010
 
