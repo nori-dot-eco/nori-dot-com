@@ -26,7 +26,7 @@ Crop harvest events
 
 • **harvestEvents**? : *[AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md)[]*
 
-*Defined in [specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/151ad01/packages/project/src/specification.ts#L470)*
+*Defined in [specification.ts:471](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L471)*
 
 A list of harvest events, if applicable. When it is not applicable it can be defined as null.
 

@@ -58,7 +58,7 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 
 Ƭ **KillEvent**: *[CropEvent](../interfaces/_specification_.cropevent.md)*
 
-*Defined in [specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/151ad01/packages/project/src/specification.ts#L881)*
+*Defined in [specification.ts:882](https://github.com/nori-dot-eco/nori-dot-com/blob/de97c4c/packages/project/src/specification.ts#L882)*
 
 Details surrounding the crop "kill" event
 
