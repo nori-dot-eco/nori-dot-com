@@ -7,8 +7,10 @@
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
-                    "description": "Burning event details",
+                    "default": {
+                        "type": "no burning"
+                    },
+                    "description": "A burning event, if applicable. When it is not applicable it can be defined as null.",
                     "title": "burningEvent"
                 },
                 "fertilizerEvents": {
@@ -51,7 +53,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/KillEvent",
+                    "$ref": "#/definitions/CropEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },
@@ -82,16 +84,17 @@
                     "title": "plantingDate",
                     "type": "string"
                 },
-                "tillageEvents": {
-                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`",
                     "items": {
-                        "$ref": "#/definitions/TillageEvent"
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
-                    "title": "tillageEvents",
+                    "title": "soilOrCropDisturbanceEvents",
                     "type": "array"
                 },
                 "type": {
-                    "default": "\"annual crop\"\n\nThe crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
+                    "default": "annual crop",
+                    "description": "The crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
                     "enum": [
                         "annual crop"
                     ],
@@ -102,6 +105,7 @@
             "required": [
                 "name",
                 "plantingDate",
+                "soilOrCropDisturbanceEvents",
                 "type"
             ],
             "title": "AnnualCrop",
@@ -111,7 +115,8 @@
             "description": "An annual crop's harvest event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
@@ -136,17 +141,18 @@
                             "type": "number"
                         }
                     ],
-                    "maximum": "100\n\nCrop residue removed",
+                    "description": "Crop residue removed",
+                    "maximum": 100,
                     "minimum": 0,
                     "title": "residueRemoved"
                 },
                 "yield": {
-                    "description": "The crop yield",
+                    "description": "The crop yield\n\nThe current version of quantification does not consider yield when producing estimates.",
                     "title": "yield",
                     "type": "number"
                 },
                 "yieldUnit": {
-                    "description": "The crop yield units",
+                    "description": "The crop yield units\n\nThe current version of quantification does not consider yield when producing estimates.",
                     "enum": [
                         "bu/ac",
                         "cwt/ac",
@@ -160,9 +166,7 @@
             "required": [
                 "date",
                 "grainFruitTuber",
-                "residueRemoved",
-                "yield",
-                "yieldUnit"
+                "residueRemoved"
             ],
             "title": "AnnualCropHarvestEvent",
             "type": "object"
@@ -186,11 +190,28 @@
             "title": "BurningEvent",
             "type": "object"
         },
+        "CropEvent": {
+            "description": "A crop event that happened on a particular date",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "title": "CropEvent",
+            "type": "object"
+        },
         "CropManagementEvent": {
             "description": "Harvest event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
@@ -215,7 +236,8 @@
                             "type": "number"
                         }
                     ],
-                    "maximum": "100\n\nCrop residue removed",
+                    "description": "Crop residue removed",
+                    "maximum": 100,
                     "minimum": 0,
                     "title": "residueRemoved"
                 }
@@ -340,7 +362,8 @@
             "description": "Fertilizer event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
@@ -355,7 +378,8 @@
                     "type": "string"
                 },
                 "type": {
-                    "default": "\"mixed blends\"\n\nThe fertilizer classification type\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to \"mixed blends\" when this property is excluded/nulled",
+                    "default": "mixed blends",
+                    "description": "The fertilizer classification type\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to \"mixed blends\" when this property is excluded/nulled",
                     "title": "type",
                     "type": "string"
                 }
@@ -431,6 +455,7 @@
                 },
                 "regenerativeStartYear": {
                     "description": "The year that regenerative practices started",
+                    "minimum": 2010,
                     "title": "regenerativeStartYear",
                     "type": "number"
                 }
@@ -1706,23 +1731,27 @@
             "description": "Grazing event details",
             "properties": {
                 "endDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "endDate",
                     "type": "string"
                 },
                 "restPeriod": {
-                    "maximum": "365\n\nThe grazing rest period in days",
+                    "description": "The grazing rest period in days",
+                    "maximum": 365,
                     "minimum": 0,
                     "title": "restPeriod",
                     "type": "number"
                 },
                 "startDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "startDate",
                     "type": "string"
                 },
                 "utilization": {
-                    "maximum": "100\n\nThe grazing utilization percentage",
+                    "description": "The percentage of forage consumed by the animals",
+                    "maximum": 100,
                     "minimum": 0,
                     "title": "utilization",
                     "type": "number"
@@ -1769,7 +1798,7 @@
                     "type": "string"
                 },
                 "tillageForYears1980To2000": {
-                    "description": "The type of tillage used on the field between 1980 and 2000",
+                    "description": "The type of soil or crop disturbance events used on the field between 1980 and 2000",
                     "enum": [
                         "intensive tillage",
                         "no till",
@@ -1811,26 +1840,32 @@
             "properties": {
                 "depth": {
                     "description": "The irrigation depth in inches. This should be set to 0 if it was applied at the surface.",
+                    "minimum": 0,
                     "title": "depth",
                     "type": "number"
                 },
                 "endDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "endDate",
                     "type": "string"
                 },
                 "frequency": {
-                    "description": "The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7",
+                    "description": "The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.\n\n// todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based)",
+                    "maximum": 365,
+                    "minimum": 1,
                     "title": "frequency",
                     "type": "number"
                 },
                 "startDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "startDate",
                     "type": "string"
                 },
                 "volume": {
-                    "description": "The irrigation volume in inches",
+                    "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event",
+                    "minimum": 0,
                     "title": "volume",
                     "type": "number"
                 }
@@ -1838,50 +1873,18 @@
             "required": [
                 "depth",
                 "endDate",
-                "frequency",
                 "startDate",
                 "volume"
             ],
             "title": "IrrigationEvent",
             "type": "object"
         },
-        "KillEvent": {
-            "description": "Details surrounding the crop \"kill\" event",
-            "properties": {
-                "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
-                    "title": "date",
-                    "type": "string"
-                },
-                "residueRemoved": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "n/a"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "number"
-                        }
-                    ],
-                    "maximum": "100\n\nCrop residue removed",
-                    "minimum": 0,
-                    "title": "residueRemoved"
-                }
-            },
-            "required": [
-                "date",
-                "residueRemoved"
-            ],
-            "title": "KillEvent",
-            "type": "object"
-        },
         "LimingEvent": {
             "description": "Liming event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "// todo guidance date doesnt matter, fi excluded, we will use an assigned date",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
@@ -1904,7 +1907,6 @@
                 }
             },
             "required": [
-                "date",
                 "tonsPerAcre",
                 "type"
             ],
@@ -1916,8 +1918,10 @@
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
-                    "description": "Burning event details",
+                    "default": {
+                        "type": "no burning"
+                    },
+                    "description": "A burning event, if applicable. When it is not applicable it can be defined as null.",
                     "title": "burningEvent"
                 },
                 "fertilizerEvents": {
@@ -1960,7 +1964,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/KillEvent",
+                    "$ref": "#/definitions/CropEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },
@@ -2006,16 +2010,16 @@
                     "title": "renewOrClear",
                     "type": "string"
                 },
-                "tillageEvents": {
-                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`",
                     "items": {
-                        "$ref": "#/definitions/TillageEvent"
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
-                    "title": "tillageEvents",
+                    "title": "soilOrCropDisturbanceEvents",
                     "type": "array"
                 },
                 "type": {
-                    "description": "The crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)\n\nNote: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types.",
+                    "description": "The crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)\n\nNote: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
                     "enum": [
                         "orchard",
                         "vineyard"
@@ -2028,6 +2032,7 @@
                 "plantingDate",
                 "prune",
                 "renewOrClear",
+                "soilOrCropDisturbanceEvents",
                 "type"
             ],
             "title": "OrchardOrVineyardCrop",
@@ -2044,15 +2049,21 @@
                     "type": "number"
                 },
                 "carbonNitrogenRatio": {
-                    "description": "The carbon to nitrogen ratio in the organic matter or manure\n\nYou can find a list of default values per `type` [here](go.nori.com/inputs)",
-                    "title": "carbonNitrogenRatio",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "description": "The carbon to nitrogen ratio in the organic matter or manure\n\nYou can find a list of default values per `type` [here](go.nori.com/inputs)",
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "carbonNitrogenRatio"
                 },
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
@@ -2121,8 +2132,10 @@
             "properties": {
                 "burningEvent": {
                     "$ref": "#/definitions/BurningEvent",
-                    "default": "{ \"type\": \"no burning\" }\n\nA burning event, if applicable. When it is not applicable it can be defined as null.",
-                    "description": "Burning event details",
+                    "default": {
+                        "type": "no burning"
+                    },
+                    "description": "A burning event, if applicable. When it is not applicable it can be defined as null.",
                     "title": "burningEvent"
                 },
                 "fertilizerEvents": {
@@ -2165,7 +2178,7 @@
                     "type": "array"
                 },
                 "killEvent": {
-                    "$ref": "#/definitions/KillEvent",
+                    "$ref": "#/definitions/CropEvent",
                     "description": "A kill event, if applicable. When it is not applicable it can be excluded",
                     "title": "killEvent"
                 },
@@ -2196,16 +2209,17 @@
                     "title": "plantingDate",
                     "type": "string"
                 },
-                "tillageEvents": {
-                    "description": "A list of tillage events, if applicable. When it is not applicable it can be defined as null.",
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`",
                     "items": {
-                        "$ref": "#/definitions/TillageEvent"
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
-                    "title": "tillageEvents",
+                    "title": "soilOrCropDisturbanceEvents",
                     "type": "array"
                 },
                 "type": {
-                    "default": "\"perennial\"\n\nThe crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
+                    "default": "perennial",
+                    "description": "The crop type\n\nYou can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)",
                     "enum": [
                         "perennial"
                     ],
@@ -2216,6 +2230,7 @@
             "required": [
                 "name",
                 "plantingDate",
+                "soilOrCropDisturbanceEvents",
                 "type"
             ],
             "title": "PerennialCrop",
@@ -2245,23 +2260,31 @@
             "title": "Project",
             "type": "object"
         },
-        "TillageEvent": {
-            "description": "Tillage event details",
+        "SoilOrCropDisturbanceEvent": {
+            "description": "Soil or crop disturbance event event details",
             "properties": {
                 "date": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "date",
                     "type": "string"
                 },
                 "name": {
-                    "description": "The name/alias that the tillage practice is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.",
                     "title": "name",
                     "type": "string"
                 },
-                "type": {
-                    "description": "The tillage classification type\n\nYou can find a list of common equivalents [here](go.nori.com/inputs)",
+                "termination": {
                     "enum": [
-                        "Broad-spectrum herbicide",
+                        "broad-spectrum herbicide",
+                        "winter killed"
+                    ],
+                    "title": "termination",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The soil or crop disturbance events classification type\n\nYou can find a list of common equivalents [here](go.nori.com/inputs)",
+                    "enum": [
                         "Crimp",
                         "Growing Season Cultivation",
                         "Mow",
@@ -2277,9 +2300,10 @@
             },
             "required": [
                 "date",
+                "termination",
                 "type"
             ],
-            "title": "TillageEvent",
+            "title": "SoilOrCropDisturbanceEvent",
             "type": "object"
         }
     }

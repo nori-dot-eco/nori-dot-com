@@ -16,6 +16,7 @@ module.exports = {
     'prettier',
     'prettier/react',
     'plugin:prettier/recommended',
+    'plugin:jsdoc/recommended',
   ],
   plugins: [
     'import',
@@ -24,6 +25,7 @@ module.exports = {
     'react-hooks',
     'graphql',
     'relay',
+    'jsdoc',
   ],
   settings: {
     'import/extensions': allExtensions,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface, jsdoc/check-tag-names */
 /**
  * ## About
  *
@@ -50,20 +51,18 @@ import type { GeoJSON } from 'geojson';
  *
  * ! misc
  * ? jaycen
- * * need to have descriptions above all @jsdoc tags
  * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
+ * * jsdoc lint
  * ? need from rebekah:
  * * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
  * * * * this allows me to add guidance on things like how to find crop type (i.e. when a crop is a valid orchard/vineyard)
  * * * solid v slurry manure types
- * * when is a crop grain/fruit/tuber? should this be a separate crop type?
- * * what is "winter killed" and where does this need to be specified?
- * * all planting dates need an associated tillage task?
  */
 
 /**
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import
+ *
  * @example
  * ```js
  * {
@@ -73,6 +72,7 @@ import type { GeoJSON } from 'geojson';
  *  ]
  * }
  * ```
+ *
  */
 export interface Project {
   /**
@@ -180,7 +180,7 @@ export interface HistoricLandManagement {
     | 'irrigation (pre 1980s)'
     | 'lowland non-irrigated (pre 1980s)'; // todo are these the best descriptions?
   /**
-   * The type of tillage used on the field between 1980 and 2000
+   * The type of soil or crop disturbance events used on the field between 1980 and 2000
    *
    * @example <caption>When the land used intensive tillage from years 1980-2000</caption>
    *
@@ -250,9 +250,11 @@ export interface HistoricLandManagement {
  *
  */
 export interface Field {
-  // todo guidance // todo min/max // todo default
+  // todo guidance
   /**
    * The year that regenerative practices started
+   *
+   * @minimum 2010
    *
    * @example <caption>When regenerative practices started in year 2015</caption>
    *
@@ -466,7 +468,7 @@ export interface HarvestableCropEvents {
    * ```
    *
    */
-  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[]; // todo make sure crop management events can be defined that arent harvest events
+  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
 }
 
 /**
@@ -479,7 +481,7 @@ export interface HarvestableCropEvents {
  *  "killEvent": {
  *    // ...
  *  },
- *  "tillageEvents": [
+ *  "soilOrCropDisturbanceEvents": [
  *    // ...
  *  ],
  *  "fertilizerEvents": [
@@ -510,9 +512,12 @@ export interface CropEvents {
    */
   killEvent?: KillEvent;
   /**
-   * A list of tillage events, if applicable. When it is not applicable it can be defined as null.
+   * A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.
+   *
+   * All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`
+   *
    */
-  tillageEvents?: TillageEvent[];
+  soilOrCropDisturbanceEvents: SoilOrCropDisturbanceEvent[];
   /**
    * A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
    */
@@ -534,9 +539,10 @@ export interface CropEvents {
    */
   grazingEvents?: GrazingEvent[];
   /**
+   * A burning event, if applicable. When it is not applicable it can be defined as null.
+   *
    * @default { "type": "no burning" }
    *
-   * A burning event, if applicable. When it is not applicable it can be defined as null.
    */
   burningEvent?: BurningEvent;
 }
@@ -566,13 +572,14 @@ export interface OrchardOrVineyardCrop
    *
    * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
    *
-   * Note: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types.
+   * Note: if a crop ever changes types during the lifetime of the field (i.e. from an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
    *
    * @example <caption>When the crop is an orchard</caption>
    *
    * ```js
    * "type": "orchard"
    * ```
+   *
    * @example <caption>When the crop is a vineyard</caption>
    *
    * ```js
@@ -580,7 +587,7 @@ export interface OrchardOrVineyardCrop
    * ```
    *
    */
-  type: 'orchard' | 'vineyard'; // todo when a crop switches types (i.e. annual -> perennial) and the user redefines the crop, does the user need to do anything to signify the end of the initial crop type? (i.e. a kill or harvest event?)
+  type: 'orchard' | 'vineyard';
   /**
    * Indicates if the crop was pruned
    *
@@ -591,6 +598,7 @@ export interface OrchardOrVineyardCrop
    * ```js
    * "pruned": "yes"
    * ```
+   *
    * @example <caption>When the crop was not pruned</caption>
    *
    * ```js
@@ -602,13 +610,14 @@ export interface OrchardOrVineyardCrop
   /**
    * Indicates if the crop was renewed or cleared
    *
-   *  @default "no"
+   * @default "no"
    *
    * @example <caption>When the crop was renewed</caption>
    *
    * ```js
    * "renewOrClear": "yes"
    * ```
+   *
    * @example <caption>When the crop was not renewed</caption>
    *
    * ```js
@@ -646,11 +655,12 @@ export interface PerennialCrop
    */
   name: string;
   /**
-   * @default "perennial"
-   *
    * The crop type
    *
    * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+   *
+   * @default "perennial"
+   *
    */
   type: 'perennial';
 }
@@ -678,11 +688,12 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    */
   name: string; // todo enum
   /**
-   * @default "annual cover"
-   *
    * The crop type
    *
    * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+   *
+   * @default "annual cover"
+   *
    */
   type: 'annual cover';
 }
@@ -691,7 +702,6 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
  * Crop management details and events for annual crops
  *
  * @example
- * @alias AnnualCrop
  *
  * ```js
  * {
@@ -714,11 +724,12 @@ export interface AnnualCrop
    */
   name: string; // todo enum
   /**
-   * @default "annual crop"
-   *
    * The crop type
    *
    * You can find a list of acceptable crop types per crop `name` [here](go.nori.com/inputs)
+   *
+   * @default "annual crop"
+   *
    */
   type: 'annual crop';
 }
@@ -728,9 +739,10 @@ export interface AnnualCrop
  */
 export interface CropEvent {
   /**
+   * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
    */
   date: string;
 }
@@ -740,15 +752,17 @@ export interface CropEvent {
  */
 export interface CropEventRange {
   /**
+   * The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
    */
   startDate: string;
   /**
+   * The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
+   *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
    */
   endDate: string;
 }
@@ -784,13 +798,13 @@ export interface CropManagementEvent extends CropEvent {
    * ```
    *
    */
-  grainFruitTuber: 'yes' | 'no'; // todo why does this need to be defined for every event? wouldnt it be better at the crop level?
-  // todo are examples reasonable for harvest events? are any of them kill specific?
+  grainFruitTuber: 'yes' | 'no';
+  // todo all of the following options are only applicable for harvest events (they do not apply to kill events)
   /**
+   * Crop residue removed
+   *
    * @minimum 0
    * @maximum 100
-   *
-   * Crop residue removed
    *
    * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber</caption>
    *
@@ -817,7 +831,7 @@ export interface CropManagementEvent extends CropEvent {
    * ```
    *
    */
-  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string
+  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string -- this depends on whether no vs n/a  impacts the model.
 }
 
 /**
@@ -839,15 +853,18 @@ export interface CropManagementEvent extends CropEvent {
 export interface AnnualCropHarvestEvent extends CropManagementEvent {
   /**
    * The crop yield
+   *
+   * The current version of quantification does not consider yield when producing estimates.
    */
-  yield: number;
+  yield?: number; // todo can we drop this since it doesnt impact quantification
   /**
    * The crop yield units
+   *
+   * The current version of quantification does not consider yield when producing estimates.
    */
-  yieldUnit: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
+  yieldUnit?: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac'; // todo can we drop this since it doesnt impact quantification
 }
 
-// todo reasonable example?
 /**
  *
  * Details surrounding the crop "kill" event
@@ -857,53 +874,15 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  "residueRemoved": 5,
- *  "yieldUnit": "bu/ac",
- *  "grainFruitTuber": "n/a",
- *  "residueRemoved": "n/a",
+ *  // "residueRemoved": 5, // todo potentially needs to be "n/a"
  * }
  * ```
  *
  */
-export interface KillEvent extends CropEvent {
-  // todo are examples reasonable for kill events? are any of them harvest event specific?
-  // todo if residue removed options are identical for kill and harvest, then separate into its own interface to de-duplicate docs
-  /**
-   * @minimum 0
-   * @maximum 100
-   *
-   * Crop residue removed
-   *
-   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber</caption>
-   *
-   * ```js
-   * "residueRemoved": 0
-   * ```
-   *
-   * @example <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest</caption>
-   *
-   * ```js
-   * "residueRemoved": 5
-   * ```
-   *
-   * @example <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage</caption>
-   *
-   * ```js
-   * "residueRemoved": 10
-   * ```
-   *
-   * @example <caption>Enter 'n/a' if it does not apply</caption>
-   *
-   * ```js
-   * "residueRemoved": "n/a"
-   * ```
-   *
-   */
-  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string
-}
+export type KillEvent = CropEvent;
 
 /**
- * Tillage event details
+ * Soil or crop disturbance event event details
  *
  * @example
  *
@@ -915,13 +894,13 @@ export interface KillEvent extends CropEvent {
  * ```
  *
  */
-export interface TillageEvent extends CropEvent {
+export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
-   * The name/alias that the tillage practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
+   * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    */
   name?: string; // todo deprecate when sheet is gone (just an alias)
   /**
-   * The tillage classification type
+   * The soil or crop disturbance events classification type
    *
    * You can find a list of common equivalents [here](go.nori.com/inputs)
    *
@@ -934,8 +913,8 @@ export interface TillageEvent extends CropEvent {
     | 'No Tillage'
     | 'Growing Season Cultivation'
     | 'Mow'
-    | 'Crimp'
-    | 'Broad-spectrum herbicide';
+    | 'Crimp';
+  termination: 'winter killed' | 'broad-spectrum herbicide';
 }
 
 /**
@@ -959,12 +938,12 @@ export interface FertilizerEvent extends CropEvent {
    */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /**
-   *
-   * @default "mixed blends"
-   *
    * The fertilizer classification type
    *
    * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled
+   *
+   * @default "mixed blends"
+   *
    */
   type?: string;
   /**
@@ -1025,6 +1004,7 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    *
    * Amount of organic matter or manure applied per acre
+   *
    * @minimum 0
    * @maximum 200 // todo confirm max
    *
@@ -1037,6 +1017,7 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * @minimum 0
    * @maximum 100
+   *
    * @nullable during import (when defined as null, a default value will be assigned)
    *
    */
@@ -1047,11 +1028,12 @@ export interface OrganicMatterEvent extends CropEvent {
    * You can find a list of default values per `type` [here](go.nori.com/inputs)
    *
    * @nullable during import (when defined as null, a default value will be assigned)
+   *
+   * @minimum 0
    */
-  carbonNitrogenRatio: number; // todo min/max
+  carbonNitrogenRatio: number;
 }
 
-// todo reasonable example?
 /**
  * Irrigation event details
  *
@@ -1070,19 +1052,29 @@ export interface OrganicMatterEvent extends CropEvent {
  */
 export interface IrrigationEvent extends CropEventRange {
   /**
-   * The irrigation volume in inches
+   * The irrigation volume in inches. If volume is 0, simply do not define an irrigation event
+   *
+   * @minimum 0
+   *
    */
-  volume: number; // todo min/max?
+  volume: number;
   /**
    * The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
+   *
+   * @minimum 0
+   *
    */
-  depth: number; // 0 if applied to surface // todo min/max?
+  depth: number;
   /**
-   * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7
+   * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
+   *
+   * // todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based)
+   *
+   * @minimum 1
+   * @maximum 365
    */
-  frequency: number; // todo min/max?
+  frequency?: number;
 }
-
 /**
  * Liming event details
  *
@@ -1097,9 +1089,7 @@ export interface IrrigationEvent extends CropEventRange {
  * ```
  *
  */
-export interface LimingEvent extends CropEvent {
-  // todo is date required? since comet only allows one, and we end up aggregating them when it's not, does the date actually matter?
-  // todo if date is NOT required, then we should not extend CropEvent
+export interface LimingEvent {
   /**
    * The liming type
    */
@@ -1113,9 +1103,15 @@ export interface LimingEvent extends CropEvent {
    * The liming amount (in tons per acre)
    */
   tonsPerAcre: number; // todo minimum, maximum
+  /**
+   * // todo guidance date doesnt matter, fi excluded, we will use an assigned date
+   *
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   */
+  date?: string;
 }
 
-// todo reasonable example?
 /**
  * Grazing event details
  *
@@ -1124,7 +1120,7 @@ export interface LimingEvent extends CropEvent {
  * ```js
  * {
  *  "restPeriod": 0,
- *  "utilization": 100,
+ *  "utilization": 20,
  *  "startDate": "01/01/2000",
  *  "endDate": "12/31/2000"
  * }
@@ -1133,17 +1129,19 @@ export interface LimingEvent extends CropEvent {
  */
 export interface GrazingEvent extends CropEventRange {
   /**
+   * The grazing rest period in days
+   *
    * @minimum 0
    * @maximum 365
    *
-   * The grazing rest period in days
    */
   restPeriod: number;
   /**
+   * The percentage of forage consumed by the animals
+   *
    * @minimum 0
    * @maximum 100
    *
-   * The grazing utilization percentage
    */
   utilization: number;
 }
