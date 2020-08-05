@@ -49,7 +49,9 @@ import type { GeoJSON } from 'geojson';
  * * rename file as project-specification
  *
  * ! misc
+ * ? jaycen
  * * need to have descriptions above all @jsdoc tags
+ * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
  * ? need from rebekah:
  * * * change crop inputs to correct classification (i.e. alfalfa should be perennial)
  * * * * this allows me to add guidance on things like how to find crop type (i.e. when a crop is a valid orchard/vineyard)
@@ -153,13 +155,51 @@ export interface HistoricLandManagement {
   crpType: '100% grass' | 'grass / legume mixture'; // todo what does "100% grass mean" // todo what about grass/legume mixture?
   /**
    * A description of how the land was managed before 1980
+   *
+   * @example <caption>When the land was not irrigated upland before 1980</caption>
+   *
+   * ```js
+   * "preYear1980": "upland non-irrigated (pre 1980s)"
+   * ```
+   *
+   * @example <caption>When the land was irrigated before 1980</caption>
+   *
+   * ```js
+   * "preYear1980": "irrigation (pre 1980s)"
+   * ```
+   *
+   * @example <caption>When the land was not irrigated lowland before 1980</caption>
+   *
+   * ```js
+   * "preYear1980": "lowland non-irrigated (pre 1980s)"
+   * ```
+   *
    */
   preYear1980:
     | 'upland non-irrigated (pre 1980s)'
     | 'irrigation (pre 1980s)'
-    | 'lowland non-irrigated (pre 1980s)';
+    | 'lowland non-irrigated (pre 1980s)'; // todo are these the best descriptions?
   /**
    * The type of tillage used on the field between 1980 and 2000
+   *
+   * @example <caption>When the land used intensive tillage from years 1980-2000</caption>
+   *
+   * ```js
+   * "tillageForYears1980To2000": "intensive tillage"
+   * ```
+   *
+   * @example <caption>When the land used reduced tillage from years 1980-2000</caption>
+   *
+   * ```js
+   * "tillageForYears1980To2000": "reduced tillage"
+   * ```
+   *
+   * @example <caption>When the land used no till from years 1980-2000</caption>
+   *
+   * ```js
+   * "tillageForYears1980To2000": "no till"
+   * ```
+   *
    */
   tillageForYears1980To2000:
     | 'intensive tillage'
@@ -167,6 +207,7 @@ export interface HistoricLandManagement {
     | 'no till';
   /**
    * A description of how the land was managed between 1980 and 2000
+   *
    */
   year1980To2000:
     | 'none' // todo when can this be "none"
@@ -178,7 +219,7 @@ export interface HistoricLandManagement {
     | 'irrigated: annual crops with hay/pasture in rotation'
     | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: fallow-grain'
-    | 'irrigated: orchard or vineyard';
+    | 'irrigated: orchard or vineyard'; // todo better description of each of these options
 }
 
 /**
@@ -188,12 +229,22 @@ export interface HistoricLandManagement {
  *
  * ```js
  * {
+ *  "regenerativeStartYear": 2015,
  *  "fieldName": "Pumpkin Pines",
  *  "acres": 100,
- *  "geojson": {},
+ *  "geojson": {
+ *    // exmaple GeoJSON:
+ *    "type": "Polygon",
+ *     "coordinates": [
+ *         [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
+ *     ]
+ *  },
  *  "cropYears": [
  *    // a list of annual crop management practices
  *  ]
+ *  "historicLangManagement": {
+ *    // ...HistoricLandManagement
+ *  }
  * }
  * ```
  *
@@ -213,12 +264,21 @@ export interface Field {
   regenerativeStartYear: number;
   /**
    * Details surrounding how the field was managed before year 2000
+   *
+   * @example
+   *
+   * ```js
+   * "historicLangManagement": {
+   *  // ...HistoricLandManagement
+   * }
+   * ```
+   *
    */
   historicLangManagement: HistoricLandManagement;
   /**
    * The name of the field
    *
-   * @example
+   * @example <caption>When a field is named "Pumpkin Pines"</caption>
    *
    * ```js
    * "fieldName": "Pumpkin Pines"
@@ -227,7 +287,7 @@ export interface Field {
    */
   fieldName: string;
   /**
-   *  The number of acres that use the herein defined crop management practices (via `cropYears`).
+   * The number of acres that use the herein defined crop management practices (via `cropYears`).
    *
    * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
    *
@@ -241,10 +301,35 @@ export interface Field {
   acres: number;
   /**
    * The geographic boundaries (defined as GeoJSON) associated with crop management practices.
+   *
+   * @example <caption>When a field boundary is defined as a simple polygon</caption>
+   *
+   * ```js
+   * "geojson": {
+   *  "type": "Polygon", "coordinates": [
+   *    [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
+   *  ]
+   * }
+   * ```
+   *
    */
-  geojson: GeoJSON;
+  geojson: GeoJSON; // todo guidance on geojson
   /**
    * A list of crop management details grouped by the crop planting year.
+   *
+   * @example <caption>When a field has management information for planting year 2000</caption>
+   *
+   * ```js
+   * "cropYears": [
+   *  {
+   *    "plantingYear": 2000,
+   *    "crops": [
+   *      // ...(AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)[] (crops that were planted in year 2000)
+   *    ],
+   *  }
+   * ]
+   * ```
+   *
    */
   cropYears: CropYear[];
 }
@@ -260,24 +345,57 @@ export interface Field {
  *  "crops": [
  *    // ... crops that were planted in year 2000
  *  ],
- *  "renewOrClear": "yes"
- *  // ...CropEvents
  * }
  * ```
  *
  */
 export interface CropYear {
   /**
-   * @minimum 2000
-   *
    * The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
+   *
+   * @minimum 2000
+   * @maximum 2099
+   *
+   * @example <caption>When the herein defined crops were planted in year 2000</caption>
+   *
+   * ```js
+   * "plantingYear": 2000
+   * ```
+   *
    */
   plantingYear: number;
   /**
+   * A list of crops for a given planting year.
+   *
    * @items.maximum 3
    * @items.minimum 1
    *
-   * A list of crops for a given planting year.
+   * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000</caption>
+   *
+   * ```js
+   * "crops": [
+   *  {
+   *    "name": "corn",
+   *    "type": "annual crop",
+   *    "plantingDate": "01/01/2000"
+   *    // ...CropEvents
+   *  },
+   *  {
+   *    "name": "annual rye",
+   *    "type": "perennial",
+   *    "plantingDate": "01/01/2000"
+   *    // ...CropEvents
+   *  },
+   *  {
+   *    "type": "orchard",
+   *    "prune": "yes",
+   *    "renewOrClear": "yes",
+   *    "plantingDate": "01/01/2000"
+   *    // ...CropEvents
+   *  }
+   * ]
+   * ```
+   *
    */
   crops: [
     AnnualCrop | OrchardOrVineyardCrop | PerennialCrop,
@@ -291,27 +409,24 @@ export interface CropYear {
  */
 export interface PlantedCrop {
   /**
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
    * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)
    *
    * If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`
+   *
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * @example <caption>When the crop was planted on January 1st of year 2000</caption>
+   *
+   * ```js
+   * "plantingDate": "01/01/2000"
+   * ```
+   *
    */
   plantingDate: string;
 }
 
 /**
  * Crop harvest events
- * @example
- *
- * ```js
- * {
- *  "harvestEvents": [
- *    // ...
- *  ],
- * }
- * ```
- *
  */
 export interface HarvestableCropEvents {
   /**
@@ -322,8 +437,36 @@ export interface HarvestableCropEvents {
    * a second harvest. Instead, enter the percent of the remaining residue
    * that was removed on the grain harvest, regardless of removal date.
    *
+   * @example <caption>When an annual crop had a harvest event</caption>
+   *
+   * ```js
+   *  "harvestEvents": [
+   *    {
+   *      "date": "10/01/2000",
+   *      "yield": 100,
+   *      "yieldUnit": "bu/ac",
+   *      "grainFruitTuber": "n/a",
+   *      "residueRemoved": "n/a",
+   *    }
+   *  ]
+   * ```
+   *
+   * @example <caption>When an annual crop had a harvest event</caption>
+   *
+   * ```js
+   *  "harvestEvents": [
+   *    {
+   *      "date": "10/01/2000",
+   *      "yield": 100,
+   *      "yieldUnit": "bu/ac",
+   *      "grainFruitTuber": "n/a",
+   *      "residueRemoved": "n/a",
+   *    }
+   *  ]
+   * ```
+   *
    */
-  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
+  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[]; // todo make sure crop management events can be defined that arent harvest events
 }
 
 /**
@@ -548,6 +691,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
  * Crop management details and events for annual crops
  *
  * @example
+ * @alias AnnualCrop
  *
  * ```js
  * {

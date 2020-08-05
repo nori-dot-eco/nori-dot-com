@@ -12,8 +12,6 @@ Crop management details grouped by a planting year.
  "crops": [
    // ... crops that were planted in year 2000
  ],
- "renewOrClear": "yes"
- // ...CropEvents
 }
 ```
 
@@ -34,13 +32,39 @@ Crop management details grouped by a planting year.
 
 • **crops**: *[[AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md)]*
 
-*Defined in [specification.ts:282](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L282)*
+*Defined in [specification.ts:400](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L400)*
+
+A list of crops for a given planting year.
 
 **`items.maximum`** 3
 
 **`items.minimum`** 1
 
-A list of crops for a given planting year.
+**`example`** <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000</caption>
+
+```js
+"crops": [
+ {
+   "name": "corn",
+   "type": "annual crop",
+   "plantingDate": "01/01/2000"
+   // ...CropEvents
+ },
+ {
+   "name": "annual rye",
+   "type": "perennial",
+   "plantingDate": "01/01/2000"
+   // ...CropEvents
+ },
+ {
+   "type": "orchard",
+   "prune": "yes",
+   "renewOrClear": "yes",
+   "plantingDate": "01/01/2000"
+   // ...CropEvents
+ }
+]
+```
 
 ___
 
@@ -48,8 +72,16 @@ ___
 
 • **plantingYear**: *number*
 
-*Defined in [specification.ts:275](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L275)*
+*Defined in [specification.ts:366](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L366)*
+
+The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 
 **`minimum`** 2000
 
-The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
+**`maximum`** 2099
+
+**`example`** <caption>When the herein defined crops were planted in year 2000</caption>
+
+```js
+"plantingYear": 2000
+```

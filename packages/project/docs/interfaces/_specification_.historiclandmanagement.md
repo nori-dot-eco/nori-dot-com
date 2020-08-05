@@ -32,7 +32,7 @@ Details surrounding how the field was managed before year 2000
 
 • **crp**: *"yes" | "no"*
 
-*Defined in [specification.ts:134](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L134)*
+*Defined in [specification.ts:136](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L136)*
 
 Whether the field participated in CRP or not
 
@@ -54,7 +54,7 @@ ___
 
 • **crpType**: *"100% grass" | "grass / legume mixture"*
 
-*Defined in [specification.ts:153](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L153)*
+*Defined in [specification.ts:155](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L155)*
 
 The type of CRP the field participated in. Only applicable if `crp` is set to yes // todo maybe separate interfaces, or if not, make the property optional, default to no
 
@@ -78,9 +78,27 @@ ___
 
 • **preYear1980**: *"upland non-irrigated (pre 1980s)" | "irrigation (pre 1980s)" | "lowland non-irrigated (pre 1980s)"*
 
-*Defined in [specification.ts:157](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L157)*
+*Defined in [specification.ts:178](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L178)*
 
 A description of how the land was managed before 1980
+
+**`example`** <caption>When the land was not irrigated upland before 1980</caption>
+
+```js
+"preYear1980": "upland non-irrigated (pre 1980s)"
+```
+
+**`example`** <caption>When the land was irrigated before 1980</caption>
+
+```js
+"preYear1980": "irrigation (pre 1980s)"
+```
+
+**`example`** <caption>When the land was not irrigated lowland before 1980</caption>
+
+```js
+"preYear1980": "lowland non-irrigated (pre 1980s)"
+```
 
 ___
 
@@ -88,9 +106,27 @@ ___
 
 • **tillageForYears1980To2000**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:164](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L164)*
+*Defined in [specification.ts:204](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L204)*
 
 The type of tillage used on the field between 1980 and 2000
+
+**`example`** <caption>When the land used intensive tillage from years 1980-2000</caption>
+
+```js
+"tillageForYears1980To2000": "intensive tillage"
+```
+
+**`example`** <caption>When the land used reduced tillage from years 1980-2000</caption>
+
+```js
+"tillageForYears1980To2000": "reduced tillage"
+```
+
+**`example`** <caption>When the land used no till from years 1980-2000</caption>
+
+```js
+"tillageForYears1980To2000": "no till"
+```
 
 ___
 
@@ -98,6 +134,6 @@ ___
 
 • **year1980To2000**: *"none" | "irrigated: annual crops in rotation" | "irrigated: continuous hay" | "non-irrigated: annual crops with hay/pasture in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "irrigated: annual crops with hay/pasture in rotation" | "non-irrigated: annual crops in rotation" | "non-irrigated: fallow-grain" | "irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:171](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L171)*
+*Defined in [specification.ts:212](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L212)*
 
 A description of how the land was managed between 1980 and 2000

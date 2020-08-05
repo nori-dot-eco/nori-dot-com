@@ -40,7 +40,7 @@ An annual crop's harvest event details
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:591](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L591)*
+*Defined in [specification.ts:735](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L735)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -54,7 +54,7 @@ ___
 
 *Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)*
 
-*Defined in [specification.ts:643](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L643)*
+*Defined in [specification.ts:787](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L787)*
 
 Whether the crop was harvest for grain, fruit or tuber
 
@@ -78,7 +78,7 @@ ___
 
 *Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[residueRemoved](_specification_.cropmanagementevent.md#residueremoved)*
 
-*Defined in [specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L676)*
+*Defined in [specification.ts:820](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L820)*
 
 **`minimum`** 0
 
@@ -116,7 +116,7 @@ ___
 
 • **yield**: *number*
 
-*Defined in [specification.ts:699](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L699)*
+*Defined in [specification.ts:843](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L843)*
 
 The crop yield
 
@@ -126,6 +126,6 @@ ___
 
 • **yieldUnit**: *"bu/ac" | "cwt/ac" | "tons/ac" | "lbs/ac"*
 
-*Defined in [specification.ts:703](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L703)*
+*Defined in [specification.ts:847](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L847)*
 
 The crop yield units

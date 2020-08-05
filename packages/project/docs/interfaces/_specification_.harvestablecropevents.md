@@ -4,16 +4,6 @@
 
 Crop harvest events
 
-**`example`** 
-
-```js
-{
- "harvestEvents": [
-   // ...
- ],
-}
-```
-
 ## Hierarchy
 
 * **HarvestableCropEvents**
@@ -36,7 +26,7 @@ Crop harvest events
 
 • **harvestEvents**? : *[AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md)[]*
 
-*Defined in [specification.ts:326](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L326)*
+*Defined in [specification.ts:469](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L469)*
 
 A list of harvest events, if applicable. When it is not applicable it can be defined as null.
 
@@ -44,3 +34,31 @@ Straw / Stover harvest exception: If the hay or stover was removed
 separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
+
+**`example`** <caption>When an annual crop had a harvest event</caption>
+
+```js
+ "harvestEvents": [
+   {
+     "date": "10/01/2000",
+     "yield": 100,
+     "yieldUnit": "bu/ac",
+     "grainFruitTuber": "n/a",
+     "residueRemoved": "n/a",
+   }
+ ]
+```
+
+**`example`** <caption>When an annual crop had a harvest event</caption>
+
+```js
+ "harvestEvents": [
+   {
+     "date": "10/01/2000",
+     "yield": 100,
+     "yieldUnit": "bu/ac",
+     "grainFruitTuber": "n/a",
+     "residueRemoved": "n/a",
+   }
+ ]
+```

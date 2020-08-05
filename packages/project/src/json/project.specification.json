@@ -77,7 +77,8 @@
                     "type": "array"
                 },
                 "plantingDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "plantingDate",
                     "type": "string"
                 },
@@ -274,6 +275,7 @@
                             }
                         ]
                     },
+                    "description": "A list of crops for a given planting year.",
                     "items": [
                         {
                             "anyOf": [
@@ -320,7 +322,9 @@
                     "type": "array"
                 },
                 "plantingYear": {
-                    "minimum": "2000\n\nThe planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
+                    "description": "The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
+                    "maximum": 2099,
+                    "minimum": 2000,
                     "title": "plantingYear",
                     "type": "number"
                 }
@@ -1977,7 +1981,8 @@
                     "type": "array"
                 },
                 "plantingDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "plantingDate",
                     "type": "string"
                 },
@@ -2186,7 +2191,8 @@
                     "type": "array"
                 },
                 "plantingDate": {
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$\n\nThe date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100)\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
                     "title": "plantingDate",
                     "type": "string"
                 },

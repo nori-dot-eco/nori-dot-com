@@ -38,7 +38,7 @@ Fertilizer event details
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:591](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L591)*
+*Defined in [specification.ts:735](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L735)*
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
@@ -50,7 +50,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:829](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L829)*
+*Defined in [specification.ts:973](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L973)*
 
 Amount of nitrogen applied in lbs/ac
 
@@ -60,7 +60,7 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:816](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L816)*
+*Defined in [specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L960)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -70,7 +70,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:825](https://github.com/nori-dot-eco/nori-dot-com/blob/1de928d/packages/project/src/specification.ts#L825)*
+*Defined in [specification.ts:969](https://github.com/nori-dot-eco/nori-dot-com/blob/3e2e111/packages/project/src/specification.ts#L969)*
 
 **`default`** "mixed blends"
 
