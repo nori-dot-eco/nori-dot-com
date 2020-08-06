@@ -38,13 +38,13 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1072](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1072)*
+*Defined in [specification.ts:1050](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1050)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** <caption>When the crop event occurred on January 1st of 2000</caption>
+**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
@@ -56,11 +56,11 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1407](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1407)*
+*Defined in [specification.ts:1385](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1385)*
 
 Amount of nitrogen applied in lbs/ac.
 
-**`example`** <caption>When 10 lbs of Nitrogen per acre was applied</caption>
+**`example`** <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
 
 ```js
 "lbsOfNPerAcre": 10
@@ -72,11 +72,11 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:1383](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1383)*
+*Defined in [specification.ts:1361](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1361)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer"</caption>
+**`example`** <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
 
 ```js
 "productName": "Joe's fertilizer"
@@ -88,7 +88,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1397)*
+*Defined in [specification.ts:1375](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1375)*
 
 The fertilizer classification type.
 
@@ -96,7 +96,7 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 **`default`** "mixed blends"
 
-**`example`** <caption>When the fertilizer type can be classified as mixed blends</caption>
+**`example`** <caption>When the fertilizer type can be classified as mixed blends:</caption>
 
 ```js
 "type": "mixed blends",

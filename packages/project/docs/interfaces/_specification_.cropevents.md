@@ -12,7 +12,7 @@ Crop management details and events.
    // ...
  },
  "soilOrCropDisturbanceEvents": [
-   // ...
+   // ... [SoilOrCropDisturbanceEvent](#soilOrCropDisturbanceEvents)
  ],
  "fertilizerEvents": [
    // ...
@@ -66,13 +66,13 @@ Crop management details and events.
 
 • **burningEvent**? : *[BurningEvent](_specification_.burningevent.md)*
 
-*Defined in [specification.ts:824](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L824)*
+*Defined in [specification.ts:802](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L802)*
 
-A burning event, if applicable. When it is not applicable it can be defined as null.
+A burning event, if applicable.
 
 **`default`** { "type": "no burning" }
 
-**`example`** <caption>When burning occurred after harvesting</caption>
+**`example`** <caption>When burning occurred after harvesting:</caption>
 
 ```js
 {
@@ -86,11 +86,11 @@ ___
 
 • **fertilizerEvents**? : *[FertilizerEvent](_specification_.fertilizerevent.md)[]*
 
-*Defined in [specification.ts:732](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L732)*
+*Defined in [specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L710)*
 
-A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
+A list of fertilizer events, if applicable.
 
-**`example`** <caption>When some fertilizer events occurred</caption>
+**`example`** <caption>When some fertilizer events occurred:</caption>
 
 ```js
 [
@@ -110,11 +110,11 @@ ___
 
 • **grazingEvents**? : *[GrazingEvent](_specification_.grazingevent.md)[]*
 
-*Defined in [specification.ts:809](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L809)*
+*Defined in [specification.ts:787](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L787)*
 
-A list of grazing events, if applicable. When it is not applicable it can be defined as null.
+A list of grazing events, if applicable.
 
-**`example`** <caption>When some grazing events occurred</caption>
+**`example`** <caption>When some grazing events occurred:</caption>
 
 ```js
 [
@@ -134,11 +134,11 @@ ___
 
 • **irrigationEvents**? : *[IrrigationEvent](_specification_.irrigationevent.md)[]*
 
-*Defined in [specification.ts:772](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L772)*
+*Defined in [specification.ts:750](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L750)*
 
-A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
+A list of irrigation events, if applicable.
 
-**`example`** <caption>When some irrigation events occurred</caption>
+**`example`** <caption>When some irrigation events occurred:</caption>
 
 ```js
 [
@@ -159,11 +159,11 @@ ___
 
 • **killEvent**? : *[KillEvent](_specification_.killevent.md)*
 
-*Defined in [specification.ts:694](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L694)*
+*Defined in [specification.ts:672](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L672)*
 
 A kill event, if applicable. When it is not applicable it can be excluded.
 
-**`example`** <caption>When the crop was killed on October 1st of 2000</caption>
+**`example`** <caption>When the crop was killed on October 1st of 2000:</caption>
 
 ```js
 {
@@ -178,11 +178,11 @@ ___
 
 • **limingEvents**? : *[LimingEvent](_specification_.limingevent.md)[]*
 
-*Defined in [specification.ts:790](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L790)*
+*Defined in [specification.ts:768](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L768)*
 
-A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
+A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
-**`example`** <caption>When some liming events occurred</caption>
+**`example`** <caption>When some liming events occurred:</caption>
 
 ```js
 [
@@ -201,11 +201,11 @@ ___
 
 • **organicMatterEvents**? : *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
 
-*Defined in [specification.ts:752](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L752)*
+*Defined in [specification.ts:730](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L730)*
 
-A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
+A list of organic matter and manure application events, if applicable.
 
-**`example`** <caption>When some organic matter was applied</caption>
+**`example`** <caption>When some organic matter was applied:</caption>
 
 ```js
 [
@@ -226,13 +226,13 @@ ___
 
 • **soilOrCropDisturbanceEvents**: *[SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)[]*
 
-*Defined in [specification.ts:713](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L713)*
+*Defined in [specification.ts:691](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L691)*
 
-A list of soil or crop disturbance events events, if applicable (such as tillage or termination events). When it is not applicable it can be defined as null.
+A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
 
 All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
 
-**`example`** <caption>When some soil or crop disturbance events occurred</caption>
+**`example`** <caption>When some soil or crop disturbance events occurred:</caption>
 
 ```js
 [

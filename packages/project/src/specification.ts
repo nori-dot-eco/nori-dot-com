@@ -115,19 +115,19 @@ export interface HistoricLandManagement {
   /**
    * A description of how the land was managed before 1980.
    *
-   * @example <caption>When the land was not irrigated upland before 1980</caption>
+   * @example <caption>When the land was not irrigated upland before 1980:</caption>
    *
    * ```js
    * "preYear1980": "upland non-irrigated (pre 1980s)"
    * ```
    *
-   * @example <caption>When the land was irrigated before 1980</caption>
+   * @example <caption>When the land was irrigated before 1980:</caption>
    *
    * ```js
    * "preYear1980": "irrigation (pre 1980s)"
    * ```
    *
-   * @example <caption>When the land was not irrigated lowland before 1980</caption>
+   * @example <caption>When the land was not irrigated lowland before 1980:</caption>
    *
    * ```js
    * "preYear1980": "lowland non-irrigated (pre 1980s)"
@@ -161,7 +161,7 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
    *
    * @default "no"
    *
-   * @example <caption>When the field did not participate in CRP</caption>
+   * @example <caption>When the field did not participate in CRP:</caption>
    *
    * ```js
    * "crp": "no"
@@ -172,19 +172,19 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
   /**
    * The type of soil or crop disturbance events used on the field between 1980 and 2000.
    *
-   * @example <caption>When the land used intensive tillage from years 1980-2000</caption>
+   * @example <caption>When the land used intensive tillage from years 1980-2000:</caption>
    *
    * ```js
    * "tillageForYears1980To2000": "intensive tillage"
    * ```
    *
-   * @example <caption>When the land used reduced tillage from years 1980-2000</caption>
+   * @example <caption>When the land used reduced tillage from years 1980-2000:</caption>
    *
    * ```js
    * "tillageForYears1980To2000": "reduced tillage"
    * ```
    *
-   * @example <caption>When the land used no till from years 1980-2000</caption>
+   * @example <caption>When the land used no till from years 1980-2000:</caption>
    *
    * ```js
    * "tillageForYears1980To2000": "no till"
@@ -243,7 +243,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    *
    * @default "yes"
    *
-   * @example <caption>When the field participated in CRP</caption>
+   * @example <caption>When the field participated in CRP:</caption>
    *
    * ```js
    * "crp": "yes"
@@ -254,13 +254,13 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
   /**
    * The type of CRP the field participated in. Only applicable if `crp` is set to yes.
    *
-   * @example <caption>When the field participated in 100% grass CRP</caption>
+   * @example <caption>When the field participated in 100% grass CRP:</caption>
    *
    * ```js
    * "crpType": "100% grass"
    * ```
    *
-   * @example <caption>When the field participated in grass/legume mixture CRP</caption>
+   * @example <caption>When the field participated in grass/legume mixture CRP:</caption>
    *
    * ```js
    * "crpType": "grass / legume mixture"
@@ -274,7 +274,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @minimum 1980
    * @maximum 2000
    *
-   * @example <caption>When CRP enrollment started in 1980</caption>
+   * @example <caption>When CRP enrollment started in 1980:</caption>
    *
    * ```js
    * "crpStartYear": 1980
@@ -288,7 +288,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @minimum 1980
    * @maximum 2000
    *
-   * @example <caption>When CRP enrollment ended in 2000</caption>
+   * @example <caption>When CRP enrollment ended in 2000:</caption>
    *
    * ```js
    * "crpEndYear": 2000
@@ -362,7 +362,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  *  "cropYears": [
  *    // a list of annual crop management practices
  *  ],
- *  "historicLangManagement": {
+ *  "historicLandManagement": {
  *    // ...HistoricNonCRPLandManagement or HistoricCRPLandManagement
  *  }
  * }
@@ -378,7 +378,7 @@ export interface Field {
    *
    * @minimum 2010
    *
-   * @example <caption>When regenerative practices started in year 2015</caption>
+   * @example <caption>When regenerative practices started in year 2015:</caption>
    *
    * ```js
    * "regenerativeStartYear": 2015
@@ -389,10 +389,10 @@ export interface Field {
   /**
    * Details surrounding how the field was managed before year 2000.
    *
-   * @example <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement)</caption>
+   * @example <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
    *
    * ```js
-   * "historicLangManagement": {
+   * "historicLandManagement": {
    *  "crp": "no",
    *  "preYear1980": "irrigation (pre 1980s)",
    *  "tillageForYears1980To2000": "intensive tillage",
@@ -400,10 +400,10 @@ export interface Field {
    * }
    * ```
    *
-   * @example <caption>When the field did participate in CRP (HistoricCRPLandManagement)</caption>
+   * @example <caption>When the field did participate in CRP (HistoricCRPLandManagement):</caption>
    *
    * ```js
-   * "historicLangManagement":  {
+   * "historicLandManagement":  {
    *  "crp": "yes",
    *  "crpType": "100% grass",
    *  "crpStartYear": 1980,
@@ -417,13 +417,13 @@ export interface Field {
    * ```
    *
    */
-  historicLangManagement:
+  historicLandManagement:
     | HistoricNonCRPLandManagement
     | HistoricCRPLandManagement;
   /**
    * The name of the field.
    *
-   * @example <caption>When a field is named "Pumpkin Pines"</caption>
+   * @example <caption>When a field is named "Pumpkin Pines":</caption>
    *
    * ```js
    * "fieldName": "Pumpkin Pines"
@@ -436,7 +436,7 @@ export interface Field {
    *
    * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
    *
-   * @example <caption>When the field's legal area is 100 acres</caption>
+   * @example <caption>When the field's legal area is 100 acres:</caption>
    *
    * ```js
    * "acres": 100
@@ -449,7 +449,7 @@ export interface Field {
    *
    * For additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)
    *
-   * @example <caption>When a field boundary is defined as a simple polygon</caption>
+   * @example <caption>When a field boundary is defined as a simple polygon:</caption>
    *
    * ```js
    * "geojson": {
@@ -464,7 +464,7 @@ export interface Field {
   /**
    * A list of crop management details grouped by the crop planting year.
    *
-   * @example <caption>When a field has management information for planting year 2000</caption>
+   * @example <caption>When a field has management information for planting year 2000:</caption>
    *
    * ```js
    * "cropYears": [
@@ -486,7 +486,7 @@ export interface Field {
 /**
  * Crop management details grouped by a planting year.
  *
- * @example <caption>For crop management practices in 2000</caption>
+ * @example <caption>For crop management practices in 2000:</caption>
  *
  * ```js
  * {
@@ -505,7 +505,7 @@ export interface CropYear {
    * @minimum 2000
    * @maximum 2099
    *
-   * @example <caption>When the herein defined crops were planted in year 2000</caption>
+   * @example <caption>When the herein defined crops were planted in year 2000:</caption>
    *
    * ```js
    * "plantingYear": 2000
@@ -519,7 +519,7 @@ export interface CropYear {
    * @items.maximum 3
    * @items.minimum 1
    *
-   * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000</caption>
+   * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
    *
    * ```js
    * "crops": [
@@ -573,7 +573,7 @@ export interface PlantedCrop {
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * @example <caption>When the crop was planted on January 1st of year 2000</caption>
+   * @example <caption>When the crop was planted on January 1st of year 2000:</caption>
    *
    * ```js
    * "plantingDate": "01/01/2000"
@@ -586,56 +586,34 @@ export interface PlantedCrop {
 /**
  * Crop harvest events.
  *
- * @example
+ * @example <caption>When an annual crop had a harvest event:</caption>
  *
  * ```js
- *  [
+ *  "harvestEvents": [
  *    {
  *      "date": "10/01/2000",
  *      "yield": 100,
  *      "yieldUnit": "bu/ac",
  *      "grainFruitTuber": "n/a",
- *      "residueRemoved": "n/a",
  *    }
- *    // ... other harvest events
  *  ]
  * ```
  *
  */
 export interface HarvestableCropEvents {
   /**
-   * A list of harvest events, if applicable. When it is not applicable it can be defined as null.
+   * A list of harvest events, if applicable.
    *
    * Straw / Stover harvest exception: If the hay or stover was removed
    * separately after grain / fruit / tuber harvest, do NOT add this as
    * a second harvest. Instead, enter the percent of the remaining residue
    * that was removed on the grain harvest, regardless of removal date.
    *
-   * @example <caption>When an annual crop had a harvest event</caption>
+   * @example <caption>When crop had at least one harvest event:</caption>
    *
    * ```js
    *  "harvestEvents": [
-   *    {
-   *      "date": "10/01/2000",
-   *      "yield": 100,
-   *      "yieldUnit": "bu/ac",
-   *      "grainFruitTuber": "n/a",
-   *      "residueRemoved": "n/a",
-   *    }
-   *  ]
-   * ```
-   *
-   * @example <caption>When an annual crop had a harvest event</caption>
-   *
-   * ```js
-   *  "harvestEvents": [
-   *    {
-   *      "date": "10/01/2000",
-   *      "yield": 100,
-   *      "yieldUnit": "bu/ac",
-   *      "grainFruitTuber": "n/a",
-   *      "residueRemoved": "n/a",
-   *    }
+   *    // ...list of AnnualCropHarvestEvents or CropManagementEvents
    *  ]
    * ```
    *
@@ -654,7 +632,7 @@ export interface HarvestableCropEvents {
  *    // ...
  *  },
  *  "soilOrCropDisturbanceEvents": [
- *    // ...
+ *    // ... [SoilOrCropDisturbanceEvent](#soilOrCropDisturbanceEvents)
  *  ],
  *  "fertilizerEvents": [
  *    // ...
@@ -682,7 +660,7 @@ export interface CropEvents {
   /**
    * A kill event, if applicable. When it is not applicable it can be excluded.
    *
-   * @example <caption>When the crop was killed on October 1st of 2000</caption>
+   * @example <caption>When the crop was killed on October 1st of 2000:</caption>
    *
    * ```js
    * {
@@ -693,11 +671,11 @@ export interface CropEvents {
    */
   killEvent?: KillEvent;
   /**
-   * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events). When it is not applicable it can be defined as null.
+   * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
    *
    * All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
    *
-   * @example <caption>When some soil or crop disturbance events occurred</caption>
+   * @example <caption>When some soil or crop disturbance events occurred:</caption>
    *
    * ```js
    * [
@@ -712,9 +690,9 @@ export interface CropEvents {
    */
   soilOrCropDisturbanceEvents: SoilOrCropDisturbanceEvent[];
   /**
-   * A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
+   * A list of fertilizer events, if applicable.
    *
-   * @example <caption>When some fertilizer events occurred</caption>
+   * @example <caption>When some fertilizer events occurred:</caption>
    *
    * ```js
    * [
@@ -731,9 +709,9 @@ export interface CropEvents {
    */
   fertilizerEvents?: FertilizerEvent[];
   /**
-   * A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
+   * A list of organic matter and manure application events, if applicable.
    *
-   * @example <caption>When some organic matter was applied</caption>
+   * @example <caption>When some organic matter was applied:</caption>
    *
    * ```js
    * [
@@ -751,9 +729,9 @@ export interface CropEvents {
    */
   organicMatterEvents?: OrganicMatterEvent[];
   /**
-   * A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
+   * A list of irrigation events, if applicable.
    *
-   * @example <caption>When some irrigation events occurred</caption>
+   * @example <caption>When some irrigation events occurred:</caption>
    *
    * ```js
    * [
@@ -771,9 +749,9 @@ export interface CropEvents {
    */
   irrigationEvents?: IrrigationEvent[];
   /**
-   * A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
+   * A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
    *
-   * @example <caption>When some liming events occurred</caption>
+   * @example <caption>When some liming events occurred:</caption>
    *
    * ```js
    * [
@@ -789,9 +767,9 @@ export interface CropEvents {
    */
   limingEvents?: LimingEvent[];
   /**
-   * A list of grazing events, if applicable. When it is not applicable it can be defined as null.
+   * A list of grazing events, if applicable.
    *
-   * @example <caption>When some grazing events occurred</caption>
+   * @example <caption>When some grazing events occurred:</caption>
    *
    * ```js
    * [
@@ -808,11 +786,11 @@ export interface CropEvents {
    */
   grazingEvents?: GrazingEvent[];
   /**
-   * A burning event, if applicable. When it is not applicable it can be defined as null.
+   * A burning event, if applicable.
    *
    * @default { "type": "no burning" }
    *
-   * @example <caption>When burning occurred after harvesting</caption>
+   * @example <caption>When burning occurred after harvesting:</caption>
    *
    * ```js
    * {
@@ -851,13 +829,13 @@ export interface OrchardOrVineyardCrop
    *
    * Note: if a crop ever changes types during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
    *
-   * @example <caption>When the crop is an orchard</caption>
+   * @example <caption>When the crop is an orchard:</caption>
    *
    * ```js
    * "type": "orchard"
    * ```
    *
-   * @example <caption>When the crop is a vineyard</caption>
+   * @example <caption>When the crop is a vineyard:</caption>
    *
    * ```js
    * "type": "vineyard"
@@ -870,13 +848,13 @@ export interface OrchardOrVineyardCrop
    *
    * @default "no"
    *
-   * @example <caption>When the crop was pruned</caption>
+   * @example <caption>When the crop was pruned:</caption>
    *
    * ```js
    * "pruned": "yes"
    * ```
    *
-   * @example <caption>When the crop was not pruned</caption>
+   * @example <caption>When the crop was not pruned:</caption>
    *
    * ```js
    * "pruned": "no"
@@ -889,13 +867,13 @@ export interface OrchardOrVineyardCrop
    *
    * @default "no"
    *
-   * @example <caption>When the crop was renewed</caption>
+   * @example <caption>When the crop was renewed:</caption>
    *
    * ```js
    * "renewOrClear": "yes"
    * ```
    *
-   * @example <caption>When the crop was not renewed</caption>
+   * @example <caption>When the crop was not renewed:</caption>
    *
    * ```js
    * "renewOrClear": "no"
@@ -970,7 +948,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
-   * @example <caption>When the cover crop was alfalfa</caption>
+   * @example <caption>When the cover crop was alfalfa:</caption>
    *
    * ```js
    * "type": "alfalfa"
@@ -1019,7 +997,7 @@ export interface AnnualCrop
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
-   * @example <caption>When the annual crop is corn</caption>
+   * @example <caption>When the annual crop is corn:</caption>
    *
    * ```js
    * "type": "corn"
@@ -1062,7 +1040,7 @@ export interface CropEvent {
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * @example <caption>When the crop event occurred on January 1st of 2000</caption>
+   * @example <caption>When the crop event occurred on January 1st of 2000:</caption>
    *
    * ```js
    * "date": "01/01/2000"
@@ -1091,7 +1069,7 @@ export interface CropEventRange {
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * @example <caption>When the start date of the event range was on January 1st of 2000</caption>
+   * @example <caption>When the start date of the event range was on January 1st of 2000:</caption>
    *
    * ```js
    * "startDate": "01/01/2000"
@@ -1104,7 +1082,7 @@ export interface CropEventRange {
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * @example <caption>When the end date of the event range was on December 31st of 2000</caption>
+   * @example <caption>When the end date of the event range was on December 31st of 2000:</caption>
    *
    * ```js
    * "endDate": "12/31/2000"
@@ -1123,7 +1101,7 @@ export interface CropEventRange {
  * {
  *  "date": "10/01/2000",
  *  "grainFruitTuber": "n/a",
- *  "residueRemoved": "n/a",
+ *  "residueRemoved": 0,
  * }
  * ```
  *
@@ -1132,13 +1110,13 @@ export interface CropManagementEvent extends CropEvent {
   /**
    * Whether the crop was harvest for grain, fruit or tuber.
    *
-   * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber</caption>
+   * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
    *
    * ```js
    * "grainFruitTuber": "yes"
    * ```
    *
-   * @example <caption>Select “no” if the crop was harvested before maturity for silage or haylage</caption>
+   * @example <caption>Select “no” if the crop was harvested before maturity for silage or haylage:</caption>
    *
    * ```js
    * "grainFruitTuber": "no"
@@ -1154,19 +1132,19 @@ export interface CropManagementEvent extends CropEvent {
    * @minimum 0
    * @maximum 100
    *
-   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply</caption>
+   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:</caption>
    *
    * ```js
    * "residueRemoved": 0
    * ```
    *
-   * @example <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest</caption>
+   * @example <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:</caption>
    *
    * ```js
    * "residueRemoved": 5
    * ```
    *
-   * @example <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage</caption>
+   * @example <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:</caption>
    *
    * ```js
    * "residueRemoved": 10
@@ -1188,7 +1166,7 @@ export interface CropManagementEvent extends CropEvent {
  *  "yield": 100,
  *  "yieldUnit": "bu/ac",
  *  "grainFruitTuber": "n/a",
- *  "residueRemoved": "n/a",
+ *  "residueRemoved": 0,
  * }
  * ```
  *
@@ -1201,7 +1179,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    *
    * @default 0
    *
-   * @example <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`</caption>
+   * @example <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:</caption>
    *
    * ```js
    * "yield": 100
@@ -1216,7 +1194,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    *
    * @default 0
    *
-   * @example <caption>When the unit of the yield is submitted in lbs per acre</caption>
+   * @example <caption>When the unit of the yield is submitted in lbs per acre:</caption>
    *
    * ```js
    * "yieldUnit": "lbs/ac"
@@ -1260,7 +1238,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
    * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method"</caption>
+   * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
    *
    * ```js
    * "productName": "Joe's tillage method"
@@ -1273,67 +1251,67 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    *
    * You can find a list of common equivalents [here](https://go.nori.com/inputs).
    *
-   * @example <caption>Little to no crop residue remains on the surface after tillage.</caption>
+   * @example <caption>Little to no crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "intensive tillage"
    * ```
    *
-   * @example <caption>15-30% of crop residue remains on the surface after tillage.</caption>
+   * @example <caption>15-30% of crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "reduced tillage"
    * ```
    *
-   * @example <caption>30% or more of crop residue remains on the surface after tillage.</caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "mulch tillage"
    * ```
    *
-   * @example <caption>30% or more of crop residue remains on the surface after tillage.</caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "ridge tillage"
    * ```
    *
-   * @example <caption>75% or more of crop residue remains on the surface after tillage.</caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "strip tillage"
    * ```
    *
-   * @example <caption>75% or more of crop residue remains on the surface after tillage.</caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
    *
    * ```js
    * "type": "no tillage"
    * ```
    *
-   * @example <caption>Weeds are killed and turned into the soil surface layer.</caption>
+   * @example <caption>Weeds are killed and turned into the soil surface layer.:</caption>
    *
    * ```js
    * "type": "growing season cultivation"
    * ```
    *
-   * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.</caption>
+   * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.:</caption>
    *
    * ```js
    * "type": "mow"
    * ```
    *
-   * @example <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.</caption>
+   * @example <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.:</caption>
    *
    * ```js
    * "type": "crimp"
    * ```
    *
-   * @example <caption>Cover crop died in winter</caption>
+   * @example <caption>Cover crop died in winter:</caption>
    *
    * ```js
    * "type": "winter killed"
    * ```
    *
-   * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.</caption>
+   * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.:</caption>
    *
    * ```js
    * "type": "broad-spectrum herbicide"
@@ -1373,7 +1351,7 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * @example <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer"</caption>
+   * @example <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
    *
    * ```js
    * "productName": "Joe's fertilizer"
@@ -1387,7 +1365,7 @@ export interface FertilizerEvent extends CropEvent {
    * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled.
    *
    * @default "mixed blends"
-   * @example <caption>When the fertilizer type can be classified as mixed blends</caption>
+   * @example <caption>When the fertilizer type can be classified as mixed blends:</caption>
    *
    * ```js
    * "type": "mixed blends",
@@ -1398,7 +1376,7 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * Amount of nitrogen applied in lbs/ac.
    *
-   * @example <caption>When 10 lbs of Nitrogen per acre was applied</caption>
+   * @example <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
    *
    * ```js
    * "lbsOfNPerAcre": 10
@@ -1429,7 +1407,7 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * @example <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure"</caption>
+   * @example <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":</caption>
    *
    * ```js
    * "name": "Joe's manure"
@@ -1440,7 +1418,7 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * The organic matter or manure classification type.
    *
-   * @example <caption>When the amount of organic matter or manure type used was alfalfa meal</caption>
+   * @example <caption>When the amount of organic matter or manure type used was alfalfa meal:</caption>
    *
    * ```js
    * "type": "alfalfa meal"
@@ -1477,7 +1455,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * @minimum 0
    * @maximum 200 // todo confirm max
    *
-   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons</caption>
+   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons:</caption>
    *
    * ```js
    * "percentNitrogen": 2
@@ -1495,7 +1473,7 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * @nullable during import (when defined as null, a default value will be assigned)
    *
-   * @example <caption>When the organic matter or manure contains 9% nitrogen</caption>
+   * @example <caption>When the organic matter or manure contains 9% nitrogen:</caption>
    *
    * ```js
    * "percentNitrogen": 9
@@ -1511,7 +1489,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * @nullable during import (when defined as null, a default value will be assigned)
    * @minimum 0
    *
-   * @example <caption>When the carbon to nitrogen ration of the organic matter or manure was 30</caption>
+   * @example <caption>When the carbon to nitrogen ration of the organic matter or manure was 30:</caption>
    *
    * ```js
    * "carbonNitrogenRatio": 30
@@ -1545,7 +1523,7 @@ export interface IrrigationEvent extends CropEventRange {
    *
    * @minimum 0
    *
-   * @example <caption>When 1 inch of volume was applied</caption>
+   * @example <caption>When 1 inch of volume was applied:</caption>
    *
    * ```js
    * "volume": 1,
@@ -1557,7 +1535,7 @@ export interface IrrigationEvent extends CropEventRange {
    *
    * @minimum 0
    *
-   * @example <caption>When irrigation depth was 100 inches</caption>
+   * @example <caption>When irrigation depth was 100 inches:</caption>
    *
    * ```js
    * "depth": 100,
@@ -1571,7 +1549,7 @@ export interface IrrigationEvent extends CropEventRange {
    * @minimum 1
    * @maximum 365
    *
-   * @example <caption>When irrigation was applied every week (every 7 days)</caption>
+   * @example <caption>When irrigation was applied every week (every 7 days):</caption>
    *
    * ```js
    * "frequency": 7,
@@ -1599,7 +1577,7 @@ export interface LimingEvent {
   /**
    * The liming type.
    *
-   * @example <caption>When crushed limestone was the liming type that was used</caption>
+   * @example <caption>When crushed limestone was the liming type that was used:</caption>
    *
    * ```js
    * "type": "crushed limestone"
@@ -1616,7 +1594,7 @@ export interface LimingEvent {
    *
    * @minimum 0
    *
-   * @example <caption>When 100 tons were user per acre</caption>
+   * @example <caption>When 100 tons were user per acre:</caption>
    *
    * ```js
    * "tonsPerAcre": 100
@@ -1629,7 +1607,7 @@ export interface LimingEvent {
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
-   * @example <caption>When liming occurred on January 1st of 2000</caption>
+   * @example <caption>When liming occurred on January 1st of 2000:</caption>
    *
    * ```js
    * "date": "01/01/2000"
@@ -1661,7 +1639,7 @@ export interface GrazingEvent extends CropEventRange {
    * @minimum 0
    * @maximum 365
    *
-   * @example <caption>When burning occurred before planting</caption>
+   * @example <caption>When burning occurred before planting:</caption>
    *
    * ```js
    * "restPeriod": 0
@@ -1675,7 +1653,7 @@ export interface GrazingEvent extends CropEventRange {
    * @minimum 0
    * @maximum 100
    *
-   * @example <caption>When burning occurred before planting</caption>
+   * @example <caption>When burning occurred before planting:</caption>
    *
    * ```js
    * "utilization": 20
@@ -1701,13 +1679,13 @@ export interface BurningEvent {
   /**
    * The type of burning, if applicable.
    *
-   * @example <caption>When burning occurred before planting</caption>
+   * @example <caption>When burning occurred before planting:</caption>
    *
    * ```js
    * "type": "before planting"
    * ```
    *
-   * @example <caption>When burning occurred after harvesting</caption>
+   * @example <caption>When burning occurred after harvesting:</caption>
    *
    * ```js
    * "type": "after harvesting"

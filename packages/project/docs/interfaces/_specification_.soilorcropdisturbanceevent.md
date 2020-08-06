@@ -35,13 +35,13 @@ Soil or crop disturbance event event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1072](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1072)*
+*Defined in [specification.ts:1050](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1050)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** <caption>When the crop event occurred on January 1st of 2000</caption>
+**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
@@ -53,11 +53,11 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1270](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1270)*
+*Defined in [specification.ts:1248](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1248)*
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method"</caption>
+**`example`** <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
 
 ```js
 "productName": "Joe's tillage method"
@@ -69,73 +69,73 @@ ___
 
 • **type**: *"intensive tillage" | "reduced tillage" | "mulch tillage" | "ridge tillage" | "strip tillage" | "no tillage" | "growing season cultivation" | "mow" | "crimp" | "winter killed" | "broad-spectrum herbicide"*
 
-*Defined in [specification.ts:1343](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1343)*
+*Defined in [specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1321)*
 
 The soil or crop disturbance events classification type.
 
 You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
-**`example`** <caption>Little to no crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>Little to no crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "intensive tillage"
 ```
 
-**`example`** <caption>15-30% of crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>15-30% of crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "reduced tillage"
 ```
 
-**`example`** <caption>30% or more of crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "mulch tillage"
 ```
 
-**`example`** <caption>30% or more of crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "ridge tillage"
 ```
 
-**`example`** <caption>75% or more of crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "strip tillage"
 ```
 
-**`example`** <caption>75% or more of crop residue remains on the surface after tillage.</caption>
+**`example`** <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
 
 ```js
 "type": "no tillage"
 ```
 
-**`example`** <caption>Weeds are killed and turned into the soil surface layer.</caption>
+**`example`** <caption>Weeds are killed and turned into the soil surface layer.:</caption>
 
 ```js
 "type": "growing season cultivation"
 ```
 
-**`example`** <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.</caption>
+**`example`** <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.:</caption>
 
 ```js
 "type": "mow"
 ```
 
-**`example`** <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.</caption>
+**`example`** <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.:</caption>
 
 ```js
 "type": "crimp"
 ```
 
-**`example`** <caption>Cover crop died in winter</caption>
+**`example`** <caption>Cover crop died in winter:</caption>
 
 ```js
 "type": "winter killed"
 ```
 
-**`example`** <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.</caption>
+**`example`** <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.:</caption>
 
 ```js
 "type": "broad-spectrum herbicide"

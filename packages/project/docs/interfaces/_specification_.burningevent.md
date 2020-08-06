@@ -28,17 +28,17 @@ Burning event details.
 
 • **type**: *"before planting" | "after harvesting"*
 
-*Defined in [specification.ts:1717](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1717)*
+*Defined in [specification.ts:1695](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1695)*
 
 The type of burning, if applicable.
 
-**`example`** <caption>When burning occurred before planting</caption>
+**`example`** <caption>When burning occurred before planting:</caption>
 
 ```js
 "type": "before planting"
 ```
 
-**`example`** <caption>When burning occurred after harvesting</caption>
+**`example`** <caption>When burning occurred after harvesting:</caption>
 
 ```js
 "type": "after harvesting"

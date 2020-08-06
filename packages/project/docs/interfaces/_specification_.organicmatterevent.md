@@ -39,7 +39,7 @@ Organic matter (OMAD) and manure event details.
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:1487](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1487)*
+*Defined in [specification.ts:1465](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1465)*
 
 Amount of organic matter or manure applied per acre.
 
@@ -47,7 +47,7 @@ Amount of organic matter or manure applied per acre.
 
 **`maximum`** 200 // todo confirm max
 
-**`example`** <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons</caption>
+**`example`** <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons:</caption>
 
 ```js
 "percentNitrogen": 2
@@ -59,7 +59,7 @@ ___
 
 • **carbonNitrogenRatio**: *number*
 
-*Defined in [specification.ts:1521](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1521)*
+*Defined in [specification.ts:1499](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1499)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -69,7 +69,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 **`minimum`** 0
 
-**`example`** <caption>When the carbon to nitrogen ration of the organic matter or manure was 30</caption>
+**`example`** <caption>When the carbon to nitrogen ration of the organic matter or manure was 30:</caption>
 
 ```js
 "carbonNitrogenRatio": 30
@@ -83,13 +83,13 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1072](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1072)*
+*Defined in [specification.ts:1050](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1050)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** <caption>When the crop event occurred on January 1st of 2000</caption>
+**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
@@ -101,11 +101,11 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1439](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1439)*
+*Defined in [specification.ts:1417](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1417)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure"</caption>
+**`example`** <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":</caption>
 
 ```js
 "name": "Joe's manure"
@@ -117,7 +117,7 @@ ___
 
 • **percentNitrogen**: *number*
 
-*Defined in [specification.ts:1505](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1505)*
+*Defined in [specification.ts:1483](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1483)*
 
 The nitrogen percent makeup in the organic matter or manure.
 
@@ -129,7 +129,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 **`nullable`** during import (when defined as null, a default value will be assigned)
 
-**`example`** <caption>When the organic matter or manure contains 9% nitrogen</caption>
+**`example`** <caption>When the organic matter or manure contains 9% nitrogen:</caption>
 
 ```js
 "percentNitrogen": 9
@@ -141,11 +141,11 @@ ___
 
 • **type**: *"alfalfa meal" | "beef manure, solid" | "beef slurry" | "blood, dried" | "bone meal" | "chicken - broiler (litter), solid" | "chicken - broiler slurry" | "chicken - layer slurry" | "chicken - layer, solid" | "compost or composted manure, solid" | "dairy manure, solid" | "dairy slurry" | "farmyard manure, solid" | "feather meal" | "fish emulsion" | "fish scrap" | "guano" | "horse manure, solid" | "other manure, solid" | "sheep manure, solid" | "soybean meal" | "swine manure, slurry" | "swine manure, solid"*
 
-*Defined in [specification.ts:1450](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L1450)*
+*Defined in [specification.ts:1428](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L1428)*
 
 The organic matter or manure classification type.
 
-**`example`** <caption>When the amount of organic matter or manure type used was alfalfa meal</caption>
+**`example`** <caption>When the amount of organic matter or manure type used was alfalfa meal:</caption>
 
 ```js
 "type": "alfalfa meal"

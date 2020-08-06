@@ -21,7 +21,7 @@ A field defining annual crop management practices. Fields are defined by geograp
  "cropYears": [
    // a list of annual crop management practices
  ],
- "historicLangManagement": {
+ "historicLandManagement": {
    // ...HistoricNonCRPLandManagement or HistoricCRPLandManagement
  }
 }
@@ -39,7 +39,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 * [cropYears](_specification_.field.md#cropyears)
 * [fieldName](_specification_.field.md#fieldname)
 * [geojson](_specification_.field.md#geojson)
-* [historicLangManagement](_specification_.field.md#historiclangmanagement)
+* [historicLandManagement](_specification_.field.md#historiclandmanagement)
 * [regenerativeStartYear](_specification_.field.md#regenerativestartyear)
 
 ## Properties
@@ -48,13 +48,13 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:446](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L446)*
+*Defined in [specification.ts:446](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L446)*
 
 The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).
 
 **`nullable`** during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
 
-**`example`** <caption>When the field's legal area is 100 acres</caption>
+**`example`** <caption>When the field's legal area is 100 acres:</caption>
 
 ```js
 "acres": 100
@@ -66,11 +66,11 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:481](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L481)*
+*Defined in [specification.ts:481](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L481)*
 
 A list of crop management details grouped by the crop planting year.
 
-**`example`** <caption>When a field has management information for planting year 2000</caption>
+**`example`** <caption>When a field has management information for planting year 2000:</caption>
 
 ```js
 "cropYears": [
@@ -89,11 +89,11 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:433](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L433)*
+*Defined in [specification.ts:433](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L433)*
 
 The name of the field.
 
-**`example`** <caption>When a field is named "Pumpkin Pines"</caption>
+**`example`** <caption>When a field is named "Pumpkin Pines":</caption>
 
 ```js
 "fieldName": "Pumpkin Pines"
@@ -105,13 +105,13 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:463](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L463)*
+*Defined in [specification.ts:463](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L463)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
 For additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)
 
-**`example`** <caption>When a field boundary is defined as a simple polygon</caption>
+**`example`** <caption>When a field boundary is defined as a simple polygon:</caption>
 
 ```js
 "geojson": {
@@ -123,18 +123,18 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 ___
 
-###  historicLangManagement
+###  historicLandManagement
 
-• **historicLangManagement**: *[HistoricNonCRPLandManagement](_specification_.historicnoncrplandmanagement.md) | [HistoricCRPLandManagement](_specification_.historiccrplandmanagement.md)*
+• **historicLandManagement**: *[HistoricNonCRPLandManagement](_specification_.historicnoncrplandmanagement.md) | [HistoricCRPLandManagement](_specification_.historiccrplandmanagement.md)*
 
-*Defined in [specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L420)*
+*Defined in [specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L420)*
 
 Details surrounding how the field was managed before year 2000.
 
-**`example`** <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement)</caption>
+**`example`** <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
 
 ```js
-"historicLangManagement": {
+"historicLandManagement": {
  "crp": "no",
  "preYear1980": "irrigation (pre 1980s)",
  "tillageForYears1980To2000": "intensive tillage",
@@ -142,10 +142,10 @@ Details surrounding how the field was managed before year 2000.
 }
 ```
 
-**`example`** <caption>When the field did participate in CRP (HistoricCRPLandManagement)</caption>
+**`example`** <caption>When the field did participate in CRP (HistoricCRPLandManagement):</caption>
 
 ```js
-"historicLangManagement":  {
+"historicLandManagement":  {
  "crp": "yes",
  "crpType": "100% grass",
  "crpStartYear": 1980,
@@ -164,7 +164,7 @@ ___
 
 • **regenerativeStartYear**: *number*
 
-*Defined in [specification.ts:388](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L388)*
+*Defined in [specification.ts:388](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L388)*
 
 Year of practice switch - there can be more than one. We tend to use the earliest one that is after 2010 and meets our verification requirements.
 
@@ -172,7 +172,7 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 **`minimum`** 2010
 
-**`example`** <caption>When regenerative practices started in year 2015</caption>
+**`example`** <caption>When regenerative practices started in year 2015:</caption>
 
 ```js
 "regenerativeStartYear": 2015

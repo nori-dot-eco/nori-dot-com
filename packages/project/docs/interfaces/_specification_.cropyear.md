@@ -4,7 +4,7 @@
 
 Crop management details grouped by a planting year.
 
-**`example`** <caption>For crop management practices in 2000</caption>
+**`example`** <caption>For crop management practices in 2000:</caption>
 
 ```js
 {
@@ -32,7 +32,7 @@ Crop management details grouped by a planting year.
 
 • **crops**: *[[AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md)]*
 
-*Defined in [specification.ts:549](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L549)*
+*Defined in [specification.ts:549](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L549)*
 
 A list of crops for a given planting year.
 
@@ -40,7 +40,7 @@ A list of crops for a given planting year.
 
 **`items.minimum`** 1
 
-**`example`** <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000</caption>
+**`example`** <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
 
 ```js
 "crops": [
@@ -72,7 +72,7 @@ ___
 
 • **plantingYear**: *number*
 
-*Defined in [specification.ts:515](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L515)*
+*Defined in [specification.ts:515](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L515)*
 
 The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 
@@ -80,7 +80,7 @@ The planting year that the herein defined `crops` property is associated with. N
 
 **`maximum`** 2099
 
-**`example`** <caption>When the herein defined crops were planted in year 2000</caption>
+**`example`** <caption>When the herein defined crops were planted in year 2000:</caption>
 
 ```js
 "plantingYear": 2000
