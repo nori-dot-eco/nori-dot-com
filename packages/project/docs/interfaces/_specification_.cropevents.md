@@ -66,7 +66,7 @@ Crop management details and events.
 
 • **burningEvent**? : *[BurningEvent](_specification_.burningevent.md)*
 
-*Defined in [specification.ts:824](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L824)*
+*Defined in [specification.ts:824](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L824)*
 
 A burning event, if applicable. When it is not applicable it can be defined as null.
 
@@ -86,7 +86,7 @@ ___
 
 • **fertilizerEvents**? : *[FertilizerEvent](_specification_.fertilizerevent.md)[]*
 
-*Defined in [specification.ts:732](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L732)*
+*Defined in [specification.ts:732](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L732)*
 
 A list of fertilizer events, if applicable. When it is not applicable it can be defined as null.
 
@@ -110,7 +110,7 @@ ___
 
 • **grazingEvents**? : *[GrazingEvent](_specification_.grazingevent.md)[]*
 
-*Defined in [specification.ts:809](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L809)*
+*Defined in [specification.ts:809](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L809)*
 
 A list of grazing events, if applicable. When it is not applicable it can be defined as null.
 
@@ -134,7 +134,7 @@ ___
 
 • **irrigationEvents**? : *[IrrigationEvent](_specification_.irrigationevent.md)[]*
 
-*Defined in [specification.ts:772](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L772)*
+*Defined in [specification.ts:772](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L772)*
 
 A list of irrigation events, if applicable. When it is not applicable it can be defined as null.
 
@@ -159,7 +159,7 @@ ___
 
 • **killEvent**? : *[KillEvent](_specification_.killevent.md)*
 
-*Defined in [specification.ts:694](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L694)*
+*Defined in [specification.ts:694](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L694)*
 
 A kill event, if applicable. When it is not applicable it can be excluded.
 
@@ -178,7 +178,7 @@ ___
 
 • **limingEvents**? : *[LimingEvent](_specification_.limingevent.md)[]*
 
-*Defined in [specification.ts:790](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L790)*
+*Defined in [specification.ts:790](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L790)*
 
 A list of liming events, if applicable. When it is not applicable it can be defined as null. During quantification, liming events are aggregated into a single event.
 
@@ -201,7 +201,7 @@ ___
 
 • **organicMatterEvents**? : *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
 
-*Defined in [specification.ts:752](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L752)*
+*Defined in [specification.ts:752](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L752)*
 
 A list of organic matter and manure application events, if applicable. When it is not applicable it can be defined as null.
 
@@ -226,7 +226,7 @@ ___
 
 • **soilOrCropDisturbanceEvents**: *[SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)[]*
 
-*Defined in [specification.ts:713](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L713)*
+*Defined in [specification.ts:713](https://github.com/nori-dot-eco/nori-dot-com/blob/6c136ab/packages/project/src/specification.ts#L713)*
 
 A list of soil or crop disturbance events events, if applicable (such as tillage or termination events). When it is not applicable it can be defined as null.
 

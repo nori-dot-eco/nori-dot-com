@@ -361,7 +361,7 @@
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
             "properties": {
                 "acres": {
-                    "description": "The number of acres that use the herein defined crop management practices (via `cropYears`).",
+                    "description": "The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).",
                     "title": "acres",
                     "type": [
                         "number",
@@ -2295,7 +2295,7 @@
             "type": "object"
         },
         "Project": {
-            "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import.",
+            "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.",
             "properties": {
                 "fields": {
                     "description": "An array of fields defining annual crop management practices.",

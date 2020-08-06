@@ -61,7 +61,7 @@ import type { GeoJSON } from 'geojson';
 
 /**
  *
- * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import.
+ * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
  * @example
  * ```js
@@ -363,7 +363,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  *    // a list of annual crop management practices
  *  ],
  *  "historicLangManagement": {
- *    // ...HistoricLandManagement
+ *    // ...HistoricNonCRPLandManagement or HistoricCRPLandManagement
  *  }
  * }
  * ```
@@ -432,7 +432,7 @@ export interface Field {
    */
   fieldName: string;
   /**
-   * The number of acres that use the herein defined crop management practices (via `cropYears`).
+   * The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).
    *
    * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
    *
