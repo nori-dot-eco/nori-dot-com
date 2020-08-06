@@ -63,7 +63,7 @@ import type { GeoJSON } from 'geojson';
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
- * @example
+ * @example <caption>A project that uses specification v 0.1.0 and contains a list of fields:</caption>
  * ```js
  * {
  *  "version": "0.1.0",
@@ -252,7 +252,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    */
   crp: 'yes';
   /**
-   * The type of CRP the field participated in. Only applicable if `crp` is set to yes.
+   * The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.
    *
    * @example <caption>When the field participated in 100% grass CRP:</caption>
    *
@@ -500,7 +500,7 @@ export interface Field {
  */
 export interface CropYear {
   /**
-   * The planting year that the herein defined `crops` property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
+   * The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
    *
    * @minimum 2000
    * @maximum 2099
