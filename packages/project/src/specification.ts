@@ -47,16 +47,11 @@ import type { GeoJSON } from 'geojson';
  * * independent versioning
  * * * enum for project.version
  * * pre-commit make docs
- * * rename file as project-specification.
  *
  * ! Misc
  * ? Jaycen
  * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
- * ? Need from rebekah:
- * * * change crop inputs to correct classification (i.e. Alfalfa should be perennial)
- * * * * this allows me to add guidance on things like how to find crop type (i.e. When a crop is a valid orchard/vineyard)
- * * * solid v slurry manure types.
- *
+ * * spec v2 v latest diff (what properties changed, why)
  */
 
 /**
@@ -89,6 +84,9 @@ export interface Project {
   /**
    * An array of fields defining annual crop management practices.
    *
+   * @items.minimum 1
+   * @items.maximum 25
+   *
    * @example
    *
    * ```js
@@ -115,7 +113,7 @@ export interface HistoricLandManagement {
   /**
    * A description of how the land was managed before 1980.
    *
-   * @example <caption>When the land was not irrigated upland before 1980:</caption>
+   * @example <caption>When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:</caption>
    *
    * ```js
    * "preYear1980": "upland non-irrigated"
@@ -127,14 +125,24 @@ export interface HistoricLandManagement {
    * "preYear1980": "irrigation"
    * ```
    *
-   * @example <caption>When the land was not irrigated lowland before 1980:</caption>
+   * @example <caption>When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:</caption>
+   *
+   * ```js
+   * "preYear1980": "lowland non-irrigated"
+   * ```
+   *
+   * @example <caption>When the land employed livestock grazing before 1980:</caption>
    *
    * ```js
    * "preYear1980": "lowland non-irrigated"
    * ```
    *
    */
-  preYear1980: 'upland non-irrigated' | 'irrigation' | 'lowland non-irrigated'; // todo are these the best descriptions?
+  preYear1980:
+    | 'upland non-irrigated'
+    | 'irrigation'
+    | 'lowland non-irrigated'
+    | 'livestock grazing';
 }
 
 /**
@@ -196,6 +204,11 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
    * A description of how the land was managed between 1980 and 2000.
    *
    * @example
+   *
+   * ```js
+   * "year1980To2000": "irrigated: annual crops in rotation"
+   * ```
+   *
    */
   year1980To2000:
     | 'irrigated: annual crops in rotation'
@@ -206,14 +219,13 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
     | 'irrigated: annual crops with hay/pasture in rotation'
     | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: fallow-grain'
-    | 'irrigated: orchard or vineyard'; // todo better description of each of these options
+    | 'irrigated: orchard or vineyard';
 }
 
-// todo add a go link that shows which options are allowed per state (this exists in the data template options tab but not go/inputs for some reason)
 /**
  * Details surrounding how the field was managed before year 2000
  *
- * Note that the state the field exists within restricts the allowed values per object property.
+ * Note that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
  *
  * @example
  *
@@ -264,7 +276,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * ```
    *
    */
-  crpType: '100% grass' | 'grass / legume mixture'; // todo what does "100% grass mean" // todo what about grass/legume mixture?
+  crpType: '100% grass' | 'grass / legume mixture';
   /**
    * The CRP start year
    *
@@ -296,6 +308,8 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
   /**
    * How was the field managed before the field entered into CRP
    *
+   * To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
+   *
    * @example
    *
    * ```js
@@ -303,7 +317,16 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * ```
    *
    */
-  preCRPManagement: string; // todo enum
+  preCRPManagement:
+    | 'irrigated: annual crops in rotation'
+    | 'irrigated: annual crops with hay/pasture in rotation'
+    | 'irrigated: continuous hay'
+    | 'irrigated: orchard or vineyard'
+    | 'non-irrigated: annual crops in rotation'
+    | 'non-irrigated: continuous hay'
+    | 'non-irrigated: livestock grazing'
+    | 'non-irrigated: fallow-grain'
+    | 'non-irrigated: orchard or vineyard';
   /**
    * How was the field tilled before the field entered into CRP
    *
@@ -314,9 +337,11 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * ```
    *
    */
-  preCRPTillage: string; // todo enum
+  preCRPTillage: 'intensive tillage' | 'reduced tillage' | 'no till';
   /**
    * How was the field managed after CRP
+   *
+   * To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
    *
    * @example
    *
@@ -325,7 +350,16 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * ```
    *
    */
-  postCRPManagement: string; // todo enum
+  postCRPManagement:
+    | 'irrigated: annual crops in rotation'
+    | 'irrigated: annual crops with hay/pasture in rotation'
+    | 'irrigated: continuous hay'
+    | 'irrigated: orchard or vineyard'
+    | 'non-irrigated: annual crops in rotation'
+    | 'non-irrigated: continuous hay'
+    | 'non-irrigated: livestock grazing'
+    | 'non-irrigated: fallow-grain'
+    | 'non-irrigated: orchard or vineyard';
   /**
    * How was the field managed after tillage
    *
@@ -336,7 +370,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * ```
    *
    */
-  postCRPTillage: string; // todo enum
+  postCRPTillage: 'intensive tillage' | 'reduced tillage' | 'no till';
 }
 
 /**
@@ -367,11 +401,10 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  *
  */
 export interface Field {
-  // todo rebekah and jaycen to talk about regen start year
   /**
-   * Year of practice switch - there can be more than one. We tend to use the earliest one that is after 2010 and meets our verification requirements.
+   * The year that you most recently adopted regenerative agricultural practices
    *
-   * For more information on how to select a start year see [here](https://go.nori.com/years).
+   * For more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).
    *
    * @minimum 2010
    *
@@ -477,9 +510,6 @@ export interface Field {
    */
   cropYears: CropYear[];
 }
-
-// todo remove limit fo 3 crops per planting year to allow for the ability for users to define crop type switches (i.e. annual to perennial)
-// todo add guidance for this ^ (rebekah and jaycen to discuss options here)
 /**
  * Crop management details grouped by a planting year.
  *
@@ -512,6 +542,8 @@ export interface CropYear {
   plantingYear: number;
   /**
    * A list of crops for a given planting year.
+   *
+   * Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
    *
    * @items.maximum 3
    * @items.minimum 1
@@ -655,19 +687,6 @@ export interface HarvestableCropEvents {
  */
 export interface CropEvents {
   /**
-   * A kill event, if applicable. When it is not applicable it can be excluded.
-   *
-   * @example <caption>When the crop was killed on October 1st of 2000:</caption>
-   *
-   * ```js
-   * "killEvent": {
-   *  "date": "10/01/2000",
-   *  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
-   * }
-   * ```
-   */
-  killEvent?: KillEvent;
-  /**
    * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
    *
    * All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
@@ -718,6 +737,7 @@ export interface CropEvents {
    *    "amountPerAcre": 2, // tons
    *    "percentNitrogen": 9,
    *    "carbonNitrogenRatio": 30,
+   *    "percentMoisture": 0,
    *  }
    *  // ... other organic matter or manure events
    * ]
@@ -734,10 +754,7 @@ export interface CropEvents {
    * "irrigationEvents": [
    *  {
    *    "volume": 1,
-   *    "depth": 100,
-   *    "frequency": 7,
-   *    "startDate": "01/01/2000",
-   *    "endDate": "12/31/2000"
+   *    "date": "01/01/2000",
    *  }
    *  // ... other irrigation events
    * ]
@@ -806,7 +823,7 @@ export interface CropEvents {
  *
  * ```js
  * {
- *  "name": "", // todo
+ *  "name": "oranges",
  *  "type": "orchard",
  *  "prune": "yes",
  *  "renewOrClear": "yes",
@@ -820,15 +837,19 @@ export interface OrchardOrVineyardCrop
   extends CropEvents,
     HarvestableCropEvents,
     PlantedCrop {
-  // todo crop name enum (which crops can be defined as orchard/vineyard?)
   /**
    * The name of the orchard or vineyard crop.
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
-   * @example
+   * @example <caption>When the crop planted is "oranges":</caption>
+   *
+   * ```js
+   * "name": "oranges"
+   * ```
+   *
    */
-  name: string;
+  name: string; // todo crop name enum (which crops can be defined as orchard/vineyard?)
   /**
    * The crop type.
    *
@@ -946,7 +967,7 @@ export interface PerennialCrop
  *
  * ```js
  * {
- *  "name": "corn", // todo reasonable example?
+ *  "name": "annual rye",
  *  "type": "annual cover",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
@@ -960,10 +981,10 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
-   * @example <caption>When the cover crop was alfalfa:</caption>
+   * @example <caption>When the cover crop was annual rye:</caption>
    *
    * ```js
-   * "type": "alfalfa"
+   * "type": "annual rye"
    * ```
    *
    */
@@ -1166,7 +1187,6 @@ export interface CropManagementEvent extends CropEvent {
   residueRemoved?: number;
 }
 
-// todo if yield is optional, a supplier will need guidance on the up/downside of supplying that information
 /**
  * An annual crop's harvest event details.
  *
@@ -1217,23 +1237,6 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
 }
 
 /**
- *
- * Details surrounding the crop "kill" event.
- *
- * @example
- *
- * ```js
- * {
- *  "date": "10/01/2000",
- *  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
- * }
- * ```
- *
- */
-export interface KillEvent extends CropEvent {} // todo is there any way to kill a crop using something other than what's defined in soil or crop disturbance types? If not, then delete kill event entirely
-// todo if removing killevent, does residue removed need to be defined instead/in addition in soil or crop disturbances
-
-/**
  * Soil or crop disturbance event event details.
  *
  * @example
@@ -1250,7 +1253,11 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
    * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
+   * When defaulting to "no tillage", a default value will also be used for the event data equal to the planting date of the crop.
+   *
    * @todo this property will be deprecated in the future
+   *
+   * @default "no tillage"
    *
    * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
    *
@@ -1343,7 +1350,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'mow'
     | 'crimp'
     | 'winter killed'
-    | 'broad-spectrum herbicide'; // todo default? if we say no till, can we default to the planting date
+    | 'broad-spectrum herbicide';
 }
 
 /**
@@ -1356,7 +1363,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
  *  "date": "10/01/2000",
  *  "productName": "Joe's fertilizer",
  *  "type": "mixed blends",
- *  "lbsOfNPerAcre": 10
+ *  "lbsOfNPerAcre": 150
  * }
  * ```
  *
@@ -1395,13 +1402,13 @@ export interface FertilizerEvent extends CropEvent {
    * @example <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
    *
    * ```js
-   * "lbsOfNPerAcre": 10
+   * "lbsOfNPerAcre": 150
    * ```
+   *
    */
   lbsOfNPerAcre: number;
 }
 
-// todo add percent moisture back
 // todo the unit is sometimes gallons per acre, sometimes tons (depends on solid v slurry)
 /**
  * Organic matter (OMAD) and manure event details.
@@ -1415,6 +1422,7 @@ export interface FertilizerEvent extends CropEvent {
  *  "amountPerAcre": 2, // tons
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
+ *  "percentMoisture": 0,
  * }
  * ```
  *
@@ -1486,6 +1494,8 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
    *
+   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   *
    * @minimum 0
    * @maximum 100
    *
@@ -1504,7 +1514,10 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
    *
-   * @nullable during import (when defined as null, a default value will be assigned)
+   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   *
+   * @nullable during import
+   *
    * @minimum 0
    *
    * @example <caption>When the carbon to nitrogen ration of the organic matter or manure was 30:</caption>
@@ -1515,10 +1528,24 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    */
   carbonNitrogenRatio: number;
+  /**
+   * The percent moisture of the organic matter or manure
+   *
+   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   *
+   * @minimum 0
+   * @maximum 100
+   *
+   * @example <caption>When the percent moisture is 15:</caption>
+   *
+   * ```js
+   * "percentMoisture": 15
+   * ```
+   *
+   */
+  percentMoisture: number;
 }
 
-// todo SHOULD WE ALLOW USERS TO DEFINE NON-FREQUENCY BASED IRRIGATION? guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
-// todo is irrigation crop specific? or is it better thought of on the field level?
 /**
  * Irrigation event details.
  *
@@ -1527,15 +1554,12 @@ export interface OrganicMatterEvent extends CropEvent {
  * ```js
  * {
  *  "volume": 1,
- *  "depth": 100,
- *  "frequency": 7,
- *  "startDate": "01/01/2000",
- *  "endDate": "12/31/2000"
+ *  "date": "01/01/2000",
  * }
  * ```
  *
  */
-export interface IrrigationEvent extends CropEventRange {
+export interface IrrigationEvent extends CropEvent {
   /**
    * The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
    *
@@ -1546,35 +1570,9 @@ export interface IrrigationEvent extends CropEventRange {
    * ```js
    * "volume": 1,
    * ```
+   *
    */
   volume: number;
-  /**
-   * The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
-   *
-   * @minimum 0
-   *
-   * @example <caption>When irrigation depth was 100 inches:</caption>
-   *
-   * ```js
-   * "depth": 100,
-   * ```
-   *
-   */
-  depth: number; // todo is this used currently? potentially in flux at comet
-  /**
-   * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
-   *
-   * @minimum 1
-   * @maximum 365
-   *
-   * @example <caption>When irrigation was applied every week (every 7 days):</caption>
-   *
-   * ```js
-   * "frequency": 7,
-   * ```
-   *
-   */
-  frequency?: number;
 }
 
 /**

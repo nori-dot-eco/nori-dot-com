@@ -28,13 +28,13 @@
 
 ###  preYear1980
 
-• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated"*
+• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated" | "livestock grazing"*
 
-*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L137)*
+*Defined in [specification.ts:141](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L141)*
 
 A description of how the land was managed before 1980.
 
-**`example`** <caption>When the land was not irrigated upland before 1980:</caption>
+**`example`** <caption>When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "upland non-irrigated"
@@ -46,7 +46,13 @@ A description of how the land was managed before 1980.
 "preYear1980": "irrigation"
 ```
 
-**`example`** <caption>When the land was not irrigated lowland before 1980:</caption>
+**`example`** <caption>When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:</caption>
+
+```js
+"preYear1980": "lowland non-irrigated"
+```
+
+**`example`** <caption>When the land employed livestock grazing before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"

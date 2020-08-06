@@ -9,16 +9,13 @@ Irrigation event details.
 ```js
 {
  "volume": 1,
- "depth": 100,
- "frequency": 7,
- "startDate": "01/01/2000",
- "endDate": "12/31/2000"
+ "date": "01/01/2000",
 }
 ```
 
 ## Hierarchy
 
-* [CropEventRange](_specification_.cropeventrange.md)
+* [CropEvent](_specification_.cropevent.md)
 
   ↳ **IrrigationEvent**
 
@@ -26,88 +23,27 @@ Irrigation event details.
 
 ### Properties
 
-* [depth](_specification_.irrigationevent.md#depth)
-* [endDate](_specification_.irrigationevent.md#enddate)
-* [frequency](_specification_.irrigationevent.md#optional-frequency)
-* [startDate](_specification_.irrigationevent.md#startdate)
+* [date](_specification_.irrigationevent.md#date)
 * [volume](_specification_.irrigationevent.md#volume)
 
 ## Properties
 
-###  depth
+###  date
 
-• **depth**: *number*
+• **date**: *string*
 
-*Defined in [specification.ts:1563](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1563)*
+*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
-**`minimum`** 0
-
-**`example`** <caption>When irrigation depth was 100 inches:</caption>
-
-```js
-"depth": 100,
-```
-
-___
-
-###  endDate
-
-• **endDate**: *string*
-
-*Inherited from [CropEventRange](_specification_.cropeventrange.md).[endDate](_specification_.cropeventrange.md#enddate)*
-
-*Defined in [specification.ts:1104](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1104)*
-
-The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
+The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** <caption>When the end date of the event range was on December 31st of 2000:</caption>
+**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
-"endDate": "12/31/2000"
-```
-
-___
-
-### `Optional` frequency
-
-• **frequency**? : *number*
-
-*Defined in [specification.ts:1577](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1577)*
-
-The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
-
-**`minimum`** 1
-
-**`maximum`** 365
-
-**`example`** <caption>When irrigation was applied every week (every 7 days):</caption>
-
-```js
-"frequency": 7,
-```
-
-___
-
-###  startDate
-
-• **startDate**: *string*
-
-*Inherited from [CropEventRange](_specification_.cropeventrange.md).[startDate](_specification_.cropeventrange.md#startdate)*
-
-*Defined in [specification.ts:1091](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1091)*
-
-The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
-
-**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-
-**`example`** <caption>When the start date of the event range was on January 1st of 2000:</caption>
-
-```js
-"startDate": "01/01/2000"
+"date": "01/01/2000"
 ```
 
 ___
@@ -116,7 +52,7 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:1550](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1550)*
+*Defined in [specification.ts:1575](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1575)*
 
 The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 

@@ -18,13 +18,13 @@ A crop event that happened on a particular date.
 
   ↳ [CropManagementEvent](_specification_.cropmanagementevent.md)
 
-  ↳ [KillEvent](_specification_.killevent.md)
-
   ↳ [SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)
 
   ↳ [FertilizerEvent](_specification_.fertilizerevent.md)
 
   ↳ [OrganicMatterEvent](_specification_.organicmatterevent.md)
+
+  ↳ [IrrigationEvent](_specification_.irrigationevent.md)
 
 ## Index
 
@@ -38,7 +38,7 @@ A crop event that happened on a particular date.
 
 • **date**: *string*
 
-*Defined in [specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1062)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

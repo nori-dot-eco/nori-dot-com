@@ -11,7 +11,7 @@ Fertilizer event details.
  "date": "10/01/2000",
  "productName": "Joe's fertilizer",
  "type": "mixed blends",
- "lbsOfNPerAcre": 10
+ "lbsOfNPerAcre": 150
 }
 ```
 
@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1062)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,14 +56,14 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1401](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1401)*
+*Defined in [specification.ts:1409](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1409)*
 
 Amount of nitrogen applied in lbs/ac.
 
 **`example`** <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
 
 ```js
-"lbsOfNPerAcre": 10
+"lbsOfNPerAcre": 150
 ```
 
 ___
@@ -72,7 +72,7 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:1377](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1377)*
+*Defined in [specification.ts:1384](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1384)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -90,7 +90,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1391](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1391)*
+*Defined in [specification.ts:1398](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1398)*
 
 The fertilizer classification type.
 

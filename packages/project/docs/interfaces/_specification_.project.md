@@ -31,9 +31,13 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 • **fields**: *[Field](_specification_.field.md)[]*
 
-*Defined in [specification.ts:101](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L101)*
+*Defined in [specification.ts:99](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L99)*
 
 An array of fields defining annual crop management practices.
+
+**`items.minimum`** 1
+
+**`items.maximum`** 25
 
 **`example`** 
 
@@ -49,7 +53,7 @@ ___
 
 • **version**: *string*
 
-*Defined in [specification.ts:88](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L88)*
+*Defined in [specification.ts:83](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L83)*
 
 The specification version. This information is used to determine the logic Nori uses to import a project
 

@@ -20,7 +20,7 @@
 
 • **ajv**: *Ajv* = new Ajv({ allErrors: true })
 
-*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/validation.ts#L7)*
+*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/validation.ts#L7)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **tmp**: *""* = ""
 
-*Defined in [validation.ts:32](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/validation.ts#L32)*
+*Defined in [validation.ts:32](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/validation.ts#L32)*
 
 ___
 
@@ -39,7 +39,7 @@ ___
   JSON.parse(JSON.stringify(data), toLowercase)
 )
 
-*Defined in [validation.ts:26](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/validation.ts#L26)*
+*Defined in [validation.ts:26](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/validation.ts#L26)*
 
 ## Functions
 
@@ -47,7 +47,7 @@ ___
 
 ▸ **toLowercase**(`key`: any, `value`: any): *any*
 
-*Defined in [validation.ts:8](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/validation.ts#L8)*
+*Defined in [validation.ts:8](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/validation.ts#L8)*
 
 **Parameters:**
 

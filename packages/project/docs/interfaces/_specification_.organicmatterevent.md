@@ -13,6 +13,7 @@ Organic matter (OMAD) and manure event details.
  "amountPerAcre": 2, // tons
  "percentNitrogen": 9,
  "carbonNitrogenRatio": 30,
+ "percentMoisture": 0,
 }
 ```
 
@@ -30,6 +31,7 @@ Organic matter (OMAD) and manure event details.
 * [carbonNitrogenRatio](_specification_.organicmatterevent.md#carbonnitrogenratio)
 * [date](_specification_.organicmatterevent.md#date)
 * [name](_specification_.organicmatterevent.md#optional-name)
+* [percentMoisture](_specification_.organicmatterevent.md#percentmoisture)
 * [percentNitrogen](_specification_.organicmatterevent.md#percentnitrogen)
 * [type](_specification_.organicmatterevent.md#type)
 
@@ -39,7 +41,7 @@ Organic matter (OMAD) and manure event details.
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:1483](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1483)*
+*Defined in [specification.ts:1491](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1491)*
 
 Amount of organic matter or manure applied per acre.
 
@@ -59,13 +61,15 @@ ___
 
 • **carbonNitrogenRatio**: *number*
 
-*Defined in [specification.ts:1517](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1517)*
+*Defined in [specification.ts:1530](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1530)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
 You can find a list of default values per `type` [here](https://go.nori.com/inputs).
 
-**`nullable`** during import (when defined as null, a default value will be assigned)
+**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+
+**`nullable`** during import
 
 **`minimum`** 0
 
@@ -83,7 +87,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1062)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -101,7 +105,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1435](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1435)*
+*Defined in [specification.ts:1443](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1443)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -115,15 +119,39 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 ___
 
+###  percentMoisture
+
+• **percentMoisture**: *number*
+
+*Defined in [specification.ts:1546](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1546)*
+
+The percent moisture of the organic matter or manure
+
+**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+
+**`minimum`** 0
+
+**`maximum`** 100
+
+**`example`** <caption>When the percent moisture is 15:</caption>
+
+```js
+"percentMoisture": 15
+```
+
+___
+
 ###  percentNitrogen
 
 • **percentNitrogen**: *number*
 
-*Defined in [specification.ts:1501](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1501)*
+*Defined in [specification.ts:1511](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1511)*
 
 The nitrogen percent makeup in the organic matter or manure.
 
 You can find a list of default values per `type` [here](https://go.nori.com/inputs).
+
+**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
 
 **`minimum`** 0
 
@@ -143,7 +171,7 @@ ___
 
 • **type**: *"alfalfa meal" | "beef manure, solid" | "beef slurry" | "blood, dried" | "bone meal" | "chicken - broiler (litter), solid" | "chicken - broiler slurry" | "chicken - layer slurry" | "chicken - layer, solid" | "compost or composted manure, solid" | "dairy manure, solid" | "dairy slurry" | "farmyard manure, solid" | "feather meal" | "fish emulsion" | "fish scrap" | "guano" | "horse manure, solid" | "other manure, solid" | "sheep manure, solid" | "soybean meal" | "swine manure, slurry" | "swine manure, solid"*
 
-*Defined in [specification.ts:1446](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1446)*
+*Defined in [specification.ts:1454](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1454)*
 
 The organic matter or manure classification type.
 

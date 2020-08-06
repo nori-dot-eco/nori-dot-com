@@ -40,7 +40,7 @@ An annual crop's harvest event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1062)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -60,7 +60,7 @@ ___
 
 *Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)*
 
-*Defined in [specification.ts:1138](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1138)*
+*Defined in [specification.ts:1159](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1159)*
 
 Whether the crop was harvest for grain, fruit or tuber.
 
@@ -84,7 +84,7 @@ ___
 
 *Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[residueRemoved](_specification_.cropmanagementevent.md#optional-residueremoved)*
 
-*Defined in [specification.ts:1166](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1166)*
+*Defined in [specification.ts:1187](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1187)*
 
 Crop residue removed.
 
@@ -118,7 +118,7 @@ ___
 
 • **yield**? : *number*
 
-*Defined in [specification.ts:1201](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1201)*
+*Defined in [specification.ts:1221](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1221)*
 
 The crop yield.
 
@@ -138,7 +138,7 @@ ___
 
 • **yieldUnit**? : *"bu/ac" | "cwt/ac" | "tons/ac" | "lbs/ac"*
 
-*Defined in [specification.ts:1216](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1216)*
+*Defined in [specification.ts:1236](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1236)*
 
 The crop yield units.
 

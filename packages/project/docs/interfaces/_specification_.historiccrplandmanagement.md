@@ -4,7 +4,7 @@
 
 Details surrounding how the field was managed before year 2000
 
-Note that the state the field exists within restricts the allowed values per object property.
+Note that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
 **`example`** 
 
@@ -50,7 +50,7 @@ Note that the state the field exists within restricts the allowed values per obj
 
 • **crp**: *"yes"*
 
-*Defined in [specification.ts:250](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L250)*
+*Defined in [specification.ts:262](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L262)*
 
 Whether the field participated in CRP or not.
 
@@ -68,7 +68,7 @@ ___
 
 • **crpEndYear**: *number*
 
-*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L295)*
+*Defined in [specification.ts:307](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L307)*
 
 The CRP end year
 
@@ -88,7 +88,7 @@ ___
 
 • **crpStartYear**: *number*
 
-*Defined in [specification.ts:281](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L281)*
+*Defined in [specification.ts:293](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L293)*
 
 The CRP start year
 
@@ -108,7 +108,7 @@ ___
 
 • **crpType**: *"100% grass" | "grass / legume mixture"*
 
-*Defined in [specification.ts:267](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L267)*
+*Defined in [specification.ts:279](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L279)*
 
 The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.
 
@@ -128,11 +128,13 @@ ___
 
 ###  postCRPManagement
 
-• **postCRPManagement**: *string*
+• **postCRPManagement**: *"irrigated: annual crops in rotation" | "irrigated: annual crops with hay/pasture in rotation" | "irrigated: continuous hay" | "irrigated: orchard or vineyard" | "non-irrigated: annual crops in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "non-irrigated: fallow-grain" | "non-irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:328](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L328)*
+*Defined in [specification.ts:353](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L353)*
 
 How was the field managed after CRP
+
+To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
 **`example`** 
 
@@ -144,9 +146,9 @@ ___
 
 ###  postCRPTillage
 
-• **postCRPTillage**: *string*
+• **postCRPTillage**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:339](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L339)*
+*Defined in [specification.ts:373](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L373)*
 
 How was the field managed after tillage
 
@@ -160,11 +162,13 @@ ___
 
 ###  preCRPManagement
 
-• **preCRPManagement**: *string*
+• **preCRPManagement**: *"irrigated: annual crops in rotation" | "irrigated: annual crops with hay/pasture in rotation" | "irrigated: continuous hay" | "irrigated: orchard or vineyard" | "non-irrigated: annual crops in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "non-irrigated: fallow-grain" | "non-irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:306](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L306)*
+*Defined in [specification.ts:320](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L320)*
 
 How was the field managed before the field entered into CRP
+
+To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
 **`example`** 
 
@@ -176,9 +180,9 @@ ___
 
 ###  preCRPTillage
 
-• **preCRPTillage**: *string*
+• **preCRPTillage**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:317](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L317)*
+*Defined in [specification.ts:340](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L340)*
 
 How was the field tilled before the field entered into CRP
 
@@ -192,15 +196,15 @@ ___
 
 ###  preYear1980
 
-• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated"*
+• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated" | "livestock grazing"*
 
 *Inherited from [HistoricLandManagement](_specification_.historiclandmanagement.md).[preYear1980](_specification_.historiclandmanagement.md#preyear1980)*
 
-*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L137)*
+*Defined in [specification.ts:141](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L141)*
 
 A description of how the land was managed before 1980.
 
-**`example`** <caption>When the land was not irrigated upland before 1980:</caption>
+**`example`** <caption>When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "upland non-irrigated"
@@ -212,7 +216,13 @@ A description of how the land was managed before 1980.
 "preYear1980": "irrigation"
 ```
 
-**`example`** <caption>When the land was not irrigated lowland before 1980:</caption>
+**`example`** <caption>When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:</caption>
+
+```js
+"preYear1980": "lowland non-irrigated"
+```
+
+**`example`** <caption>When the land employed livestock grazing before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"

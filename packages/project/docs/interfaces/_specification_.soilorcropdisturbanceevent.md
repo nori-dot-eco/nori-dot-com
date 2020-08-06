@@ -35,7 +35,7 @@ Soil or crop disturbance event event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1062)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1083)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -53,11 +53,15 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1262](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1262)*
+*Defined in [specification.ts:1269](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1269)*
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
+When defaulting to "no tillage", a default value will also be used for the event data equal to the planting date of the crop.
+
 **`todo`** this property will be deprecated in the future
+
+**`default`** "no tillage"
 
 **`example`** <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
 
@@ -71,7 +75,7 @@ ___
 
 • **type**: *"intensive tillage" | "reduced tillage" | "mulch tillage" | "ridge tillage" | "strip tillage" | "no tillage" | "growing season cultivation" | "mow" | "crimp" | "winter killed" | "broad-spectrum herbicide"*
 
-*Defined in [specification.ts:1335](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1335)*
+*Defined in [specification.ts:1342](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1342)*
 
 The soil or crop disturbance events classification type.
 

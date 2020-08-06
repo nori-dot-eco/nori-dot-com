@@ -17,8 +17,6 @@ A crop event that has a start and end date.
 
 * **CropEventRange**
 
-  ↳ [IrrigationEvent](_specification_.irrigationevent.md)
-
   ↳ [GrazingEvent](_specification_.grazingevent.md)
 
 ## Index
@@ -34,7 +32,7 @@ A crop event that has a start and end date.
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:1104](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1104)*
+*Defined in [specification.ts:1125](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1125)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -52,7 +50,7 @@ ___
 
 • **startDate**: *string*
 
-*Defined in [specification.ts:1091](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1091)*
+*Defined in [specification.ts:1112](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L1112)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

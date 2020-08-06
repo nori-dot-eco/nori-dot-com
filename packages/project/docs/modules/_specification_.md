@@ -42,7 +42,6 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 * [HistoricLandManagement](../interfaces/_specification_.historiclandmanagement.md)
 * [HistoricNonCRPLandManagement](../interfaces/_specification_.historicnoncrplandmanagement.md)
 * [IrrigationEvent](../interfaces/_specification_.irrigationevent.md)
-* [KillEvent](../interfaces/_specification_.killevent.md)
 * [LimingEvent](../interfaces/_specification_.limingevent.md)
 * [OrchardOrVineyardCrop](../interfaces/_specification_.orchardorvineyardcrop.md)
 * [OrganicMatterEvent](../interfaces/_specification_.organicmatterevent.md)
