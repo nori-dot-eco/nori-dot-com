@@ -624,33 +624,33 @@ export interface HarvestableCropEvents {
 /**
  * Crop management details and events.
  *
- * @example
+ * @example <caption>When a crop has associated management events</caption>
  *
  * ```js
  * {
  *  "killEvent": {
- *    // ...
+ *    // ... KillEvent
  *  },
  *  "soilOrCropDisturbanceEvents": [
- *    // ... [SoilOrCropDisturbanceEvent](#soilOrCropDisturbanceEvents)
+ *    // ... SoilOrCropDisturbanceEvents
  *  ],
  *  "fertilizerEvents": [
- *    // ...
+ *    // ... FertilizerEvents
  *  ],
  *  "organicMatterEvents": [
- *    // ...
+ *    // ... OrganicMatterEvents
  *  ],
  *  "irrigationEvents": [
- *    // ...
+ *    // ... IrrigationEvents
  *  ],
  *  "limingEvents": [
- *    // ...
+ *    // ... LimingEvents
  *  ],
  *  "grazingEvents": [
- *    // ...
+ *    // ... GrazingEvents
  *  ],
  *  "burningEvent": {
- *    // ...
+ *    // ... BurningEvent
  *  },
  * }
  * ```
@@ -663,7 +663,7 @@ export interface CropEvents {
    * @example <caption>When the crop was killed on October 1st of 2000:</caption>
    *
    * ```js
-   * {
+   * "killEvent": {
    *  "date": "10/01/2000",
    *  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
    * }
@@ -678,7 +678,7 @@ export interface CropEvents {
    * @example <caption>When some soil or crop disturbance events occurred:</caption>
    *
    * ```js
-   * [
+   * "soilOrCropDisturbanceEvents": [
    *  {
    *    "date": "10/01/2000",
    *    "type": "mow",
@@ -695,7 +695,7 @@ export interface CropEvents {
    * @example <caption>When some fertilizer events occurred:</caption>
    *
    * ```js
-   * [
+   * "fertilizerEvents": [
    *  {
    *    "date": "10/01/2000",
    *    "productName": "Joe's fertilizer",
@@ -714,7 +714,7 @@ export interface CropEvents {
    * @example <caption>When some organic matter was applied:</caption>
    *
    * ```js
-   * [
+   * "organicMatterEvents": [
    *  {
    *    "date": "10/01/2000",
    *    "type": "alfalfa meal",
@@ -734,7 +734,7 @@ export interface CropEvents {
    * @example <caption>When some irrigation events occurred:</caption>
    *
    * ```js
-   * [
+   * "irrigationEvents": [
    *  {
    *    "volume": 1,
    *    "depth": 100,
@@ -754,7 +754,7 @@ export interface CropEvents {
    * @example <caption>When some liming events occurred:</caption>
    *
    * ```js
-   * [
+   * "limingEvents": [
    *  {
    *    "date": "01/01/2000",
    *    "type": "crushed limestone",
@@ -772,7 +772,7 @@ export interface CropEvents {
    * @example <caption>When some grazing events occurred:</caption>
    *
    * ```js
-   * [
+   * "grazingEvents": [
    *  {
    *   "restPeriod": 0,
    *   "utilization": 20,
@@ -793,7 +793,7 @@ export interface CropEvents {
    * @example <caption>When burning occurred after harvesting:</caption>
    *
    * ```js
-   * {
+   * "burningEvent": {
    *  "type": "after harvesting"
    * }
    * ```
@@ -822,6 +822,15 @@ export interface OrchardOrVineyardCrop
   extends CropEvents,
     HarvestableCropEvents,
     PlantedCrop {
+  // todo crop name enum (which crops can be defined as orchard/vineyard?)
+  /**
+   * The name of the orchard or vineyard crop.
+   *
+   * You can find a list of accepted crops [here](https://go.nori.com/inputs).
+   *
+   * @example
+   */
+  name: string;
   /**
    * The crop type.
    *

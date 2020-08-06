@@ -4,33 +4,33 @@
 
 Crop management details and events.
 
-**`example`** 
+**`example`** <caption>When a crop has associated management events</caption>
 
 ```js
 {
  "killEvent": {
-   // ...
+   // ... KillEvent
  },
  "soilOrCropDisturbanceEvents": [
-   // ... [SoilOrCropDisturbanceEvent](#soilOrCropDisturbanceEvents)
+   // ... SoilOrCropDisturbanceEvents
  ],
  "fertilizerEvents": [
-   // ...
+   // ... FertilizerEvents
  ],
  "organicMatterEvents": [
-   // ...
+   // ... OrganicMatterEvents
  ],
  "irrigationEvents": [
-   // ...
+   // ... IrrigationEvents
  ],
  "limingEvents": [
-   // ...
+   // ... LimingEvents
  ],
  "grazingEvents": [
-   // ...
+   // ... GrazingEvents
  ],
  "burningEvent": {
-   // ...
+   // ... BurningEvent
  },
 }
 ```
@@ -66,7 +66,7 @@ Crop management details and events.
 
 • **burningEvent**? : *[BurningEvent](_specification_.burningevent.md)*
 
-*Defined in [specification.ts:802](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L802)*
+*Defined in [specification.ts:802](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L802)*
 
 A burning event, if applicable.
 
@@ -75,7 +75,7 @@ A burning event, if applicable.
 **`example`** <caption>When burning occurred after harvesting:</caption>
 
 ```js
-{
+"burningEvent": {
  "type": "after harvesting"
 }
 ```
@@ -86,14 +86,14 @@ ___
 
 • **fertilizerEvents**? : *[FertilizerEvent](_specification_.fertilizerevent.md)[]*
 
-*Defined in [specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L710)*
+*Defined in [specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L710)*
 
 A list of fertilizer events, if applicable.
 
 **`example`** <caption>When some fertilizer events occurred:</caption>
 
 ```js
-[
+"fertilizerEvents": [
  {
    "date": "10/01/2000",
    "productName": "Joe's fertilizer",
@@ -110,14 +110,14 @@ ___
 
 • **grazingEvents**? : *[GrazingEvent](_specification_.grazingevent.md)[]*
 
-*Defined in [specification.ts:787](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L787)*
+*Defined in [specification.ts:787](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L787)*
 
 A list of grazing events, if applicable.
 
 **`example`** <caption>When some grazing events occurred:</caption>
 
 ```js
-[
+"grazingEvents": [
  {
   "restPeriod": 0,
   "utilization": 20,
@@ -134,14 +134,14 @@ ___
 
 • **irrigationEvents**? : *[IrrigationEvent](_specification_.irrigationevent.md)[]*
 
-*Defined in [specification.ts:750](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L750)*
+*Defined in [specification.ts:750](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L750)*
 
 A list of irrigation events, if applicable.
 
 **`example`** <caption>When some irrigation events occurred:</caption>
 
 ```js
-[
+"irrigationEvents": [
  {
    "volume": 1,
    "depth": 100,
@@ -159,14 +159,14 @@ ___
 
 • **killEvent**? : *[KillEvent](_specification_.killevent.md)*
 
-*Defined in [specification.ts:672](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L672)*
+*Defined in [specification.ts:672](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L672)*
 
 A kill event, if applicable. When it is not applicable it can be excluded.
 
 **`example`** <caption>When the crop was killed on October 1st of 2000:</caption>
 
 ```js
-{
+"killEvent": {
  "date": "10/01/2000",
  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
 }
@@ -178,14 +178,14 @@ ___
 
 • **limingEvents**? : *[LimingEvent](_specification_.limingevent.md)[]*
 
-*Defined in [specification.ts:768](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L768)*
+*Defined in [specification.ts:768](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L768)*
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
 **`example`** <caption>When some liming events occurred:</caption>
 
 ```js
-[
+"limingEvents": [
  {
    "date": "01/01/2000",
    "type": "crushed limestone",
@@ -201,14 +201,14 @@ ___
 
 • **organicMatterEvents**? : *[OrganicMatterEvent](_specification_.organicmatterevent.md)[]*
 
-*Defined in [specification.ts:730](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L730)*
+*Defined in [specification.ts:730](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L730)*
 
 A list of organic matter and manure application events, if applicable.
 
 **`example`** <caption>When some organic matter was applied:</caption>
 
 ```js
-[
+"organicMatterEvents": [
  {
    "date": "10/01/2000",
    "type": "alfalfa meal",
@@ -226,7 +226,7 @@ ___
 
 • **soilOrCropDisturbanceEvents**: *[SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)[]*
 
-*Defined in [specification.ts:691](https://github.com/nori-dot-eco/nori-dot-com/blob/227c0d6/packages/project/src/specification.ts#L691)*
+*Defined in [specification.ts:691](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L691)*
 
 A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
 
@@ -235,7 +235,7 @@ All crops will need to define a soil or crop disturbance event <= the associated
 **`example`** <caption>When some soil or crop disturbance events occurred:</caption>
 
 ```js
-[
+"soilOrCropDisturbanceEvents": [
  {
    "date": "10/01/2000",
    "type": "mow",
