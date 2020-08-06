@@ -27,7 +27,10 @@ import type { GeoJSON } from 'geojson';
  * Todo
  * ! Topics to discuss with partners in a specification review
  * * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
- * * include: conservis, granular, truterra (jamie)
+ * * include:
+ *    conservis (r)
+ *    granula (j)
+ *    truterra (jamie) (j)
  * * how realistic is it to expect partners to use enums for types
  * * lbsOfNPerAcre realistic?
  *

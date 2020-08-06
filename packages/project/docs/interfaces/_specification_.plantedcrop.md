@@ -36,7 +36,7 @@ Crop properties relevant to planted crops.
 
 • **plantingDate**: *string*
 
-*Defined in [specification.ts:612](https://github.com/nori-dot-eco/nori-dot-com/blob/0d92544/packages/project/src/specification.ts#L612)*
+*Defined in [specification.ts:615](https://github.com/nori-dot-eco/nori-dot-com/blob/fc37482/packages/project/src/specification.ts#L615)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
