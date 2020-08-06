@@ -38,13 +38,17 @@ Irrigation event details.
 
 • **depth**: *number*
 
-*Defined in [specification.ts:1292](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1292)*
+*Defined in [specification.ts:1419](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1419)*
 
 The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
 
 **`minimum`** 0
 
-**`example`** 
+**`example`** <caption>When irrigation depth was 100 inches</caption>
+
+```js
+"depth": 100,
+```
 
 ___
 
@@ -54,7 +58,7 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[endDate](_specification_.cropeventrange.md#enddate)*
 
-*Defined in [specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L920)*
+*Defined in [specification.ts:975](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L975)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -72,17 +76,19 @@ ___
 
 • **frequency**? : *number*
 
-*Defined in [specification.ts:1302](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1302)*
+*Defined in [specification.ts:1433](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1433)*
 
 The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
-
-// todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
 
 **`minimum`** 1
 
 **`maximum`** 365
 
-**`example`** 
+**`example`** <caption>When irrigation was applied every week (every 7 days)</caption>
+
+```js
+"frequency": 7,
+```
 
 ___
 
@@ -92,7 +98,7 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[startDate](_specification_.cropeventrange.md#startdate)*
 
-*Defined in [specification.ts:907](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L907)*
+*Defined in [specification.ts:962](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L962)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -110,10 +116,14 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:1285](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1285)*
+*Defined in [specification.ts:1406](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1406)*
 
 The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 
 **`minimum`** 0
 
-**`example`**
+**`example`** <caption>When 1 inch of volume was applied</caption>
+
+```js
+"volume": 1,
+```

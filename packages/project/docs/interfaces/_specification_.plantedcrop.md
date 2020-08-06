@@ -6,6 +6,12 @@ Crop properties relevant to planted crops.
 
 **`example`** 
 
+```js
+{
+ "plantingDate": "01/01/2000";
+}
+```
+
 ## Hierarchy
 
 * **PlantedCrop**
@@ -30,7 +36,7 @@ Crop properties relevant to planted crops.
 
 • **plantingDate**: *string*
 
-*Defined in [specification.ts:439](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L439)*
+*Defined in [specification.ts:444](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L444)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

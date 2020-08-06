@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L878)*
+*Defined in [specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L933)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,7 +56,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1145](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1145)*
+*Defined in [specification.ts:1260](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1260)*
 
 Amount of nitrogen applied in lbs/ac.
 
@@ -72,7 +72,7 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:1121](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1121)*
+*Defined in [specification.ts:1236](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1236)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -88,7 +88,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1135](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1135)*
+*Defined in [specification.ts:1250](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1250)*
 
 The fertilizer classification type.
 

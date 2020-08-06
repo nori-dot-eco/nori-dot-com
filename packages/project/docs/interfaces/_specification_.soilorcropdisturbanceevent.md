@@ -25,7 +25,6 @@ Soil or crop disturbance event event details.
 
 * [date](_specification_.soilorcropdisturbanceevent.md#date)
 * [name](_specification_.soilorcropdisturbanceevent.md#optional-name)
-* [termination](_specification_.soilorcropdisturbanceevent.md#termination)
 * [type](_specification_.soilorcropdisturbanceevent.md#type)
 
 ## Properties
@@ -36,7 +35,7 @@ Soil or crop disturbance event event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L878)*
+*Defined in [specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L933)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -54,7 +53,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1075](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1075)*
+*Defined in [specification.ts:1128](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1128)*
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -66,22 +65,74 @@ The name/alias that the soil or crop disturbance events practice is known by. Th
 
 ___
 
-###  termination
-
-• **termination**: *"winter killed" | "broad-spectrum herbicide"*
-
-*Defined in [specification.ts:1092](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1092)*
-
-___
-
 ###  type
 
-• **type**: *"Reduced Tillage" | "Mulch Tillage" | "Ridge Tillage" | "Strip Tillage" | "No Tillage" | "Growing Season Cultivation" | "Mow" | "Crimp"*
+• **type**: *"reduced tillage" | "mulch tillage" | "ridge tillage" | "strip tillage" | "no tillage" | "growing season cultivation" | "mow" | "crimp" | "winter killed" | "broad-spectrum herbicide"*
 
-*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1083)*
+*Defined in [specification.ts:1197](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1197)*
 
 The soil or crop disturbance events classification type.
 
 You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
-**`example`**
+//todo following captions
+
+**`example`** <caption></caption>
+
+```js
+"type": "reduced tillage"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "mulch tillage"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "ridge tillage"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "strip tillage"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "no tillage"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "growing season cultivation"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "mow"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "crimp"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "winter killed"
+```
+
+**`example`** <caption></caption>
+
+```js
+"type": "broad-spectrum herbicide"
+```

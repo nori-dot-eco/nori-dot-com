@@ -48,7 +48,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:310](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L310)*
+*Defined in [specification.ts:308](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L308)*
 
 The number of acres that use the herein defined crop management practices (via `cropYears`).
 
@@ -66,7 +66,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L343)*
+*Defined in [specification.ts:341](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L341)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -89,7 +89,7 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:297](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L297)*
+*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L295)*
 
 The name of the field.
 
@@ -105,7 +105,7 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:325](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L325)*
+*Defined in [specification.ts:323](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L323)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
@@ -125,7 +125,7 @@ ___
 
 • **historicLangManagement**: *[HistoricLandManagement](_specification_.historiclandmanagement.md)*
 
-*Defined in [specification.ts:286](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L286)*
+*Defined in [specification.ts:284](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L284)*
 
 Details surrounding how the field was managed before year 2000.
 
@@ -143,7 +143,7 @@ ___
 
 • **regenerativeStartYear**: *number*
 
-*Defined in [specification.ts:273](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L273)*
+*Defined in [specification.ts:271](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L271)*
 
 Year of practice switch - there can be more than one. We tend to use the earliest one that is after 2010 and meets our verification requirements.
 

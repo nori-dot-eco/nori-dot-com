@@ -33,8 +33,6 @@ import type { GeoJSON } from 'geojson';
  *
  * ! Importer logic
  * * order events by date
- * * check implication of removing cropNumber
- * * if we remove the restriction of defining all of the crop events (i.e., harvests) based on the year they are defined in, we will need to account for this when uploading to the sheet.
  *
  * ! Validation library
  * * readme on how to build schema.
@@ -54,14 +52,14 @@ import type { GeoJSON } from 'geojson';
  * ! Misc
  * ? Jaycen
  * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
- * * ts jsdoc plugin
  * ? Need from rebekah:
  * * * change crop inputs to correct classification (i.e. Alfalfa should be perennial)
  * * * * this allows me to add guidance on things like how to find crop type (i.e. When a crop is a valid orchard/vineyard)
  * * * solid v slurry manure types.
  *
- * @example
  */
+
+// todo example indentation when caption is used
 
 /**
  *
@@ -420,6 +418,13 @@ export interface CropYear {
  * Crop properties relevant to planted crops.
  *
  * @example
+ *
+ * ```js
+ * {
+ *  "plantingDate": "01/01/2000";
+ * }
+ * ```
+ *
  */
 export interface PlantedCrop {
   /**
@@ -443,6 +448,20 @@ export interface PlantedCrop {
  * Crop harvest events.
  *
  * @example
+ *
+ * ```js
+ *  [
+ *    {
+ *      "date": "10/01/2000",
+ *      "yield": 100,
+ *      "yieldUnit": "bu/ac",
+ *      "grainFruitTuber": "n/a",
+ *      "residueRemoved": "n/a",
+ *    }
+ *    // ... other harvest events
+ *  ]
+ * ```
+ *
  */
 export interface HarvestableCropEvents {
   /**
@@ -524,11 +543,18 @@ export interface CropEvents {
   /**
    * A kill event, if applicable. When it is not applicable it can be excluded.
    *
-   * @example
+   * @example <caption>When the crop was killed on October 1st of 2000</caption>
+   *
+   *          ```js
+   *          {
+   *           "date": "10/01/2000",
+   *           // "residueRemoved": 5, // todo will it ever be anything other than 0%?
+   *          }
+   *          ```
    */
   killEvent?: KillEvent;
   /**
-   * A list of soil or crop disturbance events events, if applicable. When it is not applicable it can be defined as null.
+   * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events). When it is not applicable it can be defined as null.
    *
    * All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
    *
@@ -536,7 +562,11 @@ export interface CropEvents {
    *
    * ```js
    * [
-   * // todo
+   *  {
+   *    "date": "10/01/2000",
+   *    "type": "mow",
+   *  }
+   *  // ... other soul and crop disturbance events
    * ]
    * ```
    *
@@ -547,11 +577,17 @@ export interface CropEvents {
    *
    * @example <caption>When some fertilizer events occurred</caption>
    *
-   * ```js
-   * [
-   * // todo
-   * ]
-   * ```
+   *          ```js
+   *          [
+   *           {
+   *             "date": "10/01/2000",
+   *             "productName": "Joe's fertilizer",
+   *             "type": "mixed blends",
+   *             "lbsOfNPerAcre": 10
+   *           }
+   *           // ... other fertilizer events
+   *          ]
+   *          ```
    *
    */
   fertilizerEvents?: FertilizerEvent[];
@@ -562,7 +598,14 @@ export interface CropEvents {
    *
    * ```js
    * [
-   * // todo
+   *  {
+   *    "date": "10/01/2000",
+   *    "type": "alfalfa meal",
+   *    "amountPerAcre": 2, // tons
+   *    "percentNitrogen": 9,
+   *    "carbonNitrogenRatio": 30,
+   *  }
+   *  // ... other organic matter or manure events
    * ]
    * ```
    *
@@ -575,7 +618,14 @@ export interface CropEvents {
    *
    * ```js
    * [
-   * // todo
+   *  {
+   *    "volume": 1,
+   *    "depth": 100,
+   *    "frequency": 7,
+   *    "startDate": "01/01/2000",
+   *    "endDate": "12/31/2000"
+   *  }
+   *  // ... other irrigation events
    * ]
    * ```
    *
@@ -588,7 +638,12 @@ export interface CropEvents {
    *
    * ```js
    * [
-   * // todo
+   *  {
+   *    "date": "01/01/2000",
+   *    "type": "crushed limestone",
+   *    "tonsPerAcre": 10,
+   *  }
+   *  //...other liming events
    * ]
    * ```
    *
@@ -959,7 +1014,7 @@ export interface CropManagementEvent extends CropEvent {
    * @minimum 0
    * @maximum 100
    *
-   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber</caption>
+   * @example <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply</caption>
    *
    * ```js
    * "residueRemoved": 0
@@ -975,12 +1030,6 @@ export interface CropManagementEvent extends CropEvent {
    *
    * ```js
    * "residueRemoved": 10
-   * ```
-   *
-   * @example <caption>Enter 'n/a' if it does not apply</caption>
-   *
-   * ```js
-   * "residueRemoved": "n/a"
    * ```
    *
    */
@@ -1008,15 +1057,18 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
   /**
    * The crop yield.
    *
-   * The current version of quantification does not consider yield when producing estimates.
+   * The current version of quantification does not consider yield when producing estimates. As such, we will default to 0 when left out.
+   *
+   * @default 0
    *
    * @example <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`</caption>
    *
    * ```js
    * "yield": 100
    * ```
+   *
    */
-  yield?: number; // todo can we drop this since it doesnt impact quantification
+  yield?: number;
   /**
    * The crop yield units.
    *
@@ -1041,12 +1093,13 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  // "residueRemoved": 5, // todo potentially needs to be "n/a"
+ *  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
  * }
  * ```
  *
  */
-export interface KillEvent extends CropEvent {}
+export interface KillEvent extends CropEvent {} // todo is there any way to kill a crop using something other than what's defined in soil or crop disturbance types? If not, then delete kill event entirely
+// todo if removing killevent, does residue removed need to be defined instead in soil or crop disturbances
 
 /**
  * Soil or crop disturbance event event details.
@@ -1078,18 +1131,80 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    *
    * You can find a list of common equivalents [here](https://go.nori.com/inputs).
    *
-   * @example
+   * //todo following captions
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "reduced tillage"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "mulch tillage"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "ridge tillage"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "strip tillage"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "no tillage"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "growing season cultivation"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "mow"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "crimp"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "winter killed"
+   * ```
+   *
+   * @example <caption></caption>
+   *
+   * ```js
+   * "type": "broad-spectrum herbicide"
+   * ```
+   *
    */
   type:
-    | 'Reduced Tillage'
-    | 'Mulch Tillage'
-    | 'Ridge Tillage'
-    | 'Strip Tillage'
-    | 'No Tillage'
-    | 'Growing Season Cultivation'
-    | 'Mow'
-    | 'Crimp'; // todo default(if we say no till, can we default to the planting date)
-  termination: 'winter killed' | 'broad-spectrum herbicide'; // todo default
+    | 'reduced tillage'
+    | 'mulch tillage'
+    | 'ridge tillage'
+    | 'strip tillage'
+    | 'no tillage'
+    | 'growing season cultivation'
+    | 'mow'
+    | 'crimp'
+    | 'winter killed'
+    | 'broad-spectrum herbicide'; // todo default // todo if we say no till, can we default to the planting date
 }
 
 /**
@@ -1118,7 +1233,7 @@ export interface FertilizerEvent extends CropEvent {
    * ```
    *
    */
-  productName?: string; // todo deprecate when sheet is gone (just an alias)
+  productName?: string;
   /**
    * The fertilizer classification type.
    *
@@ -1257,8 +1372,9 @@ export interface OrganicMatterEvent extends CropEvent {
   carbonNitrogenRatio: number;
 }
 
-// todo frequency vs array of occurences
-// todo is irrigation crop specefic? or is it better thought of on the field level?
+// todo frequency vs array of occurrences
+// todo SHOULD WE ALLOW USERS TO DEFINE NON-FREQUENCY BASED IRRIGATION? guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
+// todo is irrigation crop specific? or is it better thought of on the field level?
 /**
  * Irrigation event details.
  *
@@ -1280,24 +1396,39 @@ export interface IrrigationEvent extends CropEventRange {
    * The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
    *
    * @minimum 0
-   * @example
+   *
+   * @example <caption>When 1 inch of volume was applied</caption>
+   *
+   * ```js
+   * "volume": 1,
+   * ```
    */
   volume: number;
   /**
    * The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
    *
    * @minimum 0
-   * @example
+   *
+   * @example <caption>When irrigation depth was 100 inches</caption>
+   *
+   * ```js
+   * "depth": 100,
+   * ```
+   *
    */
   depth: number; // todo is this currently? potentially in flux at comet
   /**
    * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
    *
-   * // todo guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
-   *
    * @minimum 1
    * @maximum 365
-   * @example
+   *
+   * @example <caption>When irrigation was applied every week (every 7 days)</caption>
+   *
+   * ```js
+   * "frequency": 7,
+   * ```
+   *
    */
   frequency?: number;
 }
@@ -1329,13 +1460,14 @@ export interface LimingEvent {
    *
    */
   type:
-    | 'none' // todo if none, can we exclude instead?
     | 'crushed limestone'
     | 'calcitic limestone'
     | 'dolomitic limestone'
     | 'other';
   /**
    * The liming amount (in tons per acre).
+   *
+   * @minimum 0
    *
    * @example <caption>When 100 tons were user per acre</caption>
    *
@@ -1344,9 +1476,9 @@ export interface LimingEvent {
    * ```
    *
    */
-  tonsPerAcre: number; // todo minimum, maximum
+  tonsPerAcre: number; // todo maximum
   /**
-   * // todo guidance date doesnt matter, fi excluded, we will use an assigned date.
+   * The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.
    *
    * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
    *
