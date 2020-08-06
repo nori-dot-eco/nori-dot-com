@@ -28,7 +28,7 @@ Burning event details.
 
 • **type**: *"before planting" | "after harvesting"*
 
-*Defined in [specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L1708)*
+*Defined in [specification.ts:1713](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L1713)*
 
 The type of burning, if applicable.
 

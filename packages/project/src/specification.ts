@@ -893,11 +893,11 @@ export interface OrchardOrVineyardCrop
 /**
  * Perennial crop details.
  *
- * @example <caption>A crop definition for annual rye managed as a perennial:</caption>
+ * @example <caption>A crop definition for alfalfa managed as a perennial:</caption>
  *
  * ```js
  * {
- *  "name": "annual rye",
+ *  "name": "alfalfa",
  *  "type": "perennial",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
@@ -915,7 +915,12 @@ export interface PerennialCrop
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
-   * @example
+   * @example <caption>When the perennial crop planted was alfalfa:</caption>
+   *
+   * ```js
+   * "name": "alfalfa"
+   * ```
+   *
    */
   name: string;
   /**
@@ -1396,7 +1401,7 @@ export interface FertilizerEvent extends CropEvent {
   lbsOfNPerAcre: number;
 }
 
-// todo rebekah says there are properties missing
+// todo add percent moisture back
 // todo the unit is sometimes gallons per acre, sometimes tons (depends on solid v slurry)
 /**
  * Organic matter (OMAD) and manure event details.

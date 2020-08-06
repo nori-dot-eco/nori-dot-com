@@ -50,7 +50,7 @@ Note that the state the field exists within restricts the allowed values per obj
 
 • **crp**: *"yes"*
 
-*Defined in [specification.ts:250](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L250)*
+*Defined in [specification.ts:250](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L250)*
 
 Whether the field participated in CRP or not.
 
@@ -68,7 +68,7 @@ ___
 
 • **crpEndYear**: *number*
 
-*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L295)*
+*Defined in [specification.ts:295](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L295)*
 
 The CRP end year
 
@@ -88,7 +88,7 @@ ___
 
 • **crpStartYear**: *number*
 
-*Defined in [specification.ts:281](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L281)*
+*Defined in [specification.ts:281](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L281)*
 
 The CRP start year
 
@@ -108,7 +108,7 @@ ___
 
 • **crpType**: *"100% grass" | "grass / legume mixture"*
 
-*Defined in [specification.ts:267](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L267)*
+*Defined in [specification.ts:267](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L267)*
 
 The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.
 
@@ -130,7 +130,7 @@ ___
 
 • **postCRPManagement**: *string*
 
-*Defined in [specification.ts:328](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L328)*
+*Defined in [specification.ts:328](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L328)*
 
 How was the field managed after CRP
 
@@ -146,7 +146,7 @@ ___
 
 • **postCRPTillage**: *string*
 
-*Defined in [specification.ts:339](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L339)*
+*Defined in [specification.ts:339](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L339)*
 
 How was the field managed after tillage
 
@@ -162,7 +162,7 @@ ___
 
 • **preCRPManagement**: *string*
 
-*Defined in [specification.ts:306](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L306)*
+*Defined in [specification.ts:306](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L306)*
 
 How was the field managed before the field entered into CRP
 
@@ -178,7 +178,7 @@ ___
 
 • **preCRPTillage**: *string*
 
-*Defined in [specification.ts:317](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L317)*
+*Defined in [specification.ts:317](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L317)*
 
 How was the field tilled before the field entered into CRP
 
@@ -196,7 +196,7 @@ ___
 
 *Inherited from [HistoricLandManagement](_specification_.historiclandmanagement.md).[preYear1980](_specification_.historiclandmanagement.md#preyear1980)*
 
-*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L137)*
+*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/aaf0b90/packages/project/src/specification.ts#L137)*
 
 A description of how the land was managed before 1980.
 
