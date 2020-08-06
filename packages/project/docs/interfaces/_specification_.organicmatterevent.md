@@ -39,7 +39,7 @@ Organic matter (OMAD) and manure event details.
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:1465](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1465)*
+*Defined in [specification.ts:1475](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1475)*
 
 Amount of organic matter or manure applied per acre.
 
@@ -59,7 +59,7 @@ ___
 
 • **carbonNitrogenRatio**: *number*
 
-*Defined in [specification.ts:1499](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1499)*
+*Defined in [specification.ts:1509](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1509)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -83,7 +83,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1050](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1050)*
+*Defined in [specification.ts:1060](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1060)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -101,7 +101,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1417](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1417)*
+*Defined in [specification.ts:1427](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1427)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -117,7 +117,7 @@ ___
 
 • **percentNitrogen**: *number*
 
-*Defined in [specification.ts:1483](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1483)*
+*Defined in [specification.ts:1493](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1493)*
 
 The nitrogen percent makeup in the organic matter or manure.
 
@@ -141,7 +141,7 @@ ___
 
 • **type**: *"alfalfa meal" | "beef manure, solid" | "beef slurry" | "blood, dried" | "bone meal" | "chicken - broiler (litter), solid" | "chicken - broiler slurry" | "chicken - layer slurry" | "chicken - layer, solid" | "compost or composted manure, solid" | "dairy manure, solid" | "dairy slurry" | "farmyard manure, solid" | "feather meal" | "fish emulsion" | "fish scrap" | "guano" | "horse manure, solid" | "other manure, solid" | "sheep manure, solid" | "soybean meal" | "swine manure, slurry" | "swine manure, solid"*
 
-*Defined in [specification.ts:1428](https://github.com/nori-dot-eco/nori-dot-com/blob/724a4be/packages/project/src/specification.ts#L1428)*
+*Defined in [specification.ts:1438](https://github.com/nori-dot-eco/nori-dot-com/blob/8e3b66e/packages/project/src/specification.ts#L1438)*
 
 The organic matter or manure classification type.
 

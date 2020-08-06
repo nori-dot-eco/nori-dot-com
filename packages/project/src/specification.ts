@@ -624,7 +624,7 @@ export interface HarvestableCropEvents {
 /**
  * Crop management details and events.
  *
- * @example <caption>When a crop has associated management events</caption>
+ * @example <caption>When a crop has associated management events:</caption>
  *
  * ```js
  * {
@@ -805,10 +805,11 @@ export interface CropEvents {
 /**
  * Crop management details and events for orchard and vineyard crops.
  *
- * @example
+ * @example <caption>A crop definition for an orchard that was pruned and renewed or cleared:</caption>
  *
  * ```js
  * {
+ *  "name": "", // todo
  *  "type": "orchard",
  *  "prune": "yes",
  *  "renewOrClear": "yes",
@@ -895,7 +896,7 @@ export interface OrchardOrVineyardCrop
 /**
  * Perennial crop details.
  *
- * @example
+ * @example <caption>A crop definition for annual rye managed as a perennial:</caption>
  *
  * ```js
  * {
@@ -939,11 +940,11 @@ export interface PerennialCrop
 /**
  * Crop management details and events for cover crops.
  *
- * @example
+ * @example <caption>A crop definition for a cover crop planted in year 2000:</caption>
  *
  * ```js
  * {
- *  "name": "corn",
+ *  "name": "corn", // todo reasonable example?
  *  "type": "annual cover",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
@@ -985,7 +986,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
 /**
  * Crop management details and events for annual crops.
  *
- * @example
+ * @example <caption>An crop definition for an annual crop planted in year 2000:</caption>
  *
  * ```js
  * {
@@ -1102,7 +1103,7 @@ export interface CropEventRange {
 }
 
 /**
- * Harvest event details.
+ * Crop management event details.
  *
  * @example
  *
@@ -1167,7 +1168,7 @@ export interface CropManagementEvent extends CropEvent {
 /**
  * An annual crop's harvest event details.
  *
- * @example
+ * @example <caption>An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:</caption>
  *
  * ```js
  * {

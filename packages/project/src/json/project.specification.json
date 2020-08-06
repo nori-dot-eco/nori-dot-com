@@ -183,7 +183,7 @@
             "type": "object"
         },
         "CropManagementEvent": {
-            "description": "Harvest event details.",
+            "description": "Crop management event details.",
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
@@ -2034,6 +2034,11 @@
                     "title": "limingEvents",
                     "type": "array"
                 },
+                "name": {
+                    "description": "The name of the orchard or vineyard crop.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "title": "name",
+                    "type": "string"
+                },
                 "organicMatterEvents": {
                     "description": "A list of organic matter and manure application events, if applicable.",
                     "items": {
@@ -2087,6 +2092,7 @@
                 }
             },
             "required": [
+                "name",
                 "plantingDate",
                 "prune",
                 "renewOrClear",
