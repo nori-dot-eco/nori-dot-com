@@ -36,7 +36,7 @@ Soil or crop disturbance event event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L878)*
+*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L878)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -54,11 +54,15 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1069](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1069)*
+*Defined in [specification.ts:1075](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1075)*
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** 
+**`example`** <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method"</caption>
+
+```js
+"productName": "Joe's tillage method"
+```
 
 ___
 
@@ -66,7 +70,7 @@ ___
 
 • **termination**: *"winter killed" | "broad-spectrum herbicide"*
 
-*Defined in [specification.ts:1086](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1086)*
+*Defined in [specification.ts:1092](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1092)*
 
 ___
 
@@ -74,7 +78,7 @@ ___
 
 • **type**: *"Reduced Tillage" | "Mulch Tillage" | "Ridge Tillage" | "Strip Tillage" | "No Tillage" | "Growing Season Cultivation" | "Mow" | "Crimp"*
 
-*Defined in [specification.ts:1077](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1077)*
+*Defined in [specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1083)*
 
 The soil or crop disturbance events classification type.
 

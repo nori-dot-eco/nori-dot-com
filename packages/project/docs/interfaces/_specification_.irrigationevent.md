@@ -38,7 +38,7 @@ Irrigation event details.
 
 • **depth**: *number*
 
-*Defined in [specification.ts:1271](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1271)*
+*Defined in [specification.ts:1292](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1292)*
 
 The irrigation depth in inches. This should be set to 0 if it was applied at the surface.
 
@@ -54,7 +54,7 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[endDate](_specification_.cropeventrange.md#enddate)*
 
-*Defined in [specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L920)*
+*Defined in [specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L920)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -72,7 +72,7 @@ ___
 
 • **frequency**? : *number*
 
-*Defined in [specification.ts:1281](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1281)*
+*Defined in [specification.ts:1302](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1302)*
 
 The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
 
@@ -92,7 +92,7 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[startDate](_specification_.cropeventrange.md#startdate)*
 
-*Defined in [specification.ts:907](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L907)*
+*Defined in [specification.ts:907](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L907)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -110,7 +110,7 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:1264](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1264)*
+*Defined in [specification.ts:1285](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1285)*
 
 The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 

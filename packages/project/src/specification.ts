@@ -987,6 +987,7 @@ export interface CropManagementEvent extends CropEvent {
   residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string -- this depends on whether no vs n/a  impacts the model.
 }
 
+// todo if yield is optional, a supplier will need guidance on the up/downside of supplying that information
 /**
  * An annual crop's harvest event details.
  *
@@ -1064,7 +1065,12 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
    * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * @example
+   * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method"</caption>
+   *
+   * ```js
+   * "productName": "Joe's tillage method"
+   * ```
+   *
    */
   name?: string; // todo deprecate when sheet is gone (just an alias)
   /**
@@ -1082,8 +1088,8 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'No Tillage'
     | 'Growing Season Cultivation'
     | 'Mow'
-    | 'Crimp';
-  termination: 'winter killed' | 'broad-spectrum herbicide';
+    | 'Crimp'; // todo default(if we say no till, can we default to the planting date)
+  termination: 'winter killed' | 'broad-spectrum herbicide'; // todo default
 }
 
 /**
@@ -1105,7 +1111,12 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * @example
+   * @example <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer"</caption>
+   *
+   * ```js
+   * "productName": "Joe's fertilizer"
+   * ```
+   *
    */
   productName?: string; // todo deprecate when sheet is gone (just an alias)
   /**
@@ -1114,13 +1125,22 @@ export interface FertilizerEvent extends CropEvent {
    * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled.
    *
    * @default "mixed blends"
-   * @example
+   * @example <caption>When the fertilizer type can be classified as mixed blends</caption>
+   *
+   * ```js
+   * "type": "mixed blends",
+   * ```
+   *
    */
   type?: string;
   /**
    * Amount of nitrogen applied in lbs/ac.
    *
-   * @example
+   * @example <caption>When 10 lbs of Nitrogen per acre was applied</caption>
+   *
+   * ```js
+   * "lbsOfNPerAcre": 10
+   * ```
    */
   lbsOfNPerAcre: number;
 }
@@ -1238,6 +1258,7 @@ export interface OrganicMatterEvent extends CropEvent {
 }
 
 // todo frequency vs array of occurences
+// todo is irrigation crop specefic? or is it better thought of on the field level?
 /**
  * Irrigation event details.
  *
@@ -1280,6 +1301,8 @@ export interface IrrigationEvent extends CropEventRange {
    */
   frequency?: number;
 }
+
+// todo since date doesn't impact the outcome, can we just ask for a singular aggregated liming event, or is it best to ask for a list and aggregate for them?
 /**
  * Liming event details.
  *

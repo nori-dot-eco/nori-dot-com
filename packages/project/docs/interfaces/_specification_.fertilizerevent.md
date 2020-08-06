@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L878)*
+*Defined in [specification.ts:878](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L878)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,11 +56,15 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1125](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1125)*
+*Defined in [specification.ts:1145](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1145)*
 
 Amount of nitrogen applied in lbs/ac.
 
-**`example`** 
+**`example`** <caption>When 10 lbs of Nitrogen per acre was applied</caption>
+
+```js
+"lbsOfNPerAcre": 10
+```
 
 ___
 
@@ -68,11 +72,15 @@ ___
 
 • **productName**? : *string*
 
-*Defined in [specification.ts:1110](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1110)*
+*Defined in [specification.ts:1121](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1121)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** 
+**`example`** <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer"</caption>
+
+```js
+"productName": "Joe's fertilizer"
+```
 
 ___
 
@@ -80,7 +88,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1119](https://github.com/nori-dot-eco/nori-dot-com/blob/72b033e/packages/project/src/specification.ts#L1119)*
+*Defined in [specification.ts:1135](https://github.com/nori-dot-eco/nori-dot-com/blob/54e6ec8/packages/project/src/specification.ts#L1135)*
 
 The fertilizer classification type.
 
@@ -88,4 +96,8 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 **`default`** "mixed blends"
 
-**`example`**
+**`example`** <caption>When the fertilizer type can be classified as mixed blends</caption>
+
+```js
+"type": "mixed blends",
+```
