@@ -130,21 +130,12 @@
                     "type": "string"
                 },
                 "residueRemoved": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "n/a"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "default": 0,
                     "description": "Crop residue removed.",
                     "maximum": 100,
                     "minimum": 0,
-                    "title": "residueRemoved"
+                    "title": "residueRemoved",
+                    "type": "number"
                 },
                 "yield": {
                     "default": 0,
@@ -153,6 +144,7 @@
                     "type": "number"
                 },
                 "yieldUnit": {
+                    "default": 0,
                     "description": "The crop yield units.\n\nThe current version of quantification does not consider yield when producing estimates.",
                     "enum": [
                         "bu/ac",
@@ -166,8 +158,7 @@
             },
             "required": [
                 "date",
-                "grainFruitTuber",
-                "residueRemoved"
+                "grainFruitTuber"
             ],
             "title": "AnnualCropHarvestEvent",
             "type": "object"
@@ -210,27 +201,17 @@
                     "type": "string"
                 },
                 "residueRemoved": {
-                    "anyOf": [
-                        {
-                            "enum": [
-                                "n/a"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "number"
-                        }
-                    ],
+                    "default": 0,
                     "description": "Crop residue removed.",
                     "maximum": 100,
                     "minimum": 0,
-                    "title": "residueRemoved"
+                    "title": "residueRemoved",
+                    "type": "number"
                 }
             },
             "required": [
                 "date",
-                "grainFruitTuber",
-                "residueRemoved"
+                "grainFruitTuber"
             ],
             "title": "CropManagementEvent",
             "type": "object"
@@ -430,11 +411,18 @@
                             "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
                         }
                     ],
-                    "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.",
+                    "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
                     "title": "geojson"
                 },
                 "historicLangManagement": {
-                    "$ref": "#/definitions/HistoricLandManagement",
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HistoricNonCRPLandManagement"
+                        },
+                        {
+                            "$ref": "#/definitions/HistoricCRPLandManagement"
+                        }
+                    ],
                     "description": "Details surrounding how the field was managed before year 2000.",
                     "title": "historicLangManagement"
                 },
@@ -1751,17 +1739,31 @@
             "title": "GrazingEvent",
             "type": "object"
         },
-        "HistoricLandManagement": {
-            "description": "Details surrounding how the field was managed before year 2000.",
+        "HistoricCRPLandManagement": {
+            "description": "Details surrounding how the field was managed before year 2000\n\nNote that the state the field exists within restricts the allowed values per object property.",
             "properties": {
                 "crp": {
+                    "default": "yes",
                     "description": "Whether the field participated in CRP or not.",
                     "enum": [
-                        "no",
                         "yes"
                     ],
                     "title": "crp",
                     "type": "string"
+                },
+                "crpEndYear": {
+                    "description": "The CRP end year",
+                    "maximum": 2000,
+                    "minimum": 1980,
+                    "title": "crpEndYear",
+                    "type": "number"
+                },
+                "crpStartYear": {
+                    "description": "The CRP start year",
+                    "maximum": 2000,
+                    "minimum": 1980,
+                    "title": "crpStartYear",
+                    "type": "number"
                 },
                 "crpType": {
                     "description": "The type of CRP the field participated in. Only applicable if `crp` is set to yes.",
@@ -1770,6 +1772,63 @@
                         "grass / legume mixture"
                     ],
                     "title": "crpType",
+                    "type": "string"
+                },
+                "postCRPManagement": {
+                    "description": "How was the field managed after CRP",
+                    "title": "postCRPManagement",
+                    "type": "string"
+                },
+                "postCRPTillage": {
+                    "description": "How was the field managed after tillage",
+                    "title": "postCRPTillage",
+                    "type": "string"
+                },
+                "preCRPManagement": {
+                    "description": "How was the field managed before the field entered into CRP",
+                    "title": "preCRPManagement",
+                    "type": "string"
+                },
+                "preCRPTillage": {
+                    "description": "How was the field tilled before the field entered into CRP",
+                    "title": "preCRPTillage",
+                    "type": "string"
+                },
+                "preYear1980": {
+                    "description": "A description of how the land was managed before 1980.",
+                    "enum": [
+                        "irrigation (pre 1980s)",
+                        "lowland non-irrigated (pre 1980s)",
+                        "upland non-irrigated (pre 1980s)"
+                    ],
+                    "title": "preYear1980",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "crp",
+                "crpEndYear",
+                "crpStartYear",
+                "crpType",
+                "postCRPManagement",
+                "postCRPTillage",
+                "preCRPManagement",
+                "preCRPTillage",
+                "preYear1980"
+            ],
+            "title": "HistoricCRPLandManagement",
+            "type": "object"
+        },
+        "HistoricNonCRPLandManagement": {
+            "description": "Land management details for when a field did not participate in CRP",
+            "properties": {
+                "crp": {
+                    "default": "no",
+                    "description": "Whether the field participated in CRP or not.",
+                    "enum": [
+                        "no"
+                    ],
+                    "title": "crp",
                     "type": "string"
                 },
                 "preYear1980": {
@@ -1803,8 +1862,7 @@
                         "non-irrigated: annual crops with hay/pasture in rotation",
                         "non-irrigated: continuous hay",
                         "non-irrigated: fallow-grain",
-                        "non-irrigated: livestock grazing",
-                        "none"
+                        "non-irrigated: livestock grazing"
                     ],
                     "title": "year1980To2000",
                     "type": "string"
@@ -1812,12 +1870,11 @@
             },
             "required": [
                 "crp",
-                "crpType",
                 "preYear1980",
                 "tillageForYears1980To2000",
                 "year1980To2000"
             ],
-            "title": "HistoricLandManagement",
+            "title": "HistoricNonCRPLandManagement",
             "type": "object"
         },
         "IrrigationEvent": {
@@ -2090,29 +2147,29 @@
                 "type": {
                     "description": "The organic matter or manure classification type.",
                     "enum": [
-                        "Alfalfa Meal",
-                        "Beef Manure, Solid",
-                        "Beef Slurry",
-                        "Blood, Dried",
-                        "Bone Meal",
-                        "Chicken - Broiler (litter), Solid",
-                        "Chicken - Broiler Slurry",
-                        "Chicken - Layer Slurry",
-                        "Chicken - Layer, Solid",
-                        "Compost or Composted Manure, Solid",
-                        "Dairy Manure, Solid",
-                        "Dairy Slurry",
-                        "Farmyard Manure, Solid",
-                        "Feather Meal",
-                        "Fish Emulsion",
-                        "Fish Scrap",
-                        "Guano",
-                        "Horse Manure, Solid",
-                        "Other Manure, Solid",
-                        "Sheep Manure, Solid",
-                        "Soybean Meal",
-                        "Swine Manure, Slurry",
-                        "Swine Manure, Solid"
+                        "alfalfa meal",
+                        "beef manure, solid",
+                        "beef slurry",
+                        "blood, dried",
+                        "bone meal",
+                        "chicken - broiler (litter), solid",
+                        "chicken - broiler slurry",
+                        "chicken - layer slurry",
+                        "chicken - layer, solid",
+                        "compost or composted manure, solid",
+                        "dairy manure, solid",
+                        "dairy slurry",
+                        "farmyard manure, solid",
+                        "feather meal",
+                        "fish emulsion",
+                        "fish scrap",
+                        "guano",
+                        "horse manure, solid",
+                        "other manure, solid",
+                        "sheep manure, solid",
+                        "soybean meal",
+                        "swine manure, slurry",
+                        "swine manure, solid"
                     ],
                     "title": "type",
                     "type": "string"
@@ -2276,11 +2333,12 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The soil or crop disturbance events classification type.\n\nYou can find a list of common equivalents [here](https://go.nori.com/inputs).\n\n//todo following captions",
+                    "description": "The soil or crop disturbance events classification type.\n\nYou can find a list of common equivalents [here](https://go.nori.com/inputs).",
                     "enum": [
                         "broad-spectrum herbicide",
                         "crimp",
                         "growing season cultivation",
+                        "intensive tillage",
                         "mow",
                         "mulch tillage",
                         "no tillage",

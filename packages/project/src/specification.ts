@@ -59,8 +59,6 @@ import type { GeoJSON } from 'geojson';
  *
  */
 
-// todo example indentation when caption is used
-
 /**
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import.
@@ -103,58 +101,17 @@ export interface Project {
   fields: Field[];
 }
 
-// todo how to handle allowed type selection (based on LRR on the sheet)
-// todo defaults
-// todo when is each field applicable?
 /**
- * Details surrounding how the field was managed before year 2000.
- *
  * @example
  *
  * ```js
  * {
- *  // todo example
+ *  "preYear1980": "irrigation (pre 1980s)"
  * }
  * ```
  *
  */
 export interface HistoricLandManagement {
-  /**
-   * Whether the field participated in CRP or not.
-   *
-   * @example <caption>When the field participated in CRP</caption>
-   *
-   * ```js
-   * "crp": "yes"
-   * ```
-   *
-   * @example <caption>When the field did not participate in CRP</caption>
-   *
-   * ```js
-   * "crp": "no"
-   * ```
-   *
-   */
-  crp: 'yes' | 'no';
-  // todo what does "100% grass mean"
-  // todo maybe separate interfaces, or if not, make the property optional, default to no
-  /**
-   * The type of CRP the field participated in. Only applicable if `crp` is set to yes.
-   *
-   * @example <caption>When the field participated in 100% grass CRP</caption>
-   *
-   * ```js
-   * "crpType": "100% grass"
-   * ```
-   *
-   * @example <caption>When the field participated in grass/legume mixture CRP</caption>
-   *
-   * ```js
-   * "crpType": "grass / legume mixture"
-   * ```
-   *
-   */
-  crpType: '100% grass' | 'grass / legume mixture'; // todo what does "100% grass mean" // todo what about grass/legume mixture?
   /**
    * A description of how the land was managed before 1980.
    *
@@ -181,6 +138,37 @@ export interface HistoricLandManagement {
     | 'upland non-irrigated (pre 1980s)'
     | 'irrigation (pre 1980s)'
     | 'lowland non-irrigated (pre 1980s)'; // todo are these the best descriptions?
+}
+
+/**
+ * Land management details for when a field did not participate in CRP
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "crp": "no",
+ *  "preYear1980": "irrigation (pre 1980s)",
+ *  "tillageForYears1980To2000": "intensive tillage",
+ *  "year1980To2000": "irrigated: annual crops in rotation",
+ * }
+ * ```
+ *
+ */
+export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
+  /**
+   * Whether the field participated in CRP or not.
+   *
+   * @default "no"
+   *
+   * @example <caption>When the field did not participate in CRP</caption>
+   *
+   * ```js
+   * "crp": "no"
+   * ```
+   *
+   */
+  crp: 'no';
   /**
    * The type of soil or crop disturbance events used on the field between 1980 and 2000.
    *
@@ -213,7 +201,6 @@ export interface HistoricLandManagement {
    * @example
    */
   year1980To2000:
-    | 'none' // todo when can this be "none"
     | 'irrigated: annual crops in rotation'
     | 'irrigated: continuous hay'
     | 'non-irrigated: annual crops with hay/pasture in rotation'
@@ -223,6 +210,136 @@ export interface HistoricLandManagement {
     | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: fallow-grain'
     | 'irrigated: orchard or vineyard'; // todo better description of each of these options
+}
+
+// todo add a go link that shows which options are allowed per state (this exists in the data template options tab but not go/inputs for some reason)
+/**
+ * Details surrounding how the field was managed before year 2000
+ *
+ * Note that the state the field exists within restricts the allowed values per object property.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  // HistoricCRPLandManagement:
+ *  "crp": "yes",
+ *  "crpType": "100% grass",
+ *  "crpStartYear": 1980,
+ *  "crpEndYear": 2000,
+ *  "preCRPManagement": "irrigated: annual crops in rotation",
+ *  "preCRPTillage": "intensive tillage",
+ *  "postCRPManagement": "livestock grazing",
+ *  "postCRPTillage": "intensive tillage",
+ *  // HistoricLandManagement:
+ *  "preYear1980": "irrigation (pre 1980s)"
+ * }
+ * ```
+ *
+ */
+export interface HistoricCRPLandManagement extends HistoricLandManagement {
+  /**
+   * Whether the field participated in CRP or not.
+   *
+   * @default "yes"
+   *
+   * @example <caption>When the field participated in CRP</caption>
+   *
+   * ```js
+   * "crp": "yes"
+   * ```
+   *
+   */
+  crp: 'yes';
+  /**
+   * The type of CRP the field participated in. Only applicable if `crp` is set to yes.
+   *
+   * @example <caption>When the field participated in 100% grass CRP</caption>
+   *
+   * ```js
+   * "crpType": "100% grass"
+   * ```
+   *
+   * @example <caption>When the field participated in grass/legume mixture CRP</caption>
+   *
+   * ```js
+   * "crpType": "grass / legume mixture"
+   * ```
+   *
+   */
+  crpType: '100% grass' | 'grass / legume mixture'; // todo what does "100% grass mean" // todo what about grass/legume mixture?
+  /**
+   * The CRP start year
+   *
+   * @minimum 1980
+   * @maximum 2000
+   *
+   * @example <caption>When CRP enrollment started in 1980</caption>
+   *
+   * ```js
+   * "crpStartYear": 1980
+   * ```
+   *
+   */
+  crpStartYear: number;
+  /**
+   * The CRP end year
+   *
+   * @minimum 1980
+   * @maximum 2000
+   *
+   * @example <caption>When CRP enrollment ended in 2000</caption>
+   *
+   * ```js
+   * "crpEndYear": 2000
+   * ```
+   *
+   */
+  crpEndYear: number;
+  /**
+   * How was the field managed before the field entered into CRP
+   *
+   * @example
+   *
+   * ```js
+   * "preCRPManagement": "irrigated: annual crops in rotation"
+   * ```
+   *
+   */
+  preCRPManagement: string; // todo enum
+  /**
+   * How was the field tilled before the field entered into CRP
+   *
+   * @example
+   *
+   * ```js
+   * "preCRPTillage": "intensive tillage"
+   * ```
+   *
+   */
+  preCRPTillage: string; // todo enum
+  /**
+   * How was the field managed after CRP
+   *
+   * @example
+   *
+   * ```js
+   * "postCRPManagement": "livestock grazing"
+   * ```
+   *
+   */
+  postCRPManagement: string; // todo enum
+  /**
+   * How was the field managed after tillage
+   *
+   * @example
+   *
+   * ```js
+   * "postCRPTillage": "intensive tillage"
+   * ```
+   *
+   */
+  postCRPTillage: string; // todo enum
 }
 
 /**
@@ -253,7 +370,7 @@ export interface HistoricLandManagement {
  *
  */
 export interface Field {
-  // todo rebeakh and jaycen to talk about regen start year
+  // todo rebekah and jaycen to talk about regen start year
   /**
    * Year of practice switch - there can be more than one. We tend to use the earliest one that is after 2010 and meets our verification requirements.
    *
@@ -272,16 +389,37 @@ export interface Field {
   /**
    * Details surrounding how the field was managed before year 2000.
    *
-   * @example
+   * @example <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement)</caption>
    *
    * ```js
    * "historicLangManagement": {
-   *  // ...HistoricLandManagement
+   *  "crp": "no",
+   *  "preYear1980": "irrigation (pre 1980s)",
+   *  "tillageForYears1980To2000": "intensive tillage",
+   *  "year1980To2000": "irrigated: annual crops in rotation",
+   * }
+   * ```
+   *
+   * @example <caption>When the field did participate in CRP (HistoricCRPLandManagement)</caption>
+   *
+   * ```js
+   * "historicLangManagement":  {
+   *  "crp": "yes",
+   *  "crpType": "100% grass",
+   *  "crpStartYear": 1980,
+   *  "crpEndYear": 2000,
+   *  "preCRPManagement": "irrigated: annual crops in rotation",
+   *  "preCRPTillage": "intensive tillage",
+   *  "postCRPManagement": "livestock grazing",
+   *  "postCRPTillage": "intensive tillage",
+   *  "preYear1980": "irrigation (pre 1980s)"
    * }
    * ```
    *
    */
-  historicLangManagement: HistoricLandManagement;
+  historicLangManagement:
+    | HistoricNonCRPLandManagement
+    | HistoricCRPLandManagement;
   /**
    * The name of the field.
    *
@@ -309,6 +447,8 @@ export interface Field {
   /**
    * The geographic boundaries (defined as GeoJSON) associated with crop management practices.
    *
+   * For additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)
+   *
    * @example <caption>When a field boundary is defined as a simple polygon</caption>
    *
    * ```js
@@ -320,7 +460,7 @@ export interface Field {
    * ```
    *
    */
-  geojson: GeoJSON; // todo guidance on geojson
+  geojson: GeoJSON;
   /**
    * A list of crop management details grouped by the crop planting year.
    *
@@ -341,9 +481,8 @@ export interface Field {
   cropYears: CropYear[];
 }
 
-// todo remove limit fo 3 crops perplanting year to allow for the ability for users to define crop type switches (i.e. annual to perennial)
-// todo add guidance for this ^
-// todo rebekah and jaycen to discuss options here ^
+// todo remove limit fo 3 crops per planting year to allow for the ability for users to define crop type switches (i.e. annual to perennial)
+// todo add guidance for this ^ (rebekah and jaycen to discuss options here)
 /**
  * Crop management details grouped by a planting year.
  *
@@ -545,12 +684,12 @@ export interface CropEvents {
    *
    * @example <caption>When the crop was killed on October 1st of 2000</caption>
    *
-   *          ```js
-   *          {
-   *           "date": "10/01/2000",
-   *           // "residueRemoved": 5, // todo will it ever be anything other than 0%?
-   *          }
-   *          ```
+   * ```js
+   * {
+   *  "date": "10/01/2000",
+   *  // "residueRemoved": 5, // todo will it ever be anything other than 0%?
+   * }
+   * ```
    */
   killEvent?: KillEvent;
   /**
@@ -577,17 +716,17 @@ export interface CropEvents {
    *
    * @example <caption>When some fertilizer events occurred</caption>
    *
-   *          ```js
-   *          [
-   *           {
-   *             "date": "10/01/2000",
-   *             "productName": "Joe's fertilizer",
-   *             "type": "mixed blends",
-   *             "lbsOfNPerAcre": 10
-   *           }
-   *           // ... other fertilizer events
-   *          ]
-   *          ```
+   * ```js
+   * [
+   *  {
+   *    "date": "10/01/2000",
+   *    "productName": "Joe's fertilizer",
+   *    "type": "mixed blends",
+   *    "lbsOfNPerAcre": 10
+   *  }
+   *  // ... other fertilizer events
+   * ]
+   * ```
    *
    */
   fertilizerEvents?: FertilizerEvent[];
@@ -1007,9 +1146,10 @@ export interface CropManagementEvent extends CropEvent {
    *
    */
   grainFruitTuber: 'yes' | 'no';
-  // todo all of the following options are only applicable for harvest events (they do not apply to kill events)
   /**
    * Crop residue removed.
+   *
+   * @default 0
    *
    * @minimum 0
    * @maximum 100
@@ -1033,7 +1173,7 @@ export interface CropManagementEvent extends CropEvent {
    * ```
    *
    */
-  residueRemoved: number | 'n/a'; // todo default? why/when would this not apply? can we move it elsewhere or handle it in a way that doesnt require it to be a number | string -- this depends on whether no vs n/a  impacts the model.
+  residueRemoved?: number;
 }
 
 // todo if yield is optional, a supplier will need guidance on the up/downside of supplying that information
@@ -1074,6 +1214,8 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    *
    * The current version of quantification does not consider yield when producing estimates.
    *
+   * @default 0
+   *
    * @example <caption>When the unit of the yield is submitted in lbs per acre</caption>
    *
    * ```js
@@ -1081,7 +1223,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    * ```
    *
    */
-  yieldUnit?: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac'; // todo can we drop this since it doesnt impact quantification // todo if not, example for other yield units
+  yieldUnit?: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
 }
 
 /**
@@ -1131,63 +1273,67 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    *
    * You can find a list of common equivalents [here](https://go.nori.com/inputs).
    *
-   * //todo following captions
+   * @example <caption>Little to no crop residue remains on the surface after tillage.</caption>
    *
-   * @example <caption></caption>
+   * ```js
+   * "type": "intensive tillage"
+   * ```
+   *
+   * @example <caption>15-30% of crop residue remains on the surface after tillage.</caption>
    *
    * ```js
    * "type": "reduced tillage"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage.</caption>
    *
    * ```js
    * "type": "mulch tillage"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage.</caption>
    *
    * ```js
    * "type": "ridge tillage"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage.</caption>
    *
    * ```js
    * "type": "strip tillage"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage.</caption>
    *
    * ```js
    * "type": "no tillage"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>Weeds are killed and turned into the soil surface layer.</caption>
    *
    * ```js
    * "type": "growing season cultivation"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.</caption>
    *
    * ```js
    * "type": "mow"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.</caption>
    *
    * ```js
    * "type": "crimp"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>Cover crop died in winter</caption>
    *
    * ```js
    * "type": "winter killed"
    * ```
    *
-   * @example <caption></caption>
+   * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.</caption>
    *
    * ```js
    * "type": "broad-spectrum herbicide"
@@ -1195,6 +1341,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    *
    */
   type:
+    | 'intensive tillage'
     | 'reduced tillage'
     | 'mulch tillage'
     | 'ridge tillage'
@@ -1204,7 +1351,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'mow'
     | 'crimp'
     | 'winter killed'
-    | 'broad-spectrum herbicide'; // todo default // todo if we say no till, can we default to the planting date
+    | 'broad-spectrum herbicide'; // todo default? if we say no till, can we default to the planting date
 }
 
 /**
@@ -1301,34 +1448,35 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    */
   type:
-    | 'Alfalfa Meal' // todo lowercase opts
-    | 'Beef Manure, Solid'
-    | 'Beef Slurry'
-    | 'Blood, Dried'
-    | 'Bone Meal'
-    | 'Chicken - Broiler (litter), Solid'
-    | 'Chicken - Broiler Slurry'
-    | 'Chicken - Layer Slurry'
-    | 'Chicken - Layer, Solid'
-    | 'Compost or Composted Manure, Solid'
-    | 'Dairy Manure, Solid'
-    | 'Dairy Slurry'
-    | 'Farmyard Manure, Solid'
-    | 'Feather Meal'
-    | 'Fish Emulsion'
-    | 'Fish Scrap'
-    | 'Guano'
-    | 'Horse Manure, Solid'
-    | 'Other Manure, Solid'
-    | 'Sheep Manure, Solid'
-    | 'Soybean Meal'
-    | 'Swine Manure, Slurry'
-    | 'Swine Manure, Solid';
+    | 'alfalfa meal'
+    | 'beef manure, solid'
+    | 'beef slurry'
+    | 'blood, dried'
+    | 'bone meal'
+    | 'chicken - broiler (litter), solid'
+    | 'chicken - broiler slurry'
+    | 'chicken - layer slurry'
+    | 'chicken - layer, solid'
+    | 'compost or composted manure, solid'
+    | 'dairy manure, solid'
+    | 'dairy slurry'
+    | 'farmyard manure, solid'
+    | 'feather meal'
+    | 'fish emulsion'
+    | 'fish scrap'
+    | 'guano'
+    | 'horse manure, solid'
+    | 'other manure, solid'
+    | 'sheep manure, solid'
+    | 'soybean meal'
+    | 'swine manure, slurry'
+    | 'swine manure, solid';
   /**
    * Amount of organic matter or manure applied per acre.
    *
    * @minimum 0
    * @maximum 200 // todo confirm max
+   *
    * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons</caption>
    *
    * ```js
@@ -1344,6 +1492,7 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * @minimum 0
    * @maximum 100
+   *
    * @nullable during import (when defined as null, a default value will be assigned)
    *
    * @example <caption>When the organic matter or manure contains 9% nitrogen</caption>
@@ -1372,7 +1521,6 @@ export interface OrganicMatterEvent extends CropEvent {
   carbonNitrogenRatio: number;
 }
 
-// todo frequency vs array of occurrences
 // todo SHOULD WE ALLOW USERS TO DEFINE NON-FREQUENCY BASED IRRIGATION? guidance on what to do when the user has 2 known specific dates that irrigation happened (NOT frequency based).
 // todo is irrigation crop specific? or is it better thought of on the field level?
 /**
@@ -1416,7 +1564,7 @@ export interface IrrigationEvent extends CropEventRange {
    * ```
    *
    */
-  depth: number; // todo is this currently? potentially in flux at comet
+  depth: number; // todo is this used currently? potentially in flux at comet
   /**
    * The frequency that irrigation occurred. For example, if irrigation was applied once per week, then frequency would be set to 7.
    *
@@ -1433,7 +1581,6 @@ export interface IrrigationEvent extends CropEventRange {
   frequency?: number;
 }
 
-// todo since date doesn't impact the outcome, can we just ask for a singular aggregated liming event, or is it best to ask for a list and aggregate for them?
 /**
  * Liming event details.
  *
@@ -1489,7 +1636,7 @@ export interface LimingEvent {
    * ```
    *
    */
-  date?: string;
+  date?: string; // todo since date doesn't impact the outcome, can we just ask for a singular aggregated liming event, or is it best to ask for a list and aggregate for them?
 }
 
 /**

@@ -28,7 +28,7 @@ An annual crop's harvest event details.
 
 * [date](_specification_.annualcropharvestevent.md#date)
 * [grainFruitTuber](_specification_.annualcropharvestevent.md#grainfruittuber)
-* [residueRemoved](_specification_.annualcropharvestevent.md#residueremoved)
+* [residueRemoved](_specification_.annualcropharvestevent.md#optional-residueremoved)
 * [yield](_specification_.annualcropharvestevent.md#optional-yield)
 * [yieldUnit](_specification_.annualcropharvestevent.md#optional-yieldunit)
 
@@ -40,7 +40,7 @@ An annual crop's harvest event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L933)*
+*Defined in [specification.ts:1072](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L1072)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -60,7 +60,7 @@ ___
 
 *Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)*
 
-*Defined in [specification.ts:1009](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1009)*
+*Defined in [specification.ts:1148](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L1148)*
 
 Whether the crop was harvest for grain, fruit or tuber.
 
@@ -78,15 +78,17 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 ___
 
-###  residueRemoved
+### `Optional` residueRemoved
 
-• **residueRemoved**: *number | "n/a"*
+• **residueRemoved**? : *number*
 
-*Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[residueRemoved](_specification_.cropmanagementevent.md#residueremoved)*
+*Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[residueRemoved](_specification_.cropmanagementevent.md#optional-residueremoved)*
 
-*Defined in [specification.ts:1036](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1036)*
+*Defined in [specification.ts:1176](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L1176)*
 
 Crop residue removed.
+
+**`default`** 0
 
 **`minimum`** 0
 
@@ -116,7 +118,7 @@ ___
 
 • **yield**? : *number*
 
-*Defined in [specification.ts:1071](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1071)*
+*Defined in [specification.ts:1211](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L1211)*
 
 The crop yield.
 
@@ -136,11 +138,13 @@ ___
 
 • **yieldUnit**? : *"bu/ac" | "cwt/ac" | "tons/ac" | "lbs/ac"*
 
-*Defined in [specification.ts:1084](https://github.com/nori-dot-eco/nori-dot-com/blob/27840fb/packages/project/src/specification.ts#L1084)*
+*Defined in [specification.ts:1226](https://github.com/nori-dot-eco/nori-dot-com/blob/7c30b8e/packages/project/src/specification.ts#L1226)*
 
 The crop yield units.
 
 The current version of quantification does not consider yield when producing estimates.
+
+**`default`** 0
 
 **`example`** <caption>When the unit of the yield is submitted in lbs per acre</caption>
 
