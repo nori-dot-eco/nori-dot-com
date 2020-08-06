@@ -38,7 +38,7 @@ Grazing event details.
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[endDate](_specification_.cropeventrange.md#enddate)*
 
-*Defined in [specification.ts:1102](https://github.com/nori-dot-eco/nori-dot-com/blob/72c93bb/packages/project/src/specification.ts#L1102)*
+*Defined in [specification.ts:1099](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L1099)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,7 +56,7 @@ ___
 
 • **restPeriod**: *number*
 
-*Defined in [specification.ts:1659](https://github.com/nori-dot-eco/nori-dot-com/blob/72c93bb/packages/project/src/specification.ts#L1659)*
+*Defined in [specification.ts:1662](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L1662)*
 
 The grazing rest period in days.
 
@@ -78,7 +78,7 @@ ___
 
 *Inherited from [CropEventRange](_specification_.cropeventrange.md).[startDate](_specification_.cropeventrange.md#startdate)*
 
-*Defined in [specification.ts:1089](https://github.com/nori-dot-eco/nori-dot-com/blob/72c93bb/packages/project/src/specification.ts#L1089)*
+*Defined in [specification.ts:1086](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L1086)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -96,7 +96,7 @@ ___
 
 • **utilization**: *number*
 
-*Defined in [specification.ts:1673](https://github.com/nori-dot-eco/nori-dot-com/blob/72c93bb/packages/project/src/specification.ts#L1673)*
+*Defined in [specification.ts:1676](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L1676)*
 
 The percentage of forage consumed by the animals.
 

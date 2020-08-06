@@ -6,7 +6,7 @@
 
 ```js
 {
- "preYear1980": "irrigation (pre 1980s)"
+ "preYear1980": "irrigation"
 }
 ```
 
@@ -28,26 +28,26 @@
 
 ###  preYear1980
 
-• **preYear1980**: *"upland non-irrigated (pre 1980s)" | "irrigation (pre 1980s)" | "lowland non-irrigated (pre 1980s)"*
+• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated"*
 
-*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/72c93bb/packages/project/src/specification.ts#L137)*
+*Defined in [specification.ts:137](https://github.com/nori-dot-eco/nori-dot-com/blob/a4e8923/packages/project/src/specification.ts#L137)*
 
 A description of how the land was managed before 1980.
 
 **`example`** <caption>When the land was not irrigated upland before 1980:</caption>
 
 ```js
-"preYear1980": "upland non-irrigated (pre 1980s)"
+"preYear1980": "upland non-irrigated"
 ```
 
 **`example`** <caption>When the land was irrigated before 1980:</caption>
 
 ```js
-"preYear1980": "irrigation (pre 1980s)"
+"preYear1980": "irrigation"
 ```
 
 **`example`** <caption>When the land was not irrigated lowland before 1980:</caption>
 
 ```js
-"preYear1980": "lowland non-irrigated (pre 1980s)"
+"preYear1980": "lowland non-irrigated"
 ```

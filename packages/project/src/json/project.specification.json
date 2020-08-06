@@ -1797,9 +1797,9 @@
                 "preYear1980": {
                     "description": "A description of how the land was managed before 1980.",
                     "enum": [
-                        "irrigation (pre 1980s)",
-                        "lowland non-irrigated (pre 1980s)",
-                        "upland non-irrigated (pre 1980s)"
+                        "irrigation",
+                        "lowland non-irrigated",
+                        "upland non-irrigated"
                     ],
                     "title": "preYear1980",
                     "type": "string"
@@ -1834,9 +1834,9 @@
                 "preYear1980": {
                     "description": "A description of how the land was managed before 1980.",
                     "enum": [
-                        "irrigation (pre 1980s)",
-                        "lowland non-irrigated (pre 1980s)",
-                        "upland non-irrigated (pre 1980s)"
+                        "irrigation",
+                        "lowland non-irrigated",
+                        "upland non-irrigated"
                     ],
                     "title": "preYear1980",
                     "type": "string"

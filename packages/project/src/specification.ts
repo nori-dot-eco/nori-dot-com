@@ -106,7 +106,7 @@ export interface Project {
  *
  * ```js
  * {
- *  "preYear1980": "irrigation (pre 1980s)"
+ *  "preYear1980": "irrigation"
  * }
  * ```
  *
@@ -118,26 +118,23 @@ export interface HistoricLandManagement {
    * @example <caption>When the land was not irrigated upland before 1980:</caption>
    *
    * ```js
-   * "preYear1980": "upland non-irrigated (pre 1980s)"
+   * "preYear1980": "upland non-irrigated"
    * ```
    *
    * @example <caption>When the land was irrigated before 1980:</caption>
    *
    * ```js
-   * "preYear1980": "irrigation (pre 1980s)"
+   * "preYear1980": "irrigation"
    * ```
    *
    * @example <caption>When the land was not irrigated lowland before 1980:</caption>
    *
    * ```js
-   * "preYear1980": "lowland non-irrigated (pre 1980s)"
+   * "preYear1980": "lowland non-irrigated"
    * ```
    *
    */
-  preYear1980:
-    | 'upland non-irrigated (pre 1980s)'
-    | 'irrigation (pre 1980s)'
-    | 'lowland non-irrigated (pre 1980s)'; // todo are these the best descriptions?
+  preYear1980: 'upland non-irrigated' | 'irrigation' | 'lowland non-irrigated'; // todo are these the best descriptions?
 }
 
 /**
@@ -148,7 +145,7 @@ export interface HistoricLandManagement {
  * ```js
  * {
  *  "crp": "no",
- *  "preYear1980": "irrigation (pre 1980s)",
+ *  "preYear1980": "irrigation",
  *  "tillageForYears1980To2000": "intensive tillage",
  *  "year1980To2000": "irrigated: annual crops in rotation",
  * }
@@ -232,7 +229,7 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
  *  "postCRPManagement": "livestock grazing",
  *  "postCRPTillage": "intensive tillage",
  *  // HistoricLandManagement:
- *  "preYear1980": "irrigation (pre 1980s)"
+ *  "preYear1980": "irrigation"
  * }
  * ```
  *
@@ -394,7 +391,7 @@ export interface Field {
    * ```js
    * "historicLandManagement": {
    *  "crp": "no",
-   *  "preYear1980": "irrigation (pre 1980s)",
+   *  "preYear1980": "irrigation",
    *  "tillageForYears1980To2000": "intensive tillage",
    *  "year1980To2000": "irrigated: annual crops in rotation",
    * }
@@ -412,7 +409,7 @@ export interface Field {
    *  "preCRPTillage": "intensive tillage",
    *  "postCRPManagement": "livestock grazing",
    *  "postCRPTillage": "intensive tillage",
-   *  "preYear1980": "irrigation (pre 1980s)"
+   *  "preYear1980": "irrigation"
    * }
    * ```
    *
@@ -1229,7 +1226,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
  *
  */
 export interface KillEvent extends CropEvent {} // todo is there any way to kill a crop using something other than what's defined in soil or crop disturbance types? If not, then delete kill event entirely
-// todo if removing killevent, does residue removed need to be defined instead in soil or crop disturbances
+// todo if removing killevent, does residue removed need to be defined instead/in addition in soil or crop disturbances
 
 /**
  * Soil or crop disturbance event event details.
@@ -1248,6 +1245,8 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
    * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
+   * @todo this property will be deprecated in the future
+   *
    * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
    *
    * ```js
@@ -1255,7 +1254,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * ```
    *
    */
-  name?: string; // todo deprecate when sheet is gone (just an alias)
+  name?: string;
   /**
    * The soil or crop disturbance events classification type.
    *
@@ -1361,6 +1360,8 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
+   * @todo this property will be deprecated in the future
+   *
    * @example <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
    *
    * ```js
@@ -1417,6 +1418,8 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
+   * @todo this property will be deprecated in the future
+   *
    * @example <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":</caption>
    *
    * ```js
@@ -1424,7 +1427,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * ```
    *
    */
-  name?: string; // todo deprecate when sheet is gone (just an alias)
+  name?: string;
   /**
    * The organic matter or manure classification type.
    *
