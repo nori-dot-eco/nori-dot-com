@@ -670,7 +670,7 @@ export interface HarvestableCropEvents {
  *    // ... FertilizerEvents
  *  ],
  *  "organicMatterEvents": [
- *    // ... OrganicMatterEvents
+ *    // ... (SolidOrganicMatterEvent | SlurryOrganicMatterEvent)[]
  *  ],
  *  "irrigationEvents": [
  *    // ... IrrigationEvents
@@ -747,7 +747,7 @@ export interface CropEvents {
    * ```
    *
    */
-  organicMatterEvents?: OrganicMatterEvent[];
+  organicMatterEvents?: (SolidOrganicMatterEvent | SlurryOrganicMatterEvent)[];
   /**
    * A list of irrigation events, if applicable.
    *
@@ -852,7 +852,24 @@ export interface OrchardOrVineyardCrop
    * ```
    *
    */
-  name: string; // todo crop name enum (which crops can be defined as orchard/vineyard?)
+  name:
+    | 'almond'
+    | 'avocados'
+    | 'cherries'
+    | 'english walnuts'
+    | 'grape, raisin'
+    | 'grape, table'
+    | 'grape, wine (<1390 gdd)'
+    | 'grape, wine (>1950 gdd)'
+    | 'grape, wine (1391-1670 gdd)'
+    | 'grape, wine (1671-1950 gdd)'
+    | 'grapefruit'
+    | 'lemons & limes'
+    | 'olives'
+    | 'oranges'
+    | 'peaches and nectarines'
+    | 'pistachios'
+    | 'tangerines & mandarins';
   /**
    * The crop type.
    *
@@ -933,7 +950,6 @@ export interface PerennialCrop
   extends CropEvents,
     HarvestableCropEvents,
     PlantedCrop {
-  // todo crop name enum (which crops can be defined as perennial?)
   /**
    * The name of the crop.
    *
@@ -946,7 +962,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  name: string;
+  name: 'alfalfa' | 'clover' | 'grass';
   /**
    * The crop type.
    *
@@ -991,7 +1007,16 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    * ```
    *
    */
-  name: string; // todo enum
+  name:
+    | 'annual rye'
+    | 'annual rye - legume'
+    | 'annual rye - legume - radish'
+    | 'austrian winter pea'
+    | 'cereal rye'
+    | 'forage radish'
+    | 'oilseed radish'
+    | 'vetch'
+    | 'winter grain-other';
   /**
    * The crop type.
    *
@@ -1040,7 +1065,40 @@ export interface AnnualCrop
    * ```
    *
    */
-  name: string; // todo enum
+  name:
+    | 'barley'
+    | 'broccoli-coast'
+    | 'broccoli-desert'
+    | 'carrots'
+    | 'cauliflower'
+    | 'corn'
+    | 'corn silage'
+    | 'cotton'
+    | 'dry field beans'
+    | 'dry field pea'
+    | 'fallow'
+    | 'grass-legume mix'
+    | 'lettuce-head'
+    | 'lettuce-leaf'
+    | 'lettuce-romaine'
+    | 'millet'
+    | 'oats'
+    | 'peanut'
+    | 'potato'
+    | 'rice - flooded'
+    | 'rye'
+    | 'sorghum'
+    | 'sorghum'
+    | 'sorghum silage'
+    | 'soybean'
+    | 'spring wheat'
+    | 'strawberry'
+    | 'sugar beets'
+    | 'sunflower'
+    | 'switchgrass'
+    | 'tomatoes, fresh'
+    | 'tomatoes, processing'
+    | 'winter wheat';
   /**
    * The crop type.
    *
@@ -1412,7 +1470,91 @@ export interface FertilizerEvent extends CropEvent {
   lbsOfNPerAcre: number;
 }
 
-// todo the unit is sometimes gallons per acre, sometimes tons (depends on solid v slurry)
+/**
+ * Solid/dry organic matter (OMAD) and manure event details.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "type": "alfalfa meal",
+ *  "amountPerAcre": 2, // in tons
+ *  "percentNitrogen": 9,
+ *  "carbonNitrogenRatio": 30,
+ *  "percentMoisture": 0,
+ * }
+ * ```
+ *
+ */
+export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
+  /**
+   * The solid/dry organic matter or manure classification type.
+   *
+   * @example <caption>When the amount of organic matter or manure type used was alfalfa meal:</caption>
+   *
+   * ```js
+   * "type": "alfalfa meal"
+   * ```
+   *
+   */
+  type:
+    | 'alfalfa meal'
+    | 'beef manure, solid'
+    | 'blood, dried'
+    | 'bone meal'
+    | 'chicken - broiler (litter), solid'
+    | 'chicken - layer, solid'
+    | 'compost or composted manure, solid'
+    | 'dairy manure, solid'
+    | 'farmyard manure, solid'
+    | 'feather meal'
+    | 'fish emulsion'
+    | 'fish scrap'
+    | 'guano'
+    | 'horse manure, solid'
+    | 'other manure, solid'
+    | 'sheep manure, solid'
+    | 'soybean meal'
+    | 'swine manure, solid';
+}
+
+/**
+ * Slurry organic matter (OMAD) and manure event details.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "10/01/2000",
+ *  "type": "beef slurry",
+ *  "amountPerAcre": 2, //  in gallons
+ *  "percentNitrogen": 9,
+ *  "carbonNitrogenRatio": 30,
+ *  "percentMoisture": 0,
+ * }
+ * ```
+ *
+ */
+export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
+  /**
+   * The organic matter or manure classification type.
+   *
+   * @example <caption>When the amount of organic matter or manure type used was beef slurry:</caption>
+   *
+   * ```js
+   * "type": "beef slurry"
+   * ```
+   *
+   */
+  type:
+    | 'beef slurry'
+    | 'chicken - broiler slurry'
+    | 'chicken - layer slurry'
+    | 'dairy slurry'
+    | 'swine manure, slurry';
+}
+
 /**
  * Organic matter (OMAD) and manure event details.
  *
@@ -1421,8 +1563,7 @@ export interface FertilizerEvent extends CropEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  "type": "alfalfa meal",
- *  "amountPerAcre": 2, // tons
+ *  "amountPerAcre": 2,
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
  *  "percentMoisture": 0,
@@ -1445,49 +1586,15 @@ export interface OrganicMatterEvent extends CropEvent {
    */
   name?: string;
   /**
-   * The organic matter or manure classification type.
-   *
-   * @example <caption>When the amount of organic matter or manure type used was alfalfa meal:</caption>
-   *
-   * ```js
-   * "type": "alfalfa meal"
-   * ```
-   *
-   */
-  type:
-    | 'alfalfa meal'
-    | 'beef manure, solid'
-    | 'beef slurry'
-    | 'blood, dried'
-    | 'bone meal'
-    | 'chicken - broiler (litter), solid'
-    | 'chicken - broiler slurry'
-    | 'chicken - layer slurry'
-    | 'chicken - layer, solid'
-    | 'compost or composted manure, solid'
-    | 'dairy manure, solid'
-    | 'dairy slurry'
-    | 'farmyard manure, solid'
-    | 'feather meal'
-    | 'fish emulsion'
-    | 'fish scrap'
-    | 'guano'
-    | 'horse manure, solid'
-    | 'other manure, solid'
-    | 'sheep manure, solid'
-    | 'soybean meal'
-    | 'swine manure, slurry'
-    | 'swine manure, solid';
-  /**
-   * Amount of organic matter or manure applied per acre.
+   * Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
    *
    * @minimum 0
    * @maximum 200 // todo confirm max
    *
-   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons:</caption>
+   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
    *
    * ```js
-   * "percentNitrogen": 2
+   * "amountPerAcre": 2
    * ```
    *
    */
@@ -1633,7 +1740,7 @@ export interface LimingEvent {
    * ```
    *
    */
-  date?: string; // todo since date doesn't impact the outcome, can we just ask for a singular aggregated liming event, or is it best to ask for a list and aggregate for them?
+  date?: string;
 }
 
 /**

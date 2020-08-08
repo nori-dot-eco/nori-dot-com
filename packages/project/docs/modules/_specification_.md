@@ -48,4 +48,6 @@ Whilst it is likely easiest to navigate this document by starting at the highest
 * [PerennialCrop](../interfaces/_specification_.perennialcrop.md)
 * [PlantedCrop](../interfaces/_specification_.plantedcrop.md)
 * [Project](../interfaces/_specification_.project.md)
+* [SlurryOrganicMatterEvent](../interfaces/_specification_.slurryorganicmatterevent.md)
 * [SoilOrCropDisturbanceEvent](../interfaces/_specification_.soilorcropdisturbanceevent.md)
+* [SolidOrganicMatterEvent](../interfaces/_specification_.solidorganicmatterevent.md)

@@ -36,7 +36,7 @@ Land management details for when a field did not participate in CRP
 
 • **crp**: *"no"*
 
-*Defined in [specification.ts:179](https://github.com/nori-dot-eco/nori-dot-com/blob/fc37482/packages/project/src/specification.ts#L179)*
+*Defined in [specification.ts:179](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L179)*
 
 Whether the field participated in CRP or not.
 
@@ -56,7 +56,7 @@ ___
 
 *Inherited from [HistoricLandManagement](_specification_.historiclandmanagement.md).[preYear1980](_specification_.historiclandmanagement.md#preyear1980)*
 
-*Defined in [specification.ts:144](https://github.com/nori-dot-eco/nori-dot-com/blob/fc37482/packages/project/src/specification.ts#L144)*
+*Defined in [specification.ts:144](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L144)*
 
 A description of how the land was managed before 1980.
 
@@ -90,7 +90,7 @@ ___
 
 • **tillageForYears1980To2000**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:202](https://github.com/nori-dot-eco/nori-dot-com/blob/fc37482/packages/project/src/specification.ts#L202)*
+*Defined in [specification.ts:202](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L202)*
 
 The type of soil or crop disturbance events used on the field between 1980 and 2000.
 
@@ -118,7 +118,7 @@ ___
 
 • **year1980To2000**: *"irrigated: annual crops in rotation" | "irrigated: continuous hay" | "non-irrigated: annual crops with hay/pasture in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "irrigated: annual crops with hay/pasture in rotation" | "non-irrigated: annual crops in rotation" | "non-irrigated: fallow-grain" | "irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:216](https://github.com/nori-dot-eco/nori-dot-com/blob/fc37482/packages/project/src/specification.ts#L216)*
+*Defined in [specification.ts:216](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L216)*
 
 A description of how the land was managed between 1980 and 2000.
 

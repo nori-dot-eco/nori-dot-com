@@ -1,15 +1,16 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [OrganicMatterEvent](_specification_.organicmatterevent.md)
+[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [SlurryOrganicMatterEvent](_specification_.slurryorganicmatterevent.md)
 
-# Interface: OrganicMatterEvent
+# Interface: SlurryOrganicMatterEvent
 
-Organic matter (OMAD) and manure event details.
+Slurry organic matter (OMAD) and manure event details.
 
 **`example`** 
 
 ```js
 {
  "date": "10/01/2000",
- "amountPerAcre": 2,
+ "type": "beef slurry",
+ "amountPerAcre": 2, //  in gallons
  "percentNitrogen": 9,
  "carbonNitrogenRatio": 30,
  "percentMoisture": 0,
@@ -18,30 +19,29 @@ Organic matter (OMAD) and manure event details.
 
 ## Hierarchy
 
-* [CropEvent](_specification_.cropevent.md)
+  ↳ [OrganicMatterEvent](_specification_.organicmatterevent.md)
 
-  ↳ **OrganicMatterEvent**
-
-  ↳ [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md)
-
-  ↳ [SlurryOrganicMatterEvent](_specification_.slurryorganicmatterevent.md)
+  ↳ **SlurryOrganicMatterEvent**
 
 ## Index
 
 ### Properties
 
-* [amountPerAcre](_specification_.organicmatterevent.md#amountperacre)
-* [carbonNitrogenRatio](_specification_.organicmatterevent.md#carbonnitrogenratio)
-* [date](_specification_.organicmatterevent.md#date)
-* [name](_specification_.organicmatterevent.md#optional-name)
-* [percentMoisture](_specification_.organicmatterevent.md#percentmoisture)
-* [percentNitrogen](_specification_.organicmatterevent.md#percentnitrogen)
+* [amountPerAcre](_specification_.slurryorganicmatterevent.md#amountperacre)
+* [carbonNitrogenRatio](_specification_.slurryorganicmatterevent.md#carbonnitrogenratio)
+* [date](_specification_.slurryorganicmatterevent.md#date)
+* [name](_specification_.slurryorganicmatterevent.md#optional-name)
+* [percentMoisture](_specification_.slurryorganicmatterevent.md#percentmoisture)
+* [percentNitrogen](_specification_.slurryorganicmatterevent.md#percentnitrogen)
+* [type](_specification_.slurryorganicmatterevent.md#type)
 
 ## Properties
 
 ###  amountPerAcre
 
 • **amountPerAcre**: *number*
+
+*Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[amountPerAcre](_specification_.solidorganicmatterevent.md#amountperacre)*
 
 *Defined in [specification.ts:1601](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1601)*
 
@@ -62,6 +62,8 @@ ___
 ###  carbonNitrogenRatio
 
 • **carbonNitrogenRatio**: *number*
+
+*Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[carbonNitrogenRatio](_specification_.solidorganicmatterevent.md#carbonnitrogenratio)*
 
 *Defined in [specification.ts:1640](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1640)*
 
@@ -107,6 +109,8 @@ ___
 
 • **name**? : *string*
 
+*Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[name](_specification_.solidorganicmatterevent.md#optional-name)*
+
 *Defined in [specification.ts:1587](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1587)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
@@ -124,6 +128,8 @@ ___
 ###  percentMoisture
 
 • **percentMoisture**: *number*
+
+*Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentMoisture](_specification_.solidorganicmatterevent.md#percentmoisture)*
 
 *Defined in [specification.ts:1656](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1656)*
 
@@ -147,6 +153,8 @@ ___
 
 • **percentNitrogen**: *number*
 
+*Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentNitrogen](_specification_.solidorganicmatterevent.md#percentnitrogen)*
+
 *Defined in [specification.ts:1621](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1621)*
 
 The nitrogen percent makeup in the organic matter or manure.
@@ -165,4 +173,20 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 ```js
 "percentNitrogen": 9
+```
+
+___
+
+###  type
+
+• **type**: *"beef slurry" | "chicken - broiler slurry" | "chicken - layer slurry" | "dairy slurry" | "swine manure, slurry"*
+
+*Defined in [specification.ts:1550](https://github.com/nori-dot-eco/nori-dot-com/blob/a109103/packages/project/src/specification.ts#L1550)*
+
+The organic matter or manure classification type.
+
+**`example`** <caption>When the amount of organic matter or manure type used was beef slurry:</caption>
+
+```js
+"type": "beef slurry"
 ```
