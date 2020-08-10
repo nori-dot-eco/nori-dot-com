@@ -1333,55 +1333,55 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    *
    * You can find a list of common equivalents [here](https://go.nori.com/inputs).
    *
-   * @example <caption>Little to no crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>Little to no crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "intensive tillage"
    * ```
    *
-   * @example <caption>15-30% of crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>15-30% of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "reduced tillage"
    * ```
    *
-   * @example <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "mulch tillage"
    * ```
    *
-   * @example <caption>30% or more of crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>30% or more of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "ridge tillage"
    * ```
    *
-   * @example <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "strip tillage"
    * ```
    *
-   * @example <caption>75% or more of crop residue remains on the surface after tillage.:</caption>
+   * @example <caption>75% or more of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
    * "type": "no tillage"
    * ```
    *
-   * @example <caption>Weeds are killed and turned into the soil surface layer.:</caption>
+   * @example <caption>Weeds are killed and turned into the soil surface layer:</caption>
    *
    * ```js
    * "type": "growing season cultivation"
    * ```
    *
-   * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing.:</caption>
+   * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing:</caption>
    *
    * ```js
    * "type": "mow"
    * ```
    *
-   * @example <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process.:</caption>
+   * @example <caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process:</caption>
    *
    * ```js
    * "type": "crimp"
@@ -1393,7 +1393,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * "type": "winter killed"
    * ```
    *
-   * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds.:</caption>
+   * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds:</caption>
    *
    * ```js
    * "type": "broad-spectrum herbicide"
