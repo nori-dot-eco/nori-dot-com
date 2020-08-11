@@ -38,7 +38,7 @@ Crop management event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1144](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1144)*
+*Defined in [specification.ts:1173](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1173)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,9 +56,11 @@ ___
 
 • **grainFruitTuber**: *"yes" | "no"*
 
-*Defined in [specification.ts:1220](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1220)*
+*Defined in [specification.ts:1251](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1251)*
 
 Whether the crop was harvest for grain, fruit or tuber.
+
+**`nullable`** during import (specify null if you are unsure)
 
 **`example`** <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
 
@@ -78,7 +80,7 @@ ___
 
 • **residueRemoved**? : *number*
 
-*Defined in [specification.ts:1248](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1248)*
+*Defined in [specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1279)*
 
 Crop residue removed.
 

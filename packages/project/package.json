@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "make:docs": "yarn run typedoc --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts",
-    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/project.specification.json --strictNullChecks=true --required=true --titles=true --topRef=true",
+    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --topRef=true --noExtraProps=true --defaultProps=true",
     "build": "tsc && yarn run make:schema && yarn run make:docs",
     "prepare": "yarn run build",
     "watch": "tsc -w -p ."

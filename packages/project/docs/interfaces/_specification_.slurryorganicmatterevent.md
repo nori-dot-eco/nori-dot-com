@@ -43,13 +43,13 @@ Slurry organic matter (OMAD) and manure event details.
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[amountPerAcre](_specification_.solidorganicmatterevent.md#amountperacre)*
 
-*Defined in [specification.ts:1601](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1601)*
+*Defined in [specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1636)*
 
 Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
 
 **`minimum`** 0
 
-**`maximum`** 200 // todo confirm max
+**`maximum`** 200
 
 **`example`** <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
 
@@ -65,7 +65,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[carbonNitrogenRatio](_specification_.solidorganicmatterevent.md#carbonnitrogenratio)*
 
-*Defined in [specification.ts:1640](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1640)*
+*Defined in [specification.ts:1675](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1675)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -91,7 +91,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1144](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1144)*
+*Defined in [specification.ts:1173](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1173)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -111,7 +111,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[name](_specification_.solidorganicmatterevent.md#optional-name)*
 
-*Defined in [specification.ts:1587](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1587)*
+*Defined in [specification.ts:1622](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1622)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -131,11 +131,13 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentMoisture](_specification_.solidorganicmatterevent.md#percentmoisture)*
 
-*Defined in [specification.ts:1656](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1656)*
+*Defined in [specification.ts:1693](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1693)*
 
 The percent moisture of the organic matter or manure
 
 **`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+
+**`nullable`** during import (explicitly specify null if you are unsure what the value is)
 
 **`minimum`** 0
 
@@ -155,7 +157,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentNitrogen](_specification_.solidorganicmatterevent.md#percentnitrogen)*
 
-*Defined in [specification.ts:1621](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1621)*
+*Defined in [specification.ts:1656](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1656)*
 
 The nitrogen percent makeup in the organic matter or manure.
 
@@ -181,7 +183,7 @@ ___
 
 • **type**: *"beef slurry" | "chicken - broiler slurry" | "chicken - layer slurry" | "dairy slurry" | "swine manure, slurry"*
 
-*Defined in [specification.ts:1550](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1550)*
+*Defined in [specification.ts:1584](https://github.com/nori-dot-eco/nori-dot-com/blob/526533c/packages/project/src/specification.ts#L1584)*
 
 The organic matter or manure classification type.
 
