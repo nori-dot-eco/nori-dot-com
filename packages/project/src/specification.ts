@@ -57,6 +57,8 @@ import type { GeoJSON } from 'geojson';
  * * spec v2 v latest diff (what properties changed, why)
  */
 
+// todo will a crop ever have a tillage event and a kill event?
+
 /**
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
@@ -87,8 +89,8 @@ export interface Project {
   /**
    * An array of fields defining annual crop management practices.
    *
-   * @items.minimum 1
-   * @items.maximum 25
+   * @minItems 1
+   * @maxItems 25
    *
    * @example
    *
@@ -548,27 +550,27 @@ export interface CropYear {
    *
    * Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
    *
-   * @items.maximum 3
-   * @items.minimum 1
+   * @maxItems 3
+   * @minItems 1
    *
    * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
    *
    * ```js
    * "crops": [
    *  {
-   *    "name": "corn",
-   *    "type": "annual crop",
+   *    "type": "corn",
+   *    "classification": "annual crop",
    *    "plantingDate": "01/01/2000"
    *    // ...CropEvents
    *  },
    *  {
-   *    "name": "annual rye",
-   *    "type": "perennial",
+   *    "type": "annual rye",
+   *    "classification": "perennial",
    *    "plantingDate": "01/01/2000"
    *    // ...CropEvents
    *  },
    *  {
-   *    "type": "orchard",
+   *    "classification": "orchard",
    *    "prune": "yes",
    *    "renewOrClear": "yes",
    *    "plantingDate": "01/01/2000"
@@ -579,9 +581,9 @@ export interface CropYear {
    *
    */
   crops: [
-    AnnualCrop | OrchardOrVineyardCrop | PerennialCrop,
-    (AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)?,
-    (AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)?
+    AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop,
+    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
+    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?
   ];
 }
 
@@ -598,6 +600,19 @@ export interface CropYear {
  *
  */
 export interface PlantedCrop {
+  /**
+   * The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
+   *
+   * @todo this property will be deprecated in the future
+   *
+   * @example
+   *
+   * ```js
+   * "name": "Joe's corn"
+   * ```
+   *
+   */
+  name?: string;
   /**
    * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
    *
@@ -660,9 +675,6 @@ export interface HarvestableCropEvents {
  *
  * ```js
  * {
- *  "killEvent": {
- *    // ... KillEvent
- *  },
  *  "soilOrCropDisturbanceEvents": [
  *    // ... SoilOrCropDisturbanceEvents
  *  ],
@@ -730,6 +742,8 @@ export interface CropEvents {
   /**
    * A list of organic matter and manure application events, if applicable.
    *
+   * @nullable during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+   *
    * @example <caption>When some organic matter was applied:</caption>
    *
    * ```js
@@ -768,6 +782,8 @@ export interface CropEvents {
   /**
    * A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
    *
+   * @nullable during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+   *
    * @example <caption>When some liming events occurred:</caption>
    *
    * ```js
@@ -784,7 +800,9 @@ export interface CropEvents {
    */
   limingEvents?: LimingEvent[];
   /**
-   * A list of grazing events, if applicable.
+   * A list of grazing events, if applicable
+   *
+   * @nullable during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
    *
    * @example <caption>When some grazing events occurred:</caption>
    *
@@ -805,6 +823,8 @@ export interface CropEvents {
   /**
    * A burning event, if applicable.
    *
+   * @nullable if no burning ever occurred, explicitly specify `burningEvent` as `null`
+   *
    * @default { "type": "no burning" }
    *
    * @example <caption>When burning occurred after harvesting:</caption>
@@ -813,6 +833,12 @@ export interface CropEvents {
    * "burningEvent": {
    *  "type": "after harvesting"
    * }
+   * ```
+   *
+   * @example <caption>When no burning occurred:</caption>
+   *
+   * ```js
+   * "burningEvent": null
    * ```
    *
    */
@@ -826,8 +852,8 @@ export interface CropEvents {
  *
  * ```js
  * {
- *  "name": "oranges",
- *  "type": "orchard",
+ *  "type": "oranges",
+ *  "classification": "orchard",
  *  "prune": "yes",
  *  "renewOrClear": "yes",
  *  "plantingDate": "01/01/2000"
@@ -841,18 +867,18 @@ export interface OrchardOrVineyardCrop
     HarvestableCropEvents,
     PlantedCrop {
   /**
-   * The name of the orchard or vineyard crop.
+   * The COMET equivalent type of the orchard or vineyard crop.
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
    * @example <caption>When the crop planted is "oranges":</caption>
    *
    * ```js
-   * "name": "oranges"
+   * "type": "oranges"
    * ```
    *
    */
-  name:
+  type:
     | 'almond'
     | 'avocados'
     | 'cherries'
@@ -871,49 +897,46 @@ export interface OrchardOrVineyardCrop
     | 'pistachios'
     | 'tangerines & mandarins';
   /**
-   * The crop type.
+   * The crop classification.
    *
-   * You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
+   * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
-   * Note: if a crop ever changes types during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
+   * Note: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
    *
    * @example <caption>When the crop is an orchard:</caption>
    *
    * ```js
-   * "type": "orchard"
+   * "classification": "orchard"
    * ```
    *
    * @example <caption>When the crop is a vineyard:</caption>
    *
    * ```js
-   * "type": "vineyard"
+   * "classification": "vineyard"
    * ```
    *
    */
-  type: 'orchard' | 'vineyard';
+  classification: 'orchard' | 'vineyard';
   /**
    * Indicates if the crop was pruned.
    *
-   * @default "no"
    *
    * @example <caption>When the crop was pruned:</caption>
    *
    * ```js
-   * "pruned": "yes"
+   * "prune": "yes"
    * ```
    *
    * @example <caption>When the crop was not pruned:</caption>
    *
    * ```js
-   * "pruned": "no"
+   * "prune": "no"
    * ```
    *
    */
   prune: 'yes' | 'no';
   /**
    * Indicates if the crop was renewed or cleared.
-   *
-   * @default "no"
    *
    * @example <caption>When the crop was renewed:</caption>
    *
@@ -938,8 +961,8 @@ export interface OrchardOrVineyardCrop
  *
  * ```js
  * {
- *  "name": "alfalfa",
- *  "type": "perennial",
+ *  "type": "alfalfa",
+ *  "classification": "perennial",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
@@ -951,32 +974,33 @@ export interface PerennialCrop
     HarvestableCropEvents,
     PlantedCrop {
   /**
-   * The name of the crop.
+   * The COMET equivalent type of the perennial crop
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
    * @example <caption>When the perennial crop planted was alfalfa:</caption>
    *
    * ```js
-   * "name": "alfalfa"
+   * "type": "alfalfa"
    * ```
    *
    */
-  name: 'alfalfa' | 'clover' | 'grass';
+  type: 'alfalfa' | 'clover' | 'grass';
   /**
-   * The crop type.
+   * The crop classification.
    *
-   * You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
+   * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
    * @default "perennial"
+   *
    * @example
    *
    * ```js
-   * "type": "perennial"
+   * "classification": "perennial"
    * ```
    *
    */
-  type: 'perennial';
+  classification: 'perennial';
 }
 
 /**
@@ -986,8 +1010,8 @@ export interface PerennialCrop
  *
  * ```js
  * {
- *  "name": "annual rye",
- *  "type": "annual cover",
+ *  "type": "annual rye",
+ *  "classification": "annual cover",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
@@ -996,7 +1020,7 @@ export interface PerennialCrop
  */
 export interface CoverCrop extends CropEvents, PlantedCrop {
   /**
-   * The name of the crop.
+   * The COMET equivalent type of the crop.
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
@@ -1007,7 +1031,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    * ```
    *
    */
-  name:
+  type:
     | 'annual rye'
     | 'annual rye - legume'
     | 'annual rye - legume - radish'
@@ -1018,20 +1042,20 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
     | 'vetch'
     | 'winter grain-other';
   /**
-   * The crop type.
+   * The crop classification.
    *
-   * You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
+   * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
    * @default "annual cover"
    *
    * @example
    *
    * ```js
-   * "type": "annual cover"
+   * "classification": "annual cover"
    * ```
    *
    */
-  type: 'annual cover';
+  classification: 'annual cover';
 }
 
 /**
@@ -1041,8 +1065,9 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
  *
  * ```js
  * {
- *  "name": "corn",
- *  "type": "annual crop",
+ *  "name": "Joe's corn",
+ *  "type": "corn",
+ *  "classification": "annual crop",
  *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
@@ -1054,7 +1079,7 @@ export interface AnnualCrop
     HarvestableCropEvents,
     PlantedCrop {
   /**
-   * The name of the crop.
+   * The COMET equivalent type of the crop
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
    *
@@ -1065,7 +1090,7 @@ export interface AnnualCrop
    * ```
    *
    */
-  name:
+  type:
     | 'barley'
     | 'broccoli-coast'
     | 'broccoli-desert'
@@ -1100,20 +1125,20 @@ export interface AnnualCrop
     | 'tomatoes, processing'
     | 'winter wheat';
   /**
-   * The crop type.
+   * The crop classification.
    *
-   * You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
+   * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
    * @default "annual crop"
    *
    * @example
    *
    * ```js
-   * "type": "annual crop"
+   * "classification": "annual crop"
    * ```
    *
    */
-  type: 'annual crop';
+  classification: 'annual crop';
 }
 
 /**
@@ -1203,6 +1228,8 @@ export interface CropEventRange {
 export interface CropManagementEvent extends CropEvent {
   /**
    * Whether the crop was harvest for grain, fruit or tuber.
+   *
+   * @nullable during import (specify null if you are unsure)
    *
    * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
    *
@@ -1449,6 +1476,7 @@ export interface FertilizerEvent extends CropEvent {
    * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled.
    *
    * @default "mixed blends"
+   *
    * @example <caption>When the fertilizer type can be classified as mixed blends:</caption>
    *
    * ```js
@@ -1459,6 +1487,8 @@ export interface FertilizerEvent extends CropEvent {
   type?: string;
   /**
    * Amount of nitrogen applied in lbs/ac.
+   *
+   * @nullable during import (specify null if you are unsure)
    *
    * @example <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
    *
@@ -1555,6 +1585,7 @@ export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
     | 'swine manure, slurry';
 }
 
+// todo confirm amountPerAcre max
 /**
  * Organic matter (OMAD) and manure event details.
  *
@@ -1589,7 +1620,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
    *
    * @minimum 0
-   * @maximum 200 // todo confirm max
+   * @maximum 200
    *
    * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
    *
@@ -1643,6 +1674,8 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
    *
+   * @nullable during import (explicitly specify null if you are unsure what the value is)
+   *
    * @minimum 0
    * @maximum 100
    *
@@ -1685,6 +1718,7 @@ export interface IrrigationEvent extends CropEvent {
   volume: number;
 }
 
+// todo liming tonsPerAcre max
 /**
  * Liming event details.
  *
@@ -1727,7 +1761,7 @@ export interface LimingEvent {
    * ```
    *
    */
-  tonsPerAcre: number; // todo maximum
+  tonsPerAcre: number;
   /**
    * The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.
    *

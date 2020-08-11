@@ -43,13 +43,13 @@ Organic matter (OMAD) and manure event details.
 
 • **amountPerAcre**: *number*
 
-*Defined in [specification.ts:1601](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1601)*
+*Defined in [specification.ts:1632](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1632)*
 
 Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
 
 **`minimum`** 0
 
-**`maximum`** 200 // todo confirm max
+**`maximum`** 200
 
 **`example`** <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
 
@@ -63,7 +63,7 @@ ___
 
 • **carbonNitrogenRatio**: *number*
 
-*Defined in [specification.ts:1640](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1640)*
+*Defined in [specification.ts:1671](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1671)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -89,7 +89,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1144](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1144)*
+*Defined in [specification.ts:1169](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1169)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -107,7 +107,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1587](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1587)*
+*Defined in [specification.ts:1618](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1618)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -125,11 +125,13 @@ ___
 
 • **percentMoisture**: *number*
 
-*Defined in [specification.ts:1656](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1656)*
+*Defined in [specification.ts:1689](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1689)*
 
 The percent moisture of the organic matter or manure
 
 **`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+
+**`nullable`** during import (explicitly specify null if you are unsure what the value is)
 
 **`minimum`** 0
 
@@ -147,7 +149,7 @@ ___
 
 • **percentNitrogen**: *number*
 
-*Defined in [specification.ts:1621](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1621)*
+*Defined in [specification.ts:1652](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1652)*
 
 The nitrogen percent makeup in the organic matter or manure.
 

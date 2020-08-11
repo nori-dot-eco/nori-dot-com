@@ -50,7 +50,7 @@ Note that the state the field exists within restricts the allowed values per obj
 
 • **crp**: *"yes"*
 
-*Defined in [specification.ts:265](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L265)*
+*Defined in [specification.ts:267](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L267)*
 
 Whether the field participated in CRP or not.
 
@@ -68,7 +68,7 @@ ___
 
 • **crpEndYear**: *number*
 
-*Defined in [specification.ts:310](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L310)*
+*Defined in [specification.ts:312](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L312)*
 
 The CRP end year
 
@@ -88,7 +88,7 @@ ___
 
 • **crpStartYear**: *number*
 
-*Defined in [specification.ts:296](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L296)*
+*Defined in [specification.ts:298](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L298)*
 
 The CRP start year
 
@@ -108,7 +108,7 @@ ___
 
 • **crpType**: *"100% grass" | "grass / legume mixture"*
 
-*Defined in [specification.ts:282](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L282)*
+*Defined in [specification.ts:284](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L284)*
 
 The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.
 
@@ -130,7 +130,7 @@ ___
 
 • **postCRPManagement**: *"irrigated: annual crops in rotation" | "irrigated: annual crops with hay/pasture in rotation" | "irrigated: continuous hay" | "irrigated: orchard or vineyard" | "non-irrigated: annual crops in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "non-irrigated: fallow-grain" | "non-irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:356](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L356)*
+*Defined in [specification.ts:358](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L358)*
 
 How was the field managed after CRP
 
@@ -148,7 +148,7 @@ ___
 
 • **postCRPTillage**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:376](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L376)*
+*Defined in [specification.ts:378](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L378)*
 
 How was the field managed after tillage
 
@@ -164,7 +164,7 @@ ___
 
 • **preCRPManagement**: *"irrigated: annual crops in rotation" | "irrigated: annual crops with hay/pasture in rotation" | "irrigated: continuous hay" | "irrigated: orchard or vineyard" | "non-irrigated: annual crops in rotation" | "non-irrigated: continuous hay" | "non-irrigated: livestock grazing" | "non-irrigated: fallow-grain" | "non-irrigated: orchard or vineyard"*
 
-*Defined in [specification.ts:323](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L323)*
+*Defined in [specification.ts:325](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L325)*
 
 How was the field managed before the field entered into CRP
 
@@ -182,7 +182,7 @@ ___
 
 • **preCRPTillage**: *"intensive tillage" | "reduced tillage" | "no till"*
 
-*Defined in [specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L343)*
+*Defined in [specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L345)*
 
 How was the field tilled before the field entered into CRP
 
@@ -200,7 +200,7 @@ ___
 
 *Inherited from [HistoricLandManagement](_specification_.historiclandmanagement.md).[preYear1980](_specification_.historiclandmanagement.md#preyear1980)*
 
-*Defined in [specification.ts:144](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L144)*
+*Defined in [specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L146)*
 
 A description of how the land was managed before 1980.
 

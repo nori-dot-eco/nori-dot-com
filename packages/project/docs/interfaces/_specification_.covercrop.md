@@ -8,8 +8,8 @@ Crop management details and events for cover crops.
 
 ```js
 {
- "name": "annual rye",
- "type": "annual cover",
+ "type": "annual rye",
+ "classification": "annual cover",
  "plantingDate": "01/01/2000"
  // ...CropEvents
 }
@@ -28,11 +28,12 @@ Crop management details and events for cover crops.
 ### Properties
 
 * [burningEvent](_specification_.covercrop.md#optional-burningevent)
+* [classification](_specification_.covercrop.md#classification)
 * [fertilizerEvents](_specification_.covercrop.md#optional-fertilizerevents)
 * [grazingEvents](_specification_.covercrop.md#optional-grazingevents)
 * [irrigationEvents](_specification_.covercrop.md#optional-irrigationevents)
 * [limingEvents](_specification_.covercrop.md#optional-limingevents)
-* [name](_specification_.covercrop.md#name)
+* [name](_specification_.covercrop.md#optional-name)
 * [organicMatterEvents](_specification_.covercrop.md#optional-organicmatterevents)
 * [plantingDate](_specification_.covercrop.md#plantingdate)
 * [soilOrCropDisturbanceEvents](_specification_.covercrop.md#soilorcropdisturbanceevents)
@@ -46,9 +47,11 @@ Crop management details and events for cover crops.
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[burningEvent](_specification_.cropevents.md#optional-burningevent)*
 
-*Defined in [specification.ts:819](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L819)*
+*Defined in [specification.ts:845](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L845)*
 
 A burning event, if applicable.
+
+**`nullable`** if no burning ever occurred, explicitly specify `burningEvent` as `null`
 
 **`default`** { "type": "no burning" }
 
@@ -60,6 +63,32 @@ A burning event, if applicable.
 }
 ```
 
+**`example`** <caption>When no burning occurred:</caption>
+
+```js
+"burningEvent": null
+```
+
+___
+
+###  classification
+
+• **classification**: *"annual cover"*
+
+*Defined in [specification.ts:1058](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1058)*
+
+The crop classification.
+
+You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
+
+**`default`** "annual cover"
+
+**`example`** 
+
+```js
+"classification": "annual cover"
+```
+
 ___
 
 ### `Optional` fertilizerEvents
@@ -68,7 +97,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[fertilizerEvents](_specification_.cropevents.md#optional-fertilizerevents)*
 
-*Defined in [specification.ts:729](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L729)*
+*Defined in [specification.ts:741](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L741)*
 
 A list of fertilizer events, if applicable.
 
@@ -94,9 +123,11 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[grazingEvents](_specification_.cropevents.md#optional-grazingevents)*
 
-*Defined in [specification.ts:804](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L804)*
+*Defined in [specification.ts:822](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L822)*
 
-A list of grazing events, if applicable.
+A list of grazing events, if applicable
+
+**`nullable`** during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
 
 **`example`** <caption>When some grazing events occurred:</caption>
 
@@ -120,7 +151,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[irrigationEvents](_specification_.cropevents.md#optional-irrigationevents)*
 
-*Defined in [specification.ts:767](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L767)*
+*Defined in [specification.ts:781](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L781)*
 
 A list of irrigation events, if applicable.
 
@@ -144,9 +175,11 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[limingEvents](_specification_.cropevents.md#optional-limingevents)*
 
-*Defined in [specification.ts:785](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L785)*
+*Defined in [specification.ts:801](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L801)*
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
+
+**`nullable`** during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
 
 **`example`** <caption>When some liming events occurred:</caption>
 
@@ -163,20 +196,22 @@ A list of liming events, if applicable. During quantification, liming events are
 
 ___
 
-###  name
+### `Optional` name
 
-• **name**: *"annual rye" | "annual rye - legume" | "annual rye - legume - radish" | "austrian winter pea" | "cereal rye" | "forage radish" | "oilseed radish" | "vetch" | "winter grain-other"*
+• **name**? : *string*
 
-*Defined in [specification.ts:1010](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1010)*
+*Inherited from [PlantedCrop](_specification_.plantedcrop.md).[name](_specification_.plantedcrop.md#optional-name)*
 
-The name of the crop.
+*Defined in [specification.ts:615](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L615)*
 
-You can find a list of accepted crops [here](https://go.nori.com/inputs).
+The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** <caption>When the cover crop was annual rye:</caption>
+**`todo`** this property will be deprecated in the future
+
+**`example`** 
 
 ```js
-"type": "annual rye"
+"name": "Joe's corn"
 ```
 
 ___
@@ -187,9 +222,11 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[organicMatterEvents](_specification_.cropevents.md#optional-organicmatterevents)*
 
-*Defined in [specification.ts:750](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L750)*
+*Defined in [specification.ts:764](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L764)*
 
 A list of organic matter and manure application events, if applicable.
+
+**`nullable`** during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
 
 **`example`** <caption>When some organic matter was applied:</caption>
 
@@ -215,7 +252,7 @@ ___
 
 *Inherited from [PlantedCrop](_specification_.plantedcrop.md).[plantingDate](_specification_.plantedcrop.md#plantingdate)*
 
-*Defined in [specification.ts:615](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L615)*
+*Defined in [specification.ts:630](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L630)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -237,7 +274,7 @@ ___
 
 *Inherited from [CropEvents](_specification_.cropevents.md).[soilOrCropDisturbanceEvents](_specification_.cropevents.md#soilorcropdisturbanceevents)*
 
-*Defined in [specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L710)*
+*Defined in [specification.ts:722](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L722)*
 
 A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
 
@@ -259,18 +296,16 @@ ___
 
 ###  type
 
-• **type**: *"annual cover"*
+• **type**: *"annual rye" | "annual rye - legume" | "annual rye - legume - radish" | "austrian winter pea" | "cereal rye" | "forage radish" | "oilseed radish" | "vetch" | "winter grain-other"*
 
-*Defined in [specification.ts:1034](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1034)*
+*Defined in [specification.ts:1034](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1034)*
 
-The crop type.
+The COMET equivalent type of the crop.
 
-You can find a list of acceptable crop types per crop `name` [here](https://go.nori.com/inputs).
+You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
-**`default`** "annual cover"
-
-**`example`** 
+**`example`** <caption>When the cover crop was annual rye:</caption>
 
 ```js
-"type": "annual cover"
+"type": "annual rye"
 ```

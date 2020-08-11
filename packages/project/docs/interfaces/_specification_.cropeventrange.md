@@ -32,7 +32,7 @@ A crop event that has a start and end date.
 
 • **endDate**: *string*
 
-*Defined in [specification.ts:1186](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1186)*
+*Defined in [specification.ts:1211](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1211)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -50,7 +50,7 @@ ___
 
 • **startDate**: *string*
 
-*Defined in [specification.ts:1173](https://github.com/nori-dot-eco/nori-dot-com/blob/811baee/packages/project/src/specification.ts#L1173)*
+*Defined in [specification.ts:1198](https://github.com/nori-dot-eco/nori-dot-com/blob/de0accb/packages/project/src/specification.ts#L1198)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

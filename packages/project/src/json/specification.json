@@ -1,0 +1,2893 @@
+{
+    "$ref": "#/definitions/Project",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "AnnualCrop": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Crop management details and events for annual crops.",
+            "properties": {
+                "burningEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurningEvent",
+                            "default": {
+                                "type": "no burning"
+                            },
+                            "description": "A burning event, if applicable."
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "burningEvent"
+                },
+                "classification": {
+                    "default": "annual crop",
+                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "annual crop"
+                    ],
+                    "title": "classification",
+                    "type": "string"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of grazing events, if applicable",
+                            "items": {
+                                "$ref": "#/definitions/GrazingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grazingEvents"
+                },
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CropManagementEvent"
+                            },
+                            {
+                                "$ref": "#/definitions/AnnualCropHarvestEvent"
+                            }
+                        ]
+                    },
+                    "title": "harvestEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
+                            "items": {
+                                "$ref": "#/definitions/LimingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "limingEvents"
+                },
+                "name": {
+                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "organicMatterEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of organic matter and manure application events, if applicable.",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "organicMatterEvents"
+                },
+                "plantingDate": {
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "items": {
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
+                    },
+                    "title": "soilOrCropDisturbanceEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The COMET equivalent type of the crop\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "barley",
+                        "broccoli-coast",
+                        "broccoli-desert",
+                        "carrots",
+                        "cauliflower",
+                        "corn",
+                        "corn silage",
+                        "cotton",
+                        "dry field beans",
+                        "dry field pea",
+                        "fallow",
+                        "grass-legume mix",
+                        "lettuce-head",
+                        "lettuce-leaf",
+                        "lettuce-romaine",
+                        "millet",
+                        "oats",
+                        "peanut",
+                        "potato",
+                        "rice - flooded",
+                        "rye",
+                        "sorghum",
+                        "sorghum silage",
+                        "soybean",
+                        "spring wheat",
+                        "strawberry",
+                        "sugar beets",
+                        "sunflower",
+                        "switchgrass",
+                        "tomatoes, fresh",
+                        "tomatoes, processing",
+                        "winter wheat"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "classification",
+                "plantingDate",
+                "soilOrCropDisturbanceEvents",
+                "type"
+            ],
+            "title": "AnnualCrop",
+            "type": "object"
+        },
+        "AnnualCropHarvestEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "An annual crop's harvest event details.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "grainFruitTuber": {
+                    "anyOf": [
+                        {
+                            "description": "Whether the crop was harvest for grain, fruit or tuber.",
+                            "enum": [
+                                "no",
+                                "yes"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grainFruitTuber"
+                },
+                "residueRemoved": {
+                    "default": 0,
+                    "description": "Crop residue removed.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "title": "residueRemoved",
+                    "type": "number"
+                },
+                "yield": {
+                    "default": 0,
+                    "description": "The crop yield.\n\nThe current version of quantification does not consider yield when producing estimates. As such, we will default to 0 when left out.",
+                    "title": "yield",
+                    "type": "number"
+                },
+                "yieldUnit": {
+                    "default": 0,
+                    "description": "The crop yield units.\n\nThe current version of quantification does not consider yield when producing estimates.",
+                    "enum": [
+                        "bu/ac",
+                        "cwt/ac",
+                        "lbs/ac",
+                        "tons/ac"
+                    ],
+                    "title": "yieldUnit",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "grainFruitTuber"
+            ],
+            "title": "AnnualCropHarvestEvent",
+            "type": "object"
+        },
+        "BurningEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Burning event details.",
+            "properties": {
+                "type": {
+                    "description": "The type of burning, if applicable.",
+                    "enum": [
+                        "after harvesting",
+                        "before planting"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "BurningEvent",
+            "type": "object"
+        },
+        "CoverCrop": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Crop management details and events for cover crops.",
+            "properties": {
+                "burningEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurningEvent",
+                            "default": {
+                                "type": "no burning"
+                            },
+                            "description": "A burning event, if applicable."
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "burningEvent"
+                },
+                "classification": {
+                    "default": "annual cover",
+                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "annual cover"
+                    ],
+                    "title": "classification",
+                    "type": "string"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of grazing events, if applicable",
+                            "items": {
+                                "$ref": "#/definitions/GrazingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grazingEvents"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
+                            "items": {
+                                "$ref": "#/definitions/LimingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "limingEvents"
+                },
+                "name": {
+                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "organicMatterEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of organic matter and manure application events, if applicable.",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "organicMatterEvents"
+                },
+                "plantingDate": {
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "items": {
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
+                    },
+                    "title": "soilOrCropDisturbanceEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The COMET equivalent type of the crop.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "annual rye",
+                        "annual rye - legume",
+                        "annual rye - legume - radish",
+                        "austrian winter pea",
+                        "cereal rye",
+                        "forage radish",
+                        "oilseed radish",
+                        "vetch",
+                        "winter grain-other"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "classification",
+                "plantingDate",
+                "soilOrCropDisturbanceEvents",
+                "type"
+            ],
+            "title": "CoverCrop",
+            "type": "object"
+        },
+        "CropManagementEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Crop management event details.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "grainFruitTuber": {
+                    "anyOf": [
+                        {
+                            "description": "Whether the crop was harvest for grain, fruit or tuber.",
+                            "enum": [
+                                "no",
+                                "yes"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grainFruitTuber"
+                },
+                "residueRemoved": {
+                    "default": 0,
+                    "description": "Crop residue removed.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "title": "residueRemoved",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "date",
+                "grainFruitTuber"
+            ],
+            "title": "CropManagementEvent",
+            "type": "object"
+        },
+        "CropYear": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Crop management details grouped by a planting year.",
+            "properties": {
+                "crops": {
+                    "additionalItems": {
+                        "anyOf": [
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/PerennialCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/CoverCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/PerennialCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/CoverCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            },
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/PerennialCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/CoverCrop"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/AnnualCrop"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "description": "A list of crops for a given planting year.\n\nDue to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)",
+                    "items": [
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/PerennialCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/CoverCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/PerennialCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/CoverCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/PerennialCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/CoverCrop"
+                                },
+                                {
+                                    "$ref": "#/definitions/AnnualCrop"
+                                }
+                            ]
+                        }
+                    ],
+                    "maxItems": 3,
+                    "minItems": 1,
+                    "title": "crops",
+                    "type": "array"
+                },
+                "plantingYear": {
+                    "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
+                    "maximum": 2099,
+                    "minimum": 2000,
+                    "title": "plantingYear",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "crops",
+                "plantingYear"
+            ],
+            "title": "CropYear",
+            "type": "object"
+        },
+        "FertilizerEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Fertilizer event details.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "lbsOfNPerAcre": {
+                    "description": "Amount of nitrogen applied in lbs/ac.",
+                    "title": "lbsOfNPerAcre",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "productName": {
+                    "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "productName",
+                    "type": "string"
+                },
+                "type": {
+                    "default": "mixed blends",
+                    "description": "The fertilizer classification type.\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to \"mixed blends\" when this property is excluded/nulled.",
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "lbsOfNPerAcre"
+            ],
+            "title": "FertilizerEvent",
+            "type": "object"
+        },
+        "Field": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
+            "properties": {
+                "acres": {
+                    "description": "The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).",
+                    "title": "acres",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cropYears": {
+                    "description": "A list of crop management details grouped by the crop planting year.",
+                    "items": {
+                        "$ref": "#/definitions/CropYear"
+                    },
+                    "title": "cropYears",
+                    "type": "array"
+                },
+                "fieldName": {
+                    "description": "The name of the field.",
+                    "title": "fieldName",
+                    "type": "string"
+                },
+                "geojson": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                        }
+                    ],
+                    "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
+                    "title": "geojson"
+                },
+                "historicLandManagement": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HistoricNonCRPLandManagement"
+                        },
+                        {
+                            "$ref": "#/definitions/HistoricCRPLandManagement"
+                        }
+                    ],
+                    "description": "Details surrounding how the field was managed before year 2000.",
+                    "title": "historicLandManagement"
+                },
+                "regenerativeStartYear": {
+                    "description": "The year that you most recently adopted regenerative agricultural practices\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
+                    "minimum": 2010,
+                    "title": "regenerativeStartYear",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "acres",
+                "cropYears",
+                "fieldName",
+                "geojson",
+                "historicLandManagement",
+                "regenerativeStartYear"
+            ],
+            "title": "Field",
+            "type": "object"
+        },
+        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "geometry": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                        }
+                    ],
+                    "description": "The feature's geometry",
+                    "title": "geometry"
+                },
+                "id": {
+                    "description": "A value that uniquely identifies this feature in a\nhttps://tools.ietf.org/html/rfc7946#section-3.2.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "properties": {
+                    "anyOf": [
+                        {
+                            "additionalProperties": {
+                            },
+                            "defaultProperties": [
+                            ],
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Properties associated with this feature.",
+                    "title": "properties"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "Feature"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "geometry",
+                "properties",
+                "type"
+            ],
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
+            "type": "object"
+        },
+        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "geometry": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                        }
+                    ],
+                    "description": "The feature's geometry",
+                    "title": "geometry"
+                },
+                "id": {
+                    "description": "A value that uniquely identifies this feature in a\nhttps://tools.ietf.org/html/rfc7946#section-3.2.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "number"
+                    ]
+                },
+                "properties": {
+                    "anyOf": [
+                        {
+                            "additionalProperties": {
+                            },
+                            "defaultProperties": [
+                            ],
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Properties associated with this feature.",
+                    "title": "properties"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "Feature"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "geometry",
+                "properties",
+                "type"
+            ],
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1",
+            "type": "object"
+        },
+        "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "A collection of feature objects.\n  https://tools.ietf.org/html/rfc7946#section-3.3",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "features": {
+                    "items": {
+                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1"
+                    },
+                    "title": "features",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "FeatureCollection"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "features",
+                "type"
+            ],
+            "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
+            "type": "object"
+        },
+        "GeoJSON.GeometryCollection": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "geometries": {
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/GeoJSON.Point"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiPoint"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.LineString"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiLineString"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.Polygon"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            }
+                        ]
+                    },
+                    "title": "geometries",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "GeometryCollection"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "geometries",
+                "type"
+            ],
+            "title": "GeoJSON.GeometryCollection",
+            "type": "object"
+        },
+        "GeoJSON.LineString": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "LineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.4",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "items": {
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": "array"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "LineString"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.LineString",
+            "type": "object"
+        },
+        "GeoJSON.MultiLineString": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "MultiLineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.5",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "items": {
+                        "items": {
+                            "items": {
+                                "type": "number"
+                            },
+                            "type": "array"
+                        },
+                        "type": "array"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "MultiLineString"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.MultiLineString",
+            "type": "object"
+        },
+        "GeoJSON.MultiPoint": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "MultiPoint geometry object.\n  https://tools.ietf.org/html/rfc7946#section-3.1.3",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "items": {
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": "array"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "MultiPoint"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.MultiPoint",
+            "type": "object"
+        },
+        "GeoJSON.MultiPolygon": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "MultiPolygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.7",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "items": {
+                        "items": {
+                            "items": {
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": "array"
+                            },
+                            "type": "array"
+                        },
+                        "type": "array"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "MultiPolygon"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.MultiPolygon",
+            "type": "object"
+        },
+        "GeoJSON.Point": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Point geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.2",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
+                    "items": {
+                        "type": "number"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "Point"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.Point",
+            "type": "object"
+        },
+        "GeoJSON.Polygon": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Polygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.6",
+            "properties": {
+                "bbox": {
+                    "anyOf": [
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 4,
+                            "type": "array"
+                        },
+                        {
+                            "additionalItems": {
+                                "anyOf": [
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    },
+                                    {
+                                        "type": "number"
+                                    }
+                                ]
+                            },
+                            "items": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ],
+                            "minItems": 6,
+                            "type": "array"
+                        }
+                    ],
+                    "description": "Bounding box of the coordinate range of the object's Geometries, Features, or Feature Collections.\nThe value of the bbox member is an array of length 2*n where n is the number of dimensions\nrepresented in the contained geometries, with all axes of the most southwesterly point\nfollowed by all axes of the more northeasterly point.\nThe axes order of a bbox follows the axes order of geometries.\nhttps://tools.ietf.org/html/rfc7946#section-5",
+                    "title": "bbox"
+                },
+                "coordinates": {
+                    "items": {
+                        "items": {
+                            "items": {
+                                "type": "number"
+                            },
+                            "type": "array"
+                        },
+                        "type": "array"
+                    },
+                    "title": "coordinates",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "Specifies the type of GeoJSON object.",
+                    "enum": [
+                        "Polygon"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "GeoJSON.Polygon",
+            "type": "object"
+        },
+        "GrazingEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Grazing event details.",
+            "properties": {
+                "endDate": {
+                    "description": "The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "endDate",
+                    "type": "string"
+                },
+                "restPeriod": {
+                    "description": "The grazing rest period in days.",
+                    "maximum": 365,
+                    "minimum": 0,
+                    "title": "restPeriod",
+                    "type": "number"
+                },
+                "startDate": {
+                    "description": "The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "startDate",
+                    "type": "string"
+                },
+                "utilization": {
+                    "description": "The percentage of forage consumed by the animals.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "title": "utilization",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "endDate",
+                "restPeriod",
+                "startDate",
+                "utilization"
+            ],
+            "title": "GrazingEvent",
+            "type": "object"
+        },
+        "HistoricCRPLandManagement": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Details surrounding how the field was managed before year 2000\n\nNote that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
+            "properties": {
+                "crp": {
+                    "default": "yes",
+                    "description": "Whether the field participated in CRP or not.",
+                    "enum": [
+                        "yes"
+                    ],
+                    "title": "crp",
+                    "type": "string"
+                },
+                "crpEndYear": {
+                    "description": "The CRP end year",
+                    "maximum": 2000,
+                    "minimum": 1980,
+                    "title": "crpEndYear",
+                    "type": "number"
+                },
+                "crpStartYear": {
+                    "description": "The CRP start year",
+                    "maximum": 2000,
+                    "minimum": 1980,
+                    "title": "crpStartYear",
+                    "type": "number"
+                },
+                "crpType": {
+                    "description": "The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.",
+                    "enum": [
+                        "100% grass",
+                        "grass / legume mixture"
+                    ],
+                    "title": "crpType",
+                    "type": "string"
+                },
+                "postCRPManagement": {
+                    "description": "How was the field managed after CRP\n\nTo find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
+                    "enum": [
+                        "irrigated: annual crops in rotation",
+                        "irrigated: annual crops with hay/pasture in rotation",
+                        "irrigated: continuous hay",
+                        "irrigated: orchard or vineyard",
+                        "non-irrigated: annual crops in rotation",
+                        "non-irrigated: continuous hay",
+                        "non-irrigated: fallow-grain",
+                        "non-irrigated: livestock grazing",
+                        "non-irrigated: orchard or vineyard"
+                    ],
+                    "title": "postCRPManagement",
+                    "type": "string"
+                },
+                "postCRPTillage": {
+                    "description": "How was the field managed after tillage",
+                    "enum": [
+                        "intensive tillage",
+                        "no till",
+                        "reduced tillage"
+                    ],
+                    "title": "postCRPTillage",
+                    "type": "string"
+                },
+                "preCRPManagement": {
+                    "description": "How was the field managed before the field entered into CRP\n\nTo find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
+                    "enum": [
+                        "irrigated: annual crops in rotation",
+                        "irrigated: annual crops with hay/pasture in rotation",
+                        "irrigated: continuous hay",
+                        "irrigated: orchard or vineyard",
+                        "non-irrigated: annual crops in rotation",
+                        "non-irrigated: continuous hay",
+                        "non-irrigated: fallow-grain",
+                        "non-irrigated: livestock grazing",
+                        "non-irrigated: orchard or vineyard"
+                    ],
+                    "title": "preCRPManagement",
+                    "type": "string"
+                },
+                "preCRPTillage": {
+                    "description": "How was the field tilled before the field entered into CRP",
+                    "enum": [
+                        "intensive tillage",
+                        "no till",
+                        "reduced tillage"
+                    ],
+                    "title": "preCRPTillage",
+                    "type": "string"
+                },
+                "preYear1980": {
+                    "description": "A description of how the land was managed before 1980.",
+                    "enum": [
+                        "irrigation",
+                        "livestock grazing",
+                        "lowland non-irrigated",
+                        "upland non-irrigated"
+                    ],
+                    "title": "preYear1980",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "crp",
+                "crpEndYear",
+                "crpStartYear",
+                "crpType",
+                "postCRPManagement",
+                "postCRPTillage",
+                "preCRPManagement",
+                "preCRPTillage",
+                "preYear1980"
+            ],
+            "title": "HistoricCRPLandManagement",
+            "type": "object"
+        },
+        "HistoricNonCRPLandManagement": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Land management details for when a field did not participate in CRP",
+            "properties": {
+                "crp": {
+                    "default": "no",
+                    "description": "Whether the field participated in CRP or not.",
+                    "enum": [
+                        "no"
+                    ],
+                    "title": "crp",
+                    "type": "string"
+                },
+                "preYear1980": {
+                    "description": "A description of how the land was managed before 1980.",
+                    "enum": [
+                        "irrigation",
+                        "livestock grazing",
+                        "lowland non-irrigated",
+                        "upland non-irrigated"
+                    ],
+                    "title": "preYear1980",
+                    "type": "string"
+                },
+                "tillageForYears1980To2000": {
+                    "description": "The type of soil or crop disturbance events used on the field between 1980 and 2000.",
+                    "enum": [
+                        "intensive tillage",
+                        "no till",
+                        "reduced tillage"
+                    ],
+                    "title": "tillageForYears1980To2000",
+                    "type": "string"
+                },
+                "year1980To2000": {
+                    "description": "A description of how the land was managed between 1980 and 2000.",
+                    "enum": [
+                        "irrigated: annual crops in rotation",
+                        "irrigated: annual crops with hay/pasture in rotation",
+                        "irrigated: continuous hay",
+                        "irrigated: orchard or vineyard",
+                        "non-irrigated: annual crops in rotation",
+                        "non-irrigated: annual crops with hay/pasture in rotation",
+                        "non-irrigated: continuous hay",
+                        "non-irrigated: fallow-grain",
+                        "non-irrigated: livestock grazing"
+                    ],
+                    "title": "year1980To2000",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "crp",
+                "preYear1980",
+                "tillageForYears1980To2000",
+                "year1980To2000"
+            ],
+            "title": "HistoricNonCRPLandManagement",
+            "type": "object"
+        },
+        "IrrigationEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Irrigation event details.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "volume": {
+                    "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.",
+                    "minimum": 0,
+                    "title": "volume",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "date",
+                "volume"
+            ],
+            "title": "IrrigationEvent",
+            "type": "object"
+        },
+        "LimingEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Liming event details.",
+            "properties": {
+                "date": {
+                    "description": "The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "tonsPerAcre": {
+                    "description": "The liming amount (in tons per acre).",
+                    "minimum": 0,
+                    "title": "tonsPerAcre",
+                    "type": "number"
+                },
+                "type": {
+                    "description": "The liming type.",
+                    "enum": [
+                        "calcitic limestone",
+                        "crushed limestone",
+                        "dolomitic limestone",
+                        "other"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "tonsPerAcre",
+                "type"
+            ],
+            "title": "LimingEvent",
+            "type": "object"
+        },
+        "OrchardOrVineyardCrop": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Crop management details and events for orchard and vineyard crops.",
+            "properties": {
+                "burningEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurningEvent",
+                            "default": {
+                                "type": "no burning"
+                            },
+                            "description": "A burning event, if applicable."
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "burningEvent"
+                },
+                "classification": {
+                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).\n\nNote: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
+                    "enum": [
+                        "orchard",
+                        "vineyard"
+                    ],
+                    "title": "classification",
+                    "type": "string"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of grazing events, if applicable",
+                            "items": {
+                                "$ref": "#/definitions/GrazingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grazingEvents"
+                },
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CropManagementEvent"
+                            },
+                            {
+                                "$ref": "#/definitions/AnnualCropHarvestEvent"
+                            }
+                        ]
+                    },
+                    "title": "harvestEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
+                            "items": {
+                                "$ref": "#/definitions/LimingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "limingEvents"
+                },
+                "name": {
+                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "organicMatterEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of organic matter and manure application events, if applicable.",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "organicMatterEvents"
+                },
+                "plantingDate": {
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "prune": {
+                    "description": "Indicates if the crop was pruned.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "prune",
+                    "type": "string"
+                },
+                "renewOrClear": {
+                    "description": "Indicates if the crop was renewed or cleared.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "renewOrClear",
+                    "type": "string"
+                },
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "items": {
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
+                    },
+                    "title": "soilOrCropDisturbanceEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The COMET equivalent type of the orchard or vineyard crop.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "almond",
+                        "avocados",
+                        "cherries",
+                        "english walnuts",
+                        "grape, raisin",
+                        "grape, table",
+                        "grape, wine (1391-1670 gdd)",
+                        "grape, wine (1671-1950 gdd)",
+                        "grape, wine (<1390 gdd)",
+                        "grape, wine (>1950 gdd)",
+                        "grapefruit",
+                        "lemons & limes",
+                        "olives",
+                        "oranges",
+                        "peaches and nectarines",
+                        "pistachios",
+                        "tangerines & mandarins"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "classification",
+                "plantingDate",
+                "prune",
+                "renewOrClear",
+                "soilOrCropDisturbanceEvents",
+                "type"
+            ],
+            "title": "OrchardOrVineyardCrop",
+            "type": "object"
+        },
+        "PerennialCrop": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Perennial crop details.",
+            "properties": {
+                "burningEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurningEvent",
+                            "default": {
+                                "type": "no burning"
+                            },
+                            "description": "A burning event, if applicable."
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "burningEvent"
+                },
+                "classification": {
+                    "default": "perennial",
+                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "perennial"
+                    ],
+                    "title": "classification",
+                    "type": "string"
+                },
+                "fertilizerEvents": {
+                    "description": "A list of fertilizer events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "title": "fertilizerEvents",
+                    "type": "array"
+                },
+                "grazingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of grazing events, if applicable",
+                            "items": {
+                                "$ref": "#/definitions/GrazingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "grazingEvents"
+                },
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CropManagementEvent"
+                            },
+                            {
+                                "$ref": "#/definitions/AnnualCropHarvestEvent"
+                            }
+                        ]
+                    },
+                    "title": "harvestEvents",
+                    "type": "array"
+                },
+                "irrigationEvents": {
+                    "description": "A list of irrigation events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "irrigationEvents",
+                    "type": "array"
+                },
+                "limingEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
+                            "items": {
+                                "$ref": "#/definitions/LimingEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "limingEvents"
+                },
+                "name": {
+                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "organicMatterEvents": {
+                    "anyOf": [
+                        {
+                            "description": "A list of organic matter and manure application events, if applicable.",
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
+                                    }
+                                ]
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "organicMatterEvents"
+                },
+                "plantingDate": {
+                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "plantingDate",
+                    "type": "string"
+                },
+                "soilOrCropDisturbanceEvents": {
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "items": {
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
+                    },
+                    "title": "soilOrCropDisturbanceEvents",
+                    "type": "array"
+                },
+                "type": {
+                    "description": "The COMET equivalent type of the perennial crop\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "alfalfa",
+                        "clover",
+                        "grass"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "classification",
+                "plantingDate",
+                "soilOrCropDisturbanceEvents",
+                "type"
+            ],
+            "title": "PerennialCrop",
+            "type": "object"
+        },
+        "Project": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.",
+            "properties": {
+                "fields": {
+                    "description": "An array of fields defining annual crop management practices.",
+                    "items": {
+                        "$ref": "#/definitions/Field"
+                    },
+                    "maxItems": 25,
+                    "minItems": 1,
+                    "title": "fields",
+                    "type": "array"
+                },
+                "version": {
+                    "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
+                    "title": "version",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "fields",
+                "version"
+            ],
+            "title": "Project",
+            "type": "object"
+        },
+        "SlurryOrganicMatterEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Slurry organic matter (OMAD) and manure event details.",
+            "properties": {
+                "amountPerAcre": {
+                    "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
+                    "maximum": 200,
+                    "minimum": 0,
+                    "title": "amountPerAcre",
+                    "type": "number"
+                },
+                "carbonNitrogenRatio": {
+                    "anyOf": [
+                        {
+                            "description": "The carbon to nitrogen ratio in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "carbonNitrogenRatio"
+                },
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "percentMoisture": {
+                    "anyOf": [
+                        {
+                            "description": "The percent moisture of the organic matter or manure",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "percentMoisture"
+                },
+                "percentNitrogen": {
+                    "anyOf": [
+                        {
+                            "description": "The nitrogen percent makeup in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "percentNitrogen"
+                },
+                "type": {
+                    "description": "The organic matter or manure classification type.",
+                    "enum": [
+                        "beef slurry",
+                        "chicken - broiler slurry",
+                        "chicken - layer slurry",
+                        "dairy slurry",
+                        "swine manure, slurry"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amountPerAcre",
+                "carbonNitrogenRatio",
+                "date",
+                "percentMoisture",
+                "percentNitrogen",
+                "type"
+            ],
+            "title": "SlurryOrganicMatterEvent",
+            "type": "object"
+        },
+        "SoilOrCropDisturbanceEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Soil or crop disturbance event event details.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "name": {
+                    "default": "no tillage",
+                    "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.\n\nWhen defaulting to \"no tillage\", a default value will also be used for the event data equal to the planting date of the crop.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The soil or crop disturbance events classification type.\n\nYou can find a list of common equivalents [here](https://go.nori.com/inputs).",
+                    "enum": [
+                        "broad-spectrum herbicide",
+                        "crimp",
+                        "growing season cultivation",
+                        "intensive tillage",
+                        "mow",
+                        "mulch tillage",
+                        "no tillage",
+                        "reduced tillage",
+                        "ridge tillage",
+                        "strip tillage",
+                        "winter killed"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "date",
+                "type"
+            ],
+            "title": "SoilOrCropDisturbanceEvent",
+            "type": "object"
+        },
+        "SolidOrganicMatterEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "description": "Solid/dry organic matter (OMAD) and manure event details.",
+            "properties": {
+                "amountPerAcre": {
+                    "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
+                    "maximum": 200,
+                    "minimum": 0,
+                    "title": "amountPerAcre",
+                    "type": "number"
+                },
+                "carbonNitrogenRatio": {
+                    "anyOf": [
+                        {
+                            "description": "The carbon to nitrogen ratio in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "carbonNitrogenRatio"
+                },
+                "date": {
+                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "date",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
+                    "title": "name",
+                    "type": "string"
+                },
+                "percentMoisture": {
+                    "anyOf": [
+                        {
+                            "description": "The percent moisture of the organic matter or manure",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "percentMoisture"
+                },
+                "percentNitrogen": {
+                    "anyOf": [
+                        {
+                            "description": "The nitrogen percent makeup in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "maximum": 100,
+                            "minimum": 0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "percentNitrogen"
+                },
+                "type": {
+                    "description": "The solid/dry organic matter or manure classification type.",
+                    "enum": [
+                        "alfalfa meal",
+                        "beef manure, solid",
+                        "blood, dried",
+                        "bone meal",
+                        "chicken - broiler (litter), solid",
+                        "chicken - layer, solid",
+                        "compost or composted manure, solid",
+                        "dairy manure, solid",
+                        "farmyard manure, solid",
+                        "feather meal",
+                        "fish emulsion",
+                        "fish scrap",
+                        "guano",
+                        "horse manure, solid",
+                        "other manure, solid",
+                        "sheep manure, solid",
+                        "soybean meal",
+                        "swine manure, solid"
+                    ],
+                    "title": "type",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amountPerAcre",
+                "carbonNitrogenRatio",
+                "date",
+                "percentMoisture",
+                "percentNitrogen",
+                "type"
+            ],
+            "title": "SolidOrganicMatterEvent",
+            "type": "object"
+        }
+    }
+}
+
