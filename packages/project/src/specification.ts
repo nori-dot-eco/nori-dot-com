@@ -40,12 +40,6 @@ import type { GeoJSON } from 'geojson';
  * ! Validation library
  * * readme on how to build schema.
  *
- * ! Import file example changes
- * * drop quantity, quantity unit, area, areaUnit from liming
- * * dropped nullable for events, if null instead exclude
- * * merge yield numerator and denominator into one enum
- * * remove volumeUnits and depthUnits.
- *
  * ! Specification module
  * * independent versioning
  * * * enum for project.version
