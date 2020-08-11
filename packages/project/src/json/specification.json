@@ -690,26 +690,16 @@
                         },
                         {
                             "$ref": "#/definitions/HistoricCRPLandManagement"
-                        },
-                        {
-                            "type": "null"
                         }
                     ],
                     "description": "Details surrounding how the field was managed before year 2000.",
                     "title": "historicLandManagement"
                 },
                 "regenerativeStartYear": {
-                    "anyOf": [
-                        {
-                            "description": "The year that you most recently adopted regenerative agricultural practices\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
-                            "minimum": 2010,
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "regenerativeStartYear"
+                    "description": "The year that you most recently adopted regenerative agricultural practices\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
+                    "minimum": 2010,
+                    "title": "regenerativeStartYear",
+                    "type": "number"
                 }
             },
             "required": [

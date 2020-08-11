@@ -411,8 +411,6 @@ export interface Field {
    *
    * For more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).
    *
-   * @nullable
-   *
    * @minimum 2010
    *
    * @example <caption>When regenerative practices started in year 2015:</caption>
@@ -422,11 +420,9 @@ export interface Field {
    * ```
    *
    */
-  regenerativeStartYear: number; // todo make non-nullable
+  regenerativeStartYear: number;
   /**
    * Details surrounding how the field was managed before year 2000.
-   *
-   * @nullable during import
    *
    * @example <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
    *
@@ -458,7 +454,7 @@ export interface Field {
    */
   historicLandManagement:
     | HistoricNonCRPLandManagement
-    | HistoricCRPLandManagement; // todo make not nullable (add example)
+    | HistoricCRPLandManagement;
   /**
    * The name of the field.
    *
@@ -723,7 +719,7 @@ export interface CropEvents {
    * ```
    *
    */
-  soilOrCropDisturbanceEvents: SoilOrCropDisturbanceEvent[]; // todo make non-optional
+  soilOrCropDisturbanceEvents: SoilOrCropDisturbanceEvent[];
   /**
    * A list of fertilizer events, if applicable.
    *

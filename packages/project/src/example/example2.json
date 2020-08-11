@@ -372,8 +372,13 @@
         }
       ],
       "acres": 118.49,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "5c1p86sw3p3",
@@ -741,8 +746,13 @@
         }
       ],
       "acres": 70.12,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "31qacvt9u1c",
@@ -1115,8 +1125,13 @@
         }
       ],
       "acres": 45.26,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "wmkjveuh9hh",
@@ -1451,8 +1466,13 @@
         }
       ],
       "acres": 56.6,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "2bp74qwejhe",
@@ -1787,8 +1807,13 @@
         }
       ],
       "acres": 23.98,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "z619018ials",
@@ -2110,8 +2135,13 @@
         }
       ],
       "acres": 25.81,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "cykt5ig98w9",
@@ -2530,8 +2560,13 @@
         }
       ],
       "acres": 134.64,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "olwwz0zefpp",
@@ -2949,8 +2984,13 @@
         }
       ],
       "acres": 312.83,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "wudkj9snks",
@@ -3356,8 +3396,13 @@
         }
       ],
       "acres": 137.91,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "61xo1oq2o3m",
@@ -3720,8 +3765,13 @@
         }
       ],
       "acres": 109.7,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "hh6atycde7b",
@@ -4077,8 +4127,13 @@
         }
       ],
       "acres": 86.16,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "hdjm0ezltq",
@@ -4385,8 +4440,13 @@
         }
       ],
       "acres": 17.26,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "84gzd250pzm",
@@ -4712,8 +4772,13 @@
         }
       ],
       "acres": 53.96,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "garxjnecpkr",
@@ -5087,8 +5152,13 @@
         }
       ],
       "acres": 45.48,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "xdrne0e1tsg",
@@ -5539,8 +5609,13 @@
         }
       ],
       "acres": 274.93,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "dtftpvx2t1",
@@ -5982,8 +6057,13 @@
         }
       ],
       "acres": 209.29,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "jcsqj97cgkb",
@@ -6351,8 +6431,13 @@
         }
       ],
       "acres": 84.73,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "fxs08806ofp",
@@ -6694,8 +6779,13 @@
         }
       ],
       "acres": 132.74,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "ealn4okg634",
@@ -7074,8 +7164,13 @@
         }
       ],
       "acres": 64.5,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "ka4n5jkyt6",
@@ -7459,8 +7554,13 @@
         }
       ],
       "acres": 72.39,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "hnram19be56",
@@ -7843,8 +7943,13 @@
         }
       ],
       "acres": 59.85,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "iv3bj608ed",
@@ -8228,8 +8333,13 @@
         }
       ],
       "acres": 169.3,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "komt4tfk4oi",
@@ -8622,8 +8732,13 @@
         }
       ],
       "acres": 121,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "okzcjsv1mr",
@@ -8982,8 +9097,13 @@
         }
       ],
       "acres": 109.06,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     },
     {
       "fieldName": "yzs4m18br5m",
@@ -9331,8 +9451,13 @@
         }
       ],
       "acres": 174.01,
-      "historicLandManagement": null,
-      "regenerativeStartYear": null
+      "historicLandManagement": {
+        "crp": "no",
+        "preYear1980": "irrigation",
+        "tillageForYears1980To2000": "intensive tillage",
+        "year1980To2000": "irrigated: annual crops in rotation"
+      },
+      "regenerativeStartYear": 2015
     }
   ]
 }
