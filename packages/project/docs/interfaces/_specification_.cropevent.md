@@ -38,7 +38,7 @@ A crop event that happened on a particular date.
 
 • **date**: *string*
 
-*Defined in [specification.ts:1163](https://github.com/nori-dot-eco/nori-dot-com/blob/5f1e21f/packages/project/src/specification.ts#L1163)*
+*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L1170)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

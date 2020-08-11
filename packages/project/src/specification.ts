@@ -52,6 +52,7 @@ import type { GeoJSON } from 'geojson';
  */
 
 // todo will a crop ever have a tillage event and a kill event?
+// todo errorMessage
 
 /**
  *
@@ -72,6 +73,8 @@ export interface Project {
   /**
    * The specification version. This information is used to determine the logic Nori uses to import a project
    *
+   * @errorMessage you must use a string value to indicate the version number
+   *
    * @example
    *
    * ```js
@@ -82,6 +85,8 @@ export interface Project {
   version: string;
   /**
    * An array of fields defining annual crop management practices.
+   *
+   * @errorMessage you must specify 1-25 fields
    *
    * @minItems 1
    * @maxItems 25
@@ -1076,6 +1081,8 @@ export interface AnnualCrop
    * The COMET equivalent type of the crop
    *
    * You can find a list of accepted crops [here](https://go.nori.com/inputs).
+   *
+   * @errorMessage You must specify one of the allowed crop types if you are specifying an annual crop
    *
    * @example <caption>When the annual crop is corn:</caption>
    *

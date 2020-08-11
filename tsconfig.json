@@ -4,6 +4,7 @@
     "target": "ES2018",
     "declaration": true,
     "moduleResolution": "node",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "resolveJsonModule": true
   }
 }

@@ -170,6 +170,7 @@
                         "tomatoes, processing",
                         "winter wheat"
                     ],
+                    "errorMessage": "You must specify one of the allowed crop types if you are specifying an annual crop",
                     "title": "type",
                     "type": "string"
                 }
@@ -2632,6 +2633,7 @@
             "properties": {
                 "fields": {
                     "description": "An array of fields defining annual crop management practices.",
+                    "errorMessage": "you must specify 1-25 fields",
                     "items": {
                         "$ref": "#/definitions/Field"
                     },
@@ -2642,6 +2644,7 @@
                 },
                 "version": {
                     "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
+                    "errorMessage": "you must use a string value to indicate the version number",
                     "title": "version",
                     "type": "string"
                 }

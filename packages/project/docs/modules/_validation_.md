@@ -6,54 +6,55 @@
 
 ### Variables
 
-* [ajv](_validation_.md#const-ajv)
-* [tmp](_validation_.md#const-tmp)
-* [valid](_validation_.md#const-valid)
+* [ajvErrors](_validation_.md#ajverrors)
 
 ### Functions
 
-* [toLowercase](_validation_.md#const-tolowercase)
+* [formatInputData](_validation_.md#const-formatinputdata)
+* [validateProjectData](_validation_.md#const-validateprojectdata)
 
 ## Variables
 
-### `Const` ajv
+###  ajvErrors
 
-• **ajv**: *Ajv* = new Ajv({ useDefaults: 'empty', verbose: true, allErrors: true })
+• **ajvErrors**: *AjvErrors*
 
-*Defined in [validation.ts:6](https://github.com/nori-dot-eco/nori-dot-com/blob/5f1e21f/packages/project/src/validation.ts#L6)*
-
-___
-
-### `Const` tmp
-
-• **tmp**: *""* = ""
-
-*Defined in [validation.ts:31](https://github.com/nori-dot-eco/nori-dot-com/blob/5f1e21f/packages/project/src/validation.ts#L31)*
-
-___
-
-### `Const` valid
-
-• **valid**: *false | true | PromiseLike‹any›* = ajv.validate(
-  schema,
-  JSON.parse(JSON.stringify(data), toLowercase)
-)
-
-*Defined in [validation.ts:25](https://github.com/nori-dot-eco/nori-dot-com/blob/5f1e21f/packages/project/src/validation.ts#L25)*
+*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L7)*
 
 ## Functions
 
-### `Const` toLowercase
+### `Const` formatInputData
 
-▸ **toLowercase**(`key`: any, `value`: any): *any*
+▸ **formatInputData**(`data`: [Project](../interfaces/_specification_.project.md)): *[Project](../interfaces/_specification_.project.md)*
 
-*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/5f1e21f/packages/project/src/validation.ts#L7)*
+*Defined in [validation.ts:9](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L9)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`key` | any |
-`value` | any |
+`data` | [Project](../interfaces/_specification_.project.md) |
 
-**Returns:** *any*
+**Returns:** *[Project](../interfaces/_specification_.project.md)*
+
+___
+
+### `Const` validateProjectData
+
+▸ **validateProjectData**(`data`: [Project](../interfaces/_specification_.project.md)): *object*
+
+*Defined in [validation.ts:31](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L31)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`data` | [Project](../interfaces/_specification_.project.md) |
+
+**Returns:** *object*
+
+* **errors**? : *Ajv.ErrorObject[]*
+
+* **message**? : *string*
+
+* **valid**: *boolean*
