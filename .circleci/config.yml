@@ -30,6 +30,8 @@ jobs:
       - save_cache:
           key: v-0-0-1-node_modules_dir-{{ checksum "yarn.lock" }}
           paths:
+            - packages/project/node_modules
+            - packages/comet-utils/node_modules
             - packages/hooks/node_modules
             - node_modules
             - ~/.cache
