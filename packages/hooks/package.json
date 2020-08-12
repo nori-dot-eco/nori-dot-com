@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/hooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of react hooks",
   "keywords": [
     "hooks"
