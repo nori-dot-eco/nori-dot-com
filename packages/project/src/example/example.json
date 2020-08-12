@@ -44,17 +44,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/28/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/29/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.579204996202215
                 },
                 {
                   "date": "09/05/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25917798970379
                 }
               ],
@@ -100,7 +100,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/17/2016",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -139,17 +139,17 @@
               "fertilizerEvents": [
                 {
                   "date": "12/08/2016",
-                  "productName": "Wil (1) 30-50-120-10 Applied",
+                  "name": "Wil (1) 30-50-120-10 Applied",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "02/17/2017",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/24/2017",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -215,17 +215,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/11/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/30/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.82403578361044
                 }
               ],
@@ -253,12 +253,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/05/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -351,12 +351,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/08/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 11.8279432730547
                 },
                 {
                   "date": "04/24/2020",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -423,17 +423,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/28/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/29/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57917664996733
                 },
                 {
                   "date": "09/05/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25920699873006
                 }
               ],
@@ -479,7 +479,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/23/2016",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -513,17 +513,17 @@
               "fertilizerEvents": [
                 {
                   "date": "12/08/2016",
-                  "productName": "Wil (1) 30-50-120-10 Applied",
+                  "name": "Wil (1) 30-50-120-10 Applied",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "02/17/2017",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/24/2017",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -589,17 +589,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/11/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/30/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.82404402426977
                 }
               ],
@@ -627,12 +627,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/05/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -725,12 +725,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/07/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 17.74191328286304
                 },
                 {
                   "date": "04/24/2020",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -797,17 +797,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/28/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/29/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.579098541758725
                 },
                 {
                   "date": "09/05/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25916924436589
                 }
               ],
@@ -853,7 +853,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/23/2016",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -887,17 +887,17 @@
               "fertilizerEvents": [
                 {
                   "date": "12/08/2016",
-                  "productName": "Wil (1) 30-50-120-10 Applied",
+                  "name": "Wil (1) 30-50-120-10 Applied",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "02/17/2017",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/24/2017",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -963,17 +963,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/12/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/30/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.8239063190455
                 }
               ],
@@ -1001,17 +1001,17 @@
               "fertilizerEvents": [
                 {
                   "date": "09/20/2018",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/05/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1104,12 +1104,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/07/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 17.741907639188604
                 },
                 {
                   "date": "04/28/2020",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1176,17 +1176,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/27/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57994132746608
                 },
                 {
                   "date": "04/27/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/01/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.26182618261826
                 }
               ],
@@ -1214,17 +1214,17 @@
               "fertilizerEvents": [
                 {
                   "date": "09/22/2015",
-                  "productName": "30-40-120-10 (Willard)",
+                  "name": "30-40-120-10 (Willard)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/08/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/29/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1315,17 +1315,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/04/2017",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/30/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/03/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 158.97820738137085
                 }
               ],
@@ -1373,12 +1373,12 @@
               "fertilizerEvents": [
                 {
                   "date": "05/01/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/11/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1411,22 +1411,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/10/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/22/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 210.43197879858658
                 }
               ],
@@ -1517,17 +1517,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/27/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/27/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.58215179316097
                 },
                 {
                   "date": "06/01/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.26855713094245
                 }
               ],
@@ -1555,17 +1555,17 @@
               "fertilizerEvents": [
                 {
                   "date": "09/22/2015",
-                  "productName": "30-40-120-10 (Willard)",
+                  "name": "30-40-120-10 (Willard)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/08/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/29/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1656,17 +1656,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/04/2017",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/20/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/03/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 155.73865546218488
                 }
               ],
@@ -1714,12 +1714,12 @@
               "fertilizerEvents": [
                 {
                   "date": "05/02/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/11/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1752,22 +1752,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/22/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 210.44745621351126
                 }
               ],
@@ -1858,17 +1858,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/27/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/27/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57939053728949
                 },
                 {
                   "date": "06/01/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25902165196472
                 }
               ],
@@ -1896,12 +1896,12 @@
               "fertilizerEvents": [
                 {
                   "date": "09/22/2015",
-                  "productName": "30-40-120-10 (Willard)",
+                  "name": "30-40-120-10 (Willard)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/08/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -1986,17 +1986,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/20/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/10/2017",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/03/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 160.13501945525294
                 }
               ],
@@ -2044,12 +2044,12 @@
               "fertilizerEvents": [
                 {
                   "date": "05/02/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/11/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2082,22 +2082,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/11/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/22/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 210.43200309957382
                 }
               ],
@@ -2208,12 +2208,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/31/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2259,17 +2259,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/19/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/20/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 36.10097087378641
                 },
                 {
                   "date": "04/21/2016",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2315,37 +2315,37 @@
               "fertilizerEvents": [
                 {
                   "date": "03/24/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/24/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/24/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/14/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "07/24/2017",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "07/24/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 8.302095238095239
                 }
               ],
@@ -2383,12 +2383,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/11/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/28/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2421,12 +2421,12 @@
               "fertilizerEvents": [
                 {
                   "date": "08/02/2018",
-                  "productName": "Wil wheat 2018 w/ sharpen",
+                  "name": "Wil wheat 2018 w/ sharpen",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/25/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2474,17 +2474,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/03/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/17/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 94.69437017231135
                 },
                 {
                   "date": "06/06/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 91.18716577540108
                 }
               ],
@@ -2611,32 +2611,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/04/2015",
-                  "productName": "0-0-60 Muriate of Potash",
+                  "name": "0-0-60 Muriate of Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/04/2015",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/04/2015",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11.000127864974587
                 },
                 {
                   "date": "05/07/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/28/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57964389604578
                 },
                 {
                   "date": "06/12/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.26068471693891
                 }
               ],
@@ -2684,17 +2684,17 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/19/2016",
-                  "productName": "0-0-60 Potash",
+                  "name": "0-0-60 Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/26/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2748,22 +2748,22 @@
               "fertilizerEvents": [
                 {
                   "date": "01/01/2017",
-                  "productName": "Wil (3) 20-0-120-10 Applied",
+                  "name": "Wil (3) 20-0-120-10 Applied",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "02/18/2017",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/06/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 0.8607545952918413
                 },
                 {
                   "date": "03/25/2017",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -2843,27 +2843,27 @@
               "fertilizerEvents": [
                 {
                   "date": "05/08/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/10/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/12/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 48.18073714157849
                 },
                 {
                   "date": "06/09/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 167.71430921052632
                 },
                 {
                   "date": "06/21/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 52.60802259887006
                 }
               ],
@@ -2953,12 +2953,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/28/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 55.07999400119976
                 },
                 {
                   "date": "03/17/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 36.72
                 }
               ],
@@ -3035,32 +3035,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/29/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/01/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.580015952432746
                 },
                 {
                   "date": "06/01/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.26183743020812
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "0-0-60 Muriate of Potash",
+                  "name": "0-0-60 Muriate of Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11.000217533173808
                 }
               ],
@@ -3108,7 +3108,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/25/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3196,17 +3196,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/13/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/14/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/01/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 94.95110132158591
                 }
               ],
@@ -3246,7 +3246,7 @@
               "fertilizerEvents": [
                 {
                   "date": "09/23/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 35.160840707964596
                 }
               ],
@@ -3272,7 +3272,7 @@
               "fertilizerEvents": [
                 {
                   "date": "05/05/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3330,22 +3330,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/25/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/01/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/03/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 147.3054890870858
                 }
               ],
@@ -3447,17 +3447,17 @@
               "fertilizerEvents": [
                 {
                   "date": "09/27/2015",
-                  "productName": "30-60-120-10 (Willard Ag)",
+                  "name": "30-60-120-10 (Willard Ag)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/01/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/25/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3501,7 +3501,7 @@
               "fertilizerEvents": [
                 {
                   "date": "06/24/2016",
-                  "productName": "Wil Am Sulfate",
+                  "name": "Wil Am Sulfate",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3553,27 +3553,27 @@
               "fertilizerEvents": [
                 {
                   "date": "03/23/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/23/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/23/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/17/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/02/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 103.40536363636363
                 }
               ],
@@ -3636,12 +3636,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/23/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/02/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3669,17 +3669,17 @@
               "fertilizerEvents": [
                 {
                   "date": "10/09/2018",
-                  "productName": "wil wheat 19",
+                  "name": "wil wheat 19",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/05/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/28/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -3739,7 +3739,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/04/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 11.860346399270737
                 }
               ],
@@ -3838,22 +3838,22 @@
               "fertilizerEvents": [
                 {
                   "date": "09/27/2015",
-                  "productName": "30-60-120-10 (Willard Ag)",
+                  "name": "30-60-120-10 (Willard Ag)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/01/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/25/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/28/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 37.983333333333334
                 }
               ],
@@ -3938,27 +3938,27 @@
               "fertilizerEvents": [
                 {
                   "date": "03/23/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/23/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/23/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/17/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/02/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 147.67042093287824
                 }
               ],
@@ -4008,12 +4008,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/24/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/02/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4041,17 +4041,17 @@
               "fertilizerEvents": [
                 {
                   "date": "10/09/2018",
-                  "productName": "wil wheat 19",
+                  "name": "wil wheat 19",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/05/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/28/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4111,7 +4111,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/04/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 12.355153203342619
                 }
               ],
@@ -4220,7 +4220,7 @@
               "fertilizerEvents": [
                 {
                   "date": "05/28/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4266,42 +4266,42 @@
               "fertilizerEvents": [
                 {
                   "date": "03/28/2017",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11.481250000000001
                 },
                 {
                   "date": "03/28/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/28/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/28/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/03/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/10/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 30.91
                 },
                 {
                   "date": "06/28/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "08/16/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4349,12 +4349,12 @@
               "fertilizerEvents": [
                 {
                   "date": "05/05/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/11/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4402,7 +4402,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/03/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4491,32 +4491,32 @@
               "fertilizerEvents": [
                 {
                   "date": "05/03/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/06/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57942918686052
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "0-0-60 Muriate of Potash",
+                  "name": "0-0-60 Muriate of Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2015",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11
                 },
                 {
                   "date": "06/11/2015",
-                  "productName": "30-0-0 UAN",
+                  "name": "30-0-0 UAN",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4564,17 +4564,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/28/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/10/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 168.34551282051282
                 },
                 {
                   "date": "06/11/2016",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4620,22 +4620,22 @@
               "fertilizerEvents": [
                 {
                   "date": "05/03/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/10/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 1.7204339963833635
                 },
                 {
                   "date": "05/31/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/28/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4683,17 +4683,17 @@
               "fertilizerEvents": [
                 {
                   "date": "05/04/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/09/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/18/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 202.8564612326044
                 }
               ],
@@ -4741,7 +4741,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/10/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4823,12 +4823,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/02/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -4901,27 +4901,27 @@
               "fertilizerEvents": [
                 {
                   "date": "03/10/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11.499560246262094
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "0-0-60 Potash",
+                  "name": "0-0-60 Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/24/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 37.232216014897574
                 }
               ],
@@ -4975,22 +4975,22 @@
               "fertilizerEvents": [
                 {
                   "date": "03/13/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5018,12 +5018,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/06/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/05/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5056,7 +5056,7 @@
               "fertilizerEvents": [
                 {
                   "date": "08/02/2018",
-                  "productName": "Wil wheat 2018 w/ sharpen",
+                  "name": "Wil wheat 2018 w/ sharpen",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5089,32 +5089,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 MAP",
+                  "name": "Nutrien 19 MAP",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 potash",
+                  "name": "Nutrien 19 potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 sulfate",
+                  "name": "Nutrien 19 sulfate",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 178.86719437115218
                 }
               ],
@@ -5203,12 +5203,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/24/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/29/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5281,22 +5281,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/17/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/19/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 35.95001799208349
                 },
                 {
                   "date": "05/28/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 37.984375
                 },
                 {
                   "date": "06/02/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 117.49151122953941
                 }
               ],
@@ -5363,17 +5363,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/15/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/17/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/24/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 158.39283657307413
                 }
               ],
@@ -5433,12 +5433,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/23/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2018",
-                  "productName": "Wil 19  Ksusp 0-0-20",
+                  "name": "Wil 19  Ksusp 0-0-20",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5476,12 +5476,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/28/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/04/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5583,7 +5583,7 @@
               "fertilizerEvents": [
                 {
                   "date": "04/07/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 11.830975157312771
                 }
               ],
@@ -5660,12 +5660,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/24/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/31/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5738,22 +5738,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/14/2016",
-                  "productName": "Wil K 0-0-80 Applied 2017",
+                  "name": "Wil K 0-0-80 Applied 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/16/2016",
-                  "productName": "Wil 15-15-0-1-.08B-.18Zn",
+                  "name": "Wil 15-15-0-1-.08B-.18Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/02/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.7778347870703
                 },
                 {
                   "date": "07/01/2016",
-                  "productName": "46-0-0 with Avail",
+                  "name": "46-0-0 with Avail",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5812,27 +5812,27 @@
               "fertilizerEvents": [
                 {
                   "date": "03/31/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/31/2017",
-                  "productName": "CPS Corn 15-15-0",
+                  "name": "CPS Corn 15-15-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/18/2017",
-                  "productName": "Wil K 0-0-80 Self 2017",
+                  "name": "Wil K 0-0-80 Self 2017",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/06/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 158.19778526721234
                 }
               ],
@@ -5880,27 +5880,27 @@
               "fertilizerEvents": [
                 {
                   "date": "03/30/2018",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/30/2018",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/30/2018",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/23/2018",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2018",
-                  "productName": "Wil 19  Ksusp 0-0-20",
+                  "name": "Wil 19  Ksusp 0-0-20",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -5928,12 +5928,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/28/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/04/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6026,12 +6026,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/05/2020",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/07/2020",
-                  "productName": "Wil  19 11-37-0",
+                  "name": "Wil  19 11-37-0",
                   "lbsOfNPerAcre": 11.274690620669883
                 }
               ],
@@ -6108,12 +6108,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/31/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6186,22 +6186,22 @@
               "fertilizerEvents": [
                 {
                   "date": "04/18/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/20/2016",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 36.54710843373494
                 },
                 {
                   "date": "05/28/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 37.98222222222222
                 }
               ],
@@ -6247,17 +6247,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/18/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/19/2017",
-                  "productName": "Corn Susp 40-50-120 Wil Self 17",
+                  "name": "Corn Susp 40-50-120 Wil Self 17",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/24/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 156.97111111111113
                 }
               ],
@@ -6307,17 +6307,17 @@
               "fertilizerEvents": [
                 {
                   "date": "03/30/2018",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/30/2018",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/30/2018",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6345,12 +6345,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/28/2019",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/04/2019",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6482,17 +6482,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/25/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57917733915926
                 },
                 {
                   "date": "04/29/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/14/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.2592285671237
                 }
               ],
@@ -6520,17 +6520,17 @@
               "fertilizerEvents": [
                 {
                   "date": "03/11/2016",
-                  "productName": "Nitrain",
+                  "name": "Nitrain",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/11/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/31/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6621,17 +6621,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/12/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/13/2017",
-                  "productName": "Corn Susp 40-50-120 Wil Self 17",
+                  "name": "Corn Susp 40-50-120 Wil Self 17",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/18/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 155.26065086502553
                 }
               ],
@@ -6659,12 +6659,12 @@
               "fertilizerEvents": [
                 {
                   "date": "09/23/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 35.23338185346918
                 },
                 {
                   "date": "04/05/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6725,17 +6725,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/10/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/21/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 210.431972276631
                 }
               ],
@@ -6763,7 +6763,7 @@
               "fertilizerEvents": [
                 {
                   "date": "08/28/2019",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6830,17 +6830,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/24/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57922480620155
                 },
                 {
                   "date": "06/14/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25922480620156
                 }
               ],
@@ -6868,12 +6868,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/11/2016",
-                  "productName": "Nitrain",
+                  "name": "Nitrain",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/11/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -6970,17 +6970,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/05/2017",
-                  "productName": "CPS Corn 15-15-0",
+                  "name": "CPS Corn 15-15-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/13/2017",
-                  "productName": "Corn Susp 40-50-120 Wil Self 17",
+                  "name": "Corn Susp 40-50-120 Wil Self 17",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/18/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 155.50570522979396
                 }
               ],
@@ -7008,22 +7008,22 @@
               "fertilizerEvents": [
                 {
                   "date": "09/23/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 35.19780701754386
                 },
                 {
                   "date": "03/06/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/19/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 0.8372093023255814
                 },
                 {
                   "date": "04/05/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7116,17 +7116,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/10/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/29/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 175.35999999999999
                 }
               ],
@@ -7215,17 +7215,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/24/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57922364967537
                 },
                 {
                   "date": "06/14/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.25915181654923
                 }
               ],
@@ -7253,12 +7253,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/11/2016",
-                  "productName": "Nitrain",
+                  "name": "Nitrain",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/11/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7349,17 +7349,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/12/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/13/2017",
-                  "productName": "Corn Susp 40-50-120 Wil Self 17",
+                  "name": "Corn Susp 40-50-120 Wil Self 17",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/18/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 155.23379888268158
                 }
               ],
@@ -7387,17 +7387,17 @@
               "fertilizerEvents": [
                 {
                   "date": "09/23/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 35.22280435681787
                 },
                 {
                   "date": "03/19/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 0.8379610443431412
                 },
                 {
                   "date": "04/05/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7496,17 +7496,17 @@
               "fertilizerEvents": [
                 {
                   "date": "04/10/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/21/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 210.43196574112446
                 }
               ],
@@ -7605,12 +7605,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/02/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7683,32 +7683,32 @@
               "fertilizerEvents": [
                 {
                   "date": "03/10/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 8.8
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "0-0-60 Potash",
+                  "name": "0-0-60 Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/26/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 36.474004192872115
                 },
                 {
                   "date": "04/26/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/09/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 105.2159090909091
                 }
               ],
@@ -7756,22 +7756,22 @@
               "fertilizerEvents": [
                 {
                   "date": "03/13/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/14/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7799,12 +7799,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/06/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/05/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7837,7 +7837,7 @@
               "fertilizerEvents": [
                 {
                   "date": "08/02/2018",
-                  "productName": "Wil wheat 2018 w/ sharpen",
+                  "name": "Wil wheat 2018 w/ sharpen",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -7880,32 +7880,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 MAP",
+                  "name": "Nutrien 19 MAP",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 potash",
+                  "name": "Nutrien 19 potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 sulfate",
+                  "name": "Nutrien 19 sulfate",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/15/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 168.33567251461986
                 }
               ],
@@ -7994,7 +7994,7 @@
               "fertilizerEvents": [
                 {
                   "date": "03/19/2015",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8067,32 +8067,32 @@
               "fertilizerEvents": [
                 {
                   "date": "03/10/2016",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 8.8
                 },
                 {
                   "date": "03/10/2016",
-                  "productName": "0-0-60 Potash",
+                  "name": "0-0-60 Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/25/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/26/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 36.26571136131013
                 },
                 {
                   "date": "06/09/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 105.21603665521192
                 }
               ],
@@ -8146,22 +8146,22 @@
               "fertilizerEvents": [
                 {
                   "date": "03/13/2017",
-                  "productName": "MAP - SS 2018",
+                  "name": "MAP - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Potash - SS 2018",
+                  "name": "Potash - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/13/2017",
-                  "productName": "Am Sulfate - SS 2018",
+                  "name": "Am Sulfate - SS 2018",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/17/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8189,12 +8189,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/06/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/29/2018",
-                  "productName": "Wil WH19 17-0-0-4",
+                  "name": "Wil WH19 17-0-0-4",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8227,7 +8227,7 @@
               "fertilizerEvents": [
                 {
                   "date": "08/02/2018",
-                  "productName": "Wil wheat 2018 w/ sharpen",
+                  "name": "Wil wheat 2018 w/ sharpen",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8270,32 +8270,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 MAP",
+                  "name": "Nutrien 19 MAP",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 potash",
+                  "name": "Nutrien 19 potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/09/2019",
-                  "productName": "Nutrien 19 sulfate",
+                  "name": "Nutrien 19 sulfate",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2019",
-                  "productName": "SS 19 11-37-0",
+                  "name": "SS 19 11-37-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/12/2019",
-                  "productName": "SS19 30%",
+                  "name": "SS19 30%",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/04/2019",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.82398109864144
                 }
               ],
@@ -8384,32 +8384,32 @@
               "fertilizerEvents": [
                 {
                   "date": "04/06/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/16/2015",
-                  "productName": "0-0-60 Muriate of Potash",
+                  "name": "0-0-60 Muriate of Potash",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/16/2015",
-                  "productName": "Am Sulfate 21-0-0-24",
+                  "name": "Am Sulfate 21-0-0-24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/16/2015",
-                  "productName": "11-52-0 MAP",
+                  "name": "11-52-0 MAP",
                   "lbsOfNPerAcre": 11
                 },
                 {
                   "date": "05/07/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.57917355371901
                 },
                 {
                   "date": "06/01/2015",
-                  "productName": "30-0-0 UAN",
+                  "name": "30-0-0 UAN",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8455,17 +8455,17 @@
               "fertilizerEvents": [
                 {
                   "date": "05/19/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/07/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 100.19331641285956
                 },
                 {
                   "date": "06/30/2016",
-                  "productName": "46-0-0 with Avail",
+                  "name": "46-0-0 with Avail",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8557,12 +8557,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/19/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/20/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 1.7415969581749051
                 }
               ],
@@ -8612,7 +8612,7 @@
               "fertilizerEvents": [
                 {
                   "date": "06/07/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 157.82396694214876
                 }
               ],
@@ -8668,12 +8668,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/01/2019",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/13/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8701,12 +8701,12 @@
               "fertilizerEvents": [
                 {
                   "date": "03/09/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 55.079991714995856
                 },
                 {
                   "date": "03/18/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 36.720000000000006
                 }
               ],
@@ -8783,17 +8783,17 @@
               "fertilizerEvents": [
                 {
                   "date": "05/04/2015",
-                  "productName": "Corn Starter (Green Demon)",
+                  "name": "Corn Starter (Green Demon)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/07/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 38.58163429121849
                 },
                 {
                   "date": "06/07/2015",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 126.26713758227646
                 }
               ],
@@ -8839,17 +8839,17 @@
               "fertilizerEvents": [
                 {
                   "date": "05/20/2016",
-                  "productName": "Wil 18-18-0-1-.09B-.22Zn",
+                  "name": "Wil 18-18-0-1-.09B-.22Zn",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/07/2016",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 158.32159685863874
                 },
                 {
                   "date": "06/30/2016",
-                  "productName": "46-0-0 with Avail",
+                  "name": "46-0-0 with Avail",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8898,7 +8898,7 @@
               "fertilizerEvents": [
                 {
                   "date": "02/09/2017",
-                  "productName": "Wil Corn 40-50-120-24 [2017]",
+                  "name": "Wil Corn 40-50-120-24 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -8922,12 +8922,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/19/2017",
-                  "productName": "Wil bean 5-13-3-.2Zn-",
+                  "name": "Wil bean 5-13-3-.2Zn-",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/20/2017",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 1.758426005132592
                 }
               ],
@@ -8977,12 +8977,12 @@
               "fertilizerEvents": [
                 {
                   "date": "05/07/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/07/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 158.84110970996218
                 }
               ],
@@ -9038,7 +9038,7 @@
               "fertilizerEvents": [
                 {
                   "date": "06/13/2019",
-                  "productName": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
+                  "name": "Wil  N,K,S 19  Susp. 4.4-0-20-5",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -9066,12 +9066,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/20/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 55.07949752429855
                 },
                 {
                   "date": "03/18/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 36.72
                 }
               ],
@@ -9148,7 +9148,7 @@
               "fertilizerEvents": [
                 {
                   "date": "05/15/2015",
-                  "productName": "4-10-2",
+                  "name": "4-10-2",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -9176,17 +9176,17 @@
               "fertilizerEvents": [
                 {
                   "date": "10/24/2015",
-                  "productName": "30-40-120-10 (Willard)",
+                  "name": "30-40-120-10 (Willard)",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/09/2016",
-                  "productName": "Wil Wheat19  17-0-0-4-B",
+                  "name": "Wil Wheat19  17-0-0-4-B",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "03/29/2016",
-                  "productName": "Wil Wheat 17-0-0-4 [2017]",
+                  "name": "Wil Wheat 17-0-0-4 [2017]",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -9273,12 +9273,12 @@
               "fertilizerEvents": [
                 {
                   "date": "04/20/2017",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "04/29/2017",
-                  "productName": "Corn Susp 40-50-120 Wil Self 17",
+                  "name": "Corn Susp 40-50-120 Wil Self 17",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -9326,27 +9326,27 @@
               "fertilizerEvents": [
                 {
                   "date": "04/12/2018",
-                  "productName": "Wil CN19 5.7-7-17-3.24",
+                  "name": "Wil CN19 5.7-7-17-3.24",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "05/08/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 50.01099697885196
                 },
                 {
                   "date": "05/08/2018",
-                  "productName": "Wil ST 18-18-0",
+                  "name": "Wil ST 18-18-0",
                   "lbsOfNPerAcre": null
                 },
                 {
                   "date": "06/07/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 160.98049414824445
                 },
                 {
                   "date": "06/22/2018",
-                  "productName": "Wil Corn 32-0-0 [UAN]",
+                  "name": "Wil Corn 32-0-0 [UAN]",
                   "lbsOfNPerAcre": 52.608024691358025
                 }
               ],
@@ -9392,7 +9392,7 @@
               "fertilizerEvents": [
                 {
                   "date": "05/06/2019",
-                  "productName": "Mushroom Compost",
+                  "name": "Mushroom Compost",
                   "lbsOfNPerAcre": null
                 }
               ],
@@ -9420,12 +9420,12 @@
               "fertilizerEvents": [
                 {
                   "date": "02/20/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 55.07999540256307
                 },
                 {
                   "date": "03/18/2020",
-                  "productName": "Wil 20WH 17-0-0-4",
+                  "name": "Wil 20WH 17-0-0-4",
                   "lbsOfNPerAcre": 36.72
                 }
               ],

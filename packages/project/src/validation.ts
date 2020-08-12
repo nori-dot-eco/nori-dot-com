@@ -33,10 +33,10 @@ export const validateProjectData = (
 ): { valid: boolean; message?: string; errors?: Ajv.ErrorObject[] } => {
   const ajv = ajvErrors(
     new Ajv({
-      useDefaults: 'empty' as any,
+      useDefaults: 'empty',
       allErrors: true,
       jsonPointers: true,
-    })
+    }) as any
   );
   const valid = ajv.validate(schema, formatInputData(data)) as boolean;
   return { valid, message: ajv.errorsText(), errors: ajv.errors };
