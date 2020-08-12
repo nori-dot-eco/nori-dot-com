@@ -41,17 +41,6 @@ module.exports = {
     },
   },
   rules: {
-    // 'jsdoc/check-examples': [
-    //   'error',
-    //   { exampleCodeRegex: '/^```(?:js|javascript|json)\\n([\\s\\S]*?)```$/gm' },
-    // ],
-    'jsdoc/require-example': [
-      'error',
-      {
-        contexts: ['any'],
-        exemptedBy: ['inheritdoc', 'packageDocumentation'],
-      },
-    ],
     'jsdoc/check-alignment': [
       'error',
       {
@@ -79,12 +68,6 @@ module.exports = {
     'jsdoc/no-types': 1,
     'jsdoc/no-undefined-types': 1,
     'jsdoc/require-description': 1,
-    'jsdoc/require-jsdoc': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
     'jsdoc/require-returns': [
       'error',
       {
@@ -109,7 +92,7 @@ module.exports = {
         contexts: ['any'],
       },
     ],
-    'jsdoc/valid-types': 1, // Recommended
+    'jsdoc/valid-types': 1,
     'no-else-return': [0],
     'one-var': 0,
     'no-underscore-dangle': 0,
