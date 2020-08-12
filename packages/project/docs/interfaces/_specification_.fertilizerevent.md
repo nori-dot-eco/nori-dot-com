@@ -9,7 +9,7 @@ Fertilizer event details.
 ```js
 {
  "date": "10/01/2000",
- "productName": "Joe's fertilizer",
+ "name": "Joe's fertilizer",
  "type": "mixed blends",
  "lbsOfNPerAcre": 150
 }
@@ -27,7 +27,7 @@ Fertilizer event details.
 
 * [date](_specification_.fertilizerevent.md#date)
 * [lbsOfNPerAcre](_specification_.fertilizerevent.md#lbsofnperacre)
-* [productName](_specification_.fertilizerevent.md#optional-productname)
+* [name](_specification_.fertilizerevent.md#optional-name)
 * [type](_specification_.fertilizerevent.md#optional-type)
 
 ## Properties
@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L1170)*
+*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1170)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,7 +56,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1501](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L1501)*
+*Defined in [specification.ts:1501](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1501)*
 
 Amount of nitrogen applied in lbs/ac.
 
@@ -70,11 +70,11 @@ Amount of nitrogen applied in lbs/ac.
 
 ___
 
-### `Optional` productName
+### `Optional` name
 
-• **productName**? : *string*
+• **name**? : *string*
 
-*Defined in [specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L1473)*
+*Defined in [specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1473)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -83,7 +83,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 **`example`** <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
 
 ```js
-"productName": "Joe's fertilizer"
+"name": "Joe's fertilizer"
 ```
 
 ___
@@ -92,7 +92,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L1488)*
+*Defined in [specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1488)*
 
 The fertilizer classification type.
 

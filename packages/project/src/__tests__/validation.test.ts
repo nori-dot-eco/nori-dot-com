@@ -41,17 +41,17 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
               fertilizerEvents: [
                 {
                   date: '04/28/2015',
-                  productName: 'Corn Starter (Green Demon)',
+                  name: 'Corn Starter (Green Demon)',
                   lbsOfNPerAcre: null,
                 },
                 {
                   date: '04/29/2015',
-                  productName: 'Wil Corn 32-0-0 [UAN]',
+                  name: 'Wil Corn 32-0-0 [UAN]',
                   lbsOfNPerAcre: 38.579204996202215,
                 },
                 {
                   date: '09/05/2015',
-                  productName: 'Wil Corn 32-0-0 [UAN]',
+                  name: 'Wil Corn 32-0-0 [UAN]',
                   lbsOfNPerAcre: 126.25917798970379,
                 },
               ],
@@ -116,17 +116,17 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
               fertilizerEvents: [
                 {
                   date: '04/28/2015',
-                  productName: 'Corn Starter (Green Demon)',
+                  name: 'Corn Starter (Green Demon)',
                   lbsOfNPerAcre: null,
                 },
                 {
                   date: '04/29/2015',
-                  productName: 'Wil Corn 32-0-0 [UAN]',
+                  name: 'Wil Corn 32-0-0 [UAN]',
                   lbsOfNPerAcre: 38.579204996202215,
                 },
                 {
                   date: '09/05/2015',
-                  productName: 'Wil Corn 32-0-0 [UAN]',
+                  name: 'Wil Corn 32-0-0 [UAN]',
                   lbsOfNPerAcre: 126.25917798970379,
                 },
               ],

@@ -32,7 +32,7 @@ Crop management details grouped by a planting year.
 
 • **crops**: *[[AnnualCrop](_specification_.annualcrop.md) | [CoverCrop](_specification_.covercrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [CoverCrop](_specification_.covercrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md), [AnnualCrop](_specification_.annualcrop.md) | [CoverCrop](_specification_.covercrop.md) | [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md) | [PerennialCrop](_specification_.perennialcrop.md)]*
 
-*Defined in [specification.ts:582](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L582)*
+*Defined in [specification.ts:582](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L582)*
 
 A list of crops for a given planting year.
 
@@ -74,7 +74,7 @@ ___
 
 • **plantingYear**: *number*
 
-*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/specification.ts#L546)*
+*Defined in [specification.ts:546](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L546)*
 
 The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 

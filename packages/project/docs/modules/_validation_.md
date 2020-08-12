@@ -19,7 +19,7 @@
 
 • **ajvErrors**: *AjvErrors*
 
-*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L7)*
+*Defined in [validation.ts:7](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/validation.ts#L7)*
 
 ## Functions
 
@@ -27,7 +27,7 @@
 
 ▸ **formatInputData**(`data`: [Project](../interfaces/_specification_.project.md)): *[Project](../interfaces/_specification_.project.md)*
 
-*Defined in [validation.ts:9](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L9)*
+*Defined in [validation.ts:9](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/validation.ts#L9)*
 
 **Parameters:**
 
@@ -43,7 +43,7 @@ ___
 
 ▸ **validateProjectData**(`data`: [Project](../interfaces/_specification_.project.md)): *object*
 
-*Defined in [validation.ts:31](https://github.com/nori-dot-eco/nori-dot-com/blob/078c656/packages/project/src/validation.ts#L31)*
+*Defined in [validation.ts:31](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/validation.ts#L31)*
 
 **Parameters:**
 

@@ -728,7 +728,7 @@ export interface CropEvents {
    * "fertilizerEvents": [
    *  {
    *    "date": "10/01/2000",
-   *    "productName": "Joe's fertilizer",
+   *    "name": "Joe's fertilizer",
    *    "type": "mixed blends",
    *    "lbsOfNPerAcre": 10
    *  }
@@ -1351,7 +1351,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
    *
    * ```js
-   * "productName": "Joe's tillage method"
+   * "name": "Joe's tillage method"
    * ```
    *
    */
@@ -1450,7 +1450,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
  * ```js
  * {
  *  "date": "10/01/2000",
- *  "productName": "Joe's fertilizer",
+ *  "name": "Joe's fertilizer",
  *  "type": "mixed blends",
  *  "lbsOfNPerAcre": 150
  * }
@@ -1466,11 +1466,11 @@ export interface FertilizerEvent extends CropEvent {
    * @example <caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
    *
    * ```js
-   * "productName": "Joe's fertilizer"
+   * "name": "Joe's fertilizer"
    * ```
    *
    */
-  productName?: string;
+  name?: string;
   /**
    * The fertilizer classification type.
    *

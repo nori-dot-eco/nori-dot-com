@@ -605,9 +605,9 @@
                         "null"
                     ]
                 },
-                "productName": {
+                "name": {
                     "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",
-                    "title": "productName",
+                    "title": "name",
                     "type": "string"
                 },
                 "type": {
