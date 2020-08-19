@@ -201,5 +201,34 @@ describe('validation', () => {
         ),
       });
     });
+    describe('validation for the `fields` property', () => {
+      it('should return false and the errors when the data contains an invalid number of fields', () => {
+        expect(
+          validateProjectData({ version: '1.0.0', fields: [] } as any)
+        ).toStrictEqual({
+          valid: false,
+          errors: [
+            {
+              dataPath: '/fields',
+              keyword: 'errorMessage',
+              message: 'must specify 1-25 fields',
+              params: {
+                errors: [
+                  {
+                    dataPath: '/fields',
+                    keyword: 'minItems',
+                    message: 'should NOT have fewer than 1 items',
+                    params: { limit: 1 },
+                    schemaPath: '#/properties/fields/minItems',
+                  },
+                ],
+              },
+              schemaPath: '#/properties/fields/errorMessage',
+            },
+          ],
+          message: 'data/fields must specify 1-25 fields',
+        });
+      });
+    });
   });
 });

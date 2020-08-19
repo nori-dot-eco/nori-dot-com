@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](_specification_.md)
+[@nori-dot-com/project](../README.md) › ["specification"](_specification_.md)
 
 # Module: "specification"
 

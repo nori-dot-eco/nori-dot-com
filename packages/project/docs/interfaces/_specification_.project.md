@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [Project](_specification_.project.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [Project](_specification_.project.md)
 
 # Interface: Project
 
@@ -31,11 +31,11 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 • **fields**: *[Field](_specification_.field.md)[]*
 
-*Defined in [specification.ts:103](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L103)*
+*Defined in [specification.ts:103](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/specification.ts#L103)*
 
 An array of fields defining annual crop management practices.
 
-**`errormessage`** you must specify 1-25 fields
+**`errormessage`** must specify 1-25 fields
 
 **`minitems`** 1
 
@@ -55,11 +55,11 @@ ___
 
 • **version**: *string*
 
-*Defined in [specification.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L85)*
+*Defined in [specification.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/specification.ts#L85)*
 
 The specification version. This information is used to determine the logic Nori uses to import a project
 
-**`errormessage`** you must use a string value to indicate the version number
+**`errormessage`** must use a string value to indicate the version number
 
 **`example`** 
 

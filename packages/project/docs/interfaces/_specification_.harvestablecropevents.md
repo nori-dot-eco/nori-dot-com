@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [HarvestableCropEvents](_specification_.harvestablecropevents.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [HarvestableCropEvents](_specification_.harvestablecropevents.md)
 
 # Interface: HarvestableCropEvents
 
@@ -37,9 +37,9 @@ Crop harvest events.
 
 ### `Optional` harvestEvents
 
-• **harvestEvents**? : *[AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md)[]*
+• **harvestEvents**? : *([AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md))[]*
 
-*Defined in [specification.ts:667](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L667)*
+*Defined in [specification.ts:667](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/specification.ts#L667)*
 
 A list of harvest events, if applicable.
 

@@ -1,13 +1,10 @@
-[@nori-dot-com/project](README.md) › [Globals](globals.md)
+[@nori-dot-com/project](README.md)
 
 # @nori-dot-com/project
 
-# `@nori-dot-com/project`
+## Index
 
-Schema and utilities for [nori](https://nori.com) supplier projects
+### Modules
 
-## Usage
-
-```
-const project = require('@nori-dot-com/project');
-```
+* ["specification"](modules/_specification_.md)
+* ["validation"](modules/_validation_.md)

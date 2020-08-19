@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [PlantedCrop](_specification_.plantedcrop.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [PlantedCrop](_specification_.plantedcrop.md)
 
 # Interface: PlantedCrop
 
@@ -37,7 +37,7 @@ Crop properties relevant to planted crops.
 
 • **name**? : *string*
 
-*Defined in [specification.ts:614](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L614)*
+*Defined in [specification.ts:614](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/specification.ts#L614)*
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -55,7 +55,7 @@ ___
 
 • **plantingDate**: *string*
 
-*Defined in [specification.ts:629](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L629)*
+*Defined in [specification.ts:629](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/specification.ts#L629)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
