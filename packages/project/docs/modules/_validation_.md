@@ -14,7 +14,7 @@
 
 ▸ **validateProjectData**(`data`: [Project](../interfaces/_specification_.project.md)): *object*
 
-*Defined in [validation.ts:47](https://github.com/nori-dot-eco/nori-dot-com/blob/93df903/packages/project/src/validation.ts#L47)*
+*Defined in [validation.ts:47](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/validation.ts#L47)*
 
 Takes input data and checks whether its contents are valid or not. When the data is not valid, context is provided.
 

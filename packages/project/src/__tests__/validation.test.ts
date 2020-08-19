@@ -197,7 +197,7 @@ describe('validation', () => {
         valid: false,
         errors: expect.arrayContaining([expect.any(Object)]),
         message: expect.stringContaining(
-          'You must specify one of the allowed crop types if you are specifying an annual crop'
+          'must specify one of the allowed crop types if you are specifying an annual crop'
         ),
       });
     });
