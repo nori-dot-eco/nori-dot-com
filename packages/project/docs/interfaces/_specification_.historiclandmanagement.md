@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [HistoricLandManagement](_specification_.historiclandmanagement.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [HistoricLandManagement](_specification_.historiclandmanagement.md)
 
 # Interface: HistoricLandManagement
 
@@ -30,7 +30,7 @@
 
 • **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated" | "livestock grazing"*
 
-*Defined in [specification.ts:145](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L145)*
+*Defined in [specification.ts:145](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L145)*
 
 A description of how the land was managed before 1980.
 

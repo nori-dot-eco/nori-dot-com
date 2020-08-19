@@ -14,9 +14,10 @@ module.exports = {
           'error',
           {
             contexts: ['any'],
-            exemptedBy: ['inheritdoc', 'packageDocumentation'],
+            exemptedBy: ['inheritdoc', 'packageDocumentation', 'internal'],
           },
         ],
+        'jsdoc/check-tag-names': ['error', { definedTags: ['internal'] }],
         'jsdoc/require-jsdoc': [
           'error',
           {

@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [BurningEvent](_specification_.burningevent.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [BurningEvent](_specification_.burningevent.md)
 
 # Interface: BurningEvent
 
@@ -28,7 +28,7 @@ Burning event details.
 
 • **type**: *"before planting" | "after harvesting"*
 
-*Defined in [specification.ts:1856](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1856)*
+*Defined in [specification.ts:1856](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1856)*
 
 The type of burning, if applicable.
 

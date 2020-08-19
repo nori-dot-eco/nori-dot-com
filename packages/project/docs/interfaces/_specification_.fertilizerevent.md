@@ -1,4 +1,4 @@
-[@nori-dot-com/project](../README.md) › [Globals](../globals.md) › ["specification"](../modules/_specification_.md) › [FertilizerEvent](_specification_.fertilizerevent.md)
+[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [FertilizerEvent](_specification_.fertilizerevent.md)
 
 # Interface: FertilizerEvent
 
@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1170)*
+*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1170)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -56,7 +56,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1501](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1501)*
+*Defined in [specification.ts:1501](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1501)*
 
 Amount of nitrogen applied in lbs/ac.
 
@@ -74,7 +74,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1473)*
+*Defined in [specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1473)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -92,7 +92,7 @@ ___
 
 • **type**? : *string*
 
-*Defined in [specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/f7a6776/packages/project/src/specification.ts#L1488)*
+*Defined in [specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1488)*
 
 The fertilizer classification type.
 
