@@ -161,6 +161,12 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
     'relay/generated-flow-types': 0,
+    'require-path-exists/exists': [
+      2,
+      {
+        extensions: allExtensions,
+      },
+    ],
   },
   overrides: [
     {
@@ -219,7 +225,6 @@ module.exports = {
         'no-useless-constructor': 'off',
         'no-empty-function': 'off',
         'new-cap': 'warn',
-        'require-path-exists/exists': [0],
         'graphql/named-operations': [
           'error',
           {
