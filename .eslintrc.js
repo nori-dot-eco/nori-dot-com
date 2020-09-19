@@ -228,6 +228,8 @@ module.exports = {
           'error',
           { functions: false, typedefs: false, classes: false },
         ],
+        '@typescript-eslint/no-unused-expressions': 'warn',
+        'no-unused-expressions': 'off',
         'no-unused-vars': 0,
         'import/no-unresolved': 'off',
         'no-undef': 'off',
