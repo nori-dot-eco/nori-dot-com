@@ -43,7 +43,7 @@ Solid/dry organic matter (OMAD) and manure event details.
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[amountPerAcre](_specification_.solidorganicmatterevent.md#amountperacre)*
 
-*Defined in [specification.ts:1633](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1633)*
+*Defined in [specification.ts:1640](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1640)*
 
 Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
 
@@ -65,7 +65,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[carbonNitrogenRatio](_specification_.solidorganicmatterevent.md#carbonnitrogenratio)*
 
-*Defined in [specification.ts:1672](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1672)*
+*Defined in [specification.ts:1679](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1679)*
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -91,7 +91,7 @@ ___
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1170](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1170)*
+*Defined in [specification.ts:1156](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1156)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -111,7 +111,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[name](_specification_.solidorganicmatterevent.md#optional-name)*
 
-*Defined in [specification.ts:1619](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1619)*
+*Defined in [specification.ts:1626](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1626)*
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -131,7 +131,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentMoisture](_specification_.solidorganicmatterevent.md#percentmoisture)*
 
-*Defined in [specification.ts:1690](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1690)*
+*Defined in [specification.ts:1697](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1697)*
 
 The percent moisture of the organic matter or manure
 
@@ -157,7 +157,7 @@ ___
 
 *Inherited from [SolidOrganicMatterEvent](_specification_.solidorganicmatterevent.md).[percentNitrogen](_specification_.solidorganicmatterevent.md#percentnitrogen)*
 
-*Defined in [specification.ts:1653](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1653)*
+*Defined in [specification.ts:1660](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1660)*
 
 The nitrogen percent makeup in the organic matter or manure.
 
@@ -183,7 +183,7 @@ ___
 
 • **type**: *"alfalfa meal" | "beef manure, solid" | "blood, dried" | "bone meal" | "chicken - broiler (litter), solid" | "chicken - layer, solid" | "compost or composted manure, solid" | "dairy manure, solid" | "farmyard manure, solid" | "feather meal" | "fish emulsion" | "fish scrap" | "guano" | "horse manure, solid" | "other manure, solid" | "sheep manure, solid" | "soybean meal" | "swine manure, solid"*
 
-*Defined in [specification.ts:1532](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L1532)*
+*Defined in [specification.ts:1539](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L1539)*
 
 The solid/dry organic matter or manure classification type.
 

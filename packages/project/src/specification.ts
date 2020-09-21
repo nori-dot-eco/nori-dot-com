@@ -19,40 +19,26 @@
  *
  * Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
  *
+ * ## Vocabulary
+ *
+ * Throughout this documentation you will come across some vocab that indicate to what extent some data needs to be defined. There are effectively three different terms used here:
+ *
+ * 1. `nullable` - This means that data can be explicitly specified as null in an import file. However, the implication for nullable values is that unless it is marked as optional (i.e., with the `?` symbol after the property name's definition), AND it does not have an associated `default` value for the property, then the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+ *
+ * 2. `?` (AKA optional) - Specifies that a data property can be entirely excluded
+ *
+ * 3. `default` - Specifies that when the data used for a property is specified as `null`, as an empty string, or excluded, it will be assigned the specified default value.
+ *
  * @packageDocumentation
  */
 import type { GeoJSON } from 'geojson';
 
 /*
  * Todo
- * ! Topics to discuss with partners in a specification review
- * * even if current data platforms cant provide exports in this format for whatever reason, but can in v1, then we should consider taking requests that v2 was intended to solve and instead implement them into the current v1 importer
- * * include:
- *    conservis (r)
- *    granula (j)
- *    truterra (jamie) (j)
- * * how realistic is it to expect partners to use enums for types
- * * lbsOfNPerAcre realistic?
  *
  * ! Importer logic
  * * order events by date
- *
- * ! Validation library
- * * readme on how to build schema.
- *
- * ! Specification module
- * * independent versioning
- * * * enum for project.version
- * * pre-commit make docs
- *
- * ! Misc
- * ? Jaycen
- * * re-use or reference examples https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#import-types
- * * spec v2 v latest diff (what properties changed, why)
  */
-
-// todo will a crop ever have a tillage event and a kill event?
-// todo errorMessage
 
 /**
  *
@@ -1485,7 +1471,28 @@ export interface FertilizerEvent extends CropEvent {
    * ```
    *
    */
-  type?: string;
+  type?:
+    | 'Ammonium Nitrate (34-0-0)'
+    | 'Ammonium Nitrate Phosphate (23-23-00)'
+    | 'Ammonium Nitrate Phosphate (27-14-00)'
+    | 'Ammonium Phosphate Sulphate (16-20-00)'
+    | 'Ammonium Polyphosphate Solution (10-34-00)'
+    | 'Ammonium Sulphate (21-00-00)'
+    | 'Ammonium Thiosulphate Solution (12-00-00)'
+    | 'Anhydrous Ammonia (gas) (82-00-00)'
+    | 'Calcium Ammonium Nitrate'
+    | 'Calcium Nitrate'
+    | 'Diammonium Phosphate (18-46-00)'
+    | 'Element-N (N)'
+    | 'Element-P (P)'
+    | 'Mixed Blends'
+    | 'Monoammonium Phosphate (11-55-00)'
+    | 'Monoammonium Phosphate (12-51-00)'
+    | 'Potassium Nitrate'
+    | 'Urea (46-00-00)'
+    | 'Urea Ammonium Nitrate (30-00-00)'
+    | 'Urea Ammonium Phosphate (27-27-00)'
+    | 'Urea Ammonium Phosphate (34-17-00)';
   /**
    * Amount of nitrogen applied in lbs/ac.
    *

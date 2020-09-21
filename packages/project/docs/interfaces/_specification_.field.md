@@ -48,7 +48,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 • **acres**: *number*
 
-*Defined in [specification.ts:480](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L480)*
+*Defined in [specification.ts:466](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L466)*
 
 The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).
 
@@ -66,7 +66,7 @@ ___
 
 • **cropYears**: *[CropYear](_specification_.cropyear.md)[]*
 
-*Defined in [specification.ts:515](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L515)*
+*Defined in [specification.ts:501](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L501)*
 
 A list of crop management details grouped by the crop planting year.
 
@@ -89,7 +89,7 @@ ___
 
 • **fieldName**: *string*
 
-*Defined in [specification.ts:467](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L467)*
+*Defined in [specification.ts:453](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L453)*
 
 The name of the field.
 
@@ -105,7 +105,7 @@ ___
 
 • **geojson**: *GeoJSON*
 
-*Defined in [specification.ts:497](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L497)*
+*Defined in [specification.ts:483](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L483)*
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
@@ -127,7 +127,7 @@ ___
 
 • **historicLandManagement**: *[HistoricNonCRPLandManagement](_specification_.historicnoncrplandmanagement.md) | [HistoricCRPLandManagement](_specification_.historiccrplandmanagement.md)*
 
-*Defined in [specification.ts:454](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L454)*
+*Defined in [specification.ts:440](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L440)*
 
 Details surrounding how the field was managed before year 2000.
 
@@ -164,7 +164,7 @@ ___
 
 • **regenerativeStartYear**: *number*
 
-*Defined in [specification.ts:422](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L422)*
+*Defined in [specification.ts:408](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L408)*
 
 The year that you most recently adopted regenerative agricultural practices
 

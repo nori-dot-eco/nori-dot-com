@@ -613,6 +613,29 @@
                 "type": {
                     "default": "mixed blends",
                     "description": "The fertilizer classification type.\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to \"mixed blends\" when this property is excluded/nulled.",
+                    "enum": [
+                        "Ammonium Nitrate (34-0-0)",
+                        "Ammonium Nitrate Phosphate (23-23-00)",
+                        "Ammonium Nitrate Phosphate (27-14-00)",
+                        "Ammonium Phosphate Sulphate (16-20-00)",
+                        "Ammonium Polyphosphate Solution (10-34-00)",
+                        "Ammonium Sulphate (21-00-00)",
+                        "Ammonium Thiosulphate Solution (12-00-00)",
+                        "Anhydrous Ammonia (gas) (82-00-00)",
+                        "Calcium Ammonium Nitrate",
+                        "Calcium Nitrate",
+                        "Diammonium Phosphate (18-46-00)",
+                        "Element-N (N)",
+                        "Element-P (P)",
+                        "Mixed Blends",
+                        "Monoammonium Phosphate (11-55-00)",
+                        "Monoammonium Phosphate (12-51-00)",
+                        "Potassium Nitrate",
+                        "Urea (46-00-00)",
+                        "Urea Ammonium Nitrate (30-00-00)",
+                        "Urea Ammonium Phosphate (27-27-00)",
+                        "Urea Ammonium Phosphate (34-17-00)"
+                    ],
                     "title": "type",
                     "type": "string"
                 }

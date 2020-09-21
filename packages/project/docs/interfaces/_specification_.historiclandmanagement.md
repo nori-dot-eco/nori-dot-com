@@ -30,7 +30,7 @@
 
 • **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated" | "livestock grazing"*
 
-*Defined in [specification.ts:145](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L145)*
+*Defined in [specification.ts:131](https://github.com/nori-dot-eco/nori-dot-com/blob/8877b21/packages/project/src/specification.ts#L131)*
 
 A description of how the land was managed before 1980.
 
