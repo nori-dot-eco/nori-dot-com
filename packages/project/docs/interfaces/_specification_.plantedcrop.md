@@ -37,7 +37,7 @@ Crop properties relevant to planted crops.
 
 • **name**? : *string*
 
-*Defined in [specification.ts:614](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L614)*
+*Defined in [specification.ts:600](https://github.com/nori-dot-eco/nori-dot-com/blob/8162438/packages/project/src/specification.ts#L600)*
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -55,7 +55,7 @@ ___
 
 • **plantingDate**: *string*
 
-*Defined in [specification.ts:629](https://github.com/nori-dot-eco/nori-dot-com/blob/857cce8/packages/project/src/specification.ts#L629)*
+*Defined in [specification.ts:615](https://github.com/nori-dot-eco/nori-dot-com/blob/8162438/packages/project/src/specification.ts#L615)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 

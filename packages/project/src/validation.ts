@@ -46,7 +46,12 @@ export const formatInputData = (data: Project): Project => {
  */
 export const validateProjectData = (
   data: Project
-): { valid: boolean; message?: string; errors?: Ajv.ErrorObject[] } => {
+): {
+  valid: boolean;
+  message?: string;
+  errors?: Ajv.ErrorObject[];
+  formattedData: Project;
+} => {
   const ajv = ajvErrors(
     new Ajv({
       useDefaults: 'empty',
@@ -54,6 +59,12 @@ export const validateProjectData = (
       jsonPointers: true,
     }) as any
   );
-  const valid = ajv.validate(schema, formatInputData(data)) as boolean;
-  return { valid, message: ajv.errorsText(), errors: ajv.errors };
+  const formattedData = formatInputData(data);
+  const valid = ajv.validate(schema, formattedData) as boolean;
+  return {
+    valid,
+    message: ajv.errorsText(),
+    errors: ajv.errors,
+    formattedData,
+  };
 };
