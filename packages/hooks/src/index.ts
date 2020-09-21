@@ -2,6 +2,12 @@ import { useEffect } from 'react';
 import { requestSubscription } from 'react-relay';
 import type { GraphQLSubscriptionConfig, OperationType } from 'relay-runtime';
 
+type RequestSubscriptionParams = Parameters<typeof requestSubscription>;
+type RequestSubscriptionConfig = Omit<
+  RequestSubscriptionParams[1],
+  'subscription'
+>;
+
 /**
  * Builds and requests relay subscription
  * @see [Relay Subscriptions Docs](https://facebook.github.io/relay/docs/en/subscriptions.html)
@@ -18,10 +24,10 @@ import type { GraphQLSubscriptionConfig, OperationType } from 'relay-runtime';
  */
 const buildSubscription = (
   subscription: GraphQLSubscriptionConfig<OperationType>['subscription'],
-  relayEnvironment: Parameters<typeof requestSubscription>[0],
-  options: Parameters<typeof requestSubscription>[1] = ({
+  relayEnvironment: RequestSubscriptionParams[0],
+  options: RequestSubscriptionConfig = ({
     onError: (error: Error) => console.error('An error occurred:', error), // eslint-disable-line no-console
-  } as unknown) as Parameters<typeof requestSubscription>[1]
+  } as unknown) as RequestSubscriptionConfig
 ): ReturnType<typeof requestSubscription> => {
   const subscriptionConfig = {
     subscription,
@@ -48,7 +54,7 @@ const buildSubscription = (
 export const useSubscription = (
   subscription: GraphQLSubscriptionConfig<OperationType>['subscription'],
   relayEnvironment: Parameters<typeof requestSubscription>[0],
-  options?: Parameters<typeof requestSubscription>[1]
+  options?: RequestSubscriptionConfig
 ): void => {
   if (!subscription) {
     throw new Error('You must specify a subscription');
