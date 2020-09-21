@@ -176,7 +176,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/*.ts'],
+      files: ['**/*.ts', '**/*.tsx'],
       plugins: ['@typescript-eslint'],
       extends: [
         'plugin:import/errors',
@@ -196,6 +196,15 @@ module.exports = {
         '@typescript-eslint/naming-convention': [
           'error',
           { selector: 'class', format: ['PascalCase'] },
+          {
+            selector: 'variable',
+            // Needed to allow for react functional components that
+            // are supposed to be CamelCase. Adding the types specifier
+            // requires specifying a tsconfig.json file path in parserOptions.project,
+            // which gets complicated because we have multiple...
+            // types: ['function'],
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+          },
           {
             selector: 'default',
             format: ['camelCase', 'UPPER_CASE'],
@@ -219,6 +228,8 @@ module.exports = {
           'error',
           { functions: false, typedefs: false, classes: false },
         ],
+        '@typescript-eslint/no-unused-expressions': 'warn',
+        'no-unused-expressions': 'off',
         'no-unused-vars': 0,
         'import/no-unresolved': 'off',
         'no-undef': 'off',
