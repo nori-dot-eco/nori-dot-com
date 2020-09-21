@@ -225,6 +225,7 @@ module.exports = {
         'no-useless-constructor': 'off',
         'no-empty-function': 'off',
         'new-cap': 'warn',
+        'require-path-exists/exists': [0],
         'graphql/named-operations': [
           'error',
           {
