@@ -385,7 +385,7 @@ const createQuantificationSummary = async (
     somscGrandfatherableTonnesTotal += totalForYear;
   });
   const somscGrandfatherableTonnesPerYearAverage =
-    somscGrandfatherableTonnesTotal / grandfatherableYears.length;
+    somscGrandfatherableTonnesTotal / grandfatherableYears.length || 0;
 
   const tenYearProjectedBaselineTonnesPerYear: number =
     [...[].concat(summaryObject.baseline)].reduce(
@@ -406,9 +406,11 @@ const createQuantificationSummary = async (
         tenYearProjectedBaselineTonnesPerYear
       : tenYearProjectedFutureTonnesPerYear;
   const totalAcres = totalM2 * 0.000247105;
-  const grandfatheredYears = CURRENT_YEAR - Number(grandfatherableYears[0]);
+  const firstGrandfatherableYear =
+    Number(grandfatherableYears[0]) || CURRENT_YEAR;
+  const grandfatheredYears = CURRENT_YEAR - firstGrandfatherableYear;
 
-  const switchYear = grandfatherableYears[0];
+  const switchYear = firstGrandfatherableYear.toString();
   const grandfatheringMethod =
     tenYearProjectedTonnesPerYear < somscGrandfatherableTonnesPerYearAverage
       ? 'Using value computed from 10 year summary'
