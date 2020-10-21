@@ -1,0 +1,52 @@
+{
+  "name": "@nori-dot-com/eslint-config-nori",
+  "version": "1.0.0",
+  "description": "eslint config for Nori",
+  "keywords": [
+    "hooks"
+  ],
+  "author": "jaycen horton <jaycen@nori.com>",
+  "homepage": "http://nori.com",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "package.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-typescript": "^3.0.0",
+    "eslint-plugin-graphql": "^4.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.2.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "2.5.0",
+    "eslint-plugin-relay": "^1.8.1",
+    "eslint-plugin-require-path-exists": "^1.1.9",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
+    "eslint-plugin-typescript": "^0.14.0",
+    "prettier": "^2.0.5"
+
+  }
+}

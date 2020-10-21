@@ -56,7 +56,7 @@ describe('getQuantificationSummary', () => {
     });
   });
   describe('When there are no grandfatherable years', () => {
-    it.only('will still return quantification for given a COMET output file', async () => {
+    it('will still return quantification for given a COMET output file', async () => {
       expect(
         await getQuantificationSummary(NO_GRANDFATHERABLE_YEARS_OUTPUT)
       ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
