@@ -714,6 +714,9 @@
                         },
                         {
                             "$ref": "#/definitions/HistoricCRPLandManagement"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "description": "Details surrounding how the field was managed before year 2000.",

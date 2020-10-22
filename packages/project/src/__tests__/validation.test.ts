@@ -155,81 +155,6 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
   ],
 };
 
-const BASIC_UNFORMATTED_INVALID_PROJECT_NULL_REGEN_START_YEAR: Project = {
-  version: '0.1.0',
-  fields: [
-    {
-      acres: 174.01,
-      historicLandManagement: ({
-        crp: 'No',
-        preYear1980: 'Irrigation',
-        tillageForYears1980To2000: 'Intensive Tillage',
-        year1980To2000: 'Irrigated: annual crops in rotation',
-      } as any) as HistoricNonCRPLandManagement,
-      regenerativeStartYear: null,
-      fieldName: 'zyt0f1mnasi',
-      geojson: {
-        coordinates: [
-          [
-            [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
-            ],
-          ],
-        ],
-        type: 'MultiPolygon',
-      },
-      cropYears: [
-        {
-          plantingYear: 2015,
-          crops: [
-            {
-              name: 'corn',
-              type: 'corn plant' as any,
-              plantingDate: '04/28/2015',
-              fertilizerEvents: [
-                {
-                  date: '04/28/2015',
-                  name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: null,
-                },
-                {
-                  date: '04/29/2015',
-                  name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 38.579204996202215,
-                },
-                {
-                  date: '09/05/2015',
-                  name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 126.25917798970379,
-                },
-              ],
-              organicMatterEvents: [],
-              irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [],
-              harvestEvents: [
-                {
-                  date: '09/18/2015',
-                  yield: 211.88,
-                  grainFruitTuber: null,
-                  residueRemoved: 0,
-                  yieldUnit: 'bu/ac',
-                },
-              ],
-              classification: 'annual crop',
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
 describe('validation', () => {
   describe('formatInputData', () => {
     it('should format strings to lowercase', () => {
@@ -309,6 +234,43 @@ describe('validation', () => {
             fields: [],
             version: '1.0.0',
           },
+        });
+      });
+    });
+    describe('validation for the `historicLandManagement` property', () => {
+      describe('when type is excluded or null', () => {
+        it('should return true for validation', () => {
+          const data: Project = {
+            version: '0.1.0',
+            fields: [
+              {
+                acres: 174.01,
+                historicLandManagement: null,
+                regenerativeStartYear: 2015,
+                fieldName: 'zyt0f1mnasi',
+                geojson: {
+                  coordinates: [
+                    [
+                      [
+                        [-102.02569636144796, 41.16245691933347],
+                        [-102.02423723974385, 41.1631353976904],
+                        [-102.02616843023458, 41.16184305191021],
+                        [-102.02569636144796, 41.16245691933347],
+                      ],
+                    ],
+                  ],
+                  type: 'MultiPolygon',
+                },
+                cropYears: [],
+              },
+            ],
+          };
+          expect(validateProjectData(data)).toStrictEqual({
+            valid: true,
+            errors: null,
+            message: 'No errors',
+            formattedData: data,
+          });
         });
       });
     });

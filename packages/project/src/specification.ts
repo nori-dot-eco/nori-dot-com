@@ -409,6 +409,8 @@ export interface Field {
   /**
    * Details surrounding how the field was managed before year 2000.
    *
+   * @nullable during import (note: when historicLandManagement is defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+   *
    * @example <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
    *
    * ```js
