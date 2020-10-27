@@ -255,7 +255,7 @@ module.exports = {
       },
     },
     {
-      files: ['**.test.ts'],
+      files: ['**.test.ts', 'integration-util.ts'],
       rules: {
         'graphql/named-operations': [
           'error',
@@ -282,7 +282,7 @@ module.exports = {
           'error',
           {
             tagName: 'gql',
-            env: 'relay',
+            env: 'apollo', // necessary for fragment field detection
           },
         ],
         'dot-notation': [0],
