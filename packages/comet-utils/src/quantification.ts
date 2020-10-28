@@ -325,27 +325,30 @@ const createQuantificationSummary = async (
     Object.entries(mapUnitObject['Future : FILE RESULTS']).forEach(
       ([key, mapUnit]) => {
         comparison[key] = [];
-        mapUnit.socChanges.forEach((future, j) => {
-          const baselineAmount =
-            mapUnitObject['Baseline : FILE RESULTS'][key].socChanges[j].amount;
-          const additional =
-            (((baselineAmount > 0
-              ? future.amount - baselineAmount
-              : future.amount) *
-              Number(mapUnitObject['Baseline : FILE RESULTS'][key].area)) /
-              1000000) *
-            (44 / 12);
-          if (totalsForMapUnit[future.year]) {
-            totalsForMapUnit[future.year] += additional;
-          } else {
-            totalsForMapUnit[future.year] = additional;
-          }
-          comparison[key].push({
-            area: mapUnitObject['Baseline : FILE RESULTS'][key].area,
-            year: future.year,
-            additional,
+        mapUnit.socChanges
+          .slice(-10) // only look at the last 10 years
+          .forEach((future, j) => {
+            const baselineAmount =
+              mapUnitObject['Baseline : FILE RESULTS'][key].socChanges[j]
+                .amount;
+            const additional =
+              (((baselineAmount > 0
+                ? future.amount - baselineAmount
+                : future.amount) *
+                Number(mapUnitObject['Baseline : FILE RESULTS'][key].area)) /
+                1000000) *
+              (44 / 12);
+            if (totalsForMapUnit[future.year]) {
+              totalsForMapUnit[future.year] += additional;
+            } else {
+              totalsForMapUnit[future.year] = additional;
+            }
+            comparison[key].push({
+              area: mapUnitObject['Baseline : FILE RESULTS'][key].area,
+              year: future.year,
+              additional,
+            });
           });
-        });
       }
     );
     comparisons.push(comparison);
