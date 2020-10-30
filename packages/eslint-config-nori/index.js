@@ -40,6 +40,13 @@ module.exports = {
     },
   },
   rules: {
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'all',
+        ignoreReadBeforeAssign: false,
+      },
+    ],
     'jsdoc/check-alignment': [
       'error',
       {
