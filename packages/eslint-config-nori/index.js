@@ -257,25 +257,10 @@ module.exports = {
     {
       files: ['**.test.ts', 'integration-util.ts'],
       rules: {
-        'graphql/named-operations': [
-          'error',
-          {
-            env: 'relay',
-            tagName: 'gql',
-          },
-        ],
         'graphql/capitalized-type-name': [
           'error',
           {
             tagName: 'gql',
-            env: 'relay',
-          },
-        ],
-        'graphql/no-deprecated-fields': [
-          'error',
-          {
-            tagName: 'gql',
-            env: 'relay',
           },
         ],
         'graphql/template-strings': [
