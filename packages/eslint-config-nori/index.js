@@ -1,7 +1,6 @@
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = jsExtensions.concat(tsExtensions);
-require('@rushstack/eslint-config/patch-eslint6');
 
 module.exports = {
   parser: '@typescript-eslint/parser',
@@ -41,6 +40,13 @@ module.exports = {
     },
   },
   rules: {
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'all',
+        ignoreReadBeforeAssign: false,
+      },
+    ],
     'jsdoc/check-alignment': [
       'error',
       {
@@ -186,13 +192,17 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'import/first': 0,
         'import/extensions': ['error', 'never', { ts: 'never' }],
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
           'interface',
         ],
-        '@typescript-eslint/no-unused-vars': 'error',
+        '@typescript-eslint/no-unused-vars': [
+          'error',
+          { argsIgnorePattern: 'req|_' },
+        ],
         '@typescript-eslint/naming-convention': [
           'error',
           { selector: 'class', format: ['PascalCase'] },
@@ -237,33 +247,6 @@ module.exports = {
         'no-empty-function': 'off',
         'new-cap': 'warn',
         'require-path-exists/exists': [0],
-        'graphql/named-operations': [
-          'error',
-          {
-            tagName: 'gql',
-          },
-        ],
-        'graphql/capitalized-type-name': [
-          'error',
-          {
-            tagName: 'gql',
-          },
-        ],
-        'graphql/no-deprecated-fields': [
-          'error',
-          {
-            tagName: 'gql',
-          },
-        ],
-        'graphql/template-strings': [
-          'error',
-          {
-            tagName: 'gql',
-            // The following disables fragment linting errors when using fragments in tests
-            // https://github.com/apollographql/eslint-plugin-graphql/issues/226#issuecomment-493706108
-            env: 'apollo',
-          },
-        ],
       },
     },
     {
@@ -279,8 +262,21 @@ module.exports = {
       },
     },
     {
-      files: ['**.test.ts'],
+      files: ['**.test.ts', 'integration-util.ts'],
       rules: {
+        'graphql/capitalized-type-name': [
+          'error',
+          {
+            tagName: 'gql',
+          },
+        ],
+        'graphql/template-strings': [
+          'error',
+          {
+            tagName: 'gql',
+            env: 'apollo', // necessary for fragment field detection
+          },
+        ],
         'dot-notation': [0],
       },
       env: {
