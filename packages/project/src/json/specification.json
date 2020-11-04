@@ -191,10 +191,17 @@
             "description": "An annual crop's harvest event details.",
             "properties": {
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "grainFruitTuber": {
                     "anyOf": [
@@ -418,10 +425,17 @@
             "description": "Crop management event details.",
             "properties": {
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "grainFruitTuber": {
                     "anyOf": [
@@ -592,10 +606,17 @@
             "description": "Fertilizer event details.",
             "properties": {
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "lbsOfNPerAcre": {
                     "description": "Amount of nitrogen applied in lbs/ac.",
@@ -2257,10 +2278,17 @@
             "description": "Irrigation event details.",
             "properties": {
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "volume": {
                     "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.",
@@ -2709,10 +2737,17 @@
                     "title": "carbonNitrogenRatio"
                 },
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
@@ -2778,10 +2813,17 @@
             "description": "Soil or crop disturbance event event details.",
             "properties": {
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "name": {
                     "default": "no tillage",
@@ -2842,10 +2884,17 @@
                     "title": "carbonNitrogenRatio"
                 },
                 "date": {
-                    "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
                 },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
