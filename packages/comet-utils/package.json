@@ -31,7 +31,8 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "dependencies": {
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.4.23",
+    "@nori-dot-com/math": "*"
   },
   "devDependencies": {
     "@types/xml2js": "^0.4.5"
