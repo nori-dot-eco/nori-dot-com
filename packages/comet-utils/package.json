@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/comet-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "utilities for interacting with COMET farm files",
   "keywords": [
     "nori",

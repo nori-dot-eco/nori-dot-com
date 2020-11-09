@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/hooks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A collection of react hooks",
   "keywords": [
     "hooks"
@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.2.1",
-    "@types/relay-test-utils": "^6.0.2",
-    "@types/relay-runtime": "^10.0.0",
     "@types/react-relay": "^7.0.11",
+    "@types/relay-runtime": "^10.0.0",
+    "@types/relay-test-utils": "^6.0.2",
     "graphql": "^14.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
