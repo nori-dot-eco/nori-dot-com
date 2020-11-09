@@ -1,0 +1,31 @@
+{
+  "name": "@nori-dot-com/math",
+  "version": "1.0.5",
+  "description": "Math utilities",
+  "author": "jaycenhorton <jaycen@nori.com>",
+  "homepage": "https://github.com/nori-dot-eco/nori-dot-com#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsc",
+    "prepare": "tsc",
+    "watch": "tsc -w -p ."
+  },
+  "bugs": {
+    "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
+  },
+  "dependencies": {
+    "mathjs": "^7.6.0"
+  },
+  "devDependencies": {
+    "@types/mathjs": "^6.0.7"
+  }
+}
