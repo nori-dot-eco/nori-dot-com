@@ -1,4 +1,7 @@
 import { Parser } from 'xml2js';
+import { add, divide, multiply, subtract } from '@nori-dot-com/math';
+
+import { convertM2ToAcres } from './utils';
 
 export interface OutputJSON {
   Day: Daycent;
@@ -213,7 +216,7 @@ export interface MapUnitYearSummary {
   [mapUnit: string]: {
     area: string;
     year: string;
-    additional: number;
+    additionalTonnesOfCO2e: number;
   }[];
 }
 
@@ -243,8 +246,10 @@ export interface QuantificationSummary {
   totalAcres: number;
   grandfatheredYears: number;
 }
+
 const CURRENT_YEAR = new Date().getFullYear();
 const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
+const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 
 const createQuantificationSummary = async (
   jsonData: OutputJSON
@@ -296,7 +301,10 @@ const createQuantificationSummary = async (
                 if (data[j + 1]) {
                   return {
                     year: years[j + 1],
-                    amount: parseFloat(data[j + 1]) - parseFloat(yearResult),
+                    amount: subtract(
+                      parseFloat(data[j + 1]),
+                      parseFloat(yearResult)
+                    ),
                   };
                 }
                 return null;
@@ -304,7 +312,7 @@ const createQuantificationSummary = async (
               socChanges.pop();
               const id = scenario.MapUnit[i].$.id;
               if (name === 'Baseline : FILE RESULTS')
-                totalM2 += parseFloat(scenario.MapUnit[i].$.area);
+                totalM2 = add(totalM2, parseFloat(scenario.MapUnit[i].$.area));
               mapUnitObject[name][id] = {
                 area: scenario.MapUnit[i].$.area,
                 data,
@@ -331,22 +339,39 @@ const createQuantificationSummary = async (
             const baselineAmount =
               mapUnitObject['Baseline : FILE RESULTS'][key].socChanges[j]
                 .amount;
-            const additional =
-              (((baselineAmount > 0
-                ? future.amount - baselineAmount
-                : future.amount) *
-                Number(mapUnitObject['Baseline : FILE RESULTS'][key].area)) /
-                1000000) *
-              (44 / 12);
+            const mapUnitAreaInM2 = Number(
+              mapUnitObject['Baseline : FILE RESULTS'][key].area
+            );
+            const additionalGramsOfCarbonPerM2 = subtract(
+              future.amount,
+              // If the baseline amount is < 0, that indicates there was net emissions prior to the practice switch.
+              // Since we do not give credit for emission reductions, we need to do the following
+              Math.max(0, baselineAmount)
+            );
+            const additionalGramsOfCarbonForMapUnitInM2 = multiply(
+              additionalGramsOfCarbonPerM2,
+              mapUnitAreaInM2
+            );
+            const additionalTonnesOfCarbon = divide(
+              additionalGramsOfCarbonForMapUnitInM2,
+              1000000 // 1 million
+            );
+            const additionalTonnesOfCO2e = multiply(
+              additionalTonnesOfCarbon,
+              ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C
+            );
             if (totalsForMapUnit[future.year]) {
-              totalsForMapUnit[future.year] += additional;
+              totalsForMapUnit[future.year] = add(
+                totalsForMapUnit[future.year],
+                additionalTonnesOfCO2e
+              );
             } else {
-              totalsForMapUnit[future.year] = additional;
+              totalsForMapUnit[future.year] = additionalTonnesOfCO2e;
             }
             comparison[key].push({
               area: mapUnitObject['Baseline : FILE RESULTS'][key].area,
               year: future.year,
-              additional,
+              additionalTonnesOfCO2e,
             });
           });
       }
@@ -356,14 +381,13 @@ const createQuantificationSummary = async (
   });
 
   const years = Object.keys(somscTenYearTonnesPerMapUnit[0]);
-  const startYearIndex =
+  const startYearIndex = Math.max(
     years.findIndex(
-      (e) => e === (CURRENT_YEAR - MAXIMUM_GRANDFATHERABLE_YEARS).toString()
-    ) > 0
-      ? years.findIndex(
-          (e) => e === (CURRENT_YEAR - MAXIMUM_GRANDFATHERABLE_YEARS).toString()
-        )
-      : 0;
+      (e) =>
+        e === subtract(CURRENT_YEAR, MAXIMUM_GRANDFATHERABLE_YEARS).toString()
+    ),
+    0
+  );
 
   const grandfatherableYears = years.slice(
     startYearIndex,
@@ -377,64 +401,81 @@ const createQuantificationSummary = async (
           somscGrandfatherableTonnesPerYear[grandfatherableYears[i]] =
             totalForMapUnit[grandfatherableYears[i]];
         } else {
-          somscGrandfatherableTonnesPerYear[grandfatherableYears[i]] +=
-            totalForMapUnit[grandfatherableYears[i]];
+          somscGrandfatherableTonnesPerYear[grandfatherableYears[i]] = add(
+            somscGrandfatherableTonnesPerYear[grandfatherableYears[i]],
+            totalForMapUnit[grandfatherableYears[i]]
+          );
         }
       }
     }
   });
   let somscGrandfatherableTonnesTotal = 0;
   Object.values(somscGrandfatherableTonnesPerYear).forEach((totalForYear) => {
-    somscGrandfatherableTonnesTotal += totalForYear;
+    somscGrandfatherableTonnesTotal = add(
+      somscGrandfatherableTonnesTotal,
+      totalForYear
+    );
   });
   const somscGrandfatherableTonnesPerYearAverage =
-    somscGrandfatherableTonnesTotal / grandfatherableYears.length || 0;
+    divide(somscGrandfatherableTonnesTotal, grandfatherableYears.length) || 0;
 
-  const tenYearProjectedBaselineTonnesPerYear: number =
-    [...[].concat(summaryObject.baseline)].reduce(
-      (accumulator, currentValue) => {
-        return accumulator + parseFloat(currentValue);
-      },
-      0
-    ) * -1;
+  const tenYearProjectedBaselineTonnesPerYear: number = multiply(
+    summaryObject.baseline.flat().reduce((accumulator, currentValue) => {
+      return add(accumulator, parseFloat(currentValue));
+    }, 0),
+    -1
+  );
 
-  const tenYearProjectedFutureTonnesPerYear: number =
-    [...[].concat(summaryObject.future)].reduce((accumulator, currentValue) => {
-      return accumulator + parseFloat(currentValue);
-    }, 0) * -1;
+  const tenYearProjectedFutureTonnesPerYear: number = multiply(
+    summaryObject.future.flat().reduce((accumulator, currentValue) => {
+      return add(accumulator, parseFloat(currentValue));
+    }, 0),
+    -1
+  );
 
-  const tenYearProjectedTonnesPerYear =
-    tenYearProjectedBaselineTonnesPerYear > 0
-      ? tenYearProjectedFutureTonnesPerYear -
-        tenYearProjectedBaselineTonnesPerYear
-      : tenYearProjectedFutureTonnesPerYear;
-  const totalAcres = totalM2 * 0.000247105;
+  const tenYearProjectedTonnesPerYear = subtract(
+    tenYearProjectedFutureTonnesPerYear,
+    Math.max(tenYearProjectedBaselineTonnesPerYear, 0)
+  );
+  const totalAcres = convertM2ToAcres({ m2: totalM2 });
   const firstGrandfatherableYear =
     Number(grandfatherableYears[0]) || CURRENT_YEAR;
-  const grandfatheredYears = CURRENT_YEAR - firstGrandfatherableYear;
+  const grandfatheredYears = subtract(CURRENT_YEAR, firstGrandfatherableYear);
 
   const switchYear = firstGrandfatherableYear.toString();
   const grandfatheringMethod =
     tenYearProjectedTonnesPerYear < somscGrandfatherableTonnesPerYearAverage
       ? 'Using value computed from 10 year summary'
       : 'Using value computed from somsc';
-  const grandfatheredTonnesPerYear =
-    tenYearProjectedTonnesPerYear < somscGrandfatherableTonnesPerYearAverage
-      ? tenYearProjectedTonnesPerYear
-      : somscGrandfatherableTonnesPerYearAverage;
-  const grandfatheredTonnesPerYearPerAcre =
-    grandfatheredTonnesPerYear / totalAcres;
-  const grandfatheredTonnes = grandfatheredTonnesPerYear * grandfatheredYears;
+  const grandfatheredTonnesPerYear = Math.min(
+    tenYearProjectedTonnesPerYear,
+    somscGrandfatherableTonnesPerYearAverage
+  );
+
+  const grandfatheredTonnesPerYearPerAcre = divide(
+    grandfatheredTonnesPerYear,
+    totalAcres
+  );
+  const grandfatheredTonnes = multiply(
+    grandfatheredTonnesPerYear,
+    grandfatheredYears
+  );
 
   return {
-    tenYearProjectedTonnesTotalEstimate:
-      tenYearProjectedTonnesPerYear * years.length,
-    somscAverageTonnesTotalEstimate:
-      somscGrandfatherableTonnesPerYearAverage * years.length,
+    tenYearProjectedTonnesTotalEstimate: multiply(
+      tenYearProjectedTonnesPerYear,
+      years.length
+    ),
+    somscAverageTonnesTotalEstimate: multiply(
+      somscGrandfatherableTonnesPerYearAverage,
+      years.length
+    ),
     somscGrandfatherableTonnesPerYearAverage,
     tenYearProjectedTonnesPerYear,
-    tenYearProjectedTonnesPerYearPerAcre:
-      tenYearProjectedTonnesPerYear / totalAcres,
+    tenYearProjectedTonnesPerYearPerAcre: divide(
+      tenYearProjectedTonnesPerYear,
+      totalAcres
+    ),
     somscTenYearTonnesPerMapUnit,
     somscGrandfatherableTonnesPerYear,
     grandfatherableYears,
@@ -442,13 +483,16 @@ const createQuantificationSummary = async (
     grandfatheredTonnesPerYearPerAcre,
     grandfatheredTonnesPerYear,
     grandfatheringMethod,
-    // todo multiply all negative numbers like this by -1 for consistency
     tenYearProjectedFutureTonnesPerYear,
-    tenYearProjectedFutureTonnesPerYearPerAcre:
-      tenYearProjectedFutureTonnesPerYear / totalAcres,
+    tenYearProjectedFutureTonnesPerYearPerAcre: divide(
+      tenYearProjectedFutureTonnesPerYear,
+      totalAcres
+    ),
     tenYearProjectedBaselineTonnesPerYear,
-    tenYearProjectedBaselineTonnesPerYearPerAcre:
-      tenYearProjectedBaselineTonnesPerYear / totalAcres,
+    tenYearProjectedBaselineTonnesPerYearPerAcre: divide(
+      tenYearProjectedBaselineTonnesPerYear,
+      totalAcres
+    ),
     totalM2,
     totalAcres,
     grandfatheredYears,
