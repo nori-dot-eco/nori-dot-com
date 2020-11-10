@@ -24,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "tsc",
-    "prepare": "tsc",
+    "prepare": "yarn run build",
     "watch": "tsc -w -p ."
   },
   "bugs": {
