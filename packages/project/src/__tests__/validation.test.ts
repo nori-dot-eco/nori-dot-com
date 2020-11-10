@@ -238,7 +238,7 @@ describe('validation', () => {
       });
     });
     describe('validation for the `historicLandManagement` property', () => {
-      describe('when type is excluded or null', () => {
+      describe('when the type is excluded or null', () => {
         it('should return true for validation', () => {
           const data: Project = {
             version: '0.1.0',
@@ -270,6 +270,73 @@ describe('validation', () => {
             errors: null,
             message: 'No errors',
             formattedData: data,
+          });
+        });
+      });
+    });
+    describe('validation for `CropEvent`', () => {
+      describe('date validation', () => {
+        describe('when the type is excluded or null', () => {
+          it('should return true for validation', () => {
+            const data: Project = {
+              version: '0.1.0',
+              fields: [
+                {
+                  acres: 174.01,
+                  historicLandManagement: null,
+                  regenerativeStartYear: 2015,
+                  fieldName: 'zyt0f1mnasi',
+                  geojson: {
+                    coordinates: [
+                      [
+                        [
+                          [-102.02569636144796, 41.16245691933347],
+                          [-102.02423723974385, 41.1631353976904],
+                          [-102.02616843023458, 41.16184305191021],
+                          [-102.02569636144796, 41.16245691933347],
+                        ],
+                      ],
+                    ],
+                    type: 'MultiPolygon',
+                  },
+                  cropYears: [
+                    {
+                      plantingYear: 2015,
+                      crops: [
+                        {
+                          name: 'corn',
+                          type: 'corn',
+                          plantingDate: '04/28/2015',
+                          fertilizerEvents: [],
+                          organicMatterEvents: [],
+                          irrigationEvents: [],
+                          limingEvents: null,
+                          grazingEvents: null,
+                          burningEvent: null,
+                          soilOrCropDisturbanceEvents: [],
+                          harvestEvents: [
+                            {
+                              date: null,
+                              yield: 211.88,
+                              grainFruitTuber: null,
+                              residueRemoved: 0,
+                              yieldUnit: 'bu/ac',
+                            },
+                          ],
+                          classification: 'annual crop',
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            };
+            expect(validateProjectData(data)).toStrictEqual({
+              valid: true,
+              errors: null,
+              message: 'No errors',
+              formattedData: data,
+            });
           });
         });
       });
