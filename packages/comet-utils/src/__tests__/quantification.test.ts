@@ -6,6 +6,8 @@ import {
 import {
   GRANDFATHERABLE_YEARS_OUTPUT,
   NO_GRANDFATHERABLE_YEARS_OUTPUT,
+  COMPLEX_OUTPUT,
+  MULTIPOLYGON_OUTPUT,
 } from './example-output';
 
 type AnyFunction = (...args: any[]) => any;
@@ -98,20 +100,24 @@ describe('getQuantificationSummary', () => {
         '2019': 97.87182257764748,
       },
       tenYearProjectedBaselineTonnesPerYear: 15.897614,
-      grandfatheredTonnesPerYearPerAcre: 0.834358059193311,
+      // grandfatheredTonnesPerYearPerAcre: 0.834358059193311,
       tenYearProjectedFutureTonnesPerYear: 176.46715,
-      grandfatheredTonnes: 496.4711718761445,
+      grandfatheredTonnes: 496.47117187614447,
       grandfatheredYears: 5,
       somscGrandfatherableTonnesPerYearAverage: 99.2942343752289,
       switchYear: 2015,
-      grandfatheredTonnesPerYear: 99.2942343752289,
       tenYearProjectedTonnesPerYear: 160.569536,
       totalAcres: 119.00674210689633,
       totalM2: 481603.1986041848,
-      grandfatheringMethod: 'Using value computed from somsc',
       tenYearProjectedFutureTonnesPerYearPerAcre: 1.4828332149576078,
       tenYearProjectedBaselineTonnesPerYearPerAcre: 0.1335858264712445,
-      TODO_grandfatheredTonnes: null,
+      grandfatheredTonnesPerYear: {
+        '2015': 120.88957366558826,
+        '2016': 43.28736522204999,
+        '2017': 105.228401624067,
+        '2018': 129.19400878679176,
+        '2019': 97.87182257764748,
+      },
     });
   });
   describe('When there are no grandfatherable years', () => {
@@ -147,15 +153,78 @@ describe('getQuantificationSummary', () => {
         tenYearProjectedTonnesTotalEstimate: 1196.97023,
         totalAcres: 119.00075350355577,
         totalM2: 481578.9635862949,
-        grandfatheredTonnesPerYearPerAcre: 0,
+        // grandfatheredTonnesPerYearPerAcre: 0,
         grandfatheredTonnes: 0,
         grandfatheredYears: 0,
         somscGrandfatherableTonnesPerYearAverage: 0,
         switchYear: 2020,
-        grandfatheredTonnesPerYear: 0,
-        grandfatheringMethod: 'Using value computed from somsc',
-        TODO_grandfatheredTonnes: null,
+        grandfatheredTonnesPerYear: {},
       });
+    });
+  });
+  // todo checkout master quantification and check diff
+  it('should quantify multi-polygon output files', async () => {
+    expect(
+      await getQuantificationSummary({
+        xmlData: MULTIPOLYGON_OUTPUT,
+      })
+    ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
+      tenYearProjectedTonnesPerYearPerAcre: 1.1533581913018405,
+      tenYearProjectedTonnesTotalEstimate: 1672.448691,
+      somscAverageTonnesTotalEstimate: 932.7040091919677,
+      grandfatherableYears: [2015, 2016, 2017, 2018, 2019],
+      somscAnnualDifferencesBetweenFutureAndBaselineScenarios: [
+        {
+          '2015': 13.268194830596787,
+          '2016': 7.478908262178777,
+          '2017': 18.44880961039429,
+          '2018': 23.295611123448456,
+          '2019': 20.553943742745066,
+          '2020': 20.70432300088026,
+          '2021': 43.66344963093679,
+          '2022': 16.707221931863394,
+          '2023': 44.16069820818342,
+          '2024': 30.6840811421353,
+        },
+        {
+          '2015': 60.90014578515644,
+          '2016': 34.35279847468213,
+          '2017': 85.76966639711026,
+          '2018': 107.29346186569582,
+          '2019': 94.99046450397587,
+          '2020': 97.48785290689473,
+          '2021': 202.4611476448192,
+          '2022': 77.21154156458417,
+          '2023': 204.14385209004348,
+          '2024': 140.37850822960675,
+        },
+      ],
+      somscGrandfatherableTonnesPerYear: {
+        '2015': 74.16834061575322,
+        '2016': 41.83170673686091,
+        '2017': 104.21847600750455,
+        '2018': 130.58907298914428,
+        '2019': 115.54440824672093,
+      },
+      tenYearProjectedBaselineTonnesPerYear: 2.3572619,
+      // grandfatheredTonnesPerYearPerAcre: 0.6432136392886346,
+      tenYearProjectedFutureTonnesPerYear: 169.602131,
+      grandfatheredTonnes: 466.3520045959839,
+      grandfatheredYears: 5,
+      somscGrandfatherableTonnesPerYearAverage: 93.27040091919677,
+      switchYear: 2015,
+      tenYearProjectedTonnesPerYear: 167.2448691,
+      totalAcres: 145.00687675458755,
+      totalM2: 586822.0104864568,
+      tenYearProjectedFutureTonnesPerYearPerAcre: 1.1696143989573538,
+      tenYearProjectedBaselineTonnesPerYearPerAcre: 0.0162562076555133,
+      grandfatheredTonnesPerYear: {
+        '2015': 74.16834061575322,
+        '2016': 41.83170673686091,
+        '2017': 104.21847600750455,
+        '2018': 130.58907298914428,
+        '2019': 115.54440824672093,
+      },
     });
   });
 });
