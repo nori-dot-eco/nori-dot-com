@@ -10,9 +10,9 @@ import type { ModelRun, ParsedMapUnit, Scenario } from './index';
 // todo
 // * by hand, take at least 3 output files (start with a multipolygon one), calculate quantification and make sure the output matches the code
 
-const CURRENT_YEAR = new Date().getFullYear();
-const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
-const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
+export const CURRENT_YEAR = new Date().getFullYear();
+export const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
+export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 export const METHODOLOGY_VERSION = '1.0.0';
 
 interface NegativeAndPositiveAnnualTotals {
@@ -27,11 +27,23 @@ export interface AnnualTotals {
   [year: string]: number;
 }
 
-export interface GrandfatheredTotals {
+export interface UnadjustedGrandfatheredTotals {
   [year: string]: {
     amount: number;
     method: 'projection' | 'somsc';
     averagePerAcre: number;
+    totalAcres: number;
+  };
+}
+
+export interface AdjustedGrandfatheredTotals {
+  [year: string]: {
+    unadjusted: number;
+    adjustment: number;
+    adjusted: number;
+    method: 'projection' | 'somsc';
+    averagePerAcre: number;
+    totalAcres: number;
   };
 }
 
@@ -65,7 +77,7 @@ export interface UnadjustedQuantificationSummary {
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios: AnnualTotals;
   grandfatherableYears: number[];
   grandfatheredTonnes: number;
-  unadjustedGrandfatheredTonnesPerYear: GrandfatheredTotals;
+  unadjustedGrandfatheredTonnesPerYear: UnadjustedGrandfatheredTotals;
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: number;
   switchYear: number;
   tenYearProjectedFutureTonnesPerYear: number;
@@ -82,7 +94,7 @@ export interface UnadjustedQuantificationSummary {
 
 export interface AdjustedQuantificationSummary
   extends UnadjustedQuantificationSummary {
-  adjustedGrandfatheredTonnesPerYear: GrandfatheredTotals;
+  adjustedGrandfatheredTonnesPerYear: AdjustedGrandfatheredTotals;
 }
 
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
@@ -401,15 +413,19 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
 } => {
   const unadjustedGrandfatheredTonnesPerYear = Object.entries(
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios
-  ).reduce((grandfatheredTotals: GrandfatheredTotals, [year, value]) => {
-    const amount = Math.min(tenYearProjectedTonnesPerYear, value);
-    grandfatheredTotals[year] = {
-      amount,
-      method: tenYearProjectedTonnesPerYear < value ? 'projection' : 'somsc',
-      averagePerAcre: divide(Math.min(amount, value), totalAcres),
-    };
-    return grandfatheredTotals;
-  }, {});
+  ).reduce(
+    (grandfatheredTotals: UnadjustedGrandfatheredTotals, [year, value]) => {
+      const amount = Math.min(tenYearProjectedTonnesPerYear, value);
+      grandfatheredTotals[year] = {
+        amount,
+        method: tenYearProjectedTonnesPerYear < value ? 'projection' : 'somsc',
+        averagePerAcre: divide(Math.min(amount, value), totalAcres),
+        totalAcres,
+      };
+      return grandfatheredTotals;
+    },
+    {}
+  );
   return { unadjustedGrandfatheredTonnesPerYear };
 };
 
@@ -418,7 +434,7 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
 }: {
   unadjustedGrandfatheredTonnesPerYearForProject: UnadjustedQuantificationSummary['unadjustedGrandfatheredTonnesPerYear'][];
 }): {
-  adjustedGrandfatheredTonnesPerYear: AdjustedQuantificationSummary['adjustedGrandfatheredTonnesPerYear'][];
+  adjustedGrandfatheredTonnesPerYear: AdjustedGrandfatheredTotals[];
 } => {
   const projectVintageTotals = unadjustedGrandfatheredTonnesPerYearForProject.reduce(
     (total: NegativeAndPositiveAnnualTotals, fieldVintageTotals) => {
@@ -474,21 +490,31 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
   );
 
   const adjustedGrandfatheredTonnesPerYear = unadjustedGrandfatheredTonnesPerYearForProject.reduce(
-    (adjustedProject: GrandfatheredTotals[], unadjustedFieldAnnuals) => {
-      const adjusted = Object.entries(unadjustedFieldAnnuals).reduce(
-        (adjustedField: GrandfatheredTotals, [year, { amount }]) => {
+    (
+      adjustedProject: AdjustedGrandfatheredTotals[],
+      unadjustedFieldAnnuals
+    ) => {
+      const adjustedFieldTotals = Object.entries(unadjustedFieldAnnuals).reduce(
+        (adjustedField: AdjustedGrandfatheredTotals, [year, { amount }]) => {
+          const adjusted =
+            amount > 0 ? add(amount, negativeTonneDistribution[year] ?? 0) : 0;
           adjustedField[year] = {
-            ...unadjustedFieldAnnuals[year],
-            amount:
-              amount > 0
-                ? add(amount, negativeTonneDistribution[year] ?? 0)
-                : 0,
+            method: unadjustedFieldAnnuals[year].method,
+            totalAcres: unadjustedFieldAnnuals[year].totalAcres,
+            averagePerAcre:
+              divide(adjusted, unadjustedFieldAnnuals[year].totalAcres) || 0,
+            unadjusted: amount,
+            adjustment:
+              adjusted > 0
+                ? negativeTonneDistribution[year] || 0
+                : Math.abs(adjusted),
+            adjusted,
           };
           return adjustedField;
         },
         {}
       );
-      adjustedProject.push(adjusted);
+      adjustedProject.push(adjustedFieldTotals);
       return adjustedProject;
     },
     []
