@@ -16,9 +16,6 @@ type AnyFunction = (...args: any[]) => any;
 type Resolved<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
 type ResolvedReturnType<T extends AnyFunction> = Resolved<ReturnType<T>>;
 
-// todo test where negative distribution rolls over multiple vintage years
-// todo test where negative distribution rolls over multiple vintage years and ends in a negative final year
-
 describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
   describe('When all annuals are net positive', () => {
     it('should take the lesser of either the somsc annual difference or the ten year projection average per year', () => {
@@ -225,6 +222,244 @@ describe('getAdjustedGrandfatheredTonnesPerYear', () => {
     it.todo('should create the correct quantification numbers');
   });
   describe('When some annuals are net negative', () => {
+    describe('When the negative annuals in a past year totaled up require the negative amount to span across multiple years', () => {
+      it('should adjust multiple successive vintage years', () => {
+        expect(
+          getAdjustedGrandfatheredTonnesPerYear({
+            unadjustedGrandfatheredTonnesPerYearForProject: [
+              {
+                '2015': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2016': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2017': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2018': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2019': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+              },
+              {
+                '2015': {
+                  amount: 10,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2016': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2017': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2018': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2019': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+              },
+              {
+                '2015': {
+                  amount: -610,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2016': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2017': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2018': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+                '2019': {
+                  amount: 50,
+                  method: null,
+                  averagePerAcre: null,
+                  totalAcres: 119.00674210689633,
+                },
+              },
+            ],
+          })
+        ).toStrictEqual<
+          ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>
+        >({
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2016': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2017': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2018': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2019': {
+                unadjusted: 50,
+                adjustment: -20,
+                adjusted: 30,
+                averagePerAcre: 0.25208655802923224,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 10,
+                adjustment: -10,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2016': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2017': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2018': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2019': {
+                unadjusted: 50,
+                adjustment: -20,
+                adjusted: 30,
+                averagePerAcre: 0.25208655802923224,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: -610,
+                adjustment: 610,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2016': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2017': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2018': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+              '2019': {
+                unadjusted: 50,
+                adjustment: -20,
+                adjusted: 30,
+                averagePerAcre: 0.25208655802923224,
+                method: null,
+                totalAcres: 119.00674210689633,
+              },
+            },
+          ],
+        });
+      });
+    });
+
     it('should take the lesser of either the somsc annual difference or the ten year projection average per year', () => {
       expect(
         getAdjustedGrandfatheredTonnesPerYear({
@@ -1133,7 +1368,7 @@ describe('getAdjustedGrandfatheredTonnesPerYear', () => {
               },
               '2016': {
                 adjusted: 0,
-                adjustment: -4.139545454545455,
+                adjustment: 91.07,
                 averagePerAcre: 0,
                 method: null,
                 totalAcres: 328.6262857,
@@ -1902,6 +2137,1554 @@ describe('getAdjustedGrandfatheredTonnesPerYear', () => {
         }
       );
     });
+  });
+  describe('Misc. adjustment tests', () => {
+    it('should adjust quantification correctly #1', () => {
+      expect(
+        getAdjustedGrandfatheredTonnesPerYear({
+          unadjustedGrandfatheredTonnesPerYearForProject: [
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 50,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: -50,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        })
+      ).toStrictEqual<ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>>(
+        {
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 50,
+                adjustment: 0,
+                adjusted: 50,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: -50,
+                adjustment: 50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        }
+      );
+    });
+    it('should adjust quantification correctly #2', () => {
+      expect(
+        getAdjustedGrandfatheredTonnesPerYear({
+          unadjustedGrandfatheredTonnesPerYearForProject: [
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: -50,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 50,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        })
+      ).toStrictEqual<ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>>(
+        {
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: -50,
+                adjustment: 50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 50,
+                adjustment: -50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        }
+      );
+    });
+    it('should adjust quantification correctly #3', () => {
+      expect(
+        getAdjustedGrandfatheredTonnesPerYear({
+          unadjustedGrandfatheredTonnesPerYearForProject: [
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: -50,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        })
+      ).toStrictEqual<ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>>(
+        {
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: -50,
+                adjustment: 50,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -25,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -25,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        }
+      );
+    });
+    it('should adjust quantification correctly #4', () => {
+      expect(
+        getAdjustedGrandfatheredTonnesPerYear({
+          unadjustedGrandfatheredTonnesPerYearForProject: [
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: -60,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        })
+      ).toStrictEqual<ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>>(
+        {
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: -60,
+                adjustment: 60,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -20,
+                adjusted: 5,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -20,
+                adjusted: 5,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -20,
+                adjusted: 5,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        }
+      );
+    });
+    it('should adjust quantification correctly #5', () => {
+      expect(
+        getAdjustedGrandfatheredTonnesPerYear({
+          unadjustedGrandfatheredTonnesPerYearForProject: [
+            {
+              '2015': {
+                amount: 10,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: -10,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 10,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: -11,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: -60,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 10,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 10,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 5,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2016': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2017': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2018': {
+                amount: 0,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+              '2019': {
+                amount: 25,
+                method: null,
+                averagePerAcre: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        })
+      ).toStrictEqual<ReturnType<typeof getAdjustedGrandfatheredTonnesPerYear>>(
+        {
+          adjustedGrandfatheredTonnesPerYear: [
+            {
+              '2015': {
+                unadjusted: 10,
+                adjustment: 0,
+                adjusted: 10,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: -10,
+                adjustment: 10,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 10,
+                adjustment: 0,
+                adjusted: 10,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: -11,
+                adjustment: 11,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: -60,
+                adjustment: 60,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 10,
+                adjustment: 0,
+                adjusted: 10,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 10,
+                adjustment: -10,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 5,
+                adjustment: -5,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -22,
+                adjusted: 3,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -22,
+                adjusted: 3,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+            {
+              '2015': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2016': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2017': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2018': {
+                unadjusted: 0,
+                adjustment: 0,
+                adjusted: 0,
+                averagePerAcre: 0,
+                method: null,
+                totalAcres: null,
+              },
+              '2019': {
+                unadjusted: 25,
+                adjustment: -22,
+                adjusted: 3,
+                averagePerAcre: Infinity,
+                method: null,
+                totalAcres: null,
+              },
+            },
+          ],
+        }
+      );
+    });
+    it('should adjust quantification correctly #6', () => {});
   });
 });
 

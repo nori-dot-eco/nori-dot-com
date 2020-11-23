@@ -7,11 +7,12 @@ import {
 } from './index';
 import type { ModelRun, ParsedMapUnit, Scenario } from './index';
 
-// todo
-// * by hand, take at least 3 output files (start with a multipolygon one), calculate quantification and make sure the output matches the code
-
 export const CURRENT_YEAR = new Date().getFullYear();
 export const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
+export const EARLIEST_GRANDFATHERABLE_YEAR = subtract(
+  CURRENT_YEAR,
+  MAXIMUM_GRANDFATHERABLE_YEARS
+);
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 export const METHODOLOGY_VERSION = '1.0.0';
 
@@ -440,27 +441,33 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
     (total: NegativeAndPositiveAnnualTotals, fieldVintageTotals) => {
       return Object.entries(fieldVintageTotals).reduce(
         (fieldTotal, [year, vintage]) => {
+          const {
+            amount: positiveAmount,
+            vintageCount: positiveCount,
+          } = fieldTotal.positiveAnnualTotals?.[year] ?? {
+            amount: 0,
+            vintageCount: 0,
+          };
+          const {
+            amount: negativeAmount,
+            vintageCount: negativeCount,
+          } = fieldTotal.negativeAnnualTotals?.[year] ?? {
+            amount: 0,
+            vintageCount: 0,
+          };
           if (vintage.amount > 0) {
             fieldTotal.positiveAnnualTotals[year] = {
-              amount: add(
-                vintage.amount,
-                fieldTotal.positiveAnnualTotals?.[year]?.amount ?? 0
-              ),
-              vintageCount: add(
-                fieldTotal.positiveAnnualTotals?.[year]?.vintageCount ?? 0,
-                1
-              ),
+              amount: add(vintage.amount, positiveAmount),
+              vintageCount: add(positiveCount, 1),
+            };
+            fieldTotal.negativeAnnualTotals[year] = {
+              amount: negativeAmount,
+              vintageCount: negativeCount,
             };
           } else if (vintage.amount < 0) {
             fieldTotal.negativeAnnualTotals[year] = {
-              amount: add(
-                vintage.amount,
-                fieldTotal.negativeAnnualTotals?.[year]?.amount ?? 0
-              ),
-              vintageCount: add(
-                fieldTotal.negativeAnnualTotals?.[year]?.vintageCount ?? 0,
-                1
-              ),
+              amount: add(vintage.amount, negativeAmount),
+              vintageCount: add(negativeCount, 1),
             };
           }
           return fieldTotal;
@@ -479,11 +486,36 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
       [year, { amount: negativeVintageAmount }]
     ) => {
       const positiveVintageCount =
-        projectVintageTotals.positiveAnnualTotals[year].vintageCount;
-      negativeAnnualTotals[year] = divide(
+        projectVintageTotals.positiveAnnualTotals[year]?.vintageCount ?? 0;
+      let rollingNegativeTotal = add(
         negativeVintageAmount,
+        negativeAnnualTotals[year] ?? 0
+      );
+      const maximumAmountForYear = Object.values(
+        unadjustedGrandfatheredTonnesPerYearForProject
+      )
+        .sort((a, b) => subtract(a[year]?.amount ?? 0, b[year]?.amount ?? 0))
+        .slice(-1)[0][year].amount;
+      negativeAnnualTotals[year] = divide(
+        Math.max(
+          multiply(multiply(maximumAmountForYear, positiveVintageCount), -1),
+          rollingNegativeTotal
+        ),
         positiveVintageCount
       );
+      const cumulativeNegativeTotalToApply =
+        multiply(negativeAnnualTotals[year], positiveVintageCount) ?? 0;
+      rollingNegativeTotal = subtract(
+        rollingNegativeTotal,
+        cumulativeNegativeTotalToApply
+      );
+      const nextYear = add(Number(year), 1);
+      if (rollingNegativeTotal < 0) {
+        negativeAnnualTotals[nextYear.toString()] = add(
+          rollingNegativeTotal,
+          negativeAnnualTotals[nextYear.toString()] ?? 0
+        );
+      }
       return negativeAnnualTotals;
     },
     {}
@@ -496,18 +528,18 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
     ) => {
       const adjustedFieldTotals = Object.entries(unadjustedFieldAnnuals).reduce(
         (adjustedField: AdjustedGrandfatheredTotals, [year, { amount }]) => {
-          const adjusted =
-            amount > 0 ? add(amount, negativeTonneDistribution[year] ?? 0) : 0;
+          const adjustment = Math.max(
+            multiply(amount, -1) || 0,
+            negativeTonneDistribution[year] || 0
+          );
+          const { method, totalAcres } = unadjustedFieldAnnuals[year];
+          const adjusted = amount > 0 ? add(amount, adjustment) : 0;
           adjustedField[year] = {
-            method: unadjustedFieldAnnuals[year].method,
-            totalAcres: unadjustedFieldAnnuals[year].totalAcres,
-            averagePerAcre:
-              divide(adjusted, unadjustedFieldAnnuals[year].totalAcres) || 0,
+            method,
+            totalAcres,
+            averagePerAcre: divide(adjusted, totalAcres) || 0,
             unadjusted: amount,
-            adjustment:
-              adjusted > 0
-                ? negativeTonneDistribution[year] || 0
-                : Math.abs(adjusted),
+            adjustment,
             adjusted,
           };
           return adjustedField;
