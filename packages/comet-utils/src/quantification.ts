@@ -487,6 +487,8 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
     ) => {
       const positiveVintageCount =
         projectVintageTotals.positiveAnnualTotals[year]?.vintageCount ?? 0;
+      const positiveVintageAmount =
+        projectVintageTotals.positiveAnnualTotals[year]?.amount ?? 0;
       let rollingNegativeTotal = add(
         negativeVintageAmount,
         negativeAnnualTotals[year] ?? 0
@@ -503,11 +505,19 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
         ),
         positiveVintageCount
       );
-      const cumulativeNegativeTotalToApply =
-        multiply(negativeAnnualTotals[year], positiveVintageCount) ?? 0;
+      const cumulativeNegativeTotalToApply = multiply(
+        negativeAnnualTotals[year],
+        positiveVintageCount ?? 0
+      );
+      const additionalNegative = subtract(
+        multiply(maximumAmountForYear, positiveVintageCount),
+        positiveVintageAmount
+      );
       rollingNegativeTotal = subtract(
         rollingNegativeTotal,
-        cumulativeNegativeTotalToApply
+        add(cumulativeNegativeTotalToApply, additionalNegative) < 0
+          ? add(cumulativeNegativeTotalToApply, additionalNegative)
+          : cumulativeNegativeTotalToApply
       );
       const nextYear = add(Number(year), 1);
       if (rollingNegativeTotal < 0) {

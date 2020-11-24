@@ -293,7 +293,7 @@ describe('getAdjustedGrandfatheredTonnesPerYear', () => {
               },
               {
                 '2015': {
-                  amount: -610,
+                  amount: -570,
                   method: null,
                   averagePerAcre: null,
                   totalAcres: 119.00674210689633,
@@ -415,8 +415,8 @@ describe('getAdjustedGrandfatheredTonnesPerYear', () => {
             },
             {
               '2015': {
-                unadjusted: -610,
-                adjustment: 610,
+                unadjusted: -570,
+                adjustment: 570,
                 adjusted: 0,
                 averagePerAcre: 0,
                 method: null,
