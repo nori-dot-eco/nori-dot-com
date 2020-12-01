@@ -18,7 +18,7 @@
     "@types/react": "^16.9.36"
   },
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --parallel",
     "watch": "lerna run watch --parallel",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
