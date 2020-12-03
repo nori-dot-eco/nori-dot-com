@@ -192,8 +192,11 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'require-await': 'off',
+        '@typescript-eslint/require-await': 'error',
         'import/first': 0,
         'import/extensions': ['error', 'never', { ts: 'never' }],
+        '@typescript-eslint/consistent-type-imports': 'warn',
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
