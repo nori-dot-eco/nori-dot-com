@@ -16,7 +16,158 @@ type AnyFunction = (...args: any[]) => any;
 type Resolved<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
 type ResolvedReturnType<T extends AnyFunction> = Resolved<ReturnType<T>>;
 
-it.only('use this function', () => {
+const sortAnnualValues = ({
+  unadjustedValues,
+}: {
+  unadjustedValues: number[][];
+}): {
+  negativeValues: number[];
+  positiveValues: number[];
+  zeroValues: number[];
+  totalNegative: number;
+  totalPositive: number;
+  deficit: number;
+}[] => {
+  let deficit = 0;
+
+  const sortedAnnualValues = unadjustedValues.map((annualUnadjustedValues) => {
+    const sorted = annualUnadjustedValues.reduce(
+      (sortedValues, nextUnadjustedValue, i) => {
+        if (deficit) {
+          deficit = 0;
+        }
+        if (nextUnadjustedValue < 0) {
+          sortedValues.totalNegative += nextUnadjustedValue;
+          sortedValues.negativeValues.push(nextUnadjustedValue);
+        } else if (nextUnadjustedValue > 0) {
+          sortedValues.totalPositive += nextUnadjustedValue;
+          sortedValues.positiveValues.push(nextUnadjustedValue);
+        } else if (nextUnadjustedValue === 0) {
+          sortedValues.zeroValues.push(nextUnadjustedValue);
+        } else {
+          throw new Error(`Invalid value ${nextUnadjustedValue}`);
+        }
+        if (
+          sortedValues.totalNegative * -1 > sortedValues.totalPositive &&
+          i === annualUnadjustedValues.length - 1
+        ) {
+          deficit =
+            sortedValues.totalPositive * -1 + sortedValues.totalNegative;
+          sortedValues.totalNegative = sortedValues.totalPositive;
+        }
+        return sortedValues;
+      },
+      {
+        negativeValues: [],
+        positiveValues: [],
+        zeroValues: [],
+        totalNegative: deficit,
+        totalPositive: deficit,
+        deficit,
+      }
+    );
+    return sorted;
+  });
+
+  return sortedAnnualValues;
+};
+
+const calculateAndApplyDeficit = ({
+  positiveValues,
+  amountToSubtract,
+  zeroValues,
+}: {
+  positiveValues: number[];
+  amountToSubtract: number;
+  zeroValues: number[];
+}): {
+  adjustedValues: number[];
+  deficit: number;
+  remainingPositiveValues: number[];
+} => {
+  const { deficit, adjustedValues } = positiveValues.reduce(
+    (acc, nextPositiveValue, i) => {
+      const postSubtractionValue = nextPositiveValue - amountToSubtract;
+      if (postSubtractionValue < 0) {
+        acc.deficit += postSubtractionValue;
+      }
+      acc.adjustedValues.push(Math.max(0, postSubtractionValue));
+      if (i !== positiveValues.length - 1) acc.adjustedValues.push(0); // todo why do I need to do it like this?
+      return acc;
+    },
+    { deficit: 0, adjustedValues: zeroValues }
+  );
+  return {
+    deficit,
+    adjustedValues,
+    remainingPositiveValues: adjustedValues.filter((e) => e > 0),
+  };
+};
+it.only('use this func', () => {
+  const makeAdjustments = ({
+    unadjustedValues,
+  }: {
+    unadjustedValues: number[][];
+  }): number[][] => {
+    const sortedAnnualValues = sortAnnualValues({ unadjustedValues });
+    const adjustedAnnualValues = sortedAnnualValues.map(
+      ({ negativeValues, positiveValues, zeroValues, totalNegative }) => {
+        let deficit: number = totalNegative;
+        let adjustedValues: number[] = positiveValues;
+        let iteration = 0;
+        let remainingPositiveValues = positiveValues;
+        do {
+          if (iteration >= 10) {
+            throw new Error(
+              `Reached max iteration count. Bailing! ${JSON.stringify({
+                deficit,
+                adjustedValues,
+                iteration,
+              })}`
+            );
+          }
+          ({
+            deficit,
+            adjustedValues,
+            remainingPositiveValues,
+          } = calculateAndApplyDeficit({
+            amountToSubtract: (deficit / remainingPositiveValues.length) * -1,
+            positiveValues: remainingPositiveValues,
+            zeroValues: [
+              ...zeroValues,
+              ...Array(negativeValues.length).fill(0),
+            ],
+          }));
+          iteration++;
+        } while (deficit < 0 && iteration <= 50);
+        return [...adjustedValues];
+      }
+    );
+    return adjustedAnnualValues;
+  };
+  expect(
+    makeAdjustments({
+      unadjustedValues: [
+        [100000, 100000, -10000, 10000, 1000, 100],
+        [0, 0, -10000, 0, 0, 0],
+        [100000, 100000, 0, 10000, 1000, 100],
+        [100000, 100000, -10000, 10000, 1000, 100],
+        [0, 0, -10000, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        // [100000, 100000, 0, 10000, 1000, 100],
+      ],
+    }).map((e) => e.sort())
+  ).toStrictEqual([
+    [0, 0, 0, 7033.333333333333, 97033.33333333333, 97033.33333333333],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 7033.333333333333, 97033.33333333333, 97033.33333333333],
+    [0, 0, 0, 7033.333333333333, 97033.33333333333, 97033.33333333333],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    // [0, 0, 0, 7033.333333333333, 97033.33333333333, 97033.33333333333], // todo it breaks here
+  ]);
+});
+it('maybe use this function', () => {
   const makeAdjustments = ({
     unadjustedValues,
   }: {
