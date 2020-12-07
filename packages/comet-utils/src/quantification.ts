@@ -498,13 +498,49 @@ export const getAdjustedGrandfatheredTonnesPerYear = ({
       )
         .sort((a, b) => subtract(a[year]?.amount ?? 0, b[year]?.amount ?? 0))
         .slice(-1)[0][year].amount;
-      negativeAnnualTotals[year] = divide(
+      console.log('maximumAmountForYear--', maximumAmountForYear);
+      console.log('negativeVintageAmount--', negativeVintageAmount);
+      console.log('negativeAnnualTotals[year]--', negativeAnnualTotals[year]);
+      console.log('rollingNegativeTotal--', rollingNegativeTotal);
+      console.log(
+        'multiply(maximumAmountForYear, positiveVintageCount)--',
+        divide(maximumAmountForYear, positiveVintageCount)
+      );
+      console.log(
+        ' multiply(multiply(maximumAmountForYear, positiveVintageCount), -1),--',
+        multiply(divide(maximumAmountForYear, positiveVintageCount), -1)
+      );
+      console.log(
+        ' multiply(multiply(maximumAmountForYear, positiveVintageCount), -1),--',
+        multiply(divide(maximumAmountForYear, positiveVintageCount), -1)
+      );
+      console.log(
+        'max--',
         Math.max(
-          multiply(multiply(maximumAmountForYear, positiveVintageCount), -1),
+          multiply(divide(maximumAmountForYear, positiveVintageCount), -1),
+          rollingNegativeTotal
+        )
+      );
+      console.log(
+        'max/positive--',
+        divide(
+          Math.max(
+            multiply(divide(maximumAmountForYear, positiveVintageCount), -1),
+            rollingNegativeTotal
+          ),
+          positiveVintageCount
+        )
+      );
+
+      negativeAnnualTotals[year] = divide(
+        Math.min(
+          multiply(divide(maximumAmountForYear, positiveVintageCount), -1),
           rollingNegativeTotal
         ),
         positiveVintageCount
       );
+      console.log('rollingNegativeTotal--', negativeAnnualTotals);
+
       const cumulativeNegativeTotalToApply = multiply(
         negativeAnnualTotals[year],
         positiveVintageCount ?? 0
