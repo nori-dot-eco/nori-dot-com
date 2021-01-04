@@ -54,7 +54,7 @@ export const validateProjectData = (
 } => {
   const ajv = ajvErrors(
     new Ajv({
-      useDefaults: 'empty',
+      useDefaults: 'empty' as any,
       allErrors: true,
       jsonPointers: true,
     }) as any
