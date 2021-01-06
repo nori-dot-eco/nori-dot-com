@@ -290,10 +290,12 @@ const calculateSomscAnnualDifferencesForScenarios = ({
 };
 
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
+  modeledYears,
   futureScenarioName,
   baselineScenarioName,
   somscAnnualDifferencesForScenarios,
 }: {
+  modeledYears: number[];
   futureScenarioName: string;
   baselineScenarioName: string;
   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
@@ -319,7 +321,7 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
 
         // todo extract to function
         mapUnitTotals[mapUnitId] = Object.keys(futureMapUnitSocChanges)
-          .slice(-10) // only look at the last 10 years
+          .filter((annualTotals) => modeledYears.includes(Number(annualTotals)))
           .reduce((annualTotals: AnnualTotals, year) => {
             const additionalGramsOfCarbonPerM2 = subtract(
               futureMapUnitSocChanges[year],
@@ -655,17 +657,18 @@ const createQuantificationSummary = async ({
     modelRuns,
   });
 
+  const modeledYears = modelRuns[0].Scenario[0].MapUnit[0].Year.map((k) =>
+    Number(k)
+  );
+
   const {
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   } = getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon({
     futureScenarioName,
     baselineScenarioName,
     somscAnnualDifferencesForScenarios,
+    modeledYears,
   });
-
-  const modeledYears = Object.keys(
-    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon[0]
-  ).map((k) => Number(k));
 
   const { scenarioSummaries } = getCometScenarioSummaries({
     baselineScenarioName,
