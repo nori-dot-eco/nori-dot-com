@@ -18,9 +18,11 @@ npm i @nori-dot-com/project
 
 ## Docs
 
-- [specification](./docs/modules/_specification_.md) - Nori project data specification documentation lives here
+- [specification](./docs/modules/_specification_.md) - Nori "v3" project data specification documentation lives here
 
 - [validation](./docs/modules/_validation_.md) - documentation on how to use the validation module to validate Nori project data (i.e. data that was exported from a data platform to conform with the latest project data specification)
+
+- [convertFromV2ToV1](./docs/modules/_utils_convertfromv2tov1_.md) - documentation on how to use the script to convert "v2" project data files into "v1" project data files (neither version are what is specified in the specification files as that is referred to as "v3")
 
 ---
 
