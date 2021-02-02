@@ -49,7 +49,7 @@ jobs:
             yarn run test --coverage
       - run:
           name: Upload Coverage Reports
-          command: codecov --token=$CODECOV_TOKEN
+          command: yarn run codecov --token=$CODECOV_TOKEN
 
 workflows:
   version: 2
