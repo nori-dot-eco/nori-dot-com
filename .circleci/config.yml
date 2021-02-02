@@ -38,6 +38,11 @@ jobs:
       - restore_cache:
           key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
       - run:
+          name: Build Packages
+          command: |
+            cd ~/repo
+            yarn run build
+      - run:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
