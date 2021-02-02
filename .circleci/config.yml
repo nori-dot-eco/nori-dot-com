@@ -11,48 +11,36 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
       - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
       - run:
           name: Install Dependencies
           command: |
             if [ ! -d "node_modules" ]; then
               for i in 1 2; do
-                yarn install --prefer-offline && break || sleep 15;
+                yarn install --immutable && break || sleep 15;
               done
               git checkout yarn.lock
             fi
       - save_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
           paths:
             - packages/project/node_modules
             - packages/comet-utils/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
             - node_modules
-            - ~/.cache
+            - .yarn
   run-regular-tests:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
       - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
       - run:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
             yarn run bootstrap
             yarn run test --coverage
       - run:
