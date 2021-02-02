@@ -21,7 +21,6 @@
     "build": "lerna run build",
     "watch": "lerna run watch --parallel",
     "test": "jest",
-    "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build"
   },
   "workspaces": {

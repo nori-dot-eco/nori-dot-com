@@ -41,7 +41,6 @@ jobs:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
-            yarn run bootstrap
             yarn run test --coverage
       - run:
           name: Upload Coverage Reports
