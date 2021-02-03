@@ -7,36 +7,10 @@ defaults: &defaults
     - image: circleci/node:14.15.1
 
 jobs:
-  setup-tests:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
-      - run:
-          name: Install Dependencies
-          command: |
-            if [ ! -d "node_modules" ]; then
-              for i in 1 2; do
-                yarn install --immutable && break || sleep 15;
-              done
-              git checkout yarn.lock
-            fi
-      - save_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
-          paths:
-            - packages/project/node_modules
-            - packages/comet-utils/node_modules
-            - packages/math/node_modules
-            - packages/hooks/node_modules
-            - node_modules
-            - .yarn
   run-regular-tests:
     <<: *defaults
     steps:
       - checkout
-      - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}-{{ .Revision }}
       - run:
           name: Build Packages
           command: |
@@ -55,7 +29,4 @@ workflows:
   version: 2
   test:
     jobs:
-      - setup-tests
-      - run-regular-tests:
-          requires:
-            - setup-tests
+      - run-regular-tests
