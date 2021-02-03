@@ -30,7 +30,9 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^3.2.1",
+    "@testing-library/react-hooks": "^5.0.3",
+    "@types/jest": "^26.0.15",
+    "@types/react": "^16.9.36",
     "@types/react-relay": "^7.0.11",
     "@types/relay-runtime": "^10.0.0",
     "@types/relay-test-utils": "^6.0.2",
@@ -38,7 +40,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "relay-test-utils": "^10.0.1"
+    "relay-test-utils": "^10.0.1",
+    "typescript": "^4.0.3"
   },
   "dependencies": {
     "react-relay": "^10.0.1"

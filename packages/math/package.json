@@ -26,6 +26,8 @@
     "mathjs": "^7.6.0"
   },
   "devDependencies": {
-    "@types/mathjs": "^6.0.7"
+    "@types/jest": "^26.0.15",
+    "@types/mathjs": "^6.0.7",
+    "typescript": "^4.0.3"
   }
 }

@@ -453,12 +453,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.5.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.10.0, @babel/runtime@npm:^7.4.5, @babel/runtime@npm:^7.9.2":
   version: 7.10.2
   resolution: "@babel/runtime@npm:7.10.2"
   dependencies:
     regenerator-runtime: ^0.13.4
   checksum: 0f3466d63518eca76e58ee523a21d9181949e10eb6d51d4e84d42702da5fae06f90f5e1e0a8e51420feb432ee73d7b6aae4a03d2210ac5c8aeaba3d2de7f2bf9
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.12.5":
+  version: 7.12.5
+  resolution: "@babel/runtime@npm:7.12.5"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 423fb0079353db2faa0dad0cbdf0a90fbc5b511d1f77e5645d1aa0b144a144e24502bb023c12a31d7dca63b6e16ae36afa59992f0404e92e21de211051c361e3
   languageName: node
   linkType: hard
 
@@ -1833,7 +1842,9 @@ __metadata:
   resolution: "@nori-dot-com/comet-utils@workspace:packages/comet-utils"
   dependencies:
     "@nori-dot-com/math": ^1.2.0
+    "@types/jest": ^26.0.15
     "@types/xml2js": ^0.4.5
+    typescript: ^4.0.3
     xml2js: ^0.4.23
   languageName: unknown
   linkType: soft
@@ -1872,7 +1883,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nori-dot-com/hooks@workspace:packages/hooks"
   dependencies:
-    "@testing-library/react-hooks": ^3.2.1
+    "@testing-library/react-hooks": ^5.0.3
+    "@types/jest": ^26.0.15
+    "@types/react": ^16.9.36
     "@types/react-relay": ^7.0.11
     "@types/relay-runtime": ^10.0.0
     "@types/relay-test-utils": ^6.0.2
@@ -1882,6 +1895,7 @@ __metadata:
     react-relay: ^10.0.1
     react-test-renderer: ^16.13.1
     relay-test-utils: ^10.0.1
+    typescript: ^4.0.3
   peerDependencies:
     react: ^16.13.1
     react-dom: ^16.13.1
@@ -1892,8 +1906,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@nori-dot-com/math@workspace:packages/math"
   dependencies:
+    "@types/jest": ^26.0.15
     "@types/mathjs": ^6.0.7
     mathjs: ^7.6.0
+    typescript: ^4.0.3
   languageName: unknown
   linkType: soft
 
@@ -1903,10 +1919,12 @@ __metadata:
   dependencies:
     "@types/ajv-errors": ^1.0.2
     "@types/geojson": ^7946.0.7
+    "@types/jest": ^26.0.15
     ajv: ^6.12.3
     ajv-errors: ^1.0.1
     typedoc: ^0.18.0
     typedoc-plugin-markdown: ^2.4.1
+    typescript: ^4.0.3
     typescript-json-schema: ^0.42.0
   languageName: unknown
   linkType: soft
@@ -2062,16 +2080,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-hooks@npm:^3.2.1":
-  version: 3.3.0
-  resolution: "@testing-library/react-hooks@npm:3.3.0"
+"@testing-library/react-hooks@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@testing-library/react-hooks@npm:5.0.3"
   dependencies:
-    "@babel/runtime": ^7.5.4
-    "@types/testing-library__react-hooks": ^3.0.0
+    "@babel/runtime": ^7.12.5
+    "@types/react": ">=16.9.0"
+    "@types/react-dom": ">=16.9.0"
+    "@types/react-test-renderer": ">=16.9.0"
+    filter-console: ^0.1.1
+    react-error-boundary: ^3.1.0
   peerDependencies:
     react: ">=16.9.0"
+    react-dom: ">=16.9.0"
     react-test-renderer: ">=16.9.0"
-  checksum: d3b857d34ec565f71c5baa8c07966834daef574e719c89e335fc60cd2220f70c63945238737d42c1fe425a1cb9c0a28919c175b19bb3157c8e575f14593468b1
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-test-renderer:
+      optional: true
+  checksum: e542a768fedeb344cfba5c171a3efa0341786e3a38bb0bc56a39bf66dbd9a89f530575e34e8cf3cc006aafe0ab0908c80afd42b1079e4c5812b28b8f3f9f4523
   languageName: node
   linkType: hard
 
@@ -2309,6 +2337,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dom@npm:>=16.9.0":
+  version: 17.0.0
+  resolution: "@types/react-dom@npm:17.0.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: 7ca9351b6c2523327cd7afe40082a37034898f65e9d86700236682efed910ba7c9cec10e9a3b829aa7b804b18791a28743ce468fcb42e9a788bfc33b84137e45
+  languageName: node
+  linkType: hard
+
 "@types/react-relay@npm:*, @types/react-relay@npm:^7.0.11":
   version: 7.0.11
   resolution: "@types/react-relay@npm:7.0.11"
@@ -2319,12 +2356,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:*":
-  version: 16.9.2
-  resolution: "@types/react-test-renderer@npm:16.9.2"
+"@types/react-test-renderer@npm:>=16.9.0":
+  version: 17.0.0
+  resolution: "@types/react-test-renderer@npm:17.0.0"
   dependencies:
     "@types/react": "*"
-  checksum: d8a45e1be5208221eaa612e6de8638575011b18f7b3a1dadb70e560d376086656ab89934d35d1be9194fd3238e5ff169322a6f15e6c27bc796a205ac8331eb88
+  checksum: 4931f75cfd17a43d257e9b6a021d1b01f8c859e8ee76353ab881cc3a8f6842c238b68ed643cfd69998193a16536b31f9dae329d8beca1e7c8425f6663f853750
   languageName: node
   linkType: hard
 
@@ -2360,16 +2397,6 @@ __metadata:
   version: 2.0.0
   resolution: "@types/stack-utils@npm:2.0.0"
   checksum: 662312302e07685c99a1c45c6753eb997b31d2af66e646c5937f62d593a63a111289503d0b06a8d1e6f3922b67fc2ed94889d84653a08861a7fee67b81ce5b92
-  languageName: node
-  linkType: hard
-
-"@types/testing-library__react-hooks@npm:^3.0.0":
-  version: 3.2.0
-  resolution: "@types/testing-library__react-hooks@npm:3.2.0"
-  dependencies:
-    "@types/react": "*"
-    "@types/react-test-renderer": "*"
-  checksum: 13af79e150039e8b43f3ba2a2bb4f6dd0f1b60bc6fea8b4552047ff6962bef15b5ad579316ea94f7bb8750dd3e7149d0da8b9344a803d50ae2f156701da9ad0e
   languageName: node
   linkType: hard
 
@@ -5675,6 +5702,13 @@ __metadata:
   dependencies:
     to-regex-range: ^5.0.1
   checksum: efca43d59b487ad4bc0b2b1cb9e51617c75a7b0159db51fa190c75c3d634ea5fad1ff4750d7c14346add4cd065e3c46e8f99af333edf2b4ec2a424f87e491a85
+  languageName: node
+  linkType: hard
+
+"filter-console@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "filter-console@npm:0.1.1"
+  checksum: f9def51f7ece9c9c469f78e1551ce33dfde02fd32bd70a6fbe8da4a9377ebb65a2a4fc6196ebf8e6ea8668a5465bde7fe3459101d1042e73bb9e3e1eb3f22fb6
   languageName: node
   linkType: hard
 
@@ -10078,6 +10112,17 @@ fsevents@^2.1.2:
   peerDependencies:
     react: ^16.13.1
   checksum: fb5c3ad41360c6a8674f33916aa895d05e79d063d31a6963074220c1cda9e07e880799d01670b4ebd570b4d3457584f13cc898b5033a05641e8e801f5611607e
+  languageName: node
+  linkType: hard
+
+"react-error-boundary@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "react-error-boundary@npm:3.1.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+  peerDependencies:
+    react: ">=16.13.1"
+  checksum: 0df44cd3ac6fb9990b500eb052544cbf166bf5b544ca415fd8ed3c39b67daf5376c977ee03da4a34478af22809fe99a82a7ed53719b8a16c87ad53211508b461
   languageName: node
   linkType: hard
 

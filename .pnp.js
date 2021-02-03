@@ -656,6 +656,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
+        ["npm:7.12.5", {
+          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.12.5-b3edb8ee8e-423fb00793.zip/node_modules/@babel/runtime/",
+          "packageDependencies": [
+            ["@babel/runtime", "npm:7.12.5"],
+            ["regenerator-runtime", "npm:0.13.5"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:7.4.4", {
           "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.4.4-42bff9deee-41bad62dd0.zip/node_modules/@babel/runtime/",
           "packageDependencies": [
@@ -2204,7 +2212,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@nori-dot-com/comet-utils", "workspace:packages/comet-utils"],
             ["@nori-dot-com/math", "workspace:packages/math"],
+            ["@types/jest", "npm:26.0.15"],
             ["@types/xml2js", "npm:0.4.5"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"],
             ["xml2js", "npm:0.4.23"]
           ],
           "linkType": "SOFT",
@@ -2244,7 +2254,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/hooks/",
           "packageDependencies": [
             ["@nori-dot-com/hooks", "workspace:packages/hooks"],
-            ["@testing-library/react-hooks", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:3.3.0"],
+            ["@testing-library/react-hooks", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:5.0.3"],
+            ["@types/jest", "npm:26.0.15"],
+            ["@types/react", "npm:16.9.36"],
             ["@types/react-relay", "npm:7.0.11"],
             ["@types/relay-runtime", "npm:10.0.4"],
             ["@types/relay-test-utils", "npm:6.0.2"],
@@ -2253,7 +2265,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"],
             ["react-relay", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:10.0.1"],
             ["react-test-renderer", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"],
-            ["relay-test-utils", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:10.0.1"]
+            ["relay-test-utils", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:10.0.1"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
         }]
@@ -2263,8 +2276,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/math/",
           "packageDependencies": [
             ["@nori-dot-com/math", "workspace:packages/math"],
+            ["@types/jest", "npm:26.0.15"],
             ["@types/mathjs", "npm:6.0.7"],
-            ["mathjs", "npm:7.6.0"]
+            ["mathjs", "npm:7.6.0"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
         }]
@@ -2276,10 +2291,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@nori-dot-com/project", "workspace:packages/project"],
             ["@types/ajv-errors", "npm:1.0.2"],
             ["@types/geojson", "npm:7946.0.7"],
+            ["@types/jest", "npm:26.0.15"],
             ["ajv", "npm:6.12.3"],
             ["ajv-errors", "virtual:1cd4706a74046ddbf319eac4e542f969060c1d2669b01ce8f02923d5a72b7242c573826292cbef7aeb0338f6b646805fb9ce2392b85e5de6fc8d04acb508e9a9#npm:1.0.1"],
             ["typedoc", "virtual:1cd4706a74046ddbf319eac4e542f969060c1d2669b01ce8f02923d5a72b7242c573826292cbef7aeb0338f6b646805fb9ce2392b85e5de6fc8d04acb508e9a9#npm:0.18.0"],
             ["typedoc-plugin-markdown", "virtual:1cd4706a74046ddbf319eac4e542f969060c1d2669b01ce8f02923d5a72b7242c573826292cbef7aeb0338f6b646805fb9ce2392b85e5de6fc8d04acb508e9a9#npm:2.4.1"],
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"],
             ["typescript-json-schema", "npm:0.42.0"]
           ],
           "linkType": "SOFT",
@@ -2449,27 +2466,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@testing-library/react-hooks", [
-        ["npm:3.3.0", {
-          "packageLocation": "./.yarn/cache/@testing-library-react-hooks-npm-3.3.0-2c6ad7346b-d3b857d34e.zip/node_modules/@testing-library/react-hooks/",
+        ["npm:5.0.3", {
+          "packageLocation": "./.yarn/cache/@testing-library-react-hooks-npm-5.0.3-6e28d0a419-e542a768fe.zip/node_modules/@testing-library/react-hooks/",
           "packageDependencies": [
-            ["@testing-library/react-hooks", "npm:3.3.0"]
+            ["@testing-library/react-hooks", "npm:5.0.3"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:3.3.0", {
-          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-d5d8c01abc/0/cache/@testing-library-react-hooks-npm-3.3.0-2c6ad7346b-d3b857d34e.zip/node_modules/@testing-library/react-hooks/",
+        ["virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:5.0.3", {
+          "packageLocation": "./.yarn/$$virtual/@testing-library-react-hooks-virtual-2a53eee554/0/cache/@testing-library-react-hooks-npm-5.0.3-6e28d0a419-e542a768fe.zip/node_modules/@testing-library/react-hooks/",
           "packageDependencies": [
-            ["@testing-library/react-hooks", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:3.3.0"],
-            ["@babel/runtime", "npm:7.10.2"],
-            ["@types/react", null],
-            ["@types/react-test-renderer", null],
-            ["@types/testing-library__react-hooks", "npm:3.2.0"],
+            ["@testing-library/react-hooks", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:5.0.3"],
+            ["@babel/runtime", "npm:7.12.5"],
+            ["@types/react", "npm:16.9.36"],
+            ["@types/react-dom", "npm:17.0.0"],
+            ["@types/react-test-renderer", "npm:17.0.0"],
+            ["filter-console", "npm:0.1.1"],
             ["react", "npm:16.13.1"],
+            ["react-dom", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"],
+            ["react-error-boundary", "virtual:2a53eee5544784cf930b088a92e6cc7eeabe62578d07afe6e124abbe8ab83bac24be58cdb06f399baa767d6a39c61bf0431a03fd091fa9ac3d1e653b9896caf6#npm:3.1.0"],
             ["react-test-renderer", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"]
           ],
           "packagePeers": [
-            "@types/react-test-renderer",
             "@types/react",
+            "react-dom",
             "react-test-renderer",
             "react"
           ],
@@ -2758,6 +2778,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/react-dom", [
+        ["npm:17.0.0", {
+          "packageLocation": "./.yarn/cache/@types-react-dom-npm-17.0.0-c3b70f60e6-7ca9351b6c.zip/node_modules/@types/react-dom/",
+          "packageDependencies": [
+            ["@types/react-dom", "npm:17.0.0"],
+            ["@types/react", "npm:16.9.36"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/react-relay", [
         ["npm:7.0.11", {
           "packageLocation": "./.yarn/cache/@types-react-relay-npm-7.0.11-654c30e854-bd4c9c63c1.zip/node_modules/@types/react-relay/",
@@ -2770,10 +2800,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/react-test-renderer", [
-        ["npm:16.9.2", {
-          "packageLocation": "./.yarn/cache/@types-react-test-renderer-npm-16.9.2-5d597edc57-d8a45e1be5.zip/node_modules/@types/react-test-renderer/",
+        ["npm:17.0.0", {
+          "packageLocation": "./.yarn/cache/@types-react-test-renderer-npm-17.0.0-bda0bc48c1-4931f75cfd.zip/node_modules/@types/react-test-renderer/",
           "packageDependencies": [
-            ["@types/react-test-renderer", "npm:16.9.2"],
+            ["@types/react-test-renderer", "npm:17.0.0"],
             ["@types/react", "npm:16.9.36"]
           ],
           "linkType": "HARD",
@@ -2805,17 +2835,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-stack-utils-npm-2.0.0-8ded8461bc-662312302e.zip/node_modules/@types/stack-utils/",
           "packageDependencies": [
             ["@types/stack-utils", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/testing-library__react-hooks", [
-        ["npm:3.2.0", {
-          "packageLocation": "./.yarn/cache/@types-testing-library__react-hooks-npm-3.2.0-32f1e56459-13af79e150.zip/node_modules/@types/testing-library__react-hooks/",
-          "packageDependencies": [
-            ["@types/testing-library__react-hooks", "npm:3.2.0"],
-            ["@types/react", "npm:16.9.36"],
-            ["@types/react-test-renderer", "npm:16.9.2"]
           ],
           "linkType": "HARD",
         }]
@@ -6793,6 +6812,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["fill-range", "npm:7.0.1"],
             ["to-regex-range", "npm:5.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["filter-console", [
+        ["npm:0.1.1", {
+          "packageLocation": "./.yarn/cache/filter-console-npm-0.1.1-022d33b3ad-f9def51f7e.zip/node_modules/filter-console/",
+          "packageDependencies": [
+            ["filter-console", "npm:0.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -11632,12 +11660,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/react-dom-virtual-a952d86216/0/cache/react-dom-npm-16.13.1-b0abd8a83a-fb5c3ad413.zip/node_modules/react-dom/",
           "packageDependencies": [
             ["react-dom", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"],
-            ["@types/react", null],
+            ["@types/react", "npm:16.9.36"],
             ["loose-envify", "npm:1.4.0"],
             ["object-assign", "npm:4.1.1"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:16.13.1"],
             ["scheduler", "npm:0.19.1"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-error-boundary", [
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/react-error-boundary-npm-3.1.0-a06f6e8361-0df44cd3ac.zip/node_modules/react-error-boundary/",
+          "packageDependencies": [
+            ["react-error-boundary", "npm:3.1.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:2a53eee5544784cf930b088a92e6cc7eeabe62578d07afe6e124abbe8ab83bac24be58cdb06f399baa767d6a39c61bf0431a03fd091fa9ac3d1e653b9896caf6#npm:3.1.0", {
+          "packageLocation": "./.yarn/$$virtual/react-error-boundary-virtual-c913b8b05d/0/cache/react-error-boundary-npm-3.1.0-a06f6e8361-0df44cd3ac.zip/node_modules/react-error-boundary/",
+          "packageDependencies": [
+            ["react-error-boundary", "virtual:2a53eee5544784cf930b088a92e6cc7eeabe62578d07afe6e124abbe8ab83bac24be58cdb06f399baa767d6a39c61bf0431a03fd091fa9ac3d1e653b9896caf6#npm:3.1.0"],
+            ["@babel/runtime", "npm:7.12.5"],
+            ["@types/react", "npm:16.9.36"],
+            ["react", "npm:16.13.1"]
           ],
           "packagePeers": [
             "@types/react",
@@ -11682,7 +11733,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["react-relay", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:10.0.1"],
             ["@babel/runtime", "npm:7.4.4"],
-            ["@types/react", null],
+            ["@types/react", "npm:16.9.36"],
             ["fbjs", "npm:1.0.0"],
             ["nullthrows", "npm:1.1.1"],
             ["react", "npm:16.13.1"],
@@ -11707,7 +11758,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/$$virtual/react-test-renderer-virtual-7dc88838cf/0/cache/react-test-renderer-npm-16.13.1-42049ddf16-e9c3c068d0.zip/node_modules/react-test-renderer/",
           "packageDependencies": [
             ["react-test-renderer", "virtual:c2d0710b6aad6b6b2a15d6048dda72d79ea4882a008a564f28f7750936b1fb118eb5cd5f3d881c32f8846c4b3fe7cd2893542b9eb4f25c916d6ab556ab935188#npm:16.13.1"],
-            ["@types/react", null],
+            ["@types/react", "npm:16.9.36"],
             ["object-assign", "npm:4.1.1"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:16.13.1"],
@@ -13987,7 +14038,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["progress", "npm:2.0.3"],
             ["shelljs", "npm:0.8.4"],
             ["typedoc-default-themes", "npm:0.10.2"],
-            ["typescript", null]
+            ["typescript", "patch:typescript@npm%3A4.0.3#builtin<compat/typescript>::version=4.0.3&hash=cc6730"]
           ],
           "packagePeers": [
             "@types/typescript",
