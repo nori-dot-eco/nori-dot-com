@@ -65,7 +65,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.15"],
             ["@types/react", "npm:16.9.36"],
             ["codecov", "npm:3.7.1"],
-            ["core-js", "npm:3.6.5"],
             ["jest", "npm:26.6.1"],
             ["lerna", "npm:3.22.0"],
             ["prettier", "npm:2.0.5"],
@@ -4968,13 +4967,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/core-js-npm-2.6.5-941c0c78a1-d9baa904d7.zip/node_modules/core-js/",
           "packageDependencies": [
             ["core-js", "npm:2.6.5"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:3.6.5", {
-          "packageLocation": "./.yarn/unplugged/core-js-npm-3.6.5-5941340066/node_modules/core-js/",
-          "packageDependencies": [
-            ["core-js", "npm:3.6.5"]
           ],
           "linkType": "HARD",
         }]
@@ -10465,7 +10457,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.15"],
             ["@types/react", "npm:16.9.36"],
             ["codecov", "npm:3.7.1"],
-            ["core-js", "npm:3.6.5"],
             ["jest", "npm:26.6.1"],
             ["lerna", "npm:3.22.0"],
             ["prettier", "npm:2.0.5"],
