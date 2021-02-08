@@ -1,4 +1,3 @@
-/* eslint graphql/template-strings: "off" */
 import { renderHook, cleanup } from '@testing-library/react-hooks';
 import { requestSubscription, graphql } from 'react-relay';
 import { createMockEnvironment } from 'relay-test-utils';
