@@ -3,23 +3,18 @@
   "private": true,
   "name": "nori-dot-com",
   "devDependencies": {
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.20",
     "@types/react": "^16.9.36",
     "codecov": "^3.7.0",
-    "jest": "^26.6.1",
+    "jest": "^26.6.3",
     "lerna": "^3.22.0",
-    "prettier": "^2.0.5",
-    "ts-jest": "^26.4.3",
+    "ts-jest": "^26.5.0",
     "tsc-watch": "^4.2.9",
-    "typescript": "^4.0.3",
-    "core-js": "^3.6.5"
-  },
-  "resolutions": {
-    "@types/react": "^16.9.36"
+    "typescript": "^4.0.3"
   },
   "scripts": {
     "build": "lerna run build",
-    "watch": "lerna run watch --parallel",
+    "watch": "yarn run build --parallel",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build"
@@ -30,120 +25,35 @@
     ]
   },
   "jest": {
-    "verbose": true,
     "projects": [
       {
-        "testMatch": [
-          "<rootDir>/packages/hooks/src/**/__tests__/**.test.ts"
-        ],
         "preset": "ts-jest",
-        "roots": [
-          "<rootDir>/packages/hooks/src"
+        "testMatch": [
+          "<rootDir>/packages/hooks/src/**/?(*.)+(test).[jt]s?(x)"
         ],
-        "displayName": "hooks",
-        "transform": {
-          "^.+\\.tsx?$": "ts-jest",
-          "^.+\\.ts?$": "ts-jest"
-        },
-        "moduleFileExtensions": [
-          "ts",
-          "js",
-          "json",
-          "node"
-        ],
-        "globals": {
-          "ts-jest": {
-            "diagnostics": true,
-            "tsconfig": "tsconfig.json",
-            "disableSourceMapSupport": true
-          }
-        }
+        "displayName": "hooks"
       },
       {
-        "preset": "ts-jest",
         "testMatch": [
-          "<rootDir>/packages/math/src/**/__tests__/**.test.ts"
-        ],
-        "roots": [
-          "<rootDir>/packages/math/src"
+          "<rootDir>/packages/math/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "math",
-        "transform": {
-          "^.+\\.tsx?$": "ts-jest",
-          "^.+\\.ts?$": "ts-jest"
-        },
-        "moduleFileExtensions": [
-          "ts",
-          "js",
-          "json",
-          "node"
-        ],
-        "globals": {
-          "ts-jest": {
-            "diagnostics": true,
-            "tsconfig": "tsconfig.json",
-            "disableSourceMapSupport": true
-          }
-        }
+        "preset": "ts-jest"
       },
       {
-        "preset": "ts-jest",
         "testMatch": [
-          "<rootDir>/packages/project/src/**/__tests__/**.test.ts"
-        ],
-        "roots": [
-          "<rootDir>/packages/project/src"
+          "<rootDir>/packages/project/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "project",
-        "transform": {
-          "^.+\\.tsx?$": "ts-jest",
-          "^.+\\.ts?$": "ts-jest"
-        },
-        "moduleFileExtensions": [
-          "ts",
-          "js",
-          "json",
-          "node"
-        ],
-        "globals": {
-          "ts-jest": {
-            "diagnostics": true,
-            "tsconfig": "tsconfig.json",
-            "disableSourceMapSupport": true
-          }
-        }
+        "preset": "ts-jest"
       },
       {
-        "preset": "ts-jest",
         "testMatch": [
-          "<rootDir>/packages/comet-utils/src/**/__tests__/**.test.ts"
-        ],
-        "setupFiles": [
-          "core-js"
-        ],
-        "roots": [
-          "<rootDir>/packages/comet-utils/src"
+          "<rootDir>/packages/comet-utils/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "comet-utils",
-        "transform": {
-          "^.+\\.tsx?$": "ts-jest",
-          "^.+\\.ts?$": "ts-jest"
-        },
-        "moduleFileExtensions": [
-          "ts",
-          "js",
-          "json",
-          "node"
-        ],
-        "globals": {
-          "ts-jest": {
-            "diagnostics": true,
-            "tsconfig": "tsconfig.json",
-            "disableSourceMapSupport": true
-          }
-        }
+        "preset": "ts-jest"
       }
-    ],
-    "preset": "ts-jest"
+    ]
   }
 }
