@@ -1,5 +1,5 @@
 {
-  "name": "@nori-dot-com/comet-utils",
+  "name": "@nori-dot-com/quantification",
   "version": "1.2.0",
   "description": "utilities for interacting with COMET farm files",
   "keywords": [

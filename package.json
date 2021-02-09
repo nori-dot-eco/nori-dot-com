@@ -49,9 +49,9 @@
       },
       {
         "testMatch": [
-          "<rootDir>/packages/comet-utils/src/**/?(*.)+(test).[jt]s?(x)"
+          "<rootDir>/packages/quantification/src/**/?(*.)+(test).[jt]s?(x)"
         ],
-        "displayName": "comet-utils",
+        "displayName": "quantification",
         "preset": "ts-jest"
       }
     ]

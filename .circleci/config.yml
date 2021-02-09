@@ -31,7 +31,7 @@ jobs:
           key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
           paths:
             - packages/project/node_modules
-            - packages/comet-utils/node_modules
+            - packages/quantification/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
             - node_modules
