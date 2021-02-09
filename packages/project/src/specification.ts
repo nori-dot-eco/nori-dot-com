@@ -13,7 +13,7 @@
  *
  * #### Example
  *
- * You can find an example of a full implementation [here](../../example/example.json)
+ * You can find an example of a full implementation [here](../../src/example/example.json)
  *
  * ## Navigation
  *
