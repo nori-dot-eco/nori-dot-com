@@ -1,6 +1,6 @@
 # `quantification`
 
-Utilities for parsing COMET farm files
+Quantification utilities
 
 ## Usage
 

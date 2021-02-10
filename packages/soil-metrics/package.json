@@ -1,14 +1,15 @@
 {
-  "name": "@nori-dot-com/quantification",
-  "version": "1.2.0",
-  "description": "utilities for quantifying Nori's soil methodology based projects",
+  "name": "@nori-dot-com/soil-metrics",
+  "version": "1.0.0",
+  "description": "utilities for interacting with the Soil Metrics API",
   "keywords": [
     "nori",
     "COMET farm",
     "COMET",
     "co2",
     "carbon",
-    "carbon removal"
+    "carbon removal",
+    "Soil Metrics"
   ],
   "author": "jaycenhorton <jaycen@nori.com>",
   "homepage": "https://nori.com",
@@ -29,12 +30,5 @@
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
-  },
-  "dependencies": {
-    "@nori-dot-com/math": "^1.2.0",
-    "xml2js": "^0.4.23"
-  },
-  "devDependencies": {
-    "@types/xml2js": "^0.4.5"
   }
 }

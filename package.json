@@ -53,6 +53,13 @@
         ],
         "displayName": "quantification",
         "preset": "ts-jest"
+      },
+      {
+        "testMatch": [
+          "<rootDir>/packages/soil-metrics/src/**/?(*.)+(test).[jt]s?(x)"
+        ],
+        "displayName": "soil-metrics",
+        "preset": "ts-jest"
       }
     ]
   }

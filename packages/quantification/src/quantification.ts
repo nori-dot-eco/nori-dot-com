@@ -642,7 +642,7 @@ const getGrandfatheredTonneQuantities = ({
   };
 };
 
-const createQuantificationSummary = async ({
+const createQuantificationSummary = ({
   modelRuns,
   futureScenarioName,
   baselineScenarioName,
@@ -650,7 +650,7 @@ const createQuantificationSummary = async ({
   modelRuns: ModelRun<ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
-}): Promise<UnadjustedQuantificationSummary> => {
+}): UnadjustedQuantificationSummary => {
   const {
     somscAnnualDifferencesForScenarios,
   } = calculateSomscAnnualDifferencesForScenarios({
