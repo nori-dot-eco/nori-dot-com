@@ -12,10 +12,6 @@ import {
   MULTIPOLYGON_OUTPUT,
 } from './example-output';
 
-type AnyFunction = (...args: any[]) => any;
-type Resolved<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
-type ResolvedReturnType<T extends AnyFunction> = Resolved<ReturnType<T>>;
-
 describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
   describe('When all annuals are net positive', () => {
     it('should take the lesser of either the somsc annual difference or the ten year projection average per year', () => {

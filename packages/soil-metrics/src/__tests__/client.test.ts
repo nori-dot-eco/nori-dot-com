@@ -1,12 +1,45 @@
-import { SoilMetricsClient } from '../index';
+import { Client, createClient } from '../index';
 
-const setupTest = (): { client: SoilMetricsClient } => {
-  return { client: new SoilMetricsClient() };
-};
+import { CREDENTIALS, mockTokenEndpoint } from './utils';
 
-describe('SoilMetricsClient', () => {
-  it('will create a soil metrics API client', () => {
-    const { client } = setupTest();
-    expect(client).toBeInstanceOf(SoilMetricsClient);
+jest.mock('node-fetch');
+
+describe('Soil Metrics API', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  describe('Client', () => {
+    describe('constructor', () => {
+      it('will create a soil metrics API client', () => {
+        expect(new Client()).toBeInstanceOf(Client);
+      });
+    });
+
+    describe('configure', () => {
+      it('will not throw an error when configuring if the credentials are invalid', async () => {
+        mockTokenEndpoint();
+        await expect(
+          new Client().configure(CREDENTIALS)
+        ).resolves.toBeInstanceOf(Client);
+      });
+      it('will throw an error when configuring if the credentials are invalid', async () => {
+        mockTokenEndpoint({ throws: true });
+        await expect(new Client().configure(CREDENTIALS)).rejects.toStrictEqual(
+          {}
+        );
+      });
+    });
+
+    describe('createClient', () => {
+      it('will not throw an error when configuring if the credentials are invalid', async () => {
+        mockTokenEndpoint();
+        await expect(createClient(CREDENTIALS)).resolves.toBeInstanceOf(Client);
+      });
+      it('will throw an error when configuring if the credentials are invalid', async () => {
+        mockTokenEndpoint({ throws: true });
+        await expect(createClient(CREDENTIALS)).rejects.toStrictEqual({});
+      });
+    });
   });
 });
