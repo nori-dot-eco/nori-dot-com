@@ -36,6 +36,28 @@ export interface OutputFile<M> {
   Day: Daycent<M>;
 }
 
+export interface OutputErrorFile {
+  InputErrors: InputErrors;
+}
+
+interface InputErrors {
+  InputValidationErrors: InputValidationErrors;
+}
+
+interface InputValidationErrors {
+  ModelRun: ModelRunErrors;
+}
+
+interface ModelRunErrors {
+  '@name': string;
+  Error: Error[];
+}
+
+interface Error {
+  '@index': string;
+  '@message': string;
+}
+
 export interface Daycent<M> {
   '@cometEmailId': string;
   '@CFARMVersion': string;
