@@ -1,10 +1,8 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
 
-import {
-  convertM2ToAcres,
-  generateJsonData,
-  parseYearlyMapUnitData,
-} from './index';
+import type { MapUnit, OutputFile } from './specification';
+
+import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 import type { ModelRun, ParsedMapUnit, Scenario } from './index';
 
 export const CURRENT_YEAR = new Date().getFullYear();
@@ -193,13 +191,13 @@ const getCometScenarioSummaries = ({
       scenarios.reduce(
         (
           aggregatedScenariosForModel,
-          { $: { name: scenarioName }, Carbon: carbon }
+          { '@name': scenarioName, Carbon: carbon }
         ) => {
           if (scenarioName === futureScenarioName) {
-            aggregatedScenariosForModel.future.push(carbon[0].SoilCarbon);
+            aggregatedScenariosForModel.future.push(carbon.SoilCarbon);
           }
           if (scenarioName === baselineScenarioName) {
-            aggregatedScenariosForModel.baseline.push(carbon[0].SoilCarbon);
+            aggregatedScenariosForModel.baseline.push(carbon.SoilCarbon);
           }
           return aggregatedScenariosForModel;
         },
@@ -222,7 +220,7 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   const differencesForMapUnits = mapUnits.reduce(
     (
       difference: AnnualSomscDifferencesForMapUnit,
-      { $: { id: mapUnitId, area }, somsc }
+      { '@id': mapUnitId, '@area': area, somsc }
     ) => {
       difference[mapUnitId] = {
         area: Number(area),
@@ -251,12 +249,12 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   differencesForPolygon: SomscAnnualDifferencesForPolygon;
 } => {
   const scenarioResults = scenarios.filter((s) => {
-    return s.$.name.includes('FILE RESULTS');
+    return s['@name'].includes('FILE RESULTS');
   });
   const differencesForPolygon = scenarioResults.reduce(
     (
       acc: SomscAnnualDifferencesForPolygon,
-      { $: { name: scenarioName }, MapUnit: mapUnits }
+      { '@name': scenarioName, MapUnit: mapUnits }
     ) => {
       const {
         differencesForMapUnits,
@@ -742,23 +740,24 @@ const createQuantificationSummary = ({
 };
 
 export const getQuantificationSummary = async ({
-  xmlData,
+  data,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
 }: {
-  xmlData: string;
+  data: OutputFile<MapUnit>;
   futureScenarioName?: string;
   baselineScenarioName?: string;
 }): Promise<UnadjustedQuantificationSummary> => {
-  const { rawJsonOutput } = await generateJsonData({ xmlData });
-  const { parsedJsonOutput } = await parseYearlyMapUnitData({ rawJsonOutput });
+  const { parsedJsonOutput } = await parseYearlyMapUnitData({
+    rawJsonOutput: data,
+  });
   const {
     Day: {
-      Cropland: [{ ModelRun: modelRuns }],
+      Cropland: { ModelRun: modelRuns },
     },
   } = parsedJsonOutput;
   return createQuantificationSummary({
-    modelRuns,
+    modelRuns: [modelRuns], // todo multi model runs
     futureScenarioName,
     baselineScenarioName,
   });
