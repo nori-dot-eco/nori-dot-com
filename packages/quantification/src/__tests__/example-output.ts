@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import type { OutputFile, MapUnit } from '@nori-dot-com/soil-metrics';
+import type { Output } from '@nori-dot-com/ggit';
 
-export const MULTIPOLYGON_OUTPUT: OutputFile<MapUnit> = {
+export const MULTIPOLYGON_OUTPUT: Output.OutputFile<Output.MapUnit> = {
   Day: {
     '@cometEmailId': '',
     '@CFARMVersion': 'Standalone Module v1',
@@ -2745,7 +2745,7 @@ export const COMPLEX_OUTPUT = `<Day cometEmailId="jaycen@nori.com" CFARMVersion=
 </Forestry>
 </Day>`;
 
-export const GRANDFATHERABLE_YEARS_OUTPUT = {
+export const GRANDFATHERABLE_YEARS_OUTPUT: Output.OutputFile<Output.MapUnit> = {
   Day: {
     '@cometEmailId': '',
     '@CFARMVersion': 'Standalone Module v1',
@@ -3437,6 +3437,35 @@ export const GRANDFATHERABLE_YEARS_OUTPUT = {
           },
         ],
       },
+    },
+    Animal: null,
+    Agroforestry: {
+      AFLiveTrees: null,
+      AFLiveTreesUncertainty: null,
+      AFDownedDeadWood: null,
+      AFDownedDeadWoodUncertainty: null,
+      AFForestFloor: null,
+      AFForestFloorUncertainty: null,
+      AFStandingDeadTrees: null,
+      AFStandingDeadTreesUncertainty: null,
+      AFUnderstory: null,
+      AFUnderstoryUncertainty: null,
+    },
+    Forestry: {
+      FORLiveTrees: null,
+      FORLiveTreesUncertainty: null,
+      FORStandingDeadTreesUncertainty: null,
+      FORUnderstory: null,
+      FORForestFloorUncertainty: null,
+      FORUnderstoryUncertainty: null,
+      FORDownedDeadWood: null,
+      FORDownedDeadWoodUncertainty: null,
+      FORSoilOrganicCarbon: null,
+      FORSoilOrganicCarbonUncertainty: null,
+      FORProductsInUse: null,
+      FORProductsInUseUncertainty: null,
+      FORInLandfills: null,
+      FORInLandfillsUncertainty: null,
     },
   },
 };

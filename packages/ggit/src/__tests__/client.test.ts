@@ -4,14 +4,14 @@ import { CREDENTIALS, mockTokenEndpoint } from './utils';
 
 jest.mock('node-fetch');
 
-describe('Soil Metrics API', () => {
+describe('Soil Metrics GGIT API', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
   describe('Client', () => {
     describe('constructor', () => {
-      it('will create a soil metrics API client', () => {
+      it('will create a soil metrics GGIT API client', () => {
         expect(new Client()).toBeInstanceOf(Client);
       });
     });

@@ -1,11 +1,5 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
-import type {
-  ModelRun,
-  ParsedMapUnit,
-  MapUnit,
-  OutputFile,
-  Scenario,
-} from '@nori-dot-com/soil-metrics';
+import type { Output } from '@nori-dot-com/ggit';
 
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
@@ -17,7 +11,6 @@ export const EARLIEST_GRANDFATHERABLE_YEAR = subtract(
 );
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 export const METHODOLOGY_VERSION = '1.0.0';
-
 interface NegativeAndPositiveAnnualTotals {
   positiveAnnualTotals: {
     [year: string]: { amount: number; vintageCount: number };
@@ -189,7 +182,7 @@ const getCometScenarioSummaries = ({
 }: {
   futureScenarioName: string;
   baselineScenarioName: string;
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
 }): { scenarioSummaries: ScenarioSummaries } => {
   const scenarioSummaries = modelRuns.reduce(
     (aggregatedScenariosForModels, { Scenario: [...scenarios] }) => {
@@ -218,7 +211,7 @@ const getCometScenarioSummaries = ({
 const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   mapUnits,
 }: {
-  mapUnits: ParsedMapUnit[];
+  mapUnits: Output.ParsedMapUnit[];
 }): {
   differencesForMapUnits: AnnualSomscDifferencesForMapUnit;
 } => {
@@ -249,7 +242,7 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
 const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   scenarios,
 }: {
-  scenarios: Scenario<ParsedMapUnit>[];
+  scenarios: Output.Scenario<Output.ParsedMapUnit>[];
 }): {
   differencesForPolygon: SomscAnnualDifferencesForPolygon;
 } => {
@@ -275,7 +268,7 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
 const calculateSomscAnnualDifferencesForScenarios = ({
   modelRuns,
 }: {
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
 }): {
   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
 } => {
@@ -650,7 +643,7 @@ const createQuantificationSummary = ({
   futureScenarioName,
   baselineScenarioName,
 }: {
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
 }): UnadjustedQuantificationSummary => {
@@ -749,7 +742,7 @@ export const getQuantificationSummary = async ({
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
 }: {
-  data: OutputFile<MapUnit>;
+  data: Output.OutputFile<Output.MapUnit>;
   futureScenarioName?: string;
   baselineScenarioName?: string;
 }): Promise<UnadjustedQuantificationSummary> => {

@@ -1,14 +1,10 @@
-import type {
-  OutputFile,
-  MapUnit,
-  ParsedMapUnit,
-} from '@nori-dot-com/soil-metrics';
+import type { Output } from '@nori-dot-com/ggit';
 
 export const parseYearlyMapUnitData = ({
   rawJsonOutput,
 }: {
-  rawJsonOutput: OutputFile<MapUnit>;
-}): { parsedJsonOutput: OutputFile<ParsedMapUnit> } => {
+  rawJsonOutput: Output.OutputFile<Output.MapUnit>;
+}): { parsedJsonOutput: Output.OutputFile<Output.ParsedMapUnit> } => {
   const {
     Day: {
       Cropland: { ModelRun: runs },
@@ -29,7 +25,10 @@ export const parseYearlyMapUnitData = ({
             return {
               MapUnit: mapUnits.map((mapUnit) => {
                 return Object.entries(mapUnit).reduce(
-                  (parsedMapUnit, [key, value]: [keyof ParsedMapUnit, any]) => {
+                  (
+                    parsedMapUnit,
+                    [key, value]: [keyof Output.ParsedMapUnit, any]
+                  ) => {
                     if (
                       !['Year', '@area', '@id'].includes(key) &&
                       value.includes(',')
@@ -43,7 +42,7 @@ export const parseYearlyMapUnitData = ({
                           ? annualMeasurement
                           : Number(annualMeasurement);
                         return acc;
-                      }, {} as ParsedMapUnit);
+                      }, {} as Output.ParsedMapUnit);
                       parsedMapUnit[key] = annualData;
                     } else if (key === 'Year') {
                       const data = value.split(',').filter((e: string) => e);
@@ -59,7 +58,7 @@ export const parseYearlyMapUnitData = ({
                     }
                     return parsedMapUnit;
                   },
-                  {} as ParsedMapUnit
+                  {} as Output.ParsedMapUnit
                 );
               }),
               ...rest,

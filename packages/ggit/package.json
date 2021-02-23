@@ -1,7 +1,7 @@
 {
-  "name": "@nori-dot-com/soil-metrics",
+  "name": "@nori-dot-com/ggit",
   "version": "1.0.0",
-  "description": "utilities for interacting with the Soil Metrics API",
+  "description": "utilities for interacting with the Soil Metrics GGIT API",
   "keywords": [
     "nori",
     "COMET farm",
@@ -9,7 +9,8 @@
     "co2",
     "carbon",
     "carbon removal",
-    "Soil Metrics"
+    "Soil Metrics",
+    "GGIT"
   ],
   "author": "jaycenhorton <jaycen@nori.com>",
   "homepage": "https://nori.com",
