@@ -36,14 +36,14 @@ export interface Crop {
   CropName: string;
   PlantingDate: string;
   ContinueFromPreviousYear: string;
-  HarvestList: HarvestList | HarvestEvent[];
-  TillageList: TillageList | TillageEvent[];
-  NApplicationList: NApplicationList | NApplicationEvent[];
-  OMADApplicationList: OMADApplicationList | OMADApplicationEvent[];
-  IrrigationList: IrrigationList | IrrigationEvent[];
+  HarvestList: HarvestList | [];
+  TillageList: TillageList | [];
+  NApplicationList: NApplicationList | [];
+  OMADApplicationList: OMADApplicationList | [];
+  IrrigationList: IrrigationList | [];
   BurnEvent: BurnEvent | [];
   LimingEvent: LimingEvent | [];
-  GrazingList: GrazingList | GrazingEvent[];
+  GrazingList: GrazingList | [];
   Prune: string;
   Renew: string;
 }
@@ -56,11 +56,11 @@ export interface GrazingEvent {
 }
 
 export interface GrazingList {
-  GrazingEvent: GrazingEvent;
+  GrazingEvent: GrazingEvent[];
 }
 
 export interface IrrigationList {
-  IrrigationEvent: IrrigationEvent;
+  IrrigationEvent: IrrigationEvent[];
 }
 
 export interface IrrigationEvent {
@@ -75,7 +75,7 @@ export interface LimingEvent {
 }
 
 export interface OMADApplicationList {
-  OMADApplicationEvent: OMADApplicationEvent;
+  OMADApplicationEvent: OMADApplicationEvent[];
 }
 
 export interface OMADApplicationEvent {
@@ -91,7 +91,7 @@ export interface BurnEvent {
 }
 
 export interface NApplicationList {
-  NApplicationEvent: NApplicationEvent;
+  NApplicationEvent: NApplicationEvent[];
 }
 
 export interface NApplicationEvent {
@@ -103,7 +103,7 @@ export interface NApplicationEvent {
 }
 
 export interface TillageList {
-  TillageEvent: TillageEvent;
+  TillageEvent: TillageEvent[];
 }
 
 export interface TillageEvent {
@@ -112,7 +112,7 @@ export interface TillageEvent {
 }
 
 export interface HarvestList {
-  HarvestEvent: HarvestEvent;
+  HarvestEvent: HarvestEvent[];
 }
 
 export interface HarvestEvent {
