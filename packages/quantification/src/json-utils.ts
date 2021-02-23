@@ -1,6 +1,8 @@
-import { Parser } from 'xml2js';
-
-import type { OutputFile, MapUnit, ParsedMapUnit } from './index';
+import type {
+  OutputFile,
+  MapUnit,
+  ParsedMapUnit,
+} from '@nori-dot-com/soil-metrics';
 
 export const parseYearlyMapUnitData = ({
   rawJsonOutput,
@@ -12,7 +14,7 @@ export const parseYearlyMapUnitData = ({
       Cropland: { ModelRun: runs },
     },
   } = rawJsonOutput;
-  const [parsedRuns] = [runs].map(
+  const parsedRuns = (Array.isArray(runs) ? runs : [runs]).map(
     ({ Scenario: [...scenarios], ...modelRun }) => {
       const scenarioResults = scenarios.filter(({ '@name': scenarioName }) => {
         return scenarioName.includes('FILE RESULTS');
@@ -44,7 +46,6 @@ export const parseYearlyMapUnitData = ({
                       }, {} as ParsedMapUnit);
                       parsedMapUnit[key] = annualData;
                     } else if (key === 'Year') {
-                      console.log({ key, value });
                       const data = value.split(',').filter((e: string) => e);
                       parsedMapUnit[key] = data.map((y: string) => Number(y));
                     } else if (key === '@area') {

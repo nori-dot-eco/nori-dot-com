@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable camelcase */
-// todo move output types to /soil-metrics/specification
 
 export interface Agroforestry {
   AFLiveTrees: string[];
@@ -14,6 +13,8 @@ export interface Agroforestry {
   AFUnderstory: string[];
   AFUnderstoryUncertainty: string[];
 }
+
+export type Animal = any;
 
 export interface Forestry {
   FORLiveTrees: string[];
@@ -62,10 +63,13 @@ export interface Daycent<M> {
   '@cometEmailId': string;
   '@CFARMVersion': string;
   Cropland: Cropland<M>;
+  Agroforestry: Agroforestry;
+  Animal?: Animal;
+  Forestry: Forestry;
 }
 
 export interface Cropland<M> {
-  ModelRun: ModelRun<M>;
+  ModelRun: ModelRun<M> | ModelRun<M>[];
 }
 
 export interface ModelRun<M> {
@@ -166,6 +170,7 @@ export interface MapUnit {
   annppt: string;
   noflux: string;
 }
+
 export interface ParsedMapUnit {
   '@id': string;
   '@area': string;

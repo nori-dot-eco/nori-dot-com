@@ -1,9 +1,13 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
-
-import type { MapUnit, OutputFile } from './specification';
+import type {
+  ModelRun,
+  ParsedMapUnit,
+  MapUnit,
+  OutputFile,
+  Scenario,
+} from '@nori-dot-com/soil-metrics';
 
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
-import type { ModelRun, ParsedMapUnit, Scenario } from './index';
 
 export const CURRENT_YEAR = new Date().getFullYear();
 export const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
@@ -22,6 +26,7 @@ interface NegativeAndPositiveAnnualTotals {
     [year: string]: { amount: number; vintageCount: number };
   };
 }
+
 export interface AnnualTotals {
   [year: string]: number;
 }
@@ -757,7 +762,7 @@ export const getQuantificationSummary = async ({
     },
   } = parsedJsonOutput;
   return createQuantificationSummary({
-    modelRuns: [modelRuns], // todo multi model runs
+    modelRuns: Array.isArray(modelRuns) ? modelRuns : [modelRuns],
     futureScenarioName,
     baselineScenarioName,
   });
