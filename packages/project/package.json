@@ -36,6 +36,6 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "ajv-errors": "^1.0.1",
-    "typescript-json-schema": "^0.42.0"
+    "typescript-json-schema": "^0.49.0"
   }
 }

@@ -1,0 +1,764 @@
+{
+    "$ref": "#/definitions/InputData",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "BurnEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "BurnTime": {
+                    "title": "BurnTime",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "BurnTime"
+            ],
+            "title": "BurnEvent",
+            "type": "object"
+        },
+        "Crop": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "@CropNumber": {
+                    "title": "@CropNumber",
+                    "type": "string"
+                },
+                "BurnEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurnEvent"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "BurnEvent"
+                },
+                "ContinueFromPreviousYear": {
+                    "title": "ContinueFromPreviousYear",
+                    "type": "string"
+                },
+                "CropName": {
+                    "title": "CropName",
+                    "type": "string"
+                },
+                "GrazingList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GrazingList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "GrazingList"
+                },
+                "HarvestList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HarvestList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "HarvestList"
+                },
+                "IrrigationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IrrigationList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "IrrigationList"
+                },
+                "LimingEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/LimingEvent"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "LimingEvent"
+                },
+                "NApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/NApplicationList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "NApplicationList"
+                },
+                "OMADApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OMADApplicationList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "OMADApplicationList"
+                },
+                "PlantingDate": {
+                    "title": "PlantingDate",
+                    "type": "string"
+                },
+                "Prune": {
+                    "title": "Prune",
+                    "type": "string"
+                },
+                "Renew": {
+                    "title": "Renew",
+                    "type": "string"
+                },
+                "TillageList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/TillageList"
+                        },
+                        {
+                            "items": [
+                            ],
+                            "maxItems": 0,
+                            "minItems": 0,
+                            "type": "array"
+                        }
+                    ],
+                    "title": "TillageList"
+                }
+            },
+            "required": [
+                "@CropNumber",
+                "BurnEvent",
+                "ContinueFromPreviousYear",
+                "CropName",
+                "GrazingList",
+                "HarvestList",
+                "IrrigationList",
+                "LimingEvent",
+                "NApplicationList",
+                "OMADApplicationList",
+                "PlantingDate",
+                "Prune",
+                "Renew",
+                "TillageList"
+            ],
+            "title": "Crop",
+            "type": "object"
+        },
+        "CropScenario": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "@Name": {
+                    "title": "@Name",
+                    "type": "string"
+                },
+                "CropYear": {
+                    "items": {
+                        "$ref": "#/definitions/CropYear"
+                    },
+                    "title": "CropYear",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@Name",
+                "CropYear"
+            ],
+            "title": "CropScenario",
+            "type": "object"
+        },
+        "CropYear": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "@Year": {
+                    "title": "@Year",
+                    "type": "string"
+                },
+                "Crop": {
+                    "items": {
+                        "$ref": "#/definitions/Crop"
+                    },
+                    "title": "Crop",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@Year",
+                "Crop"
+            ],
+            "title": "CropYear",
+            "type": "object"
+        },
+        "Cropland": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "@Name": {
+                    "title": "@Name",
+                    "type": "string"
+                },
+                "CRP": {
+                    "title": "CRP",
+                    "type": "string"
+                },
+                "CRPEndYear": {
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "CRPEndYear",
+                    "type": "array"
+                },
+                "CRPStartYear": {
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "CRPStartYear",
+                    "type": "array"
+                },
+                "CRPType": {
+                    "title": "CRPType",
+                    "type": "string"
+                },
+                "CropScenario": {
+                    "items": {
+                        "$ref": "#/definitions/CropScenario"
+                    },
+                    "title": "CropScenario",
+                    "type": "array"
+                },
+                "GEOM": {
+                    "$ref": "#/definitions/GEOM",
+                    "title": "GEOM"
+                },
+                "PostCRPManagement": {
+                    "items": [
+                        {
+                            "enum": [
+                                "Irrigated: Annual Crops in Rotation",
+                                "Irrigated: Annual Crops with Hay/Pasture in Rotation",
+                                "Irrigated: Continuous Hay",
+                                "Irrigated: Orchard or Vineyard",
+                                "Non-Irrigated: Annual Crops in Rotation",
+                                "Non-Irrigated: Continuous Hay",
+                                "Non-Irrigated: Fallow-Grain",
+                                "Non-Irrigated: Livestock Grazing",
+                                "Non-Irrigated: Orchard or Vineyard"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PostCRPManagement",
+                    "type": "array"
+                },
+                "PostCRPTillage": {
+                    "items": [
+                        {
+                            "enum": [
+                                "Intensive Tillage",
+                                "No Till",
+                                "Reduced Tillage"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PostCRPTillage",
+                    "type": "array"
+                },
+                "Pre-1980": {
+                    "title": "Pre-1980",
+                    "type": "string"
+                },
+                "PreCRPManagement": {
+                    "items": [
+                        {
+                            "enum": [
+                                "Irrigated: Annual Crops in Rotation",
+                                "Irrigated: Annual Crops with Hay/Pasture in Rotation",
+                                "Irrigated: Continuous Hay",
+                                "Irrigated: Orchard or Vineyard",
+                                "Non-Irrigated: Annual Crops in Rotation",
+                                "Non-Irrigated: Continuous Hay",
+                                "Non-Irrigated: Fallow-Grain",
+                                "Non-Irrigated: Livestock Grazing",
+                                "Non-Irrigated: Orchard or Vineyard"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PreCRPManagement",
+                    "type": "array"
+                },
+                "PreCRPTillage": {
+                    "items": [
+                        {
+                            "enum": [
+                                "Intensive Tillage",
+                                "No Till",
+                                "Reduced Tillage"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PreCRPTillage",
+                    "type": "array"
+                },
+                "Year1980-2000": {
+                    "title": "Year1980-2000",
+                    "type": "string"
+                },
+                "Year1980-2000_Tillage": {
+                    "title": "Year1980-2000_Tillage",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@Name",
+                "CRP",
+                "CRPEndYear",
+                "CRPStartYear",
+                "CRPType",
+                "CropScenario",
+                "GEOM",
+                "PostCRPManagement",
+                "PostCRPTillage",
+                "Pre-1980",
+                "PreCRPManagement",
+                "PreCRPTillage",
+                "Year1980-2000",
+                "Year1980-2000_Tillage"
+            ],
+            "title": "Cropland",
+            "type": "object"
+        },
+        "GEOM": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "#text": {
+                    "title": "#text",
+                    "type": "string"
+                },
+                "@AREA": {
+                    "title": "@AREA",
+                    "type": "string"
+                },
+                "@SRID": {
+                    "title": "@SRID",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "#text",
+                "@AREA",
+                "@SRID"
+            ],
+            "title": "GEOM",
+            "type": "object"
+        },
+        "GrazingEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "GrazingEndDate": {
+                    "title": "GrazingEndDate",
+                    "type": "string"
+                },
+                "GrazingStartDate": {
+                    "title": "GrazingStartDate",
+                    "type": "string"
+                },
+                "RestPeriod": {
+                    "title": "RestPeriod",
+                    "type": "string"
+                },
+                "UtilizationPct": {
+                    "title": "UtilizationPct",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "GrazingEndDate",
+                "GrazingStartDate",
+                "RestPeriod",
+                "UtilizationPct"
+            ],
+            "title": "GrazingEvent",
+            "type": "object"
+        },
+        "GrazingList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "GrazingEvent": {
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "title": "GrazingEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "GrazingEvent"
+            ],
+            "title": "GrazingList",
+            "type": "object"
+        },
+        "HarvestEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "Grain": {
+                    "title": "Grain",
+                    "type": "string"
+                },
+                "HarvestDate": {
+                    "title": "HarvestDate",
+                    "type": "string"
+                },
+                "StrawStoverHayRemoval": {
+                    "title": "StrawStoverHayRemoval",
+                    "type": "string"
+                },
+                "yield": {
+                    "title": "yield",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Grain",
+                "HarvestDate",
+                "StrawStoverHayRemoval",
+                "yield"
+            ],
+            "title": "HarvestEvent",
+            "type": "object"
+        },
+        "HarvestList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "HarvestEvent": {
+                    "items": {
+                        "$ref": "#/definitions/HarvestEvent"
+                    },
+                    "title": "HarvestEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "HarvestEvent"
+            ],
+            "title": "HarvestList",
+            "type": "object"
+        },
+        "InputData": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "@cometEmailId": {
+                    "title": "@cometEmailId",
+                    "type": "string"
+                },
+                "Cropland": {
+                    "items": {
+                        "$ref": "#/definitions/Cropland"
+                    },
+                    "title": "Cropland",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@cometEmailId",
+                "Cropland"
+            ],
+            "title": "InputData",
+            "type": "object"
+        },
+        "IrrigationEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "IrrigationDate": {
+                    "title": "IrrigationDate",
+                    "type": "string"
+                },
+                "IrrigationInches": {
+                    "title": "IrrigationInches",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "IrrigationDate",
+                "IrrigationInches"
+            ],
+            "title": "IrrigationEvent",
+            "type": "object"
+        },
+        "IrrigationList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "IrrigationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "IrrigationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "IrrigationEvent"
+            ],
+            "title": "IrrigationList",
+            "type": "object"
+        },
+        "LimingEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "LimingDate": {
+                    "title": "LimingDate",
+                    "type": "string"
+                },
+                "LimingMethod": {
+                    "title": "LimingMethod",
+                    "type": "string"
+                },
+                "LimingRate": {
+                    "title": "LimingRate",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "LimingDate",
+                "LimingMethod",
+                "LimingRate"
+            ],
+            "title": "LimingEvent",
+            "type": "object"
+        },
+        "NApplicationEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "EEP": {
+                    "title": "EEP",
+                    "type": "string"
+                },
+                "NApplicationAmount": {
+                    "title": "NApplicationAmount",
+                    "type": "string"
+                },
+                "NApplicationDate": {
+                    "title": "NApplicationDate",
+                    "type": "string"
+                },
+                "NApplicationMethod": {
+                    "title": "NApplicationMethod",
+                    "type": "string"
+                },
+                "NApplicationType": {
+                    "title": "NApplicationType",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "EEP",
+                "NApplicationAmount",
+                "NApplicationDate",
+                "NApplicationMethod",
+                "NApplicationType"
+            ],
+            "title": "NApplicationEvent",
+            "type": "object"
+        },
+        "NApplicationList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "NApplicationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/NApplicationEvent"
+                    },
+                    "title": "NApplicationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "NApplicationEvent"
+            ],
+            "title": "NApplicationList",
+            "type": "object"
+        },
+        "OMADApplicationEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "OMADAmount": {
+                    "title": "OMADAmount",
+                    "type": "string"
+                },
+                "OMADApplicationDate": {
+                    "title": "OMADApplicationDate",
+                    "type": "string"
+                },
+                "OMADCNRatio": {
+                    "title": "OMADCNRatio",
+                    "type": "string"
+                },
+                "OMADPercentN": {
+                    "title": "OMADPercentN",
+                    "type": "string"
+                },
+                "OMADType": {
+                    "title": "OMADType",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "OMADAmount",
+                "OMADApplicationDate",
+                "OMADCNRatio",
+                "OMADPercentN",
+                "OMADType"
+            ],
+            "title": "OMADApplicationEvent",
+            "type": "object"
+        },
+        "OMADApplicationList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "OMADApplicationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/OMADApplicationEvent"
+                    },
+                    "title": "OMADApplicationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "OMADApplicationEvent"
+            ],
+            "title": "OMADApplicationList",
+            "type": "object"
+        },
+        "TillageEvent": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "TillageDate": {
+                    "title": "TillageDate",
+                    "type": "string"
+                },
+                "TillageType": {
+                    "title": "TillageType",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TillageDate",
+                "TillageType"
+            ],
+            "title": "TillageEvent",
+            "type": "object"
+        },
+        "TillageList": {
+            "additionalProperties": false,
+            "defaultProperties": [
+            ],
+            "properties": {
+                "TillageEvent": {
+                    "items": {
+                        "$ref": "#/definitions/TillageEvent"
+                    },
+                    "title": "TillageEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "TillageEvent"
+            ],
+            "title": "TillageList",
+            "type": "object"
+        }
+    }
+}
+

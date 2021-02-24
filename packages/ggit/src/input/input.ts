@@ -12,14 +12,45 @@ export interface Cropland {
   'Year1980-2000': string;
   // eslint-disable-next-line @typescript-eslint/naming-convention
   'Year1980-2000_Tillage': string;
-  CRPStartYear: any[];
-  CRPEndYear: any[];
-  PreCRPManagement: any[];
-  PreCRPTillage: any[];
-  PostCRPManagement: any[];
-  PostCRPTillage: any[];
+  CRPStartYear: CRPStartYear;
+  CRPEndYear: CRPEndYear;
+  PreCRPManagement: PreCRPManagement;
+  PreCRPTillage: PreCRPTillage;
+  PostCRPManagement: PostCRPManagement;
+  PostCRPTillage: PostCRPTillage;
   CropScenario: CropScenario[];
 }
+
+// todo de-duplicate in app
+export type CrpManagementOption =
+  | 'Irrigated: Annual Crops in Rotation'
+  | 'Irrigated: Annual Crops with Hay/Pasture in Rotation'
+  | 'Irrigated: Continuous Hay'
+  | 'Irrigated: Orchard or Vineyard'
+  | 'Non-Irrigated: Annual Crops in Rotation'
+  | 'Non-Irrigated: Continuous Hay'
+  | 'Non-Irrigated: Livestock Grazing'
+  | 'Non-Irrigated: Fallow-Grain'
+  | 'Non-Irrigated: Orchard or Vineyard';
+
+// todo de-duplicate in app
+// todo all lower case
+export type CrpTillageOption =
+  | 'Intensive Tillage'
+  | 'Reduced Tillage'
+  | 'No Till';
+
+export type CRPStartYear = [string?]; // todo number?
+
+export type CRPEndYear = [string?]; // todo number?
+
+export type PreCRPManagement = [CrpManagementOption?];
+
+export type PreCRPTillage = [CrpTillageOption?];
+
+export type PostCRPManagement = [CrpManagementOption?];
+
+export type PostCRPTillage = [CrpTillageOption?];
 
 export interface CropScenario {
   '@Name': string;
