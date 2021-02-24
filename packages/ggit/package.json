@@ -27,7 +27,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prepare": "yarn run build",
     "watch": "tsc -w -p .",
-    "make:schema": "`yarn bin`/typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --topRef=true --noExtraProps=true --defaultProps=true --validationKeywords=\"errorMessage\"",
+    "make:schema": "`yarn bin`/typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --refs=false --noExtraProps=true --defaultProps=true --validationKeywords=\"errorMessage\"",
     "build": "yarn run make:schema && tsc"
   },
   "bugs": {
