@@ -37,21 +37,32 @@ export interface OutputFile<M> {
   Day: Daycent<M>;
 }
 
-export interface OutputErrorFile {
+export type ErrorResponse = InputValidationError | AllErrors;
+
+export interface InputValidationError {
   InputErrors: InputErrors;
 }
 
-interface InputErrors {
-  InputValidationErrors: InputValidationErrors;
+export interface AllErrors {
+  AllErrors: {
+    Errors: Error;
+  };
 }
 
-interface InputValidationErrors {
+export interface Errors {
+  AllErrors: InputErrors;
+}
+interface InputErrors {
+  InputValidationErrors: Error;
+}
+
+interface Error {
   ModelRun: ModelRunErrors;
 }
 
 interface ModelRunErrors {
   '@name': string;
-  Error: Error[];
+  Error: Error | Error[];
 }
 
 interface Error {
