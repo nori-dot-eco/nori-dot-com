@@ -580,7 +580,8 @@ export type TillageType =
   | 'Growing Season Cultivation'
   | 'Mow'
   | 'Crimp'
-  | 'Broad-spectrum herbicide';
+  | 'Broad-spectrum herbicide'
+  | 'Winter kill';
 
 /**
  * List of harvest events.

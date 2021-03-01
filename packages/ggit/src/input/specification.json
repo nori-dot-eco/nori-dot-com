@@ -726,7 +726,8 @@
                                                                                             "No Tillage",
                                                                                             "Reduced Tillage",
                                                                                             "Ridge Tillage",
-                                                                                            "Strip Tillage"
+                                                                                            "Strip Tillage",
+                                                                                            "Winter kill"
                                                                                         ],
                                                                                         "title": "TillageType",
                                                                                         "type": "string"
