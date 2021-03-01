@@ -55,7 +55,7 @@ export class DaycentV1 implements ApiEndpoint {
     jwt,
   }: {
     file: Buffer;
-    email: Email;
+    email?: Email;
     callbackUrl: CallbackUri;
     fileName: string;
     jwt: TokenApiResponse;
@@ -63,7 +63,7 @@ export class DaycentV1 implements ApiEndpoint {
     const form = new FormData();
     form.append('', file, fileName);
     form.append('Id', jwt.id);
-    form.append('email', email);
+    form.append('email', email || '');
     form.append('callbackUrl', callbackUrl);
     return this.#apiFetcher.fetch({
       body: form,
