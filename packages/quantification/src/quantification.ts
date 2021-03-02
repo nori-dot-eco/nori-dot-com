@@ -1,11 +1,7 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
+import type { Output } from '@nori-dot-com/ggit';
 
-import {
-  convertM2ToAcres,
-  generateJsonData,
-  parseYearlyMapUnitData,
-} from './index';
-import type { ModelRun, ParsedMapUnit, Scenario } from './index';
+import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
 export const CURRENT_YEAR = new Date().getFullYear();
 export const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
@@ -16,14 +12,6 @@ export const EARLIEST_GRANDFATHERABLE_YEAR = subtract(
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 export const METHODOLOGY_VERSION = '1.0.0';
 
-interface NegativeAndPositiveAnnualTotals {
-  positiveAnnualTotals: {
-    [year: string]: { amount: number; vintageCount: number };
-  };
-  negativeAnnualTotals: {
-    [year: string]: { amount: number; vintageCount: number };
-  };
-}
 export interface AnnualTotals {
   [year: string]: number;
 }
@@ -31,17 +19,6 @@ export interface AnnualTotals {
 export interface UnadjustedGrandfatheredTotals {
   [year: string]: {
     amount: number;
-    method: 'projection' | 'somsc';
-    averagePerAcre: number;
-    totalAcres: number;
-  };
-}
-
-export interface AdjustedGrandfatheredTotals {
-  [year: string]: {
-    unadjusted: number;
-    adjustment: number;
-    adjusted: number;
     method: 'projection' | 'somsc';
     averagePerAcre: number;
     totalAcres: number;
@@ -91,11 +68,6 @@ export interface UnadjustedQuantificationSummary {
   modeledYears: number[];
   grandfatheredTonnesPerYearPerAcreAverage: number;
   methodologyVersion: string;
-}
-
-export interface AdjustedQuantificationSummary
-  extends UnadjustedQuantificationSummary {
-  adjustedGrandfatheredTonnesPerYear: AdjustedGrandfatheredTotals;
 }
 
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
@@ -186,20 +158,20 @@ const getCometScenarioSummaries = ({
 }: {
   futureScenarioName: string;
   baselineScenarioName: string;
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
 }): { scenarioSummaries: ScenarioSummaries } => {
   const scenarioSummaries = modelRuns.reduce(
     (aggregatedScenariosForModels, { Scenario: [...scenarios] }) => {
       scenarios.reduce(
         (
           aggregatedScenariosForModel,
-          { $: { name: scenarioName }, Carbon: carbon }
+          { '@name': scenarioName, Carbon: carbon }
         ) => {
           if (scenarioName === futureScenarioName) {
-            aggregatedScenariosForModel.future.push(carbon[0].SoilCarbon);
+            aggregatedScenariosForModel.future.push(carbon.SoilCarbon);
           }
           if (scenarioName === baselineScenarioName) {
-            aggregatedScenariosForModel.baseline.push(carbon[0].SoilCarbon);
+            aggregatedScenariosForModel.baseline.push(carbon.SoilCarbon);
           }
           return aggregatedScenariosForModel;
         },
@@ -215,14 +187,14 @@ const getCometScenarioSummaries = ({
 const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   mapUnits,
 }: {
-  mapUnits: ParsedMapUnit[];
+  mapUnits: Output.ParsedMapUnit[];
 }): {
   differencesForMapUnits: AnnualSomscDifferencesForMapUnit;
 } => {
   const differencesForMapUnits = mapUnits.reduce(
     (
       difference: AnnualSomscDifferencesForMapUnit,
-      { $: { id: mapUnitId, area }, somsc }
+      { '@id': mapUnitId, '@area': area, somsc }
     ) => {
       difference[mapUnitId] = {
         area: Number(area),
@@ -246,17 +218,17 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
 const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   scenarios,
 }: {
-  scenarios: Scenario<ParsedMapUnit>[];
+  scenarios: Output.Scenario<Output.ParsedMapUnit>[];
 }): {
   differencesForPolygon: SomscAnnualDifferencesForPolygon;
 } => {
   const scenarioResults = scenarios.filter((s) => {
-    return s.$.name.includes('FILE RESULTS');
+    return s['@name'].includes('FILE RESULTS');
   });
   const differencesForPolygon = scenarioResults.reduce(
     (
       acc: SomscAnnualDifferencesForPolygon,
-      { $: { name: scenarioName }, MapUnit: mapUnits }
+      { '@name': scenarioName, MapUnit: mapUnits }
     ) => {
       const {
         differencesForMapUnits,
@@ -272,7 +244,7 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
 const calculateSomscAnnualDifferencesForScenarios = ({
   modelRuns,
 }: {
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
 }): {
   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
 } => {
@@ -432,142 +404,6 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
   return { unadjustedGrandfatheredTonnesPerYear };
 };
 
-export const getAdjustedGrandfatheredTonnesPerYear = ({
-  unadjustedGrandfatheredTonnesPerYearForProject,
-}: {
-  unadjustedGrandfatheredTonnesPerYearForProject: UnadjustedQuantificationSummary['unadjustedGrandfatheredTonnesPerYear'][];
-}): {
-  adjustedGrandfatheredTonnesPerYear: AdjustedGrandfatheredTotals[];
-} => {
-  const projectVintageTotals = unadjustedGrandfatheredTonnesPerYearForProject.reduce(
-    (total: NegativeAndPositiveAnnualTotals, fieldVintageTotals) => {
-      return Object.entries(fieldVintageTotals).reduce(
-        (fieldTotal, [year, vintage]) => {
-          const {
-            amount: positiveAmount,
-            vintageCount: positiveCount,
-          } = fieldTotal.positiveAnnualTotals?.[year] ?? {
-            amount: 0,
-            vintageCount: 0,
-          };
-          const {
-            amount: negativeAmount,
-            vintageCount: negativeCount,
-          } = fieldTotal.negativeAnnualTotals?.[year] ?? {
-            amount: 0,
-            vintageCount: 0,
-          };
-          if (vintage.amount > 0) {
-            fieldTotal.positiveAnnualTotals[year] = {
-              amount: add(vintage.amount, positiveAmount),
-              vintageCount: add(positiveCount, 1),
-            };
-            fieldTotal.negativeAnnualTotals[year] = {
-              amount: negativeAmount,
-              vintageCount: negativeCount,
-            };
-          } else if (vintage.amount < 0) {
-            fieldTotal.negativeAnnualTotals[year] = {
-              amount: add(vintage.amount, negativeAmount),
-              vintageCount: add(negativeCount, 1),
-            };
-          }
-          return fieldTotal;
-        },
-        total
-      );
-    },
-    { negativeAnnualTotals: {}, positiveAnnualTotals: {} }
-  );
-
-  const negativeTonneDistribution = Object.entries(
-    projectVintageTotals.negativeAnnualTotals
-  ).reduce(
-    (
-      negativeAnnualTotals: AnnualTotals,
-      [year, { amount: negativeVintageAmount }]
-    ) => {
-      const positiveVintageCount =
-        projectVintageTotals.positiveAnnualTotals[year]?.vintageCount ?? 0;
-      const positiveVintageAmount =
-        projectVintageTotals.positiveAnnualTotals[year]?.amount ?? 0;
-      let rollingNegativeTotal = add(
-        negativeVintageAmount,
-        negativeAnnualTotals[year] ?? 0
-      );
-      const maximumAmountForYear = Object.values(
-        unadjustedGrandfatheredTonnesPerYearForProject
-      )
-        .sort((a, b) => subtract(a[year]?.amount ?? 0, b[year]?.amount ?? 0))
-        .slice(-1)[0][year].amount;
-      negativeAnnualTotals[year] = divide(
-        Math.max(
-          multiply(multiply(maximumAmountForYear, positiveVintageCount), -1),
-          rollingNegativeTotal
-        ),
-        positiveVintageCount
-      );
-      const cumulativeNegativeTotalToApply = multiply(
-        negativeAnnualTotals[year],
-        positiveVintageCount ?? 0
-      );
-      const additionalNegative = subtract(
-        multiply(maximumAmountForYear, positiveVintageCount),
-        positiveVintageAmount
-      );
-      rollingNegativeTotal = subtract(
-        rollingNegativeTotal,
-        add(cumulativeNegativeTotalToApply, additionalNegative) < 0
-          ? add(cumulativeNegativeTotalToApply, additionalNegative)
-          : cumulativeNegativeTotalToApply
-      );
-      const nextYear = add(Number(year), 1);
-      if (rollingNegativeTotal < 0) {
-        negativeAnnualTotals[nextYear.toString()] = add(
-          rollingNegativeTotal,
-          negativeAnnualTotals[nextYear.toString()] ?? 0
-        );
-      }
-      return negativeAnnualTotals;
-    },
-    {}
-  );
-
-  const adjustedGrandfatheredTonnesPerYear = unadjustedGrandfatheredTonnesPerYearForProject.reduce(
-    (
-      adjustedProject: AdjustedGrandfatheredTotals[],
-      unadjustedFieldAnnuals
-    ) => {
-      const adjustedFieldTotals = Object.entries(unadjustedFieldAnnuals).reduce(
-        (adjustedField: AdjustedGrandfatheredTotals, [year, { amount }]) => {
-          const adjustment = Math.max(
-            multiply(amount, -1) || 0,
-            negativeTonneDistribution[year] || 0
-          );
-          const { method, totalAcres } = unadjustedFieldAnnuals[year];
-          const adjusted = amount > 0 ? add(amount, adjustment) : 0;
-          adjustedField[year] = {
-            method,
-            totalAcres,
-            averagePerAcre: divide(adjusted, totalAcres) || 0,
-            unadjusted: amount,
-            adjustment,
-            adjusted,
-          };
-          return adjustedField;
-        },
-        {}
-      );
-      adjustedProject.push(adjustedFieldTotals);
-      return adjustedProject;
-    },
-    []
-  );
-  return {
-    adjustedGrandfatheredTonnesPerYear,
-  };
-};
-
 const getGrandfatheredTonneQuantities = ({
   modeledYears,
   totalAcres,
@@ -647,7 +483,7 @@ const createQuantificationSummary = ({
   futureScenarioName,
   baselineScenarioName,
 }: {
-  modelRuns: ModelRun<ParsedMapUnit>[];
+  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
 }): UnadjustedQuantificationSummary => {
@@ -742,23 +578,24 @@ const createQuantificationSummary = ({
 };
 
 export const getQuantificationSummary = async ({
-  xmlData,
+  data,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
 }: {
-  xmlData: string;
+  data: Output.OutputFile<Output.MapUnit>;
   futureScenarioName?: string;
   baselineScenarioName?: string;
 }): Promise<UnadjustedQuantificationSummary> => {
-  const { rawJsonOutput } = await generateJsonData({ xmlData });
-  const { parsedJsonOutput } = await parseYearlyMapUnitData({ rawJsonOutput });
+  const { parsedJsonOutput } = await parseYearlyMapUnitData({
+    rawJsonOutput: data,
+  });
   const {
     Day: {
-      Cropland: [{ ModelRun: modelRuns }],
+      Cropland: { ModelRun: modelRuns },
     },
   } = parsedJsonOutput;
   return createQuantificationSummary({
-    modelRuns,
+    modelRuns: Array.isArray(modelRuns) ? modelRuns : [modelRuns],
     futureScenarioName,
     baselineScenarioName,
   });
