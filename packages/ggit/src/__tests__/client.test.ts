@@ -26,7 +26,7 @@ describe('Soil Metrics GGIT API', () => {
       it('will throw an error when configuring if the credentials are invalid', async () => {
         mockTokenEndpoint({ throws: true });
         await expect(new Client().configure(CREDENTIALS)).rejects.toStrictEqual(
-          {}
+          new Error('{"status":401,"ok":false}')
         );
       });
     });
@@ -38,7 +38,9 @@ describe('Soil Metrics GGIT API', () => {
       });
       it('will throw an error when configuring if the credentials are invalid', async () => {
         mockTokenEndpoint({ throws: true });
-        await expect(createClient(CREDENTIALS)).rejects.toStrictEqual({});
+        await expect(createClient(CREDENTIALS)).rejects.toStrictEqual(
+          new Error('{"status":401,"ok":false}')
+        );
       });
     });
   });

@@ -55,7 +55,7 @@ export class Fetch<ApiType extends ApiCall> {
       const response = await fetch(this.uri, options);
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(JSON.stringify(data));
+        throw new Error(JSON.stringify(response));
       }
       return data;
     } catch (e) {
