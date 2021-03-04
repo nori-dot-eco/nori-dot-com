@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { Client } from '../index';
+import { Client, Upload, DaycentV1 } from '../index';
 
 import { CREDENTIALS, mockDaycentV1Endpoint, mockTokenEndpoint } from './utils';
 
@@ -12,7 +12,26 @@ describe('Upload', () => {
     jest.resetAllMocks();
   });
 
+  describe('constructor', () => {
+    it('will create a soil metrics GGIT API client', () => {
+      expect(new Upload()).toBeInstanceOf<ClassType<Upload>>(Upload);
+    });
+  });
+
   describe('DaycentV1', () => {
+    describe('constructor', () => {
+      it('will create a soil metrics GGIT API client', () => {
+        expect(new Upload()).toBeInstanceOf<ClassType<Upload>>(Upload);
+      });
+    });
+    describe('daycentV1', () => {
+      it('should return the DaycentV1 instance', () => {
+        expect(new Upload().daycentV1).toBeInstanceOf<ClassType<DaycentV1>>(
+          DaycentV1
+        );
+      });
+    });
+
     describe('fetch', () => {
       it('should send data to upload to the API', async () => {
         mockTokenEndpoint();

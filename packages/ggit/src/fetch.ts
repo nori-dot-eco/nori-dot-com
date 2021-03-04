@@ -1,4 +1,3 @@
-import FormData = require('form-data');
 import fetch from 'node-fetch';
 import type { HeadersInit, RequestInit } from 'node-fetch';
 
@@ -12,14 +11,14 @@ import type {
   TokenApiResponse,
 } from './index';
 
-export interface Options extends RequestInit {
+export interface Options<ApiType extends ApiCall> extends RequestInit {
   method: HttpMethod;
   redirect: 'follow';
   headers: HeadersInit & {
     authorization?: `Bearer ${TokenApiResponse['jwtToken']}`;
     'Content-Type'?: 'application/json';
   };
-  body: string | FormData;
+  body: ApiType['request']['body'];
 }
 
 export class Fetch<ApiType extends ApiCall> {
@@ -29,7 +28,7 @@ export class Fetch<ApiType extends ApiCall> {
 
   #endpoint: Endpoint;
 
-  #httpMethod: Options['method'] = 'POST';
+  #httpMethod: Options<ApiType>['method'] = 'POST';
 
   constructor({ method, endpoint }: { method: Method; endpoint: Endpoint }) {
     this.#method = method;
@@ -53,10 +52,10 @@ export class Fetch<ApiType extends ApiCall> {
         headers,
       });
       const response = await fetch(this.uri, options);
-      const data = await response.json();
       if (!response.ok) {
         throw new Error(JSON.stringify(response));
       }
+      const data = await response.json();
       return data;
     } catch (e) {
       // eslint-disable-next-line no-console

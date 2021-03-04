@@ -13,7 +13,7 @@ export interface TokenApiCall {
   request: TokenApiRequest;
 }
 
-export interface TokenApiRequest extends Options {
+export interface TokenApiRequest extends Options<TokenApiCall> {
   body: TokenApiRequestBody;
 }
 
@@ -42,7 +42,9 @@ export class Token implements ApiEndpoint {
 
   #apiFetcher: Fetch<TokenApiCall>;
 
-  #headers: Options['headers'] = { 'Content-Type': 'application/json' };
+  #headers: Options<TokenApiCall>['headers'] = {
+    'Content-Type': 'application/json',
+  };
 
   constructor({ method }: { method: Auth['method'] }) {
     this.#apiFetcher = new Fetch({

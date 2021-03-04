@@ -1,4 +1,5 @@
 import type {
+  TokenApiCall,
   Options,
   TokenApiResponse,
   UnparsedTokenApiRequestBody,
@@ -33,7 +34,7 @@ export class Client {
     jwtToken,
   }: {
     jwtToken: TokenApiResponse['jwtToken'];
-  }): Options['headers'] {
+  }): Options<TokenApiCall>['headers'] {
     return { authorization: `Bearer ${jwtToken}` as const };
   }
 

@@ -31,7 +31,7 @@ export interface DaycentV1ApiCall {
   request: DaycentV1ApiRequest;
 }
 
-export interface DaycentV1ApiRequest extends Options {
+export interface DaycentV1ApiRequest extends Options<DaycentV1ApiCall> {
   body: DaycentV1ApiRequestBody;
 }
 

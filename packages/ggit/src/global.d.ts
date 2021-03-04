@@ -7,3 +7,7 @@ declare type Resolved<T extends Promise<any>> = T extends Promise<infer U>
 declare type ResolvedReturnType<T extends AnyFunction> = Resolved<
   ReturnType<T>
 >;
+
+interface ClassType<T> {
+  new (...args: any[]): T;
+}
