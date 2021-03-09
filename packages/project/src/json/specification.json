@@ -476,58 +476,6 @@
             "description": "Crop management details grouped by a planting year.",
             "properties": {
                 "crops": {
-                    "additionalItems": {
-                        "anyOf": [
-                            {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/PerennialCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/CoverCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/AnnualCrop"
-                                    }
-                                ]
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/PerennialCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/CoverCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/AnnualCrop"
-                                    }
-                                ]
-                            },
-                            {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/PerennialCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/CoverCrop"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/AnnualCrop"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
                     "description": "A list of crops for a given planting year.\n\nDue to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)",
                     "items": [
                         {
@@ -770,22 +718,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -800,32 +732,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -846,6 +757,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -930,22 +842,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -960,32 +856,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1006,6 +881,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1085,27 +961,11 @@
             "additionalProperties": false,
             "defaultProperties": [
             ],
-            "description": "A collection of feature objects.\n  https://tools.ietf.org/html/rfc7946#section-3.3",
+            "description": "A collection of feature objects.\n https://tools.ietf.org/html/rfc7946#section-3.3",
             "properties": {
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1120,32 +980,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1166,6 +1005,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1205,22 +1045,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1235,32 +1059,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1281,6 +1084,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1312,7 +1116,8 @@
                             {
                                 "$ref": "#/definitions/GeoJSON.GeometryCollection"
                             }
-                        ]
+                        ],
+                        "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
                     },
                     "title": "geometries",
                     "type": "array"
@@ -1342,22 +1147,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1372,32 +1161,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1418,6 +1186,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1427,6 +1196,7 @@
                 },
                 "coordinates": {
                     "items": {
+                        "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
                         "items": {
                             "type": "number"
                         },
@@ -1460,22 +1230,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1490,32 +1244,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1536,6 +1269,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1546,6 +1280,7 @@
                 "coordinates": {
                     "items": {
                         "items": {
+                            "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
                             "items": {
                                 "type": "number"
                             },
@@ -1576,27 +1311,11 @@
             "additionalProperties": false,
             "defaultProperties": [
             ],
-            "description": "MultiPoint geometry object.\n  https://tools.ietf.org/html/rfc7946#section-3.1.3",
+            "description": "MultiPoint geometry object.\n https://tools.ietf.org/html/rfc7946#section-3.1.3",
             "properties": {
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1611,32 +1330,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1657,6 +1355,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1666,6 +1365,7 @@
                 },
                 "coordinates": {
                     "items": {
+                        "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
                         "items": {
                             "type": "number"
                         },
@@ -1699,22 +1399,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1729,32 +1413,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1775,6 +1438,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1786,6 +1450,7 @@
                     "items": {
                         "items": {
                             "items": {
+                                "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
                                 "items": {
                                     "type": "number"
                                 },
@@ -1823,22 +1488,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1853,32 +1502,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1899,6 +1527,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -1939,22 +1568,6 @@
                 "bbox": {
                     "anyOf": [
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -1969,32 +1582,11 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 4,
                             "minItems": 4,
                             "type": "array"
                         },
                         {
-                            "additionalItems": {
-                                "anyOf": [
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    },
-                                    {
-                                        "type": "number"
-                                    }
-                                ]
-                            },
                             "items": [
                                 {
                                     "type": "number"
@@ -2015,6 +1607,7 @@
                                     "type": "number"
                                 }
                             ],
+                            "maxItems": 6,
                             "minItems": 6,
                             "type": "array"
                         }
@@ -2025,6 +1618,7 @@
                 "coordinates": {
                     "items": {
                         "items": {
+                            "description": "A Position is an array of coordinates.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.1\nArray should contain between two and three elements.\nThe previous GeoJSON specification allowed more elements (e.g., which could be used to represent M values),\nbut the current specification only allows X, Y, and (optionally) Z to be defined.",
                             "items": {
                                 "type": "number"
                             },

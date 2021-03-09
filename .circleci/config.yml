@@ -2,7 +2,7 @@ version: 2
 defaults: &defaults
   working_directory: ~/repo
   environment:
-    - NODE_ENV: test
+    NODE_ENV: test
   docker:
     - image: circleci/node:14.15.1
 
@@ -32,6 +32,7 @@ jobs:
           paths:
             - packages/project/node_modules
             - packages/quantification/node_modules
+            - packages/ggit/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
             - node_modules

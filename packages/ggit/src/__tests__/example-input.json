@@ -1,0 +1,1429 @@
+{
+  "@cometEmailId": "jaycen@nori.com",
+  "Cropland": {
+    "@Name": "5707032208343040_0",
+    "GEOM": {
+      "@SRID": "4326",
+      "@AREA": "31",
+      "#text": "POLYGON((-76.1273789405823 39.3109671619225, -76.1282420654567 39.310029596621, -76.1285600767193 39.3096077392493, -76.1279274330046 39.3093460847422, -76.1271173448519 39.308933807736, -76.1261380120643 39.3085168989679, -76.1256074707281 39.3082358299973, -76.1224588649075 39.3068128738662, -76.1221825674645 39.3068894777954, -76.1213589785233 39.3083978845732, -76.1212189008603 39.3088857729244, -76.1213035256601 39.3090856614665, -76.1217249639371 39.3093273076046, -76.1221890072178 39.3093171530225, -76.1227423263578 39.3088976430863, -76.1231365210393 39.3090061370353, -76.1236355932047 39.3093063036276, -76.1273789405823 39.3109671619225))"
+    },
+    "Pre-1980": "Upland Non-Irrigated (Pre 1980s)",
+    "CRP": "No",
+    "CRPType": "None",
+    "Year1980-2000": "Non-Irrigated: Annual Crops in Rotation",
+    "Year1980-2000_Tillage": "Intensive tillage",
+    "CRPStartYear": [],
+    "CRPEndYear": [],
+    "PreCRPManagement": [],
+    "PreCRPTillage": [],
+    "PostCRPManagement": [],
+    "PostCRPTillage": [],
+    "CropScenario": [
+      {
+        "@Name": "Current",
+        "CropYear": [
+          {
+            "@Year": "2000",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "winter wheat",
+                "PlantingDate": "01/02/2000",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "07/01/2000",
+                    "Grain": "Yes",
+                    "yield": "60.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "01/01/2000",
+                    "TillageType": "Intensive Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "03/02/2000",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "90.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "soybean",
+                "PlantingDate": "07/03/2000",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "11/22/2000",
+                    "Grain": "Yes",
+                    "yield": "25.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "07/03/2000",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2001",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "corn",
+              "PlantingDate": "05/03/2001",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "09/26/2001",
+                  "Grain": "Yes",
+                  "yield": "147.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "05/02/2001",
+                  "TillageType": "Intensive Tillage"
+                }
+              },
+              "NApplicationList": [
+                {
+                  "NApplicationDate": "05/02/2001",
+                  "NApplicationType": "Mixed Blends",
+                  "NApplicationAmount": "100.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                },
+                {
+                  "NApplicationDate": "06/10/2001",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                }
+              ],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2002",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "soybean",
+              "PlantingDate": "05/22/2002",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "10/14/2002",
+                  "Grain": "Yes",
+                  "yield": "30.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "05/21/2002",
+                  "TillageType": "Reduced Tillage"
+                }
+              },
+              "NApplicationList": [],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2003",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "corn",
+              "PlantingDate": "04/28/2003",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "09/26/2003",
+                  "Grain": "Yes",
+                  "yield": "156.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "04/27/2003",
+                  "TillageType": "Intensive Tillage"
+                }
+              },
+              "NApplicationList": [
+                {
+                  "NApplicationDate": "04/28/2003",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                },
+                {
+                  "NApplicationDate": "06/02/2003",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                }
+              ],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2004",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "soybean",
+              "PlantingDate": "05/26/2004",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "11/02/2004",
+                  "Grain": "Yes",
+                  "yield": "60.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "05/25/2004",
+                  "TillageType": "Reduced Tillage"
+                }
+              },
+              "NApplicationList": [],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2005",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "corn",
+              "PlantingDate": "04/28/2005",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "09/26/2005",
+                  "Grain": "Yes",
+                  "yield": "156.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "04/27/2005",
+                  "TillageType": "Intensive Tillage"
+                }
+              },
+              "NApplicationList": [
+                {
+                  "NApplicationDate": "04/28/2005",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                },
+                {
+                  "NApplicationDate": "06/02/2005",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                }
+              ],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2006",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "corn",
+                "PlantingDate": "05/06/2006",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "09/17/2006",
+                    "Grain": "Yes",
+                    "yield": "147.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "05/05/2006",
+                    "TillageType": "Intensive Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "05/02/2006",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "100.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "09/20/2006",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "07/06/2007",
+                    "Grain": "Yes",
+                    "yield": "97.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "09/19/2006",
+                    "TillageType": "Intensive Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "03/06/2007",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "90.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2007",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "soybean",
+              "PlantingDate": "07/09/2007",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "11/03/2007",
+                  "Grain": "Yes",
+                  "yield": "15.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "07/09/2007",
+                  "TillageType": "No Tillage"
+                }
+              },
+              "NApplicationList": [],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2008",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "corn",
+                "PlantingDate": "05/06/2008",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/07/2008",
+                    "Grain": "Yes",
+                    "yield": "147.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "05/05/2008",
+                    "TillageType": "Intensive Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "05/02/2008",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "100.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "10/10/2008",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "06/27/2009",
+                    "Grain": "Yes",
+                    "yield": "68.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/09/2008",
+                    "TillageType": "Intensive Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "03/06/2009",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "90.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2009",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "soybean",
+              "PlantingDate": "06/30/2009",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "11/06/2009",
+                  "Grain": "Yes",
+                  "yield": "43.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "06/30/2009",
+                  "TillageType": "No Tillage"
+                }
+              },
+              "NApplicationList": [],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2010",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "corn",
+              "PlantingDate": "04/24/2010",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "09/22/2010",
+                  "Grain": "Yes",
+                  "yield": "132.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "04/24/2010",
+                  "TillageType": "No Tillage"
+                }
+              },
+              "NApplicationList": [
+                {
+                  "NApplicationDate": "04/24/2010",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                },
+                {
+                  "NApplicationDate": "06/02/2010",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "100.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                }
+              ],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": {
+                "LimingDate": "12/13/2010",
+                "LimingMethod": "Crushed limestone",
+                "LimingRate": "1.0"
+              },
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2011",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "05/12/2011",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/07/2011",
+                    "Grain": "Yes",
+                    "yield": "42.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "05/12/2011",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "04/11/2011",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "20.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "10/10/2011",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "06/13/2012",
+                    "Grain": "Yes",
+                    "yield": "92.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/10/2011",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "03/06/2012",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "90.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2012",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "soybean",
+              "PlantingDate": "06/16/2012",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "10/27/2012",
+                  "Grain": "Yes",
+                  "yield": "26.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "06/16/2012",
+                  "TillageType": "No Tillage"
+                }
+              },
+              "NApplicationList": [],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": [],
+              "GrazingList": []
+            }
+          }
+        ]
+      },
+      {
+        "@Name": "Future",
+        "CropYear": [
+          {
+            "@Year": "2013",
+            "Crop": {
+              "@CropNumber": "1",
+              "CropName": "corn",
+              "PlantingDate": "05/15/2013",
+              "ContinueFromPreviousYear": "N",
+              "HarvestList": {
+                "HarvestEvent": {
+                  "HarvestDate": "09/20/2013",
+                  "Grain": "Yes",
+                  "yield": "178.0",
+                  "StrawStoverHayRemoval": "0"
+                }
+              },
+              "TillageList": {
+                "TillageEvent": {
+                  "TillageDate": "05/15/2013",
+                  "TillageType": "No Tillage"
+                }
+              },
+              "NApplicationList": [
+                {
+                  "NApplicationDate": "05/02/2013",
+                  "NApplicationType": "Mixed Blends",
+                  "NApplicationAmount": "80.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                },
+                {
+                  "NApplicationDate": "06/16/2013",
+                  "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                  "NApplicationAmount": "100.0",
+                  "NApplicationMethod": "Surface Broadcast",
+                  "EEP": "None"
+                }
+              ],
+              "OMADApplicationList": [],
+              "IrrigationList": [],
+              "BurnEvent": {
+                "BurnTime": "No burning"
+              },
+              "LimingEvent": {
+                "LimingDate": "11/11/2013",
+                "LimingMethod": "Crushed limestone",
+                "LimingRate": "2.0"
+              },
+              "GrazingList": []
+            }
+          },
+          {
+            "@Year": "2014",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "05/16/2014",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "09/17/2014",
+                    "Grain": "Yes",
+                    "yield": "65.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "05/16/2014",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "05/02/2014",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "20.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "10/07/2014",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "06/30/2015",
+                    "Grain": "Yes",
+                    "yield": "91.9",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/07/2014",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "03/19/2015",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "51.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/02/2015",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "51.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2015",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "07/10/2015",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "11/12/2015",
+                    "Grain": "Yes",
+                    "yield": "56.6",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "07/10/2015",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "11/15/2015",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/18/2016",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "11/15/2015",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": {
+                  "LimingDate": "11/25/2015",
+                  "LimingMethod": "Crushed limestone",
+                  "LimingRate": "2.0"
+                },
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2016",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "corn",
+                "PlantingDate": "04/25/2016",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/15/2016",
+                    "Grain": "Yes",
+                    "yield": "202.9",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "04/25/2016",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "03/12/2016",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "25.6",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/25/2016",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "31.1",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/26/2016",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "36.8",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "06/09/2016",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "96.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "10/18/2016",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/11/2017",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/18/2016",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2017",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "04/30/2017",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/03/2017",
+                    "Grain": "Yes",
+                    "yield": "74.3",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "04/30/2017",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "03/13/2017",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "40.3",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/30/2017",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "0.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "10/05/2017",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "07/17/2018",
+                    "Grain": "Yes",
+                    "yield": "77.1",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/05/2017",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "03/06/2018",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "38.9",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/05/2018",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "49.3",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2018",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "07/20/2018",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "11/28/2018",
+                    "Grain": "Yes",
+                    "yield": "48.2",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "07/20/2018",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "08/02/2018",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "0.2",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": {
+                  "OMADApplicationEvent": {
+                    "OMADApplicationDate": "06/28/2018",
+                    "OMADType": "Chicken - Broiler (litter), Solid",
+                    "OMADAmount": "0.1",
+                    "OMADPercentN": "3.3",
+                    "OMADCNRatio": "8.4"
+                  }
+                },
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "12/01/2018",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/07/2019",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "12/01/2018",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2019",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "corn",
+                "PlantingDate": "04/15/2019",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/10/2019",
+                    "Grain": "Yes",
+                    "yield": "174.0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "04/15/2019",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "06/09/2019",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "170.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "10/11/2019",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/12/2020",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": [
+                  {
+                    "TillageDate": "10/11/2019",
+                    "TillageType": "No Tillage"
+                  },
+                  {
+                    "TillageDate": "04/12/2020",
+                    "TillageType": "Broad-spectrum herbicide"
+                  }
+                ],
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2020",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "04/14/2020",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/03/2020",
+                    "Grain": "Yes",
+                    "yield": "74.6",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "04/14/2020",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "03/13/2020",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "47.2",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "winter wheat",
+                "PlantingDate": "10/05/2020",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "06/24/2021",
+                    "Grain": "Yes",
+                    "yield": "86.6",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "10/05/2020",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "03/06/2021",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "44.1",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/01/2021",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "56.1",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2021",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "soybean",
+                "PlantingDate": "06/28/2021",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "11/05/2021",
+                    "Grain": "Yes",
+                    "yield": "54.7",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "06/28/2021",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": {
+                  "NApplicationEvent": {
+                    "NApplicationDate": "08/02/2021",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "0.2",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                },
+                "OMADApplicationList": {
+                  "OMADApplicationEvent": {
+                    "OMADApplicationDate": "06/28/2021",
+                    "OMADType": "Chicken - Broiler (litter), Solid",
+                    "OMADAmount": "1.5",
+                    "OMADPercentN": "3.3",
+                    "OMADCNRatio": "8.4"
+                  }
+                },
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "11/07/2021",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/07/2022",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "11/07/2021",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          },
+          {
+            "@Year": "2022",
+            "Crop": [
+              {
+                "@CropNumber": "1",
+                "CropName": "corn",
+                "PlantingDate": "04/15/2022",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "10/10/2022",
+                    "Grain": "Yes",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": {
+                  "TillageEvent": {
+                    "TillageDate": "04/15/2022",
+                    "TillageType": "No Tillage"
+                  }
+                },
+                "NApplicationList": [
+                  {
+                    "NApplicationDate": "04/09/2022",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "26.7",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "04/13/2022",
+                    "NApplicationType": "Mixed Blends",
+                    "NApplicationAmount": "31.0",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  },
+                  {
+                    "NApplicationDate": "06/04/2022",
+                    "NApplicationType": "Urea Ammonium Nitrate (30-00-00)",
+                    "NApplicationAmount": "163.1",
+                    "NApplicationMethod": "Surface Broadcast",
+                    "EEP": "None"
+                  }
+                ],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": {
+                  "BurnTime": "No burning"
+                },
+                "LimingEvent": [],
+                "GrazingList": []
+              },
+              {
+                "@CropNumber": "2",
+                "CropName": "annual rye - legume - radish",
+                "PlantingDate": "11/05/2022",
+                "ContinueFromPreviousYear": "N",
+                "HarvestList": {
+                  "HarvestEvent": {
+                    "HarvestDate": "04/12/2023",
+                    "Grain": "No",
+                    "yield": "0",
+                    "StrawStoverHayRemoval": "0"
+                  }
+                },
+                "TillageList": [
+                  {
+                    "TillageDate": "11/05/2022",
+                    "TillageType": "No Tillage"
+                  },
+                  {
+                    "TillageDate": "04/12/2023",
+                    "TillageType": "Broad-spectrum herbicide"
+                  }
+                ],
+                "NApplicationList": [],
+                "OMADApplicationList": [],
+                "IrrigationList": [],
+                "BurnEvent": [],
+                "LimingEvent": [],
+                "GrazingList": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
