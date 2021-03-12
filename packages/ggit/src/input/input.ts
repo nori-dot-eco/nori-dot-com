@@ -641,11 +641,11 @@ export type SRID = '4326';
 /**
  * Area of this geometry in acres.
  */
-export type AREA = string; // todo number, max 10k
+export type AREA = number; // todo number, max 10k
 
 /**
  * WKT string of geometry polygon.
  *
  * @TJS-type string
  */
-export type WKT = `Polygon((${any}))`; // todo regex
+export type WKT = `POLYGON((${any}))`; // todo regex

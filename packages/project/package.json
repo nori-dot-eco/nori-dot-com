@@ -36,6 +36,9 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "ajv-errors": "^1.0.1",
-    "typescript-json-schema": "^0.49.0"
+    "typescript-json-schema": "^0.49.0",
+    "wicket": "^1.3.6",
+    "@nori-dot-com/math": "*",
+    "@turf/helpers": "^6.3.0"
   }
 }

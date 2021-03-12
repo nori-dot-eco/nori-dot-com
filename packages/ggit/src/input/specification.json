@@ -814,7 +814,7 @@
                             "@AREA": {
                                 "description": "Area of this geometry in acres.",
                                 "title": "@AREA",
-                                "type": "string"
+                                "type": "number"
                             },
                             "@SRID": {
                                 "description": "Standard spatial reference identifier.",
