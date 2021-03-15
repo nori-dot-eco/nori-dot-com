@@ -78,7 +78,7 @@ describe('isSlurryOrganicMatterEvent', () => {
   it('will return true when the event is a slurry OMAD event', () => {
     expect(
       isSlurryOrganicMatterEvent({
-        OMADType: 'alfalfa meal',
+        OMADType: 'beef slurry',
         OMADApplicationDate: null,
         OMADCNRatio: null,
         OMADPercentN: null,
@@ -563,201 +563,909 @@ describe('buildHistoricLandManagement', () => {
 });
 
 describe('separateCurrentAndFutureScenarios', () => {
-  it('will test the function', () => {
-    expect(separateCurrentAndFutureScenarios(null)).toStrictEqual<
-      ReturnType<typeof separateCurrentAndFutureScenarios>
-    >(null);
+  it('will separate current and future crop scenarios', () => {
+    expect(
+      separateCurrentAndFutureScenarios({
+        cropScenarios: [
+          {
+            '@Name': 'current',
+            CropYear: [
+              {
+                '@Year': 2001,
+                Crop: null,
+              },
+            ],
+          },
+          {
+            '@Name': 'future',
+            CropYear: [
+              {
+                '@Year': 2020,
+                Crop: null,
+              },
+            ],
+          },
+        ],
+      })
+    ).toStrictEqual<ReturnType<typeof separateCurrentAndFutureScenarios>>({
+      currentCropScenario: {
+        '@Name': 'current',
+        CropYear: [
+          {
+            '@Year': 2001,
+            Crop: null,
+          },
+        ],
+      },
+      futureCropScenario: {
+        '@Name': 'future',
+        CropYear: [
+          {
+            '@Year': 2020,
+            Crop: null,
+          },
+        ],
+      },
+    });
   });
 });
 
 describe('extractRegenerativeSwitchYear', () => {
-  it('will test the function', () => {
-    expect(extractRegenerativeSwitchYear(null)).toStrictEqual<
-      ReturnType<typeof extractRegenerativeSwitchYear>
-    >(null);
+  it('will extract the regenerative switch year (which is the earliest crop year in the future scenarios', () => {
+    expect(
+      extractRegenerativeSwitchYear({
+        futureCropScenario: {
+          '@Name': 'future',
+          CropYear: [
+            {
+              '@Year': 2020,
+              Crop: null,
+            },
+            {
+              '@Year': 2025,
+              Crop: null,
+            },
+            {
+              '@Year': 2019,
+              Crop: null,
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof extractRegenerativeSwitchYear>>({
+      regenerativeStartYear: 2019,
+    });
   });
 });
 
 describe('translateFertilizerEvent', () => {
-  it('will test the function', () => {
-    expect(translateFertilizerEvent(null)).toStrictEqual<
-      ReturnType<typeof translateFertilizerEvent>
-    >(null);
+  it('will translate a fertilizer event', () => {
+    expect(
+      translateFertilizerEvent({
+        event: {
+          EEP: null,
+          NApplicationAmount: 1,
+          NApplicationDate: '01/01/2000',
+          NApplicationMethod: null,
+          NApplicationType: 'ammonium nitrate (34-0-0)',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateFertilizerEvent>>({
+      fertilizerEvent: {
+        lbsOfNPerAcre: 1,
+        date: '01/01/2000',
+        type: 'ammonium nitrate (34-0-0)',
+        name: null,
+      },
+    });
   });
 });
 
 describe('translateFertilizerEvents', () => {
-  it('will test the function', () => {
-    expect(translateFertilizerEvents(null)).toStrictEqual<
-      ReturnType<typeof translateFertilizerEvents>
-    >(null);
+  it('will translate fertilizer events', () => {
+    expect(
+      translateFertilizerEvents({
+        fertilizerEventList: {
+          NApplicationEvent: [
+            {
+              EEP: null,
+              NApplicationAmount: 1,
+              NApplicationDate: '01/01/2000',
+              NApplicationMethod: null,
+              NApplicationType: 'ammonium nitrate (34-0-0)',
+            },
+            {
+              EEP: null,
+              NApplicationAmount: 5,
+              NApplicationDate: '01/02/2000',
+              NApplicationMethod: null,
+              NApplicationType: 'calcium nitrate',
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateFertilizerEvents>>({
+      fertilizerEvents: [
+        {
+          lbsOfNPerAcre: 1,
+          date: '01/01/2000',
+          type: 'ammonium nitrate (34-0-0)',
+          name: null,
+        },
+        {
+          lbsOfNPerAcre: 5,
+          date: '01/02/2000',
+          type: 'calcium nitrate',
+          name: null,
+        },
+      ],
+    });
   });
 });
 
 describe('translateOrganicMatterEvent', () => {
-  it('will test the function', () => {
-    expect(translateOrganicMatterEvent(null)).toStrictEqual<
-      ReturnType<typeof translateOrganicMatterEvent>
-    >(null);
+  it('will translate the organic matter event', () => {
+    expect(
+      translateOrganicMatterEvent({
+        event: {
+          OMADAmount: 1,
+          OMADApplicationDate: '01/01/2000',
+          OMADCNRatio: 3,
+          OMADPercentN: 2,
+          OMADType: 'alfalfa meal',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateOrganicMatterEvent>>({
+      organicMatterEvent: {
+        amountPerAcre: 1,
+        carbonNitrogenRatio: 3,
+        date: '01/01/2000',
+        percentMoisture: null,
+        percentNitrogen: 2,
+        type: 'alfalfa meal',
+        name: null,
+      },
+    });
   });
 });
 
 describe('translateOrganicMatterEvents', () => {
-  it('will test the function', () => {
-    expect(translateOrganicMatterEvents(null)).toStrictEqual<
-      ReturnType<typeof translateOrganicMatterEvents>
-    >(null);
+  it('will translate the organic matter events', () => {
+    expect(
+      translateOrganicMatterEvents({
+        organicMatterEventList: {
+          OMADApplicationEvent: [
+            {
+              OMADAmount: 1,
+              OMADApplicationDate: '01/01/2000',
+              OMADCNRatio: 3,
+              OMADPercentN: 2,
+              OMADType: 'blood, dried',
+            },
+            {
+              OMADAmount: 2,
+              OMADApplicationDate: '01/05/2000',
+              OMADCNRatio: 3,
+              OMADPercentN: 2,
+              OMADType: 'compost or composted manure, solid',
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateOrganicMatterEvents>>({
+      organicMatterEvents: [
+        {
+          amountPerAcre: 1,
+          carbonNitrogenRatio: 3,
+          date: '01/01/2000',
+          percentMoisture: null,
+          percentNitrogen: 2,
+          type: 'blood, dried',
+          name: null,
+        },
+        {
+          amountPerAcre: 2,
+          carbonNitrogenRatio: 3,
+          date: '01/05/2000',
+          percentMoisture: null,
+          percentNitrogen: 2,
+          type: 'compost or composted manure, solid',
+          name: null,
+        },
+      ],
+    });
   });
 });
 
 describe('translateIrrigationEvent', () => {
-  it('will test the function', () => {
-    expect(translateIrrigationEvent(null)).toStrictEqual<
-      ReturnType<typeof translateIrrigationEvent>
-    >(null);
+  it('will translate the irrigation event', () => {
+    expect(
+      translateIrrigationEvent({
+        event: {
+          IrrigationDate: '01/01/2000',
+          IrrigationInches: 1.0,
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateIrrigationEvent>>({
+      irrigationEvent: {
+        date: '01/01/2000',
+        volume: 1.0,
+      },
+    });
   });
 });
 
 describe('translateIrrigationEvents', () => {
-  it('will test the function', () => {
-    expect(translateIrrigationEvents(null)).toStrictEqual<
-      ReturnType<typeof translateIrrigationEvents>
-    >(null);
+  it('will translate the irrigation events', () => {
+    expect(
+      translateIrrigationEvents({
+        irrigationEventList: {
+          IrrigationEvent: [
+            {
+              IrrigationDate: '01/01/2000',
+              IrrigationInches: 1.0,
+            },
+            {
+              IrrigationDate: '01/02/2000',
+              IrrigationInches: 2.0,
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateIrrigationEvents>>({
+      irrigationEvents: [
+        {
+          date: '01/01/2000',
+          volume: 1.0,
+        },
+        {
+          date: '01/02/2000',
+          volume: 2.0,
+        },
+      ],
+    });
   });
 });
 
 describe('translateLimingEvents', () => {
-  it('will test the function', () => {
-    expect(translateLimingEvents(null)).toStrictEqual<
-      ReturnType<typeof translateLimingEvents>
-    >(null);
+  it('will translate the liming event when there is one', () => {
+    expect(
+      translateLimingEvents({
+        limingEventList: {
+          LimingDate: '01/01/2000',
+          LimingMethod: 'crushed limestone',
+          LimingRate: 1,
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateLimingEvents>>({
+      limingEvents: [
+        {
+          date: '01/01/2000',
+          type: 'crushed limestone',
+          tonsPerAcre: 1,
+        },
+      ],
+    });
+  });
+  it('will translate the liming event when there is not when as indicated by the "none" liming type input', () => {
+    expect(
+      translateLimingEvents({
+        limingEventList: {
+          LimingDate: null,
+          LimingMethod: 'none',
+          LimingRate: null,
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateLimingEvents>>({
+      limingEvents: null,
+    });
+  });
+  it('will translate the liming event when there is not one when indicated by none being specified', () => {
+    expect(
+      translateLimingEvents({
+        limingEventList: {},
+      })
+    ).toStrictEqual<ReturnType<typeof translateLimingEvents>>({
+      limingEvents: null,
+    });
   });
 });
 
 describe('translateBurningEvent', () => {
-  it('will test the function', () => {
-    expect(translateBurningEvent(null)).toStrictEqual<
-      ReturnType<typeof translateBurningEvent>
-    >(null);
+  it('will translate the burning event when it is not "no burning"', () => {
+    expect(
+      translateBurningEvent({
+        burnEvent: {
+          BurnTime: 'yes, after harvest',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
+      burningEvent: {
+        type: 'after harvesting',
+      },
+    });
+  });
+  it('will exclude the burning event when it is missing', () => {
+    expect(
+      translateBurningEvent({
+        burnEvent: {
+          BurnTime: 'no burning',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
+      burningEvent: null,
+    });
+  });
+  it('will exclude the burning event when it is "no burning', () => {
+    expect(
+      translateBurningEvent({
+        burnEvent: {
+          BurnTime: 'no burning',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
+      burningEvent: null,
+    });
   });
 });
 
 describe('translateGrazingEvent', () => {
-  it('will test the function', () => {
-    expect(translateGrazingEvent(null)).toStrictEqual<
-      ReturnType<typeof translateGrazingEvent>
-    >(null);
+  it('will translate the grazing event', () => {
+    expect(
+      translateGrazingEvent({
+        event: {
+          GrazingStartDate: '01/01/2000',
+          GrazingEndDate: '12/31/2000',
+          RestPeriod: 0,
+          UtilizationPct: 20,
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateGrazingEvent>>({
+      grazingEvent: {
+        startDate: '01/01/2000',
+        endDate: '12/31/2000',
+        restPeriod: 0,
+        utilization: 20,
+      },
+    });
   });
 });
 
 describe('translateGrazingEvents', () => {
-  it('will test the function', () => {
-    expect(translateGrazingEvents(null)).toStrictEqual<
-      ReturnType<typeof translateGrazingEvents>
-    >(null);
+  it('will translate the grazing events', () => {
+    expect(
+      translateGrazingEvents({
+        grazingEventList: {
+          GrazingEvent: [
+            {
+              GrazingStartDate: '01/01/2000',
+              GrazingEndDate: '01/31/2000',
+              RestPeriod: 0,
+              UtilizationPct: 20,
+            },
+            {
+              GrazingStartDate: '02/01/2000',
+              GrazingEndDate: '12/31/2000',
+              RestPeriod: 0,
+              UtilizationPct: 10,
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateGrazingEvents>>({
+      grazingEvents: [
+        {
+          startDate: '01/01/2000',
+          endDate: '01/31/2000',
+          restPeriod: 0,
+          utilization: 20,
+        },
+        {
+          startDate: '02/01/2000',
+          endDate: '12/31/2000',
+          restPeriod: 0,
+          utilization: 10,
+        },
+      ],
+    });
   });
 });
 
 describe('translateCropHarvestEvent', () => {
-  it('will test the function', () => {
-    expect(translateCropHarvestEvent(null)).toStrictEqual<
-      ReturnType<typeof translateCropHarvestEvent>
-    >(null);
+  it('will translate the crop harvest event', () => {
+    expect(
+      translateCropHarvestEvent({
+        event: {
+          Grain: 'yes',
+          HarvestDate: '01/01/2000',
+          StrawStoverHayRemoval: 0,
+          yield: 50,
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropHarvestEvent>>({
+      annualCropHarvestEvent: {
+        date: '01/01/2000',
+        yield: 50,
+        yieldUnit: 'bu/ac',
+        residueRemoved: 0,
+        grainFruitTuber: 'yes',
+      },
+    });
   });
 });
 
 describe('translateCropHarvestEvents', () => {
-  it('will test the function', () => {
-    expect(translateCropHarvestEvents(null)).toStrictEqual<
-      ReturnType<typeof translateCropHarvestEvents>
-    >(null);
+  it('will translate the crop harvest events', () => {
+    expect(
+      translateCropHarvestEvents({
+        harvestEventList: {
+          HarvestEvent: [
+            {
+              Grain: 'no',
+              HarvestDate: '01/01/2000',
+              StrawStoverHayRemoval: 1,
+              yield: 10,
+            },
+            {
+              Grain: 'no',
+              HarvestDate: '01/02/2000',
+              StrawStoverHayRemoval: 5,
+              yield: 11,
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropHarvestEvents>>({
+      harvestEvents: [
+        {
+          date: '01/01/2000',
+          yield: 10,
+          yieldUnit: 'bu/ac',
+          residueRemoved: 1,
+          grainFruitTuber: 'no',
+        },
+        {
+          date: '01/02/2000',
+          yield: 11,
+          yieldUnit: 'bu/ac',
+          residueRemoved: 5,
+          grainFruitTuber: 'no',
+        },
+      ],
+    });
   });
 });
 
 describe('translateSoilOrCropDisturbanceEvent', () => {
-  it('will test the function', () => {
-    expect(translateSoilOrCropDisturbanceEvent(null)).toStrictEqual<
-      ReturnType<typeof translateSoilOrCropDisturbanceEvent>
-    >(null);
+  it('will translate the tillage event', () => {
+    expect(
+      translateSoilOrCropDisturbanceEvent({
+        event: {
+          TillageDate: '01/01/2000',
+          TillageType: 'mow',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvent>>({
+      soilOrCropDisturbanceEvent: {
+        date: '01/01/2000',
+        type: 'mow',
+        name: null,
+      },
+    });
   });
 });
 
 describe('translateSoilOrCropDisturbanceEvents', () => {
-  it('will test the function', () => {
-    expect(translateSoilOrCropDisturbanceEvents(null)).toStrictEqual<
-      ReturnType<typeof translateSoilOrCropDisturbanceEvents>
-    >(null);
+  it('will translate the tillage events', () => {
+    expect(
+      translateSoilOrCropDisturbanceEvents({
+        soilOrCropDisturbanceEventList: {
+          TillageEvent: [
+            {
+              TillageDate: '01/01/2000',
+              TillageType: 'no tillage',
+            },
+            {
+              TillageDate: '12/31/2000',
+              TillageType: 'winter kill',
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvents>>({
+      soilOrCropDisturbanceEvents: [
+        { date: '01/01/2000', type: 'no tillage', name: null },
+        { date: '12/31/2000', type: 'winter killed', name: null },
+      ],
+    });
   });
 });
 
 describe('translateCoverCrop', () => {
-  it('will test the function', () => {
-    expect(translateCoverCrop(null)).toStrictEqual<
-      ReturnType<typeof translateCoverCrop>
-    >(null);
+  it('will translate the cover crop', () => {
+    expect(
+      translateCoverCrop({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'annual rye',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCoverCrop>>({
+      coverCrop: {
+        type: 'annual rye',
+        classification: 'annual cover',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+      },
+    });
   });
 });
 
 describe('translateOrchardOrVineyardCrop', () => {
-  it('will test the function', () => {
-    expect(translateOrchardOrVineyardCrop(null)).toStrictEqual<
-      ReturnType<typeof translateOrchardOrVineyardCrop>
-    >(null);
+  it('will translate the orchard crop', () => {
+    expect(
+      translateOrchardOrVineyardCrop({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'grape, wine (1391-1670 gdd)',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+          Prune: 'yes',
+          Renew: 'yes',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateOrchardOrVineyardCrop>>({
+      orchardOrVineyard: {
+        type: 'grape, wine (1391-1670 gdd)',
+        classification: 'vineyard',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        prune: 'yes',
+        renewOrClear: 'yes',
+        harvestEvents: [],
+      },
+    });
   });
 });
 
 describe('translateAnnualCrop', () => {
-  it('will test the function', () => {
-    expect(translateAnnualCrop(null)).toStrictEqual<
-      ReturnType<typeof translateAnnualCrop>
-    >(null);
+  it('will translate the annual crop', () => {
+    expect(
+      translateAnnualCrop({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'barley',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateAnnualCrop>>({
+      annualCrop: {
+        type: 'barley',
+        classification: 'annual crop',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        harvestEvents: [],
+      },
+    });
   });
 });
 
 describe('translatePerennialCrop', () => {
-  it('will test the function', () => {
-    expect(translatePerennialCrop(null)).toStrictEqual<
-      ReturnType<typeof translatePerennialCrop>
-    >(null);
+  it('will translate the perennial crop', () => {
+    expect(
+      translatePerennialCrop({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'alfalfa',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translatePerennialCrop>>({
+      perennialCrop: {
+        type: 'alfalfa',
+        classification: 'perennial',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        harvestEvents: [],
+      },
+    });
   });
 });
 
 describe('translateCropEvent', () => {
-  it('will test the function', () => {
-    expect(translateCropEvent(null)).toStrictEqual<
-      ReturnType<typeof translateCropEvent>
-    >(null);
+  it('will throw an error if the crop classification cannot be detected', () => {
+    expect(() =>
+      translateCropEvent({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: ('invalid crop name' as unknown) as Input.CropName,
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toThrow();
+  });
+  it('will translate the crop event when it is a cover crop', () => {
+    expect(
+      translateCropEvent({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'annual rye',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropEvent>>({
+      crop: {
+        type: 'annual rye',
+        classification: 'annual cover',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+      },
+    });
+  });
+  it('will translate the crop event when it is a orchard/vineyard', () => {
+    expect(
+      translateCropEvent({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'grape, wine (1391-1670 gdd)',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+          Prune: 'yes',
+          Renew: 'yes',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropEvent>>({
+      crop: {
+        type: 'grape, wine (1391-1670 gdd)',
+        classification: 'vineyard',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        prune: 'yes',
+        renewOrClear: 'yes',
+        harvestEvents: [],
+      },
+    });
+  });
+  it('will translate the crop event when it is an annual crop', () => {
+    expect(
+      translateCropEvent({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'barley',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropEvent>>({
+      crop: {
+        type: 'barley',
+        classification: 'annual crop',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        harvestEvents: [],
+      },
+    });
+  });
+  it('will translate the crop event when it is a perennial', () => {
+    expect(
+      translateCropEvent({
+        cropEvent: {
+          '@CropNumber': null,
+          BurnEvent: null,
+          CropName: 'alfalfa',
+          PlantingDate: '01/01/2000',
+          ContinueFromPreviousYear: null,
+          HarvestList: {},
+          TillageList: {},
+          NApplicationList: {},
+          OMADApplicationList: {},
+          IrrigationList: {},
+          LimingEvent: {},
+          GrazingList: {},
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateCropEvent>>({
+      crop: {
+        type: 'alfalfa',
+        classification: 'perennial',
+        plantingDate: '01/01/2000',
+        soilOrCropDisturbanceEvents: [],
+        fertilizerEvents: [],
+        organicMatterEvents: [],
+        irrigationEvents: [],
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
+        harvestEvents: [],
+      },
+    });
   });
 });
 
 describe('extractCrops', () => {
-  it('will test the function', () => {
-    expect(extractCrops(null)).toStrictEqual<ReturnType<typeof extractCrops>>(
-      null
-    );
+  it('will extract the crops', () => {
+    expect(
+      extractCrops({
+        cropList: ggitInputData.Cropland[0].CropScenario[0].CropYear[0].Crop,
+      })
+    ).toStrictEqual<ReturnType<typeof extractCrops>>({
+      crops: v3Data.fields[0].cropYears[0].crops,
+    });
   });
 });
 
 describe('extractCropYears', () => {
-  it('will test the function', () => {
-    expect(extractCropYears(null)).toStrictEqual<
-      ReturnType<typeof extractCropYears>
-    >(null);
+  it('will extract the crop years', () => {
+    expect(
+      extractCropYears({
+        currentCropScenario: {
+          '@Name': 'current',
+          CropYear: [
+            {
+              '@Year': 2001,
+              Crop: [],
+            },
+          ],
+        },
+        futureCropScenario: {
+          '@Name': 'future',
+          CropYear: [
+            {
+              '@Year': 2020,
+              Crop: [],
+            },
+          ],
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof extractCropYears>>({
+      cropYears: [
+        {
+          crops: ([] as unknown) as any,
+          plantingYear: 2001,
+        },
+        {
+          crops: [],
+          plantingYear: 2020,
+        },
+      ],
+    });
   });
 });
 
-describe('extractCroplandsAndScenarios', () => {
-  it('will test the function', () => {
-    expect(extractCroplandsAndScenarios(null)).toStrictEqual<
-      ReturnType<typeof extractCroplandsAndScenarios>
-    >(null);
-  });
-});
+// todo
+// describe('extractCroplandsAndScenarios', () => {
+//   it('will extract the croplands and scenarios', () => {
+//     expect(extractCroplandsAndScenarios(null)).toStrictEqual<
+//       ReturnType<typeof extractCroplandsAndScenarios>
+//     >(null);
+//   });
+// });
 
-describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
-  it('will test the function', () => {
-    expect(shiftCropsTaggedAsContinueFromPreviousYear(null)).toStrictEqual<
-      ReturnType<typeof shiftCropsTaggedAsContinueFromPreviousYear>
-    >(null);
-  });
-});
+// todo
+// describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
+//   it('will shift the crops tagged as continue from previous year into the relevant planting year', () => {
+//     expect(shiftCropsTaggedAsContinueFromPreviousYear(null)).toStrictEqual<
+//       ReturnType<typeof shiftCropsTaggedAsContinueFromPreviousYear>
+//     >(null);
+//   });
+// });

@@ -242,7 +242,7 @@ export const translateFertilizerEvent = ({
 export const translateFertilizerEvents = ({
   fertilizerEventList,
 }: {
-  fertilizerEventList: Input.NApplicationList;
+  fertilizerEventList: Input.Crop['NApplicationList'];
 }): { fertilizerEvents: CropEvents['fertilizerEvents'] } => {
   const fertilizerEvents =
     fertilizerEventList?.NApplicationEvent?.reduce?.((eventList, event) => {
@@ -287,7 +287,7 @@ export const translateOrganicMatterEvent = ({
 export const translateOrganicMatterEvents = ({
   organicMatterEventList,
 }: {
-  organicMatterEventList: Input.OMADApplicationList;
+  organicMatterEventList: Input.Crop['OMADApplicationList'];
 }): { organicMatterEvents: CropEvents['organicMatterEvents'] } => {
   const organicMatterEvents =
     organicMatterEventList?.OMADApplicationEvent?.reduce?.(
@@ -317,7 +317,7 @@ export const translateIrrigationEvent = ({
 export const translateIrrigationEvents = ({
   irrigationEventList,
 }: {
-  irrigationEventList: Input.IrrigationList;
+  irrigationEventList: Input.Crop['IrrigationList'];
 }): { irrigationEvents: CropEvents['irrigationEvents'] } => {
   const irrigationEvents =
     irrigationEventList?.IrrigationEvent?.reduce?.((eventList, event) => {
@@ -330,7 +330,7 @@ export const translateIrrigationEvents = ({
 export const translateLimingEvents = ({
   limingEventList,
 }: {
-  limingEventList: Input.LimingEvent;
+  limingEventList: Input.Crop['LimingEvent'];
 }): { limingEvents: CropEvents['limingEvents'] } => {
   const {
     LimingDate: date,
@@ -354,7 +354,7 @@ export const translateLimingEvents = ({
 export const translateBurningEvent = ({
   burnEvent,
 }: {
-  burnEvent: Input.BurnEvent;
+  burnEvent: Input.Crop['BurnEvent'];
 }): { burningEvent: CropEvents['burningEvent'] } => {
   return {
     burningEvent:
@@ -383,7 +383,7 @@ export const translateGrazingEvent = ({
 export const translateGrazingEvents = ({
   grazingEventList,
 }: {
-  grazingEventList: Input.GrazingList;
+  grazingEventList: Input.Crop['GrazingList'];
 }): { grazingEvents: CropEvents['grazingEvents'] } => {
   const grazingEvents =
     grazingEventList?.GrazingEvent?.reduce?.((eventList, event) => {
@@ -452,7 +452,7 @@ export const translateSoilOrCropDisturbanceEvent = ({
 export const translateSoilOrCropDisturbanceEvents = ({
   soilOrCropDisturbanceEventList,
 }: {
-  soilOrCropDisturbanceEventList: Input.TillageList;
+  soilOrCropDisturbanceEventList: Input.Crop['TillageList'];
 }): {
   soilOrCropDisturbanceEvents: CropEvents['soilOrCropDisturbanceEvents'];
 } => {
@@ -489,25 +489,19 @@ export const translateCoverCrop = ({
     TillageList: soilOrCropDisturbanceEventList,
   } = cropEvent;
   const { fertilizerEvents } = translateFertilizerEvents({
-    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+    fertilizerEventList,
   });
   const { organicMatterEvents } = translateOrganicMatterEvents({
-    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+    organicMatterEventList,
   });
   const { irrigationEvents } = translateIrrigationEvents({
-    irrigationEventList: irrigationEventList as Input.IrrigationList,
+    irrigationEventList,
   });
-  const { limingEvents } = translateLimingEvents({
-    limingEventList: limingEventList as Input.LimingEvent,
-  });
-  const { grazingEvents } = translateGrazingEvents({
-    grazingEventList: grazingEventList as Input.GrazingList,
-  });
-  const { burningEvent } = translateBurningEvent({
-    burnEvent: burnEvent as Input.BurnEvent,
-  });
+  const { limingEvents } = translateLimingEvents({ limingEventList });
+  const { grazingEvents } = translateGrazingEvents({ grazingEventList });
+  const { burningEvent } = translateBurningEvent({ burnEvent });
   const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
-    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+    soilOrCropDisturbanceEventList,
   });
   return {
     coverCrop: {
