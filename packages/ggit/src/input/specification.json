@@ -24,8 +24,8 @@
                     "CRP": {
                         "description": "CRP.",
                         "enum": [
-                            "No",
-                            "Yes"
+                            "no",
+                            "yes"
                         ],
                         "title": "CRP",
                         "type": "string"
@@ -73,6 +73,10 @@
                             "properties": {
                                 "@Name": {
                                     "description": "Name of this crop scenario.",
+                                    "enum": [
+                                        "current",
+                                        "future"
+                                    ],
                                     "title": "@Name",
                                     "type": "string"
                                 },
@@ -86,7 +90,7 @@
                                             "@Year": {
                                                 "description": "Year for this crop event.",
                                                 "title": "@Year",
-                                                "type": "string"
+                                                "type": "number"
                                             },
                                             "Crop": {
                                                 "items": {
@@ -116,9 +120,9 @@
                                                                         "BurnTime": {
                                                                             "description": "Time burn event occurred.",
                                                                             "enum": [
-                                                                                "No burning",
-                                                                                "Yes, after harvest",
-                                                                                "Yes, before planting"
+                                                                                "no burning",
+                                                                                "yes, after harvest",
+                                                                                "yes, before planting"
                                                                             ],
                                                                             "title": "BurnTime",
                                                                             "type": "string"
@@ -153,67 +157,67 @@
                                                         "CropName": {
                                                             "description": "Name of crop. Check GGIT_API_File_Specification.xlsx tab CropName for complete list",
                                                             "enum": [
-                                                                "Alfalfa",
-                                                                "Almond",
-                                                                "Annual Rye",
-                                                                "Annual Rye - Legume",
-                                                                "Annual Rye - Legume - Radish",
-                                                                "Austrian Winter Pea",
-                                                                "Avocados",
-                                                                "Barley",
-                                                                "Broccoli-Coast",
-                                                                "Broccoli-Desert",
-                                                                "Carrots",
-                                                                "Cauliflower",
-                                                                "Cereal Rye",
-                                                                "Cherries",
-                                                                "Clover",
-                                                                "Corn",
-                                                                "Corn Silage",
-                                                                "Cotton",
-                                                                "Dry Field Beans",
-                                                                "Dry Field Pea",
-                                                                "English Walnuts",
-                                                                "Fallow",
-                                                                "Forage Radish",
-                                                                "Grape, Raisin",
-                                                                "Grape, Table",
-                                                                "Grape, Wine (1391-1670 GDD)",
-                                                                "Grape, Wine (1671-1950 GDD)",
-                                                                "Grape, Wine (<1390 GDD)",
-                                                                "Grape, Wine (>1950 GDD)",
-                                                                "Grapefruit",
-                                                                "Grass",
-                                                                "Grass-Legume Mix",
-                                                                "Lemons & Limes",
-                                                                "Lettuce-Head",
-                                                                "Lettuce-Leaf",
-                                                                "Lettuce-Romaine",
-                                                                "Millet",
-                                                                "Oats",
-                                                                "Oilseed Radish",
-                                                                "Olives",
-                                                                "Oranges",
-                                                                "Peaches and Nectarines",
-                                                                "Peanut",
-                                                                "Pistachios",
-                                                                "Potato",
-                                                                "Rice - Flooded",
-                                                                "Rye",
-                                                                "Sorghum",
-                                                                "Sorghum Silage",
-                                                                "Soybean",
-                                                                "Spring Wheat",
-                                                                "Strawberry",
-                                                                "Sugar Beets",
-                                                                "Sunflower",
-                                                                "Switchgrass",
-                                                                "Tangerines & Mandarins",
-                                                                "Tomatoes, Fresh",
-                                                                "Tomatoes, Processing",
-                                                                "Vetch",
-                                                                "Winter Grain-Other",
-                                                                "Winter Wheat"
+                                                                "alfalfa",
+                                                                "almond",
+                                                                "annual rye",
+                                                                "annual rye - legume",
+                                                                "annual rye - legume - radish",
+                                                                "austrian winter pea",
+                                                                "avocados",
+                                                                "barley",
+                                                                "broccoli-coast",
+                                                                "broccoli-desert",
+                                                                "carrots",
+                                                                "cauliflower",
+                                                                "cereal rye",
+                                                                "cherries",
+                                                                "clover",
+                                                                "corn",
+                                                                "corn silage",
+                                                                "cotton",
+                                                                "dry field beans",
+                                                                "dry field pea",
+                                                                "english walnuts",
+                                                                "fallow",
+                                                                "forage radish",
+                                                                "grape, raisin",
+                                                                "grape, table",
+                                                                "grape, wine (1391-1670 gdd)",
+                                                                "grape, wine (1671-1950 gdd)",
+                                                                "grape, wine (<1390 gdd)",
+                                                                "grape, wine (>1950 gdd)",
+                                                                "grapefruit",
+                                                                "grass",
+                                                                "grass-legume mix",
+                                                                "lemons & limes",
+                                                                "lettuce-head",
+                                                                "lettuce-leaf",
+                                                                "lettuce-romaine",
+                                                                "millet",
+                                                                "oats",
+                                                                "oilseed radish",
+                                                                "olives",
+                                                                "oranges",
+                                                                "peaches and nectarines",
+                                                                "peanut",
+                                                                "pistachios",
+                                                                "potato",
+                                                                "rice - flooded",
+                                                                "rye",
+                                                                "sorghum",
+                                                                "sorghum silage",
+                                                                "soybean",
+                                                                "spring wheat",
+                                                                "strawberry",
+                                                                "sugar beets",
+                                                                "sunflower",
+                                                                "switchgrass",
+                                                                "tangerines & mandarins",
+                                                                "tomatoes, fresh",
+                                                                "tomatoes, processing",
+                                                                "vetch",
+                                                                "winter grain-other",
+                                                                "winter wheat"
                                                             ],
                                                             "title": "CropName",
                                                             "type": "string"
@@ -861,9 +865,9 @@
                         "items": [
                             {
                                 "enum": [
-                                    "Intensive Tillage",
-                                    "No Till",
-                                    "Reduced Tillage"
+                                    "intensive tillage",
+                                    "no till",
+                                    "reduced tillage"
                                 ],
                                 "type": "string"
                             }
@@ -876,9 +880,10 @@
                     "Pre-1980": {
                         "description": "Historic management data input. Pre-1980. See GGIT_API_File_Specification.xlsx Pre-1980 history by LRR tab.",
                         "enum": [
-                            "Irrigation (Pre 1980s)",
-                            "Lowland Non-Irrigated (Pre 1980s)",
-                            "Upland Non-Irrigated (Pre 1980s)"
+                            "irrigation (pre 1980s)",
+                            "livestock grazing",
+                            "lowland non-irrigated (pre 1980s)",
+                            "upland non-irrigated (pre 1980s)"
                         ],
                         "title": "Pre-1980",
                         "type": "string"
@@ -911,9 +916,9 @@
                         "items": [
                             {
                                 "enum": [
-                                    "Intensive Tillage",
-                                    "No Till",
-                                    "Reduced Tillage"
+                                    "intensive tillage",
+                                    "no till",
+                                    "reduced tillage"
                                 ],
                                 "type": "string"
                             }
@@ -926,15 +931,15 @@
                     "Year1980-2000": {
                         "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
                         "enum": [
-                            "Irrigated: Annual Crops in Rotation",
-                            "Irrigated: Annual Crops with Hay/Pasture in Rotation",
-                            "Irrigated: Continuous Hay",
-                            "Irrigated: Orchard or Vineyard",
-                            "Non-Irrigated: Annual Crops in Rotation",
-                            "Non-Irrigated: Continuous Hay",
-                            "Non-Irrigated: Fallow-Grain",
-                            "Non-Irrigated: Livestock Grazing",
-                            "Non-Irrigated: Orchard or Vineyard"
+                            "irrigated: annual crops in rotation",
+                            "irrigated: annual crops with hay/pasture in rotation",
+                            "irrigated: continuous hay",
+                            "irrigated: orchard or vineyard",
+                            "non-irrigated: annual crops in rotation",
+                            "non-irrigated: annual crops with hay/pasture in rotation",
+                            "non-irrigated: continuous hay",
+                            "non-irrigated: fallow-grain",
+                            "non-irrigated: livestock grazing"
                         ],
                         "title": "Year1980-2000",
                         "type": "string"
@@ -942,9 +947,9 @@
                     "Year1980-2000_Tillage": {
                         "description": "Tillage from 1980 - 2000.",
                         "enum": [
-                            "Intensive Tillage",
-                            "No Till",
-                            "Reduced Tillage"
+                            "intensive tillage",
+                            "no till",
+                            "reduced tillage"
                         ],
                         "title": "Year1980-2000_Tillage",
                         "type": "string"

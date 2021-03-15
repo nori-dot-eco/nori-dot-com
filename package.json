@@ -46,7 +46,12 @@
           "<rootDir>/packages/project/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "project",
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "globals": {
+          "ts-jest": {
+            "tsconfig": "./packages/project/tsconfig.json"
+          }
+        }
       },
       {
         "testMatch": [

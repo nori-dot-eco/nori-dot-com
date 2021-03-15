@@ -82,12 +82,7 @@ module.exports = {
         contexts: ['any'],
       },
     ],
-    'jsdoc/require-returns-check': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
+    'jsdoc/require-returns-check': ['error'],
     'jsdoc/require-returns-description': [
       'error',
       {

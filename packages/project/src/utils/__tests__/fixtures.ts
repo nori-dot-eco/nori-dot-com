@@ -6,22 +6,32 @@ import type { V2Data, Project } from '../../index';
 // todo ^ check for multi tillage events on same crop
 // todo why does 4/25/2020 have a harvest date and no yield? (get back info from rebekah, adjust the below in any place yield is set to 0 in the sheet fixture)
 // todo in some years (i.e. 2019 and more) crop#2, is fertilizer applied to the correct crop? looks like it should go to the first harvested crop instead of cover crop
+// todo need a way to get classification of crop from sheet as well
 
 export const v3Data: Project = {
   version: '3.0.0',
   fields: [
     {
-      fieldName: 'ggit schema',
+      fieldName: 'example field',
       geojson: {
-        type: 'Polygon',
-        coordinates: [
-          [
-            [-102.0256, 41.1624],
-            [-102.02423, 41.1631],
-            [-102.0225, 41.1635],
-            [-102.0261, 41.161],
-            [-102.0256, 41.1624],
-          ],
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              coordinates: [
+                [
+                  [-102.0256, 41.1624],
+                  [-102.02423, 41.1631],
+                  [-102.0225, 41.1635],
+                  [-102.0261, 41.161],
+                  [-102.0256, 41.1624],
+                ],
+              ],
+            },
+            properties: {},
+          },
         ],
       },
       cropYears: [
@@ -29,9 +39,9 @@ export const v3Data: Project = {
           plantingYear: 2000,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
-              plantingDate: '04/20/2020',
+              plantingDate: '04/20/2000',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
@@ -51,7 +61,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2000',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               classification: 'annual crop',
@@ -62,21 +72,21 @@ export const v3Data: Project = {
           plantingYear: 2001,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2001',
               fertilizerEvents: [
                 {
                   date: '06/15/2001',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2001',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -172,8 +182,8 @@ export const v3Data: Project = {
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2001',
-                  type: 'no tillage',
-                  name: 'No-till planting',
+                  type: 'intensive tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -193,13 +203,13 @@ export const v3Data: Project = {
           plantingYear: 2002,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2002',
               fertilizerEvents: [
                 {
                   date: '06/15/2003',
-                  name: 'UAN',
+                  name: null,
                   type: 'urea ammonium nitrate (30-00-00)',
                   lbsOfNPerAcre: 149.8,
                 },
@@ -208,7 +218,7 @@ export const v3Data: Project = {
                 {
                   date: '04/01/2003',
                   type: 'chicken - broiler (litter), solid',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
@@ -223,11 +233,11 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2002',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
                 {
                   date: '04/19/2003',
-                  name: 'Intensive Tillage',
+                  name: null,
                   type: 'intensive tillage',
                 },
               ],
@@ -256,7 +266,7 @@ export const v3Data: Project = {
           plantingYear: 2004,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2004',
               fertilizerEvents: [],
@@ -269,7 +279,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2004',
                   type: 'no tillage',
-                  name: 'No-till Planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -289,21 +299,21 @@ export const v3Data: Project = {
           plantingYear: 2005,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2005',
               fertilizerEvents: [
                 {
                   date: '06/15/2005',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2005',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -319,7 +329,7 @@ export const v3Data: Project = {
                 {
                   date: '04/19/2005',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -339,7 +349,7 @@ export const v3Data: Project = {
           plantingYear: 2006,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2006',
               fertilizerEvents: [],
@@ -352,7 +362,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2006',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -372,21 +382,21 @@ export const v3Data: Project = {
           plantingYear: 2007,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [
                 {
                   date: '06/15/2007',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2007',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -483,7 +493,7 @@ export const v3Data: Project = {
                 {
                   date: '04/19/2007',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -498,14 +508,14 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Wheat',
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2007',
               fertilizerEvents: [
                 {
                   date: '03/01/2008',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
@@ -518,7 +528,7 @@ export const v3Data: Project = {
                 {
                   date: '09/19/2007',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -538,9 +548,9 @@ export const v3Data: Project = {
           plantingYear: 2008,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
-              plantingDate: '04/08/2008',
+              plantingDate: '06/15/2008',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
@@ -557,12 +567,12 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2008',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
                 {
-                  date: '09/14/2008',
+                  date: '11/15/2008',
                   grainFruitTuber: 'yes',
                   yield: 38,
                   yieldUnit: 'bu/ac',
@@ -577,21 +587,21 @@ export const v3Data: Project = {
           plantingYear: 2009,
           crops: [
             {
-              name: 'corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2009',
               fertilizerEvents: [
                 {
                   date: '06/15/2009',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2009',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -607,7 +617,7 @@ export const v3Data: Project = {
                 {
                   date: '04/19/2009',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -621,13 +631,48 @@ export const v3Data: Project = {
               ],
               classification: 'annual crop',
             },
+            {
+              name: null,
+              type: 'winter wheat',
+              plantingDate: '09/20/2009',
+              fertilizerEvents: [
+                {
+                  date: '03/01/2010',
+                  lbsOfNPerAcre: 90.2,
+                  type: 'urea ammonium nitrate (30-00-00)',
+                  name: null,
+                },
+              ],
+              organicMatterEvents: [],
+              irrigationEvents: [],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [
+                {
+                  date: '09/19/2009',
+                  type: 'intensive tillage',
+                  name: null,
+                },
+              ],
+              harvestEvents: [
+                {
+                  date: '06/10/2010',
+                  grainFruitTuber: 'yes',
+                  yield: 84,
+                  yieldUnit: 'bu/ac',
+                  residueRemoved: 0,
+                },
+              ],
+              classification: 'annual crop',
+            },
           ],
         },
         {
           plantingYear: 2010,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2010',
               fertilizerEvents: [],
@@ -640,7 +685,7 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2010',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -660,21 +705,21 @@ export const v3Data: Project = {
           plantingYear: 2011,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2011',
               fertilizerEvents: [
                 {
                   date: '06/15/2011',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2011',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -690,7 +735,7 @@ export const v3Data: Project = {
                 {
                   date: '04/19/2011',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -705,10 +750,17 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Wheat',
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2011',
-              fertilizerEvents: [],
+              fertilizerEvents: [
+                {
+                  date: '03/01/2012',
+                  type: 'urea ammonium nitrate (30-00-00)',
+                  lbsOfNPerAcre: 90.2,
+                  name: null,
+                },
+              ],
               organicMatterEvents: [],
               irrigationEvents: [],
               limingEvents: [
@@ -724,7 +776,7 @@ export const v3Data: Project = {
                 {
                   date: '09/19/2011',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -744,7 +796,7 @@ export const v3Data: Project = {
           plantingYear: 2012,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2012',
               fertilizerEvents: [],
@@ -757,7 +809,7 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2012',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -777,21 +829,21 @@ export const v3Data: Project = {
           plantingYear: 2013,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2013',
               fertilizerEvents: [
                 {
                   date: '06/15/2013',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2013',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -807,12 +859,12 @@ export const v3Data: Project = {
                 {
                   date: '04/19/2013',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
                 {
-                  date: '09/14/2001',
+                  date: '09/14/2013',
                   grainFruitTuber: 'yes',
                   yield: 134,
                   yieldUnit: 'bu/ac',
@@ -822,14 +874,14 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Wheat',
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2013',
               fertilizerEvents: [
                 {
                   date: '03/01/2014',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
@@ -842,7 +894,7 @@ export const v3Data: Project = {
                 {
                   date: '09/19/2013',
                   type: 'intensive tillage',
-                  name: 'Intensive Tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -862,7 +914,7 @@ export const v3Data: Project = {
           plantingYear: 2014,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2014',
               fertilizerEvents: [],
@@ -874,13 +926,13 @@ export const v3Data: Project = {
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/14/2014',
-                  name: 'Intensive Tillage',
+                  name: null,
                   type: 'intensive tillage',
                 },
               ],
               harvestEvents: [
                 {
-                  date: '09/14/2014',
+                  date: '11/15/2014',
                   grainFruitTuber: 'yes',
                   yield: 38,
                   yieldUnit: 'bu/ac',
@@ -895,21 +947,21 @@ export const v3Data: Project = {
           plantingYear: 2015,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2015',
               fertilizerEvents: [
                 {
                   date: '06/15/2015',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2015',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -925,7 +977,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2015',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -940,14 +992,14 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Wheat',
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2015',
               fertilizerEvents: [
                 {
                   date: '03/01/2016',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
@@ -960,7 +1012,7 @@ export const v3Data: Project = {
                 {
                   date: '09/20/2015',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -980,7 +1032,7 @@ export const v3Data: Project = {
           plantingYear: 2016,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2016',
               fertilizerEvents: [],
@@ -993,7 +1045,7 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2016',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1013,21 +1065,21 @@ export const v3Data: Project = {
           plantingYear: 2017,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2017',
               fertilizerEvents: [
                 {
                   date: '06/15/2017',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2017',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -1043,7 +1095,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2017',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1058,14 +1110,14 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Wheat',
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2017',
               fertilizerEvents: [
                 {
                   date: '03/01/2018',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
@@ -1078,7 +1130,7 @@ export const v3Data: Project = {
                 {
                   date: '09/20/2017',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1098,7 +1150,7 @@ export const v3Data: Project = {
           plantingYear: 2018,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2018',
               fertilizerEvents: [],
@@ -1111,7 +1163,12 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2018',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
+                },
+                {
+                  date: '09/22/2018',
+                  type: 'no tillage',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1126,7 +1183,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2018',
@@ -1140,7 +1197,7 @@ export const v3Data: Project = {
                 {
                   date: '09/22/2018',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1150,14 +1207,14 @@ export const v3Data: Project = {
           plantingYear: 2019,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2019',
               fertilizerEvents: [],
               organicMatterEvents: [
                 {
                   date: '04/01/2020',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -1173,7 +1230,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2019',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1188,7 +1245,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2019',
@@ -1196,7 +1253,7 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2020',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
@@ -1209,7 +1266,7 @@ export const v3Data: Project = {
                 {
                   date: '09/20/2019',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1219,7 +1276,7 @@ export const v3Data: Project = {
           plantingYear: 2020,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2020',
               fertilizerEvents: [],
@@ -1232,7 +1289,7 @@ export const v3Data: Project = {
                 {
                   date: '04/27/2020',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1247,7 +1304,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2020',
@@ -1261,7 +1318,7 @@ export const v3Data: Project = {
                 {
                   date: '09/22/2020',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1271,21 +1328,21 @@ export const v3Data: Project = {
           plantingYear: 2021,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2021',
               fertilizerEvents: [
                 {
                   date: '06/15/2021',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2021',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -1301,7 +1358,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2021',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1316,7 +1373,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2021',
@@ -1330,7 +1387,7 @@ export const v3Data: Project = {
                 {
                   date: '09/20/2021',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1340,7 +1397,7 @@ export const v3Data: Project = {
           plantingYear: 2022,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2022',
               fertilizerEvents: [],
@@ -1353,7 +1410,7 @@ export const v3Data: Project = {
                 {
                   date: '04/27/2022',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1368,7 +1425,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2022',
@@ -1382,7 +1439,7 @@ export const v3Data: Project = {
                 {
                   date: '09/22/2022',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1392,21 +1449,21 @@ export const v3Data: Project = {
           plantingYear: 2023,
           crops: [
             {
-              name: 'Corn',
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2023',
               fertilizerEvents: [
                 {
                   date: '06/15/2023',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: 'UAN',
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2023',
-                  name: 'Chicken - Broiler (litter), Solid',
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
@@ -1422,7 +1479,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2023',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1437,7 +1494,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2023',
@@ -1451,7 +1508,7 @@ export const v3Data: Project = {
                 {
                   date: '09/20/2023',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1461,7 +1518,7 @@ export const v3Data: Project = {
           plantingYear: 2024,
           crops: [
             {
-              name: 'Soybeans',
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2024',
               fertilizerEvents: [],
@@ -1474,7 +1531,7 @@ export const v3Data: Project = {
                 {
                   date: '04/27/2024',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1489,7 +1546,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: 'Annual Rye - Legume',
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2024',
@@ -1503,7 +1560,7 @@ export const v3Data: Project = {
                 {
                   date: '09/22/2024',
                   type: 'no tillage',
-                  name: 'No-till planting',
+                  name: null,
                 },
               ],
             },
@@ -1530,41 +1587,41 @@ export const ggitInputData: Input.InputData = {
         'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|120|0',
       GEOM: {
         '@SRID': '4326',
-        '@AREA': '120',
+        '@AREA': 120,
         '#text':
           'POLYGON((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
       },
-      'Pre-1980': 'Irrigation (Pre 1980s)',
-      CRP: 'No',
-      CRPType: 'None',
-      'Year1980-2000': 'Irrigated: Annual Crops in Rotation',
+      'Pre-1980': 'irrigation (pre 1980s)',
+      CRP: 'no',
+      CRPType: 'none',
+      'Year1980-2000': 'irrigated: annual crops in rotation',
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'Year1980-2000_Tillage': 'Intensive Tillage',
+      'Year1980-2000_Tillage': 'intensive tillage',
       CRPStartYear: [],
       CRPEndYear: [],
       PreCRPManagement: [],
-      PreCRPTillage: ['Intensive Tillage'],
+      PreCRPTillage: ['intensive tillage'],
       PostCRPManagement: [],
       PostCRPTillage: [],
       CropScenario: [
         {
-          '@Name': 'Current',
+          '@Name': 'current',
           CropYear: [
             {
-              '@Year': '2000',
+              '@Year': 2000,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/20/2000',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2000',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1572,7 +1629,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2000',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -1580,7 +1637,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1588,20 +1645,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2001',
+              '@Year': 2001,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2001',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2001',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1609,7 +1666,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2001',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -1617,10 +1674,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2001',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -1628,10 +1685,10 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2001',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
@@ -1639,88 +1696,88 @@ export const ggitInputData: Input.InputData = {
                     IrrigationEvent: [
                       {
                         IrrigationDate: '04/25/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/02/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/09/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/16/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/23/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/30/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/06/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/13/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/20/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/27/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/04/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/11/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/18/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/25/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/01/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/08/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/15/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/22/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/29/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '09/05/2001',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                     ],
                   },
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1728,20 +1785,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2002',
+              '@Year': 2002,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/20/2002',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2002',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1749,7 +1806,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2002',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -1757,7 +1814,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1765,20 +1822,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2003',
+              '@Year': 2003,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '01/01/2003',
-                  ContinueFromPreviousYear: 'Y',
+                  ContinueFromPreviousYear: 'y',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2003',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1786,7 +1843,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2003',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -1794,10 +1851,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2003',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -1805,16 +1862,16 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2003',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1822,20 +1879,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2004',
+              '@Year': 2004,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/20/2004',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2004',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1843,7 +1900,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2004',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -1851,7 +1908,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1859,20 +1916,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2005',
+              '@Year': 2005,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2005',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2005',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1880,7 +1937,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2005',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -1888,10 +1945,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2005',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -1899,16 +1956,16 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2005',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1916,20 +1973,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2006',
+              '@Year': 2006,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/20/2006',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2006',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1937,7 +1994,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2006',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -1945,7 +2002,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -1953,20 +2010,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2007',
+              '@Year': 2007,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2007',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2007',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -1974,7 +2031,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2007',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -1982,10 +2039,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2007',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -1993,10 +2050,10 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2007',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
@@ -2004,104 +2061,104 @@ export const ggitInputData: Input.InputData = {
                     IrrigationEvent: [
                       {
                         IrrigationDate: '04/25/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/02/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/09/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/16/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/23/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '05/30/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/06/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/13/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/20/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '06/27/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/04/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/11/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/18/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '07/25/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/01/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/08/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/15/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/22/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '08/29/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                       {
                         IrrigationDate: '09/05/2007',
-                        IrrigationInches: '1.0',
+                        IrrigationInches: 1.0,
                       },
                     ],
                   },
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2007',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2008',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2109,7 +2166,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/19/2007',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2117,10 +2174,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2008',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2133,20 +2190,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2008',
+              '@Year': 2008,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2008',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2008',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2154,7 +2211,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/15/2008',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2162,32 +2219,32 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {
                     LimingDate: '12/30/2008',
-                    LimingMethod: 'Dolomitic limestone',
-                    LimingRate: '1.0',
+                    LimingMethod: 'dolomitic limestone',
+                    LimingRate: 1.0,
                   },
                   GrazingList: {},
                 },
               ],
             },
             {
-              '@Year': '2009',
+              '@Year': 2009,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2009',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2009',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2195,7 +2252,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2009',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2203,10 +2260,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2009',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2214,32 +2271,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2009',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2009',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2010',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2247,7 +2304,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/19/2009',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2255,10 +2312,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2010',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2271,20 +2328,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2010',
+              '@Year': 2010,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2010',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2010',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2292,7 +2349,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/15/2010',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2300,7 +2357,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -2308,20 +2365,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2011',
+              '@Year': 2011,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2011',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2011',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2329,7 +2386,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2011',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2337,10 +2394,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2011',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2348,32 +2405,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2011',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2011',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2012',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2381,7 +2438,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/19/2011',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2389,10 +2446,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2012',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2401,28 +2458,28 @@ export const ggitInputData: Input.InputData = {
                   BurnEvent: {},
                   LimingEvent: {
                     LimingDate: '12/30/2011',
-                    LimingMethod: 'Calcitic limestone',
-                    LimingRate: '1.0',
+                    LimingMethod: 'calcitic limestone',
+                    LimingRate: 1.0,
                   },
                   GrazingList: {},
                 },
               ],
             },
             {
-              '@Year': '2012',
+              '@Year': 2012,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2012',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2012',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2430,7 +2487,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/15/2012',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2438,7 +2495,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -2446,20 +2503,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2013',
+              '@Year': 2013,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2013',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2013',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2467,7 +2524,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/19/2013',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2475,10 +2532,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2013',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2486,32 +2543,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2013',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2013',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2014',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2519,7 +2576,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/19/2013',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2527,10 +2584,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2014',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2543,20 +2600,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2014',
+              '@Year': 2014,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2014',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2014',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2564,7 +2621,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/14/2014',
-                        TillageType: 'Intensive Tillage',
+                        TillageType: 'intensive tillage',
                       },
                     ],
                   },
@@ -2572,7 +2629,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -2582,23 +2639,23 @@ export const ggitInputData: Input.InputData = {
           ],
         },
         {
-          '@Name': 'Future',
+          '@Name': 'future',
           CropYear: [
             {
-              '@Year': '2015',
+              '@Year': 2015,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2015',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2015',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2606,7 +2663,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2015',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2614,10 +2671,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2015',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2625,32 +2682,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2015',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2015',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2016',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2658,7 +2715,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/20/2015',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2666,10 +2723,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2016',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2682,20 +2739,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2016',
+              '@Year': 2016,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2016',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2016',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2703,7 +2760,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/15/2016',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2711,7 +2768,7 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
@@ -2719,20 +2776,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2017',
+              '@Year': 2017,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2017',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2017',
-                        Grain: 'Yes',
-                        yield: '134.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 134.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2740,7 +2797,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2017',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2748,10 +2805,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2017',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2759,32 +2816,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2017',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Winter Wheat',
+                  '@CropNumber': 2,
+                  CropName: 'winter wheat',
                   PlantingDate: '09/20/2017',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '06/10/2018',
-                        Grain: 'Yes',
-                        yield: '84.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 84.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2792,7 +2849,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/20/2017',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2800,10 +2857,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '03/01/2018',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '90.2',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 90.2,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2816,20 +2873,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2018',
+              '@Year': 2018,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '06/15/2018',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '11/15/2018',
-                        Grain: 'Yes',
-                        yield: '38.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 38.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2837,11 +2894,11 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '06/15/2018',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                       {
                         TillageDate: '09/22/2018',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2849,23 +2906,23 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2018',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/18/2019',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2873,7 +2930,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/22/2018',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2887,20 +2944,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2019',
+              '@Year': 2019,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2019',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2020',
-                        Grain: 'Yes',
-                        yield: '150.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 150.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2908,7 +2965,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2019',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2917,32 +2974,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2020',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2019',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/25/2020',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2950,7 +3007,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/20/2019',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -2958,10 +3015,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2020',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -2974,20 +3031,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2020',
+              '@Year': 2020,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/27/2020',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/20/2020',
-                        Grain: 'Yes',
-                        yield: '50.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 50.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -2995,7 +3052,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/27/2020',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3003,23 +3060,23 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2020',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/18/2021',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3027,7 +3084,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/22/2020',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3041,20 +3098,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2021',
+              '@Year': 2021,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2021',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2021',
-                        Grain: 'Yes',
-                        yield: '150.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 150.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3062,7 +3119,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2021',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3070,10 +3127,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2021',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -3081,32 +3138,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2021',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2021',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/25/2022',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3114,7 +3171,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/20/2021',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3128,20 +3185,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2022',
+              '@Year': 2022,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/27/2022',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/20/2022',
-                        Grain: 'Yes',
-                        yield: '50.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 50.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3149,7 +3206,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/27/2022',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3157,23 +3214,23 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2022',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/18/2023',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3181,7 +3238,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/22/2022',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3195,20 +3252,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2023',
+              '@Year': 2023,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Corn',
+                  '@CropNumber': 1,
+                  CropName: 'corn',
                   PlantingDate: '04/20/2023',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/14/2023',
-                        Grain: 'Yes',
-                        yield: '150.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 150.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3216,7 +3273,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/20/2023',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3224,10 +3281,10 @@ export const ggitInputData: Input.InputData = {
                     NApplicationEvent: [
                       {
                         NApplicationDate: '06/15/2023',
-                        NApplicationType: 'Urea Ammonium Nitrate (30-00-00)',
-                        NApplicationAmount: '149.8',
-                        NApplicationMethod: 'Surface Broadcast',
-                        EEP: 'None',
+                        NApplicationType: 'urea ammonium nitrate (30-00-00)',
+                        NApplicationAmount: 149.8,
+                        NApplicationMethod: 'surface broadcast',
+                        EEP: 'none',
                       },
                     ],
                   },
@@ -3235,32 +3292,32 @@ export const ggitInputData: Input.InputData = {
                     OMADApplicationEvent: [
                       {
                         OMADApplicationDate: '04/01/2023',
-                        OMADType: 'Chicken - Broiler (litter), Solid',
-                        OMADAmount: '0.78',
-                        OMADPercentN: '2.3',
-                        OMADCNRatio: '7.8',
+                        OMADType: 'chicken - broiler (litter), solid',
+                        OMADAmount: 0.78,
+                        OMADPercentN: 2.3,
+                        OMADCNRatio: 7.8,
                       },
                     ],
                   },
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2023',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/25/2024',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3268,7 +3325,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/20/2023',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3282,20 +3339,20 @@ export const ggitInputData: Input.InputData = {
               ],
             },
             {
-              '@Year': '2024',
+              '@Year': 2024,
               Crop: [
                 {
-                  '@CropNumber': '1',
-                  CropName: 'Soybean',
+                  '@CropNumber': 1,
+                  CropName: 'soybean',
                   PlantingDate: '04/27/2024',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '09/20/2024',
-                        Grain: 'Yes',
-                        yield: '50.0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'yes',
+                        yield: 50.0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3303,7 +3360,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '04/27/2024',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3311,23 +3368,23 @@ export const ggitInputData: Input.InputData = {
                   OMADApplicationList: {},
                   IrrigationList: {},
                   BurnEvent: {
-                    BurnTime: 'No burning',
+                    BurnTime: 'no burning',
                   },
                   LimingEvent: {},
                   GrazingList: {},
                 },
                 {
-                  '@CropNumber': '2',
-                  CropName: 'Annual Rye - Legume',
+                  '@CropNumber': 2,
+                  CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2024',
-                  ContinueFromPreviousYear: 'N',
+                  ContinueFromPreviousYear: 'n',
                   HarvestList: {
                     HarvestEvent: [
                       {
                         HarvestDate: '04/18/2025',
-                        Grain: 'No',
-                        yield: '0',
-                        StrawStoverHayRemoval: '0',
+                        Grain: 'no',
+                        yield: 0,
+                        StrawStoverHayRemoval: 0,
                       },
                     ],
                   },
@@ -3335,7 +3392,7 @@ export const ggitInputData: Input.InputData = {
                     TillageEvent: [
                       {
                         TillageDate: '09/22/2024',
-                        TillageType: 'No Tillage',
+                        TillageType: 'no tillage',
                       },
                     ],
                   },
@@ -3366,7 +3423,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Soybeans',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '',
               cropNumber: 1,
               harvestOrKillEvents: [],
@@ -3385,7 +3442,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Corn',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '4/27/2020',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3394,7 +3451,7 @@ export const v2Data: V2Data = {
                   yield: 203.55,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],
@@ -3437,7 +3494,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Soybeans',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '5/17/2019',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3446,7 +3503,7 @@ export const v2Data: V2Data = {
                   yield: 50.89,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],
@@ -3465,7 +3522,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Corn',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '5/17/2018',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3474,7 +3531,7 @@ export const v2Data: V2Data = {
                   yield: 206.42,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],
@@ -3517,7 +3574,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Soybeans',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '5/30/2017',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3526,7 +3583,7 @@ export const v2Data: V2Data = {
                   yield: 44.01,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],
@@ -3545,7 +3602,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Corn',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '5/4/2016',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3554,7 +3611,7 @@ export const v2Data: V2Data = {
                   yield: 219.56,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],
@@ -3590,7 +3647,7 @@ export const v2Data: V2Data = {
             {
               cropName: 'Soybeans',
               cropType: 'Annual crop',
-              continueFromPreviousYear: 'No',
+              continueFromPreviousYear: 'no',
               datePlanted: '5/19/2015',
               cropNumber: 1,
               harvestOrKillEvents: [
@@ -3599,7 +3656,7 @@ export const v2Data: V2Data = {
                   yield: 55.89,
                   yieldNumeratorUnit: 'BU',
                   yieldDenominatorUnit: 'ACRE',
-                  grainFruitTuber: 'Yes',
+                  grainFruitTuber: 'yes',
                   residueRemoved: 0,
                 },
               ],

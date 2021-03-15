@@ -1,4 +1,8 @@
-import { convertFromGgitToProject } from '../../index';
+import {
+  convertFromGgitToProject,
+  // findCropsTaggedAsContinueFromPreviousYear,
+  shiftCropsTaggedAsContinueFromPreviousYear,
+} from '../../index';
 
 import { ggitInputData, v3Data } from './fixtures';
 
@@ -9,3 +13,29 @@ describe('convertFromGgitToProject', () => {
     >(v3Data);
   });
 });
+
+// describe('findCropsTaggedAsContinueFromPreviousYear', () => {
+//   it('should find all crops tagged as ContinueFromPreviousYear', () => {
+//     const croplands = ggitInputData.Cropland;
+//     const cropland = croplands[0];
+//     const { CropScenario: cropScenarios } = cropland;
+//     expect(
+//       findCropsTaggedAsContinueFromPreviousYear({ cropScenarios })
+//     ).toStrictEqual<
+//       ReturnType<typeof findCropsTaggedAsContinueFromPreviousYear>
+//     >(null);
+//   });
+// });
+
+// describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
+//   it('should find all crops tagged as ContinueFromPreviousYear', () => {
+//     const croplands = ggitInputData.Cropland;
+//     const cropland = croplands[0];
+//     const { CropScenario: cropScenarios } = cropland;
+//     expect(
+//       shiftCropsTaggedAsContinueFromPreviousYear({ cropScenarios })
+//     ).toStrictEqual<
+//       ReturnType<typeof shiftCropsTaggedAsContinueFromPreviousYear>
+//     >(null);
+//   });
+// });
