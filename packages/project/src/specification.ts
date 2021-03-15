@@ -69,6 +69,8 @@ export const annualCropTypes = [
   'winter wheat',
 ] as const;
 
+export const perennialCropTypes = ['alfalfa', 'clover', 'grass'] as const;
+
 export const coverCropTypes = [
   'annual rye',
   'annual rye - legume',
@@ -108,6 +110,26 @@ export const solidOmadTypes = [
   'sheep manure, solid',
   'soybean meal',
   'swine manure, solid',
+] as const;
+
+export const orchardOrVineyardCropTypes = [
+  'almond',
+  'avocados',
+  'cherries',
+  'english walnuts',
+  'grape, raisin',
+  'grape, table',
+  'grape, wine (<1390 gdd)',
+  'grape, wine (>1950 gdd)',
+  'grape, wine (1391-1670 gdd)',
+  'grape, wine (1671-1950 gdd)',
+  'grapefruit',
+  'lemons & limes',
+  'olives',
+  'oranges',
+  'peaches and nectarines',
+  'pistachios',
+  'tangerines & mandarins',
 ] as const;
 
 /**
@@ -935,24 +957,7 @@ export interface OrchardOrVineyardCrop
    * ```
    *
    */
-  type:
-    | 'almond'
-    | 'avocados'
-    | 'cherries'
-    | 'english walnuts'
-    | 'grape, raisin'
-    | 'grape, table'
-    | 'grape, wine (<1390 gdd)'
-    | 'grape, wine (>1950 gdd)'
-    | 'grape, wine (1391-1670 gdd)'
-    | 'grape, wine (1671-1950 gdd)'
-    | 'grapefruit'
-    | 'lemons & limes'
-    | 'olives'
-    | 'oranges'
-    | 'peaches and nectarines'
-    | 'pistachios'
-    | 'tangerines & mandarins';
+  type: typeof orchardOrVineyardCropTypes[number];
   /**
    * The crop classification.
    *
@@ -1042,7 +1047,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  type: 'alfalfa' | 'clover' | 'grass';
+  type: typeof perennialCropTypes[number];
   /**
    * The crop classification.
    *

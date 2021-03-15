@@ -11,8 +11,6 @@ import type {
   Field,
   HistoricNonCRPLandManagement,
   HistoricCRPLandManagement,
-} from '../index';
-import type {
   BurningEvent,
   CropEvents,
   CropYear,
@@ -24,13 +22,17 @@ import type {
   AnnualCropHarvestEvent,
   SoilOrCropDisturbanceEvent,
   CoverCrop,
-} from '../specification';
+  OrchardOrVineyardCrop,
+  PerennialCrop,
+} from '../index';
 import {
   annualCropTypes,
   slurryOmadTypes,
   solidOmadTypes,
   coverCropTypes,
-} from '../specification';
+  orchardOrVineyardCropTypes,
+  perennialCropTypes,
+} from '../index';
 
 interface Translations {
   historicNonCrpLandManagement: {
@@ -49,7 +51,7 @@ interface Translations {
   };
 }
 
-const TRANSLATIONS: Translations = {
+export const TRANSLATIONS: Translations = {
   historicNonCrpLandManagement: {
     preYear1980: {
       'upland non-irrigated (pre 1980s)': 'upland non-irrigated',
@@ -70,9 +72,8 @@ const TRANSLATIONS: Translations = {
     },
   },
 };
-// todo type guard everything
 
-const isSlurryOrganicMatterEvent = (
+export const isSlurryOrganicMatterEvent = (
   event: Input.OMADApplicationEvent
 ): event is Input.OMADApplicationEvent & {
   OMADType: SlurryOrganicMatterEvent['type'];
@@ -82,7 +83,7 @@ const isSlurryOrganicMatterEvent = (
   );
 };
 
-const isSolidOrganicMatterEvent = (
+export const isSolidOrganicMatterEvent = (
   event: Input.OMADApplicationEvent
 ): event is Input.OMADApplicationEvent & {
   OMADType: SolidOrganicMatterEvent['type'];
@@ -92,19 +93,35 @@ const isSolidOrganicMatterEvent = (
   );
 };
 
-const isAnnualCrop = (
+export const isAnnualCrop = (
   cropEvent: Input.Crop
 ): cropEvent is Input.Crop & { CropName: AnnualCrop['type'] } => {
   return annualCropTypes.includes(cropEvent.CropName as AnnualCrop['type']);
 };
 
-const isCoverCrop = (
+export const isOrchardOrVineyardCrop = (
+  cropEvent: Input.Crop
+): cropEvent is Input.Crop & { CropName: OrchardOrVineyardCrop['type'] } => {
+  return orchardOrVineyardCropTypes.includes(
+    cropEvent.CropName as OrchardOrVineyardCrop['type']
+  );
+};
+
+export const isPerennialCrop = (
+  cropEvent: Input.Crop
+): cropEvent is Input.Crop & { CropName: PerennialCrop['type'] } => {
+  return perennialCropTypes.includes(
+    cropEvent.CropName as PerennialCrop['type']
+  );
+};
+
+export const isCoverCrop = (
   cropEvent: Input.Crop
 ): cropEvent is Input.Crop & { CropName: CoverCrop['type'] } => {
   return coverCropTypes.includes(cropEvent.CropName as CoverCrop['type']);
 };
 
-const extractGeometryData = ({
+export const extractGeometryData = ({
   croplands,
 }: {
   croplands: Input.Cropland[];
@@ -122,7 +139,7 @@ const extractGeometryData = ({
   return { geojson: geometryData.geojson, acres: geometryData.acres };
 };
 
-const extractFieldName = ({
+export const extractFieldName = ({
   metadata,
 }: {
   metadata: Input.Name;
@@ -131,22 +148,11 @@ const extractFieldName = ({
   return { fieldName };
 };
 
-const buildHistoricCrpLandManagement = (): HistoricCRPLandManagement => {
-  //  {
-  //   crp: 'yes',
-  //   crpType: '100% grass',
-  //   crpStartYear: 1980,
-  //   crpEndYear: 2000,
-  //   preCRPManagement: 'irrigated: annual crops in rotation',
-  //   preCRPTillage: 'intensive tillage',
-  //   postCRPManagement: 'non-irrigated: livestock grazing',
-  //   postCRPTillage: 'intensive tillage',
-  //   preYear1980: 'irrigation',
-  // };
-  throw new Error('TODO'); // todo
+export const buildHistoricCrpLandManagement = (): HistoricCRPLandManagement => {
+  throw new Error('Historic CRP Land Management is not currently supported');
 };
 
-const buildHistoricNonCrpLandManagement = ({
+export const buildHistoricNonCrpLandManagement = ({
   'Pre-1980': preYear1980,
   'Year1980-2000': year1980To2000,
   'Year1980-2000_Tillage': tillageForYears1980To2000,
@@ -163,7 +169,7 @@ const buildHistoricNonCrpLandManagement = ({
   };
 };
 
-const buildHistoricLandManagement = (
+export const buildHistoricLandManagement = (
   historicLandManagement: Pick<
     Input.Cropland,
     | 'CRP'
@@ -184,7 +190,7 @@ const buildHistoricLandManagement = (
     : buildHistoricNonCrpLandManagement(historicLandManagement);
 };
 
-const separateCurrentAndFutureScenarios = ({
+export const separateCurrentAndFutureScenarios = ({
   cropScenarios,
 }: {
   cropScenarios: Input.CropScenario[];
@@ -202,16 +208,18 @@ const separateCurrentAndFutureScenarios = ({
   };
 };
 
-const extractRegenerativeSwitchYear = ({
+export const extractRegenerativeSwitchYear = ({
   futureCropScenario,
 }: {
   futureCropScenario: Input.CropScenario;
 }): { regenerativeStartYear: Field['regenerativeStartYear'] } => {
-  const regenerativeStartYear = futureCropScenario.CropYear[0]['@Year']; // todo sort just in case
+  const regenerativeStartYear = futureCropScenario.CropYear.filter(
+    ({ '@Year': year }) => year
+  ).sort(({ '@Year': yearA }, { '@Year': yearB }) => yearA - yearB)[0]['@Year'];
   return { regenerativeStartYear };
 };
 
-const translateFertilizerEvent = ({
+export const translateFertilizerEvent = ({
   event,
 }: {
   event: Input.NApplicationEvent;
@@ -226,12 +234,12 @@ const translateFertilizerEvent = ({
       date,
       type,
       lbsOfNPerAcre,
-      name: null, // todo need to figure out out to pass through in input files
+      name: null,
     },
   };
 };
 
-const translateFertilizerEvents = ({
+export const translateFertilizerEvents = ({
   fertilizerEventList,
 }: {
   fertilizerEventList: Input.NApplicationList;
@@ -244,7 +252,7 @@ const translateFertilizerEvents = ({
   return { fertilizerEvents };
 };
 
-const translateOrganicMatterEvent = ({
+export const translateOrganicMatterEvent = ({
   event,
 }: {
   event: Input.OMADApplicationEvent;
@@ -270,13 +278,13 @@ const translateOrganicMatterEvent = ({
       amountPerAcre,
       percentNitrogen,
       carbonNitrogenRatio,
-      percentMoisture: null, // todo need to figure out out to pass through in input files
-      name: null, // todo need to figure out out to pass through in input files
+      percentMoisture: null,
+      name: null,
     },
   };
 };
 
-const translateOrganicMatterEvents = ({
+export const translateOrganicMatterEvents = ({
   organicMatterEventList,
 }: {
   organicMatterEventList: Input.OMADApplicationList;
@@ -292,7 +300,7 @@ const translateOrganicMatterEvents = ({
   return { organicMatterEvents };
 };
 
-const translateIrrigationEvent = ({
+export const translateIrrigationEvent = ({
   event,
 }: {
   event: Input.IrrigationEvent;
@@ -306,7 +314,7 @@ const translateIrrigationEvent = ({
   };
 };
 
-const translateIrrigationEvents = ({
+export const translateIrrigationEvents = ({
   irrigationEventList,
 }: {
   irrigationEventList: Input.IrrigationList;
@@ -319,12 +327,11 @@ const translateIrrigationEvents = ({
   return { irrigationEvents };
 };
 
-const translateLimingEvents = ({
+export const translateLimingEvents = ({
   limingEventList,
 }: {
   limingEventList: Input.LimingEvent;
 }): { limingEvents: CropEvents['limingEvents'] } => {
-  // todo ability to capture multiple liming events
   const {
     LimingDate: date,
     LimingMethod: type,
@@ -344,7 +351,7 @@ const translateLimingEvents = ({
   };
 };
 
-const translateBurningEvent = ({
+export const translateBurningEvent = ({
   burnEvent,
 }: {
   burnEvent: Input.BurnEvent;
@@ -357,20 +364,36 @@ const translateBurningEvent = ({
   };
 };
 
-const translateGrazingEvents = ({
+export const translateGrazingEvent = ({
+  event,
+}: {
+  event: Input.GrazingEvent;
+}): { grazingEvent: CropEvents['grazingEvents'][number] } => {
+  const {
+    GrazingStartDate: startDate,
+    GrazingEndDate: endDate,
+    RestPeriod: restPeriod,
+    UtilizationPct: utilization,
+  } = event;
+  return {
+    grazingEvent: { startDate, endDate, restPeriod, utilization },
+  };
+};
+
+export const translateGrazingEvents = ({
   grazingEventList,
 }: {
   grazingEventList: Input.GrazingList;
 }): { grazingEvents: CropEvents['grazingEvents'] } => {
-  // todo
   const grazingEvents =
     grazingEventList?.GrazingEvent?.reduce?.((eventList, event) => {
-      return eventList;
-    }, []) ?? null;
+      const { grazingEvent } = translateGrazingEvent({ event });
+      return [...eventList, grazingEvent];
+    }, [] as CropEvents['grazingEvents']) ?? null;
   return { grazingEvents };
 };
 
-const translateAnnualCropHarvestEvent = ({
+export const translateCropHarvestEvent = ({
   event,
 }: {
   event: Input.HarvestEvent;
@@ -392,14 +415,14 @@ const translateAnnualCropHarvestEvent = ({
   };
 };
 
-const translateAnnualCropHarvestEvents = ({
+export const translateCropHarvestEvents = ({
   harvestEventList,
 }: {
   harvestEventList: Input.HarvestList;
 }): { harvestEvents: AnnualCropHarvestEvent[] } => {
   const harvestEvents =
     harvestEventList?.HarvestEvent?.reduce?.((eventList, event) => {
-      const { annualCropHarvestEvent } = translateAnnualCropHarvestEvent({
+      const { annualCropHarvestEvent } = translateCropHarvestEvent({
         event,
       });
       return [...eventList, annualCropHarvestEvent];
@@ -407,7 +430,7 @@ const translateAnnualCropHarvestEvents = ({
   return { harvestEvents };
 };
 
-const translateSoilOrCropDisturbanceEvent = ({
+export const translateSoilOrCropDisturbanceEvent = ({
   event,
 }: {
   event: Input.TillageEvent;
@@ -417,7 +440,7 @@ const translateSoilOrCropDisturbanceEvent = ({
   const { TillageDate: date, TillageType: type } = event;
   return {
     soilOrCropDisturbanceEvent: {
-      name: null, // todo need to figure out out to pass through in input files
+      name: null,
       date,
       type:
         TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
@@ -426,7 +449,7 @@ const translateSoilOrCropDisturbanceEvent = ({
   };
 };
 
-const translateSoilOrCropDisturbanceEvents = ({
+export const translateSoilOrCropDisturbanceEvents = ({
   soilOrCropDisturbanceEventList,
 }: {
   soilOrCropDisturbanceEventList: Input.TillageList;
@@ -446,7 +469,7 @@ const translateSoilOrCropDisturbanceEvents = ({
   return { soilOrCropDisturbanceEvents };
 };
 
-const translateCoverCrop = ({
+export const translateCoverCrop = ({
   cropEvent,
 }: {
   cropEvent: Input.Crop & { CropName: CoverCrop['type'] };
@@ -456,7 +479,7 @@ const translateCoverCrop = ({
   const classification = 'annual cover';
   const {
     CropName: type,
-    PlantingDate: plantingDate, // '04/20/2020',
+    PlantingDate: plantingDate,
     NApplicationList: fertilizerEventList,
     OMADApplicationList: organicMatterEventList,
     IrrigationList: irrigationEventList,
@@ -488,7 +511,7 @@ const translateCoverCrop = ({
   });
   return {
     coverCrop: {
-      name: null, // todo need to figure out out to pass through in input files
+      name: null,
       plantingDate,
       type,
       classification,
@@ -503,7 +526,73 @@ const translateCoverCrop = ({
   };
 };
 
-const translateAnnualCrop = ({
+export const translateOrchardOrVineyardCrop = ({
+  cropEvent,
+}: {
+  cropEvent: Input.Crop & { CropName: OrchardOrVineyardCrop['type'] };
+}): {
+  orchardOrVineyard: OrchardOrVineyardCrop;
+} => {
+  const classification = 'vineyard';
+  const {
+    CropName: type,
+    PlantingDate: plantingDate,
+    NApplicationList: fertilizerEventList,
+    OMADApplicationList: organicMatterEventList,
+    IrrigationList: irrigationEventList,
+    LimingEvent: limingEventList,
+    GrazingList: grazingEventList,
+    HarvestList: harvestEventList,
+    BurnEvent: burnEvent,
+    TillageList: soilOrCropDisturbanceEventList,
+    Prune: prune,
+    Renew: renewOrClear,
+  } = cropEvent;
+  const { fertilizerEvents } = translateFertilizerEvents({
+    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+  });
+  const { organicMatterEvents } = translateOrganicMatterEvents({
+    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+  });
+  const { irrigationEvents } = translateIrrigationEvents({
+    irrigationEventList: irrigationEventList as Input.IrrigationList,
+  });
+  const { limingEvents } = translateLimingEvents({
+    limingEventList: limingEventList as Input.LimingEvent,
+  });
+  const { grazingEvents } = translateGrazingEvents({
+    grazingEventList: grazingEventList as Input.GrazingList,
+  });
+  const { burningEvent } = translateBurningEvent({
+    burnEvent: burnEvent as Input.BurnEvent,
+  });
+  const { harvestEvents } = translateCropHarvestEvents({
+    harvestEventList: harvestEventList as Input.HarvestList,
+  });
+  const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
+    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+  });
+  return {
+    orchardOrVineyard: {
+      name: null,
+      plantingDate,
+      type,
+      classification,
+      fertilizerEvents,
+      organicMatterEvents,
+      irrigationEvents,
+      limingEvents,
+      grazingEvents,
+      burningEvent,
+      harvestEvents,
+      soilOrCropDisturbanceEvents,
+      prune,
+      renewOrClear,
+    },
+  };
+};
+
+export const translateAnnualCrop = ({
   cropEvent,
 }: {
   cropEvent: Input.Crop & { CropName: AnnualCrop['type'] };
@@ -513,7 +602,7 @@ const translateAnnualCrop = ({
   const classification = 'annual crop';
   const {
     CropName: type,
-    PlantingDate: plantingDate, // '04/20/2020',
+    PlantingDate: plantingDate,
     NApplicationList: fertilizerEventList,
     OMADApplicationList: organicMatterEventList,
     IrrigationList: irrigationEventList,
@@ -541,7 +630,7 @@ const translateAnnualCrop = ({
   const { burningEvent } = translateBurningEvent({
     burnEvent: burnEvent as Input.BurnEvent,
   });
-  const { harvestEvents } = translateAnnualCropHarvestEvents({
+  const { harvestEvents } = translateCropHarvestEvents({
     harvestEventList: harvestEventList as Input.HarvestList,
   });
   const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
@@ -549,7 +638,7 @@ const translateAnnualCrop = ({
   });
   return {
     annualCrop: {
-      name: null, // todo need to figure out out to pass through in input files
+      name: null,
       plantingDate,
       type,
       classification,
@@ -565,7 +654,69 @@ const translateAnnualCrop = ({
   };
 };
 
-const translateCropEvent = ({
+export const translatePerennialCrop = ({
+  cropEvent,
+}: {
+  cropEvent: Input.Crop & { CropName: PerennialCrop['type'] };
+}): {
+  perennialCrop: PerennialCrop;
+} => {
+  const classification = 'perennial';
+  const {
+    CropName: type,
+    PlantingDate: plantingDate,
+    NApplicationList: fertilizerEventList,
+    OMADApplicationList: organicMatterEventList,
+    IrrigationList: irrigationEventList,
+    LimingEvent: limingEventList,
+    GrazingList: grazingEventList,
+    HarvestList: harvestEventList,
+    BurnEvent: burnEvent,
+    TillageList: soilOrCropDisturbanceEventList,
+  } = cropEvent;
+  const { fertilizerEvents } = translateFertilizerEvents({
+    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+  });
+  const { organicMatterEvents } = translateOrganicMatterEvents({
+    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+  });
+  const { irrigationEvents } = translateIrrigationEvents({
+    irrigationEventList: irrigationEventList as Input.IrrigationList,
+  });
+  const { limingEvents } = translateLimingEvents({
+    limingEventList: limingEventList as Input.LimingEvent,
+  });
+  const { grazingEvents } = translateGrazingEvents({
+    grazingEventList: grazingEventList as Input.GrazingList,
+  });
+  const { burningEvent } = translateBurningEvent({
+    burnEvent: burnEvent as Input.BurnEvent,
+  });
+  const { harvestEvents } = translateCropHarvestEvents({
+    harvestEventList: harvestEventList as Input.HarvestList,
+  });
+  const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
+    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+  });
+  return {
+    perennialCrop: {
+      name: null,
+      plantingDate,
+      type,
+      classification,
+      fertilizerEvents,
+      organicMatterEvents,
+      irrigationEvents,
+      limingEvents,
+      grazingEvents,
+      burningEvent,
+      harvestEvents,
+      soilOrCropDisturbanceEvents,
+    },
+  };
+};
+
+export const translateCropEvent = ({
   cropEvent,
 }: {
   cropEvent: Input.Crop;
@@ -579,15 +730,21 @@ const translateCropEvent = ({
     ({ coverCrop: crop } = translateCoverCrop({
       cropEvent,
     }));
+  } else if (isOrchardOrVineyardCrop(cropEvent)) {
+    ({ orchardOrVineyard: crop } = translateOrchardOrVineyardCrop({
+      cropEvent,
+    }));
+  } else if (isPerennialCrop(cropEvent)) {
+    ({ perennialCrop: crop } = translatePerennialCrop({
+      cropEvent,
+    }));
   } else {
     throw new Error('Unknown crop type');
   }
-  // todo orchard/vineyard
-  // todo perennial crop
   return { crop };
 };
 
-const extractCrops = ({
+export const extractCrops = ({
   cropList,
 }: {
   cropList: Input.Crop[];
@@ -607,7 +764,7 @@ const extractCrops = ({
   return { crops };
 };
 
-const extractCropYears = ({
+export const extractCropYears = ({
   currentCropScenario,
   futureCropScenario,
 }: {
@@ -633,7 +790,7 @@ const extractCropYears = ({
   };
 };
 
-const extractCroplandsAndScenarios = ({
+export const extractCroplandsAndScenarios = ({
   croplands,
 }: {
   croplands: Input.Cropland[];
@@ -741,11 +898,6 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                   ...(appendedHarvestList.length && {
                     HarvestList: { HarvestEvent: appendedHarvestList },
                   }),
-                  // GrazingList // todo
-                  // Prune // todo
-                  // Renew // todo
-                  // BurnEvent // todo
-                  // LimingEvent //todo
                 };
                 delete cropYears[i];
                 adjusted = true;
@@ -756,18 +908,17 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
       }
     });
   });
-  const cropScenarios: Input.CropScenario[] = [
-    {
-      '@Name': 'current',
-      CropYear: cropYears.slice(0, current.scenarios.CropYear.length),
-    },
-    {
-      '@Name': 'future',
-      CropYear: cropYears.slice(current.scenarios.CropYear.length),
-    },
-  ];
   return {
-    cropScenarios,
+    cropScenarios: [
+      {
+        '@Name': 'current',
+        CropYear: cropYears.slice(0, current.scenarios.CropYear.length),
+      },
+      {
+        '@Name': 'future',
+        CropYear: cropYears.slice(current.scenarios.CropYear.length),
+      },
+    ],
   };
 };
 
