@@ -418,7 +418,7 @@ export const translateCropHarvestEvent = ({
 export const translateCropHarvestEvents = ({
   harvestEventList,
 }: {
-  harvestEventList: Input.HarvestList;
+  harvestEventList: Input.Crop['HarvestList'];
 }): { harvestEvents: AnnualCropHarvestEvent[] } => {
   const harvestEvents =
     harvestEventList?.HarvestEvent?.reduce?.((eventList, event) => {
@@ -543,28 +543,20 @@ export const translateOrchardOrVineyardCrop = ({
     Renew: renewOrClear,
   } = cropEvent;
   const { fertilizerEvents } = translateFertilizerEvents({
-    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+    fertilizerEventList,
   });
   const { organicMatterEvents } = translateOrganicMatterEvents({
-    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+    organicMatterEventList,
   });
   const { irrigationEvents } = translateIrrigationEvents({
-    irrigationEventList: irrigationEventList as Input.IrrigationList,
+    irrigationEventList,
   });
-  const { limingEvents } = translateLimingEvents({
-    limingEventList: limingEventList as Input.LimingEvent,
-  });
-  const { grazingEvents } = translateGrazingEvents({
-    grazingEventList: grazingEventList as Input.GrazingList,
-  });
-  const { burningEvent } = translateBurningEvent({
-    burnEvent: burnEvent as Input.BurnEvent,
-  });
-  const { harvestEvents } = translateCropHarvestEvents({
-    harvestEventList: harvestEventList as Input.HarvestList,
-  });
+  const { limingEvents } = translateLimingEvents({ limingEventList });
+  const { grazingEvents } = translateGrazingEvents({ grazingEventList });
+  const { burningEvent } = translateBurningEvent({ burnEvent });
+  const { harvestEvents } = translateCropHarvestEvents({ harvestEventList });
   const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
-    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+    soilOrCropDisturbanceEventList,
   });
   return {
     orchardOrVineyard: {
@@ -607,28 +599,20 @@ export const translateAnnualCrop = ({
     TillageList: soilOrCropDisturbanceEventList,
   } = cropEvent;
   const { fertilizerEvents } = translateFertilizerEvents({
-    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+    fertilizerEventList,
   });
   const { organicMatterEvents } = translateOrganicMatterEvents({
-    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+    organicMatterEventList,
   });
   const { irrigationEvents } = translateIrrigationEvents({
-    irrigationEventList: irrigationEventList as Input.IrrigationList,
+    irrigationEventList,
   });
-  const { limingEvents } = translateLimingEvents({
-    limingEventList: limingEventList as Input.LimingEvent,
-  });
-  const { grazingEvents } = translateGrazingEvents({
-    grazingEventList: grazingEventList as Input.GrazingList,
-  });
-  const { burningEvent } = translateBurningEvent({
-    burnEvent: burnEvent as Input.BurnEvent,
-  });
-  const { harvestEvents } = translateCropHarvestEvents({
-    harvestEventList: harvestEventList as Input.HarvestList,
-  });
+  const { limingEvents } = translateLimingEvents({ limingEventList });
+  const { grazingEvents } = translateGrazingEvents({ grazingEventList });
+  const { burningEvent } = translateBurningEvent({ burnEvent });
+  const { harvestEvents } = translateCropHarvestEvents({ harvestEventList });
   const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
-    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+    soilOrCropDisturbanceEventList,
   });
   return {
     annualCrop: {
@@ -669,28 +653,20 @@ export const translatePerennialCrop = ({
     TillageList: soilOrCropDisturbanceEventList,
   } = cropEvent;
   const { fertilizerEvents } = translateFertilizerEvents({
-    fertilizerEventList: fertilizerEventList as Input.NApplicationList,
+    fertilizerEventList,
   });
   const { organicMatterEvents } = translateOrganicMatterEvents({
-    organicMatterEventList: organicMatterEventList as Input.OMADApplicationList,
+    organicMatterEventList,
   });
   const { irrigationEvents } = translateIrrigationEvents({
-    irrigationEventList: irrigationEventList as Input.IrrigationList,
+    irrigationEventList,
   });
-  const { limingEvents } = translateLimingEvents({
-    limingEventList: limingEventList as Input.LimingEvent,
-  });
-  const { grazingEvents } = translateGrazingEvents({
-    grazingEventList: grazingEventList as Input.GrazingList,
-  });
-  const { burningEvent } = translateBurningEvent({
-    burnEvent: burnEvent as Input.BurnEvent,
-  });
-  const { harvestEvents } = translateCropHarvestEvents({
-    harvestEventList: harvestEventList as Input.HarvestList,
-  });
+  const { limingEvents } = translateLimingEvents({ limingEventList });
+  const { grazingEvents } = translateGrazingEvents({ grazingEventList });
+  const { burningEvent } = translateBurningEvent({ burnEvent });
+  const { harvestEvents } = translateCropHarvestEvents({ harvestEventList });
   const { soilOrCropDisturbanceEvents } = translateSoilOrCropDisturbanceEvents({
-    soilOrCropDisturbanceEventList: soilOrCropDisturbanceEventList as Input.TillageList,
+    soilOrCropDisturbanceEventList,
   });
   return {
     perennialCrop: {
