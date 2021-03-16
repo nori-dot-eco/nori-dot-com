@@ -50,16 +50,25 @@ describe('convertFromV2ToV1', () => {
               srid: '',
               cropYears: [
                 {
-                  cropYear: 2021,
+                  cropYear: 2015,
                   crops: [
                     {
                       cropName: 'Soybeans',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '',
+                      datePlanted: '5/19/2015',
                       cropNumber: 1,
-                      harvestOrKillEvents: [],
+                      harvestOrKillEvents: [
+                        {
+                          date: '10/08/2015',
+                          boundaryYield: 55.89,
+                          yieldNumeratorUnit: 'BU',
+                          yieldDenominatorUnit: 'ACRE',
+                          grainFruitTuber: 'yes',
+                          residueRemoved: 0,
+                        },
+                      ],
                       tillageEvents: [],
                       fertilizerEvents: [],
                       organicMatterEvents: [],
@@ -70,69 +79,65 @@ describe('convertFromV2ToV1', () => {
                   ],
                 },
                 {
-                  cropYear: 2020,
+                  cropYear: 2016,
                   crops: [
                     {
                       cropName: 'Corn',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '4/27/2020',
+                      datePlanted: '5/4/2016',
                       cropNumber: 1,
                       harvestOrKillEvents: [
                         {
-                          date: '10/28/2020',
-                          boundaryYield: 203.55,
+                          date: '11/02/2016',
+                          boundaryYield: 219.56,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
                           grainFruitTuber: 'yes',
                           residueRemoved: 0,
                         },
                       ],
-                      tillageEvents: [
-                        { date: '4/25/2020', type: 'mulch tillage' },
-                      ],
+                      tillageEvents: [],
                       fertilizerEvents: [
                         {
-                          date: '4/21/2020',
+                          date: '4/13/2016',
                           productName: 'Anhydrous Ammonia (gas) (82-00-00)',
-                          lbsOfN: 70.22333594361778,
+                          lbsOfN: 110.85090294972589,
                         },
                         {
-                          date: '6/6/2020',
-                          productName: 'Urea Ammonium Phosphate (27-27-00)',
-                          lbsOfN: 45.995459919179325,
+                          date: '4/26/2016',
+                          productName: 'Urea (46-00-00)',
+                          lbsOfN: 47.81910517541112,
                         },
                       ],
-                      organicMatterEvents: [
-                        {
-                          date: '12/19/2019',
-                          productName: expect.any(String),
-                          percentN: 0.76,
-                          amountPerAcre: 13.439464627151052,
-                          amountUnit: '1000gal',
-                        },
-                      ],
+                      organicMatterEvents: [],
                       irrigationEvents: [],
-                      limingEvents: [],
+                      limingEvents: [
+                        {
+                          date: '12/8/2015',
+                          productName: 'crushed limestone',
+                          tonsPerAcre: 2.4856850715746424,
+                        },
+                      ],
                       burningEvents: [],
                     },
                   ],
                 },
                 {
-                  cropYear: 2019,
+                  cropYear: 2017,
                   crops: [
                     {
                       cropName: 'Soybeans',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '5/17/2019',
+                      datePlanted: '5/30/2017',
                       cropNumber: 1,
                       harvestOrKillEvents: [
                         {
-                          date: '10/30/2019',
-                          boundaryYield: 50.89,
+                          date: '10/27/2017',
+                          boundaryYield: 44.01,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
                           grainFruitTuber: 'yes',
@@ -199,19 +204,19 @@ describe('convertFromV2ToV1', () => {
                   ],
                 },
                 {
-                  cropYear: 2017,
+                  cropYear: 2019,
                   crops: [
                     {
                       cropName: 'Soybeans',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '5/30/2017',
+                      datePlanted: '5/17/2019',
                       cropNumber: 1,
                       harvestOrKillEvents: [
                         {
-                          date: '10/27/2017',
-                          boundaryYield: 44.01,
+                          date: '10/30/2019',
+                          boundaryYield: 50.89,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
                           grainFruitTuber: 'yes',
@@ -228,71 +233,66 @@ describe('convertFromV2ToV1', () => {
                   ],
                 },
                 {
-                  cropYear: 2016,
+                  cropYear: 2020,
                   crops: [
                     {
                       cropName: 'Corn',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '5/4/2016',
+                      datePlanted: '4/27/2020',
                       cropNumber: 1,
                       harvestOrKillEvents: [
                         {
-                          date: '11/02/2016',
-                          boundaryYield: 219.56,
+                          date: '10/28/2020',
+                          boundaryYield: 203.55,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
                           grainFruitTuber: 'yes',
                           residueRemoved: 0,
                         },
                       ],
-                      tillageEvents: [],
+                      tillageEvents: [
+                        { date: '4/25/2020', type: 'mulch tillage' },
+                      ],
                       fertilizerEvents: [
                         {
-                          date: '4/13/2016',
+                          date: '4/21/2020',
                           productName: 'Anhydrous Ammonia (gas) (82-00-00)',
-                          lbsOfN: 110.85090294972589,
+                          lbsOfN: 70.22333594361778,
                         },
                         {
-                          date: '4/26/2016',
-                          productName: 'Urea (46-00-00)',
-                          lbsOfN: 47.81910517541112,
+                          date: '6/6/2020',
+                          productName: 'Urea Ammonium Phosphate (27-27-00)',
+                          lbsOfN: 45.995459919179325,
                         },
                       ],
-                      organicMatterEvents: [],
+                      organicMatterEvents: [
+                        {
+                          date: '12/19/2019',
+                          productName: expect.any(String),
+                          percentN: 0.76,
+                          amountPerAcre: 13.439464627151052,
+                          amountUnit: '1000gal',
+                        },
+                      ],
                       irrigationEvents: [],
-                      limingEvents: [
-                        {
-                          date: '12/8/2015',
-                          productName: 'crushed limestone',
-                          tonsPerAcre: 2.4856850715746424,
-                        },
-                      ],
+                      limingEvents: [],
                       burningEvents: [],
                     },
                   ],
                 },
                 {
-                  cropYear: 2015,
+                  cropYear: 2021,
                   crops: [
                     {
                       cropName: 'Soybeans',
                       cropType: 'Annual crop',
                       continueFromPreviousYear: 'no',
                       version: 2,
-                      datePlanted: '5/19/2015',
+                      datePlanted: '',
                       cropNumber: 1,
-                      harvestOrKillEvents: [
-                        {
-                          date: '10/08/2015',
-                          boundaryYield: 55.89,
-                          yieldNumeratorUnit: 'BU',
-                          yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
-                        },
-                      ],
+                      harvestOrKillEvents: [],
                       tillageEvents: [],
                       fertilizerEvents: [],
                       organicMatterEvents: [],
