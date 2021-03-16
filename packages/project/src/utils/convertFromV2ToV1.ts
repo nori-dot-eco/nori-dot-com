@@ -161,84 +161,88 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
         geometry: field.geometry,
         clus: field.clus,
         srid: field.srid,
-        cropYears: field.cropYears.map((cropYear) => {
-          const v1VCropYear: V1CropYear = {
-            cropYear: cropYear.plantingYear,
-            crops:
-              cropYear.crops
-                ?.map((crop) => {
-                  const v1Crop: V1Crop = crop.cropName
-                    ? {
-                        cropName: crop.cropName,
-                        cropType: crop.cropType,
-                        continueFromPreviousYear: crop.continueFromPreviousYear,
-                        version: 2,
-                        datePlanted: crop.datePlanted,
-                        cropNumber: crop.cropNumber,
-                        harvestOrKillEvents:
-                          crop.harvestOrKillEvents?.map(
-                            (harvestOrKillEvent) => {
-                              const v1HarvestOrKillEvent: V1HarvestOrKillEvent = {
-                                date: harvestOrKillEvent.date,
-                                boundaryYield: harvestOrKillEvent.yield,
-                                yieldNumeratorUnit:
-                                  harvestOrKillEvent.yieldNumeratorUnit,
-                                yieldDenominatorUnit:
-                                  harvestOrKillEvent.yieldDenominatorUnit,
-                                grainFruitTuber:
-                                  harvestOrKillEvent.grainFruitTuber,
-                                residueRemoved:
-                                  harvestOrKillEvent.residueRemoved,
+        cropYears: field.cropYears
+          .map((cropYear) => {
+            const v1VCropYear: V1CropYear = {
+              cropYear: cropYear.plantingYear,
+              crops:
+                cropYear.crops
+                  ?.map((crop) => {
+                    const v1Crop: V1Crop = crop.cropName
+                      ? {
+                          cropName: crop.cropName,
+                          cropType: crop.cropType,
+                          continueFromPreviousYear:
+                            crop.continueFromPreviousYear,
+                          version: 2,
+                          datePlanted: crop.datePlanted,
+                          cropNumber: crop.cropNumber,
+                          harvestOrKillEvents:
+                            crop.harvestOrKillEvents?.map(
+                              (harvestOrKillEvent) => {
+                                const v1HarvestOrKillEvent: V1HarvestOrKillEvent = {
+                                  date: harvestOrKillEvent.date,
+                                  boundaryYield: harvestOrKillEvent.yield,
+                                  yieldNumeratorUnit:
+                                    harvestOrKillEvent.yieldNumeratorUnit,
+                                  yieldDenominatorUnit:
+                                    harvestOrKillEvent.yieldDenominatorUnit,
+                                  grainFruitTuber:
+                                    harvestOrKillEvent.grainFruitTuber,
+                                  residueRemoved:
+                                    harvestOrKillEvent.residueRemoved,
+                                };
+                                return v1HarvestOrKillEvent;
+                              }
+                            ) ?? [],
+                          tillageEvents:
+                            crop.tillageEvents?.map((tillageEvent) => {
+                              const v1TillageEvent: V1TillageEvent = {
+                                date: tillageEvent.date,
+                                type: tillageEvent.method,
                               };
-                              return v1HarvestOrKillEvent;
-                            }
-                          ) ?? [],
-                        tillageEvents:
-                          crop.tillageEvents?.map((tillageEvent) => {
-                            const v1TillageEvent: V1TillageEvent = {
-                              date: tillageEvent.date,
-                              type: tillageEvent.method,
-                            };
-                            return v1TillageEvent;
-                          }) ?? [],
-                        fertilizerEvents:
-                          crop.fertilizerEvents?.map((fertilizerEvent) => {
-                            const v1FertilizerEvent: V1FertilizerEvent = {
-                              date: fertilizerEvent.date,
-                              productName: fertilizerEvent.productName,
-                              lbsOfN: fertilizerEvent.lbsOfNPerAcre,
-                            };
-                            return v1FertilizerEvent;
-                          }) ?? [],
-                        organicMatterEvents:
-                          crop.organicMatterEvents?.map(
-                            (organicMatterEvent) => {
-                              const v1OrganicMatterEvent: V1OrganicMatterEvent = {
-                                date: organicMatterEvent.date,
-                                productName:
-                                  organicMatterEvent.productName ??
-                                  `OMAD product ${
-                                    Math.random() *
-                                    Math.floor(Math.random() * 10000000)
-                                  }`,
-                                percentN: organicMatterEvent.percentNitrogen,
-                                amountPerAcre: organicMatterEvent.amountPerAcre,
-                                amountUnit: '1000gal',
+                              return v1TillageEvent;
+                            }) ?? [],
+                          fertilizerEvents:
+                            crop.fertilizerEvents?.map((fertilizerEvent) => {
+                              const v1FertilizerEvent: V1FertilizerEvent = {
+                                date: fertilizerEvent.date,
+                                productName: fertilizerEvent.productName,
+                                lbsOfN: fertilizerEvent.lbsOfNPerAcre,
                               };
-                              return v1OrganicMatterEvent;
-                            }
-                          ) ?? [],
-                        irrigationEvents: crop.irrigationEvents ?? [],
-                        limingEvents: crop.limingEvents ?? [],
-                        burningEvents: crop.burningEvents ?? [],
-                      }
-                    : null;
-                  return v1Crop;
-                })
-                .filter((c) => c) ?? [],
-          };
-          return v1VCropYear;
-        }),
+                              return v1FertilizerEvent;
+                            }) ?? [],
+                          organicMatterEvents:
+                            crop.organicMatterEvents?.map(
+                              (organicMatterEvent) => {
+                                const v1OrganicMatterEvent: V1OrganicMatterEvent = {
+                                  date: organicMatterEvent.date,
+                                  productName:
+                                    organicMatterEvent.productName ??
+                                    `OMAD product ${
+                                      Math.random() *
+                                      Math.floor(Math.random() * 10000000)
+                                    }`,
+                                  percentN: organicMatterEvent.percentNitrogen,
+                                  amountPerAcre:
+                                    organicMatterEvent.amountPerAcre,
+                                  amountUnit: '1000gal',
+                                };
+                                return v1OrganicMatterEvent;
+                              }
+                            ) ?? [],
+                          irrigationEvents: crop.irrigationEvents ?? [],
+                          limingEvents: crop.limingEvents ?? [],
+                          burningEvents: crop.burningEvents ?? [],
+                        }
+                      : null;
+                    return v1Crop;
+                  })
+                  .filter((c) => c) ?? [],
+            };
+            return v1VCropYear;
+          })
+          .sort((a, b) => a.cropYear - b.cropYear),
       };
       return v1Field;
     }) ?? [];
