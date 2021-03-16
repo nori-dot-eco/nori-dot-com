@@ -1605,7 +1605,7 @@ export const ggitInputData: Input.InputData = {
       PostCRPTillage: [],
       CropScenario: [
         {
-          '@Name': 'current',
+          '@Name': 'Current',
           CropYear: [
             {
               '@Year': 2000,
@@ -2639,7 +2639,7 @@ export const ggitInputData: Input.InputData = {
           ],
         },
         {
-          '@Name': 'future',
+          '@Name': 'Future',
           CropYear: [
             {
               '@Year': 2015,

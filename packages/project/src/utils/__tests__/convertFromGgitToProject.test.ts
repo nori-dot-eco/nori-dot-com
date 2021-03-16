@@ -568,7 +568,7 @@ describe('separateCurrentAndFutureScenarios', () => {
       separateCurrentAndFutureScenarios({
         cropScenarios: [
           {
-            '@Name': 'current',
+            '@Name': 'Current',
             CropYear: [
               {
                 '@Year': 2001,
@@ -577,7 +577,7 @@ describe('separateCurrentAndFutureScenarios', () => {
             ],
           },
           {
-            '@Name': 'future',
+            '@Name': 'Future',
             CropYear: [
               {
                 '@Year': 2020,
@@ -589,7 +589,7 @@ describe('separateCurrentAndFutureScenarios', () => {
       })
     ).toStrictEqual<ReturnType<typeof separateCurrentAndFutureScenarios>>({
       currentCropScenario: {
-        '@Name': 'current',
+        '@Name': 'Current',
         CropYear: [
           {
             '@Year': 2001,
@@ -598,7 +598,7 @@ describe('separateCurrentAndFutureScenarios', () => {
         ],
       },
       futureCropScenario: {
-        '@Name': 'future',
+        '@Name': 'Future',
         CropYear: [
           {
             '@Year': 2020,
@@ -611,11 +611,11 @@ describe('separateCurrentAndFutureScenarios', () => {
 });
 
 describe('extractRegenerativeSwitchYear', () => {
-  it('will extract the regenerative switch year (which is the earliest crop year in the future scenarios', () => {
+  it('will extract the regenerative switch year (which is the earliest crop year in the Future scenarios', () => {
     expect(
       extractRegenerativeSwitchYear({
         futureCropScenario: {
-          '@Name': 'future',
+          '@Name': 'Future',
           CropYear: [
             {
               '@Year': 2020,
@@ -1432,7 +1432,7 @@ describe('extractCropYears', () => {
     expect(
       extractCropYears({
         currentCropScenario: {
-          '@Name': 'current',
+          '@Name': 'Current',
           CropYear: [
             {
               '@Year': 2001,
@@ -1441,7 +1441,7 @@ describe('extractCropYears', () => {
           ],
         },
         futureCropScenario: {
-          '@Name': 'future',
+          '@Name': 'Future',
           CropYear: [
             {
               '@Year': 2020,
@@ -1474,8 +1474,8 @@ describe('extractCroplandsAndScenarios', () => {
       CRPStartYear: [],
       CRPType: null,
       CropScenario: [
-        { '@Name': 'current', CropYear: [{ '@Year': 2000, Crop: [] }] },
-        { '@Name': 'future', CropYear: [{ '@Year': 2010, Crop: [] }] },
+        { '@Name': 'Current', CropYear: [{ '@Year': 2000, Crop: [] }] },
+        { '@Name': 'Future', CropYear: [{ '@Year': 2010, Crop: [] }] },
       ],
       GEOM: {
         '#text':
@@ -1511,7 +1511,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
       shiftCropsTaggedAsContinueFromPreviousYear({
         unadjustedCropScenarios: [
           {
-            '@Name': 'current',
+            '@Name': 'Current',
             CropYear: [
               {
                 '@Year': 2000,
@@ -1664,7 +1664,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
             ],
           },
           {
-            '@Name': 'future',
+            '@Name': 'Future',
             CropYear: [
               {
                 '@Year': 2004,
@@ -1712,7 +1712,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
     >({
       cropScenarios: [
         {
-          '@Name': 'current',
+          '@Name': 'Current',
           CropYear: [
             {
               '@Year': 2000,
@@ -1826,7 +1826,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
             },
           ],
         },
-        { '@Name': 'future', CropYear: [] },
+        { '@Name': 'Future', CropYear: [] },
       ],
     });
   });

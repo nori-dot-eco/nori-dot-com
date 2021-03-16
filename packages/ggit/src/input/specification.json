@@ -57,9 +57,9 @@
                     "CRPType": {
                         "description": "CRP Type. Dependant on CRP.",
                         "enum": [
-                            "100% Grass",
-                            "Grass/Legume Mixture",
-                            "None"
+                            "100% grass",
+                            "grass/legume mixture",
+                            "none"
                         ],
                         "title": "CRPType",
                         "type": "string"
@@ -74,8 +74,8 @@
                                 "@Name": {
                                     "description": "Name of this crop scenario.",
                                     "enum": [
-                                        "current",
-                                        "future"
+                                        "Current",
+                                        "Future"
                                     ],
                                     "title": "@Name",
                                     "type": "string"
@@ -102,12 +102,12 @@
                                                         "@CropNumber": {
                                                             "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
                                                             "enum": [
-                                                                "1",
-                                                                "2",
-                                                                "3"
+                                                                1,
+                                                                2,
+                                                                3
                                                             ],
                                                             "title": "@CropNumber",
-                                                            "type": "string"
+                                                            "type": "number"
                                                         },
                                                         "BurnEvent": {
                                                             "anyOf": [
@@ -148,8 +148,8 @@
                                                         "ContinueFromPreviousYear": {
                                                             "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
                                                             "enum": [
-                                                                "N",
-                                                                "Y"
+                                                                "n",
+                                                                "y"
                                                             ],
                                                             "title": "ContinueFromPreviousYear",
                                                             "type": "string"
@@ -252,12 +252,12 @@
                                                                                     "RestPeriod": {
                                                                                         "description": "Rest Period. Any number of days less than 365.",
                                                                                         "title": "RestPeriod",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "UtilizationPct": {
                                                                                         "description": "Utilization Percentage. Any percentage, in whole or real numbers, between 0 and 100.",
                                                                                         "title": "UtilizationPct",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     }
                                                                                 },
                                                                                 "required": [
@@ -309,8 +309,8 @@
                                                                                     "Grain": {
                                                                                         "description": "Is this a grain harvest.",
                                                                                         "enum": [
-                                                                                            "No",
-                                                                                            "Yes"
+                                                                                            "no",
+                                                                                            "yes"
                                                                                         ],
                                                                                         "title": "Grain",
                                                                                         "type": "string"
@@ -324,12 +324,12 @@
                                                                                     "StrawStoverHayRemoval": {
                                                                                         "description": "% of straw/stover/have/residue removal.",
                                                                                         "title": "StrawStoverHayRemoval",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "yield": {
                                                                                         "description": "Yield amount. See crop type spec for yield units in GGIT_API_File_Specification.xlsx.",
                                                                                         "title": "yield",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     }
                                                                                 },
                                                                                 "required": [
@@ -385,7 +385,7 @@
                                                                                     "IrrigationInches": {
                                                                                         "description": "Irrigation Inches",
                                                                                         "title": "IrrigationInches",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     }
                                                                                 },
                                                                                 "required": [
@@ -432,10 +432,10 @@
                                                                         "LimingMethod": {
                                                                             "description": "Liming Method",
                                                                             "enum": [
-                                                                                "Calcitic limestone",
-                                                                                "Crushed limestone",
-                                                                                "Dolomitic limestone",
-                                                                                "None"
+                                                                                "calcitic limestone",
+                                                                                "crushed limestone",
+                                                                                "dolomitic limestone",
+                                                                                "none"
                                                                             ],
                                                                             "title": "LimingMethod",
                                                                             "type": "string"
@@ -443,7 +443,7 @@
                                                                         "LimingRate": {
                                                                             "description": "Liming Rate. units in tons/acre",
                                                                             "title": "LimingRate",
-                                                                            "type": "string"
+                                                                            "type": "number"
                                                                         }
                                                                     },
                                                                     "required": [
@@ -485,9 +485,9 @@
                                                                                     "EEP": {
                                                                                         "description": "Enhanced efficiency product.",
                                                                                         "enum": [
-                                                                                            "Nitrification Inhibitor",
-                                                                                            "None",
-                                                                                            "Slow release"
+                                                                                            "nitrification inhibitor",
+                                                                                            "none",
+                                                                                            "slow release"
                                                                                         ],
                                                                                         "title": "EEP",
                                                                                         "type": "string"
@@ -495,7 +495,7 @@
                                                                                     "NApplicationAmount": {
                                                                                         "description": "Nitrogen application amount. Units in lbs N/acre",
                                                                                         "title": "NApplicationAmount",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "NApplicationDate": {
                                                                                         "description": "\"Nitrogen application date. must be in MM/DD/YYYY",
@@ -506,11 +506,11 @@
                                                                                     "NApplicationMethod": {
                                                                                         "description": "Nitrogen application method.",
                                                                                         "enum": [
-                                                                                            "Aerial Application",
-                                                                                            "Fertigation",
-                                                                                            "Incorporate / Inject",
-                                                                                            "Surface Band / Sidedress",
-                                                                                            "Surface Broadcast"
+                                                                                            "aerial application",
+                                                                                            "fertigation",
+                                                                                            "incorporate / inject",
+                                                                                            "surface band / sidedress",
+                                                                                            "surface broadcast"
                                                                                         ],
                                                                                         "title": "NApplicationMethod",
                                                                                         "type": "string"
@@ -518,27 +518,27 @@
                                                                                     "NApplicationType": {
                                                                                         "description": "Nitrogen application type.",
                                                                                         "enum": [
-                                                                                            "Ammonium Nitrate (34-0-0)",
-                                                                                            "Ammonium Nitrate Phosphate (23-23-00)",
-                                                                                            "Ammonium Nitrate Phosphate (27-14-00)",
-                                                                                            "Ammonium Phosphate Sulphate (16-20-00)",
-                                                                                            "Ammonium Polyphosphate Solution (10-34-00)",
-                                                                                            "Ammonium Sulphate (21-00-00)",
-                                                                                            "Ammonium Thiosulphate Solution (12-00-00)",
-                                                                                            "Anhydrous Ammonia (gas) (82-00-00)",
-                                                                                            "Calcium Ammonium Nitrate",
-                                                                                            "Calcium Nitrate",
-                                                                                            "Diammonium Phosphate (18-46-00)",
-                                                                                            "Element-N (N)",
-                                                                                            "Element-P (P)",
-                                                                                            "Mixed Blends",
-                                                                                            "Monoammonium Phosphate (11-55-00)",
-                                                                                            "Monoammonium Phosphate (12-51-00)",
-                                                                                            "Potassium Nitrate",
-                                                                                            "Urea (46-00-00)",
-                                                                                            "Urea Ammonium Nitrate (30-00-00)",
-                                                                                            "Urea Ammonium Phosphate (27-27-00)",
-                                                                                            "Urea Ammonium Phosphate (34-17-00)"
+                                                                                            "ammonium nitrate (34-0-0)",
+                                                                                            "ammonium nitrate phosphate (23-23-00)",
+                                                                                            "ammonium nitrate phosphate (27-14-00)",
+                                                                                            "ammonium phosphate sulphate (16-20-00)",
+                                                                                            "ammonium polyphosphate solution (10-34-00)",
+                                                                                            "ammonium sulphate (21-00-00)",
+                                                                                            "ammonium thiosulphate solution (12-00-00)",
+                                                                                            "anhydrous ammonia (gas) (82-00-00)",
+                                                                                            "calcium ammonium nitrate",
+                                                                                            "calcium nitrate",
+                                                                                            "diammonium phosphate (18-46-00)",
+                                                                                            "element-n (n)",
+                                                                                            "element-p (p)",
+                                                                                            "mixed blends",
+                                                                                            "monoammonium phosphate (11-55-00)",
+                                                                                            "monoammonium phosphate (12-51-00)",
+                                                                                            "potassium nitrate",
+                                                                                            "urea (46-00-00)",
+                                                                                            "urea ammonium nitrate (30-00-00)",
+                                                                                            "urea ammonium phosphate (27-27-00)",
+                                                                                            "urea ammonium phosphate (34-17-00)"
                                                                                         ],
                                                                                         "title": "NApplicationType",
                                                                                         "type": "string"
@@ -592,7 +592,7 @@
                                                                                     "OMADAmount": {
                                                                                         "description": "Organic Amendment Amount units in tons dry matter per acre",
                                                                                         "title": "OMADAmount",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "OMADApplicationDate": {
                                                                                         "description": "Organic Amendment Application date",
@@ -603,39 +603,39 @@
                                                                                     "OMADCNRatio": {
                                                                                         "description": "Organic Amendment Ratio",
                                                                                         "title": "OMADCNRatio",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "OMADPercentN": {
                                                                                         "description": "Organic Amendment Percent. Units in %N",
                                                                                         "title": "OMADPercentN",
-                                                                                        "type": "string"
+                                                                                        "type": "number"
                                                                                     },
                                                                                     "OMADType": {
                                                                                         "description": "Organic Amendment Type. see GGIT_API_File_Specification.xlsx tab Organic Amendment Types for details",
                                                                                         "enum": [
-                                                                                            "Alfalfa Meal",
-                                                                                            "Beef Manure, Solid",
-                                                                                            "Beef Slurry",
-                                                                                            "Blood, Dried",
-                                                                                            "Bone Meal",
-                                                                                            "Chicken - Broiler (litter), Solid",
-                                                                                            "Chicken - Broiler Slurry",
-                                                                                            "Chicken - Layer Slurry",
-                                                                                            "Chicken - Layer, Solid",
-                                                                                            "Compost or Composted Manure, Solid",
-                                                                                            "Dairy Manure, Solid",
-                                                                                            "Dairy Slurry",
-                                                                                            "Farmyard Manure, Solid",
-                                                                                            "Feather Meal",
-                                                                                            "Fish Emulsion",
-                                                                                            "Fish Scrap",
-                                                                                            "Guano",
-                                                                                            "Horse Manure, Solid",
-                                                                                            "Other Manure, Solid",
-                                                                                            "Sheep Manure, Solid",
-                                                                                            "Soybean Meal",
-                                                                                            "Swine Manure, Slurry",
-                                                                                            "Swine Manure, Solid"
+                                                                                            "alfalfa meal",
+                                                                                            "beef manure, solid",
+                                                                                            "beef slurry",
+                                                                                            "blood, dried",
+                                                                                            "bone meal",
+                                                                                            "chicken - broiler (litter), solid",
+                                                                                            "chicken - broiler slurry",
+                                                                                            "chicken - layer slurry",
+                                                                                            "chicken - layer, solid",
+                                                                                            "compost or composted manure, solid",
+                                                                                            "dairy manure, solid",
+                                                                                            "dairy slurry",
+                                                                                            "farmyard manure, solid",
+                                                                                            "feather meal",
+                                                                                            "fish emulsion",
+                                                                                            "fish scrap",
+                                                                                            "guano",
+                                                                                            "horse manure, solid",
+                                                                                            "other manure, solid",
+                                                                                            "sheep manure, solid",
+                                                                                            "soybean meal",
+                                                                                            "swine manure, slurry",
+                                                                                            "swine manure, solid"
                                                                                         ],
                                                                                         "title": "OMADType",
                                                                                         "type": "string"
@@ -680,8 +680,8 @@
                                                         "Prune": {
                                                             "description": "Prune. Yes = woody perennial crops are pruned.",
                                                             "enum": [
-                                                                "No",
-                                                                "Yes"
+                                                                "no",
+                                                                "yes"
                                                             ],
                                                             "title": "Prune",
                                                             "type": "string"
@@ -689,8 +689,8 @@
                                                         "Renew": {
                                                             "description": "Renew. Yes = remove and replant orchard. All coarse and fine branches\nand all coarse roots are removed, soil is plowed, and new saplings\nassumed to be 2 yrs old are planted.",
                                                             "enum": [
-                                                                "No",
-                                                                "Yes"
+                                                                "no",
+                                                                "yes"
                                                             ],
                                                             "title": "Renew",
                                                             "type": "string"
@@ -721,17 +721,17 @@
                                                                                     "TillageType": {
                                                                                         "description": "Tillage type.",
                                                                                         "enum": [
-                                                                                            "Broad-spectrum herbicide",
-                                                                                            "Crimp",
-                                                                                            "Growing Season Cultivation",
-                                                                                            "Intensive Tillage",
-                                                                                            "Mow",
-                                                                                            "Mulch Tillage",
-                                                                                            "No Tillage",
-                                                                                            "Reduced Tillage",
-                                                                                            "Ridge Tillage",
-                                                                                            "Strip Tillage",
-                                                                                            "Winter kill"
+                                                                                            "broad-spectrum herbicide",
+                                                                                            "crimp",
+                                                                                            "growing season cultivation",
+                                                                                            "intensive tillage",
+                                                                                            "mow",
+                                                                                            "mulch tillage",
+                                                                                            "no tillage",
+                                                                                            "reduced tillage",
+                                                                                            "ridge tillage",
+                                                                                            "strip tillage",
+                                                                                            "winter kill"
                                                                                         ],
                                                                                         "title": "TillageType",
                                                                                         "type": "string"
@@ -842,15 +842,16 @@
                         "items": [
                             {
                                 "enum": [
-                                    "Irrigated: Annual Crops in Rotation",
-                                    "Irrigated: Annual Crops with Hay/Pasture in Rotation",
-                                    "Irrigated: Continuous Hay",
-                                    "Irrigated: Orchard or Vineyard",
-                                    "Non-Irrigated: Annual Crops in Rotation",
-                                    "Non-Irrigated: Continuous Hay",
-                                    "Non-Irrigated: Fallow-Grain",
-                                    "Non-Irrigated: Livestock Grazing",
-                                    "Non-Irrigated: Orchard or Vineyard"
+                                    "irrigated: annual crops in rotation",
+                                    "irrigated: annual crops with hay/pasture in rotation",
+                                    "irrigated: continuous hay",
+                                    "irrigated: orchard or vineyard",
+                                    "non-irrigated: annual crops in rotation",
+                                    "non-irrigated: annual crops with hay/pasture in rotation",
+                                    "non-irrigated: continuous hay",
+                                    "non-irrigated: fallow-grain",
+                                    "non-irrigated: livestock grazing",
+                                    "non-irrigated: orchard or vineyard"
                                 ],
                                 "type": "string"
                             }
@@ -893,15 +894,16 @@
                         "items": [
                             {
                                 "enum": [
-                                    "Irrigated: Annual Crops in Rotation",
-                                    "Irrigated: Annual Crops with Hay/Pasture in Rotation",
-                                    "Irrigated: Continuous Hay",
-                                    "Irrigated: Orchard or Vineyard",
-                                    "Non-Irrigated: Annual Crops in Rotation",
-                                    "Non-Irrigated: Continuous Hay",
-                                    "Non-Irrigated: Fallow-Grain",
-                                    "Non-Irrigated: Livestock Grazing",
-                                    "Non-Irrigated: Orchard or Vineyard"
+                                    "irrigated: annual crops in rotation",
+                                    "irrigated: annual crops with hay/pasture in rotation",
+                                    "irrigated: continuous hay",
+                                    "irrigated: orchard or vineyard",
+                                    "non-irrigated: annual crops in rotation",
+                                    "non-irrigated: annual crops with hay/pasture in rotation",
+                                    "non-irrigated: continuous hay",
+                                    "non-irrigated: fallow-grain",
+                                    "non-irrigated: livestock grazing",
+                                    "non-irrigated: orchard or vineyard"
                                 ],
                                 "type": "string"
                             }
@@ -939,7 +941,8 @@
                             "non-irrigated: annual crops with hay/pasture in rotation",
                             "non-irrigated: continuous hay",
                             "non-irrigated: fallow-grain",
-                            "non-irrigated: livestock grazing"
+                            "non-irrigated: livestock grazing",
+                            "non-irrigated: orchard or vineyard"
                         ],
                         "title": "Year1980-2000",
                         "type": "string"

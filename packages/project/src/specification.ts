@@ -294,14 +294,15 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
    */
   year1980To2000:
     | 'irrigated: annual crops in rotation'
+    | 'irrigated: annual crops with hay/pasture in rotation'
     | 'irrigated: continuous hay'
-    | 'non-irrigated: annual crops with hay/pasture in rotation'
+    | 'irrigated: orchard or vineyard'
+    | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: continuous hay'
     | 'non-irrigated: livestock grazing'
-    | 'irrigated: annual crops with hay/pasture in rotation'
-    | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: fallow-grain'
-    | 'irrigated: orchard or vineyard';
+    | 'non-irrigated: annual crops with hay/pasture in rotation'
+    | 'non-irrigated: orchard or vineyard';
 }
 
 /**

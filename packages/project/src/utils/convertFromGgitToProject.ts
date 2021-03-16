@@ -198,9 +198,9 @@ export const separateCurrentAndFutureScenarios = ({
   futureCropScenario: Input.CropScenario;
   currentCropScenario: Input.CropScenario;
 } => {
-  const futureCropScenario = cropScenarios.find((s) => s['@Name'] === 'future');
+  const futureCropScenario = cropScenarios.find((s) => s['@Name'] === 'Future');
   const currentCropScenario = cropScenarios.find(
-    (s) => s['@Name'] === 'current'
+    (s) => s['@Name'] === 'Current'
   );
   return {
     futureCropScenario,
@@ -881,13 +881,13 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
   return {
     cropScenarios: [
       {
-        '@Name': 'current',
+        '@Name': 'Current',
         CropYear: cropYears
           .slice(0, current.scenarios.CropYear.length)
           .filter(({ '@Year': year }) => year),
       },
       {
-        '@Name': 'future',
+        '@Name': 'Future',
         CropYear: cropYears
           .slice(current.scenarios.CropYear.length)
           .filter(({ '@Year': year }) => year),

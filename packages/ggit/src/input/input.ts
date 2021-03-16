@@ -37,16 +37,7 @@ export type Name = string;
 /**
  * Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.
  */
-export type Year1980To2000 =
-  | 'irrigated: annual crops in rotation'
-  | 'irrigated: annual crops with hay/pasture in rotation'
-  | 'non-irrigated: annual crops with hay/pasture in rotation'
-  | 'irrigated: continuous hay'
-  | 'irrigated: orchard or vineyard'
-  | 'non-irrigated: annual crops in rotation'
-  | 'non-irrigated: continuous hay'
-  | 'non-irrigated: livestock grazing'
-  | 'non-irrigated: fallow-grain';
+export type Year1980To2000 = CrpManagementOption;
 
 /**
  * Tillage from 1980 - 2000.
@@ -82,6 +73,7 @@ export type CrpManagementOption =
   | 'non-irrigated: continuous hay'
   | 'non-irrigated: livestock grazing'
   | 'non-irrigated: fallow-grain'
+  | 'non-irrigated: annual crops with hay/pasture in rotation'
   | 'non-irrigated: orchard or vineyard';
 
 // todo de-duplicate in app
@@ -132,7 +124,7 @@ export interface CropScenario {
 /**
  * Name of this crop scenario.
  */
-export type CropScenarioName = 'current' | 'future';
+export type CropScenarioName = 'Current' | 'Future';
 
 /**
  * Crop event year.
