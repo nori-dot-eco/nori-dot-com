@@ -213,9 +213,9 @@ export const extractRegenerativeSwitchYear = ({
 }: {
   futureCropScenario: Input.CropScenario;
 }): { regenerativeStartYear: Field['regenerativeStartYear'] } => {
-  const regenerativeStartYear = futureCropScenario.CropYear.filter(
-    ({ '@Year': year }) => year
-  ).sort(({ '@Year': yearA }, { '@Year': yearB }) => yearA - yearB)[0]['@Year'];
+  const regenerativeStartYear = futureCropScenario.CropYear.sort(
+    ({ '@Year': yearA }, { '@Year': yearB }) => yearA - yearB
+  )[0]['@Year'];
   return { regenerativeStartYear };
 };
 
@@ -882,11 +882,15 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
     cropScenarios: [
       {
         '@Name': 'current',
-        CropYear: cropYears.slice(0, current.scenarios.CropYear.length),
+        CropYear: cropYears
+          .slice(0, current.scenarios.CropYear.length)
+          .filter(({ '@Year': year }) => year),
       },
       {
         '@Name': 'future',
-        CropYear: cropYears.slice(current.scenarios.CropYear.length),
+        CropYear: cropYears
+          .slice(current.scenarios.CropYear.length)
+          .filter(({ '@Year': year }) => year),
       },
     ],
   };

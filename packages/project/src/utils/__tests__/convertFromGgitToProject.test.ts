@@ -727,6 +727,19 @@ describe('translateOrganicMatterEvent', () => {
       },
     });
   });
+  it('will throw if the organic matter event is not a defined slurry or solid type', () => {
+    expect(() =>
+      translateOrganicMatterEvent({
+        event: {
+          OMADAmount: 1,
+          OMADApplicationDate: '01/01/2000',
+          OMADCNRatio: 3,
+          OMADPercentN: 2,
+          OMADType: ('not an OMAD type' as unknown) as Input.OMADType,
+        },
+      })
+    ).toThrow();
+  });
 });
 
 describe('translateOrganicMatterEvents', () => {
@@ -1452,20 +1465,369 @@ describe('extractCropYears', () => {
   });
 });
 
-// todo
-// describe('extractCroplandsAndScenarios', () => {
-//   it('will extract the croplands and scenarios', () => {
-//     expect(extractCroplandsAndScenarios(null)).toStrictEqual<
-//       ReturnType<typeof extractCroplandsAndScenarios>
-//     >(null);
-//   });
-// });
+describe('extractCroplandsAndScenarios', () => {
+  it('will extract the croplands and scenarios', () => {
+    const cropland: Input.Cropland = {
+      '@Name': 'project name|field name|1|2|2021-03-09T16:52:15.223Z|120|0',
+      CRP: null,
+      CRPEndYear: [],
+      CRPStartYear: [],
+      CRPType: null,
+      CropScenario: [
+        { '@Name': 'current', CropYear: [{ '@Year': 2000, Crop: [] }] },
+        { '@Name': 'future', CropYear: [{ '@Year': 2010, Crop: [] }] },
+      ],
+      GEOM: {
+        '#text':
+          'POLYGON((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
+        '@AREA': 120,
+        '@SRID': '4326',
+      },
+      PostCRPManagement: [],
+      PostCRPTillage: [],
+      'Pre-1980': 'irrigation (pre 1980s)',
+      PreCRPManagement: [],
+      PreCRPTillage: [],
+      'Year1980-2000': null,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Year1980-2000_Tillage': null,
+    };
+    expect(
+      extractCroplandsAndScenarios({
+        croplands: [cropland],
+      })
+    ).toStrictEqual<ReturnType<typeof extractCroplandsAndScenarios>>({
+      cropScenarios: [cropland.CropScenario[0], cropland.CropScenario[1]],
+      cropland,
+      croplands: [cropland],
+      metadata: 'project name|field name|1|2|2021-03-09T16:52:15.223Z|120|0',
+    });
+  });
+});
 
-// todo
-// describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
-//   it('will shift the crops tagged as continue from previous year into the relevant planting year', () => {
-//     expect(shiftCropsTaggedAsContinueFromPreviousYear(null)).toStrictEqual<
-//       ReturnType<typeof shiftCropsTaggedAsContinueFromPreviousYear>
-//     >(null);
-//   });
-// });
+describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
+  it('will shift the crops tagged as continue from previous year into the relevant planting year', () => {
+    expect(
+      shiftCropsTaggedAsContinueFromPreviousYear({
+        unadjustedCropScenarios: [
+          {
+            '@Name': 'current',
+            CropYear: [
+              {
+                '@Year': 2000,
+                Crop: [
+                  {
+                    '@CropNumber': 1,
+                    CropName: 'soybean',
+                    PlantingDate: '04/20/2000',
+                    ContinueFromPreviousYear: 'n',
+                    HarvestList: {
+                      HarvestEvent: [
+                        {
+                          HarvestDate: '09/14/2000',
+                          Grain: 'yes',
+                          yield: 38.0,
+                          StrawStoverHayRemoval: 0,
+                        },
+                      ],
+                    },
+                    TillageList: {
+                      TillageEvent: [
+                        {
+                          TillageDate: '04/20/2000',
+                          TillageType: 'no tillage',
+                        },
+                      ],
+                    },
+                    NApplicationList: {},
+                    OMADApplicationList: {},
+                    IrrigationList: {},
+                    BurnEvent: {
+                      BurnTime: 'no burning',
+                    },
+                    LimingEvent: {},
+                    GrazingList: {},
+                  },
+                ],
+              },
+              {
+                '@Year': 2001,
+                Crop: [
+                  {
+                    '@CropNumber': 1,
+                    CropName: 'corn',
+                    PlantingDate: '04/20/2001',
+                    ContinueFromPreviousYear: 'n',
+                    HarvestList: {
+                      HarvestEvent: [
+                        {
+                          HarvestDate: '09/14/2001',
+                          Grain: 'yes',
+                          yield: 38.0,
+                          StrawStoverHayRemoval: 0,
+                        },
+                      ],
+                    },
+                    TillageList: {
+                      TillageEvent: [
+                        {
+                          TillageDate: '04/20/2001',
+                          TillageType: 'no tillage',
+                        },
+                      ],
+                    },
+                    NApplicationList: {},
+                    OMADApplicationList: {},
+                    IrrigationList: {},
+                    BurnEvent: {
+                      BurnTime: 'no burning',
+                    },
+                    LimingEvent: {},
+                    GrazingList: {},
+                  },
+                ],
+              },
+              {
+                '@Year': 2002,
+                Crop: [
+                  {
+                    '@CropNumber': 1,
+                    CropName: 'corn',
+                    PlantingDate: '04/20/2002',
+                    ContinueFromPreviousYear: 'y',
+                    HarvestList: {
+                      HarvestEvent: [
+                        {
+                          HarvestDate: '09/14/2002',
+                          Grain: 'yes',
+                          yield: 38.0,
+                          StrawStoverHayRemoval: 0,
+                        },
+                      ],
+                    },
+                    TillageList: {
+                      TillageEvent: [
+                        {
+                          TillageDate: '04/20/2002',
+                          TillageType: 'no tillage',
+                        },
+                      ],
+                    },
+                    NApplicationList: {},
+                    OMADApplicationList: {},
+                    IrrigationList: {},
+                    BurnEvent: {
+                      BurnTime: 'no burning',
+                    },
+                    LimingEvent: {},
+                    GrazingList: {},
+                  },
+                ],
+              },
+              {
+                '@Year': 2003,
+                Crop: [
+                  {
+                    '@CropNumber': 1,
+                    CropName: 'soybean',
+                    PlantingDate: '04/20/2003',
+                    ContinueFromPreviousYear: 'n',
+                    HarvestList: {
+                      HarvestEvent: [
+                        {
+                          HarvestDate: '09/14/2003',
+                          Grain: 'yes',
+                          yield: 38.0,
+                          StrawStoverHayRemoval: 0,
+                        },
+                      ],
+                    },
+                    TillageList: {
+                      TillageEvent: [
+                        {
+                          TillageDate: '04/20/2003',
+                          TillageType: 'no tillage',
+                        },
+                      ],
+                    },
+                    NApplicationList: {},
+                    OMADApplicationList: {},
+                    IrrigationList: {},
+                    BurnEvent: {
+                      BurnTime: 'no burning',
+                    },
+                    LimingEvent: {},
+                    GrazingList: {},
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            '@Name': 'future',
+            CropYear: [
+              {
+                '@Year': 2004,
+                Crop: [
+                  {
+                    '@CropNumber': 1,
+                    CropName: 'soybean',
+                    PlantingDate: '04/20/2004',
+                    ContinueFromPreviousYear: 'y',
+                    HarvestList: {
+                      HarvestEvent: [
+                        {
+                          HarvestDate: '09/14/2004',
+                          Grain: 'yes',
+                          yield: 38.0,
+                          StrawStoverHayRemoval: 0,
+                        },
+                      ],
+                    },
+                    TillageList: {
+                      TillageEvent: [
+                        {
+                          TillageDate: '04/20/2004',
+                          TillageType: 'no tillage',
+                        },
+                      ],
+                    },
+                    NApplicationList: {},
+                    OMADApplicationList: {},
+                    IrrigationList: {},
+                    BurnEvent: {
+                      BurnTime: 'no burning',
+                    },
+                    LimingEvent: {},
+                    GrazingList: {},
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      })
+    ).toStrictEqual<
+      ReturnType<typeof shiftCropsTaggedAsContinueFromPreviousYear>
+    >({
+      cropScenarios: [
+        {
+          '@Name': 'current',
+          CropYear: [
+            {
+              '@Year': 2000,
+              Crop: [
+                {
+                  '@CropNumber': 1,
+                  BurnEvent: { BurnTime: 'no burning' },
+                  ContinueFromPreviousYear: 'n',
+                  CropName: 'soybean',
+                  GrazingList: {},
+                  HarvestList: {
+                    HarvestEvent: [
+                      {
+                        Grain: 'yes',
+                        HarvestDate: '09/14/2000',
+                        StrawStoverHayRemoval: 0,
+                        yield: 38,
+                      },
+                    ],
+                  },
+                  IrrigationList: {},
+                  LimingEvent: {},
+                  NApplicationList: {},
+                  OMADApplicationList: {},
+                  PlantingDate: '04/20/2000',
+                  TillageList: {
+                    TillageEvent: [
+                      { TillageDate: '04/20/2000', TillageType: 'no tillage' },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              '@Year': 2001,
+              Crop: [
+                {
+                  '@CropNumber': 1,
+                  BurnEvent: { BurnTime: 'no burning' },
+                  ContinueFromPreviousYear: 'n',
+                  CropName: 'corn',
+                  GrazingList: {},
+                  HarvestList: {
+                    HarvestEvent: [
+                      {
+                        Grain: 'yes',
+                        HarvestDate: '09/14/2001',
+                        StrawStoverHayRemoval: 0,
+                        yield: 38,
+                      },
+                      {
+                        Grain: 'yes',
+                        HarvestDate: '09/14/2002',
+                        StrawStoverHayRemoval: 0,
+                        yield: 38,
+                      },
+                    ],
+                  },
+                  IrrigationList: {},
+                  LimingEvent: {},
+                  NApplicationList: {},
+                  OMADApplicationList: {},
+                  PlantingDate: '04/20/2001',
+                  TillageList: {
+                    TillageEvent: [
+                      { TillageDate: '04/20/2001', TillageType: 'no tillage' },
+                      { TillageDate: '04/20/2002', TillageType: 'no tillage' },
+                    ],
+                  },
+                },
+              ],
+            },
+            {
+              '@Year': 2003,
+              Crop: [
+                {
+                  '@CropNumber': 1,
+                  BurnEvent: { BurnTime: 'no burning' },
+                  ContinueFromPreviousYear: 'n',
+                  CropName: 'soybean',
+                  GrazingList: {},
+                  HarvestList: {
+                    HarvestEvent: [
+                      {
+                        Grain: 'yes',
+                        HarvestDate: '09/14/2003',
+                        StrawStoverHayRemoval: 0,
+                        yield: 38,
+                      },
+                      {
+                        Grain: 'yes',
+                        HarvestDate: '09/14/2004',
+                        StrawStoverHayRemoval: 0,
+                        yield: 38,
+                      },
+                    ],
+                  },
+                  IrrigationList: {},
+                  LimingEvent: {},
+                  NApplicationList: {},
+                  OMADApplicationList: {},
+                  PlantingDate: '04/20/2003',
+                  TillageList: {
+                    TillageEvent: [
+                      { TillageDate: '04/20/2003', TillageType: 'no tillage' },
+                      { TillageDate: '04/20/2004', TillageType: 'no tillage' },
+                    ],
+                  },
+                },
+              ],
+            },
+          ],
+        },
+        { '@Name': 'future', CropYear: [] },
+      ],
+    });
+  });
+});
