@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@nori-dot-com/math": "*",
+    "@nori-dot-com/ggit": "*",
     "@turf/helpers": "^6.3.0",
     "ajv": "^6.12.3",
     "ajv-errors": "^1.0.1",

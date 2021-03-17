@@ -13,7 +13,6 @@ describe('convertFromV2ToV1', () => {
             {
               fieldSetName: 'Example Field Name',
               area: 119,
-              areaUnit: 'Ac',
               geometry: {
                 type: 'Feature',
                 properties: {},
@@ -46,7 +45,7 @@ describe('convertFromV2ToV1', () => {
                   type: 'Polygon',
                 },
               },
-              clus: [{ cluID: null }],
+              clus: undefined,
               srid: '',
               cropYears: [
                 {
@@ -54,8 +53,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Soybeans',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '5/19/2015',
                       cropNumber: 1,
@@ -65,8 +63,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 55.89,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [],
@@ -83,8 +79,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Corn',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '5/4/2016',
                       cropNumber: 1,
@@ -94,8 +89,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 219.56,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [],
@@ -103,11 +96,13 @@ describe('convertFromV2ToV1', () => {
                         {
                           date: '4/13/2016',
                           productName: 'Anhydrous Ammonia (gas) (82-00-00)',
+                          area: 119,
                           lbsOfN: 110.85090294972589,
                         },
                         {
                           date: '4/26/2016',
                           productName: 'Urea (46-00-00)',
+                          area: 119,
                           lbsOfN: 47.81910517541112,
                         },
                       ],
@@ -129,8 +124,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Soybeans',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '5/30/2017',
                       cropNumber: 1,
@@ -140,8 +134,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 44.01,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [],
@@ -158,8 +150,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Corn',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '5/17/2018',
                       cropNumber: 1,
@@ -169,8 +160,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 206.42,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [
@@ -180,11 +169,13 @@ describe('convertFromV2ToV1', () => {
                         {
                           date: '5/16/2018',
                           productName: 'Anhydrous Ammonia (gas) (82-00-00)',
+                          area: 119,
                           lbsOfN: 28.118872357086893,
                         },
                         {
                           date: '6/24/2018',
                           productName: 'Urea Ammonium Phosphate (34-17-00)',
+                          area: 119,
                           lbsOfN: 46.50650679961159,
                         },
                       ],
@@ -193,8 +184,10 @@ describe('convertFromV2ToV1', () => {
                           date: '11/30/2017',
                           productName: expect.any(String),
                           percentN: 0.64,
-                          amountPerAcre: 13.720321064996085,
-                          amountUnit: '1000gal',
+                          quantityUnit: '1000gal',
+                          percentMoisture: null,
+                          carbonToNitrogenRatio: null,
+                          tonsPerAcre: 13.720321064996085,
                         },
                       ],
                       irrigationEvents: [],
@@ -208,8 +201,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Soybeans',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '5/17/2019',
                       cropNumber: 1,
@@ -219,8 +211,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 50.89,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [],
@@ -237,8 +227,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Corn',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '4/27/2020',
                       cropNumber: 1,
@@ -248,8 +237,6 @@ describe('convertFromV2ToV1', () => {
                           boundaryYield: 203.55,
                           yieldNumeratorUnit: 'BU',
                           yieldDenominatorUnit: 'ACRE',
-                          grainFruitTuber: 'yes',
-                          residueRemoved: 0,
                         },
                       ],
                       tillageEvents: [
@@ -259,11 +246,13 @@ describe('convertFromV2ToV1', () => {
                         {
                           date: '4/21/2020',
                           productName: 'Anhydrous Ammonia (gas) (82-00-00)',
+                          area: 119,
                           lbsOfN: 70.22333594361778,
                         },
                         {
                           date: '6/6/2020',
                           productName: 'Urea Ammonium Phosphate (27-27-00)',
+                          area: 119,
                           lbsOfN: 45.995459919179325,
                         },
                       ],
@@ -272,8 +261,10 @@ describe('convertFromV2ToV1', () => {
                           date: '12/19/2019',
                           productName: expect.any(String),
                           percentN: 0.76,
-                          amountPerAcre: 13.439464627151052,
-                          amountUnit: '1000gal',
+                          quantityUnit: '1000gal',
+                          percentMoisture: null,
+                          carbonToNitrogenRatio: null,
+                          tonsPerAcre: 13.439464627151052,
                         },
                       ],
                       irrigationEvents: [],
@@ -287,8 +278,7 @@ describe('convertFromV2ToV1', () => {
                   crops: [
                     {
                       cropName: 'Soybeans',
-                      cropType: 'Annual crop',
-                      continueFromPreviousYear: 'no',
+
                       version: 2,
                       datePlanted: '',
                       cropNumber: 1,
@@ -307,7 +297,6 @@ describe('convertFromV2ToV1', () => {
           ],
         },
       ],
-      energyUse: [],
     });
   });
 });

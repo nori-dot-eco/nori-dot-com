@@ -1,11 +1,9 @@
 import * as Ajv from 'ajv';
+import ajvErrors = require('ajv-errors');
 
 import * as schema from './json/specification.json';
 
 import type { Project } from './index';
-
-/** @internal */
-import ajvErrors = require('ajv-errors');
 
 /**
  * Formats all non-geojson data to lowercase

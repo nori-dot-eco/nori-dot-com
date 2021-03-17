@@ -3704,11 +3704,6 @@ export const v2Data: V2Data = {
           type: 'Polygon',
         },
       },
-      clus: [
-        {
-          cluID: null,
-        },
-      ],
       srid: '',
     },
   ],
