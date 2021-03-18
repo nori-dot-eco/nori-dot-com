@@ -135,15 +135,18 @@ export const V1_APPLICATION_METHODS = [
 
 export type V1FertilizerApplicationMethod = typeof V1_APPLICATION_METHODS[number];
 
-export type V1FertilizerAmountAppliedUnits =
-  | 'lbs/acre'
-  | 'lbs'
-  | 'tons/acre'
-  | 'tons'
-  | 'gal/acre'
-  | 'gal'
-  | '1000gal/acre'
-  | '1000gal';
+export const V1_FERTILIZER_AMOUNT_APPLIED_UNITS = [
+  'lbs/acre',
+  'lbs',
+  'tons/acre',
+  'tons',
+  'gal/acre',
+  'gal',
+  '1000gal/acre',
+  '1000gal',
+] as const;
+
+export type V1FertilizerAmountAppliedUnits = typeof V1_FERTILIZER_AMOUNT_APPLIED_UNITS[number];
 
 export interface V1FertilizerEvent {
   date: string;
