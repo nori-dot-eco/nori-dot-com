@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [IrrigationEvent](_specification_.irrigationevent.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / IrrigationEvent
 
 # Interface: IrrigationEvent
+
+[specification](../modules/specification.md).IrrigationEvent
 
 Irrigation event details.
 
@@ -15,26 +17,22 @@ Irrigation event details.
 
 ## Hierarchy
 
-* [CropEvent](_specification_.cropevent.md)
+* [*CropEvent*](specification.cropevent.md)
 
   ↳ **IrrigationEvent**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [date](_specification_.irrigationevent.md#date)
-* [volume](_specification_.irrigationevent.md#volume)
+- [date](specification.irrigationevent.md#date)
+- [volume](specification.irrigationevent.md#volume)
 
 ## Properties
 
-###  date
+### date
 
 • **date**: *string*
-
-*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
-
-*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -48,13 +46,15 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "date": "01/01/2000"
 ```
 
+Inherited from: [CropEvent](specification.cropevent.md).[date](specification.cropevent.md#date)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
+
 ___
 
-###  volume
+### volume
 
 • **volume**: *number*
-
-*Defined in [specification.ts:1741](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1741)*
 
 The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 
@@ -65,3 +65,5 @@ The irrigation volume in inches. If volume is 0, simply do not define an irrigat
 ```js
 "volume": 1,
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1741](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1741)

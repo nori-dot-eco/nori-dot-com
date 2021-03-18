@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / SoilOrCropDisturbanceEvent
 
 # Interface: SoilOrCropDisturbanceEvent
+
+[specification](../modules/specification.md).SoilOrCropDisturbanceEvent
 
 Soil or crop disturbance event event details.
 
@@ -15,27 +17,23 @@ Soil or crop disturbance event event details.
 
 ## Hierarchy
 
-* [CropEvent](_specification_.cropevent.md)
+* [*CropEvent*](specification.cropevent.md)
 
   ↳ **SoilOrCropDisturbanceEvent**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [date](_specification_.soilorcropdisturbanceevent.md#date)
-* [name](_specification_.soilorcropdisturbanceevent.md#optional-name)
-* [type](_specification_.soilorcropdisturbanceevent.md#type)
+- [date](specification.soilorcropdisturbanceevent.md#date)
+- [name](specification.soilorcropdisturbanceevent.md#name)
+- [type](specification.soilorcropdisturbanceevent.md#type)
 
 ## Properties
 
-###  date
+### date
 
 • **date**: *string*
-
-*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
-
-*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -49,13 +47,15 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "date": "01/01/2000"
 ```
 
+Inherited from: [CropEvent](specification.cropevent.md).[date](specification.cropevent.md#date)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
+
 ___
 
-### `Optional` name
+### name
 
-• **name**? : *string*
-
-*Defined in [specification.ts:1382](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1382)*
+• `Optional` **name**: *string*
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -71,13 +71,13 @@ When defaulting to "no tillage", a default value will also be used for the event
 "name": "Joe's tillage method"
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1382](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1382)
+
 ___
 
-###  type
+### type
 
-• **type**: *"intensive tillage" | "reduced tillage" | "mulch tillage" | "ridge tillage" | "strip tillage" | "no tillage" | "growing season cultivation" | "mow" | "crimp" | "winter killed" | "broad-spectrum herbicide"*
-
-*Defined in [specification.ts:1455](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1455)*
+• **type**: *intensive tillage* \| *reduced tillage* \| *mulch tillage* \| *ridge tillage* \| *strip tillage* \| *no tillage* \| *growing season cultivation* \| *mow* \| *crimp* \| *winter killed* \| *broad-spectrum herbicide*
 
 The soil or crop disturbance events classification type.
 
@@ -148,3 +148,5 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 ```js
 "type": "broad-spectrum herbicide"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1455](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1455)

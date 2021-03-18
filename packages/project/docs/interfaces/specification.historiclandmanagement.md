@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [HistoricLandManagement](_specification_.historiclandmanagement.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / HistoricLandManagement
 
 # Interface: HistoricLandManagement
+
+[specification](../modules/specification.md).HistoricLandManagement
 
 **`example`** 
 
@@ -14,23 +16,21 @@
 
 * **HistoricLandManagement**
 
-  ↳ [HistoricNonCRPLandManagement](_specification_.historicnoncrplandmanagement.md)
+  ↳ [*HistoricNonCRPLandManagement*](specification.historicnoncrplandmanagement.md)
 
-  ↳ [HistoricCRPLandManagement](_specification_.historiccrplandmanagement.md)
+  ↳ [*HistoricCRPLandManagement*](specification.historiccrplandmanagement.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [preYear1980](_specification_.historiclandmanagement.md#preyear1980)
+- [preYear1980](specification.historiclandmanagement.md#preyear1980)
 
 ## Properties
 
-###  preYear1980
+### preYear1980
 
-• **preYear1980**: *"upland non-irrigated" | "irrigation" | "lowland non-irrigated" | "livestock grazing"*
-
-*Defined in [specification.ts:223](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L223)*
+• **preYear1980**: *upland non-irrigated* \| *irrigation* \| *lowland non-irrigated* \| *livestock grazing*
 
 A description of how the land was managed before 1980.
 
@@ -57,3 +57,5 @@ A description of how the land was managed before 1980.
 ```js
 "preYear1980": "lowland non-irrigated"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:223](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L223)

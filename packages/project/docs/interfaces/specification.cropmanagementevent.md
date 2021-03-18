@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [CropManagementEvent](_specification_.cropmanagementevent.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropManagementEvent
 
 # Interface: CropManagementEvent
+
+[specification](../modules/specification.md).CropManagementEvent
 
 Crop management event details.
 
@@ -16,29 +18,25 @@ Crop management event details.
 
 ## Hierarchy
 
-* [CropEvent](_specification_.cropevent.md)
+* [*CropEvent*](specification.cropevent.md)
 
   ↳ **CropManagementEvent**
 
-  ↳ [AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md)
+  ↳↳ [*AnnualCropHarvestEvent*](specification.annualcropharvestevent.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [date](_specification_.cropmanagementevent.md#date)
-* [grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)
-* [residueRemoved](_specification_.cropmanagementevent.md#optional-residueremoved)
+- [date](specification.cropmanagementevent.md#date)
+- [grainFruitTuber](specification.cropmanagementevent.md#grainfruittuber)
+- [residueRemoved](specification.cropmanagementevent.md#residueremoved)
 
 ## Properties
 
-###  date
+### date
 
 • **date**: *string*
-
-*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
-
-*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -52,13 +50,15 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "date": "01/01/2000"
 ```
 
+Inherited from: [CropEvent](specification.cropevent.md).[date](specification.cropevent.md#date)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
+
 ___
 
-###  grainFruitTuber
+### grainFruitTuber
 
-• **grainFruitTuber**: *"yes" | "no"*
-
-*Defined in [specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1272)*
+• **grainFruitTuber**: *no* \| *yes*
 
 Whether the crop was harvest for grain, fruit or tuber.
 
@@ -76,13 +76,13 @@ Whether the crop was harvest for grain, fruit or tuber.
 "grainFruitTuber": "no"
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1272)
+
 ___
 
-### `Optional` residueRemoved
+### residueRemoved
 
-• **residueRemoved**? : *number*
-
-*Defined in [specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1300)*
+• `Optional` **residueRemoved**: *number*
 
 Crop residue removed.
 
@@ -109,3 +109,5 @@ Crop residue removed.
 ```js
 "residueRemoved": 10
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1300)

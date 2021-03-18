@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [CropEvent](_specification_.cropevent.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropEvent
 
 # Interface: CropEvent
+
+[specification](../modules/specification.md).CropEvent
 
 A crop event that happened on a particular date.
 
@@ -16,29 +18,27 @@ A crop event that happened on a particular date.
 
 * **CropEvent**
 
-  ↳ [CropManagementEvent](_specification_.cropmanagementevent.md)
+  ↳ [*CropManagementEvent*](specification.cropmanagementevent.md)
 
-  ↳ [SoilOrCropDisturbanceEvent](_specification_.soilorcropdisturbanceevent.md)
+  ↳ [*SoilOrCropDisturbanceEvent*](specification.soilorcropdisturbanceevent.md)
 
-  ↳ [FertilizerEvent](_specification_.fertilizerevent.md)
+  ↳ [*FertilizerEvent*](specification.fertilizerevent.md)
 
-  ↳ [OrganicMatterEvent](_specification_.organicmatterevent.md)
+  ↳ [*OrganicMatterEvent*](specification.organicmatterevent.md)
 
-  ↳ [IrrigationEvent](_specification_.irrigationevent.md)
+  ↳ [*IrrigationEvent*](specification.irrigationevent.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [date](_specification_.cropevent.md#date)
+- [date](specification.cropevent.md#date)
 
 ## Properties
 
-###  date
+### date
 
 • **date**: *string*
-
-*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -51,3 +51,5 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 ```js
 "date": "01/01/2000"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)

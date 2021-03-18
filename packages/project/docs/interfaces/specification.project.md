@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [Project](_specification_.project.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / Project
 
 # Interface: Project
+
+[specification](../modules/specification.md).Project
 
 A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
 
@@ -14,24 +16,18 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 }
 ```
 
-## Hierarchy
-
-* **Project**
-
-## Index
+## Table of contents
 
 ### Properties
 
-* [fields](_specification_.project.md#fields)
-* [version](_specification_.project.md#version)
+- [fields](specification.project.md#fields)
+- [version](specification.project.md#version)
 
 ## Properties
 
-###  fields
+### fields
 
-• **fields**: *[Field](_specification_.field.md)[]*
-
-*Defined in [specification.ts:181](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L181)*
+• **fields**: [*Field*](specification.field.md)[]
 
 An array of fields defining annual crop management practices.
 
@@ -49,13 +45,13 @@ An array of fields defining annual crop management practices.
 ]
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:181](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L181)
+
 ___
 
-###  version
+### version
 
 • **version**: *string*
-
-*Defined in [specification.ts:163](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L163)*
 
 The specification version. This information is used to determine the logic Nori uses to import a project
 
@@ -66,3 +62,5 @@ The specification version. This information is used to determine the logic Nori 
 ```js
 "version": "0.1.0"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:163](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L163)

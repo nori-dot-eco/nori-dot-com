@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [PlantedCrop](_specification_.plantedcrop.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / PlantedCrop
 
 # Interface: PlantedCrop
+
+[specification](../modules/specification.md).PlantedCrop
 
 Crop properties relevant to planted crops.
 
@@ -16,28 +18,26 @@ Crop properties relevant to planted crops.
 
 * **PlantedCrop**
 
-  ↳ [OrchardOrVineyardCrop](_specification_.orchardorvineyardcrop.md)
+  ↳ [*OrchardOrVineyardCrop*](specification.orchardorvineyardcrop.md)
 
-  ↳ [PerennialCrop](_specification_.perennialcrop.md)
+  ↳ [*PerennialCrop*](specification.perennialcrop.md)
 
-  ↳ [CoverCrop](_specification_.covercrop.md)
+  ↳ [*CoverCrop*](specification.covercrop.md)
 
-  ↳ [AnnualCrop](_specification_.annualcrop.md)
+  ↳ [*AnnualCrop*](specification.annualcrop.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [name](_specification_.plantedcrop.md#optional-name)
-* [plantingDate](_specification_.plantedcrop.md#plantingdate)
+- [name](specification.plantedcrop.md#name)
+- [plantingDate](specification.plantedcrop.md#plantingdate)
 
 ## Properties
 
-### `Optional` name
+### name
 
-• **name**? : *string*
-
-*Defined in [specification.ts:695](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L695)*
+• `Optional` **name**: *string*
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -49,13 +49,13 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 "name": "Joe's corn"
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:695](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L695)
+
 ___
 
-###  plantingDate
+### plantingDate
 
 • **plantingDate**: *string*
-
-*Defined in [specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L710)*
 
 The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -68,3 +68,5 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 ```js
 "plantingDate": "01/01/2000"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:710](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L710)

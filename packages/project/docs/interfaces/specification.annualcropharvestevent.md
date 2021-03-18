@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / AnnualCropHarvestEvent
 
 # Interface: AnnualCropHarvestEvent
+
+[specification](../modules/specification.md).AnnualCropHarvestEvent
 
 An annual crop's harvest event details.
 
@@ -18,29 +20,25 @@ An annual crop's harvest event details.
 
 ## Hierarchy
 
-  ↳ [CropManagementEvent](_specification_.cropmanagementevent.md)
+* [*CropManagementEvent*](specification.cropmanagementevent.md)
 
   ↳ **AnnualCropHarvestEvent**
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [date](_specification_.annualcropharvestevent.md#date)
-* [grainFruitTuber](_specification_.annualcropharvestevent.md#grainfruittuber)
-* [residueRemoved](_specification_.annualcropharvestevent.md#optional-residueremoved)
-* [yield](_specification_.annualcropharvestevent.md#optional-yield)
-* [yieldUnit](_specification_.annualcropharvestevent.md#optional-yieldunit)
+- [date](specification.annualcropharvestevent.md#date)
+- [grainFruitTuber](specification.annualcropharvestevent.md#grainfruittuber)
+- [residueRemoved](specification.annualcropharvestevent.md#residueremoved)
+- [yield](specification.annualcropharvestevent.md#yield)
+- [yieldUnit](specification.annualcropharvestevent.md#yieldunit)
 
 ## Properties
 
-###  date
+### date
 
 • **date**: *string*
-
-*Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
-
-*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -54,15 +52,15 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "date": "01/01/2000"
 ```
 
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[date](specification.cropmanagementevent.md#date)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
+
 ___
 
-###  grainFruitTuber
+### grainFruitTuber
 
-• **grainFruitTuber**: *"yes" | "no"*
-
-*Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[grainFruitTuber](_specification_.cropmanagementevent.md#grainfruittuber)*
-
-*Defined in [specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1272)*
+• **grainFruitTuber**: *no* \| *yes*
 
 Whether the crop was harvest for grain, fruit or tuber.
 
@@ -80,15 +78,15 @@ Whether the crop was harvest for grain, fruit or tuber.
 "grainFruitTuber": "no"
 ```
 
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[grainFruitTuber](specification.cropmanagementevent.md#grainfruittuber)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1272)
+
 ___
 
-### `Optional` residueRemoved
+### residueRemoved
 
-• **residueRemoved**? : *number*
-
-*Inherited from [CropManagementEvent](_specification_.cropmanagementevent.md).[residueRemoved](_specification_.cropmanagementevent.md#optional-residueremoved)*
-
-*Defined in [specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1300)*
+• `Optional` **residueRemoved**: *number*
 
 Crop residue removed.
 
@@ -116,13 +114,15 @@ Crop residue removed.
 "residueRemoved": 10
 ```
 
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[residueRemoved](specification.cropmanagementevent.md#residueremoved)
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1300)
+
 ___
 
-### `Optional` yield
+### yield
 
-• **yield**? : *number*
-
-*Defined in [specification.ts:1334](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1334)*
+• `Optional` **yield**: *number*
 
 The crop yield.
 
@@ -136,13 +136,13 @@ The current version of quantification does not consider yield when producing est
 "yield": 100
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1334](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1334)
+
 ___
 
-### `Optional` yieldUnit
+### yieldUnit
 
-• **yieldUnit**? : *"bu/ac" | "cwt/ac" | "tons/ac" | "lbs/ac"*
-
-*Defined in [specification.ts:1349](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1349)*
+• `Optional` **yieldUnit**: *bu/ac* \| *cwt/ac* \| *tons/ac* \| *lbs/ac*
 
 The crop yield units.
 
@@ -155,3 +155,5 @@ The current version of quantification does not consider yield when producing est
 ```js
 "yieldUnit": "lbs/ac"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1349](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1349)

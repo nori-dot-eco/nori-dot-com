@@ -1,6 +1,8 @@
-[@nori-dot-com/project](../README.md) › ["specification"](../modules/_specification_.md) › [CropEventRange](_specification_.cropeventrange.md)
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropEventRange
 
 # Interface: CropEventRange
+
+[specification](../modules/specification.md).CropEventRange
 
 A crop event that has a start and end date.
 
@@ -17,22 +19,20 @@ A crop event that has a start and end date.
 
 * **CropEventRange**
 
-  ↳ [GrazingEvent](_specification_.grazingevent.md)
+  ↳ [*GrazingEvent*](specification.grazingevent.md)
 
-## Index
+## Table of contents
 
 ### Properties
 
-* [endDate](_specification_.cropeventrange.md#enddate)
-* [startDate](_specification_.cropeventrange.md#startdate)
+- [endDate](specification.cropeventrange.md#enddate)
+- [startDate](specification.cropeventrange.md#startdate)
 
 ## Properties
 
-###  endDate
+### endDate
 
 • **endDate**: *string*
-
-*Defined in [specification.ts:1236](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1236)*
 
 The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -44,13 +44,13 @@ The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 a
 "endDate": "12/31/2000"
 ```
 
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1236](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1236)
+
 ___
 
-###  startDate
+### startDate
 
 • **startDate**: *string*
-
-*Defined in [specification.ts:1223](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1223)*
 
 The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -61,3 +61,5 @@ The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 
 ```js
 "startDate": "01/01/2000"
 ```
+
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1223](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1223)
