@@ -531,10 +531,16 @@ export type NApplicationMethod =
   | 'fertigation'
   | 'aerial application';
 
+export const eepTypes = [
+  'none',
+  'slow release',
+  'nitrification inhibitor',
+] as const;
+
 /**
  * Enhanced efficiency product.
  */
-export type EEP = 'none' | 'slow release' | 'nitrification inhibitor';
+export type EEP = typeof eepTypes[number];
 
 /**
  * List of tillage events.

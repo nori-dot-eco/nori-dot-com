@@ -5,13 +5,13 @@ export const sanitizeV1Data = ({
 }: {
   project: V1Data;
 }): { sanitizedProject: V1Data } => {
-  const sanitizedProject = project;
-  project.projects.forEach((p, i) =>
-    p.fieldSets.forEach((f, j) =>
-      f.cropYears.forEach((cy, k) => {
+  const sanitizedProject = JSON.parse(JSON.stringify(project)); // https://stackoverflow.com/questions/48885194/typeerror-cannot-assign-to-read-only-property-x-of-object-object-react-j
+  project?.projects?.forEach((p, i) =>
+    p?.fieldSets?.forEach((f, j) =>
+      f?.cropYears?.forEach((cy, k) => {
         sanitizedProject.projects[i].fieldSets[j].cropYears[k] = JSON.parse(
           JSON.stringify(cy, (key, value) => {
-            return value?.toLowerCase?.() ?? value;
+            return value?.toLowerCase?.() ?? (value || '');
           })
         ) as V1CropYear;
       })

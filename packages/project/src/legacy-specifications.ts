@@ -124,13 +124,16 @@ export interface V1TillageEvent {
   classification?: Input.TillageType;
 }
 
-export type V1FertilizerApplicationMethod =
-  | 'spray'
-  | 'spread'
-  | 'sidedress'
-  | 'incorporate'
-  | 'fertigation'
-  | 'ariel application';
+export const V1_APPLICATION_METHODS = [
+  'spray',
+  'spread',
+  'sidedress',
+  'incorporate',
+  'fertigation',
+  'ariel application',
+] as const;
+
+export type V1FertilizerApplicationMethod = typeof V1_APPLICATION_METHODS[number];
 
 export type V1FertilizerAmountAppliedUnits =
   | 'lbs/acre'
@@ -232,6 +235,7 @@ export interface V1CropYear {
 
 export interface V1FieldSet {
   fieldSetName: string;
+  isSelected?: boolean; // only used in smart defaults
   geometry?: GeoJSON;
   area?: number;
   state?: string;
