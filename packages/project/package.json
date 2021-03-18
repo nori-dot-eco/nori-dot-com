@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "make:docs": "yarn run typedoc --readme none --stripInternal --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
+    "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
     "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --topRef=true --noExtraProps=true --defaultProps=true --validationKeywords=\"errorMessage\"",
     "build": "yarn run make:schema && tsc",
     "prepare": "yarn run build",
@@ -30,12 +30,16 @@
   "devDependencies": {
     "@types/ajv-errors": "^1.0.2",
     "@types/geojson": "^7946.0.7",
-    "typedoc": "^0.18.0",
-    "typedoc-plugin-markdown": "^2.4.1"
+    "typedoc": "^0.20.32",
+    "typedoc-plugin-markdown": "^3.6.0"
   },
   "dependencies": {
+    "@nori-dot-com/math": "*",
+    "@nori-dot-com/ggit": "*",
+    "@turf/helpers": "^6.3.0",
     "ajv": "^6.12.3",
     "ajv-errors": "^1.0.1",
-    "typescript-json-schema": "^0.49.0"
+    "typescript-json-schema": "^0.50.0",
+    "wicket": "^1.3.6"
   }
 }

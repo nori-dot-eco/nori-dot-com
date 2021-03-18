@@ -37,16 +37,7 @@ export type Name = string;
 /**
  * Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.
  */
-export type Year1980To2000 =
-  | 'Irrigated: Annual Crops in Rotation'
-  | 'Irrigated: Annual Crops with Hay/Pasture in Rotation'
-  | 'Irrigated: Continuous Hay'
-  | 'Irrigated: Orchard or Vineyard'
-  | 'Non-Irrigated: Annual Crops in Rotation'
-  | 'Non-Irrigated: Continuous Hay'
-  | 'Non-Irrigated: Livestock Grazing'
-  | 'Non-Irrigated: Fallow-Grain'
-  | 'Non-Irrigated: Orchard or Vineyard';
+export type Year1980To2000 = CrpManagementOption;
 
 /**
  * Tillage from 1980 - 2000.
@@ -57,38 +48,40 @@ export type Year1980To2000Tillage = CrpTillageOption;
  * Historic management data input. Pre-1980. See GGIT_API_File_Specification.xlsx Pre-1980 history by LRR tab.
  */
 export type Pre1980 =
-  | 'Upland Non-Irrigated (Pre 1980s)'
-  | 'Irrigation (Pre 1980s)'
-  | 'Lowland Non-Irrigated (Pre 1980s)';
+  | 'upland non-irrigated (pre 1980s)' // todo string template literal project spec pre 1980 + (pre1980s)
+  | 'irrigation (pre 1980s)'
+  | 'lowland non-irrigated (pre 1980s)'
+  | 'livestock grazing';
 
 /**
  * CRP.
  */
-export type CRP = 'No' | 'Yes';
+export type CRP = 'no' | 'yes';
 
 /**
  * CRP Type. Dependant on CRP.
  */
-export type CRPType = 'None' | '100% Grass' | 'Grass/Legume Mixture';
+export type CRPType = 'none' | '100% grass' | 'grass/legume mixture';
 
 // todo de-duplicate in app
 export type CrpManagementOption =
-  | 'Irrigated: Annual Crops in Rotation'
-  | 'Irrigated: Annual Crops with Hay/Pasture in Rotation'
-  | 'Irrigated: Continuous Hay'
-  | 'Irrigated: Orchard or Vineyard'
-  | 'Non-Irrigated: Annual Crops in Rotation'
-  | 'Non-Irrigated: Continuous Hay'
-  | 'Non-Irrigated: Livestock Grazing'
-  | 'Non-Irrigated: Fallow-Grain'
-  | 'Non-Irrigated: Orchard or Vineyard';
+  | 'irrigated: annual crops in rotation'
+  | 'irrigated: annual crops with hay/pasture in rotation'
+  | 'irrigated: continuous hay'
+  | 'irrigated: orchard or vineyard'
+  | 'non-irrigated: annual crops in rotation'
+  | 'non-irrigated: continuous hay'
+  | 'non-irrigated: livestock grazing'
+  | 'non-irrigated: fallow-grain'
+  | 'non-irrigated: annual crops with hay/pasture in rotation'
+  | 'non-irrigated: orchard or vineyard';
 
 // todo de-duplicate in app
 // todo all lower case
 export type CrpTillageOption =
-  | 'Intensive Tillage'
-  | 'Reduced Tillage'
-  | 'No Till';
+  | 'intensive tillage'
+  | 'reduced tillage'
+  | 'no till';
 
 /**
  * CRP start year. Must be YYYY.
@@ -131,7 +124,7 @@ export interface CropScenario {
 /**
  * Name of this crop scenario.
  */
-export type CropScenarioName = string;
+export type CropScenarioName = 'Current' | 'Future';
 
 /**
  * Crop event year.
@@ -144,7 +137,7 @@ export interface CropYear {
 /**
  * Year for this crop event.
  */
-export type Year = string; // todo number range
+export type Year = number; // todo number range
 
 /**
  * Crop event
@@ -193,86 +186,86 @@ export interface Crop {
 /**
  * Crop number for this crop event. Can have up to 3 crops for one crop year
  */
-export type CropNumber = '1' | '2' | '3'; // todo number
+export type CropNumber = 1 | 2 | 3;
 
 /**
  * Prune. Yes = woody perennial crops are pruned.
  */
-export type Prune = 'Yes' | 'No';
+export type Prune = 'yes' | 'no';
 
 /**
  * Renew. Yes = remove and replant orchard. All coarse and fine branches
  * and all coarse roots are removed, soil is plowed, and new saplings
  * assumed to be 2 yrs old are planted.
  */
-export type Renew = 'Yes' | 'No';
+export type Renew = 'yes' | 'no';
 
 /**
  * Name of crop. Check GGIT_API_File_Specification.xlsx tab CropName for complete list
  */
 export type CropName =
-  | 'Alfalfa'
-  | 'Almond'
-  | 'Annual Rye'
-  | 'Annual Rye - Legume'
-  | 'Annual Rye - Legume - Radish'
-  | 'Austrian Winter Pea'
-  | 'Avocados'
-  | 'Barley'
-  | 'Broccoli-Coast'
-  | 'Broccoli-Desert'
-  | 'Carrots'
-  | 'Cauliflower'
-  | 'Cereal Rye'
-  | 'Cherries'
-  | 'Clover'
-  | 'Corn'
-  | 'Corn Silage'
-  | 'Cotton'
-  | 'Dry Field Beans'
-  | 'Dry Field Pea'
-  | 'English Walnuts'
-  | 'Fallow'
-  | 'Forage Radish'
-  | 'Grape, Raisin'
-  | 'Grape, Table'
-  | 'Grape, Wine (<1390 GDD)'
-  | 'Grape, Wine (>1950 GDD)'
-  | 'Grape, Wine (1391-1670 GDD)'
-  | 'Grape, Wine (1671-1950 GDD)'
-  | 'Grapefruit'
-  | 'Grass'
-  | 'Grass-Legume Mix'
-  | 'Lemons & Limes'
-  | 'Lettuce-Head'
-  | 'Lettuce-Leaf'
-  | 'Lettuce-Romaine'
-  | 'Millet'
-  | 'Oats'
-  | 'Oilseed Radish'
-  | 'Olives'
-  | 'Oranges'
-  | 'Peaches and Nectarines'
-  | 'Peanut'
-  | 'Pistachios'
-  | 'Potato'
-  | 'Rice - Flooded'
-  | 'Rye'
-  | 'Sorghum'
-  | 'Sorghum'
-  | 'Sorghum Silage'
-  | 'Soybean'
-  | 'Spring Wheat'
-  | 'Strawberry'
-  | 'Sugar Beets'
-  | 'Sunflower'
-  | 'Switchgrass'
-  | 'Tangerines & Mandarins'
-  | 'Tomatoes, Fresh'
-  | 'Tomatoes, Processing'
-  | 'Vetch'
-  | 'Winter Grain-Other'
-  | 'Winter Wheat';
+  | 'alfalfa'
+  | 'almond'
+  | 'annual rye'
+  | 'annual rye - legume'
+  | 'annual rye - legume - radish'
+  | 'austrian winter pea'
+  | 'avocados'
+  | 'barley'
+  | 'broccoli-coast'
+  | 'broccoli-desert'
+  | 'carrots'
+  | 'cauliflower'
+  | 'cereal rye'
+  | 'cherries'
+  | 'clover'
+  | 'corn'
+  | 'corn silage'
+  | 'cotton'
+  | 'dry field beans'
+  | 'dry field pea'
+  | 'english walnuts'
+  | 'fallow'
+  | 'forage radish'
+  | 'grape, raisin'
+  | 'grape, table'
+  | 'grape, wine (<1390 gdd)'
+  | 'grape, wine (>1950 gdd)'
+  | 'grape, wine (1391-1670 gdd)'
+  | 'grape, wine (1671-1950 gdd)'
+  | 'grapefruit'
+  | 'grass'
+  | 'grass-legume mix'
+  | 'lemons & limes'
+  | 'lettuce-head'
+  | 'lettuce-leaf'
+  | 'lettuce-romaine'
+  | 'millet'
+  | 'oats'
+  | 'oilseed radish'
+  | 'olives'
+  | 'oranges'
+  | 'peaches and nectarines'
+  | 'peanut'
+  | 'pistachios'
+  | 'potato'
+  | 'rice - flooded'
+  | 'rye'
+  | 'sorghum'
+  | 'sorghum'
+  | 'sorghum silage'
+  | 'soybean'
+  | 'spring wheat'
+  | 'strawberry'
+  | 'sugar beets'
+  | 'sunflower'
+  | 'switchgrass'
+  | 'tangerines & mandarins'
+  | 'tomatoes, fresh'
+  | 'tomatoes, processing'
+  | 'vetch'
+  | 'winter grain-other'
+  | 'winter wheat';
 
 /**
  * Crop planting date. must be in MM/DD/YYYY format
@@ -287,7 +280,7 @@ export type PlantingDate = string;
  * (like alfalfa, perennial grass hay or pasture) from
  * previous year without re-planting.
  */
-export type ContinueFromPreviousYear = 'N' | 'Y';
+export type ContinueFromPreviousYear = 'n' | 'y';
 
 /**
  * Grazing event
@@ -316,12 +309,12 @@ export type GrazingEndDate = string;
 /**
  * Rest Period. Any number of days less than 365.
  */
-export type RestPeriod = string; // todo number
+export type RestPeriod = number; // todo (max, min )
 
 /**
  * Utilization Percentage. Any percentage, in whole or real numbers, between 0 and 100.
  */
-export type UtilizationPct = string; // todo number (max 100, min 0)
+export type UtilizationPct = number; // todo (max 100, min 0)
 
 /**
  * List of grazing events.
@@ -355,7 +348,7 @@ export type IrrigationDate = string;
 /**
  * Irrigation Inches
  */
-export type IrrigationInches = string; // todo number
+export type IrrigationInches = number; // todo max/min
 
 /**
  * Liming event.
@@ -377,15 +370,15 @@ export type LimingDate = string;
  * Liming Method
  */
 export type LimingMethod =
-  | 'None'
-  | 'Crushed limestone'
-  | 'Calcitic limestone'
-  | 'Dolomitic limestone';
+  | 'none'
+  | 'crushed limestone'
+  | 'calcitic limestone'
+  | 'dolomitic limestone';
 
 /**
  * Liming Rate. units in tons/acre
  */
-export type LimingRate = string; // todo number
+export type LimingRate = number; // todo max/min
 
 /**
  * List of manure application events. (Organic Amendment)
@@ -416,44 +409,44 @@ export type OMADApplicationDate = string;
  * Organic Amendment Type. see GGIT_API_File_Specification.xlsx tab Organic Amendment Types for details
  */
 export type OMADType =
-  | 'Alfalfa Meal'
-  | 'Beef Manure, Solid'
-  | 'Beef Slurry'
-  | 'Blood, Dried'
-  | 'Bone Meal'
-  | 'Chicken - Broiler (litter), Solid'
-  | 'Chicken - Broiler Slurry'
-  | 'Chicken - Layer Slurry'
-  | 'Chicken - Layer, Solid'
-  | 'Compost or Composted Manure, Solid'
-  | 'Dairy Manure, Solid'
-  | 'Dairy Slurry'
-  | 'Farmyard Manure, Solid'
-  | 'Feather Meal'
-  | 'Fish Emulsion'
-  | 'Fish Scrap'
-  | 'Guano'
-  | 'Horse Manure, Solid'
-  | 'Other Manure, Solid'
-  | 'Sheep Manure, Solid'
-  | 'Soybean Meal'
-  | 'Swine Manure, Slurry'
-  | 'Swine Manure, Solid';
+  | 'alfalfa meal'
+  | 'beef manure, solid'
+  | 'beef slurry'
+  | 'blood, dried'
+  | 'bone meal'
+  | 'chicken - broiler (litter), solid'
+  | 'chicken - broiler slurry'
+  | 'chicken - layer slurry'
+  | 'chicken - layer, solid'
+  | 'compost or composted manure, solid'
+  | 'dairy manure, solid'
+  | 'dairy slurry'
+  | 'farmyard manure, solid'
+  | 'feather meal'
+  | 'fish emulsion'
+  | 'fish scrap'
+  | 'guano'
+  | 'horse manure, solid'
+  | 'other manure, solid'
+  | 'sheep manure, solid'
+  | 'soybean meal'
+  | 'swine manure, slurry'
+  | 'swine manure, solid';
 
 /**
  * Organic Amendment Amount units in tons dry matter per acre
  */
-export type OMADAmount = string; // todo number
+export type OMADAmount = number; // todo max/min
 
 /**
  * Organic Amendment Percent. Units in %N
  */
-export type OMADPercentN = string; // todo number
+export type OMADPercentN = number; // todo max/min
 
 /**
  * Organic Amendment Ratio
  */
-export type OMADCNRatio = string; // todo number
+export type OMADCNRatio = number; // todo max/min
 
 /**
  * Burn event.
@@ -466,9 +459,9 @@ export interface BurnEvent {
  * Time burn event occurred.
  */
 export type BurnTime =
-  | 'No burning'
-  | 'Yes, before planting'
-  | 'Yes, after harvest';
+  | 'no burning'
+  | 'yes, before planting'
+  | 'yes, after harvest';
 
 /**
  * List of nitrogen applications.
@@ -501,47 +494,53 @@ export type NApplicationDate = string;
  * Nitrogen application type.
  */
 export type NApplicationType =
-  | 'Ammonium Nitrate (34-0-0)'
-  | 'Ammonium Nitrate Phosphate (23-23-00)'
-  | 'Ammonium Nitrate Phosphate (27-14-00)'
-  | 'Ammonium Phosphate Sulphate (16-20-00)'
-  | 'Ammonium Polyphosphate Solution (10-34-00)'
-  | 'Ammonium Sulphate (21-00-00)'
-  | 'Ammonium Thiosulphate Solution (12-00-00)'
-  | 'Anhydrous Ammonia (gas) (82-00-00)'
-  | 'Calcium Ammonium Nitrate'
-  | 'Calcium Nitrate'
-  | 'Diammonium Phosphate (18-46-00)'
-  | 'Element-N (N)'
-  | 'Element-P (P)'
-  | 'Mixed Blends'
-  | 'Monoammonium Phosphate (11-55-00)'
-  | 'Monoammonium Phosphate (12-51-00)'
-  | 'Potassium Nitrate'
-  | 'Urea (46-00-00)'
-  | 'Urea Ammonium Nitrate (30-00-00)'
-  | 'Urea Ammonium Phosphate (27-27-00)'
-  | 'Urea Ammonium Phosphate (34-17-00)';
+  | 'ammonium nitrate (34-0-0)'
+  | 'ammonium nitrate phosphate (23-23-00)'
+  | 'ammonium nitrate phosphate (27-14-00)'
+  | 'ammonium phosphate sulphate (16-20-00)'
+  | 'ammonium polyphosphate solution (10-34-00)'
+  | 'ammonium sulphate (21-00-00)'
+  | 'ammonium thiosulphate solution (12-00-00)'
+  | 'anhydrous ammonia (gas) (82-00-00)'
+  | 'calcium ammonium nitrate'
+  | 'calcium nitrate'
+  | 'diammonium phosphate (18-46-00)'
+  | 'element-n (n)'
+  | 'element-p (p)'
+  | 'mixed blends'
+  | 'monoammonium phosphate (11-55-00)'
+  | 'monoammonium phosphate (12-51-00)'
+  | 'potassium nitrate'
+  | 'urea (46-00-00)'
+  | 'urea ammonium nitrate (30-00-00)'
+  | 'urea ammonium phosphate (27-27-00)'
+  | 'urea ammonium phosphate (34-17-00)';
 
 /**
  * Nitrogen application amount. Units in lbs N/acre
  */
-export type NApplicationAmount = string; // todo number
+export type NApplicationAmount = number; // todo max/min
 
 /**
  * Nitrogen application method.
  */
 export type NApplicationMethod =
-  | 'Surface Broadcast'
-  | 'Surface Band / Sidedress'
-  | 'Incorporate / Inject'
-  | 'Fertigation'
-  | 'Aerial Application';
+  | 'surface broadcast'
+  | 'surface band / sidedress'
+  | 'incorporate / inject'
+  | 'fertigation'
+  | 'aerial application';
+
+export const eepTypes = [
+  'none',
+  'slow release',
+  'nitrification inhibitor',
+] as const;
 
 /**
  * Enhanced efficiency product.
  */
-export type EEP = 'None' | 'Slow release' | 'Nitrification Inhibitor';
+export type EEP = typeof eepTypes[number];
 
 /**
  * List of tillage events.
@@ -571,17 +570,17 @@ export type TillageDate = string;
  * Tillage type.
  */
 export type TillageType =
-  | 'Intensive Tillage'
-  | 'Reduced Tillage'
-  | 'Mulch Tillage'
-  | 'Ridge Tillage'
-  | 'Strip Tillage'
-  | 'No Tillage'
-  | 'Growing Season Cultivation'
-  | 'Mow'
-  | 'Crimp'
-  | 'Broad-spectrum herbicide'
-  | 'Winter kill';
+  | 'intensive tillage'
+  | 'reduced tillage'
+  | 'mulch tillage'
+  | 'ridge tillage'
+  | 'strip tillage'
+  | 'no tillage'
+  | 'growing season cultivation'
+  | 'mow'
+  | 'crimp'
+  | 'broad-spectrum herbicide'
+  | 'winter kill';
 
 /**
  * List of harvest events.
@@ -612,17 +611,17 @@ export type HarvestDate = string;
 /**
  * Is this a grain harvest.
  */
-export type Grain = 'Yes' | 'No';
+export type Grain = 'yes' | 'no';
 
 /**
  * Yield amount. See crop type spec for yield units in GGIT_API_File_Specification.xlsx.
  */
-export type Yield = string; // todo number
+export type Yield = number; // todo max/min
 
 /**
  * % of straw/stover/have/residue removal.
  */
-export type StrawStoverHayRemoval = string; // todo number
+export type StrawStoverHayRemoval = number; // todo max/min
 
 /**
  * Geometry, point or polygon. Polygon has maximum about of vertices, 1000.  Max size is 10,000 acres. SRID any
@@ -641,11 +640,11 @@ export type SRID = '4326';
 /**
  * Area of this geometry in acres.
  */
-export type AREA = string; // todo number, max 10k
+export type AREA = number; // todo max 10k
 
 /**
  * WKT string of geometry polygon.
  *
  * @TJS-type string
  */
-export type WKT = `Polygon((${any}))`; // todo regex
+export type WKT = `POLYGON((${any}))`; // todo regex, lowercase?

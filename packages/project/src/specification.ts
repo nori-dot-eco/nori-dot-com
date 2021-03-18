@@ -33,12 +33,104 @@
  */
 import type { GeoJSON } from 'geojson';
 
-/*
- * Todo
- *
- * ! Importer logic
- * * order events by date
- */
+export const annualCropTypes = [
+  'barley',
+  'broccoli-coast',
+  'broccoli-desert',
+  'carrots',
+  'cauliflower',
+  'corn',
+  'corn silage',
+  'cotton',
+  'dry field beans',
+  'dry field pea',
+  'fallow',
+  'grass-legume mix',
+  'lettuce-head',
+  'lettuce-leaf',
+  'lettuce-romaine',
+  'millet',
+  'oats',
+  'peanut',
+  'potato',
+  'rice - flooded',
+  'rye',
+  'sorghum',
+  'sorghum',
+  'sorghum silage',
+  'soybean',
+  'spring wheat',
+  'strawberry',
+  'sugar beets',
+  'sunflower',
+  'switchgrass',
+  'tomatoes, fresh',
+  'tomatoes, processing',
+  'winter wheat',
+] as const;
+
+export const perennialCropTypes = ['alfalfa', 'clover', 'grass'] as const;
+
+export const coverCropTypes = [
+  'annual rye',
+  'annual rye - legume',
+  'annual rye - legume - radish',
+  'austrian winter pea',
+  'cereal rye',
+  'forage radish',
+  'oilseed radish',
+  'vetch',
+  'winter grain-other',
+] as const;
+
+export const slurryOmadTypes = [
+  'beef slurry',
+  'chicken - broiler slurry',
+  'chicken - layer slurry',
+  'dairy slurry',
+  'swine manure, slurry',
+] as const;
+
+export const solidOmadTypes = [
+  'alfalfa meal',
+  'beef manure, solid',
+  'blood, dried',
+  'bone meal',
+  'chicken - broiler (litter), solid',
+  'chicken - layer, solid',
+  'compost or composted manure, solid',
+  'dairy manure, solid',
+  'farmyard manure, solid',
+  'feather meal',
+  'fish emulsion',
+  'fish scrap',
+  'guano',
+  'horse manure, solid',
+  'other manure, solid',
+  'sheep manure, solid',
+  'soybean meal',
+  'swine manure, solid',
+] as const;
+
+export const orchardOrVineyardCropTypes = [
+  'almond',
+  'avocados',
+  'cherries',
+  'english walnuts',
+  'grape, raisin',
+  'grape, table',
+  'grape, wine (<1390 gdd)',
+  'grape, wine (>1950 gdd)',
+  'grape, wine (1391-1670 gdd)',
+  'grape, wine (1671-1950 gdd)',
+  'grapefruit',
+  'lemons & limes',
+  'olives',
+  'oranges',
+  'peaches and nectarines',
+  'pistachios',
+  'tangerines & mandarins',
+] as const;
 
 /**
  *
@@ -202,14 +294,15 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
    */
   year1980To2000:
     | 'irrigated: annual crops in rotation'
+    | 'irrigated: annual crops with hay/pasture in rotation'
     | 'irrigated: continuous hay'
-    | 'non-irrigated: annual crops with hay/pasture in rotation'
+    | 'irrigated: orchard or vineyard'
+    | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: continuous hay'
     | 'non-irrigated: livestock grazing'
-    | 'irrigated: annual crops with hay/pasture in rotation'
-    | 'non-irrigated: annual crops in rotation'
     | 'non-irrigated: fallow-grain'
-    | 'irrigated: orchard or vineyard';
+    | 'non-irrigated: annual crops with hay/pasture in rotation'
+    | 'non-irrigated: orchard or vineyard';
 }
 
 /**
@@ -336,7 +429,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @example
    *
    * ```js
-   * "postCRPManagement": "livestock grazing"
+   * "postCRPManagement": "non-irrigated: livestock grazing"
    * ```
    *
    */
@@ -865,24 +958,7 @@ export interface OrchardOrVineyardCrop
    * ```
    *
    */
-  type:
-    | 'almond'
-    | 'avocados'
-    | 'cherries'
-    | 'english walnuts'
-    | 'grape, raisin'
-    | 'grape, table'
-    | 'grape, wine (<1390 gdd)'
-    | 'grape, wine (>1950 gdd)'
-    | 'grape, wine (1391-1670 gdd)'
-    | 'grape, wine (1671-1950 gdd)'
-    | 'grapefruit'
-    | 'lemons & limes'
-    | 'olives'
-    | 'oranges'
-    | 'peaches and nectarines'
-    | 'pistachios'
-    | 'tangerines & mandarins';
+  type: typeof orchardOrVineyardCropTypes[number];
   /**
    * The crop classification.
    *
@@ -972,7 +1048,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  type: 'alfalfa' | 'clover' | 'grass';
+  type: typeof perennialCropTypes[number];
   /**
    * The crop classification.
    *
@@ -1018,16 +1094,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    * ```
    *
    */
-  type:
-    | 'annual rye'
-    | 'annual rye - legume'
-    | 'annual rye - legume - radish'
-    | 'austrian winter pea'
-    | 'cereal rye'
-    | 'forage radish'
-    | 'oilseed radish'
-    | 'vetch'
-    | 'winter grain-other';
+  type: typeof coverCropTypes[number];
   /**
    * The crop classification.
    *
@@ -1079,40 +1146,7 @@ export interface AnnualCrop
    * ```
    *
    */
-  type:
-    | 'barley'
-    | 'broccoli-coast'
-    | 'broccoli-desert'
-    | 'carrots'
-    | 'cauliflower'
-    | 'corn'
-    | 'corn silage'
-    | 'cotton'
-    | 'dry field beans'
-    | 'dry field pea'
-    | 'fallow'
-    | 'grass-legume mix'
-    | 'lettuce-head'
-    | 'lettuce-leaf'
-    | 'lettuce-romaine'
-    | 'millet'
-    | 'oats'
-    | 'peanut'
-    | 'potato'
-    | 'rice - flooded'
-    | 'rye'
-    | 'sorghum'
-    | 'sorghum'
-    | 'sorghum silage'
-    | 'soybean'
-    | 'spring wheat'
-    | 'strawberry'
-    | 'sugar beets'
-    | 'sunflower'
-    | 'switchgrass'
-    | 'tomatoes, fresh'
-    | 'tomatoes, processing'
-    | 'winter wheat';
+  type: typeof annualCropTypes[number];
   /**
    * The crop classification.
    *
@@ -1540,25 +1574,7 @@ export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
    * ```
    *
    */
-  type:
-    | 'alfalfa meal'
-    | 'beef manure, solid'
-    | 'blood, dried'
-    | 'bone meal'
-    | 'chicken - broiler (litter), solid'
-    | 'chicken - layer, solid'
-    | 'compost or composted manure, solid'
-    | 'dairy manure, solid'
-    | 'farmyard manure, solid'
-    | 'feather meal'
-    | 'fish emulsion'
-    | 'fish scrap'
-    | 'guano'
-    | 'horse manure, solid'
-    | 'other manure, solid'
-    | 'sheep manure, solid'
-    | 'soybean meal'
-    | 'swine manure, solid';
+  type: typeof solidOmadTypes[number];
 }
 
 /**
@@ -1589,12 +1605,7 @@ export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
    * ```
    *
    */
-  type:
-    | 'beef slurry'
-    | 'chicken - broiler slurry'
-    | 'chicken - layer slurry'
-    | 'dairy slurry'
-    | 'swine manure, slurry';
+  type: typeof slurryOmadTypes[number];
 }
 
 // todo confirm amountPerAcre max

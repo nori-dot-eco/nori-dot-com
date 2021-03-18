@@ -1850,7 +1850,8 @@
                         "non-irrigated: annual crops with hay/pasture in rotation",
                         "non-irrigated: continuous hay",
                         "non-irrigated: fallow-grain",
-                        "non-irrigated: livestock grazing"
+                        "non-irrigated: livestock grazing",
+                        "non-irrigated: orchard or vineyard"
                     ],
                     "title": "year1980To2000",
                     "type": "string"

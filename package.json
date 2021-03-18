@@ -6,7 +6,7 @@
     "@types/jest": "^26.0.20",
     "@types/node-fetch": "^2.5.8",
     "@types/react": "^16.9.36",
-    "codecov": "^3.7.0",
+    "codecov": "^3.8.1",
     "jest": "^26.6.3",
     "lerna": "^3.22.0",
     "ts-jest": "^26.5.0",
@@ -46,7 +46,12 @@
           "<rootDir>/packages/project/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "project",
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "globals": {
+          "ts-jest": {
+            "tsconfig": "./packages/project/tsconfig.json"
+          }
+        }
       },
       {
         "testMatch": [

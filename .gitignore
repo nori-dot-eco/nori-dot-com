@@ -32,3 +32,6 @@ typings/
 
 # build files for npm
 dist
+
+# Coverage directory used by tools like istanbul
+coverage

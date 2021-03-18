@@ -58,7 +58,7 @@ jobs:
             yarn run test --coverage
       - run:
           name: Upload Coverage Reports
-          command: codecov --token=$CODECOV_TOKEN
+          command: codecov --disable=gcov --token=$CODECOV_TOKEN
 
 workflows:
   version: 2
