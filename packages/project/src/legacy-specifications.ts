@@ -85,7 +85,7 @@ export interface V2TillageEvent {
   method: string;
 }
 
-type YesNoOrNotApplicable = 'yes' | 'no' | 'n/a';
+export type YesNoOrNotApplicable = 'yes' | 'no' | 'n/a';
 
 export interface V1HarvestOrKillEvent {
   date: string;
