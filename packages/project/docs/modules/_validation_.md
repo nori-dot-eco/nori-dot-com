@@ -4,9 +4,21 @@
 
 ## Index
 
+### Variables
+
+* [ajvErrors](_validation_.md#ajverrors)
+
 ### Functions
 
 * [validateProjectData](_validation_.md#const-validateprojectdata)
+
+## Variables
+
+###  ajvErrors
+
+• **ajvErrors**: *AjvErrors*
+
+*Defined in [validation.ts:2](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/validation.ts#L2)*
 
 ## Functions
 
@@ -14,7 +26,7 @@
 
 ▸ **validateProjectData**(`data`: [Project](../interfaces/_specification_.project.md)): *object*
 
-*Defined in [validation.ts:47](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/validation.ts#L47)*
+*Defined in [validation.ts:45](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/validation.ts#L45)*
 
 Takes input data and checks whether its contents are valid or not. When the data is not valid, context is provided.
 

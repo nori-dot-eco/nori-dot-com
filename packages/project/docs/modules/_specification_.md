@@ -61,3 +61,147 @@ Throughout this documentation you will come across some vocab that indicate to w
 * [SlurryOrganicMatterEvent](../interfaces/_specification_.slurryorganicmatterevent.md)
 * [SoilOrCropDisturbanceEvent](../interfaces/_specification_.soilorcropdisturbanceevent.md)
 * [SolidOrganicMatterEvent](../interfaces/_specification_.solidorganicmatterevent.md)
+
+### Variables
+
+* [annualCropTypes](_specification_.md#const-annualcroptypes)
+* [coverCropTypes](_specification_.md#const-covercroptypes)
+* [orchardOrVineyardCropTypes](_specification_.md#const-orchardorvineyardcroptypes)
+* [perennialCropTypes](_specification_.md#const-perennialcroptypes)
+* [slurryOmadTypes](_specification_.md#const-slurryomadtypes)
+* [solidOmadTypes](_specification_.md#const-solidomadtypes)
+
+## Variables
+
+### `Const` annualCropTypes
+
+• **annualCropTypes**: *["barley", "broccoli-coast", "broccoli-desert", "carrots", "cauliflower", "corn", "corn silage", "cotton", "dry field beans", "dry field pea", "fallow", "grass-legume mix", "lettuce-head", "lettuce-leaf", "lettuce-romaine", "millet", "oats", "peanut", "potato", "rice - flooded", "rye", "sorghum", "sorghum", "sorghum silage", "soybean", "spring wheat", "strawberry", "sugar beets", "sunflower", "switchgrass", "tomatoes, fresh", "tomatoes, processing", "winter wheat"]* = [
+  'barley',
+  'broccoli-coast',
+  'broccoli-desert',
+  'carrots',
+  'cauliflower',
+  'corn',
+  'corn silage',
+  'cotton',
+  'dry field beans',
+  'dry field pea',
+  'fallow',
+  'grass-legume mix',
+  'lettuce-head',
+  'lettuce-leaf',
+  'lettuce-romaine',
+  'millet',
+  'oats',
+  'peanut',
+  'potato',
+  'rice - flooded',
+  'rye',
+  'sorghum',
+  'sorghum',
+  'sorghum silage',
+  'soybean',
+  'spring wheat',
+  'strawberry',
+  'sugar beets',
+  'sunflower',
+  'switchgrass',
+  'tomatoes, fresh',
+  'tomatoes, processing',
+  'winter wheat',
+] as const
+
+*Defined in [specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L36)*
+
+___
+
+### `Const` coverCropTypes
+
+• **coverCropTypes**: *["annual rye", "annual rye - legume", "annual rye - legume - radish", "austrian winter pea", "cereal rye", "forage radish", "oilseed radish", "vetch", "winter grain-other"]* = [
+  'annual rye',
+  'annual rye - legume',
+  'annual rye - legume - radish',
+  'austrian winter pea',
+  'cereal rye',
+  'forage radish',
+  'oilseed radish',
+  'vetch',
+  'winter grain-other',
+] as const
+
+*Defined in [specification.ts:74](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L74)*
+
+___
+
+### `Const` orchardOrVineyardCropTypes
+
+• **orchardOrVineyardCropTypes**: *["almond", "avocados", "cherries", "english walnuts", "grape, raisin", "grape, table", "grape, wine (<1390 gdd)", "grape, wine (>1950 gdd)", "grape, wine (1391-1670 gdd)", "grape, wine (1671-1950 gdd)", "grapefruit", "lemons & limes", "olives", "oranges", "peaches and nectarines", "pistachios", "tangerines & mandarins"]* = [
+  'almond',
+  'avocados',
+  'cherries',
+  'english walnuts',
+  'grape, raisin',
+  'grape, table',
+  'grape, wine (<1390 gdd)',
+  'grape, wine (>1950 gdd)',
+  'grape, wine (1391-1670 gdd)',
+  'grape, wine (1671-1950 gdd)',
+  'grapefruit',
+  'lemons & limes',
+  'olives',
+  'oranges',
+  'peaches and nectarines',
+  'pistachios',
+  'tangerines & mandarins',
+] as const
+
+*Defined in [specification.ts:115](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L115)*
+
+___
+
+### `Const` perennialCropTypes
+
+• **perennialCropTypes**: *["alfalfa", "clover", "grass"]* = ['alfalfa', 'clover', 'grass'] as const
+
+*Defined in [specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L72)*
+
+___
+
+### `Const` slurryOmadTypes
+
+• **slurryOmadTypes**: *["beef slurry", "chicken - broiler slurry", "chicken - layer slurry", "dairy slurry", "swine manure, slurry"]* = [
+  'beef slurry',
+  'chicken - broiler slurry',
+  'chicken - layer slurry',
+  'dairy slurry',
+  'swine manure, slurry',
+] as const
+
+*Defined in [specification.ts:86](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L86)*
+
+___
+
+### `Const` solidOmadTypes
+
+• **solidOmadTypes**: *["alfalfa meal", "beef manure, solid", "blood, dried", "bone meal", "chicken - broiler (litter), solid", "chicken - layer, solid", "compost or composted manure, solid", "dairy manure, solid", "farmyard manure, solid", "feather meal", "fish emulsion", "fish scrap", "guano", "horse manure, solid", "other manure, solid", "sheep manure, solid", "soybean meal", "swine manure, solid"]* = [
+  'alfalfa meal',
+  'beef manure, solid',
+  'blood, dried',
+  'bone meal',
+  'chicken - broiler (litter), solid',
+  'chicken - layer, solid',
+  'compost or composted manure, solid',
+  'dairy manure, solid',
+  'farmyard manure, solid',
+  'feather meal',
+  'fish emulsion',
+  'fish scrap',
+  'guano',
+  'horse manure, solid',
+  'other manure, solid',
+  'sheep manure, solid',
+  'soybean meal',
+  'swine manure, solid',
+] as const
+
+*Defined in [specification.ts:94](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L94)*

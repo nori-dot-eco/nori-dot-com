@@ -38,7 +38,7 @@ Fertilizer event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1160](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1160)*
+*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -58,7 +58,7 @@ ___
 
 • **lbsOfNPerAcre**: *number*
 
-*Defined in [specification.ts:1512](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1512)*
+*Defined in [specification.ts:1546](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1546)*
 
 Amount of nitrogen applied in lbs/ac.
 
@@ -76,7 +76,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [specification.ts:1463](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1463)*
+*Defined in [specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1497)*
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
@@ -94,7 +94,7 @@ ___
 
 • **type**? : *"ammonium nitrate (34-0-0)" | "ammonium nitrate phosphate (23-23-00)" | "ammonium nitrate phosphate (27-14-00)" | "ammonium phosphate sulphate (16-20-00)" | "ammonium polyphosphate solution (10-34-00)" | "ammonium sulphate (21-00-00)" | "ammonium thiosulphate solution (12-00-00)" | "anhydrous ammonia (gas) (82-00-00)" | "calcium ammonium nitrate" | "calcium nitrate" | "diammonium phosphate (18-46-00)" | "element-n (n)" | "element-p (p)" | "mixed blends" | "monoammonium phosphate (11-55-00)" | "monoammonium phosphate (12-51-00)" | "potassium nitrate" | "urea (46-00-00)" | "urea ammonium nitrate (30-00-00)" | "urea ammonium phosphate (27-27-00)" | "urea ammonium phosphate (34-17-00)"*
 
-*Defined in [specification.ts:1478](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1478)*
+*Defined in [specification.ts:1512](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1512)*
 
 The fertilizer classification type.
 

@@ -39,7 +39,7 @@ Crop harvest events.
 
 • **harvestEvents**? : *([AnnualCropHarvestEvent](_specification_.annualcropharvestevent.md) | [CropManagementEvent](_specification_.cropmanagementevent.md))[]*
 
-*Defined in [specification.ts:655](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L655)*
+*Defined in [specification.ts:748](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L748)*
 
 A list of harvest events, if applicable.
 

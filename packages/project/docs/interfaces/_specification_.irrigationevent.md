@@ -34,7 +34,7 @@ Irrigation event details.
 
 *Inherited from [CropEvent](_specification_.cropevent.md).[date](_specification_.cropevent.md#date)*
 
-*Defined in [specification.ts:1160](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1160)*
+*Defined in [specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1194)*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -54,7 +54,7 @@ ___
 
 • **volume**: *number*
 
-*Defined in [specification.ts:1730](https://github.com/nori-dot-eco/nori-dot-com/blob/1131583/packages/project/src/specification.ts#L1730)*
+*Defined in [specification.ts:1741](https://github.com/nori-dot-eco/nori-dot-com/blob/22b6c8d/packages/project/src/specification.ts#L1741)*
 
 The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
 
