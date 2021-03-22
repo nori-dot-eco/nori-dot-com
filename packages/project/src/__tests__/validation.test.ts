@@ -3,6 +3,8 @@ import type { Project } from '../index';
 import * as FULL_FORMATTED_VALID_PROJECT from '../example/example.json';
 import type { HistoricNonCRPLandManagement } from '../specification';
 
+type ProjectOrAny<T> = T extends Project ? Project : any;
+
 const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   version: '0.1.0',
   fields: [
@@ -203,30 +205,274 @@ describe('validation', () => {
         formattedData: expect.anything(),
       });
     });
+    describe('fields', () => {
+      describe('when the number of fields is less than 1', () => {
+        it('should throw a validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            fields: [] as Project['fields'],
+          };
+          expect(validateProjectData(data)).toStrictEqual<
+            ReturnType<typeof validateProjectData>
+          >({
+            valid: false,
+            // todo extend jest to expect NoriError
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'projectFieldsMinimumItemsError',
+                }),
+              }),
+            ]),
+            message: 'data/fields projectFieldsMinimumItemsError',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('when the number of fields is more than 25', () => {
+        it('should throw a validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            fields: Array(26).fill(BASIC_UNFORMATTED_VALID_PROJECT.fields[0]),
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'projectFieldsMaximumItemsError',
+                }),
+              }),
+            ]),
+            message: 'data/fields projectFieldsMaximumItemsError',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('when fields is not an array', () => {
+        it('should throw a validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            fields: 1 as any,
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'projectField1sTypeError',
+                }),
+              }),
+            ]),
+            message: 'data/fields p1rojectFieldsTypeError',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+    });
+    describe('field', () => {
+      describe('when a field has an unknown additional property specified', () => {
+        it('should throw a validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            fields: [{ anything: 1 }] as any,
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'fieldUnknownAdditionalPropertyError',
+                }),
+              }),
+            ]),
+            message: expect.stringContaining(
+              'data/fields/0 fieldUnknownAdditionalPropertyError'
+            ),
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('when a field in fields is missing a required property', () => {
+        it('should throw a validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            fields: [{}] as any,
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'fieldRequiredPropertyMissing',
+                }),
+              }),
+            ]),
+            message: expect.stringContaining(
+              'data/fields/0 fieldRequiredPropertyMissing'
+            ),
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('fieldName', () => {
+        describe('when a fieldName is not a string', () => {
+          it.only('should throw a validation error', () => {
+            const data = {
+              ...BASIC_UNFORMATTED_VALID_PROJECT,
+              fields: [
+                {
+                  fieldName: 1,
+                },
+              ] as any,
+            };
+            expect(
+              validateProjectData(data as ProjectOrAny<typeof data>)
+            ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+              valid: false,
+              errors: expect.arrayContaining([
+                expect.objectContaining({
+                  error: expect.objectContaining({
+                    message: 'fieldNameTypeError',
+                  }),
+                }),
+              ]),
+              message: expect.stringContaining(
+                'data/fields/0/fieldName fieldNameTypeError'
+              ),
+              formattedData: expect.anything(),
+            });
+          });
+        });
+        describe('when a fieldName missing', () => {
+          it.only('should throw a validation error', () => {
+            const data = {
+              ...BASIC_UNFORMATTED_VALID_PROJECT,
+              fields: [
+                {
+                  fieldName: null,
+                },
+              ] as any,
+            };
+            expect(
+              validateProjectData(data as ProjectOrAny<typeof data>)
+            ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+              valid: false,
+              errors: expect.arrayContaining([
+                expect.objectContaining({
+                  error: expect.objectContaining({
+                    message: 'fieldRequiredPropertyMissing',
+                  }),
+                }),
+              ]),
+              message: expect.stringContaining(
+                'data/fields/0 fieldRequiredPropertyMissing'
+              ),
+              formattedData: expect.anything(),
+            });
+          });
+        });
+      });
+    });
+    describe('version', () => {
+      describe('when the type of `version` is not specified', () => {
+        it('should throw a type validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            version: null as null,
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            // todo extend jest to expect NoriError
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'projectVersionTypeError',
+                }),
+              }),
+            ]),
+            message: 'data/version projectVersionTypeError',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('when the type of `version` is not a string', () => {
+        it('should throw a type validation error', () => {
+          const data = {
+            ...BASIC_UNFORMATTED_VALID_PROJECT,
+            version: 1,
+          };
+          expect(
+            validateProjectData(data as ProjectOrAny<typeof data>)
+          ).toStrictEqual<ReturnType<typeof validateProjectData>>({
+            valid: false,
+            errors: expect.arrayContaining([
+              expect.objectContaining({
+                error: expect.objectContaining({
+                  message: 'projectVersionTypeError',
+                }),
+              }),
+            ]),
+            message: 'data/version projectVersionTypeError',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+      describe('when the type of `version` is a string', () => {
+        it('should not throw a type validation error', () => {
+          const data = BASIC_UNFORMATTED_VALID_PROJECT;
+          expect(validateProjectData(data)).toStrictEqual<
+            ReturnType<typeof validateProjectData>
+          >({
+            valid: true,
+            errors: null,
+            message: 'No errors',
+            formattedData: expect.anything(),
+          });
+        });
+      });
+    });
     describe('validation for the `fields` property', () => {
       it('should return false and the errors when the data contains an invalid number of fields', () => {
         expect(
-          validateProjectData({ version: '1.0.0', fields: [] } as any)
+          validateProjectData(({
+            version: '1.0.0',
+            fields: [],
+          } as unknown) as Project)
         ).toStrictEqual<ReturnType<typeof validateProjectData>>({
           valid: false,
           errors: [
             {
-              dataPath: '/fields',
-              keyword: 'errorMessage',
-              message: 'must specify 1-25 fields',
-              params: {
-                errors: [
-                  {
-                    dataPath: '/fields',
-                    emUsed: true,
-                    keyword: 'minItems',
-                    message: 'should NOT have fewer than 1 items',
-                    params: { limit: 1 },
-                    schemaPath: '#/properties/fields/minItems',
-                  },
-                ],
+              error: {
+                dataPath: '/fields',
+                keyword: 'errorMessage',
+                message: 'must specify 1-25 fields',
+                params: {
+                  errors: [
+                    {
+                      dataPath: '/fields',
+                      emUsed: true,
+                      keyword: 'minItems',
+                      message: 'should NOT have fewer than 1 items',
+                      params: { limit: 1 },
+                      schemaPath: '#/properties/fields/minItems',
+                    },
+                  ],
+                },
+                schemaPath: '#/properties/fields/errorMessage',
               },
-              schemaPath: '#/properties/fields/errorMessage',
+              type: 'must specify 1-25 fields',
+              dataPath: '/fields',
             },
           ],
           message: 'data/fields must specify 1-25 fields',
@@ -280,9 +526,9 @@ describe('validation', () => {
       describe('date validation', () => {
         describe('validationRules', () => {
           describe('when the crop event dates fall within years prior to the planting year', () => {
-            it.only('should throw validation errors', () => {
+            it('should throw validation errors', () => {
               const data: Project = {
-                version: '0.1.0',
+                version: ['0.1.0'] as any,
                 fields: [
                   {
                     acres: 174.01,

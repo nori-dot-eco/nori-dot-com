@@ -33,7 +33,9 @@ export const formatInputData = (data: Project): Project => {
       'multilinestring',
       'geometrycollection',
     ].includes(value.toLowerCase())
-      ? Array.from(value, (c) => c.toLowerCase()).join('')
+      ? Array.from(value, (c) => {
+          return c.toLowerCase();
+        }).join('')
       : value;
   const formattedData: Project = JSON.parse(JSON.stringify(data), toLowercase);
   return formattedData;
@@ -86,7 +88,11 @@ export const validateProjectData = (
 ): {
   valid: boolean;
   message?: string;
-  errors?: any; // ErrorObject[];
+  errors?: {
+    type: ErrorObject['message'];
+    dataPath: ErrorObject['dataPath'];
+    error: ErrorObject;
+  }[];
   formattedData: Project;
 } => {
   const ajv = ajvErrors(
@@ -95,6 +101,7 @@ export const validateProjectData = (
       allErrors: true,
       inlineRefs: false,
       $data: true,
+      ajvErrors: true,
       // allowUnionTypes: true,
     })
   );
@@ -115,23 +122,23 @@ export const validateProjectData = (
       return allRulesAreSatisfied;
     },
   });
-
   const formattedData = formatInputData(data);
-  const valid = ajv.validate(schema, formattedData) as boolean;
-  const errors = ajv.errors.map((error) => {
-    // todo
-    // const code =  NoriError.projectDataError[error.message] || 'unknownError';
-    return {
-      type: error.message,
-      // code,
-      // message:  NoriError.projectDataError[code],
-      dataPath: error.dataPath,
-      error,
-    };
-  });
+  const valid = ajv.validate(schema, formattedData);
+  const errors =
+    ajv.errors?.map((error) => {
+      // todo
+      // const code =  NoriError.projectDataError[error.message] || 'unknownError';
+      return {
+        type: error.message.split(' ').slice(1).join(' '),
+        // code,
+        // message:  NoriError.projectDataError[code],
+        dataPath: error.dataPath,
+        error,
+      };
+    }) ?? null;
   return {
     valid,
-    message: ajv.errorsText(),
+    message: ajv.errorsText(), // todo NoriError.projectDataError[ajv.errorsText()],
     errors,
     formattedData,
   };

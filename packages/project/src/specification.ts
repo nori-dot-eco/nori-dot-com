@@ -153,7 +153,8 @@ export interface Project {
    *
    * @errorMessage
    * {
-   * "type": "must use a string value to indicate the version number"
+   * "type": "projectVersionTypeError",
+   * "_": "unknownProjectVersionError"
    * }
    *
    * @example
@@ -167,7 +168,13 @@ export interface Project {
   /**
    * An array of fields defining annual crop management practices.
    *
-   * @errorMessage must specify 1-25 fields
+   * @errorMessage
+   * {
+   * "minItems": "projectFieldsMinimumItemsError",
+   * "maxItems": "projectFieldsMaximumItemsError",
+   * "type": "projectFieldsTypeError",
+   * "_": "unknownProjectFieldsError"
+   * }
    *
    * @minItems 1
    * @maxItems 25
@@ -485,6 +492,13 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  * }
  * ```
  *
+ * @errorMessage
+ * {
+ * "required": "fieldRequiredPropertyMissing",
+ * "additionalProperties": "fieldUnknownAdditionalPropertyError",
+ * "_": "unknownProjectFieldError"
+ * }
+ *
  */
 export interface Field {
   /**
@@ -546,6 +560,12 @@ export interface Field {
    * ```js
    * "fieldName": "Pumpkin Pines"
    * ```
+   *
+   * @errorMessage
+   * {
+   * "type": "fieldNameTypeError",
+   * "_": "fieldNameUnknownError"
+   * }
    *
    */
   fieldName: string;
