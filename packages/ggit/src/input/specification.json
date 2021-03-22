@@ -1,8 +1,1046 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
-    "defaultProperties": [
-    ],
+    "definitions": {
+        "BurnEvent": {
+            "additionalProperties": false,
+            "description": "Burn event.",
+            "properties": {
+                "BurnTime": {
+                    "$ref": "#/definitions/BurnTime",
+                    "title": "BurnTime"
+                }
+            },
+            "required": [
+                "BurnTime"
+            ],
+            "title": "BurnEvent",
+            "type": "object"
+        },
+        "BurnTime": {
+            "description": "Time burn event occurred.",
+            "enum": [
+                "no burning",
+                "yes, after harvest",
+                "yes, before planting"
+            ],
+            "title": "BurnTime",
+            "type": "string"
+        },
+        "CRP": {
+            "description": "CRP.",
+            "enum": [
+                "no",
+                "yes"
+            ],
+            "title": "CRP",
+            "type": "string"
+        },
+        "CRPType": {
+            "description": "CRP Type. Dependant on CRP.",
+            "enum": [
+                "100% grass",
+                "grass/legume mixture",
+                "none"
+            ],
+            "title": "CRPType",
+            "type": "string"
+        },
+        "ContinueFromPreviousYear": {
+            "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
+            "enum": [
+                "n",
+                "y"
+            ],
+            "title": "ContinueFromPreviousYear",
+            "type": "string"
+        },
+        "Crop": {
+            "additionalProperties": false,
+            "description": "Crop event",
+            "properties": {
+                "@CropNumber": {
+                    "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "title": "@CropNumber",
+                    "type": "number"
+                },
+                "BurnEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BurnEvent"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "BurnEvent"
+                },
+                "ContinueFromPreviousYear": {
+                    "$ref": "#/definitions/ContinueFromPreviousYear",
+                    "title": "ContinueFromPreviousYear"
+                },
+                "CropName": {
+                    "$ref": "#/definitions/CropName",
+                    "title": "CropName"
+                },
+                "GrazingList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GrazingList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "GrazingList"
+                },
+                "HarvestList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HarvestList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "HarvestList"
+                },
+                "IrrigationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IrrigationList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "IrrigationList"
+                },
+                "LimingEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/LimingEvent"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "LimingEvent"
+                },
+                "NApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/NApplicationList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "NApplicationList"
+                },
+                "OMADApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OMADApplicationList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "OMADApplicationList"
+                },
+                "PlantingDate": {
+                    "description": "Crop planting date. must be in MM/DD/YYYY format",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "PlantingDate",
+                    "type": "string"
+                },
+                "Prune": {
+                    "description": "Prune. Yes = woody perennial crops are pruned.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "Prune",
+                    "type": "string"
+                },
+                "Renew": {
+                    "description": "Renew. Yes = remove and replant orchard. All coarse and fine branches\nand all coarse roots are removed, soil is plowed, and new saplings\nassumed to be 2 yrs old are planted.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "Renew",
+                    "type": "string"
+                },
+                "TillageList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/TillageList"
+                        },
+                        {
+                            "$ref": "#/definitions/Record<string,never>"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "TillageList"
+                }
+            },
+            "required": [
+                "@CropNumber",
+                "BurnEvent",
+                "ContinueFromPreviousYear",
+                "CropName",
+                "GrazingList",
+                "HarvestList",
+                "IrrigationList",
+                "LimingEvent",
+                "NApplicationList",
+                "OMADApplicationList",
+                "PlantingDate",
+                "TillageList"
+            ],
+            "title": "Crop",
+            "type": "object"
+        },
+        "CropName": {
+            "description": "Name of crop. Check GGIT_API_File_Specification.xlsx tab CropName for complete list",
+            "enum": [
+                "alfalfa",
+                "almond",
+                "annual rye",
+                "annual rye - legume",
+                "annual rye - legume - radish",
+                "austrian winter pea",
+                "avocados",
+                "barley",
+                "broccoli-coast",
+                "broccoli-desert",
+                "carrots",
+                "cauliflower",
+                "cereal rye",
+                "cherries",
+                "clover",
+                "corn",
+                "corn silage",
+                "cotton",
+                "dry field beans",
+                "dry field pea",
+                "english walnuts",
+                "fallow",
+                "forage radish",
+                "grape, raisin",
+                "grape, table",
+                "grape, wine (1391-1670 gdd)",
+                "grape, wine (1671-1950 gdd)",
+                "grape, wine (<1390 gdd)",
+                "grape, wine (>1950 gdd)",
+                "grapefruit",
+                "grass",
+                "grass-legume mix",
+                "lemons & limes",
+                "lettuce-head",
+                "lettuce-leaf",
+                "lettuce-romaine",
+                "millet",
+                "oats",
+                "oilseed radish",
+                "olives",
+                "oranges",
+                "peaches and nectarines",
+                "peanut",
+                "pistachios",
+                "potato",
+                "rice - flooded",
+                "rye",
+                "sorghum",
+                "sorghum silage",
+                "soybean",
+                "spring wheat",
+                "strawberry",
+                "sugar beets",
+                "sunflower",
+                "switchgrass",
+                "tangerines & mandarins",
+                "tomatoes, fresh",
+                "tomatoes, processing",
+                "vetch",
+                "winter grain-other",
+                "winter wheat"
+            ],
+            "title": "CropName",
+            "type": "string"
+        },
+        "CropScenario": {
+            "additionalProperties": false,
+            "description": "Cropland management scenario.",
+            "properties": {
+                "@Name": {
+                    "$ref": "#/definitions/CropScenarioName",
+                    "title": "@Name"
+                },
+                "CropYear": {
+                    "items": {
+                        "$ref": "#/definitions/CropYear"
+                    },
+                    "title": "CropYear",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@Name",
+                "CropYear"
+            ],
+            "title": "CropScenario",
+            "type": "object"
+        },
+        "CropScenarioName": {
+            "description": "Name of this crop scenario.",
+            "enum": [
+                "Current",
+                "Future"
+            ],
+            "title": "CropScenarioName",
+            "type": "string"
+        },
+        "CropYear": {
+            "additionalProperties": false,
+            "description": "Crop event year.",
+            "properties": {
+                "@Year": {
+                    "description": "Year for this crop event.",
+                    "title": "@Year",
+                    "type": "number"
+                },
+                "Crop": {
+                    "items": {
+                        "$ref": "#/definitions/Crop"
+                    },
+                    "title": "Crop",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@Year",
+                "Crop"
+            ],
+            "title": "CropYear",
+            "type": "object"
+        },
+        "Cropland": {
+            "additionalProperties": false,
+            "properties": {
+                "@Name": {
+                    "description": "Name of this field.",
+                    "title": "@Name",
+                    "type": "string"
+                },
+                "CRP": {
+                    "$ref": "#/definitions/CRP",
+                    "title": "CRP"
+                },
+                "CRPEndYear": {
+                    "description": "CRP end year. Must be YYYY.",
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "CRPEndYear",
+                    "type": "array"
+                },
+                "CRPStartYear": {
+                    "description": "CRP start year. Must be YYYY.",
+                    "items": [
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "CRPStartYear",
+                    "type": "array"
+                },
+                "CRPType": {
+                    "$ref": "#/definitions/CRPType",
+                    "title": "CRPType"
+                },
+                "CropScenario": {
+                    "items": {
+                        "$ref": "#/definitions/CropScenario"
+                    },
+                    "title": "CropScenario",
+                    "type": "array"
+                },
+                "GEOM": {
+                    "$ref": "#/definitions/GEOM",
+                    "title": "GEOM"
+                },
+                "PostCRPManagement": {
+                    "description": "Post CRP management.",
+                    "items": [
+                        {
+                            "enum": [
+                                "irrigated: annual crops in rotation",
+                                "irrigated: annual crops with hay/pasture in rotation",
+                                "irrigated: continuous hay",
+                                "irrigated: orchard or vineyard",
+                                "non-irrigated: annual crops in rotation",
+                                "non-irrigated: annual crops with hay/pasture in rotation",
+                                "non-irrigated: continuous hay",
+                                "non-irrigated: fallow-grain",
+                                "non-irrigated: livestock grazing",
+                                "non-irrigated: orchard or vineyard"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PostCRPManagement",
+                    "type": "array"
+                },
+                "PostCRPTillage": {
+                    "description": "Post-CRP tillage.",
+                    "items": [
+                        {
+                            "enum": [
+                                "intensive tillage",
+                                "no till",
+                                "reduced tillage"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PostCRPTillage",
+                    "type": "array"
+                },
+                "Pre-1980": {
+                    "$ref": "#/definitions/Pre1980",
+                    "title": "Pre-1980"
+                },
+                "PreCRPManagement": {
+                    "description": "Pre-CRP management.",
+                    "items": [
+                        {
+                            "enum": [
+                                "irrigated: annual crops in rotation",
+                                "irrigated: annual crops with hay/pasture in rotation",
+                                "irrigated: continuous hay",
+                                "irrigated: orchard or vineyard",
+                                "non-irrigated: annual crops in rotation",
+                                "non-irrigated: annual crops with hay/pasture in rotation",
+                                "non-irrigated: continuous hay",
+                                "non-irrigated: fallow-grain",
+                                "non-irrigated: livestock grazing",
+                                "non-irrigated: orchard or vineyard"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PreCRPManagement",
+                    "type": "array"
+                },
+                "PreCRPTillage": {
+                    "description": "Pre-CRP tillage.",
+                    "items": [
+                        {
+                            "enum": [
+                                "intensive tillage",
+                                "no till",
+                                "reduced tillage"
+                            ],
+                            "type": "string"
+                        }
+                    ],
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "PreCRPTillage",
+                    "type": "array"
+                },
+                "Year1980-2000": {
+                    "$ref": "#/definitions/Year1980To2000",
+                    "title": "Year1980-2000"
+                },
+                "Year1980-2000_Tillage": {
+                    "$ref": "#/definitions/Year1980To2000Tillage",
+                    "title": "Year1980-2000_Tillage"
+                }
+            },
+            "required": [
+                "@Name",
+                "CRP",
+                "CRPEndYear",
+                "CRPStartYear",
+                "CRPType",
+                "CropScenario",
+                "GEOM",
+                "PostCRPManagement",
+                "PostCRPTillage",
+                "Pre-1980",
+                "PreCRPManagement",
+                "PreCRPTillage",
+                "Year1980-2000",
+                "Year1980-2000_Tillage"
+            ],
+            "title": "Cropland",
+            "type": "object"
+        },
+        "EEP": {
+            "description": "Enhanced efficiency product.",
+            "enum": [
+                "nitrification inhibitor",
+                "none",
+                "slow release"
+            ],
+            "title": "EEP",
+            "type": "string"
+        },
+        "GEOM": {
+            "additionalProperties": false,
+            "description": "Geometry, point or polygon. Polygon has maximum about of vertices, 1000.  Max size is 10,000 acres. SRID any",
+            "properties": {
+                "#text": {
+                    "description": "WKT string of geometry polygon.",
+                    "title": "#text",
+                    "type": "string"
+                },
+                "@AREA": {
+                    "description": "Area of this geometry in acres.",
+                    "title": "@AREA",
+                    "type": "number"
+                },
+                "@SRID": {
+                    "description": "Standard spatial reference identifier.",
+                    "enum": [
+                        "4326"
+                    ],
+                    "title": "@SRID",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "#text",
+                "@AREA",
+                "@SRID"
+            ],
+            "title": "GEOM",
+            "type": "object"
+        },
+        "Grain": {
+            "description": "CRP.",
+            "enum": [
+                "no",
+                "yes"
+            ],
+            "title": "Grain",
+            "type": "string"
+        },
+        "GrazingEvent": {
+            "additionalProperties": false,
+            "description": "Grazing event",
+            "properties": {
+                "GrazingEndDate": {
+                    "description": "Grazing End date. Any date of the year. The system is sensitive to leap dates. Must be after the Grazing Start Date.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "GrazingEndDate",
+                    "type": "string"
+                },
+                "GrazingStartDate": {
+                    "description": "Grazing Start date. Any date of the year. The system is sensitive to leap years",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "GrazingStartDate",
+                    "type": "string"
+                },
+                "RestPeriod": {
+                    "description": "Rest Period. Any number of days less than 365.",
+                    "title": "RestPeriod",
+                    "type": "number"
+                },
+                "UtilizationPct": {
+                    "description": "Utilization Percentage. Any percentage, in whole or real numbers, between 0 and 100.",
+                    "title": "UtilizationPct",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "GrazingEndDate",
+                "GrazingStartDate",
+                "RestPeriod",
+                "UtilizationPct"
+            ],
+            "title": "GrazingEvent",
+            "type": "object"
+        },
+        "GrazingList": {
+            "additionalProperties": false,
+            "description": "List of grazing events.",
+            "properties": {
+                "GrazingEvent": {
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "title": "GrazingEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "GrazingEvent"
+            ],
+            "title": "GrazingList",
+            "type": "object"
+        },
+        "HarvestEvent": {
+            "additionalProperties": false,
+            "description": "Harvest event",
+            "properties": {
+                "Grain": {
+                    "$ref": "#/definitions/Grain",
+                    "title": "Grain"
+                },
+                "HarvestDate": {
+                    "description": "Harvest Date. must be in MM/DD/YYYY",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "HarvestDate",
+                    "type": "string"
+                },
+                "StrawStoverHayRemoval": {
+                    "description": "% of straw/stover/have/residue removal.",
+                    "title": "StrawStoverHayRemoval",
+                    "type": "number"
+                },
+                "yield": {
+                    "description": "Yield amount. See crop type spec for yield units in GGIT_API_File_Specification.xlsx.",
+                    "title": "yield",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "Grain",
+                "HarvestDate",
+                "StrawStoverHayRemoval",
+                "yield"
+            ],
+            "title": "HarvestEvent",
+            "type": "object"
+        },
+        "HarvestList": {
+            "additionalProperties": false,
+            "default": {
+            },
+            "description": "List of harvest events.",
+            "properties": {
+                "HarvestEvent": {
+                    "items": {
+                        "$ref": "#/definitions/HarvestEvent"
+                    },
+                    "title": "HarvestEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "HarvestEvent"
+            ],
+            "title": "HarvestList",
+            "type": "object"
+        },
+        "IrrigationEvent": {
+            "additionalProperties": false,
+            "description": "Irrigation Event",
+            "properties": {
+                "IrrigationDate": {
+                    "description": "Irrigation date. must be mm/dd/yyyy",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "IrrigationDate",
+                    "type": "string"
+                },
+                "IrrigationInches": {
+                    "description": "Irrigation Inches",
+                    "title": "IrrigationInches",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "IrrigationDate",
+                "IrrigationInches"
+            ],
+            "title": "IrrigationEvent",
+            "type": "object"
+        },
+        "IrrigationList": {
+            "additionalProperties": false,
+            "description": "List of irrigation events.",
+            "properties": {
+                "IrrigationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "title": "IrrigationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "IrrigationEvent"
+            ],
+            "title": "IrrigationList",
+            "type": "object"
+        },
+        "LimingEvent": {
+            "additionalProperties": false,
+            "description": "Liming event.",
+            "properties": {
+                "LimingDate": {
+                    "description": "Liming date. must be in mm/dd/yyyy format",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "LimingDate",
+                    "type": "string"
+                },
+                "LimingMethod": {
+                    "$ref": "#/definitions/LimingMethod",
+                    "title": "LimingMethod"
+                },
+                "LimingRate": {
+                    "description": "Liming Rate. units in tons/acre",
+                    "title": "LimingRate",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "LimingDate",
+                "LimingMethod",
+                "LimingRate"
+            ],
+            "title": "LimingEvent",
+            "type": "object"
+        },
+        "LimingMethod": {
+            "description": "Liming Method",
+            "enum": [
+                "calcitic limestone",
+                "crushed limestone",
+                "dolomitic limestone",
+                "none"
+            ],
+            "title": "LimingMethod",
+            "type": "string"
+        },
+        "NApplicationEvent": {
+            "additionalProperties": false,
+            "default": {
+            },
+            "description": "Nitrogen application event.",
+            "properties": {
+                "EEP": {
+                    "$ref": "#/definitions/EEP",
+                    "title": "EEP"
+                },
+                "NApplicationAmount": {
+                    "description": "Nitrogen application amount. Units in lbs N/acre",
+                    "title": "NApplicationAmount",
+                    "type": "number"
+                },
+                "NApplicationDate": {
+                    "description": "\"Nitrogen application date. must be in MM/DD/YYYY",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "NApplicationDate",
+                    "type": "string"
+                },
+                "NApplicationMethod": {
+                    "$ref": "#/definitions/NApplicationMethod",
+                    "title": "NApplicationMethod"
+                },
+                "NApplicationType": {
+                    "$ref": "#/definitions/NApplicationType",
+                    "title": "NApplicationType"
+                }
+            },
+            "required": [
+                "EEP",
+                "NApplicationAmount",
+                "NApplicationDate",
+                "NApplicationMethod",
+                "NApplicationType"
+            ],
+            "title": "NApplicationEvent",
+            "type": "object"
+        },
+        "NApplicationList": {
+            "additionalProperties": false,
+            "description": "List of nitrogen applications.",
+            "properties": {
+                "NApplicationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/NApplicationEvent"
+                    },
+                    "title": "NApplicationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "NApplicationEvent"
+            ],
+            "title": "NApplicationList",
+            "type": "object"
+        },
+        "NApplicationMethod": {
+            "description": "Nitrogen application method.",
+            "enum": [
+                "aerial application",
+                "fertigation",
+                "incorporate / inject",
+                "surface band / sidedress",
+                "surface broadcast"
+            ],
+            "title": "NApplicationMethod",
+            "type": "string"
+        },
+        "NApplicationType": {
+            "description": "Nitrogen application type.",
+            "enum": [
+                "ammonium nitrate (34-0-0)",
+                "ammonium nitrate phosphate (23-23-00)",
+                "ammonium nitrate phosphate (27-14-00)",
+                "ammonium phosphate sulphate (16-20-00)",
+                "ammonium polyphosphate solution (10-34-00)",
+                "ammonium sulphate (21-00-00)",
+                "ammonium thiosulphate solution (12-00-00)",
+                "anhydrous ammonia (gas) (82-00-00)",
+                "calcium ammonium nitrate",
+                "calcium nitrate",
+                "diammonium phosphate (18-46-00)",
+                "element-n (n)",
+                "element-p (p)",
+                "mixed blends",
+                "monoammonium phosphate (11-55-00)",
+                "monoammonium phosphate (12-51-00)",
+                "potassium nitrate",
+                "urea (46-00-00)",
+                "urea ammonium nitrate (30-00-00)",
+                "urea ammonium phosphate (27-27-00)",
+                "urea ammonium phosphate (34-17-00)"
+            ],
+            "title": "NApplicationType",
+            "type": "string"
+        },
+        "OMADApplicationEvent": {
+            "additionalProperties": false,
+            "description": "Organic Amendment Application event",
+            "properties": {
+                "OMADAmount": {
+                    "description": "Organic Amendment Amount units in tons dry matter per acre",
+                    "title": "OMADAmount",
+                    "type": "number"
+                },
+                "OMADApplicationDate": {
+                    "description": "Organic Amendment Application date",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "OMADApplicationDate",
+                    "type": "string"
+                },
+                "OMADCNRatio": {
+                    "description": "Organic Amendment Ratio",
+                    "title": "OMADCNRatio",
+                    "type": "number"
+                },
+                "OMADPercentN": {
+                    "description": "Organic Amendment Percent. Units in %N",
+                    "title": "OMADPercentN",
+                    "type": "number"
+                },
+                "OMADType": {
+                    "$ref": "#/definitions/OMADType",
+                    "title": "OMADType"
+                }
+            },
+            "required": [
+                "OMADAmount",
+                "OMADApplicationDate",
+                "OMADCNRatio",
+                "OMADPercentN",
+                "OMADType"
+            ],
+            "title": "OMADApplicationEvent",
+            "type": "object"
+        },
+        "OMADApplicationList": {
+            "additionalProperties": false,
+            "description": "List of manure application events. (Organic Amendment)",
+            "properties": {
+                "OMADApplicationEvent": {
+                    "items": {
+                        "$ref": "#/definitions/OMADApplicationEvent"
+                    },
+                    "title": "OMADApplicationEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "OMADApplicationEvent"
+            ],
+            "title": "OMADApplicationList",
+            "type": "object"
+        },
+        "OMADType": {
+            "description": "Organic Amendment Type. see GGIT_API_File_Specification.xlsx tab Organic Amendment Types for details",
+            "enum": [
+                "alfalfa meal",
+                "beef manure, solid",
+                "beef slurry",
+                "blood, dried",
+                "bone meal",
+                "chicken - broiler (litter), solid",
+                "chicken - broiler slurry",
+                "chicken - layer slurry",
+                "chicken - layer, solid",
+                "compost or composted manure, solid",
+                "dairy manure, solid",
+                "dairy slurry",
+                "farmyard manure, solid",
+                "feather meal",
+                "fish emulsion",
+                "fish scrap",
+                "guano",
+                "horse manure, solid",
+                "other manure, solid",
+                "sheep manure, solid",
+                "soybean meal",
+                "swine manure, slurry",
+                "swine manure, solid"
+            ],
+            "title": "OMADType",
+            "type": "string"
+        },
+        "Pre1980": {
+            "description": "Historic management data input. Pre-1980. See GGIT_API_File_Specification.xlsx Pre-1980 history by LRR tab.",
+            "enum": [
+                "irrigation (pre 1980s)",
+                "livestock grazing",
+                "lowland non-irrigated (pre 1980s)",
+                "upland non-irrigated (pre 1980s)"
+            ],
+            "title": "Pre1980",
+            "type": "string"
+        },
+        "Record<string,never>": {
+            "additionalProperties": false,
+            "description": "Construct a type with a set of properties K of type T",
+            "title": "Record<string,never>",
+            "type": "object"
+        },
+        "TillageEvent": {
+            "additionalProperties": false,
+            "description": "Tillage event.",
+            "properties": {
+                "TillageDate": {
+                    "description": "Date this tillage event occurred. must be in MM/DD/YYYY.",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "TillageDate",
+                    "type": "string"
+                },
+                "TillageType": {
+                    "$ref": "#/definitions/TillageType",
+                    "title": "TillageType"
+                }
+            },
+            "required": [
+                "TillageDate",
+                "TillageType"
+            ],
+            "title": "TillageEvent",
+            "type": "object"
+        },
+        "TillageList": {
+            "additionalProperties": false,
+            "default": {
+            },
+            "description": "List of tillage events.",
+            "properties": {
+                "TillageEvent": {
+                    "items": {
+                        "$ref": "#/definitions/TillageEvent"
+                    },
+                    "title": "TillageEvent",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "TillageEvent"
+            ],
+            "title": "TillageList",
+            "type": "object"
+        },
+        "TillageType": {
+            "description": "Tillage type.",
+            "enum": [
+                "broad-spectrum herbicide",
+                "crimp",
+                "growing season cultivation",
+                "intensive tillage",
+                "mow",
+                "mulch tillage",
+                "no tillage",
+                "reduced tillage",
+                "ridge tillage",
+                "strip tillage",
+                "winter kill"
+            ],
+            "title": "TillageType",
+            "type": "string"
+        },
+        "Year1980To2000": {
+            "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
+            "enum": [
+                "irrigated: annual crops in rotation",
+                "irrigated: annual crops with hay/pasture in rotation",
+                "irrigated: continuous hay",
+                "irrigated: orchard or vineyard",
+                "non-irrigated: annual crops in rotation",
+                "non-irrigated: annual crops with hay/pasture in rotation",
+                "non-irrigated: continuous hay",
+                "non-irrigated: fallow-grain",
+                "non-irrigated: livestock grazing",
+                "non-irrigated: orchard or vineyard"
+            ],
+            "title": "Year1980To2000",
+            "type": "string"
+        },
+        "Year1980To2000Tillage": {
+            "description": "Tillage from 1980 - 2000.",
+            "enum": [
+                "intensive tillage",
+                "no till",
+                "reduced tillage"
+            ],
+            "title": "Year1980To2000Tillage",
+            "type": "string"
+        }
+    },
     "description": "daycentcrv1 input schema.",
     "properties": {
         "@cometEmailId": {
@@ -12,969 +1050,7 @@
         },
         "Cropland": {
             "items": {
-                "additionalProperties": false,
-                "defaultProperties": [
-                ],
-                "properties": {
-                    "@Name": {
-                        "description": "Name of this field.",
-                        "title": "@Name",
-                        "type": "string"
-                    },
-                    "CRP": {
-                        "description": "CRP.",
-                        "enum": [
-                            "no",
-                            "yes"
-                        ],
-                        "title": "CRP",
-                        "type": "string"
-                    },
-                    "CRPEndYear": {
-                        "description": "CRP end year. Must be YYYY.",
-                        "items": [
-                            {
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "CRPEndYear",
-                        "type": "array"
-                    },
-                    "CRPStartYear": {
-                        "description": "CRP start year. Must be YYYY.",
-                        "items": [
-                            {
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "CRPStartYear",
-                        "type": "array"
-                    },
-                    "CRPType": {
-                        "description": "CRP Type. Dependant on CRP.",
-                        "enum": [
-                            "100% grass",
-                            "grass/legume mixture",
-                            "none"
-                        ],
-                        "title": "CRPType",
-                        "type": "string"
-                    },
-                    "CropScenario": {
-                        "items": {
-                            "additionalProperties": false,
-                            "defaultProperties": [
-                            ],
-                            "description": "Cropland management scenario.",
-                            "properties": {
-                                "@Name": {
-                                    "description": "Name of this crop scenario.",
-                                    "enum": [
-                                        "Current",
-                                        "Future"
-                                    ],
-                                    "title": "@Name",
-                                    "type": "string"
-                                },
-                                "CropYear": {
-                                    "items": {
-                                        "additionalProperties": false,
-                                        "defaultProperties": [
-                                        ],
-                                        "description": "Crop event year.",
-                                        "properties": {
-                                            "@Year": {
-                                                "description": "Year for this crop event.",
-                                                "title": "@Year",
-                                                "type": "number"
-                                            },
-                                            "Crop": {
-                                                "items": {
-                                                    "additionalProperties": false,
-                                                    "defaultProperties": [
-                                                    ],
-                                                    "description": "Crop event",
-                                                    "properties": {
-                                                        "@CropNumber": {
-                                                            "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
-                                                            "enum": [
-                                                                1,
-                                                                2,
-                                                                3
-                                                            ],
-                                                            "title": "@CropNumber",
-                                                            "type": "number"
-                                                        },
-                                                        "BurnEvent": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Burn event.",
-                                                                    "properties": {
-                                                                        "BurnTime": {
-                                                                            "description": "Time burn event occurred.",
-                                                                            "enum": [
-                                                                                "no burning",
-                                                                                "yes, after harvest",
-                                                                                "yes, before planting"
-                                                                            ],
-                                                                            "title": "BurnTime",
-                                                                            "type": "string"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "BurnTime"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "BurnEvent"
-                                                        },
-                                                        "ContinueFromPreviousYear": {
-                                                            "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
-                                                            "enum": [
-                                                                "n",
-                                                                "y"
-                                                            ],
-                                                            "title": "ContinueFromPreviousYear",
-                                                            "type": "string"
-                                                        },
-                                                        "CropName": {
-                                                            "description": "Name of crop. Check GGIT_API_File_Specification.xlsx tab CropName for complete list",
-                                                            "enum": [
-                                                                "alfalfa",
-                                                                "almond",
-                                                                "annual rye",
-                                                                "annual rye - legume",
-                                                                "annual rye - legume - radish",
-                                                                "austrian winter pea",
-                                                                "avocados",
-                                                                "barley",
-                                                                "broccoli-coast",
-                                                                "broccoli-desert",
-                                                                "carrots",
-                                                                "cauliflower",
-                                                                "cereal rye",
-                                                                "cherries",
-                                                                "clover",
-                                                                "corn",
-                                                                "corn silage",
-                                                                "cotton",
-                                                                "dry field beans",
-                                                                "dry field pea",
-                                                                "english walnuts",
-                                                                "fallow",
-                                                                "forage radish",
-                                                                "grape, raisin",
-                                                                "grape, table",
-                                                                "grape, wine (1391-1670 gdd)",
-                                                                "grape, wine (1671-1950 gdd)",
-                                                                "grape, wine (<1390 gdd)",
-                                                                "grape, wine (>1950 gdd)",
-                                                                "grapefruit",
-                                                                "grass",
-                                                                "grass-legume mix",
-                                                                "lemons & limes",
-                                                                "lettuce-head",
-                                                                "lettuce-leaf",
-                                                                "lettuce-romaine",
-                                                                "millet",
-                                                                "oats",
-                                                                "oilseed radish",
-                                                                "olives",
-                                                                "oranges",
-                                                                "peaches and nectarines",
-                                                                "peanut",
-                                                                "pistachios",
-                                                                "potato",
-                                                                "rice - flooded",
-                                                                "rye",
-                                                                "sorghum",
-                                                                "sorghum silage",
-                                                                "soybean",
-                                                                "spring wheat",
-                                                                "strawberry",
-                                                                "sugar beets",
-                                                                "sunflower",
-                                                                "switchgrass",
-                                                                "tangerines & mandarins",
-                                                                "tomatoes, fresh",
-                                                                "tomatoes, processing",
-                                                                "vetch",
-                                                                "winter grain-other",
-                                                                "winter wheat"
-                                                            ],
-                                                            "title": "CropName",
-                                                            "type": "string"
-                                                        },
-                                                        "GrazingList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of grazing events.",
-                                                                    "properties": {
-                                                                        "GrazingEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Grazing event",
-                                                                                "properties": {
-                                                                                    "GrazingEndDate": {
-                                                                                        "description": "Grazing End date. Any date of the year. The system is sensitive to leap dates. Must be after the Grazing Start Date.",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "GrazingEndDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "GrazingStartDate": {
-                                                                                        "description": "Grazing Start date. Any date of the year. The system is sensitive to leap years",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "GrazingStartDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "RestPeriod": {
-                                                                                        "description": "Rest Period. Any number of days less than 365.",
-                                                                                        "title": "RestPeriod",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "UtilizationPct": {
-                                                                                        "description": "Utilization Percentage. Any percentage, in whole or real numbers, between 0 and 100.",
-                                                                                        "title": "UtilizationPct",
-                                                                                        "type": "number"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "GrazingEndDate",
-                                                                                    "GrazingStartDate",
-                                                                                    "RestPeriod",
-                                                                                    "UtilizationPct"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "GrazingEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "GrazingEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "GrazingList"
-                                                        },
-                                                        "HarvestList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "default": {
-                                                                    },
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of harvest events.",
-                                                                    "properties": {
-                                                                        "HarvestEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Harvest event",
-                                                                                "properties": {
-                                                                                    "Grain": {
-                                                                                        "description": "Is this a grain harvest.",
-                                                                                        "enum": [
-                                                                                            "no",
-                                                                                            "yes"
-                                                                                        ],
-                                                                                        "title": "Grain",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "HarvestDate": {
-                                                                                        "description": "Harvest Date. must be in MM/DD/YYYY",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "HarvestDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "StrawStoverHayRemoval": {
-                                                                                        "description": "% of straw/stover/have/residue removal.",
-                                                                                        "title": "StrawStoverHayRemoval",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "yield": {
-                                                                                        "description": "Yield amount. See crop type spec for yield units in GGIT_API_File_Specification.xlsx.",
-                                                                                        "title": "yield",
-                                                                                        "type": "number"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "Grain",
-                                                                                    "HarvestDate",
-                                                                                    "StrawStoverHayRemoval",
-                                                                                    "yield"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "HarvestEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "HarvestEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "HarvestList"
-                                                        },
-                                                        "IrrigationList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of irrigation events.",
-                                                                    "properties": {
-                                                                        "IrrigationEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Irrigation Event",
-                                                                                "properties": {
-                                                                                    "IrrigationDate": {
-                                                                                        "description": "Irrigation date. must be mm/dd/yyyy",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "IrrigationDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "IrrigationInches": {
-                                                                                        "description": "Irrigation Inches",
-                                                                                        "title": "IrrigationInches",
-                                                                                        "type": "number"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "IrrigationDate",
-                                                                                    "IrrigationInches"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "IrrigationEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "IrrigationEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "IrrigationList"
-                                                        },
-                                                        "LimingEvent": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Liming event.",
-                                                                    "properties": {
-                                                                        "LimingDate": {
-                                                                            "description": "Liming date. must be in mm/dd/yyyy format",
-                                                                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                            "title": "LimingDate",
-                                                                            "type": "string"
-                                                                        },
-                                                                        "LimingMethod": {
-                                                                            "description": "Liming Method",
-                                                                            "enum": [
-                                                                                "calcitic limestone",
-                                                                                "crushed limestone",
-                                                                                "dolomitic limestone",
-                                                                                "none"
-                                                                            ],
-                                                                            "title": "LimingMethod",
-                                                                            "type": "string"
-                                                                        },
-                                                                        "LimingRate": {
-                                                                            "description": "Liming Rate. units in tons/acre",
-                                                                            "title": "LimingRate",
-                                                                            "type": "number"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "LimingDate",
-                                                                        "LimingMethod",
-                                                                        "LimingRate"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "LimingEvent"
-                                                        },
-                                                        "NApplicationList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of nitrogen applications.",
-                                                                    "properties": {
-                                                                        "NApplicationEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "default": {
-                                                                                },
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Nitrogen application event.",
-                                                                                "properties": {
-                                                                                    "EEP": {
-                                                                                        "description": "Enhanced efficiency product.",
-                                                                                        "enum": [
-                                                                                            "nitrification inhibitor",
-                                                                                            "none",
-                                                                                            "slow release"
-                                                                                        ],
-                                                                                        "title": "EEP",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "NApplicationAmount": {
-                                                                                        "description": "Nitrogen application amount. Units in lbs N/acre",
-                                                                                        "title": "NApplicationAmount",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "NApplicationDate": {
-                                                                                        "description": "\"Nitrogen application date. must be in MM/DD/YYYY",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "NApplicationDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "NApplicationMethod": {
-                                                                                        "description": "Nitrogen application method.",
-                                                                                        "enum": [
-                                                                                            "aerial application",
-                                                                                            "fertigation",
-                                                                                            "incorporate / inject",
-                                                                                            "surface band / sidedress",
-                                                                                            "surface broadcast"
-                                                                                        ],
-                                                                                        "title": "NApplicationMethod",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "NApplicationType": {
-                                                                                        "description": "Nitrogen application type.",
-                                                                                        "enum": [
-                                                                                            "ammonium nitrate (34-0-0)",
-                                                                                            "ammonium nitrate phosphate (23-23-00)",
-                                                                                            "ammonium nitrate phosphate (27-14-00)",
-                                                                                            "ammonium phosphate sulphate (16-20-00)",
-                                                                                            "ammonium polyphosphate solution (10-34-00)",
-                                                                                            "ammonium sulphate (21-00-00)",
-                                                                                            "ammonium thiosulphate solution (12-00-00)",
-                                                                                            "anhydrous ammonia (gas) (82-00-00)",
-                                                                                            "calcium ammonium nitrate",
-                                                                                            "calcium nitrate",
-                                                                                            "diammonium phosphate (18-46-00)",
-                                                                                            "element-n (n)",
-                                                                                            "element-p (p)",
-                                                                                            "mixed blends",
-                                                                                            "monoammonium phosphate (11-55-00)",
-                                                                                            "monoammonium phosphate (12-51-00)",
-                                                                                            "potassium nitrate",
-                                                                                            "urea (46-00-00)",
-                                                                                            "urea ammonium nitrate (30-00-00)",
-                                                                                            "urea ammonium phosphate (27-27-00)",
-                                                                                            "urea ammonium phosphate (34-17-00)"
-                                                                                        ],
-                                                                                        "title": "NApplicationType",
-                                                                                        "type": "string"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "EEP",
-                                                                                    "NApplicationAmount",
-                                                                                    "NApplicationDate",
-                                                                                    "NApplicationMethod",
-                                                                                    "NApplicationType"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "NApplicationEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "NApplicationEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "NApplicationList"
-                                                        },
-                                                        "OMADApplicationList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of manure application events. (Organic Amendment)",
-                                                                    "properties": {
-                                                                        "OMADApplicationEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Organic Amendment Application event",
-                                                                                "properties": {
-                                                                                    "OMADAmount": {
-                                                                                        "description": "Organic Amendment Amount units in tons dry matter per acre",
-                                                                                        "title": "OMADAmount",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "OMADApplicationDate": {
-                                                                                        "description": "Organic Amendment Application date",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "OMADApplicationDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "OMADCNRatio": {
-                                                                                        "description": "Organic Amendment Ratio",
-                                                                                        "title": "OMADCNRatio",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "OMADPercentN": {
-                                                                                        "description": "Organic Amendment Percent. Units in %N",
-                                                                                        "title": "OMADPercentN",
-                                                                                        "type": "number"
-                                                                                    },
-                                                                                    "OMADType": {
-                                                                                        "description": "Organic Amendment Type. see GGIT_API_File_Specification.xlsx tab Organic Amendment Types for details",
-                                                                                        "enum": [
-                                                                                            "alfalfa meal",
-                                                                                            "beef manure, solid",
-                                                                                            "beef slurry",
-                                                                                            "blood, dried",
-                                                                                            "bone meal",
-                                                                                            "chicken - broiler (litter), solid",
-                                                                                            "chicken - broiler slurry",
-                                                                                            "chicken - layer slurry",
-                                                                                            "chicken - layer, solid",
-                                                                                            "compost or composted manure, solid",
-                                                                                            "dairy manure, solid",
-                                                                                            "dairy slurry",
-                                                                                            "farmyard manure, solid",
-                                                                                            "feather meal",
-                                                                                            "fish emulsion",
-                                                                                            "fish scrap",
-                                                                                            "guano",
-                                                                                            "horse manure, solid",
-                                                                                            "other manure, solid",
-                                                                                            "sheep manure, solid",
-                                                                                            "soybean meal",
-                                                                                            "swine manure, slurry",
-                                                                                            "swine manure, solid"
-                                                                                        ],
-                                                                                        "title": "OMADType",
-                                                                                        "type": "string"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "OMADAmount",
-                                                                                    "OMADApplicationDate",
-                                                                                    "OMADCNRatio",
-                                                                                    "OMADPercentN",
-                                                                                    "OMADType"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "OMADApplicationEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "OMADApplicationEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "OMADApplicationList"
-                                                        },
-                                                        "PlantingDate": {
-                                                            "description": "Crop planting date. must be in MM/DD/YYYY format",
-                                                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                            "title": "PlantingDate",
-                                                            "type": "string"
-                                                        },
-                                                        "Prune": {
-                                                            "description": "Prune. Yes = woody perennial crops are pruned.",
-                                                            "enum": [
-                                                                "no",
-                                                                "yes"
-                                                            ],
-                                                            "title": "Prune",
-                                                            "type": "string"
-                                                        },
-                                                        "Renew": {
-                                                            "description": "Renew. Yes = remove and replant orchard. All coarse and fine branches\nand all coarse roots are removed, soil is plowed, and new saplings\nassumed to be 2 yrs old are planted.",
-                                                            "enum": [
-                                                                "no",
-                                                                "yes"
-                                                            ],
-                                                            "title": "Renew",
-                                                            "type": "string"
-                                                        },
-                                                        "TillageList": {
-                                                            "anyOf": [
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "default": {
-                                                                    },
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "List of tillage events.",
-                                                                    "properties": {
-                                                                        "TillageEvent": {
-                                                                            "items": {
-                                                                                "additionalProperties": false,
-                                                                                "defaultProperties": [
-                                                                                ],
-                                                                                "description": "Tillage event.",
-                                                                                "properties": {
-                                                                                    "TillageDate": {
-                                                                                        "description": "Date this tillage event occurred. must be in MM/DD/YYYY.",
-                                                                                        "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                                                                                        "title": "TillageDate",
-                                                                                        "type": "string"
-                                                                                    },
-                                                                                    "TillageType": {
-                                                                                        "description": "Tillage type.",
-                                                                                        "enum": [
-                                                                                            "broad-spectrum herbicide",
-                                                                                            "crimp",
-                                                                                            "growing season cultivation",
-                                                                                            "intensive tillage",
-                                                                                            "mow",
-                                                                                            "mulch tillage",
-                                                                                            "no tillage",
-                                                                                            "reduced tillage",
-                                                                                            "ridge tillage",
-                                                                                            "strip tillage",
-                                                                                            "winter kill"
-                                                                                        ],
-                                                                                        "title": "TillageType",
-                                                                                        "type": "string"
-                                                                                    }
-                                                                                },
-                                                                                "required": [
-                                                                                    "TillageDate",
-                                                                                    "TillageType"
-                                                                                ],
-                                                                                "type": "object"
-                                                                            },
-                                                                            "title": "TillageEvent",
-                                                                            "type": "array"
-                                                                        }
-                                                                    },
-                                                                    "required": [
-                                                                        "TillageEvent"
-                                                                    ],
-                                                                    "type": "object"
-                                                                },
-                                                                {
-                                                                    "additionalProperties": false,
-                                                                    "defaultProperties": [
-                                                                    ],
-                                                                    "description": "Construct a type with a set of properties K of type T",
-                                                                    "type": "object"
-                                                                }
-                                                            ],
-                                                            "default": {
-                                                            },
-                                                            "title": "TillageList"
-                                                        }
-                                                    },
-                                                    "required": [
-                                                        "@CropNumber",
-                                                        "BurnEvent",
-                                                        "ContinueFromPreviousYear",
-                                                        "CropName",
-                                                        "GrazingList",
-                                                        "HarvestList",
-                                                        "IrrigationList",
-                                                        "LimingEvent",
-                                                        "NApplicationList",
-                                                        "OMADApplicationList",
-                                                        "PlantingDate",
-                                                        "TillageList"
-                                                    ],
-                                                    "type": "object"
-                                                },
-                                                "title": "Crop",
-                                                "type": "array"
-                                            }
-                                        },
-                                        "required": [
-                                            "@Year",
-                                            "Crop"
-                                        ],
-                                        "type": "object"
-                                    },
-                                    "title": "CropYear",
-                                    "type": "array"
-                                }
-                            },
-                            "required": [
-                                "@Name",
-                                "CropYear"
-                            ],
-                            "type": "object"
-                        },
-                        "title": "CropScenario",
-                        "type": "array"
-                    },
-                    "GEOM": {
-                        "additionalProperties": false,
-                        "defaultProperties": [
-                        ],
-                        "description": "Geometry, point or polygon. Polygon has maximum about of vertices, 1000.  Max size is 10,000 acres. SRID any",
-                        "properties": {
-                            "#text": {
-                                "description": "WKT string of geometry polygon.",
-                                "title": "#text",
-                                "type": "string"
-                            },
-                            "@AREA": {
-                                "description": "Area of this geometry in acres.",
-                                "title": "@AREA",
-                                "type": "number"
-                            },
-                            "@SRID": {
-                                "description": "Standard spatial reference identifier.",
-                                "enum": [
-                                    "4326"
-                                ],
-                                "title": "@SRID",
-                                "type": "string"
-                            }
-                        },
-                        "required": [
-                            "#text",
-                            "@AREA",
-                            "@SRID"
-                        ],
-                        "title": "GEOM",
-                        "type": "object"
-                    },
-                    "PostCRPManagement": {
-                        "description": "Post CRP management.",
-                        "items": [
-                            {
-                                "enum": [
-                                    "irrigated: annual crops in rotation",
-                                    "irrigated: annual crops with hay/pasture in rotation",
-                                    "irrigated: continuous hay",
-                                    "irrigated: orchard or vineyard",
-                                    "non-irrigated: annual crops in rotation",
-                                    "non-irrigated: annual crops with hay/pasture in rotation",
-                                    "non-irrigated: continuous hay",
-                                    "non-irrigated: fallow-grain",
-                                    "non-irrigated: livestock grazing",
-                                    "non-irrigated: orchard or vineyard"
-                                ],
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "PostCRPManagement",
-                        "type": "array"
-                    },
-                    "PostCRPTillage": {
-                        "description": "Post-CRP tillage.",
-                        "items": [
-                            {
-                                "enum": [
-                                    "intensive tillage",
-                                    "no till",
-                                    "reduced tillage"
-                                ],
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "PostCRPTillage",
-                        "type": "array"
-                    },
-                    "Pre-1980": {
-                        "description": "Historic management data input. Pre-1980. See GGIT_API_File_Specification.xlsx Pre-1980 history by LRR tab.",
-                        "enum": [
-                            "irrigation (pre 1980s)",
-                            "livestock grazing",
-                            "lowland non-irrigated (pre 1980s)",
-                            "upland non-irrigated (pre 1980s)"
-                        ],
-                        "title": "Pre-1980",
-                        "type": "string"
-                    },
-                    "PreCRPManagement": {
-                        "description": "Pre-CRP management.",
-                        "items": [
-                            {
-                                "enum": [
-                                    "irrigated: annual crops in rotation",
-                                    "irrigated: annual crops with hay/pasture in rotation",
-                                    "irrigated: continuous hay",
-                                    "irrigated: orchard or vineyard",
-                                    "non-irrigated: annual crops in rotation",
-                                    "non-irrigated: annual crops with hay/pasture in rotation",
-                                    "non-irrigated: continuous hay",
-                                    "non-irrigated: fallow-grain",
-                                    "non-irrigated: livestock grazing",
-                                    "non-irrigated: orchard or vineyard"
-                                ],
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "PreCRPManagement",
-                        "type": "array"
-                    },
-                    "PreCRPTillage": {
-                        "description": "Pre-CRP tillage.",
-                        "items": [
-                            {
-                                "enum": [
-                                    "intensive tillage",
-                                    "no till",
-                                    "reduced tillage"
-                                ],
-                                "type": "string"
-                            }
-                        ],
-                        "maxItems": 1,
-                        "minItems": 0,
-                        "title": "PreCRPTillage",
-                        "type": "array"
-                    },
-                    "Year1980-2000": {
-                        "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
-                        "enum": [
-                            "irrigated: annual crops in rotation",
-                            "irrigated: annual crops with hay/pasture in rotation",
-                            "irrigated: continuous hay",
-                            "irrigated: orchard or vineyard",
-                            "non-irrigated: annual crops in rotation",
-                            "non-irrigated: annual crops with hay/pasture in rotation",
-                            "non-irrigated: continuous hay",
-                            "non-irrigated: fallow-grain",
-                            "non-irrigated: livestock grazing",
-                            "non-irrigated: orchard or vineyard"
-                        ],
-                        "title": "Year1980-2000",
-                        "type": "string"
-                    },
-                    "Year1980-2000_Tillage": {
-                        "description": "Tillage from 1980 - 2000.",
-                        "enum": [
-                            "intensive tillage",
-                            "no till",
-                            "reduced tillage"
-                        ],
-                        "title": "Year1980-2000_Tillage",
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "@Name",
-                    "CRP",
-                    "CRPEndYear",
-                    "CRPStartYear",
-                    "CRPType",
-                    "CropScenario",
-                    "GEOM",
-                    "PostCRPManagement",
-                    "PostCRPTillage",
-                    "Pre-1980",
-                    "PreCRPManagement",
-                    "PreCRPTillage",
-                    "Year1980-2000",
-                    "Year1980-2000_Tillage"
-                ],
-                "type": "object"
+                "$ref": "#/definitions/Cropland"
             },
             "title": "Cropland",
             "type": "array"

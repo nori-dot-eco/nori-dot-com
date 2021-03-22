@@ -151,7 +151,10 @@ export interface Project {
   /**
    * The specification version. This information is used to determine the logic Nori uses to import a project
    *
-   * @errorMessage must use a string value to indicate the version number
+   * @errorMessage
+   * {
+   * "type": "must use a string value to indicate the version number"
+   * }
    *
    * @example
    *
@@ -1189,7 +1192,13 @@ export interface CropEvent {
    * ```js
    * "date": "01/01/2000"
    * ```
+   * @validationRules ["eventDateIsOnOrAfterContainingCropYear"]
    *
+   * @errorMessage
+   * {
+   * "type": "Invalid date, expected string formatted date",
+   * "validationRules": "Invalid date"
+   * }
    */
   date: string;
 }
@@ -1337,7 +1346,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    *
    * The current version of quantification does not consider yield when producing estimates.
    *
-   * @default 0
+   * @default "lbs/ac"
    *
    * @example <caption>When the unit of the yield is submitted in lbs per acre:</caption>
    *

@@ -1,8 +1,7 @@
-import { formatInputData } from '../index';
+import { formatInputData, validateProjectData } from '../index';
 import type { Project } from '../index';
 import * as FULL_FORMATTED_VALID_PROJECT from '../example/example.json';
-import { HistoricNonCRPLandManagement } from '../specification';
-import { validateProjectData } from '../validation';
+import type { HistoricNonCRPLandManagement } from '../specification';
 
 const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   version: '0.1.0',
@@ -185,7 +184,7 @@ describe('validation', () => {
     it('should return true and no errors when the data is valid', () => {
       expect(
         validateProjectData(BASIC_UNFORMATTED_VALID_PROJECT)
-      ).toStrictEqual({
+      ).toStrictEqual<ReturnType<typeof validateProjectData>>({
         valid: true,
         errors: null,
         message: 'No errors',
@@ -195,7 +194,7 @@ describe('validation', () => {
     it('should return false and the errors when the data is valid', () => {
       expect(
         validateProjectData(BASIC_UNFORMATTED_INVALID_PROJECT)
-      ).toStrictEqual({
+      ).toStrictEqual<ReturnType<typeof validateProjectData>>({
         valid: false,
         errors: expect.arrayContaining([expect.any(Object)]),
         message: expect.stringContaining(
@@ -208,7 +207,7 @@ describe('validation', () => {
       it('should return false and the errors when the data contains an invalid number of fields', () => {
         expect(
           validateProjectData({ version: '1.0.0', fields: [] } as any)
-        ).toStrictEqual({
+        ).toStrictEqual<ReturnType<typeof validateProjectData>>({
           valid: false,
           errors: [
             {
@@ -219,6 +218,7 @@ describe('validation', () => {
                 errors: [
                   {
                     dataPath: '/fields',
+                    emUsed: true,
                     keyword: 'minItems',
                     message: 'should NOT have fewer than 1 items',
                     params: { limit: 1 },
@@ -265,7 +265,9 @@ describe('validation', () => {
               },
             ],
           };
-          expect(validateProjectData(data)).toStrictEqual({
+          expect(validateProjectData(data)).toStrictEqual<
+            ReturnType<typeof validateProjectData>
+          >({
             valid: true,
             errors: null,
             message: 'No errors',
@@ -276,6 +278,79 @@ describe('validation', () => {
     });
     describe('validation for `CropEvent`', () => {
       describe('date validation', () => {
+        describe('validationRules', () => {
+          describe('when the crop event dates fall within years prior to the planting year', () => {
+            it.only('should throw validation errors', () => {
+              const data: Project = {
+                version: '0.1.0',
+                fields: [
+                  {
+                    acres: 174.01,
+                    historicLandManagement: {
+                      crp: 'no',
+                      preYear1980: 'irrigation',
+                      tillageForYears1980To2000: 'intensive tillage',
+                      year1980To2000: 'irrigated: annual crops in rotation',
+                    },
+                    regenerativeStartYear: 2015,
+                    fieldName: 'zyt0f1mnasi',
+                    geojson: {
+                      coordinates: [
+                        [
+                          [-102.02569636144796, 41.16245691933347],
+                          [-102.02423723974385, 41.1631353976904],
+                          [-102.02616843023458, 41.16184305191021],
+                          [-102.02569636144796, 41.16245691933347],
+                        ],
+                      ],
+                      type: 'Polygon',
+                    },
+                    cropYears: [
+                      {
+                        plantingYear: 2015,
+                        crops: [
+                          {
+                            name: 'corn',
+                            type: 'corn',
+                            plantingDate: '04/28/2015',
+                            fertilizerEvents: [],
+                            organicMatterEvents: [],
+                            irrigationEvents: [],
+                            limingEvents: null,
+                            grazingEvents: null,
+                            burningEvent: null,
+                            soilOrCropDisturbanceEvents: [],
+                            harvestEvents: [
+                              {
+                                date: '09/18/2014',
+                                yield: 211.88,
+                                grainFruitTuber: null,
+                                residueRemoved: 0,
+                                yieldUnit: 'bu/ac',
+                              },
+                            ],
+                            classification: 'annual crop',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              };
+              expect(validateProjectData(data)).toStrictEqual<
+                ReturnType<typeof validateProjectData>
+              >({
+                valid: true,
+                errors: null,
+                message: 'No errors',
+                formattedData: data,
+              });
+            });
+          });
+          describe('when the crop event dates fall within the current planting year', () => {
+            it.todo('should not throw validation errors');
+          });
+        });
         describe('when the type is excluded or null', () => {
           it('should return true for validation', () => {
             const data: Project = {
@@ -331,7 +406,9 @@ describe('validation', () => {
                 },
               ],
             };
-            expect(validateProjectData(data)).toStrictEqual({
+            expect(validateProjectData(data)).toStrictEqual<
+              ReturnType<typeof validateProjectData>
+            >({
               valid: true,
               errors: null,
               message: 'No errors',
@@ -348,7 +425,9 @@ describe('validation', () => {
             const validated = validateProjectData(
               BASIC_UNFORMATTED_VALID_PROJECT as any
             );
-            expect(validated).toStrictEqual({
+            expect(validated).toStrictEqual<
+              ReturnType<typeof validateProjectData>
+            >({
               valid: true,
               errors: null,
               message: 'No errors',
