@@ -66,6 +66,13 @@
         ],
         "displayName": "ggit",
         "preset": "ts-jest"
+      },
+      {
+        "testMatch": [
+          "<rootDir>/packages/errors/src/**/?(*.)+(test).[jt]s?(x)"
+        ],
+        "displayName": "errors",
+        "preset": "ts-jest"
       }
     ]
   }

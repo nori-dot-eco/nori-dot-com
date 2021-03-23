@@ -33,6 +33,7 @@ jobs:
             - packages/project/node_modules
             - packages/quantification/node_modules
             - packages/ggit/node_modules
+            - packages/errors/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
             - node_modules
