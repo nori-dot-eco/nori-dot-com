@@ -146,6 +146,11 @@ export const orchardOrVineyardCropTypes = [
  * }
  * ```
  *
+ * @errorMessage
+ * {
+ * "_": "projectDataError:projectUnknownError"
+ * }
+ *
  */
 export interface Project {
   /**
@@ -1212,12 +1217,12 @@ export interface CropEvent {
    * ```js
    * "date": "01/01/2000"
    * ```
-   * @validationRules ["eventDateIsOnOrAfterContainingCropYear"]
+   * @validationRules ["cropEventDateIsOnOrAfterContainingCropYear"]
    *
    * @errorMessage
    * {
    * "type": "Invalid date, expected string formatted date",
-   * "validationRules": "Invalid date"
+   * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
    * }
    */
   date: string;

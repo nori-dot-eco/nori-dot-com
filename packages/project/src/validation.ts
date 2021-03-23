@@ -2,6 +2,8 @@ import Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import ajvErrors from 'ajv-errors';
 import type { DataValidationCxt } from 'ajv/dist/types';
+import type { UnparsedError } from '@nori-dot-com/errors';
+import { parseError } from '@nori-dot-com/errors';
 
 import * as schema from './json/specification.json';
 import type { CropEvent } from './specification';
@@ -47,7 +49,7 @@ export const formatInputData = (data: Project): Project => {
  * @internal
  */
 const validationRules = {
-  eventDateIsOnOrAfterContainingCropYear: ({
+  cropEventDateIsOnOrAfterContainingCropYear: ({
     ctx,
     value,
   }: {
@@ -126,19 +128,20 @@ export const validateProjectData = (
   const valid = ajv.validate(schema, formattedData);
   const errors =
     ajv.errors?.map((error) => {
-      // todo
-      // const code =  NoriError.projectDataError[error.message] || 'unknownError';
+      const { code, type, message } = parseError({
+        error: error.message as UnparsedError,
+      });
       return {
-        type: error.message.split(' ').slice(1).join(' '),
-        // code,
-        // message:  NoriError.projectDataError[code],
+        type,
+        code,
+        message,
         dataPath: error.dataPath,
         error,
       };
     }) ?? null;
   return {
     valid,
-    message: ajv.errorsText(), // todo NoriError.projectDataError[ajv.errorsText()],
+    message: errors?.map((e) => e.message).join(' ') ?? 'No errors',
     errors,
     formattedData,
   };
