@@ -116,6 +116,7 @@ module.exports = {
     'react/jsx-filename-extension': 0,
     'react/jsx-curly-brace-presence': 0,
     'react/prop-types': 0,
+    'react/require-default-props': false,
     'jsx-a11y/anchor-is-valid': 0,
     'no-plusplus': 0,
     'import/prefer-default-export': 0,
