@@ -1,1 +1,1 @@
-export * as Disclaimer from './components/Disclaimer';
+export { default as Disclaimer } from './components/Disclaimer';
