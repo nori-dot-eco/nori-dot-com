@@ -6,7 +6,7 @@ import type {
   PerennialCrop,
 } from '..';
 
-export const isOrchardOrVinyardCrop = (
+export const isOrchardOrVineyardCrop = (
   crop: AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop
 ): crop is OrchardOrVineyardCrop => {
   return (crop as OrchardOrVineyardCrop).prune !== undefined;
