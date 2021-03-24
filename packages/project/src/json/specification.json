@@ -191,7 +191,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -426,7 +426,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -558,7 +558,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -627,9 +627,9 @@
             "additionalProperties": false,
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
             "errorMessage": {
-                "_": "unknownProjectFieldError",
-                "additionalProperties": "fieldUnknownAdditionalPropertyError",
-                "required": "fieldRequiredPropertyMissing"
+                "_": "projectDataError:fieldUnknownError",
+                "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+                "required": "projectDataError:fieldRequiredPropertyMissing"
             },
             "properties": {
                 "acres": {
@@ -651,8 +651,8 @@
                 "fieldName": {
                     "description": "The name of the field.",
                     "errorMessage": {
-                        "_": "fieldNameUnknownError",
-                        "type": "fieldNameTypeError"
+                        "_": "projectDataError:fieldNameUnknownError",
+                        "type": "projectDataError:fieldNameTypeError"
                     },
                     "title": "fieldName",
                     "type": "string"
@@ -1859,7 +1859,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -2286,7 +2286,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -2367,7 +2367,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -2443,7 +2443,7 @@
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
                             "errorMessage": {
-                                "type": "Invalid date, expected string formatted date",
+                                "type": "projectDataError:cropEventDateTypeError",
                                 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
                             },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
@@ -2537,10 +2537,10 @@
         "fields": {
             "description": "An array of fields defining annual crop management practices.",
             "errorMessage": {
-                "_": "unknownProjectFieldsError",
-                "maxItems": "projectFieldsMaximumItemsError",
-                "minItems": "projectFieldsMinimumItemsError",
-                "type": "projectFieldsTypeError"
+                "_": "projectDataError:projectFieldsUnknownError",
+                "maxItems": "projectDataError:projectFieldsMaximumItemsError",
+                "minItems": "projectDataError:projectFieldsMinimumItemsError",
+                "type": "projectDataError:projectFieldsTypeError"
             },
             "items": {
                 "$ref": "#/definitions/Field"
@@ -2553,8 +2553,8 @@
         "version": {
             "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
             "errorMessage": {
-                "_": "unknownProjectVersionError",
-                "type": "projectVersionTypeError"
+                "_": "projectDataError:projectVersionUnknownError",
+                "type": "projectDataError:projectVersionTypeError"
             },
             "title": "version",
             "type": "string"

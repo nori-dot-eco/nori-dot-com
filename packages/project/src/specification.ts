@@ -158,8 +158,8 @@ export interface Project {
    *
    * @errorMessage
    * {
-   * "type": "projectVersionTypeError",
-   * "_": "unknownProjectVersionError"
+   * "type": "projectDataError:projectVersionTypeError",
+   * "_": "projectDataError:projectVersionUnknownError"
    * }
    *
    * @example
@@ -175,10 +175,10 @@ export interface Project {
    *
    * @errorMessage
    * {
-   * "minItems": "projectFieldsMinimumItemsError",
-   * "maxItems": "projectFieldsMaximumItemsError",
-   * "type": "projectFieldsTypeError",
-   * "_": "unknownProjectFieldsError"
+   * "minItems": "projectDataError:projectFieldsMinimumItemsError",
+   * "maxItems": "projectDataError:projectFieldsMaximumItemsError",
+   * "type": "projectDataError:projectFieldsTypeError",
+   * "_": "projectDataError:projectFieldsUnknownError"
    * }
    *
    * @minItems 1
@@ -499,9 +499,9 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  *
  * @errorMessage
  * {
- * "required": "fieldRequiredPropertyMissing",
- * "additionalProperties": "fieldUnknownAdditionalPropertyError",
- * "_": "unknownProjectFieldError"
+ * "required": "projectDataError:fieldRequiredPropertyMissing",
+ * "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+ * "_": "projectDataError:fieldUnknownError"
  * }
  *
  */
@@ -568,8 +568,8 @@ export interface Field {
    *
    * @errorMessage
    * {
-   * "type": "fieldNameTypeError",
-   * "_": "fieldNameUnknownError"
+   * "type": "projectDataError:fieldNameTypeError",
+   * "_": "projectDataError:fieldNameUnknownError"
    * }
    *
    */
@@ -1221,7 +1221,7 @@ export interface CropEvent {
    *
    * @errorMessage
    * {
-   * "type": "Invalid date, expected string formatted date",
+   * "type": "projectDataError:cropEventDateTypeError",
    * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
    * }
    */

@@ -61,17 +61,14 @@ const validationRules = {
     const cropYear =
       project.fields[Number(fieldIndex)].cropYears[Number(cropYearIndex)]
         .plantingYear;
-    const eventYear = Number(value.split('/').slice(-1));
-    return eventYear >= cropYear;
-  },
-  tester: ({
-    ctx,
-    value,
-  }: {
-    ctx: ProjectDataValidationContext;
-    value: CropEvent['date'];
-  }): boolean => {
-    return false;
+    let isValid: boolean;
+    if (typeof value === 'string') {
+      const eventYear = Number(value.split('/').slice(-1));
+      isValid = eventYear >= cropYear;
+    } else {
+      isValid = true; // if the type is not string, let other error handlers handle the error
+    }
+    return isValid;
   },
 };
 
