@@ -23,9 +23,8 @@ jobs:
           command: |
             if [ ! -d "node_modules" ]; then
               for i in 1 2; do
-                yarn install --frozen-lockfile --prefer-offline && break || sleep 15;
+                yarn install --prefer-offline && break || sleep 15;
               done
-              lerna bootstrap -- --prefer-offline
               git checkout yarn.lock
             fi
       - save_cache:
