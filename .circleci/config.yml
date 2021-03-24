@@ -23,9 +23,8 @@ jobs:
           command: |
             if [ ! -d "node_modules" ]; then
               for i in 1 2; do
-                yarn install --frozen-lockfile --prefer-offline && break || sleep 15;
+                yarn install --prefer-offline && break || sleep 15;
               done
-              lerna bootstrap -- --prefer-offline
               git checkout yarn.lock
             fi
       - save_cache:
@@ -75,7 +74,7 @@ jobs:
             echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
             echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
             yarn
-            yarn chromatic --debug --skip 'dependabot/**' --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
+            cd packages/bento && yarn chromatic --debug --skip 'dependabot/**' --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
 
 workflows:
   version: 2
