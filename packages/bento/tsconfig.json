@@ -3,7 +3,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "jsx": "preserve",
+    "jsx": "react",
     "esModuleInterop": true,
   }
 }

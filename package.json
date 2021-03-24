@@ -72,7 +72,12 @@
           "<rootDir>/packages/bento/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "bento",
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "globals": {
+          "ts-jest": {
+            "tsconfig": "./packages/bento/tsconfig.json"
+          }
+        }
       }
     ]
   }
