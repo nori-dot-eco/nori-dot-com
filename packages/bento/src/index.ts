@@ -1,3 +1,1 @@
-import Disclaimer from './components/Disclaimer';
-
-module.exports = { Disclaimer };
+export * as Disclaimer from './components/Disclaimer';
