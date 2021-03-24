@@ -16,4 +16,4 @@ Disclaimer.defaultProps = {
   description: null,
 };
 
-export { Disclaimer };
+export default Disclaimer;

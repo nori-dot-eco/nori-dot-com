@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react/types-6-0';
-import { Disclaimer } from '../components/Disclaimer';
+import Disclaimer from './Disclaimer';
 import { loremIpsum } from '../lib/loremIpsum';
 
 type DisclaimerProps = Parameters<typeof Disclaimer>[0];
@@ -14,7 +14,7 @@ const Template: Story<DisclaimerProps> = (args) => <Disclaimer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  children: loremIpsum.generateSentences(3),
+  children: 'HELLO WORLD',
 } as DisclaimerProps;
 Default.parameters = {
   design: {
