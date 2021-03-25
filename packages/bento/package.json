@@ -1,0 +1,54 @@
+{
+  "name": "@nori-dot-com/bento",
+  "version": "1.2.0",
+  "description": "A component library for Nori",
+  "author": "Richie Farman <rlfarman@gmail.com>",
+  "homepage": "https://github.com/nori-dot-eco/nori-dot-com#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "watch": "tsc -w -p .",
+    "build": "yarn run tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic"
+  },
+  "bugs": {
+    "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lorem-ipsum": "^2.0.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "tailwindcss-textshadow": "^2.1.3",
+    "typescript": "^4.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@storybook/testing-react": "^0.0.6",
+    "@tailwindcss/aspect-ratio": "^0.2.0",
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/postcss7-compat": "^2.0.4",
+    "@tailwindcss/typography": "^0.4.0",
+    "@testing-library/react": "^11.2.5",
+    "autoprefixer": "^9",
+    "babel-loader": "^8.2.2",
+    "chromatic": "^5.7.0",
+    "postcss": "^7",
+    "storybook-addon-designs": "^5.4.5",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  }
+}

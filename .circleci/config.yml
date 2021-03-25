@@ -17,7 +17,7 @@ jobs:
             echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
             echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
       - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: |
@@ -28,7 +28,7 @@ jobs:
               git checkout yarn.lock
             fi
       - save_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
           paths:
             - packages/project/node_modules
             - packages/quantification/node_modules
@@ -36,6 +36,7 @@ jobs:
             - packages/errors/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
+            - packages/bento/node_modules
             - node_modules
             - ~/.cache
   run-regular-tests:
@@ -48,7 +49,7 @@ jobs:
             echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
             echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
       - restore_cache:
-          key: v-0-0-3-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
       - run:
           name: Run Tests and Collect Coverage
           command: |
@@ -61,11 +62,29 @@ jobs:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
 
+  run-chromatic:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
+      - run:
+          name: Run Chromatic
+          command: |
+            cd ~/repo
+            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
+            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
+            yarn
+            cd packages/bento && yarn chromatic --debug --skip 'dependabot/**' --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
+
 workflows:
   version: 2
   test:
     jobs:
       - setup-tests
       - run-regular-tests:
+          requires:
+            - setup-tests
+      - run-chromatic:
           requires:
             - setup-tests
