@@ -19,7 +19,7 @@
     "build": "yarn run tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token ug1px77ta9"
+    "chromatic": "npx chromatic"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
@@ -48,6 +48,7 @@
     "babel-loader": "^8.2.2",
     "chromatic": "^5.7.0",
     "postcss": "^7",
+    "storybook-addon-designs": "^5.4.5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }
