@@ -554,7 +554,7 @@
             "type": "object"
         },
         "Grain": {
-            "description": "CRP.",
+            "description": "Is this a grain harvest.",
             "enum": [
                 "no",
                 "yes"
