@@ -349,6 +349,7 @@
         },
         "Cropland": {
             "additionalProperties": false,
+            "description": "Cropland data",
             "properties": {
                 "@Name": {
                     "description": "Name of this field.",
@@ -652,8 +653,6 @@
         },
         "HarvestList": {
             "additionalProperties": false,
-            "default": {
-            },
             "description": "List of harvest events.",
             "properties": {
                 "HarvestEvent": {
@@ -752,8 +751,6 @@
         },
         "NApplicationEvent": {
             "additionalProperties": false,
-            "default": {
-            },
             "description": "Nitrogen application event.",
             "properties": {
                 "EEP": {
@@ -977,8 +974,6 @@
         },
         "TillageList": {
             "additionalProperties": false,
-            "default": {
-            },
             "description": "List of tillage events.",
             "properties": {
                 "TillageEvent": {
@@ -1041,7 +1036,10 @@
             "type": "string"
         }
     },
-    "description": "daycentcrv1 input schema.",
+    "description": "daycentcrv1 input schema",
+    "errorMessage": {
+        "_": "ggitInputError:ggitInputDataUnknownError"
+    },
     "properties": {
         "@cometEmailId": {
             "description": "Soil Metrics API email address or GGIT.com email address.",

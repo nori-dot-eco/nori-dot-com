@@ -1,4 +1,9 @@
 export const Errors = {
+  ggitInputError: {
+    ggitInputDataUnknownError: {
+      message: 'An unknown error occurred within the GGIT input data',
+    },
+  },
   projectDataError: {
     projectUnknownError: {
       message: 'An unknown error occurred within the project data',
