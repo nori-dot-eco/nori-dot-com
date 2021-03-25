@@ -1,11 +1,11 @@
-# `bento`
+# `@nori-dot-com/bento`
 
-> TODO: description
+A reusable component library for Nori web services.
 
 ## Usage
 
-```
-const bento = require('bento');
+```ts
+import { Disclaimer } from '@nori-dot-com/bento';
 
-// TODO: DEMONSTRATE API
+const Disclaimer = <Disclaimer>Hello World</Disclaimer>;
 ```
