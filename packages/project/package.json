@@ -37,7 +37,7 @@
     "@nori-dot-com/ggit": "*",
     "@nori-dot-com/errors": "*",
     "@turf/helpers": "^6.3.0",
-    "ajv": "^7.2.1",
+    "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "typescript-json-schema": "^0.50.0",
     "wicket": "^1.3.6"

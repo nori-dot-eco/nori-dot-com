@@ -27,10 +27,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "dependencies": {
+  "devDependencies": {
+    "eslint-plugin-jest": "^24.1.3",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.22.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -47,9 +48,5 @@
     "eslint-plugin-sort-imports-es6-autofix": "^0.5.0",
     "eslint-plugin-typescript": "^0.14.0",
     "prettier": "^2.2.1"
-  },
-  "devDependencies": {
-    "eslint": "^7.17.0",
-    "eslint-plugin-jest": "^24.1.3"
   }
 }

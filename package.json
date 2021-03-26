@@ -9,16 +9,13 @@
     "@types/react-dom": "^17.0.0",
     "codecov": "^3.8.1",
     "jest": "^26.6.3",
-    "lerna": "^3.22.0",
+    "lerna": "^4.0.0",
     "ts-jest": "^26.5.0",
     "tsc-watch": "^4.2.9",
     "typescript": "^4.2.2"
   },
-  "resolutions": {
-    "ajv": "^7.2.1"
-  },
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --parallel",
     "watch": "lerna run watch --parallel",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
@@ -27,6 +24,10 @@
   "workspaces": {
     "packages": [
       "packages/*"
+    ],
+    "nohoist": [
+      "**/ajv",
+      "**/ajv-errors"
     ]
   },
   "jest": {
