@@ -27,7 +27,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prepare": "yarn run build",
     "watch": "tsc -w -p .",
-    "make:schema": "`yarn bin`/typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --refs=false --noExtraProps=true --defaultProps=true --validationKeywords=\"errorMessage\"",
+    "make:schema": "`yarn bin`/typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules",
     "build": "yarn run make:schema && tsc"
   },
   "bugs": {
@@ -35,8 +35,9 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
-    "ajv": "^6.12.3",
-    "ajv-errors": "^1.0.1",
-    "typescript-json-schema": "^0.49.0"
+    "ajv": "^7.2.4",
+    "ajv-errors": "^2.0.1",
+    "typescript-json-schema": "^0.49.0",
+    "@nori-dot-com/errors": "*"
   }
 }

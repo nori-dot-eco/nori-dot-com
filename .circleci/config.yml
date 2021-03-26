@@ -33,6 +33,7 @@ jobs:
             - packages/project/node_modules
             - packages/quantification/node_modules
             - packages/ggit/node_modules
+            - packages/errors/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
             - packages/bento/node_modules
@@ -53,10 +54,8 @@ jobs:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
-            yarn run bootstrap
-            yarn run test --coverage
+            lerna run build
+            yarn run test --coverage -w=2
       - run:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
@@ -71,9 +70,6 @@ jobs:
           name: Run Chromatic
           command: |
             cd ~/repo
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
-            yarn
             cd packages/bento && yarn chromatic --debug --skip 'dependabot/**' --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
 
 workflows:

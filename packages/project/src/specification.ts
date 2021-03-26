@@ -146,12 +146,21 @@ export const orchardOrVineyardCropTypes = [
  * }
  * ```
  *
+ * @errorMessage
+ * {
+ * "_": "projectDataError:projectUnknownError"
+ * }
+ *
  */
 export interface Project {
   /**
    * The specification version. This information is used to determine the logic Nori uses to import a project
    *
-   * @errorMessage must use a string value to indicate the version number
+   * @errorMessage
+   * {
+   * "type": "projectDataError:projectVersionTypeError",
+   * "_": "projectDataError:projectVersionUnknownError"
+   * }
    *
    * @example
    *
@@ -164,7 +173,13 @@ export interface Project {
   /**
    * An array of fields defining annual crop management practices.
    *
-   * @errorMessage must specify 1-25 fields
+   * @errorMessage
+   * {
+   * "minItems": "projectDataError:projectFieldsMinimumItemsError",
+   * "maxItems": "projectDataError:projectFieldsMaximumItemsError",
+   * "type": "projectDataError:projectFieldsTypeError",
+   * "_": "projectDataError:projectFieldsUnknownError"
+   * }
    *
    * @minItems 1
    * @maxItems 25
@@ -482,6 +497,13 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  * }
  * ```
  *
+ * @errorMessage
+ * {
+ * "required": "projectDataError:fieldRequiredPropertyMissing",
+ * "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+ * "_": "projectDataError:fieldUnknownError"
+ * }
+ *
  */
 export interface Field {
   /**
@@ -543,6 +565,12 @@ export interface Field {
    * ```js
    * "fieldName": "Pumpkin Pines"
    * ```
+   *
+   * @errorMessage
+   * {
+   * "type": "projectDataError:fieldNameTypeError",
+   * "_": "projectDataError:fieldNameUnknownError"
+   * }
    *
    */
   fieldName: string;
@@ -1189,7 +1217,13 @@ export interface CropEvent {
    * ```js
    * "date": "01/01/2000"
    * ```
+   * @validationRules ["cropEventDateIsOnOrAfterContainingCropYear"]
    *
+   * @errorMessage
+   * {
+   * "type": "projectDataError:cropEventDateTypeError",
+   * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+   * }
    */
   date: string;
 }
@@ -1337,7 +1371,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
    *
    * The current version of quantification does not consider yield when producing estimates.
    *
-   * @default 0
+   * @default "lbs/ac"
    *
    * @example <caption>When the unit of the yield is submitted in lbs per acre:</caption>
    *

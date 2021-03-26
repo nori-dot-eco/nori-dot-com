@@ -1,11 +1,9 @@
 {
-    "$ref": "#/definitions/Project",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "additionalProperties": false,
     "definitions": {
         "AnnualCrop": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Crop management details and events for annual crops.",
             "properties": {
                 "burningEvent": {
@@ -186,16 +184,21 @@
         },
         "AnnualCropHarvestEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "An annual crop's harvest event details.",
             "properties": {
                 "date": {
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -234,7 +237,7 @@
                     "type": "number"
                 },
                 "yieldUnit": {
-                    "default": 0,
+                    "default": "lbs/ac",
                     "description": "The crop yield units.\n\nThe current version of quantification does not consider yield when producing estimates.",
                     "enum": [
                         "bu/ac",
@@ -255,8 +258,6 @@
         },
         "BurningEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Burning event details.",
             "properties": {
                 "type": {
@@ -277,8 +278,6 @@
         },
         "CoverCrop": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Crop management details and events for cover crops.",
             "properties": {
                 "burningEvent": {
@@ -420,16 +419,21 @@
         },
         "CropManagementEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Crop management event details.",
             "properties": {
                 "date": {
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -471,8 +475,6 @@
         },
         "CropYear": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Crop management details grouped by a planting year.",
             "properties": {
                 "crops": {
@@ -549,16 +551,21 @@
         },
         "FertilizerEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Fertilizer event details.",
             "properties": {
                 "date": {
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -618,9 +625,12 @@
         },
         "Field": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
+            "errorMessage": {
+                "_": "projectDataError:fieldUnknownError",
+                "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+                "required": "projectDataError:fieldRequiredPropertyMissing"
+            },
             "properties": {
                 "acres": {
                     "description": "The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).",
@@ -640,6 +650,10 @@
                 },
                 "fieldName": {
                     "description": "The name of the field.",
+                    "errorMessage": {
+                        "_": "projectDataError:fieldNameUnknownError",
+                        "type": "projectDataError:fieldNameTypeError"
+                    },
                     "title": "fieldName",
                     "type": "string"
                 },
@@ -711,8 +725,6 @@
         },
         "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
                 "bbox": {
@@ -805,8 +817,6 @@
                         {
                             "additionalProperties": {
                             },
-                            "defaultProperties": [
-                            ],
                             "type": "object"
                         },
                         {
@@ -835,8 +845,6 @@
         },
         "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
                 "bbox": {
@@ -929,8 +937,6 @@
                         {
                             "additionalProperties": {
                             },
-                            "defaultProperties": [
-                            ],
                             "type": "object"
                         },
                         {
@@ -959,8 +965,6 @@
         },
         "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "A collection of feature objects.\n https://tools.ietf.org/html/rfc7946#section-3.3",
             "properties": {
                 "bbox": {
@@ -1038,8 +1042,6 @@
         },
         "GeoJSON.GeometryCollection": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
             "properties": {
                 "bbox": {
@@ -1140,8 +1142,6 @@
         },
         "GeoJSON.LineString": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "LineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.4",
             "properties": {
                 "bbox": {
@@ -1223,8 +1223,6 @@
         },
         "GeoJSON.MultiLineString": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "MultiLineString geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.5",
             "properties": {
                 "bbox": {
@@ -1309,8 +1307,6 @@
         },
         "GeoJSON.MultiPoint": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "MultiPoint geometry object.\n https://tools.ietf.org/html/rfc7946#section-3.1.3",
             "properties": {
                 "bbox": {
@@ -1392,8 +1388,6 @@
         },
         "GeoJSON.MultiPolygon": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "MultiPolygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.7",
             "properties": {
                 "bbox": {
@@ -1481,8 +1475,6 @@
         },
         "GeoJSON.Point": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Point geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.2",
             "properties": {
                 "bbox": {
@@ -1561,8 +1553,6 @@
         },
         "GeoJSON.Polygon": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Polygon geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3.1.6",
             "properties": {
                 "bbox": {
@@ -1647,8 +1637,6 @@
         },
         "GrazingEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Grazing event details.",
             "properties": {
                 "endDate": {
@@ -1689,8 +1677,6 @@
         },
         "HistoricCRPLandManagement": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Details surrounding how the field was managed before year 2000\n\nNote that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
             "properties": {
                 "crp": {
@@ -1805,8 +1791,6 @@
         },
         "HistoricNonCRPLandManagement": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Land management details for when a field did not participate in CRP",
             "properties": {
                 "crp": {
@@ -1868,16 +1852,21 @@
         },
         "IrrigationEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Irrigation event details.",
             "properties": {
                 "date": {
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -1901,8 +1890,6 @@
         },
         "LimingEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Liming event details.",
             "properties": {
                 "date": {
@@ -1938,8 +1925,6 @@
         },
         "OrchardOrVineyardCrop": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Crop management details and events for orchard and vineyard crops.",
             "properties": {
                 "burningEvent": {
@@ -2124,8 +2109,6 @@
         },
         "PerennialCrop": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Perennial crop details.",
             "properties": {
                 "burningEvent": {
@@ -2274,41 +2257,8 @@
             "title": "PerennialCrop",
             "type": "object"
         },
-        "Project": {
-            "additionalProperties": false,
-            "defaultProperties": [
-            ],
-            "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.",
-            "properties": {
-                "fields": {
-                    "description": "An array of fields defining annual crop management practices.",
-                    "errorMessage": "must specify 1-25 fields",
-                    "items": {
-                        "$ref": "#/definitions/Field"
-                    },
-                    "maxItems": 25,
-                    "minItems": 1,
-                    "title": "fields",
-                    "type": "array"
-                },
-                "version": {
-                    "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
-                    "errorMessage": "must use a string value to indicate the version number",
-                    "title": "version",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "fields",
-                "version"
-            ],
-            "title": "Project",
-            "type": "object"
-        },
         "SlurryOrganicMatterEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Slurry organic matter (OMAD) and manure event details.",
             "properties": {
                 "amountPerAcre": {
@@ -2335,8 +2285,15 @@
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -2403,16 +2360,21 @@
         },
         "SoilOrCropDisturbanceEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Soil or crop disturbance event event details.",
             "properties": {
                 "date": {
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -2454,8 +2416,6 @@
         },
         "SolidOrganicMatterEvent": {
             "additionalProperties": false,
-            "defaultProperties": [
-            ],
             "description": "Solid/dry organic matter (OMAD) and manure event details.",
             "properties": {
                 "amountPerAcre": {
@@ -2482,8 +2442,15 @@
                     "anyOf": [
                         {
                             "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
                             "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string"
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
                         },
                         {
                             "type": "null"
@@ -2561,6 +2528,42 @@
             "title": "SolidOrganicMatterEvent",
             "type": "object"
         }
-    }
+    },
+    "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.",
+    "errorMessage": {
+        "_": "projectDataError:projectUnknownError"
+    },
+    "properties": {
+        "fields": {
+            "description": "An array of fields defining annual crop management practices.",
+            "errorMessage": {
+                "_": "projectDataError:projectFieldsUnknownError",
+                "maxItems": "projectDataError:projectFieldsMaximumItemsError",
+                "minItems": "projectDataError:projectFieldsMinimumItemsError",
+                "type": "projectDataError:projectFieldsTypeError"
+            },
+            "items": {
+                "$ref": "#/definitions/Field"
+            },
+            "maxItems": 25,
+            "minItems": 1,
+            "title": "fields",
+            "type": "array"
+        },
+        "version": {
+            "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
+            "errorMessage": {
+                "_": "projectDataError:projectVersionUnknownError",
+                "type": "projectDataError:projectVersionTypeError"
+            },
+            "title": "version",
+            "type": "string"
+        }
+    },
+    "required": [
+        "fields",
+        "version"
+    ],
+    "type": "object"
 }
 

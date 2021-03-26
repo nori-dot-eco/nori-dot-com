@@ -45,7 +45,6 @@
     "@tailwindcss/typography": "^0.4.0",
     "@testing-library/react": "^11.2.5",
     "autoprefixer": "^9",
-    "babel-loader": "^8.2.2",
     "chromatic": "^5.7.0",
     "postcss": "^7",
     "storybook-addon-designs": "^5.4.5",

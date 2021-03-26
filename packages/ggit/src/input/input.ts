@@ -1,5 +1,13 @@
+/* eslint-disable jsdoc/require-example, jsdoc/check-tag-names */
+
 /**
- * daycentcrv1 input schema.
+ * daycentcrv1 input schema
+ *
+ * @errorMessage
+ * {
+ * "_": "ggitInputError:ggitInputDataUnknownError"
+ * }
+ *
  */
 export interface InputData {
   '@cometEmailId': CometEmailId;
@@ -11,6 +19,10 @@ export interface InputData {
  */
 export type CometEmailId = string; // todo template literal string
 
+/**
+ * Cropland data
+ *
+ */
 export interface Cropland {
   '@Name': Name;
   GEOM: GEOM;
@@ -270,7 +282,7 @@ export type CropName =
 /**
  * Crop planting date. must be in MM/DD/YYYY format
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type PlantingDate = string;
 
@@ -295,14 +307,14 @@ export interface GrazingEvent {
 /**
  * Grazing Start date. Any date of the year. The system is sensitive to leap years
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type GrazingStartDate = string;
 
 /**
  * Grazing End date. Any date of the year. The system is sensitive to leap dates. Must be after the Grazing Start Date.
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type GrazingEndDate = string;
 
@@ -341,7 +353,7 @@ export interface IrrigationEvent {
 /**
  * Irrigation date. must be mm/dd/yyyy
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type IrrigationDate = string;
 
@@ -362,7 +374,7 @@ export interface LimingEvent {
 /**
  * Liming date. must be in mm/dd/yyyy format
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type LimingDate = string;
 
@@ -401,7 +413,7 @@ export interface OMADApplicationEvent {
 /**
  * Organic Amendment Application date
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type OMADApplicationDate = string;
 
@@ -473,7 +485,6 @@ export interface NApplicationList {
 /**
  * Nitrogen application event.
  *
- * @default {}
  */
 export interface NApplicationEvent {
   NApplicationDate: NApplicationDate;
@@ -486,7 +497,7 @@ export interface NApplicationEvent {
 /**
  * "Nitrogen application date. must be in MM/DD/YYYY
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type NApplicationDate = string;
 
@@ -544,8 +555,6 @@ export type EEP = typeof eepTypes[number];
 
 /**
  * List of tillage events.
- *
- * @default {}
  */
 export interface TillageList {
   TillageEvent: TillageEvent[];
@@ -562,7 +571,7 @@ export interface TillageEvent {
 /**
  * Date this tillage event occurred. must be in MM/DD/YYYY.
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type TillageDate = string;
 
@@ -584,8 +593,6 @@ export type TillageType =
 
 /**
  * List of harvest events.
- *
- * @default {}
  */
 export interface HarvestList {
   HarvestEvent: HarvestEvent[];
@@ -604,7 +611,7 @@ export interface HarvestEvent {
 /**
  * Harvest Date. must be in MM/DD/YYYY
  *
- * @TJS-pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+ * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type HarvestDate = string;
 
