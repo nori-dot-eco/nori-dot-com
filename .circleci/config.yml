@@ -54,9 +54,6 @@ jobs:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
-            yarn run bootstrap
             yarn run test --coverage
       - run:
           name: Upload Coverage Reports
