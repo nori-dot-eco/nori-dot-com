@@ -55,7 +55,7 @@ jobs:
           command: |
             cd ~/repo
             lerna run build
-            yarn run test --coverage
+            yarn run test --coverage -w=2
       - run:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
