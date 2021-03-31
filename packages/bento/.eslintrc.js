@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: '../../eslint-config-nori',
+  extends: '@nori-dot-com/eslint-config-nori',
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: './tsconfig.json',
