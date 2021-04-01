@@ -15,7 +15,8 @@
     "typescript": "^4.2.2"
   },
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build --parallel",
+    "build:serial": "lerna run build",
     "watch": "lerna run watch --parallel",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
