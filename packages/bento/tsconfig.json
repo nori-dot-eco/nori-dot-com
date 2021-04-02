@@ -1,9 +1,0 @@
-{
-  "baseUrl": "./src",
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "jsx": "react",
-    "esModuleInterop": true,
-  }
-}

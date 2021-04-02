@@ -78,18 +78,6 @@
         ],
         "displayName": "errors",
         "preset": "ts-jest"
-      },
-      {
-        "testMatch": [
-          "<rootDir>/packages/bento/src/**/?(*.)+(test).[jt]s?(x)"
-        ],
-        "displayName": "bento",
-        "preset": "ts-jest",
-        "globals": {
-          "ts-jest": {
-            "tsconfig": "./packages/bento/tsconfig.json"
-          }
-        }
       }
     ]
   }
