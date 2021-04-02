@@ -42,7 +42,7 @@ interface Translations {
     >;
   };
   burnEvents: {
-    type: Partial<Record<Partial<Input.BurnTime>, BurningEvent['type']>>;
+    type: Partial<Record<Input.BurnTime, BurningEvent['type']>>;
   };
   soilOrCropDisturbanceEvents: {
     type: Partial<
