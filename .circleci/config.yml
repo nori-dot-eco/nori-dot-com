@@ -38,7 +38,7 @@ jobs:
             - packages/hooks/node_modules
             - packages/bento/node_modules
             - node_modules
-            - ~/.cache
+            - .yarn/cache
   run-regular-tests:
     <<: *defaults
     steps:
