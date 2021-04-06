@@ -54,7 +54,7 @@ jobs:
           name: Run Tests and Collect Coverage
           command: |
             cd ~/repo
-            lerna run build
+            yarn run build
             yarn run test --coverage -w=2
       - run:
           name: Upload Coverage Reports
