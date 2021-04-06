@@ -33,9 +33,9 @@
     "typedoc-plugin-markdown": "^3.6.0"
   },
   "dependencies": {
-    "@nori-dot-com/math": "*",
-    "@nori-dot-com/ggit": "*",
     "@nori-dot-com/errors": "*",
+    "@nori-dot-com/ggit": "*",
+    "@nori-dot-com/math": "*",
     "@turf/helpers": "^6.3.0",
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
