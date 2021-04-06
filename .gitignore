@@ -37,3 +37,12 @@ dist
 coverage
 
 storybook-static
+
+# yarn v2 gitignores. See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+# This assumes we are *not* using the Zero-Installs feature
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
