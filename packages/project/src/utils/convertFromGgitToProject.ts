@@ -438,13 +438,16 @@ export const translateSoilOrCropDisturbanceEvent = ({
   soilOrCropDisturbanceEvent: CropEvents['soilOrCropDisturbanceEvents'][number];
 } => {
   const { TillageDate: date, TillageType: type } = event;
+  const cropWasTerminatedImplicitly =
+    type === null && date?.includes?.('12/31');
   return {
     soilOrCropDisturbanceEvent: {
       name: null,
       date,
-      type:
-        TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
-        (type as SoilOrCropDisturbanceEvent['type']),
+      type: cropWasTerminatedImplicitly
+        ? 'crop terminated'
+        : TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
+          (type as SoilOrCropDisturbanceEvent['type']),
     },
   };
 };
@@ -839,6 +842,18 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                   ...tillageListToAppendTo,
                   ...(crop.TillageList?.TillageEvent ?? []),
                 ];
+                const cropWasImplicitlyTerminated =
+                  appendedTillageList.length === 0 ||
+                  appendedTillageList.every?.(
+                    (tillageEvent) =>
+                      tillageEvent.TillageType === 'growing season cultivation'
+                  );
+                if (cropWasImplicitlyTerminated) {
+                  appendedTillageList.push({
+                    TillageDate: `12/31/${cropYears[i]['@Year']}`,
+                    TillageType: null,
+                  });
+                }
                 const irrigationListToAppendTo =
                   cropToAppendTo.IrrigationList?.IrrigationEvent ?? [];
                 const appendedIrrigationList = [

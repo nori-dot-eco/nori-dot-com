@@ -1943,7 +1943,7 @@
                     "title": "burningEvent"
                 },
                 "classification": {
-                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).\n\nNote: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
+                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).\n\nNote: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
                     "enum": [
                         "orchard",
                         "vineyard"
@@ -2393,6 +2393,7 @@
                     "enum": [
                         "broad-spectrum herbicide",
                         "crimp",
+                        "crop terminated",
                         "growing season cultivation",
                         "intensive tillage",
                         "mow",
