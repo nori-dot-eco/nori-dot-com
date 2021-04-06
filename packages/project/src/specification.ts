@@ -1498,7 +1498,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'crimp'
     | 'winter killed'
     | 'broad-spectrum herbicide'
-    | 'crop terminated'; // todo document that this is used to signify the end of a crop that was defined that has events that spans multiple years
+    | 'crop terminated'; // todo document that this is used to signify the end of a crop that was defined that has events that spans multiple years // todo must use 12/31/yyyy
 }
 
 /**
