@@ -23,7 +23,7 @@ jobs:
           command: |
             if [ ! -d "node_modules" ]; then
               for i in 1 2; do
-                yarn install --prefer-offline && break || sleep 15;
+                yarn install --immutable && break || sleep 15;
               done
               git checkout yarn.lock
             fi
