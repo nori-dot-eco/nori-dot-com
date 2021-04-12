@@ -2,11 +2,10 @@
   "baseUrl": "./src",
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
     "jsx": "react",
     "esModuleInterop": true,
-    "rootDir": "."
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "include": ["src"],
-  "exclude": ["dist", "**/node_modules/**"]
+  "exclude": ["node_modules", "dist"]
 }
