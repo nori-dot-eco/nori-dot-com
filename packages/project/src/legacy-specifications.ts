@@ -225,7 +225,7 @@ export interface V1Crop {
   fertilizerEvents: V1FertilizerEvent[];
   organicMatterEvents: V1OrganicMatterEvent[];
   irrigationEvents: V1IrrigationEvent[];
-  limingEvents: V1LimingEvent[] | [];
+  limingEvents: V1LimingEvent[];
   prune?: YesNoOrNotApplicable; // doesn't exist in current granular exports
   renewOrClear?: YesNoOrNotApplicable; // doesn't exist in current granular exports
   burningEvents?: V1BurningEvent[];
