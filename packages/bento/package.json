@@ -15,8 +15,8 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "watch": "tsc -w -p .",
-    "build": "yarn run tsc",
+    "watch": "tsc -b -w",
+    "build": "tsc -b",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "chromatic": "npx chromatic"

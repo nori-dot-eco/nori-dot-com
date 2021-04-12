@@ -18,9 +18,9 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "tsc",
     "prepare": "tsc",
-    "watch": "tsc -w -p ."
+    "watch": "tsc -b -w",
+    "build": "tsc -b"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

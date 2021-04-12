@@ -1,4 +1,5 @@
 /* eslint-disable jsdoc/require-example, jsdoc/check-tag-names */
+import type { WORLD_GEODETIC_SYSTEM_1984 } from './constants';
 
 /**
  * daycentcrv1 input schema
@@ -15,7 +16,7 @@ export interface InputData {
 }
 
 /**
- * Soil Metrics API email address or GGIT.com email address.
+ * Soil Metrics API email address or GGIT email address.
  */
 export type CometEmailId = string; // todo template literal string
 
@@ -616,7 +617,7 @@ export interface HarvestEvent {
 export type HarvestDate = string;
 
 /**
- * Is this a grain harvest.
+ * Is this a grain harvest
  */
 export type Grain = 'yes' | 'no';
 
@@ -642,7 +643,7 @@ export interface GEOM {
 /**
  * Standard spatial reference identifier.
  */
-export type SRID = '4326';
+export type SRID = typeof WORLD_GEODETIC_SYSTEM_1984;
 
 /**
  * Area of this geometry in acres.

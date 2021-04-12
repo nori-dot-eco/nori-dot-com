@@ -4,8 +4,12 @@
     "target": "ES2018",
     "lib": ["esnext", "dom"],
     "declaration": true,
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": ".",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "resolveJsonModule": true
-  }
+  },
+  "exclude": ["node_modules", "dist"]
 }

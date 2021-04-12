@@ -16,8 +16,8 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prepare": "yarn run build",
-    "watch": "tsc -w -p .",
-    "build": "tsc"
+    "watch": "tsc -b -w",
+    "build": "tsc -b"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

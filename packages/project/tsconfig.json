@@ -1,9 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
     "paths": {
       "wicket": ["./src/wicket.d.ts"]
-    }
-  }
+    },
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": [
+    "./src",
+    "./src/json/specification.json",
+    "./src/example/example.json"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

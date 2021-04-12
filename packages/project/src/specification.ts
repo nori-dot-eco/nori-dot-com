@@ -992,7 +992,7 @@ export interface OrchardOrVineyardCrop
    *
    * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
-   * Note: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in the a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
+   * Note: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
    *
    * @example <caption>When the crop is an orchard:</caption>
    *
@@ -1497,7 +1497,8 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'mow'
     | 'crimp'
     | 'winter killed'
-    | 'broad-spectrum herbicide';
+    | 'broad-spectrum herbicide'
+    | 'crop terminated'; // todo document that this is used to signify the end of a crop that was defined that has events that spans multiple years // todo must use 12/31/yyyy
 }
 
 /**

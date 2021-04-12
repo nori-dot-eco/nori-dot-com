@@ -1066,6 +1066,24 @@ describe('translateSoilOrCropDisturbanceEvent', () => {
       },
     });
   });
+  describe('when the crop was implicitly terminated after spanning multiple crop years', () => {
+    it('will translate the tillage event', () => {
+      expect(
+        translateSoilOrCropDisturbanceEvent({
+          event: {
+            TillageDate: '12/31/2000',
+            TillageType: null,
+          },
+        })
+      ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvent>>({
+        soilOrCropDisturbanceEvent: {
+          date: '12/31/2000',
+          type: 'crop terminated',
+          name: null,
+        },
+      });
+    });
+  });
 });
 
 describe('translateSoilOrCropDisturbanceEvents', () => {
