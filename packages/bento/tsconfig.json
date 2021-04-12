@@ -5,5 +5,8 @@
     "outDir": "dist",
     "jsx": "react",
     "esModuleInterop": true,
-  }
+    "rootDir": "."
+  },
+  "include": ["src"],
+  "exclude": ["dist", "**/node_modules/**"]
 }
