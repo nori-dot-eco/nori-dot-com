@@ -1,6 +1,6 @@
 /* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
 
-import type { Input } from '@nori-dot-com/ggit';
+import { Input } from '@nori-dot-com/ggit';
 import { add } from '@nori-dot-com/math';
 import * as wicket from 'wicket';
 import { featureCollection, feature } from '@turf/helpers';
@@ -31,7 +31,6 @@ import {
   solidOmadTypes,
   coverCropTypes,
   orchardOrVineyardCropTypes,
-  perennialCropTypes,
 } from '../index';
 
 interface Translations {
@@ -108,10 +107,10 @@ export const isOrchardOrVineyardCrop = (
 };
 
 export const isPerennialCrop = (
-  cropEvent: Input.Crop
-): cropEvent is Input.Crop & { CropName: PerennialCrop['type'] } => {
-  return perennialCropTypes.includes(
-    cropEvent.CropName as PerennialCrop['type']
+  crop: Partial<Input.Crop> & { CropName: Input.Crop['CropName'] }
+): crop is Input.Crop & { CropName: PerennialCrop['type'] } => {
+  return Input.PERENNIAL_CROPS.includes(
+    (crop as Input.Crop).CropName as PerennialCrop['type']
   );
 };
 

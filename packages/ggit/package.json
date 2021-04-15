@@ -34,10 +34,10 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1",
+    "@nori-dot-com/errors": "*",
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
-    "typescript-json-schema": "^0.49.0",
-    "@nori-dot-com/errors": "*"
+    "node-fetch": "^2.6.1",
+    "typescript-json-schema": "^0.49.0"
   }
 }

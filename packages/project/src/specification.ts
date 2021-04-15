@@ -31,6 +31,7 @@
  *
  * @packageDocumentation
  */
+import type { Input } from '@nori-dot-com/ggit';
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
@@ -68,8 +69,6 @@ export const annualCropTypes = [
   'tomatoes, processing',
   'winter wheat',
 ] as const;
-
-export const perennialCropTypes = ['alfalfa', 'clover', 'grass'] as const;
 
 export const coverCropTypes = [
   'annual rye',
@@ -1076,7 +1075,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  type: typeof perennialCropTypes[number];
+  type: typeof Input.PERENNIAL_CROPS[number];
   /**
    * The crop classification.
    *
