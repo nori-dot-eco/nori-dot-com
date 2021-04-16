@@ -142,9 +142,11 @@ export type CropScenarioName = 'Current' | 'Future';
 /**
  * Crop event year.
  */
-export interface CropYear {
+export interface CropYear<
+  CropType extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
+> {
   '@Year': Year;
-  Crop: Crop[];
+  Crop: CropType[];
 }
 
 /**
@@ -155,11 +157,9 @@ export type Year = number; // todo number range
 /**
  * Crop event
  */
-export interface Crop {
+export interface BaseCrop {
   '@CropNumber': CropNumber;
   CropName: CropName;
-  PlantingDate: PlantingDate;
-  ContinueFromPreviousYear: ContinueFromPreviousYear;
   /**
    * @default {}
    */
@@ -194,6 +194,40 @@ export interface Crop {
   GrazingList: GrazingList | Record<string, never>;
   Prune?: Prune;
   Renew?: Renew;
+}
+
+export type Crop<
+  T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
+> = T extends ContinuedCrop ? ContinuedCrop : NewCrop;
+
+/**
+ *
+ */
+export interface ContinuedCrop extends BaseCrop {
+  /**
+   * Was this crop planted in the previous year.
+   * Yes = continue crop growth for non-woody perennial crops
+   * (like alfalfa, perennial grass hay or pasture) from
+   * previous year without re-planting.
+   */
+  ContinueFromPreviousYear: 'y';
+}
+
+/**
+ *
+ */
+export interface NewCrop extends BaseCrop {
+  /**
+   * Planting Date should be omitted when ContinueFromPreviousYear is set to 'y'
+   */
+  PlantingDate: PlantingDate;
+  /**
+   * Was this crop planted in the previous year.
+   * Yes = continue crop growth for non-woody perennial crops
+   * (like alfalfa, perennial grass hay or pasture) from
+   * previous year without re-planting.
+   */
+  ContinueFromPreviousYear: 'n';
 }
 
 /**
@@ -286,14 +320,6 @@ export type CropName =
  * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type PlantingDate = string;
-
-/**
- * Was this crop planted in the previous year.
- * Yes = continue crop growth for non-woody perennial crops
- * (like alfalfa, perennial grass hay or pasture) from
- * previous year without re-planting.
- */
-export type ContinueFromPreviousYear = 'n' | 'y';
 
 /**
  * Grazing event

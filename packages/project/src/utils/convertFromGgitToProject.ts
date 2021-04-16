@@ -94,13 +94,13 @@ export const isSolidOrganicMatterEvent = (
 
 export const isAnnualCrop = (
   cropEvent: Input.Crop
-): cropEvent is Input.Crop & { CropName: AnnualCrop['type'] } => {
+): cropEvent is Input.NewCrop & { CropName: AnnualCrop['type'] } => {
   return annualCropTypes.includes(cropEvent.CropName as AnnualCrop['type']);
 };
 
 export const isOrchardOrVineyardCrop = (
   cropEvent: Input.Crop
-): cropEvent is Input.Crop & { CropName: OrchardOrVineyardCrop['type'] } => {
+): cropEvent is Input.NewCrop & { CropName: OrchardOrVineyardCrop['type'] } => {
   return orchardOrVineyardCropTypes.includes(
     cropEvent.CropName as OrchardOrVineyardCrop['type']
   );
@@ -116,7 +116,7 @@ export const isPerennialCrop = (
 
 export const isCoverCrop = (
   cropEvent: Input.Crop
-): cropEvent is Input.Crop & { CropName: CoverCrop['type'] } => {
+): cropEvent is Input.NewCrop & { CropName: CoverCrop['type'] } => {
   return coverCropTypes.includes(cropEvent.CropName as CoverCrop['type']);
 };
 
@@ -437,16 +437,13 @@ export const translateSoilOrCropDisturbanceEvent = ({
   soilOrCropDisturbanceEvent: CropEvents['soilOrCropDisturbanceEvents'][number];
 } => {
   const { TillageDate: date, TillageType: type } = event;
-  const cropWasTerminatedImplicitly =
-    type === null && date?.includes?.('12/31');
   return {
     soilOrCropDisturbanceEvent: {
       name: null,
       date,
-      type: cropWasTerminatedImplicitly
-        ? 'crop terminated'
-        : TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
-          (type as SoilOrCropDisturbanceEvent['type']),
+      type:
+        TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
+        (type as SoilOrCropDisturbanceEvent['type']),
     },
   };
 };
@@ -474,7 +471,7 @@ export const translateSoilOrCropDisturbanceEvents = ({
 export const translateCoverCrop = ({
   cropEvent,
 }: {
-  cropEvent: Input.Crop & { CropName: CoverCrop['type'] };
+  cropEvent: Input.Crop<Input.NewCrop> & { CropName: CoverCrop['type'] };
 }): {
   coverCrop: CoverCrop;
 } => {
@@ -525,7 +522,9 @@ export const translateCoverCrop = ({
 export const translateOrchardOrVineyardCrop = ({
   cropEvent,
 }: {
-  cropEvent: Input.Crop & { CropName: OrchardOrVineyardCrop['type'] };
+  cropEvent: Input.Crop<Input.NewCrop> & {
+    CropName: OrchardOrVineyardCrop['type'];
+  };
 }): {
   orchardOrVineyard: OrchardOrVineyardCrop;
 } => {
@@ -583,7 +582,7 @@ export const translateOrchardOrVineyardCrop = ({
 export const translateAnnualCrop = ({
   cropEvent,
 }: {
-  cropEvent: Input.Crop & { CropName: AnnualCrop['type'] };
+  cropEvent: Input.Crop<Input.NewCrop> & { CropName: AnnualCrop['type'] };
 }): {
   annualCrop: AnnualCrop;
 } => {
@@ -644,7 +643,6 @@ export const translatePerennialCrop = ({
   const classification = 'perennial';
   const {
     CropName: type,
-    PlantingDate: plantingDate,
     NApplicationList: fertilizerEventList,
     OMADApplicationList: organicMatterEventList,
     IrrigationList: irrigationEventList,
@@ -673,7 +671,9 @@ export const translatePerennialCrop = ({
   return {
     perennialCrop: {
       name: null,
-      plantingDate,
+      ...('PlantingDate' in cropEvent && {
+        plantingDate: cropEvent.PlantingDate,
+      }),
       type,
       classification,
       fertilizerEvents,
@@ -744,14 +744,26 @@ export const extractCropYears = ({
   futureCropScenario: Input.CropScenario;
 }): { cropYears: Field['cropYears'] } => {
   const currentCropYears = currentCropScenario.CropYear.reduce(
-    (cropYears, { '@Year': plantingYear, Crop: cropList }) => {
+    (
+      cropYears,
+      {
+        '@Year': plantingYear,
+        Crop: cropList,
+      }: { '@Year': Input.CropYear['@Year']; Crop: Input.Crop[] }
+    ) => {
       const { crops } = extractCrops({ cropList });
       return [...cropYears, { plantingYear, crops }];
     },
     [] as CropYear[]
   );
   const futureCropYears = futureCropScenario.CropYear.reduce(
-    (cropYears, { '@Year': plantingYear, Crop: cropList }) => {
+    (
+      cropYears,
+      {
+        '@Year': plantingYear,
+        Crop: cropList,
+      }: { '@Year': Input.CropYear['@Year']; Crop: Input.Crop[] }
+    ) => {
       const { crops } = extractCrops({ cropList });
       return [...cropYears, { plantingYear, crops }];
     },
@@ -800,20 +812,20 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
     ...future.scenarios.CropYear,
   ];
   cropYears.forEach((cropYear, i) => {
-    cropYear.Crop.forEach((crop) => {
+    cropYear.Crop.forEach((crop: Input.Crop) => {
       if (crop.ContinueFromPreviousYear === 'y') {
         cropYears
           .slice(0, i)
           .reverse()
-          .some((lookupCropYear, k) => {
+          .some((lookupCropYear, j) => {
             let adjusted = false;
-            lookupCropYear.Crop.forEach((lookupCrop, l) => {
+            lookupCropYear.Crop.forEach((lookupCrop, k) => {
               if (
                 lookupCrop.ContinueFromPreviousYear === 'n' &&
                 lookupCrop.CropName === crop.CropName
               ) {
-                const indexYearToInsertInto = i - (k + 1);
-                const indexCropToInsertInto = l;
+                const indexYearToInsertInto = i - (j + 1);
+                const indexCropToInsertInto = k;
                 const cropToAppendTo =
                   cropYears[indexYearToInsertInto].Crop[indexCropToInsertInto];
                 const harvestListToAppendTo =
@@ -841,18 +853,6 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                   ...tillageListToAppendTo,
                   ...(crop.TillageList?.TillageEvent ?? []),
                 ];
-                const cropWasImplicitlyTerminated =
-                  appendedTillageList.length === 0 ||
-                  appendedTillageList.every?.(
-                    (tillageEvent) =>
-                      tillageEvent.TillageType === 'growing season cultivation'
-                  );
-                if (cropWasImplicitlyTerminated) {
-                  appendedTillageList.push({
-                    TillageDate: `12/31/${cropYears[i]['@Year']}`,
-                    TillageType: null,
-                  });
-                }
                 const irrigationListToAppendTo =
                   cropToAppendTo.IrrigationList?.IrrigationEvent ?? [];
                 const appendedIrrigationList = [
@@ -883,7 +883,7 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                     HarvestList: { HarvestEvent: appendedHarvestList },
                   }),
                 };
-                delete cropYears[i];
+                cropYears[i].Crop.splice(j, 1);
                 adjusted = true;
               }
             });

@@ -261,7 +261,10 @@ export const v3Data: Project = {
             },
           ],
         },
-        // note that 2003 is intentionally missing as it contains no newly planted crops
+        {
+          plantingYear: 2003,
+          crops: [],
+        },
         {
           plantingYear: 2004,
           crops: [
@@ -1826,8 +1829,7 @@ export const ggitInputData: Input.InputData = {
               Crop: [
                 {
                   '@CropNumber': 1,
-                  CropName: 'soybean',
-                  PlantingDate: '01/01/2003',
+                  CropName: 'soybean', // todo use actual perennial and restrict type accordingly
                   ContinueFromPreviousYear: 'y',
                   HarvestList: {
                     HarvestEvent: [

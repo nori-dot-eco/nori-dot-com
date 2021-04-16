@@ -44,7 +44,7 @@ import {
 import { ggitInputData, v3Data } from './fixtures';
 
 describe('convertFromGgitToProject', () => {
-  it('should convert v2 to v1 project data', () => {
+  it('should convert ggit input to project data', () => {
     expect(convertFromGgitToProject({ ggitInputData })).toStrictEqual<
       ReturnType<typeof convertFromGgitToProject>
     >(v3Data);
@@ -1066,24 +1066,6 @@ describe('translateSoilOrCropDisturbanceEvent', () => {
       },
     });
   });
-  describe('when the crop was implicitly terminated after spanning multiple crop years', () => {
-    it('will translate the tillage event', () => {
-      expect(
-        translateSoilOrCropDisturbanceEvent({
-          event: {
-            TillageDate: '12/31/2000',
-            TillageType: null,
-          },
-        })
-      ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvent>>({
-        soilOrCropDisturbanceEvent: {
-          date: '12/31/2000',
-          type: 'crop terminated',
-          name: null,
-        },
-      });
-    });
-  });
 });
 
 describe('translateSoilOrCropDisturbanceEvents', () => {
@@ -1611,7 +1593,6 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                   {
                     '@CropNumber': 1,
                     CropName: 'corn',
-                    PlantingDate: '04/20/2002',
                     ContinueFromPreviousYear: 'y',
                     HarvestList: {
                       HarvestEvent: [
@@ -1690,7 +1671,6 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                   {
                     '@CropNumber': 1,
                     CropName: 'soybean',
-                    PlantingDate: '04/20/2004',
                     ContinueFromPreviousYear: 'y',
                     HarvestList: {
                       HarvestEvent: [
@@ -1803,6 +1783,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                 },
               ],
             },
+            { '@Year': 2002, Crop: [] },
             {
               '@Year': 2003,
               Crop: [
@@ -1844,7 +1825,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
             },
           ],
         },
-        { '@Name': 'Future', CropYear: [] },
+        { '@Name': 'Future', CropYear: [{ '@Year': 2004, Crop: [] }] },
       ],
     });
   });
