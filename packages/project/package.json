@@ -19,10 +19,10 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
-    "make:schema": "`yarn bin`/typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules",
-    "build": "yarn run make:schema && tsc",
+    "make:schema": "npx typescript-json-schema src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules",
     "prepare": "yarn run build",
-    "watch": "tsc -w -p ."
+    "watch": "tsc -b -w",
+    "build": "yarn run make:schema && tsc -b"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

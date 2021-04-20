@@ -555,7 +555,7 @@
             "type": "object"
         },
         "Grain": {
-            "description": "Is this a grain harvest.",
+            "description": "CRP.",
             "enum": [
                 "no",
                 "yes"
@@ -1042,7 +1042,7 @@
     },
     "properties": {
         "@cometEmailId": {
-            "description": "Soil Metrics API email address or GGIT.com email address.",
+            "description": "Soil Metrics API email address or GGIT email address.",
             "title": "@cometEmailId",
             "type": "string"
         },

@@ -5,6 +5,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# ts debug/info files
+tsconfig.tsbuildinfo
+
 # Dependency directories
 node_modules/
 jspm_packages/
