@@ -1570,7 +1570,7 @@ export const v3Data: Project = {
           ],
         },
       ],
-      acres: 120,
+      acres: 6,
       historicLandManagement: {
         crp: 'no',
         preYear1980: 'irrigation',
@@ -1587,10 +1587,10 @@ export const ggitInputData: Input.InputData = {
   Cropland: [
     {
       '@Name':
-        'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|120|0',
+        'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|6|0',
       GEOM: {
         '@SRID': '4326',
-        '@AREA': 120,
+        '@AREA': 6,
         '#text':
           'POLYGON((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
       },
@@ -2956,7 +2956,7 @@ export const ggitInputData: Input.InputData = {
                   HarvestList: {
                     HarvestEvent: [
                       {
-                        HarvestDate: '09/14/2020',
+                        HarvestDate: '09/14/2019',
                         Grain: 'yes',
                         yield: 150.0,
                         StrawStoverHayRemoval: 0,
