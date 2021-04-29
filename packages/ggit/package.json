@@ -28,7 +28,7 @@
     "prepare": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b",
-    "make:schema": "`yarn bin`/typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
+    "make:schema": "npx typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

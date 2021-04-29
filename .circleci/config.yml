@@ -36,7 +36,6 @@ jobs:
             - packages/errors/node_modules
             - packages/math/node_modules
             - packages/hooks/node_modules
-            - packages/bento/node_modules
             - node_modules
             - ~/.cache
   run-regular-tests:
@@ -60,26 +59,11 @@ jobs:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
 
-  run-chromatic:
-    <<: *defaults
-    steps:
-      - checkout
-      - restore_cache:
-          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
-      - run:
-          name: Run Chromatic
-          command: |
-            cd ~/repo
-            cd packages/bento && yarn chromatic --debug --skip 'dependabot/**' --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
-
 workflows:
   version: 2
   test:
     jobs:
       - setup-tests
       - run-regular-tests:
-          requires:
-            - setup-tests
-      - run-chromatic:
           requires:
             - setup-tests
