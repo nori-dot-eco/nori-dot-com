@@ -32,6 +32,7 @@ import {
   coverCropTypes,
   orchardOrVineyardCropTypes,
 } from '../index';
+import type { CropManagementEvent } from '../specification';
 
 interface Translations {
   historicNonCrpLandManagement: {
@@ -473,7 +474,9 @@ export const translateCoverCrop = ({
 }: {
   cropEvent: Input.Crop<Input.NewCrop> & { CropName: CoverCrop['type'] };
 }): {
-  coverCrop: CoverCrop;
+  coverCrop: CoverCrop & {
+    harvestEvents: (CropManagementEvent & { yield: 0 })[];
+  };
 } => {
   const classification = 'annual cover';
   const {
@@ -515,6 +518,22 @@ export const translateCoverCrop = ({
       grazingEvents,
       burningEvent,
       soilOrCropDisturbanceEvents,
+      harvestEvents: cropEvent.HarvestList?.HarvestEvent?.[0]
+        ? [
+            translateCropHarvestEvent({
+              event: {
+                ...cropEvent.HarvestList?.HarvestEvent[0],
+                // todo throw if more than one harvest event, extract to own fn
+                /**
+                 * This is the flag that tells daycent/ggit that the crop was terminated.
+                 * cover crops are not harvested. However, in the legacy sheet we used harvest
+                 * events with a yield of 0 to signal the end of life for a crop.
+                 */
+                yield: 0,
+              },
+            }).annualCropHarvestEvent as CropManagementEvent & { yield: 0 },
+          ]
+        : null,
     },
   };
 };
@@ -711,7 +730,7 @@ export const translateCropEvent = ({
       cropEvent,
     }));
   } else {
-    throw new Error('Unknown crop type');
+    throw new Error(`Unknown crop event: ${JSON.stringify(cropEvent)}`);
   }
   return { crop };
 };
@@ -834,6 +853,12 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                   ...harvestListToAppendTo,
                   ...(crop.HarvestList?.HarvestEvent ?? []),
                 ];
+                const grazingListToAppendTo =
+                  cropToAppendTo.GrazingList?.GrazingEvent ?? [];
+                const appendedGrazingList = [
+                  ...grazingListToAppendTo,
+                  ...(crop.GrazingList?.GrazingEvent ?? []),
+                ];
                 const omadListToAppendTo =
                   cropToAppendTo.OMADApplicationList?.OMADApplicationEvent ??
                   [];
@@ -882,8 +907,11 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                   ...(appendedHarvestList.length && {
                     HarvestList: { HarvestEvent: appendedHarvestList },
                   }),
+                  ...(appendedGrazingList.length && {
+                    GrazingList: { GrazingEvent: appendedGrazingList },
+                  }),
                 };
-                cropYears[i].Crop.splice(j, 1);
+                cropYears[i].Crop.splice(indexCropToInsertInto, 1);
                 adjusted = true;
               }
             });

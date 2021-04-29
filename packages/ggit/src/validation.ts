@@ -22,7 +22,25 @@ export const formatInputData = (data: Input.InputData): Input.InputData => {
   const formattedData: Input.InputData = JSON.parse(
     JSON.stringify(data),
     (key, value) => {
-      return value?.toLowerCase?.() ?? value; // lower cases all string values
+      let formattedValue = value;
+      if (
+        value &&
+        !Array.isArray(value) && // todo format array values
+        !isNaN(value) &&
+        !['@SRID'].includes(key) // todo can srid be a number?
+      ) {
+        formattedValue = Number(value); // convert all string numbers to numbers
+      } else if (
+        value &&
+        typeof value === 'string' &&
+        !['#text', '@Name'].includes(key) // todo can text or name be lowercase?
+      ) {
+        formattedValue = value.toLowerCase(); // lower cases all string values
+      }
+      if (key === 'BurnEvent' && Object.keys(value).length === 0) {
+        value = { BurnTime: 'No burning' }; // todo assign this value
+      }
+      return formattedValue;
     }
   );
   return formattedData;
