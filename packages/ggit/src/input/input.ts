@@ -30,9 +30,9 @@ export interface Cropland {
   'Pre-1980': Pre1980;
   CRP: CRP;
   CRPType: CRPType;
-  'Year1980-2000': Year1980To2000;
+  'Year1980-2000'?: Year1980To2000; // todo CRP/Non-CRP types
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  'Year1980-2000_Tillage': Year1980To2000Tillage;
+  'Year1980-2000_Tillage'?: Year1980To2000Tillage;
   CRPStartYear: CRPStartYear;
   CRPEndYear: CRPEndYear;
   PreCRPManagement: PreCRPManagement;

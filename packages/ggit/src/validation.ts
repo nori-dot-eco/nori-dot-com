@@ -38,12 +38,17 @@ export const formatInputData = (data: Input.InputData): Input.InputData => {
         formattedValue = value.toLowerCase(); // lower cases all string values
       }
       if (key === 'BurnEvent' && Object.keys(value).length === 0) {
-        value = { BurnTime: 'No burning' }; // todo assign this value
+        value = { BurnTime: 'No burning' }; // todo {} is eq to No burning. stop using no burning as the default
       }
       return formattedValue;
     }
   );
-  return formattedData;
+  return {
+    ...formattedData,
+    Cropland: formattedData.Cropland.sort((a, b) =>
+      a.GEOM['#text'].localeCompare(b.GEOM['#text'])
+    ),
+  };
 };
 
 /**
