@@ -8,3 +8,6 @@ export const PERENNIAL_CROPS = [
   'strawberry',
   'switchgrass',
 ] as const;
+
+export const CURRENT_SCENARIO_NAME = 'Current' as const;
+export const FUTURE_SCENARIO_NAME = 'Future' as const;

@@ -2,6 +2,7 @@ import { Errors } from '@nori-dot-com/errors';
 
 import { validateInputData } from '../index';
 import type { Input } from '../index';
+import { CURRENT_SCENARIO_NAME, FUTURE_SCENARIO_NAME } from '../input';
 
 type InputDataOrAny<T> = T extends Input.InputData ? Input.InputData : any;
 
@@ -51,7 +52,7 @@ const INPUT_DATA: Input.InputData = {
       PostCRPTillage: [],
       CropScenario: [
         {
-          '@Name': 'Current',
+          '@Name': CURRENT_SCENARIO_NAME,
           CropYear: [
             {
               '@Year': 2000,
@@ -246,7 +247,7 @@ const INPUT_DATA: Input.InputData = {
           ],
         },
         {
-          '@Name': 'Future',
+          '@Name': FUTURE_SCENARIO_NAME,
           CropYear: [
             {
               '@Year': 2015,

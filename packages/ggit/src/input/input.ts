@@ -1,5 +1,9 @@
 /* eslint-disable jsdoc/require-example, jsdoc/check-tag-names */
-import type { WORLD_GEODETIC_SYSTEM_1984 } from './constants';
+import type {
+  CURRENT_SCENARIO_NAME,
+  FUTURE_SCENARIO_NAME,
+  WORLD_GEODETIC_SYSTEM_1984,
+} from './constants';
 
 /**
  * daycentcrv1 input schema
@@ -137,7 +141,9 @@ export interface CropScenario {
 /**
  * Name of this crop scenario.
  */
-export type CropScenarioName = 'Current' | 'Future';
+export type CropScenarioName =
+  | typeof CURRENT_SCENARIO_NAME
+  | typeof FUTURE_SCENARIO_NAME;
 
 /**
  * Crop event year.
