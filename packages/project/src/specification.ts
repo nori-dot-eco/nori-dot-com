@@ -369,11 +369,11 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @example <caption>When the field participated in grass/legume mixture CRP:</caption>
    *
    * ```js
-   * "crpType": "grass / legume mixture"
+   * "crpType": "grass/legume mixture"
    * ```
    *
    */
-  crpType: '100% grass' | 'grass / legume mixture';
+  crpType: '100% grass' | 'grass/legume mixture';
   /**
    * The CRP start year
    *
