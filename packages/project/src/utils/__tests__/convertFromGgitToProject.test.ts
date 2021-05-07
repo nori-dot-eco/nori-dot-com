@@ -1126,7 +1126,6 @@ describe('translateCoverCrop', () => {
         grazingEvents: null,
         burningEvent: null,
         name: null,
-        harvestEvents: null,
       },
     });
   });

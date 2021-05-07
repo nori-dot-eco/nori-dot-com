@@ -1238,7 +1238,7 @@ export const v3Data: Project = {
               ],
               harvestEvents: [
                 {
-                  date: '09/14/2020',
+                  date: '09/14/2019',
                   grainFruitTuber: 'yes',
                   yield: 150,
                   yieldUnit: 'bu/ac',
@@ -2880,16 +2880,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2018',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2019',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -2955,16 +2946,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2019',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2020',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3030,16 +3012,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2020',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2021',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3115,16 +3088,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2021',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2022',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3180,16 +3144,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2022',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2023',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3265,16 +3220,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2023',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2024',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3330,16 +3276,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2024',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2025',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {

@@ -475,7 +475,7 @@ export const translateCoverCrop = ({
   cropEvent: Input.Crop<Input.NewCrop> & { CropName: CoverCrop['type'] };
 }): {
   coverCrop: CoverCrop & {
-    harvestEvents: (CropManagementEvent & { yield: 0 })[];
+    harvestEvents?: (CropManagementEvent & { yield: 0 })[];
   };
 } => {
   const classification = 'annual cover';
@@ -518,22 +518,24 @@ export const translateCoverCrop = ({
       grazingEvents,
       burningEvent,
       soilOrCropDisturbanceEvents,
-      harvestEvents: cropEvent.HarvestList?.HarvestEvent?.[0]
-        ? [
-            translateCropHarvestEvent({
-              event: {
-                ...cropEvent.HarvestList?.HarvestEvent[0],
-                // todo throw if more than one harvest event, extract to own fn
-                /**
-                 * This is the flag that tells daycent/ggit that the crop was terminated.
-                 * cover crops are not harvested. However, in the legacy sheet we used harvest
-                 * events with a yield of 0 to signal the end of life for a crop.
-                 */
-                yield: 0,
-              },
-            }).annualCropHarvestEvent as CropManagementEvent & { yield: 0 },
-          ]
-        : null,
+      ...(cropEvent.HarvestList?.HarvestEvent?.[0] && {
+        harvestEvents: cropEvent.HarvestList?.HarvestEvent?.[0]
+          ? [
+              translateCropHarvestEvent({
+                event: {
+                  ...cropEvent.HarvestList?.HarvestEvent[0],
+                  // todo throw if more than one harvest event, extract to own fn
+                  /**
+                   * This is the flag that tells daycent/ggit that the crop was terminated.
+                   * cover crops are not harvested. However, in the legacy sheet we used harvest
+                   * events with a yield of 0 to signal the end of life for a crop.
+                   */
+                  yield: 0,
+                },
+              }).annualCropHarvestEvent as CropManagementEvent & { yield: 0 },
+            ]
+          : null,
+      }),
     },
   };
 };

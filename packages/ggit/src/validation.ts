@@ -45,7 +45,7 @@ export const formatInputData = (data: Input.InputData): Input.InputData => {
   );
   return {
     ...formattedData,
-    Cropland: formattedData.Cropland.sort((a, b) =>
+    Cropland: formattedData.Cropland?.sort((a, b) =>
       a.GEOM['#text'].localeCompare(b.GEOM['#text'])
     ),
   };

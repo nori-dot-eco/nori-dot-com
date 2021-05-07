@@ -62,10 +62,10 @@
                 "BurnEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurnEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/BurnEvent"
                         }
                     ],
                     "default": {
@@ -87,10 +87,10 @@
                 "GrazingList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/GrazingList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/GrazingList"
                         }
                     ],
                     "default": {
@@ -100,10 +100,10 @@
                 "HarvestList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/HarvestList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/HarvestList"
                         }
                     ],
                     "default": {
@@ -113,10 +113,10 @@
                 "IrrigationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/IrrigationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/IrrigationList"
                         }
                     ],
                     "default": {
@@ -126,10 +126,10 @@
                 "LimingEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/LimingEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/LimingEvent"
                         }
                     ],
                     "default": {
@@ -139,10 +139,10 @@
                 "NApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/NApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/NApplicationList"
                         }
                     ],
                     "default": {
@@ -152,10 +152,10 @@
                 "OMADApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/OMADApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/OMADApplicationList"
                         }
                     ],
                     "default": {
@@ -183,10 +183,10 @@
                 "TillageList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/TillageList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/TillageList"
                         }
                     ],
                     "default": {
@@ -480,12 +480,31 @@
                     "type": "array"
                 },
                 "Year1980-2000": {
-                    "$ref": "#/definitions/Year1980To2000",
-                    "title": "Year1980-2000"
+                    "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
+                    "enum": [
+                        "irrigated: annual crops in rotation",
+                        "irrigated: annual crops with hay/pasture in rotation",
+                        "irrigated: continuous hay",
+                        "irrigated: orchard or vineyard",
+                        "non-irrigated: annual crops in rotation",
+                        "non-irrigated: annual crops with hay/pasture in rotation",
+                        "non-irrigated: continuous hay",
+                        "non-irrigated: fallow-grain",
+                        "non-irrigated: livestock grazing",
+                        "non-irrigated: orchard or vineyard"
+                    ],
+                    "title": "Year1980-2000",
+                    "type": "string"
                 },
                 "Year1980-2000_Tillage": {
-                    "$ref": "#/definitions/Year1980To2000Tillage",
-                    "title": "Year1980-2000_Tillage"
+                    "description": "Tillage from 1980 - 2000.",
+                    "enum": [
+                        "intensive tillage",
+                        "no till",
+                        "reduced tillage"
+                    ],
+                    "title": "Year1980-2000_Tillage",
+                    "type": "string"
                 }
             },
             "required": [
@@ -500,9 +519,7 @@
                 "PostCRPTillage",
                 "Pre-1980",
                 "PreCRPManagement",
-                "PreCRPTillage",
-                "Year1980-2000",
-                "Year1980-2000_Tillage"
+                "PreCRPTillage"
             ],
             "title": "Cropland",
             "type": "object"
@@ -516,6 +533,11 @@
             ],
             "title": "EEP",
             "type": "string"
+        },
+        "EmptyObject": {
+            "additionalProperties": false,
+            "title": "EmptyObject",
+            "type": "object"
         },
         "GEOM": {
             "additionalProperties": false,
@@ -549,7 +571,7 @@
             "type": "object"
         },
         "Grain": {
-            "description": "CRP.",
+            "description": "Is this a grain harvest",
             "enum": [
                 "no",
                 "yes"
@@ -855,10 +877,10 @@
                 "BurnEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurnEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/BurnEvent"
                         }
                     ],
                     "default": {
@@ -880,10 +902,10 @@
                 "GrazingList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/GrazingList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/GrazingList"
                         }
                     ],
                     "default": {
@@ -893,10 +915,10 @@
                 "HarvestList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/HarvestList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/HarvestList"
                         }
                     ],
                     "default": {
@@ -906,10 +928,10 @@
                 "IrrigationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/IrrigationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/IrrigationList"
                         }
                     ],
                     "default": {
@@ -919,10 +941,10 @@
                 "LimingEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/LimingEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/LimingEvent"
                         }
                     ],
                     "default": {
@@ -932,10 +954,10 @@
                 "NApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/NApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/NApplicationList"
                         }
                     ],
                     "default": {
@@ -945,10 +967,10 @@
                 "OMADApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/OMADApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/OMADApplicationList"
                         }
                     ],
                     "default": {
@@ -982,10 +1004,10 @@
                 "TillageList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/TillageList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/TillageList"
                         }
                     ],
                     "default": {
@@ -1109,12 +1131,6 @@
             "title": "Pre1980",
             "type": "string"
         },
-        "Record<string,never>": {
-            "additionalProperties": false,
-            "description": "Construct a type with a set of properties K of type T",
-            "title": "Record<string,never>",
-            "type": "object"
-        },
         "TillageEvent": {
             "additionalProperties": false,
             "description": "Tillage event.",
@@ -1171,33 +1187,6 @@
                 "winter kill"
             ],
             "title": "TillageType",
-            "type": "string"
-        },
-        "Year1980To2000": {
-            "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
-            "enum": [
-                "irrigated: annual crops in rotation",
-                "irrigated: annual crops with hay/pasture in rotation",
-                "irrigated: continuous hay",
-                "irrigated: orchard or vineyard",
-                "non-irrigated: annual crops in rotation",
-                "non-irrigated: annual crops with hay/pasture in rotation",
-                "non-irrigated: continuous hay",
-                "non-irrigated: fallow-grain",
-                "non-irrigated: livestock grazing",
-                "non-irrigated: orchard or vineyard"
-            ],
-            "title": "Year1980To2000",
-            "type": "string"
-        },
-        "Year1980To2000Tillage": {
-            "description": "Tillage from 1980 - 2000.",
-            "enum": [
-                "intensive tillage",
-                "no till",
-                "reduced tillage"
-            ],
-            "title": "Year1980To2000Tillage",
             "type": "string"
         }
     },

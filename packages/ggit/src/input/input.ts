@@ -160,6 +160,8 @@ export interface CropYear<
  */
 export type Year = number; // todo number range
 
+type EmptyObject = Record<string, never>;
+
 /**
  * Crop event
  */
@@ -169,35 +171,35 @@ export interface BaseCrop {
   /**
    * @default {}
    */
-  HarvestList: HarvestList | Record<string, never>;
+  HarvestList: HarvestList | EmptyObject;
   /**
    * @default {}
    */
-  TillageList: TillageList | Record<string, never>;
+  TillageList: TillageList | EmptyObject;
   /**
    * @default {}
    */
-  NApplicationList: NApplicationList | Record<string, never>;
+  NApplicationList: NApplicationList | EmptyObject;
   /**
    * @default  {}
    */
-  OMADApplicationList: OMADApplicationList | Record<string, never>;
+  OMADApplicationList: OMADApplicationList | EmptyObject;
   /**
    * @default  {}
    */
-  IrrigationList: IrrigationList | Record<string, never>;
+  IrrigationList: IrrigationList | EmptyObject;
   /**
    * @default {}
    */
-  BurnEvent: BurnEvent | Record<string, never>;
+  BurnEvent: BurnEvent | EmptyObject;
   /**
    * @default  {}
    */
-  LimingEvent: LimingEvent | Record<string, never>;
+  LimingEvent: LimingEvent | EmptyObject;
   /**
    * @default  {}
    */
-  GrazingList: GrazingList | Record<string, never>;
+  GrazingList: GrazingList | EmptyObject;
   Prune?: Prune;
   Renew?: Renew;
 }
