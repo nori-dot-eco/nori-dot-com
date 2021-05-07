@@ -689,4 +689,4 @@ export type AREA = number; // todo max 10k
  *
  * @TJS-type string
  */
-export type WKT = `polygon((${string}))`;
+export declare type WKT = `polygon((${string}))` | `POLYGON((${string}))`;
