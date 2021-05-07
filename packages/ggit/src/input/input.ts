@@ -689,4 +689,4 @@ export type AREA = number; // todo max 10k
  *
  * @TJS-type string
  */
-export type WKT = `POLYGON((${any}))`; // todo regex, lowercase?
+export type WKT = `polygon((${string}))`;
