@@ -530,7 +530,7 @@
                         }
                     ],
                     "maxItems": 3,
-                    "minItems": 1,
+                    "minItems": 0,
                     "title": "crops",
                     "type": "array"
                 },
@@ -681,10 +681,10 @@
                             "$ref": "#/definitions/GeoJSON.GeometryCollection"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>"
                         }
                     ],
                     "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
@@ -723,7 +723,7 @@
             "title": "Field",
             "type": "object"
         },
-        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
+        "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>": {
             "additionalProperties": false,
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
@@ -813,18 +813,11 @@
                     ]
                 },
                 "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {
-                            },
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "additionalProperties": {
+                    },
                     "description": "Properties associated with this feature.",
-                    "title": "properties"
+                    "title": "properties",
+                    "type": "object"
                 },
                 "type": {
                     "description": "Specifies the type of GeoJSON object.",
@@ -840,10 +833,10 @@
                 "properties",
                 "type"
             ],
-            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>",
             "type": "object"
         },
-        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1": {
+        "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1": {
             "additionalProperties": false,
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
@@ -933,18 +926,11 @@
                     ]
                 },
                 "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {
-                            },
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "additionalProperties": {
+                    },
                     "description": "Properties associated with this feature.",
-                    "title": "properties"
+                    "title": "properties",
+                    "type": "object"
                 },
                 "type": {
                     "description": "Specifies the type of GeoJSON object.",
@@ -960,10 +946,10 @@
                 "properties",
                 "type"
             ],
-            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1",
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1",
             "type": "object"
         },
-        "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
+        "GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>": {
             "additionalProperties": false,
             "description": "A collection of feature objects.\n https://tools.ietf.org/html/rfc7946#section-3.3",
             "properties": {
@@ -1019,7 +1005,7 @@
                 },
                 "features": {
                     "items": {
-                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1"
+                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1"
                     },
                     "title": "features",
                     "type": "array"
@@ -1037,7 +1023,7 @@
                 "features",
                 "type"
             ],
-            "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
+            "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>",
             "type": "object"
         },
         "GeoJSON.GeometryCollection": {
@@ -1706,7 +1692,7 @@
                     "description": "The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.",
                     "enum": [
                         "100% grass",
-                        "grass / legume mixture"
+                        "grass/legume mixture"
                     ],
                     "title": "crpType",
                     "type": "string"
@@ -2242,7 +2228,10 @@
                     "enum": [
                         "alfalfa",
                         "clover",
-                        "grass"
+                        "grass",
+                        "grass-legume mix",
+                        "strawberry",
+                        "switchgrass"
                     ],
                     "title": "type",
                     "type": "string"
@@ -2393,7 +2382,6 @@
                     "enum": [
                         "broad-spectrum herbicide",
                         "crimp",
-                        "crop terminated",
                         "growing season cultivation",
                         "intensive tillage",
                         "mow",
