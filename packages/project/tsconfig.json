@@ -7,10 +7,12 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": [
-    "./src",
+  "files": [
     "./src/json/specification.json",
     "./src/example/example.json"
+  ],
+  "include": [
+    "./src"
   ],
   "exclude": ["node_modules", "dist"]
 }
