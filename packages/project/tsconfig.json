@@ -7,7 +7,7 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  files: [
+  "files": [
     "./src/json/specification.json",
     "./src/example/example.json"
   ],
