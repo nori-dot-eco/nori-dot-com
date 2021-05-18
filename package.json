@@ -12,10 +12,10 @@
     "lerna": "^4.0.0",
     "ts-jest": "^26.5.0",
     "tsc-watch": "^4.2.9",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.4"
   },
   "scripts": {
-    "build": "lerna run build",
+    "build": "lerna run build -- --force",
     "watch": "lerna run watch --parallel",
     "test": "jest",
     "bootstrap": "lerna bootstrap",

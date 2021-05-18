@@ -31,6 +31,7 @@
  *
  * @packageDocumentation
  */
+import type { Input } from '@nori-dot-com/ggit';
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
@@ -68,8 +69,6 @@ export const annualCropTypes = [
   'tomatoes, processing',
   'winter wheat',
 ] as const;
-
-export const perennialCropTypes = ['alfalfa', 'clover', 'grass'] as const;
 
 export const coverCropTypes = [
   'annual rye',
@@ -370,11 +369,11 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @example <caption>When the field participated in grass/legume mixture CRP:</caption>
    *
    * ```js
-   * "crpType": "grass / legume mixture"
+   * "crpType": "grass/legume mixture"
    * ```
    *
    */
-  crpType: '100% grass' | 'grass / legume mixture';
+  crpType: '100% grass' | 'grass/legume mixture';
   /**
    * The CRP start year
    *
@@ -659,7 +658,6 @@ export interface CropYear {
    * Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
    *
    * @maxItems 3
-   * @minItems 1
    *
    * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
    *
@@ -689,7 +687,7 @@ export interface CropYear {
    *
    */
   crops: [
-    AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop,
+    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?
   ];
@@ -1076,7 +1074,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  type: typeof perennialCropTypes[number];
+  type: typeof Input.PERENNIAL_CROPS[number];
   /**
    * The crop classification.
    *
@@ -1497,8 +1495,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
     | 'mow'
     | 'crimp'
     | 'winter killed'
-    | 'broad-spectrum herbicide'
-    | 'crop terminated'; // todo document that this is used to signify the end of a crop that was defined that has events that spans multiple years // todo must use 12/31/yyyy
+    | 'broad-spectrum herbicide';
 }
 
 /**

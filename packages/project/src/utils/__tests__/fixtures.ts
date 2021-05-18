@@ -261,7 +261,10 @@ export const v3Data: Project = {
             },
           ],
         },
-        // note that 2003 is intentionally missing as it contains no newly planted crops
+        {
+          plantingYear: 2003,
+          crops: [],
+        },
         {
           plantingYear: 2004,
           crops: [
@@ -1235,7 +1238,7 @@ export const v3Data: Project = {
               ],
               harvestEvents: [
                 {
-                  date: '09/14/2020',
+                  date: '09/14/2019',
                   grainFruitTuber: 'yes',
                   yield: 150,
                   yieldUnit: 'bu/ac',
@@ -1567,7 +1570,7 @@ export const v3Data: Project = {
           ],
         },
       ],
-      acres: 120,
+      acres: 6,
       historicLandManagement: {
         crp: 'no',
         preYear1980: 'irrigation',
@@ -1584,12 +1587,12 @@ export const ggitInputData: Input.InputData = {
   Cropland: [
     {
       '@Name':
-        'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|120|0',
+        'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|6|0',
       GEOM: {
         '@SRID': '4326',
-        '@AREA': 120,
+        '@AREA': 6,
         '#text':
-          'POLYGON((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
+          'POLYGON((-102.0256 41.1624,-102.02423 41.1631,-102.0225 41.1635,-102.0261 41.161,-102.0256 41.1624))',
       },
       'Pre-1980': 'irrigation (pre 1980s)',
       CRP: 'no',
@@ -1600,7 +1603,7 @@ export const ggitInputData: Input.InputData = {
       CRPStartYear: [],
       CRPEndYear: [],
       PreCRPManagement: [],
-      PreCRPTillage: ['intensive tillage'],
+      PreCRPTillage: [],
       PostCRPManagement: [],
       PostCRPTillage: [],
       CropScenario: [
@@ -1636,9 +1639,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -1776,9 +1777,7 @@ export const ggitInputData: Input.InputData = {
                       },
                     ],
                   },
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -1813,9 +1812,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -1826,8 +1823,7 @@ export const ggitInputData: Input.InputData = {
               Crop: [
                 {
                   '@CropNumber': 1,
-                  CropName: 'soybean',
-                  PlantingDate: '01/01/2003',
+                  CropName: 'soybean', // todo use actual perennial and restrict type accordingly
                   ContinueFromPreviousYear: 'y',
                   HarvestList: {
                     HarvestEvent: [
@@ -1870,9 +1866,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -1907,9 +1901,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -1964,9 +1956,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2001,9 +1991,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2141,9 +2129,7 @@ export const ggitInputData: Input.InputData = {
                       },
                     ],
                   },
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2218,9 +2204,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {
                     LimingDate: '12/30/2008',
                     LimingMethod: 'dolomitic limestone',
@@ -2279,9 +2263,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2356,9 +2338,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2413,9 +2393,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2494,9 +2472,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2551,9 +2527,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2628,9 +2602,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2690,9 +2662,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2767,9 +2737,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2824,9 +2792,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2905,9 +2871,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2916,16 +2880,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2018',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2019',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -2954,7 +2909,7 @@ export const ggitInputData: Input.InputData = {
                   HarvestList: {
                     HarvestEvent: [
                       {
-                        HarvestDate: '09/14/2020',
+                        HarvestDate: '09/14/2019',
                         Grain: 'yes',
                         yield: 150.0,
                         StrawStoverHayRemoval: 0,
@@ -2982,9 +2937,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -2993,16 +2946,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2019',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2020',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3059,9 +3003,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -3070,16 +3012,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2020',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2021',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3146,9 +3079,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -3157,16 +3088,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2021',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2022',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3213,9 +3135,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -3224,16 +3144,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2022',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2023',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3300,9 +3211,7 @@ export const ggitInputData: Input.InputData = {
                     ],
                   },
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -3311,16 +3220,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/20/2023',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/25/2024',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
@@ -3367,9 +3267,7 @@ export const ggitInputData: Input.InputData = {
                   NApplicationList: {},
                   OMADApplicationList: {},
                   IrrigationList: {},
-                  BurnEvent: {
-                    BurnTime: 'no burning',
-                  },
+                  BurnEvent: {},
                   LimingEvent: {},
                   GrazingList: {},
                 },
@@ -3378,16 +3276,7 @@ export const ggitInputData: Input.InputData = {
                   CropName: 'annual rye - legume',
                   PlantingDate: '09/22/2024',
                   ContinueFromPreviousYear: 'n',
-                  HarvestList: {
-                    HarvestEvent: [
-                      {
-                        HarvestDate: '04/18/2025',
-                        Grain: 'no',
-                        yield: 0,
-                        StrawStoverHayRemoval: 0,
-                      },
-                    ],
-                  },
+                  HarvestList: {},
                   TillageList: {
                     TillageEvent: [
                       {
