@@ -31,7 +31,6 @@
  *
  * @packageDocumentation
  */
-import type { Input } from '@nori-dot-com/ggit';
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
@@ -129,6 +128,15 @@ export const orchardOrVineyardCropTypes = [
   'peaches and nectarines',
   'pistachios',
   'tangerines & mandarins',
+] as const;
+
+export const perennialCropTypes = [
+  'alfalfa',
+  'clover',
+  'grass',
+  'grass-legume mix',
+  'strawberry',
+  'switchgrass',
 ] as const;
 
 export const fertilizerTypes = [
@@ -1119,7 +1127,7 @@ export interface PerennialCrop
    * ```
    *
    */
-  type: typeof Input.PERENNIAL_CROPS[number];
+  type: typeof perennialCropTypes[number];
   /**
    * The crop classification.
    *
@@ -1860,24 +1868,32 @@ export interface GrazingEvent extends CropEventRange {
   /**
    * The grazing rest period in days.
    *
+   * Zero and one are equivalent and indicate continuous grazing.
+   *
    * @minimum 0
    * @maximum 365
    *
-   * @example <caption>When burning occurred before planting:</caption>
+   * @example <caption>When animals are grazing continuously:</caption>
    *
    * ```js
    * "restPeriod": 0
    * ```
    *
+   * @example <caption>When animals are on the field or in each paddock within the field every 30 days:</caption>
+   *
+   * ```js
+   * "restPeriod": 30
+   * ```
+   *
    */
   restPeriod: number;
   /**
-   * The percentage of forage consumed by the animals.
+   * The percentage of forage consumed by the animals per rest period days.
    *
    * @minimum 0
    * @maximum 100
    *
-   * @example <caption>When burning occurred before planting:</caption>
+   * @example <caption>When 20% of the forage was consumed per period:</caption>
    *
    * ```js
    * "utilization": 20
