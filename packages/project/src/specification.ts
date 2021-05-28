@@ -155,6 +155,20 @@ export const fertilizerTypes = [
   'urea ammonium phosphate (34-17-00)',
 ] as const;
 
+export const soilOrCropDisturbanceTypes = [
+  'intensive tillage',
+  'reduced tillage',
+  'mulch tillage',
+  'ridge tillage',
+  'strip tillage',
+  'no tillage',
+  'growing season cultivation',
+  'mow',
+  'crimp',
+  'winter killed',
+  'broad-spectrum herbicide',
+] as const;
+
 export const limingTypes = [
   'crushed limestone',
   'calcitic limestone',
@@ -1515,18 +1529,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * ```
    *
    */
-  type:
-    | 'intensive tillage'
-    | 'reduced tillage'
-    | 'mulch tillage'
-    | 'ridge tillage'
-    | 'strip tillage'
-    | 'no tillage'
-    | 'growing season cultivation'
-    | 'mow'
-    | 'crimp'
-    | 'winter killed'
-    | 'broad-spectrum herbicide';
+  type: typeof soilOrCropDisturbanceTypes[number];
 }
 
 /**
