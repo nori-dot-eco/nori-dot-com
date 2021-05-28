@@ -131,6 +131,37 @@ export const orchardOrVineyardCropTypes = [
   'tangerines & mandarins',
 ] as const;
 
+export const fertilizerTypes = [
+  'ammonium nitrate (34-0-0)',
+  'ammonium nitrate phosphate (23-23-00)',
+  'ammonium nitrate phosphate (27-14-00)',
+  'ammonium phosphate sulphate (16-20-00)',
+  'ammonium polyphosphate solution (10-34-00)',
+  'ammonium sulphate (21-00-00)',
+  'ammonium thiosulphate solution (12-00-00)',
+  'anhydrous ammonia (gas) (82-00-00)',
+  'calcium ammonium nitrate',
+  'calcium nitrate',
+  'diammonium phosphate (18-46-00)',
+  'element-n (n)',
+  'element-p (p)',
+  'mixed blends',
+  'monoammonium phosphate (11-55-00)',
+  'monoammonium phosphate (12-51-00)',
+  'potassium nitrate',
+  'urea (46-00-00)',
+  'urea ammonium nitrate (30-00-00)',
+  'urea ammonium phosphate (27-27-00)',
+  'urea ammonium phosphate (34-17-00)',
+] as const;
+
+export const limingTypes = [
+  'crushed limestone',
+  'calcitic limestone',
+  'dolomitic limestone',
+  'other',
+] as const;
+
 /**
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
@@ -1541,28 +1572,7 @@ export interface FertilizerEvent extends CropEvent {
    * ```
    *
    */
-  type?:
-    | 'ammonium nitrate (34-0-0)'
-    | 'ammonium nitrate phosphate (23-23-00)'
-    | 'ammonium nitrate phosphate (27-14-00)'
-    | 'ammonium phosphate sulphate (16-20-00)'
-    | 'ammonium polyphosphate solution (10-34-00)'
-    | 'ammonium sulphate (21-00-00)'
-    | 'ammonium thiosulphate solution (12-00-00)'
-    | 'anhydrous ammonia (gas) (82-00-00)'
-    | 'calcium ammonium nitrate'
-    | 'calcium nitrate'
-    | 'diammonium phosphate (18-46-00)'
-    | 'element-n (n)'
-    | 'element-p (p)'
-    | 'mixed blends'
-    | 'monoammonium phosphate (11-55-00)'
-    | 'monoammonium phosphate (12-51-00)'
-    | 'potassium nitrate'
-    | 'urea (46-00-00)'
-    | 'urea ammonium nitrate (30-00-00)'
-    | 'urea ammonium phosphate (27-27-00)'
-    | 'urea ammonium phosphate (34-17-00)';
+  type?: typeof fertilizerTypes[number];
   /**
    * Amount of nitrogen applied in lbs/ac.
    *
@@ -1799,11 +1809,7 @@ export interface LimingEvent {
    * ```
    *
    */
-  type:
-    | 'crushed limestone'
-    | 'calcitic limestone'
-    | 'dolomitic limestone'
-    | 'other';
+  type: typeof limingTypes[number];
   /**
    * The liming amount (in tons per acre).
    *
