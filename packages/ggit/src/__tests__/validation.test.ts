@@ -1,6 +1,8 @@
 import { Errors } from '@nori-dot-com/errors';
 
 import { validateInputData } from '../index';
+import { CURRENT_SCENARIO_NAME, FUTURE_SCENARIO_NAME } from '../input';
+
 import type { Input } from '../index';
 
 type InputDataOrAny<T> = T extends Input.InputData ? Input.InputData : any;
@@ -35,7 +37,7 @@ const INPUT_DATA: Input.InputData = {
         '@SRID': '4326',
         '@AREA': 120,
         '#text':
-          'POLYGON((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
+          'polygon((-102.0256 41.1624, -102.02423 41.1631, -102.0225 41.1635, -102.0261 41.161, -102.0256 41.1624))',
       },
       'Pre-1980': 'irrigation (pre 1980s)',
       CRP: 'no',
@@ -51,7 +53,7 @@ const INPUT_DATA: Input.InputData = {
       PostCRPTillage: [],
       CropScenario: [
         {
-          '@Name': 'Current',
+          '@Name': CURRENT_SCENARIO_NAME,
           CropYear: [
             {
               '@Year': 2000,
@@ -246,7 +248,7 @@ const INPUT_DATA: Input.InputData = {
           ],
         },
         {
-          '@Name': 'Future',
+          '@Name': FUTURE_SCENARIO_NAME,
           CropYear: [
             {
               '@Year': 2015,

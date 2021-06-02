@@ -46,18 +46,8 @@
             "title": "CRPType",
             "type": "string"
         },
-        "ContinueFromPreviousYear": {
-            "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
-            "enum": [
-                "n",
-                "y"
-            ],
-            "title": "ContinueFromPreviousYear",
-            "type": "string"
-        },
-        "Crop": {
+        "ContinuedCrop": {
             "additionalProperties": false,
-            "description": "Crop event",
             "properties": {
                 "@CropNumber": {
                     "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
@@ -72,10 +62,10 @@
                 "BurnEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurnEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/BurnEvent"
                         }
                     ],
                     "default": {
@@ -83,8 +73,12 @@
                     "title": "BurnEvent"
                 },
                 "ContinueFromPreviousYear": {
-                    "$ref": "#/definitions/ContinueFromPreviousYear",
-                    "title": "ContinueFromPreviousYear"
+                    "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
+                    "enum": [
+                        "y"
+                    ],
+                    "title": "ContinueFromPreviousYear",
+                    "type": "string"
                 },
                 "CropName": {
                     "$ref": "#/definitions/CropName",
@@ -93,10 +87,10 @@
                 "GrazingList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/GrazingList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/GrazingList"
                         }
                     ],
                     "default": {
@@ -106,10 +100,10 @@
                 "HarvestList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/HarvestList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/HarvestList"
                         }
                     ],
                     "default": {
@@ -119,10 +113,10 @@
                 "IrrigationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/IrrigationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/IrrigationList"
                         }
                     ],
                     "default": {
@@ -132,10 +126,10 @@
                 "LimingEvent": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/LimingEvent"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/LimingEvent"
                         }
                     ],
                     "default": {
@@ -145,10 +139,10 @@
                 "NApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/NApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/NApplicationList"
                         }
                     ],
                     "default": {
@@ -158,21 +152,15 @@
                 "OMADApplicationList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/OMADApplicationList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/OMADApplicationList"
                         }
                     ],
                     "default": {
                     },
                     "title": "OMADApplicationList"
-                },
-                "PlantingDate": {
-                    "description": "Crop planting date. must be in MM/DD/YYYY format",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "PlantingDate",
-                    "type": "string"
                 },
                 "Prune": {
                     "description": "Prune. Yes = woody perennial crops are pruned.",
@@ -195,10 +183,10 @@
                 "TillageList": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/TillageList"
+                            "$ref": "#/definitions/EmptyObject"
                         },
                         {
-                            "$ref": "#/definitions/Record<string,never>"
+                            "$ref": "#/definitions/TillageList"
                         }
                     ],
                     "default": {
@@ -217,10 +205,9 @@
                 "LimingEvent",
                 "NApplicationList",
                 "OMADApplicationList",
-                "PlantingDate",
                 "TillageList"
             ],
-            "title": "Crop",
+            "title": "ContinuedCrop",
             "type": "object"
         },
         "CropName": {
@@ -301,7 +288,7 @@
                 },
                 "CropYear": {
                     "items": {
-                        "$ref": "#/definitions/CropYear"
+                        "$ref": "#/definitions/CropYear<ContinuedCrop|NewCrop>"
                     },
                     "title": "CropYear",
                     "type": "array"
@@ -323,7 +310,7 @@
             "title": "CropScenarioName",
             "type": "string"
         },
-        "CropYear": {
+        "CropYear<ContinuedCrop|NewCrop>": {
             "additionalProperties": false,
             "description": "Crop event year.",
             "properties": {
@@ -334,7 +321,14 @@
                 },
                 "Crop": {
                     "items": {
-                        "$ref": "#/definitions/Crop"
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/ContinuedCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/NewCrop"
+                            }
+                        ]
                     },
                     "title": "Crop",
                     "type": "array"
@@ -344,7 +338,7 @@
                 "@Year",
                 "Crop"
             ],
-            "title": "CropYear",
+            "title": "CropYear<ContinuedCrop|NewCrop>",
             "type": "object"
         },
         "Cropland": {
@@ -486,12 +480,31 @@
                     "type": "array"
                 },
                 "Year1980-2000": {
-                    "$ref": "#/definitions/Year1980To2000",
-                    "title": "Year1980-2000"
+                    "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
+                    "enum": [
+                        "irrigated: annual crops in rotation",
+                        "irrigated: annual crops with hay/pasture in rotation",
+                        "irrigated: continuous hay",
+                        "irrigated: orchard or vineyard",
+                        "non-irrigated: annual crops in rotation",
+                        "non-irrigated: annual crops with hay/pasture in rotation",
+                        "non-irrigated: continuous hay",
+                        "non-irrigated: fallow-grain",
+                        "non-irrigated: livestock grazing",
+                        "non-irrigated: orchard or vineyard"
+                    ],
+                    "title": "Year1980-2000",
+                    "type": "string"
                 },
                 "Year1980-2000_Tillage": {
-                    "$ref": "#/definitions/Year1980To2000Tillage",
-                    "title": "Year1980-2000_Tillage"
+                    "description": "Tillage from 1980 - 2000.",
+                    "enum": [
+                        "intensive tillage",
+                        "no till",
+                        "reduced tillage"
+                    ],
+                    "title": "Year1980-2000_Tillage",
+                    "type": "string"
                 }
             },
             "required": [
@@ -506,9 +519,7 @@
                 "PostCRPTillage",
                 "Pre-1980",
                 "PreCRPManagement",
-                "PreCRPTillage",
-                "Year1980-2000",
-                "Year1980-2000_Tillage"
+                "PreCRPTillage"
             ],
             "title": "Cropland",
             "type": "object"
@@ -522,6 +533,11 @@
             ],
             "title": "EEP",
             "type": "string"
+        },
+        "EmptyObject": {
+            "additionalProperties": false,
+            "title": "EmptyObject",
+            "type": "object"
         },
         "GEOM": {
             "additionalProperties": false,
@@ -555,7 +571,7 @@
             "type": "object"
         },
         "Grain": {
-            "description": "CRP.",
+            "description": "Is this a grain harvest",
             "enum": [
                 "no",
                 "yes"
@@ -845,6 +861,177 @@
             "title": "NApplicationType",
             "type": "string"
         },
+        "NewCrop": {
+            "additionalProperties": false,
+            "properties": {
+                "@CropNumber": {
+                    "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
+                    "enum": [
+                        1,
+                        2,
+                        3
+                    ],
+                    "title": "@CropNumber",
+                    "type": "number"
+                },
+                "BurnEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/BurnEvent"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "BurnEvent"
+                },
+                "ContinueFromPreviousYear": {
+                    "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
+                    "enum": [
+                        "n"
+                    ],
+                    "title": "ContinueFromPreviousYear",
+                    "type": "string"
+                },
+                "CropName": {
+                    "$ref": "#/definitions/CropName",
+                    "title": "CropName"
+                },
+                "GrazingList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/GrazingList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "GrazingList"
+                },
+                "HarvestList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/HarvestList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "HarvestList"
+                },
+                "IrrigationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/IrrigationList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "IrrigationList"
+                },
+                "LimingEvent": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/LimingEvent"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "LimingEvent"
+                },
+                "NApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/NApplicationList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "NApplicationList"
+                },
+                "OMADApplicationList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/OMADApplicationList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "OMADApplicationList"
+                },
+                "PlantingDate": {
+                    "description": "Planting Date should be omitted when ContinueFromPreviousYear is set to 'y'",
+                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "title": "PlantingDate",
+                    "type": "string"
+                },
+                "Prune": {
+                    "description": "Prune. Yes = woody perennial crops are pruned.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "Prune",
+                    "type": "string"
+                },
+                "Renew": {
+                    "description": "Renew. Yes = remove and replant orchard. All coarse and fine branches\nand all coarse roots are removed, soil is plowed, and new saplings\nassumed to be 2 yrs old are planted.",
+                    "enum": [
+                        "no",
+                        "yes"
+                    ],
+                    "title": "Renew",
+                    "type": "string"
+                },
+                "TillageList": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EmptyObject"
+                        },
+                        {
+                            "$ref": "#/definitions/TillageList"
+                        }
+                    ],
+                    "default": {
+                    },
+                    "title": "TillageList"
+                }
+            },
+            "required": [
+                "@CropNumber",
+                "BurnEvent",
+                "ContinueFromPreviousYear",
+                "CropName",
+                "GrazingList",
+                "HarvestList",
+                "IrrigationList",
+                "LimingEvent",
+                "NApplicationList",
+                "OMADApplicationList",
+                "PlantingDate",
+                "TillageList"
+            ],
+            "title": "NewCrop",
+            "type": "object"
+        },
         "OMADApplicationEvent": {
             "additionalProperties": false,
             "description": "Organic Amendment Application event",
@@ -944,12 +1131,6 @@
             "title": "Pre1980",
             "type": "string"
         },
-        "Record<string,never>": {
-            "additionalProperties": false,
-            "description": "Construct a type with a set of properties K of type T",
-            "title": "Record<string,never>",
-            "type": "object"
-        },
         "TillageEvent": {
             "additionalProperties": false,
             "description": "Tillage event.",
@@ -1006,33 +1187,6 @@
                 "winter kill"
             ],
             "title": "TillageType",
-            "type": "string"
-        },
-        "Year1980To2000": {
-            "description": "Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.",
-            "enum": [
-                "irrigated: annual crops in rotation",
-                "irrigated: annual crops with hay/pasture in rotation",
-                "irrigated: continuous hay",
-                "irrigated: orchard or vineyard",
-                "non-irrigated: annual crops in rotation",
-                "non-irrigated: annual crops with hay/pasture in rotation",
-                "non-irrigated: continuous hay",
-                "non-irrigated: fallow-grain",
-                "non-irrigated: livestock grazing",
-                "non-irrigated: orchard or vineyard"
-            ],
-            "title": "Year1980To2000",
-            "type": "string"
-        },
-        "Year1980To2000Tillage": {
-            "description": "Tillage from 1980 - 2000.",
-            "enum": [
-                "intensive tillage",
-                "no till",
-                "reduced tillage"
-            ],
-            "title": "Year1980To2000Tillage",
             "type": "string"
         }
     },

@@ -1,5 +1,9 @@
 /* eslint-disable jsdoc/require-example, jsdoc/check-tag-names */
-import type { WORLD_GEODETIC_SYSTEM_1984 } from './constants';
+import type {
+  CURRENT_SCENARIO_NAME,
+  FUTURE_SCENARIO_NAME,
+  WORLD_GEODETIC_SYSTEM_1984,
+} from './constants';
 
 /**
  * daycentcrv1 input schema
@@ -30,9 +34,9 @@ export interface Cropland {
   'Pre-1980': Pre1980;
   CRP: CRP;
   CRPType: CRPType;
-  'Year1980-2000': Year1980To2000;
+  'Year1980-2000'?: Year1980To2000; // todo CRP/Non-CRP types
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  'Year1980-2000_Tillage': Year1980To2000Tillage;
+  'Year1980-2000_Tillage'?: Year1980To2000Tillage;
   CRPStartYear: CRPStartYear;
   CRPEndYear: CRPEndYear;
   PreCRPManagement: PreCRPManagement;
@@ -137,14 +141,18 @@ export interface CropScenario {
 /**
  * Name of this crop scenario.
  */
-export type CropScenarioName = 'Current' | 'Future';
+export type CropScenarioName =
+  | typeof CURRENT_SCENARIO_NAME
+  | typeof FUTURE_SCENARIO_NAME;
 
 /**
  * Crop event year.
  */
-export interface CropYear {
+export interface CropYear<
+  CropType extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
+> {
   '@Year': Year;
-  Crop: Crop[];
+  Crop: CropType[];
 }
 
 /**
@@ -152,48 +160,82 @@ export interface CropYear {
  */
 export type Year = number; // todo number range
 
+type EmptyObject = Record<string, never>;
+
 /**
  * Crop event
  */
-export interface Crop {
+export interface BaseCrop {
   '@CropNumber': CropNumber;
   CropName: CropName;
-  PlantingDate: PlantingDate;
-  ContinueFromPreviousYear: ContinueFromPreviousYear;
   /**
    * @default {}
    */
-  HarvestList: HarvestList | Record<string, never>;
+  HarvestList: HarvestList | EmptyObject;
   /**
    * @default {}
    */
-  TillageList: TillageList | Record<string, never>;
+  TillageList: TillageList | EmptyObject;
   /**
    * @default {}
    */
-  NApplicationList: NApplicationList | Record<string, never>;
+  NApplicationList: NApplicationList | EmptyObject;
   /**
    * @default  {}
    */
-  OMADApplicationList: OMADApplicationList | Record<string, never>;
+  OMADApplicationList: OMADApplicationList | EmptyObject;
   /**
    * @default  {}
    */
-  IrrigationList: IrrigationList | Record<string, never>;
+  IrrigationList: IrrigationList | EmptyObject;
   /**
    * @default {}
    */
-  BurnEvent: BurnEvent | Record<string, never>;
+  BurnEvent: BurnEvent | EmptyObject;
   /**
    * @default  {}
    */
-  LimingEvent: LimingEvent | Record<string, never>;
+  LimingEvent: LimingEvent | EmptyObject;
   /**
    * @default  {}
    */
-  GrazingList: GrazingList | Record<string, never>;
+  GrazingList: GrazingList | EmptyObject;
   Prune?: Prune;
   Renew?: Renew;
+}
+
+export type Crop<
+  T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
+> = T extends ContinuedCrop ? ContinuedCrop : NewCrop;
+
+/**
+ *
+ */
+export interface ContinuedCrop extends BaseCrop {
+  /**
+   * Was this crop planted in the previous year.
+   * Yes = continue crop growth for non-woody perennial crops
+   * (like alfalfa, perennial grass hay or pasture) from
+   * previous year without re-planting.
+   */
+  ContinueFromPreviousYear: 'y';
+}
+
+/**
+ *
+ */
+export interface NewCrop extends BaseCrop {
+  /**
+   * Planting Date should be omitted when ContinueFromPreviousYear is set to 'y'
+   */
+  PlantingDate: PlantingDate;
+  /**
+   * Was this crop planted in the previous year.
+   * Yes = continue crop growth for non-woody perennial crops
+   * (like alfalfa, perennial grass hay or pasture) from
+   * previous year without re-planting.
+   */
+  ContinueFromPreviousYear: 'n';
 }
 
 /**
@@ -286,14 +328,6 @@ export type CropName =
  * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
  */
 export type PlantingDate = string;
-
-/**
- * Was this crop planted in the previous year.
- * Yes = continue crop growth for non-woody perennial crops
- * (like alfalfa, perennial grass hay or pasture) from
- * previous year without re-planting.
- */
-export type ContinueFromPreviousYear = 'n' | 'y';
 
 /**
  * Grazing event
@@ -655,4 +689,4 @@ export type AREA = number; // todo max 10k
  *
  * @TJS-type string
  */
-export type WKT = `POLYGON((${any}))`; // todo regex, lowercase?
+export declare type WKT = `polygon((${string}))` | `POLYGON((${string}))`;

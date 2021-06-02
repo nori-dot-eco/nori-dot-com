@@ -69,8 +69,6 @@ export const annualCropTypes = [
   'winter wheat',
 ] as const;
 
-export const perennialCropTypes = ['alfalfa', 'clover', 'grass'] as const;
-
 export const coverCropTypes = [
   'annual rye',
   'annual rye - legume',
@@ -130,6 +128,60 @@ export const orchardOrVineyardCropTypes = [
   'peaches and nectarines',
   'pistachios',
   'tangerines & mandarins',
+] as const;
+
+export const perennialCropTypes = [
+  'alfalfa',
+  'clover',
+  'grass',
+  'grass-legume mix',
+  'strawberry',
+  'switchgrass',
+] as const;
+
+export const fertilizerTypes = [
+  'ammonium nitrate (34-0-0)',
+  'ammonium nitrate phosphate (23-23-00)',
+  'ammonium nitrate phosphate (27-14-00)',
+  'ammonium phosphate sulphate (16-20-00)',
+  'ammonium polyphosphate solution (10-34-00)',
+  'ammonium sulphate (21-00-00)',
+  'ammonium thiosulphate solution (12-00-00)',
+  'anhydrous ammonia (gas) (82-00-00)',
+  'calcium ammonium nitrate',
+  'calcium nitrate',
+  'diammonium phosphate (18-46-00)',
+  'element-n (n)',
+  'element-p (p)',
+  'mixed blends',
+  'monoammonium phosphate (11-55-00)',
+  'monoammonium phosphate (12-51-00)',
+  'potassium nitrate',
+  'urea (46-00-00)',
+  'urea ammonium nitrate (30-00-00)',
+  'urea ammonium phosphate (27-27-00)',
+  'urea ammonium phosphate (34-17-00)',
+] as const;
+
+export const soilOrCropDisturbanceTypes = [
+  'intensive tillage',
+  'reduced tillage',
+  'mulch tillage',
+  'ridge tillage',
+  'strip tillage',
+  'no tillage',
+  'growing season cultivation',
+  'mow',
+  'crimp',
+  'winter killed',
+  'broad-spectrum herbicide',
+] as const;
+
+export const limingTypes = [
+  'crushed limestone',
+  'calcitic limestone',
+  'dolomitic limestone',
+  'other',
 ] as const;
 
 /**
@@ -370,11 +422,11 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
    * @example <caption>When the field participated in grass/legume mixture CRP:</caption>
    *
    * ```js
-   * "crpType": "grass / legume mixture"
+   * "crpType": "grass/legume mixture"
    * ```
    *
    */
-  crpType: '100% grass' | 'grass / legume mixture';
+  crpType: '100% grass' | 'grass/legume mixture';
   /**
    * The CRP start year
    *
@@ -659,7 +711,6 @@ export interface CropYear {
    * Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
    *
    * @maxItems 3
-   * @minItems 1
    *
    * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
    *
@@ -689,7 +740,7 @@ export interface CropYear {
    *
    */
   crops: [
-    AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop,
+    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?
   ];
@@ -1486,19 +1537,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * ```
    *
    */
-  type:
-    | 'intensive tillage'
-    | 'reduced tillage'
-    | 'mulch tillage'
-    | 'ridge tillage'
-    | 'strip tillage'
-    | 'no tillage'
-    | 'growing season cultivation'
-    | 'mow'
-    | 'crimp'
-    | 'winter killed'
-    | 'broad-spectrum herbicide'
-    | 'crop terminated'; // todo document that this is used to signify the end of a crop that was defined that has events that spans multiple years // todo must use 12/31/yyyy
+  type: typeof soilOrCropDisturbanceTypes[number];
 }
 
 /**
@@ -1544,28 +1583,7 @@ export interface FertilizerEvent extends CropEvent {
    * ```
    *
    */
-  type?:
-    | 'ammonium nitrate (34-0-0)'
-    | 'ammonium nitrate phosphate (23-23-00)'
-    | 'ammonium nitrate phosphate (27-14-00)'
-    | 'ammonium phosphate sulphate (16-20-00)'
-    | 'ammonium polyphosphate solution (10-34-00)'
-    | 'ammonium sulphate (21-00-00)'
-    | 'ammonium thiosulphate solution (12-00-00)'
-    | 'anhydrous ammonia (gas) (82-00-00)'
-    | 'calcium ammonium nitrate'
-    | 'calcium nitrate'
-    | 'diammonium phosphate (18-46-00)'
-    | 'element-n (n)'
-    | 'element-p (p)'
-    | 'mixed blends'
-    | 'monoammonium phosphate (11-55-00)'
-    | 'monoammonium phosphate (12-51-00)'
-    | 'potassium nitrate'
-    | 'urea (46-00-00)'
-    | 'urea ammonium nitrate (30-00-00)'
-    | 'urea ammonium phosphate (27-27-00)'
-    | 'urea ammonium phosphate (34-17-00)';
+  type?: typeof fertilizerTypes[number];
   /**
    * Amount of nitrogen applied in lbs/ac.
    *
@@ -1802,11 +1820,7 @@ export interface LimingEvent {
    * ```
    *
    */
-  type:
-    | 'crushed limestone'
-    | 'calcitic limestone'
-    | 'dolomitic limestone'
-    | 'other';
+  type: typeof limingTypes[number];
   /**
    * The liming amount (in tons per acre).
    *
@@ -1854,24 +1868,32 @@ export interface GrazingEvent extends CropEventRange {
   /**
    * The grazing rest period in days.
    *
+   * Zero and one are equivalent and indicate continuous grazing.
+   *
    * @minimum 0
    * @maximum 365
    *
-   * @example <caption>When burning occurred before planting:</caption>
+   * @example <caption>When animals are grazing continuously:</caption>
    *
    * ```js
    * "restPeriod": 0
    * ```
    *
+   * @example <caption>When animals are on the field or in each paddock within the field every 30 days:</caption>
+   *
+   * ```js
+   * "restPeriod": 30
+   * ```
+   *
    */
   restPeriod: number;
   /**
-   * The percentage of forage consumed by the animals.
+   * The percentage of forage consumed by the animals per rest period days.
    *
    * @minimum 0
    * @maximum 100
    *
-   * @example <caption>When burning occurred before planting:</caption>
+   * @example <caption>When 20% of the forage was consumed per period:</caption>
    *
    * ```js
    * "utilization": 20
