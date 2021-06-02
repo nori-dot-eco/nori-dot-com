@@ -1632,7 +1632,7 @@
                     "type": "string"
                 },
                 "restPeriod": {
-                    "description": "The grazing rest period in days.",
+                    "description": "The grazing rest period in days.\n\nZero and one are equivalent and indicate continuous grazing.",
                     "maximum": 365,
                     "minimum": 0,
                     "title": "restPeriod",
@@ -1645,7 +1645,7 @@
                     "type": "string"
                 },
                 "utilization": {
-                    "description": "The percentage of forage consumed by the animals.",
+                    "description": "The percentage of forage consumed by the animals per rest period days.",
                     "maximum": 100,
                     "minimum": 0,
                     "title": "utilization",
