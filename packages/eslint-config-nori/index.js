@@ -160,6 +160,7 @@ module.exports = {
         env: 'relay',
       },
     ],
+    'react/require-default-props': [0],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
