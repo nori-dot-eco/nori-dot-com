@@ -22,7 +22,7 @@ describe('v3-utils', () => {
           {
             fieldSets: [
               {
-                area: 120,
+                area: 6,
                 fieldSetName: 'example field',
                 geometry: {
                   type: 'FeatureCollection',
@@ -94,7 +94,7 @@ describe('v3-utils', () => {
                             date: '06/15/2001',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -111,7 +111,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2001',
-                            productName: 'OMAD product 694453.9845485502',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -160,7 +160,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2003',
-                            productName: 'OMAD product 5802583.978994231',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -183,6 +183,10 @@ describe('v3-utils', () => {
                         burningEvents: [],
                       },
                     ],
+                  },
+                  {
+                    cropYear: 2003,
+                    crops: [],
                   },
                   {
                     cropYear: 2004,
@@ -232,7 +236,7 @@ describe('v3-utils', () => {
                             date: '06/15/2005',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -249,7 +253,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2005',
-                            productName: 'OMAD product 3817367.791309167',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -316,7 +320,7 @@ describe('v3-utils', () => {
                             date: '06/15/2007',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -333,7 +337,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2007',
-                            productName: 'OMAD product 575390.2754472964',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -406,7 +410,7 @@ describe('v3-utils', () => {
                             productName: 'dolomitic limestone',
                             tonsPerAcre: 1,
                             areaUnit: 'ac',
-                            area: 120,
+                            area: 6,
                           },
                         ],
                         organicMatterEvents: [],
@@ -436,7 +440,7 @@ describe('v3-utils', () => {
                             date: '06/15/2009',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -453,7 +457,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2009',
-                            productName: 'OMAD product 2790101.3270080746',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -548,7 +552,7 @@ describe('v3-utils', () => {
                             date: '06/15/2011',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -565,7 +569,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2011',
-                            productName: 'OMAD product 60286.61917561706',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -605,7 +609,7 @@ describe('v3-utils', () => {
                             productName: 'calcitic limestone',
                             tonsPerAcre: 1,
                             areaUnit: 'ac',
-                            area: 120,
+                            area: 6,
                           },
                         ],
                         organicMatterEvents: [],
@@ -668,7 +672,7 @@ describe('v3-utils', () => {
                             date: '06/15/2013',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -685,7 +689,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2013',
-                            productName: 'OMAD product 1222198.0039411124',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -780,7 +784,7 @@ describe('v3-utils', () => {
                             date: '06/15/2015',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -797,7 +801,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2015',
-                            productName: 'OMAD product 1245609.9733378706',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -892,7 +896,7 @@ describe('v3-utils', () => {
                             date: '06/15/2017',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -909,7 +913,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2017',
-                            productName: 'OMAD product 1463176.4533466261',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1028,7 +1032,7 @@ describe('v3-utils', () => {
                         fertilizerEvents: [],
                         harvestOrKillEvents: [
                           {
-                            date: '09/14/2020',
+                            date: '09/14/2019',
                             boundaryYield: 150,
                             yieldNumeratorUnit: 'bu',
                             yieldDenominatorUnit: 'ac',
@@ -1039,7 +1043,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2020',
-                            productName: 'OMAD product 1730231.676687898',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1148,7 +1152,7 @@ describe('v3-utils', () => {
                             date: '06/15/2021',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -1165,7 +1169,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2021',
-                            productName: 'OMAD product 998814.8756999112',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1274,7 +1278,7 @@ describe('v3-utils', () => {
                             date: '06/15/2023',
                             productName: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
-                            area: 120,
+                            area: 6,
                             quantityUnit: 'lbs/acre',
                           },
                         ],
@@ -1291,7 +1295,7 @@ describe('v3-utils', () => {
                         organicMatterEvents: [
                           {
                             date: '04/01/2023',
-                            productName: 'OMAD product 2938641.9703523777',
+                            productName: expect.stringMatching(/OMAD product /),
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
