@@ -138,12 +138,6 @@ export const convertFromV3ToV1 = ({
                                 return {
                                   date: irrigationEvent.date,
                                   volume: irrigationEvent.volume,
-                                  startDate: undefined,
-                                  endDate: undefined,
-                                  frequency: undefined,
-                                  depth: undefined,
-                                  // eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
-                                  depth_units: undefined,
                                 };
                               }
                             ) ?? [],
