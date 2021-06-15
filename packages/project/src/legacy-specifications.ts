@@ -133,7 +133,8 @@ export const V1_APPLICATION_METHODS = [
   'ariel application',
 ] as const;
 
-export type V1FertilizerApplicationMethod = typeof V1_APPLICATION_METHODS[number];
+export type V1FertilizerApplicationMethod =
+  typeof V1_APPLICATION_METHODS[number];
 
 export const V1_FERTILIZER_AMOUNT_APPLIED_UNITS = [
   'lbs/acre',
@@ -146,7 +147,8 @@ export const V1_FERTILIZER_AMOUNT_APPLIED_UNITS = [
   '1000gal',
 ] as const;
 
-export type V1FertilizerAmountAppliedUnits = typeof V1_FERTILIZER_AMOUNT_APPLIED_UNITS[number];
+export type V1FertilizerAmountAppliedUnits =
+  typeof V1_FERTILIZER_AMOUNT_APPLIED_UNITS[number];
 
 export interface V1FertilizerEvent {
   date: string;
@@ -195,13 +197,13 @@ export type V1TransportType = 'small truck' | 'normal truck' | 'big truck';
 
 export interface V1IrrigationEvent {
   date: string;
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
   volume: number;
-  frequency: number;
-  depth: number;
+  frequency?: number;
+  depth?: number;
   // eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
-  depth_units: string;
+  depth_units?: string;
 }
 
 export type V1CropType =
