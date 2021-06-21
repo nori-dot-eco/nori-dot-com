@@ -171,6 +171,10 @@ module.exports = {
         extensions: allExtensions,
       },
     ],
+    /**
+     * jest rules
+     */
+    'jest/prefer-strict-equal': 'warn',
   },
   overrides: [
     {
