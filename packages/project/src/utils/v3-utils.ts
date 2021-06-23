@@ -218,3 +218,7 @@ export const convertFromV3ToV1 = ({
   };
   return { v1Data };
 };
+
+export const isV3Data = (data: Project | V1Data): data is Project => {
+  return 'version' in data && data.version === '3.0.0';
+};
