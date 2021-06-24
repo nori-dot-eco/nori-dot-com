@@ -16,6 +16,8 @@ module.exports = {
     'prettier/react',
     'plugin:prettier/recommended',
     'plugin:jest/recommended',
+    'plugin:@next/next/recommended',
+    'next/core-web-vitals',
   ],
   plugins: [
     'import',
@@ -42,6 +44,7 @@ module.exports = {
     },
   },
   rules: {
+    'next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
     'prefer-const': [
       'error',
       {
