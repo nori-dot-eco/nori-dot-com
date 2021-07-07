@@ -89,6 +89,7 @@ export const convertFromV3ToV1 = ({
                               (fertilizerEvent): V1FertilizerEvent => {
                                 return {
                                   date: fertilizerEvent.date,
+                                  classification: fertilizerEvent.type,
                                   productName:
                                     fertilizerEvent.name ||
                                     fertilizerEvent.type,
@@ -137,6 +138,7 @@ export const convertFromV3ToV1 = ({
                               (irrigationEvent): V1IrrigationEvent => {
                                 return {
                                   date: irrigationEvent.date,
+                                  startDate: irrigationEvent.date,
                                   volume: irrigationEvent.volume,
                                 };
                               }
@@ -158,6 +160,7 @@ export const convertFromV3ToV1 = ({
                               (organicMatterEvent): V1OrganicMatterEvent => {
                                 return {
                                   date: organicMatterEvent.date,
+                                  classification: organicMatterEvent.type,
                                   productName:
                                     organicMatterEvent.name ??
                                     `OMAD product ${
