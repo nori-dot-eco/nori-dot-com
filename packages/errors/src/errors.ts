@@ -53,4 +53,11 @@ export const Errors = {
       message: 'An unknown error ocurred',
     },
   },
+  intakeSheetError: {
+    invalidNamedRanges: {
+      message:
+        'Something went wrong in Google Sheets, please try again or recreate the project',
+      id: 'intakeSheetError:invalidNamedRanges',
+    },
+  },
 };
