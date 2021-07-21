@@ -1582,6 +1582,325 @@ export const v3Data: Project = {
   ],
 };
 
+export const v3DataForIrrigationTests: Project = {
+  version: '3.0.0',
+  fields: [
+    {
+      fieldName: 'example field',
+      geojson: {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              coordinates: [
+                [
+                  [-102.0256, 41.1624],
+                  [-102.02423, 41.1631],
+                  [-102.0225, 41.1635],
+                  [-102.0261, 41.161],
+                  [-102.0256, 41.1624],
+                ],
+              ],
+            },
+            properties: {},
+          },
+        ],
+      },
+      cropYears: [
+        {
+          // valid number of events (no overflow)
+          plantingYear: 2000,
+          crops: [
+            {
+              name: null,
+              type: 'corn',
+              plantingDate: '04/20/2007',
+              fertilizerEvents: [],
+              organicMatterEvents: [],
+              irrigationEvents: [
+                {
+                  date: '04/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/02/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/09/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/16/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/23/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/30/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/06/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/13/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/20/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/27/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/04/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/11/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/18/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/25/2007',
+                  volume: 1.0,
+                },
+              ],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [],
+              harvestEvents: [],
+              classification: 'annual crop',
+            },
+          ],
+        },
+        {
+          // too many events, but regular pattern
+          plantingYear: 2001,
+          crops: [
+            {
+              name: null,
+              type: 'corn',
+              plantingDate: '04/20/2007',
+              fertilizerEvents: [],
+              organicMatterEvents: [],
+              irrigationEvents: [
+                {
+                  date: '04/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/02/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/09/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/16/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/23/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/30/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/06/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/13/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/20/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/27/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/04/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/11/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/18/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/01/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/08/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/15/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/22/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/29/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '09/05/2007',
+                  volume: 1.0,
+                },
+              ],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [],
+              harvestEvents: [],
+              classification: 'annual crop',
+            },
+          ],
+        },
+        {
+          // too many events, irregular pattern
+          plantingYear: 2002,
+          crops: [
+            {
+              name: null,
+              type: 'corn',
+              plantingDate: '04/20/2007',
+              fertilizerEvents: [],
+              organicMatterEvents: [],
+              irrigationEvents: [
+                {
+                  date: '04/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/06/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/09/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/20/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/23/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/30/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/06/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/13/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/20/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '06/27/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/04/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/11/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/18/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '07/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/01/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/08/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/15/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/22/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '08/29/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '09/05/2007',
+                  volume: 1.0,
+                },
+              ],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [],
+              harvestEvents: [],
+              classification: 'annual crop',
+            },
+          ],
+        },
+      ],
+      acres: 6,
+      historicLandManagement: {
+        crp: 'no',
+        preYear1980: 'irrigation',
+        tillageForYears1980To2000: 'intensive tillage',
+        year1980To2000: 'irrigated: annual crops in rotation',
+      },
+      regenerativeStartYear: 2015,
+    },
+  ],
+};
+
 export const ggitInputData: Input.InputData = {
   '@cometEmailId': 'comet@nori.com',
   Cropland: [

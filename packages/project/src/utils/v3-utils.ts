@@ -1,4 +1,6 @@
 /* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
+import * as moment from 'moment';
+
 import type {
   AnnualCrop,
   CoverCrop,
@@ -23,6 +25,8 @@ import type {
   Project,
   AnnualCropHarvestEvent,
 } from '../specification';
+
+const MAX_SHEET_ROWS_PER_YEAR = 16;
 
 export const isOrchardOrVineyardCrop = (
   crop: AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop
@@ -77,6 +81,61 @@ export const convertFromV3ToV1 = ({
                           new Date(b.plantingDate).getTime()
                       )
                       .map((crop, i): V1Crop => {
+                        // start by assigning simple map -- this may be empty, or it may overflow the number of possible
+                        // rows that can be populated in the spreadsheet -- something that will be dealt with in the sheet import.
+                        let irrigationEvents: V1IrrigationEvent[] =
+                          crop.irrigationEvents?.map(
+                            (irrigationEvent): V1IrrigationEvent => {
+                              return {
+                                date: irrigationEvent.date,
+                                volume: irrigationEvent.volume,
+                              };
+                            }
+                          ) ?? [];
+                        // IF too many events, attempt to detect a regular pattern
+                        if (
+                          crop.irrigationEvents?.length >
+                          MAX_SHEET_ROWS_PER_YEAR
+                        ) {
+                          const dates = crop.irrigationEvents.map(
+                            (irrigationEvent) => {
+                              return irrigationEvent.date;
+                            }
+                          );
+                          const everyDateIntervalIsEqual = dates.every(
+                            (e, index, arr) => {
+                              if (arr[index + 1]) {
+                                return (
+                                  moment(arr[index]).diff(arr[index + 1]) ===
+                                  moment(arr[0]).diff(arr[1])
+                                );
+                              } else {
+                                return true;
+                              }
+                            }
+                          );
+                          if (everyDateIntervalIsEqual) {
+                            // need start date, end date, and duration in days between date intervals
+                            const frequency = Math.abs(
+                              moment(dates[0]).diff(dates[1], 'days')
+                            );
+                            const startDate = dates[0];
+                            const endDate = dates[dates.length - 1];
+                            // Rebekah says volume doesn't matter - it's not incorporated into the SoilMetrics model
+                            // We'll just use whatever the first value is for all.
+                            const volume = crop.irrigationEvents[0].volume;
+                            irrigationEvents = [
+                              {
+                                date: startDate,
+                                startDate,
+                                endDate,
+                                frequency,
+                                volume,
+                              },
+                            ];
+                          }
+                        }
+
                         return {
                           version: 2,
                           cropName: crop.name || crop.type,
@@ -132,15 +191,7 @@ export const convertFromV3ToV1 = ({
                               new Date(a.date).getTime() -
                               new Date(b.date).getTime()
                           ),
-                          irrigationEvents:
-                            crop.irrigationEvents?.map(
-                              (irrigationEvent): V1IrrigationEvent => {
-                                return {
-                                  date: irrigationEvent.date,
-                                  volume: irrigationEvent.volume,
-                                };
-                              }
-                            ) ?? [],
+                          irrigationEvents,
                           limingEvents:
                             crop.limingEvents?.map(
                               (limingEvent): V1LimingEvent => {

@@ -1,6 +1,6 @@
 import { convertFromV3ToV1 } from '../v3-utils';
 
-import { v3Data } from './fixtures';
+import { v3Data, v3DataForIrrigationTests } from './fixtures';
 
 describe('v3-utils', () => {
   describe('convertFromV3ToV1', () => {
@@ -102,82 +102,9 @@ describe('v3-utils', () => {
                         irrigationEvents: [
                           {
                             date: '04/25/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/02/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/09/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/16/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/23/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/30/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/06/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/13/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/20/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/27/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/04/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/11/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/18/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/25/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/01/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/08/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/15/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/22/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/29/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '09/05/2001',
+                            startDate: '04/25/2001',
+                            endDate: '09/05/2001',
+                            frequency: 7,
                             volume: 1,
                           },
                         ],
@@ -409,82 +336,9 @@ describe('v3-utils', () => {
                         irrigationEvents: [
                           {
                             date: '04/25/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/02/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/09/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/16/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/23/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/30/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/06/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/13/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/20/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/27/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/04/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/11/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/18/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/25/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/01/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/08/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/15/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/22/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/29/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '09/05/2007',
+                            startDate: '04/25/2007',
+                            endDate: '09/05/2007',
+                            frequency: 7,
                             volume: 1,
                           },
                         ],
@@ -1540,6 +1394,257 @@ describe('v3-utils', () => {
                             date: '09/22/2024',
                           },
                         ],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+    });
+    it('should correctly handle irrigation events', () => {
+      const { v1Data } = convertFromV3ToV1({
+        v3Data: v3DataForIrrigationTests,
+      });
+      expect(v1Data).toStrictEqual<
+        ReturnType<typeof convertFromV3ToV1>['v1Data']
+      >({
+        projects: [
+          {
+            fieldSets: [
+              {
+                area: 6,
+                fieldSetName: 'example field',
+                geometry: {
+                  type: 'FeatureCollection',
+                  features: [
+                    {
+                      type: 'Feature',
+                      geometry: {
+                        type: 'Polygon',
+                        coordinates: [
+                          [
+                            [-102.0256, 41.1624],
+                            [-102.02423, 41.1631],
+                            [-102.0225, 41.1635],
+                            [-102.0261, 41.161],
+                            [-102.0256, 41.1624],
+                          ],
+                        ],
+                      },
+                      properties: {},
+                    },
+                  ],
+                },
+                cropYears: [
+                  {
+                    cropYear: 2000,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // valid number of events, no overflow
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/02/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/09/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/16/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/23/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/30/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/06/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/13/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/20/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/27/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/04/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/11/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/18/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/25/2007',
+                            volume: 1.0,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2001,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // too many events, regular pattern
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            startDate: '04/25/2007',
+                            endDate: '09/05/2007',
+                            frequency: 7,
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2002,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // too many events, irregular pattern
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/06/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/09/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/20/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/23/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/30/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/06/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/13/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/20/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/27/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/04/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/11/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/18/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/25/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/01/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/08/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/15/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/22/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/29/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '09/05/2007',
+                            volume: 1.0,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
                         burningEvents: [],
                       },
                     ],
