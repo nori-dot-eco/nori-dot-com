@@ -192,20 +192,7 @@ export const convertFromV3ToV1 = ({
                               new Date(a.date).getTime() -
                               new Date(b.date).getTime()
                           ),
-<<<<<<< HEAD
-                          irrigationEvents:
-                            crop.irrigationEvents?.map(
-                              (irrigationEvent): V1IrrigationEvent => {
-                                return {
-                                  date: irrigationEvent.date,
-                                  startDate: irrigationEvent.date,
-                                  volume: irrigationEvent.volume,
-                                };
-                              }
-                            ) ?? [],
-=======
                           irrigationEvents,
->>>>>>> amie-fix-v3-to-v1-conversion
                           limingEvents:
                             crop.limingEvents?.map(
                               (limingEvent): V1LimingEvent => {
