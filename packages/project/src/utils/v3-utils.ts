@@ -151,17 +151,16 @@ export const convertFromV3ToV1 = ({
                                 };
                               }
                             ) ?? []
-                          )
-                            .sort(
-                              (a, b) =>
-                                new Date(a.date).getTime() -
-                                new Date(b.date).getTime()
-                            )
-                            .filter(
-                              (f) =>
-                                Number(f.date.split('/').slice(-1)) ===
-                                cropYear.plantingYear // todo v3 to v1 multi year events are not supported for fertilizer events
-                            ),
+                          ).sort(
+                            (a, b) =>
+                              new Date(a.date).getTime() -
+                              new Date(b.date).getTime()
+                          ),
+                          // .filter(
+                          //   (f) =>
+                          //     Number(f.date.split('/').slice(-1)) ===
+                          //     cropYear.plantingYear // todo v3 to v1 multi year events are not supported for fertilizer events
+                          // ),
                           harvestOrKillEvents: (
                             (crop as AnnualCrop).harvestEvents?.map(
                               (
