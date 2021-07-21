@@ -156,6 +156,7 @@ export const convertFromV3ToV1 = ({
                               new Date(a.date).getTime() -
                               new Date(b.date).getTime()
                           ),
+                          // TODO - re-enable some filtration when decide how to handle multi-year crops
                           // .filter(
                           //   (f) =>
                           //     Number(f.date.split('/').slice(-1)) ===
