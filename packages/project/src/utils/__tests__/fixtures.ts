@@ -1610,84 +1610,7 @@ export const v3DataForIrrigationTests: Project = {
       },
       cropYears: [
         {
-          // valid number of events (no overflow)
-          plantingYear: 2000,
-          crops: [
-            {
-              name: null,
-              type: 'corn',
-              plantingDate: '04/20/2007',
-              fertilizerEvents: [],
-              organicMatterEvents: [],
-              irrigationEvents: [
-                {
-                  date: '04/25/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '05/02/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '05/09/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '05/16/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '05/23/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '05/30/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '06/06/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '06/13/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '06/20/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '06/27/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '07/04/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '07/11/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '07/18/2007',
-                  volume: 1.0,
-                },
-                {
-                  date: '07/25/2007',
-                  volume: 1.0,
-                },
-              ],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [],
-              harvestEvents: [],
-              classification: 'annual crop',
-            },
-          ],
-        },
-        {
-          // too many events, but regular pattern
+          // Regular pattern
           plantingYear: 2001,
           crops: [
             {
@@ -1788,7 +1711,7 @@ export const v3DataForIrrigationTests: Project = {
           ],
         },
         {
-          // too many events, irregular pattern
+          // irregular pattern
           plantingYear: 2002,
           crops: [
             {
