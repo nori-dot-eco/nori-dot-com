@@ -144,14 +144,14 @@ describe('v3-utils', () => {
                         classification: 'soybean',
                         datePlanted: '04/20/2002',
                         fertilizerEvents: [
-                          {
-                            area: 6,
-                            classification: 'urea ammonium nitrate (30-00-00)',
-                            date: '06/15/2002',
-                            lbsOfN: 149.8,
-                            productName: 'urea ammonium nitrate (30-00-00)',
-                            quantityUnit: 'lbs/acre',
-                          },
+                          // {
+                          //   area: 6,
+                          //   classification: 'urea ammonium nitrate (30-00-00)',
+                          //   date: '06/15/2002',
+                          //   lbsOfN: 149.8,
+                          //   productName: 'urea ammonium nitrate (30-00-00)',
+                          //   quantityUnit: 'lbs/acre',
+                          // },
                         ],
                         harvestOrKillEvents: [
                           {
@@ -161,7 +161,7 @@ describe('v3-utils', () => {
                             yieldDenominatorUnit: 'ac',
                           },
                           {
-                            date: '09/14/2002',
+                            date: '09/14/2003',
                             boundaryYield: 134,
                             yieldNumeratorUnit: 'bu',
                             yieldDenominatorUnit: 'ac',
@@ -171,7 +171,7 @@ describe('v3-utils', () => {
                         limingEvents: [],
                         organicMatterEvents: [
                           {
-                            date: '04/01/2002',
+                            date: '04/01/2003',
                             productName: expect.stringMatching(/OMAD product /),
                             classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
@@ -183,9 +183,14 @@ describe('v3-utils', () => {
                         ],
                         tillageEvents: [
                           {
+                            classification: 'no tillage',
+                            type: 'no tillage',
+                            date: '04/20/2002',
+                          },
+                          {
                             classification: 'intensive tillage',
                             type: 'intensive tillage',
-                            date: '04/19/2002',
+                            date: '04/19/2003',
                           },
                         ],
                         burningEvents: [],
@@ -194,36 +199,7 @@ describe('v3-utils', () => {
                   },
                   {
                     cropYear: 2003,
-                    crops: [
-                      {
-                        version: 2,
-                        cropName: 'soybean',
-                        type: 'annual crop',
-                        cropNumber: 1,
-                        classification: 'soybean',
-                        datePlanted: '04/20/2003',
-                        fertilizerEvents: [],
-                        harvestOrKillEvents: [
-                          {
-                            date: '09/14/2003',
-                            boundaryYield: 38,
-                            yieldNumeratorUnit: 'bu',
-                            yieldDenominatorUnit: 'ac',
-                          },
-                        ],
-                        irrigationEvents: [],
-                        limingEvents: [],
-                        organicMatterEvents: [],
-                        tillageEvents: [
-                          {
-                            classification: 'no tillage',
-                            type: 'no tillage',
-                            date: '04/20/2003',
-                          },
-                        ],
-                        burningEvents: [],
-                      },
-                    ],
+                    crops: [],
                   },
                   {
                     cropYear: 2004,
@@ -1101,7 +1077,7 @@ describe('v3-utils', () => {
                         limingEvents: [],
                         organicMatterEvents: [
                           {
-                            date: '04/01/2019',
+                            date: '04/01/2020',
                             productName: expect.stringMatching(/OMAD product /),
                             classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
@@ -1447,60 +1423,6 @@ describe('v3-utils', () => {
                             classification: 'no tillage',
                             type: 'no tillage',
                             date: '09/22/2024',
-                          },
-                        ],
-                        burningEvents: [],
-                      },
-                    ],
-                  },
-                  {
-                    cropYear: 2025,
-                    crops: [
-                      {
-                        version: 2,
-                        cropName: 'soybean',
-                        type: 'annual crop',
-                        cropNumber: 1,
-                        classification: 'soybean',
-                        datePlanted: '04/27/2025',
-                        fertilizerEvents: [],
-                        harvestOrKillEvents: [
-                          {
-                            date: '09/20/2025',
-                            boundaryYield: 50,
-                            yieldNumeratorUnit: 'bu',
-                            yieldDenominatorUnit: 'ac',
-                          },
-                        ],
-                        irrigationEvents: [],
-                        limingEvents: [],
-                        organicMatterEvents: [],
-                        tillageEvents: [
-                          {
-                            classification: 'no tillage',
-                            type: 'no tillage',
-                            date: '04/27/2025',
-                          },
-                        ],
-                        burningEvents: [],
-                      },
-                      {
-                        version: 2,
-                        cropName: 'annual rye - legume',
-                        type: 'annual cover',
-                        cropNumber: 2,
-                        classification: 'annual rye - legume',
-                        datePlanted: '09/22/2025',
-                        fertilizerEvents: [],
-                        harvestOrKillEvents: [],
-                        irrigationEvents: [],
-                        limingEvents: [],
-                        organicMatterEvents: [],
-                        tillageEvents: [
-                          {
-                            classification: 'no tillage',
-                            type: 'no tillage',
-                            date: '09/22/2025',
                           },
                         ],
                         burningEvents: [],

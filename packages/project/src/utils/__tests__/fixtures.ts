@@ -208,7 +208,7 @@ export const v3Data: Project = {
               plantingDate: '04/20/2002',
               fertilizerEvents: [
                 {
-                  date: '06/15/2002',
+                  date: '06/15/2003',
                   name: null,
                   type: 'urea ammonium nitrate (30-00-00)',
                   lbsOfNPerAcre: 149.8,
@@ -216,7 +216,7 @@ export const v3Data: Project = {
               ],
               organicMatterEvents: [
                 {
-                  date: '04/01/2002',
+                  date: '04/01/2003',
                   type: 'chicken - broiler (litter), solid',
                   name: null,
                   amountPerAcre: 0.78,
@@ -231,7 +231,12 @@ export const v3Data: Project = {
               burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
-                  date: '04/19/2002',
+                  date: '04/20/2002',
+                  type: 'no tillage',
+                  name: null,
+                },
+                {
+                  date: '04/19/2003',
                   name: null,
                   type: 'intensive tillage',
                 },
@@ -245,7 +250,7 @@ export const v3Data: Project = {
                   residueRemoved: 0,
                 },
                 {
-                  date: '09/14/2002',
+                  date: '09/14/2003',
                   grainFruitTuber: 'yes',
                   yield: 134.0,
                   yieldUnit: 'bu/ac',
@@ -258,36 +263,7 @@ export const v3Data: Project = {
         },
         {
           plantingYear: 2003,
-          crops: [
-            {
-              name: null,
-              type: 'soybean',
-              plantingDate: '04/20/2003',
-              fertilizerEvents: [],
-              organicMatterEvents: [],
-              irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [
-                {
-                  date: '04/20/2003',
-                  type: 'no tillage',
-                  name: null,
-                },
-              ],
-              harvestEvents: [
-                {
-                  date: '09/14/2003',
-                  grainFruitTuber: 'yes',
-                  yield: 38,
-                  yieldUnit: 'bu/ac',
-                  residueRemoved: 0,
-                },
-              ],
-              classification: 'annual crop',
-            },
-          ],
+          crops: [],
         },
         {
           plantingYear: 2004,
@@ -1240,7 +1216,7 @@ export const v3Data: Project = {
               fertilizerEvents: [],
               organicMatterEvents: [
                 {
-                  date: '04/01/2019',
+                  date: '04/01/2020',
                   name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
@@ -1586,58 +1562,6 @@ export const v3Data: Project = {
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/22/2024',
-                  type: 'no tillage',
-                  name: null,
-                },
-              ],
-            },
-          ],
-        },
-        {
-          plantingYear: 2025,
-          crops: [
-            {
-              name: null,
-              type: 'soybean',
-              plantingDate: '04/27/2025',
-              fertilizerEvents: [],
-              organicMatterEvents: [],
-              irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [
-                {
-                  date: '04/27/2025',
-                  type: 'no tillage',
-                  name: null,
-                },
-              ],
-              harvestEvents: [
-                {
-                  date: '09/20/2025',
-                  grainFruitTuber: 'yes',
-                  yield: 50,
-                  yieldUnit: 'bu/ac',
-                  residueRemoved: 0,
-                },
-              ],
-              classification: 'annual crop',
-            },
-            {
-              name: null,
-              type: 'annual rye - legume',
-              classification: 'annual cover',
-              plantingDate: '09/22/2025',
-              fertilizerEvents: [],
-              organicMatterEvents: [],
-              irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [
-                {
-                  date: '09/22/2025',
                   type: 'no tillage',
                   name: null,
                 },
