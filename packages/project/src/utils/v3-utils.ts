@@ -26,8 +26,6 @@ import type {
   AnnualCropHarvestEvent,
 } from '../specification';
 
-const MAX_SHEET_ROWS_PER_YEAR = 16;
-
 export const isOrchardOrVineyardCrop = (
   crop: AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop
 ): crop is OrchardOrVineyardCrop => {
@@ -81,8 +79,6 @@ export const convertFromV3ToV1 = ({
                           new Date(b.plantingDate).getTime()
                       )
                       .map((crop, i): V1Crop => {
-                        // start by assigning simple map -- this may be empty, or it may overflow the number of possible
-                        // rows that can be populated in the spreadsheet -- something that will be dealt with in the sheet import.
                         let irrigationEvents: V1IrrigationEvent[] =
                           crop.irrigationEvents?.map(
                             (irrigationEvent): V1IrrigationEvent => {
@@ -114,7 +110,6 @@ export const convertFromV3ToV1 = ({
                           crop.irrigationEvents?.length &&
                           everyDateIntervalIsEqual
                         ) {
-                          // need start date, end date, and duration in days between date intervals
                           const frequency = Math.abs(
                             moment(dates[0]).diff(dates[1], 'days')
                           );

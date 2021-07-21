@@ -143,16 +143,7 @@ describe('v3-utils', () => {
                         cropNumber: 1,
                         classification: 'soybean',
                         datePlanted: '04/20/2002',
-                        fertilizerEvents: [
-                          // {
-                          //   area: 6,
-                          //   classification: 'urea ammonium nitrate (30-00-00)',
-                          //   date: '06/15/2002',
-                          //   lbsOfN: 149.8,
-                          //   productName: 'urea ammonium nitrate (30-00-00)',
-                          //   quantityUnit: 'lbs/acre',
-                          // },
-                        ],
+                        fertilizerEvents: [],
                         harvestOrKillEvents: [
                           {
                             date: '09/14/2002',
