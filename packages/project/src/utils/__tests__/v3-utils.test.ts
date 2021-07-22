@@ -143,7 +143,16 @@ describe('v3-utils', () => {
                         cropNumber: 1,
                         classification: 'soybean',
                         datePlanted: '04/20/2002',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '06/15/2003',
+                            lbsOfN: 149.8,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '09/14/2002',
@@ -377,7 +386,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2007',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2008',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2008',
@@ -499,7 +517,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2009',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2010',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2010',
@@ -613,7 +640,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2011',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2012',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2012',
@@ -735,7 +771,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2013',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2014',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2014',
@@ -849,7 +894,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2015',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2016',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2016',
@@ -963,7 +1017,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2017',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2018',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2018',
@@ -1094,7 +1157,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'annual rye - legume',
                         datePlanted: '09/20/2019',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '06/15/2020',
+                            lbsOfN: 149.8,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [],
                         irrigationEvents: [],
                         limingEvents: [],
@@ -1463,6 +1535,32 @@ describe('v3-utils', () => {
                 },
                 cropYears: [
                   {
+                    cropYear: 2000,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Single event
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
                     cropYear: 2001,
                     crops: [
                       {
@@ -1474,12 +1572,12 @@ describe('v3-utils', () => {
                         datePlanted: '04/20/2007',
                         fertilizerEvents: [],
                         harvestOrKillEvents: [],
-                        // too many events, regular pattern
+                        // Two events
                         irrigationEvents: [
                           {
                             date: '04/25/2007',
                             startDate: '04/25/2007',
-                            endDate: '09/05/2007',
+                            endDate: '05/02/2007',
                             frequency: 7,
                             volume: 1,
                           },
@@ -1503,7 +1601,36 @@ describe('v3-utils', () => {
                         datePlanted: '04/20/2007',
                         fertilizerEvents: [],
                         harvestOrKillEvents: [],
-                        // too many events, irregular pattern
+                        // Many events, regular pattern
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            startDate: '04/25/2007',
+                            endDate: '09/05/2007',
+                            frequency: 7,
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2003,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Many events, irregular pattern
                         irrigationEvents: [
                           {
                             date: '04/25/2007',

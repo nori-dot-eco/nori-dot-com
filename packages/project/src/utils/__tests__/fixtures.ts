@@ -8,6 +8,8 @@ import type { V2Data, Project } from '../../index';
 // todo in some years (i.e. 2019 and more) crop#2, is fertilizer applied to the correct crop? looks like it should go to the first harvested crop instead of cover crop
 // todo need a way to get classification of crop from sheet as well
 
+// NOTE: these fixtures are not quite valid project data from a sheet-logic perspective, just being used to
+// test the converter.  See nori-graphql/src/__tests__/data/v3-import.json for valid(er) project data.
 export const v3Data: Project = {
   version: '3.0.0',
   fields: [
@@ -1610,8 +1612,62 @@ export const v3DataForIrrigationTests: Project = {
       },
       cropYears: [
         {
-          // Regular pattern
+          // Single irrigation event
+          plantingYear: 2000,
+          crops: [
+            {
+              name: null,
+              type: 'corn',
+              plantingDate: '04/20/2007',
+              fertilizerEvents: [],
+              organicMatterEvents: [],
+              irrigationEvents: [
+                {
+                  date: '04/25/2007',
+                  volume: 1.0,
+                },
+              ],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [],
+              harvestEvents: [],
+              classification: 'annual crop',
+            },
+          ],
+        },
+        {
+          // Two irrigation events
           plantingYear: 2001,
+          crops: [
+            {
+              name: null,
+              type: 'corn',
+              plantingDate: '04/20/2007',
+              fertilizerEvents: [],
+              organicMatterEvents: [],
+              irrigationEvents: [
+                {
+                  date: '04/25/2007',
+                  volume: 1.0,
+                },
+                {
+                  date: '05/02/2007',
+                  volume: 1.0,
+                },
+              ],
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
+              soilOrCropDisturbanceEvents: [],
+              harvestEvents: [],
+              classification: 'annual crop',
+            },
+          ],
+        },
+        {
+          // Regular pattern, many events
+          plantingYear: 2002,
           crops: [
             {
               name: null,
@@ -1711,8 +1767,8 @@ export const v3DataForIrrigationTests: Project = {
           ],
         },
         {
-          // irregular pattern
-          plantingYear: 2002,
+          // irregular pattern, many events
+          plantingYear: 2003,
           crops: [
             {
               name: null,

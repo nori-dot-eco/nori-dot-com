@@ -88,45 +88,47 @@ export const convertFromV3ToV1 = ({
                               };
                             }
                           ) ?? [];
-                        // Attempt to detect a regular pattern
-                        const dates = crop.irrigationEvents.map(
-                          (irrigationEvent) => {
-                            return irrigationEvent.date;
-                          }
-                        );
-                        const everyDateIntervalIsEqual = dates.every(
-                          (e, index, arr) => {
-                            if (arr[index + 1]) {
-                              return (
-                                moment(arr[index]).diff(arr[index + 1]) ===
-                                moment(arr[0]).diff(arr[1])
-                              );
-                            } else {
-                              return true;
+                        // If more than one event, attempt to detect a regular pattern
+                        if (irrigationEvents.length > 1) {
+                          const dates = crop.irrigationEvents.map(
+                            (irrigationEvent) => {
+                              return irrigationEvent.date;
                             }
-                          }
-                        );
-                        if (
-                          crop.irrigationEvents?.length &&
-                          everyDateIntervalIsEqual
-                        ) {
-                          const frequency = Math.abs(
-                            moment(dates[0]).diff(dates[1], 'days')
                           );
-                          const startDate = dates[0];
-                          const endDate = dates[dates.length - 1];
-                          // Rebekah says volume doesn't matter - it's not incorporated into the SoilMetrics model
-                          // We'll just use whatever the first value is for all.
-                          const volume = crop.irrigationEvents[0].volume;
-                          irrigationEvents = [
-                            {
-                              date: startDate,
-                              startDate,
-                              endDate,
-                              frequency,
-                              volume,
-                            },
-                          ];
+                          const everyDateIntervalIsEqual = dates.every(
+                            (e, index, arr) => {
+                              if (arr[index + 1]) {
+                                return (
+                                  moment(arr[index]).diff(arr[index + 1]) ===
+                                  moment(arr[0]).diff(arr[1])
+                                );
+                              } else {
+                                return true;
+                              }
+                            }
+                          );
+                          if (
+                            crop.irrigationEvents?.length &&
+                            everyDateIntervalIsEqual
+                          ) {
+                            const frequency = Math.abs(
+                              moment(dates[0]).diff(dates[1], 'days')
+                            );
+                            const startDate = dates[0];
+                            const endDate = dates[dates.length - 1];
+                            // Rebekah says volume doesn't matter - it's not incorporated into the SoilMetrics model
+                            // We'll just use whatever the first value is for all.
+                            const volume = crop.irrigationEvents[0].volume;
+                            irrigationEvents = [
+                              {
+                                date: startDate,
+                                startDate,
+                                endDate,
+                                frequency,
+                                volume,
+                              },
+                            ];
+                          }
                         }
 
                         return {
@@ -156,12 +158,6 @@ export const convertFromV3ToV1 = ({
                               new Date(a.date).getTime() -
                               new Date(b.date).getTime()
                           ),
-                          // TODO - re-enable some filtration when decide how to handle multi-year crops
-                          // .filter(
-                          //   (f) =>
-                          //     Number(f.date.split('/').slice(-1)) ===
-                          //     cropYear.plantingYear // todo v3 to v1 multi year events are not supported for fertilizer events
-                          // ),
                           harvestOrKillEvents: (
                             (crop as AnnualCrop).harvestEvents?.map(
                               (
