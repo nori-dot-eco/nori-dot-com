@@ -107,10 +107,7 @@ export const convertFromV3ToV1 = ({
                               }
                             }
                           );
-                          if (
-                            crop.irrigationEvents?.length &&
-                            everyDateIntervalIsEqual
-                          ) {
+                          if (everyDateIntervalIsEqual) {
                             const frequency = Math.abs(
                               moment(dates[0]).diff(dates[1], 'days')
                             );

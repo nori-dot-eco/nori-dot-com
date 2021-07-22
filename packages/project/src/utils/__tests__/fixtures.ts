@@ -1621,6 +1621,7 @@ export const v3DataForIrrigationTests: Project = {
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
               organicMatterEvents: [],
+              // Single irrigation event
               irrigationEvents: [
                 {
                   date: '04/25/2007',
@@ -1637,7 +1638,6 @@ export const v3DataForIrrigationTests: Project = {
           ],
         },
         {
-          // Two irrigation events
           plantingYear: 2001,
           crops: [
             {
@@ -1646,6 +1646,7 @@ export const v3DataForIrrigationTests: Project = {
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
               organicMatterEvents: [],
+              // Two irrigation events
               irrigationEvents: [
                 {
                   date: '04/25/2007',
@@ -1666,7 +1667,6 @@ export const v3DataForIrrigationTests: Project = {
           ],
         },
         {
-          // Regular pattern, many events
           plantingYear: 2002,
           crops: [
             {
@@ -1675,6 +1675,7 @@ export const v3DataForIrrigationTests: Project = {
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
               organicMatterEvents: [],
+              // Regular pattern, many events
               irrigationEvents: [
                 {
                   date: '04/25/2007',
@@ -1767,7 +1768,6 @@ export const v3DataForIrrigationTests: Project = {
           ],
         },
         {
-          // irregular pattern, many events
           plantingYear: 2003,
           crops: [
             {
@@ -1776,6 +1776,7 @@ export const v3DataForIrrigationTests: Project = {
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
               organicMatterEvents: [],
+              // Irregular pattern, many events
               irrigationEvents: [
                 {
                   date: '04/25/2007',
