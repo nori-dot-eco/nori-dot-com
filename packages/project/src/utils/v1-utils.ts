@@ -111,14 +111,13 @@ export const collectV1Errors = (
   sanitizedProject?.projects?.forEach((project) => {
     project?.fieldSets?.forEach((field) => {
       field?.cropYears?.forEach((cropYear) => {
-        const totalRequiredIrrigationRows = 0;
-        const reducer = (accumulator: number, crop: V1Crop): number => {
+        const reducer = (acc: number, crop: V1Crop): number => {
           if (crop?.irrigationEvents?.length > 0) {
-            accumulator += crop.irrigationEvents.length;
+            acc += crop.irrigationEvents.length;
           }
-          return accumulator;
+          return acc;
         };
-        cropYear?.crops?.reduce(reducer, totalRequiredIrrigationRows);
+        const totalRequiredIrrigationRows = cropYear?.crops?.reduce(reducer, 0);
         cropYear?.crops?.forEach((crop) =>
           checkEventDates(crop, field.fieldSetName, errorCollector)
         );
