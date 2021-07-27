@@ -111,14 +111,17 @@ export const collectV1Errors = (
   sanitizedProject?.projects?.forEach((project) => {
     project?.fieldSets?.forEach((field) => {
       field?.cropYears?.forEach((cropYear) => {
-        // figure out total number of irrigation rows for this entire crop year and figure out whether it's going to overflow
-        let totalRequiredIrrigationRows = 0;
-        cropYear?.crops?.forEach((crop) => {
+        const totalRequiredIrrigationRows = 0;
+        const reducer = (accumulator: number, crop: V1Crop): number => {
           if (crop?.irrigationEvents?.length > 0) {
-            totalRequiredIrrigationRows += crop.irrigationEvents.length;
+            accumulator += crop.irrigationEvents.length;
           }
-          checkEventDates(crop, field.fieldSetName, errorCollector);
-        });
+          return accumulator;
+        };
+        cropYear?.crops?.reduce(reducer, totalRequiredIrrigationRows);
+        cropYear?.crops?.forEach((crop) =>
+          checkEventDates(crop, field.fieldSetName, errorCollector)
+        );
         if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
           errorCollector.collectError(
             new Error(
