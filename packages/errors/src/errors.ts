@@ -53,6 +53,11 @@ export const Errors = {
       message: 'An unknown error ocurred',
     },
   },
+  operationalErrorCode: {
+    ggitCommunicationError: {
+      message: 'An error occurred in communication with the GGIT API.',
+    },
+  },
   sheetInput: {
     historicalLandUsePre1980Missing: {
       message:
@@ -102,8 +107,6 @@ export const Errors = {
     },
     cropOrganicMatterCalculationError: {
       message: `Invalid omad calculation: (1 - percentMoisture) * omadAmount = omadAmountAdjusted.`,
-      tmpl: (c: Record<string, unknown>): string =>
-        `Invalid omad calculation: (1 - ${c.percentMoisture}) * ${c.omadAmount} = ${c.omadAmountAdjusted}. Solid calculated as ${c.percentSolid}. Percent moisture: ${c.percentMoisture}. Amount: ${c.omadAmount}`,
     },
     cropOrganicMatterError: {
       message:
@@ -166,7 +169,18 @@ export const Errors = {
         'There was an error formatting the start year in the sheet. Please check the sheet for missing or invalid data.',
     },
     ggitConversionGeneralError: {
-      message: 'An unknown error occurred generating the ggit input file.',
+      message: 'An unexpected error occurred generating the ggit input file.',
+    },
+    googleSheetsError: {
+      message:
+        'Something went wrong in Google Sheets, please try again or recreate the project.',
+    },
+    fieldTabMismatchError: {
+      message:
+        'There was an error getting sheet data. Make sure the field names in the land management tab match the tab names in the associated spreadsheet.',
+    },
+    buildAnnualCropRangesError: {
+      message: 'There was an error building the annual crop ranges.',
     },
   },
 };
