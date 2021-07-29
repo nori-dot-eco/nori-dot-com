@@ -171,9 +171,9 @@ export const Errors = {
     ggitConversionGeneralError: {
       message: 'An unexpected error occurred generating the ggit input file.',
     },
-    googleSheetsError: {
+    googleSheetsNamedRangeError: {
       message:
-        'Something went wrong in Google Sheets, please try again or recreate the project.',
+        'Google Sheets returned an invalid response containing data from a malformed named range.',
     },
     fieldTabMismatchError: {
       message:
