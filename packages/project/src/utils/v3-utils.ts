@@ -1,4 +1,6 @@
 /* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
+import * as moment from 'moment';
+
 import type {
   AnnualCrop,
   CoverCrop,
@@ -77,6 +79,55 @@ export const convertFromV3ToV1 = ({
                           new Date(b.plantingDate).getTime()
                       )
                       .map((crop, i): V1Crop => {
+                        let irrigationEvents: V1IrrigationEvent[] =
+                          crop.irrigationEvents?.map(
+                            (irrigationEvent): V1IrrigationEvent => {
+                              return {
+                                date: irrigationEvent.date,
+                                volume: irrigationEvent.volume,
+                              };
+                            }
+                          ) ?? [];
+                        // If more than one event, attempt to detect a regular pattern
+                        if (irrigationEvents.length > 1) {
+                          const dates = crop.irrigationEvents.map(
+                            (irrigationEvent) => {
+                              return irrigationEvent.date;
+                            }
+                          );
+                          const everyDateIntervalIsEqual = dates.every(
+                            (e, index, arr) => {
+                              if (arr[index + 1]) {
+                                return (
+                                  moment(arr[index]).diff(arr[index + 1]) ===
+                                  moment(arr[0]).diff(arr[1])
+                                );
+                              } else {
+                                return true;
+                              }
+                            }
+                          );
+                          if (everyDateIntervalIsEqual) {
+                            const frequency = Math.abs(
+                              moment(dates[0]).diff(dates[1], 'days')
+                            );
+                            const startDate = dates[0];
+                            const endDate = dates[dates.length - 1];
+                            // Rebekah says volume doesn't matter - it's not incorporated into the SoilMetrics model
+                            // We'll just use whatever the first value is for all.
+                            const volume = crop.irrigationEvents[0].volume;
+                            irrigationEvents = [
+                              {
+                                date: startDate,
+                                startDate,
+                                endDate,
+                                frequency,
+                                volume,
+                              },
+                            ];
+                          }
+                        }
+
                         return {
                           version: 2,
                           cropName: crop.name || crop.type,
@@ -89,6 +140,7 @@ export const convertFromV3ToV1 = ({
                               (fertilizerEvent): V1FertilizerEvent => {
                                 return {
                                   date: fertilizerEvent.date,
+                                  classification: fertilizerEvent.type,
                                   productName:
                                     fertilizerEvent.name ||
                                     fertilizerEvent.type,
@@ -98,17 +150,11 @@ export const convertFromV3ToV1 = ({
                                 };
                               }
                             ) ?? []
-                          )
-                            .sort(
-                              (a, b) =>
-                                new Date(a.date).getTime() -
-                                new Date(b.date).getTime()
-                            )
-                            .filter(
-                              (f) =>
-                                Number(f.date.split('/').slice(-1)) ===
-                                cropYear.plantingYear // todo v3 to v1 multi year events are not supported for fertilizer events
-                            ),
+                          ).sort(
+                            (a, b) =>
+                              new Date(a.date).getTime() -
+                              new Date(b.date).getTime()
+                          ),
                           harvestOrKillEvents: (
                             (crop as AnnualCrop).harvestEvents?.map(
                               (
@@ -132,15 +178,7 @@ export const convertFromV3ToV1 = ({
                               new Date(a.date).getTime() -
                               new Date(b.date).getTime()
                           ),
-                          irrigationEvents:
-                            crop.irrigationEvents?.map(
-                              (irrigationEvent): V1IrrigationEvent => {
-                                return {
-                                  date: irrigationEvent.date,
-                                  volume: irrigationEvent.volume,
-                                };
-                              }
-                            ) ?? [],
+                          irrigationEvents,
                           limingEvents:
                             crop.limingEvents?.map(
                               (limingEvent): V1LimingEvent => {
@@ -158,6 +196,7 @@ export const convertFromV3ToV1 = ({
                               (organicMatterEvent): V1OrganicMatterEvent => {
                                 return {
                                   date: organicMatterEvent.date,
+                                  classification: organicMatterEvent.type,
                                   productName:
                                     organicMatterEvent.name ??
                                     `OMAD product ${
@@ -217,4 +256,8 @@ export const convertFromV3ToV1 = ({
     ],
   };
   return { v1Data };
+};
+
+export const isV3Data = (data: Project | V1Data): data is Project => {
+  return 'version' in data && data.version === '3.0.0';
 };

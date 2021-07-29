@@ -1,6 +1,6 @@
 import { convertFromV3ToV1 } from '../v3-utils';
 
-import { v3Data } from './fixtures';
+import { v3Data, v3DataForIrrigationTests } from './fixtures';
 
 describe('v3-utils', () => {
   describe('convertFromV3ToV1', () => {
@@ -86,6 +86,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2001',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -102,82 +103,9 @@ describe('v3-utils', () => {
                         irrigationEvents: [
                           {
                             date: '04/25/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/02/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/09/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/16/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/23/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/30/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/06/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/13/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/20/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/27/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/04/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/11/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/18/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/25/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/01/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/08/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/15/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/22/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/29/2001',
-                            volume: 1,
-                          },
-                          {
-                            date: '09/05/2001',
+                            startDate: '04/25/2001',
+                            endDate: '09/05/2001',
+                            frequency: 7,
                             volume: 1,
                           },
                         ],
@@ -186,6 +114,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2001',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -214,7 +143,16 @@ describe('v3-utils', () => {
                         cropNumber: 1,
                         classification: 'soybean',
                         datePlanted: '04/20/2002',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '06/15/2003',
+                            lbsOfN: 149.8,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '09/14/2002',
@@ -235,6 +173,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2003',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -309,6 +248,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2005',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -328,6 +268,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2005',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -393,6 +334,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2007',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -409,82 +351,9 @@ describe('v3-utils', () => {
                         irrigationEvents: [
                           {
                             date: '04/25/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/02/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/09/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/16/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/23/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '05/30/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/06/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/13/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/20/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '06/27/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/04/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/11/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/18/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '07/25/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/01/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/08/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/15/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/22/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '08/29/2007',
-                            volume: 1,
-                          },
-                          {
-                            date: '09/05/2007',
+                            startDate: '04/25/2007',
+                            endDate: '09/05/2007',
+                            frequency: 7,
                             volume: 1,
                           },
                         ],
@@ -493,6 +362,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2007',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -516,7 +386,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2007',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2008',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2008',
@@ -594,6 +473,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2009',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -613,6 +493,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2009',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -636,7 +517,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2009',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2010',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2010',
@@ -706,6 +596,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2011',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -725,6 +616,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2011',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -748,7 +640,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2011',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2012',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2012',
@@ -826,6 +727,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2013',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -845,6 +747,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2013',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -868,7 +771,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2013',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2014',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2014',
@@ -938,6 +850,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2015',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -957,6 +870,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2015',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -980,7 +894,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2015',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2016',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2016',
@@ -1050,6 +973,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2017',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -1069,6 +993,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2017',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1092,7 +1017,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'winter wheat',
                         datePlanted: '09/20/2017',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '03/01/2018',
+                            lbsOfN: 90.2,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [
                           {
                             date: '06/10/2018',
@@ -1199,6 +1133,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2020',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1222,7 +1157,16 @@ describe('v3-utils', () => {
                         cropNumber: 2,
                         classification: 'annual rye - legume',
                         datePlanted: '09/20/2019',
-                        fertilizerEvents: [],
+                        fertilizerEvents: [
+                          {
+                            area: 6,
+                            classification: 'urea ammonium nitrate (30-00-00)',
+                            date: '06/15/2020',
+                            lbsOfN: 149.8,
+                            productName: 'urea ammonium nitrate (30-00-00)',
+                            quantityUnit: 'lbs/acre',
+                          },
+                        ],
                         harvestOrKillEvents: [],
                         irrigationEvents: [],
                         limingEvents: [],
@@ -1306,6 +1250,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2021',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -1325,6 +1270,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2021',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1432,6 +1378,7 @@ describe('v3-utils', () => {
                           {
                             date: '06/15/2023',
                             productName: 'urea ammonium nitrate (30-00-00)',
+                            classification: 'urea ammonium nitrate (30-00-00)',
                             lbsOfN: 149.8,
                             area: 6,
                             quantityUnit: 'lbs/acre',
@@ -1451,6 +1398,7 @@ describe('v3-utils', () => {
                           {
                             date: '04/01/2023',
                             productName: expect.stringMatching(/OMAD product /),
+                            classification: 'chicken - broiler (litter), solid',
                             percentN: 2.3,
                             tonsPerAcre: 0.78,
                             carbonToNitrogenRatio: 7.8,
@@ -1540,6 +1488,234 @@ describe('v3-utils', () => {
                             date: '09/22/2024',
                           },
                         ],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+    });
+    it('should correctly handle irrigation events', () => {
+      const { v1Data } = convertFromV3ToV1({
+        v3Data: v3DataForIrrigationTests,
+      });
+      expect(v1Data).toStrictEqual<
+        ReturnType<typeof convertFromV3ToV1>['v1Data']
+      >({
+        projects: [
+          {
+            fieldSets: [
+              {
+                area: 6,
+                fieldSetName: 'example field',
+                geometry: {
+                  type: 'FeatureCollection',
+                  features: [
+                    {
+                      type: 'Feature',
+                      geometry: {
+                        type: 'Polygon',
+                        coordinates: [
+                          [
+                            [-102.0256, 41.1624],
+                            [-102.02423, 41.1631],
+                            [-102.0225, 41.1635],
+                            [-102.0261, 41.161],
+                            [-102.0256, 41.1624],
+                          ],
+                        ],
+                      },
+                      properties: {},
+                    },
+                  ],
+                },
+                cropYears: [
+                  {
+                    cropYear: 2000,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Single event
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2001,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Two events
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            startDate: '04/25/2007',
+                            endDate: '05/02/2007',
+                            frequency: 7,
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2002,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Many events, regular pattern
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            startDate: '04/25/2007',
+                            endDate: '09/05/2007',
+                            frequency: 7,
+                            volume: 1,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
+                        burningEvents: [],
+                      },
+                    ],
+                  },
+                  {
+                    cropYear: 2003,
+                    crops: [
+                      {
+                        version: 2,
+                        cropName: 'corn',
+                        type: 'annual crop',
+                        cropNumber: 1,
+                        classification: 'corn',
+                        datePlanted: '04/20/2007',
+                        fertilizerEvents: [],
+                        harvestOrKillEvents: [],
+                        // Many events, irregular pattern
+                        irrigationEvents: [
+                          {
+                            date: '04/25/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/06/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/09/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/20/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/23/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '05/30/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/06/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/13/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/20/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '06/27/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/04/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/11/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/18/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '07/25/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/01/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/08/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/15/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/22/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '08/29/2007',
+                            volume: 1.0,
+                          },
+                          {
+                            date: '09/05/2007',
+                            volume: 1.0,
+                          },
+                        ],
+                        limingEvents: [],
+                        organicMatterEvents: [],
+                        tillageEvents: [],
                         burningEvents: [],
                       },
                     ],
