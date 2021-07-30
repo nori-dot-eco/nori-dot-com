@@ -1,12 +1,24 @@
-export class ErrorCollector {
-  public errors: Error[];
+import { UnparsedError } from '../../../errors/dist';
 
-  constructor() {
-    this.errors = [];
-  }
+export interface ContextualError extends Error {
+  name: string;
+  context?: Record<string, unknown>;
+  originalException?: Error;
+  // set message(value: string);
+  // get message(): string;
+}
 
-  collectError(error: Error): void {
-    console.error('Collected error while parsing data!', error);
-    this.errors.push(error);
-  }
+export interface ErrorCollector {
+  errors: Error[];
+  buildContextualError(
+    errorKey: UnparsedError,
+    context?: Record<string, unknown>,
+    exception?: Error
+  ): ContextualError;
+  collectContextualError(error: ContextualError): void;
+  collectKeyedError(
+    errorKey: UnparsedError,
+    context?: Record<string, unknown>,
+    exception?: Error
+  ): void;
 }

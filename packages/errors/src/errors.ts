@@ -47,6 +47,10 @@ export const Errors = {
     fieldNameUnknownError: {
       message: 'An unknown error occurred with the field name',
     },
+    irrigationEventOverflowError: {
+      message:
+        'No more than 16 irrigation event data entries can be specified for a crop year.',
+    },
   },
   unknownErrorCode: {
     unknownErrorType: {

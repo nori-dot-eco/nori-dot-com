@@ -45,46 +45,71 @@ const checkEventDates = (
 ) => {
   crop.harvestOrKillEvents?.forEach((harvestEvent) => {
     if (eventDateIsOutOfRange(crop.datePlanted, harvestEvent.date)) {
-      errorCollector.collectError(
-        new Error(
-          `Harvest event with date ${harvestEvent.date} is more than one year from planting date ${crop.datePlanted} for ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'harvestEvent',
+          eventDate: harvestEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
   crop.tillageEvents?.forEach((tillageEvent) => {
     if (eventDateIsOutOfRange(crop.datePlanted, tillageEvent.date)) {
-      errorCollector.collectError(
-        new Error(
-          `Tillage event with date ${tillageEvent.date} is more than one year from planting date ${crop.datePlanted} for ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'tillageEvent',
+          eventDate: tillageEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
   crop.limingEvents?.forEach((limingEvent) => {
     if (eventDateIsOutOfRange(crop.datePlanted, limingEvent.date)) {
-      errorCollector.collectError(
-        new Error(
-          `Liming event with date ${limingEvent.date} is more than one year from planting date ${crop.datePlanted} for ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'limingEvent',
+          eventDate: limingEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
   crop.organicMatterEvents?.forEach((organicMatterEvent) => {
     if (eventDateIsOutOfRange(crop.datePlanted, organicMatterEvent.date)) {
-      errorCollector.collectError(
-        new Error(
-          `Organic matter event with date ${organicMatterEvent.date} is more than one year from planting date ${crop.datePlanted} for ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'organicMatterEvent',
+          eventDate: organicMatterEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
   crop.fertilizerEvents?.forEach((fertilizerEvent) => {
     if (eventDateIsOutOfRange(crop.datePlanted, fertilizerEvent.date)) {
-      errorCollector.collectError(
-        new Error(
-          `Fertilizer event with date ${fertilizerEvent.date} is more than one year from planting date ${crop.datePlanted} for crop ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'fertilizerEvent',
+          eventDate: fertilizerEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
@@ -95,10 +120,15 @@ const checkEventDates = (
         irrigationEvent.endDate ?? irrigationEvent.date
       )
     ) {
-      errorCollector.collectError(
-        new Error(
-          `Irrigation event with date ${irrigationEvent.date} is more than one year from planting date ${crop.datePlanted} for crop ${crop.cropName} in field ${fieldSetName}.`
-        )
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'irrigationEvent',
+          eventDate: irrigationEvent.date,
+          datePlanted: crop.datePlanted,
+        }
       );
     }
   });
@@ -122,10 +152,12 @@ export const collectV1Errors = (
           checkEventDates(crop, field.fieldSetName, errorCollector)
         );
         if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
-          errorCollector.collectError(
-            new Error(
-              `${totalRequiredIrrigationRows} total irrigation events for cropYear ${cropYear.cropYear} exceed maximum of ${MAX_SHEET_ROWS_PER_YEAR} spreadsheet rows.`
-            )
+          errorCollector.collectKeyedError(
+            'projectDataError:irrigationEventOverflowError',
+            {
+              cropYear: cropYear.cropYear,
+              numberOfIrrigationEntries: totalRequiredIrrigationRows,
+            }
           );
         }
       });
