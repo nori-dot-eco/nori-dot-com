@@ -1,6 +1,7 @@
-import { ErrorCollector } from '../ErrorCollector';
+import { ContextualError, ErrorCollector } from '../ErrorCollector';
 import { collectV1Errors } from '../v1-utils';
 import type { V1Data } from '../../index';
+import { Logger } from './mocks/logger';
 
 // Note this is not complete/valid project data -- for unit testing only
 const exampleV1DataForErrorTests: V1Data = {
@@ -434,24 +435,42 @@ const exampleV1DataForErrorTests: V1Data = {
 
 describe('collectV1Errors', () => {
   it('should collect the errors present in the example data', () => {
-    //const errorCollector = new ErrorCollector();
-    //collectV1Errors(exampleV1DataForErrorTests, errorCollector);
+    const errorCollector = new ErrorCollector(new Logger());
+    collectV1Errors(exampleV1DataForErrorTests, errorCollector);
     const expectedErrors = [
-      new Error(
-        'Tillage event with date 04/25/2017 is more than one year from planting date 03/30/2016 for corn in field ExampleFieldset3.'
+      new ContextualError(
+        'A crop event date was found to be outside of the allowed range',
+        {
+          field: 'ExampleFieldset1',
+          crop: 'corn',
+          eventType: 'fertilizerEvent',
+          eventDate: '05/12/2017',
+          datePlanted: '05/02/2016',
+        }
       ),
-      new Error(
-        '19 total irrigation events for cropYear 2015 exceed maximum of 16 spreadsheet rows.'
+      new ContextualError(
+        'No more than 16 irrigation event data entries can be specified for a crop year.',
+        { cropYear: 2016, numberOfIrrigationEntries: 17 }
       ),
-      new Error(
-        '17 total irrigation events for cropYear 2016 exceed maximum of 16 spreadsheet rows.'
+      new ContextualError(
+        'No more than 16 irrigation event data entries can be specified for a crop year.',
+        { cropYear: 2015, numberOfIrrigationEntries: 19 }
       ),
-      new Error(
-        'Fertilizer event with date 05/12/2017 is more than one year from planting date 05/02/2016 for crop corn in field ExampleFieldset1.'
+
+      new ContextualError(
+        'A crop event date was found to be outside of the allowed range',
+        {
+          field: 'ExampleFieldset3',
+          crop: 'corn',
+          eventType: 'tillageEvent',
+          eventDate: '04/25/2017',
+          datePlanted: '03/30/2016',
+        }
       ),
     ];
-    // expect(errorCollector.errors).toEqual(
-    //   expect.arrayContaining(expectedErrors)
-    // );
+    console.log(errorCollector.errors);
+    expect(errorCollector.errors).toEqual(
+      expect.arrayContaining(expectedErrors)
+    );
   });
 });
