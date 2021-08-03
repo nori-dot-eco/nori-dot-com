@@ -1,5 +1,5 @@
-import { UnparsedError } from '../../../errors/dist';
-import { parseError } from '../../../errors/dist';
+import { UnparsedError } from './utils';
+import { parseError } from './utils';
 
 interface Logger {
   error(message: string, originalException: Error): void;

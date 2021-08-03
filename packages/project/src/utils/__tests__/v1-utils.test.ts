@@ -1,4 +1,4 @@
-import { ContextualError, ErrorCollector } from '../ErrorCollector';
+import { ContextualError, ErrorCollector } from '../../../../errors';
 import { collectV1Errors } from '../v1-utils';
 import type { V1Data } from '../../index';
 import { Logger } from './mocks/Logger';

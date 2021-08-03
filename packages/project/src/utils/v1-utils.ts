@@ -2,7 +2,7 @@ import * as moment from 'moment';
 
 import type { V1CropYear, V1Crop, V1Data } from '../index';
 
-import type { ErrorCollector } from './ErrorCollector';
+import type { ErrorCollector } from '../../../errors';
 
 // Max number of data rows for a given year in the spreadsheet
 const MAX_SHEET_ROWS_PER_YEAR = 16;
