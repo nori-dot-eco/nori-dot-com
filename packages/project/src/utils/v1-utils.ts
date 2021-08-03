@@ -1,4 +1,11 @@
-import type { V1CropYear, V1Data } from '../index';
+import * as moment from 'moment';
+
+import type { V1CropYear, V1Crop, V1Data } from '../index';
+
+import type { ErrorCollector } from '../../../errors';
+
+// Max number of data rows for a given year in the spreadsheet
+const MAX_SHEET_ROWS_PER_YEAR = 16;
 
 export const sanitizeV1Data = ({
   project,
@@ -18,4 +25,142 @@ export const sanitizeV1Data = ({
     )
   );
   return { sanitizedProject };
+};
+
+const eventDateIsOutOfRange = (plantingDate: string, eventDate: string) => {
+  const daysFromPlantingDate = Math.abs(
+    moment(plantingDate).diff(moment(eventDate), 'days')
+  );
+  return daysFromPlantingDate > 365;
+};
+
+/**
+ * @example
+ * Examine the events for each crop and determine if any of them are beyond the acceptable date range (one year from planting date)
+ */
+const checkEventDates = (
+  crop: V1Crop,
+  fieldSetName: string,
+  errorCollector: ErrorCollector
+) => {
+  crop.harvestOrKillEvents?.forEach((harvestEvent) => {
+    if (eventDateIsOutOfRange(crop.datePlanted, harvestEvent.date)) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'harvestEvent',
+          eventDate: harvestEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+  crop.tillageEvents?.forEach((tillageEvent) => {
+    if (eventDateIsOutOfRange(crop.datePlanted, tillageEvent.date)) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'tillageEvent',
+          eventDate: tillageEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+  crop.limingEvents?.forEach((limingEvent) => {
+    if (eventDateIsOutOfRange(crop.datePlanted, limingEvent.date)) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'limingEvent',
+          eventDate: limingEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+  crop.organicMatterEvents?.forEach((organicMatterEvent) => {
+    if (eventDateIsOutOfRange(crop.datePlanted, organicMatterEvent.date)) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'organicMatterEvent',
+          eventDate: organicMatterEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+  crop.fertilizerEvents?.forEach((fertilizerEvent) => {
+    if (eventDateIsOutOfRange(crop.datePlanted, fertilizerEvent.date)) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'fertilizerEvent',
+          eventDate: fertilizerEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+  crop.irrigationEvents?.forEach((irrigationEvent) => {
+    if (
+      eventDateIsOutOfRange(
+        crop.datePlanted,
+        irrigationEvent.endDate ?? irrigationEvent.date
+      )
+    ) {
+      errorCollector.collectKeyedError(
+        'projectDataError:cropEventDateValidationRuleViolation',
+        {
+          field: fieldSetName,
+          crop: crop.cropName,
+          eventType: 'irrigationEvent',
+          eventDate: irrigationEvent.date,
+          datePlanted: crop.datePlanted,
+        }
+      );
+    }
+  });
+};
+
+export const collectV1Errors = (
+  sanitizedProject: V1Data,
+  errorCollector: ErrorCollector
+) => {
+  sanitizedProject?.projects?.forEach((project) => {
+    project?.fieldSets?.forEach((field) => {
+      field?.cropYears?.forEach((cropYear) => {
+        const reducer = (acc: number, crop: V1Crop): number => {
+          if (crop?.irrigationEvents?.length > 0) {
+            acc += crop.irrigationEvents.length;
+          }
+          return acc;
+        };
+        const totalRequiredIrrigationRows = cropYear?.crops?.reduce(reducer, 0);
+        cropYear?.crops?.forEach((crop) =>
+          checkEventDates(crop, field.fieldSetName, errorCollector)
+        );
+        if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
+          errorCollector.collectKeyedError(
+            'projectDataError:irrigationEventOverflowError',
+            {
+              cropYear: cropYear.cropYear,
+              numberOfIrrigationEntries: totalRequiredIrrigationRows,
+            }
+          );
+        }
+      });
+    });
+  });
 };
