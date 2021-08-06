@@ -6,6 +6,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
     'plugin:require-path-exists/recommended',
@@ -197,6 +198,7 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],
         'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
         'import/first': 0,
