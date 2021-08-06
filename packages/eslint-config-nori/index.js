@@ -230,6 +230,10 @@ module.exports = {
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           { selector: 'property', format: ['camelCase', 'PascalCase'] },
+          {
+            selector: 'objectLiteralProperty',
+            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+          },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/explicit-function-return-type': [
