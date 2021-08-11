@@ -161,6 +161,7 @@ export const collectV1Errors = (
   sanitizedProject?.projects?.forEach((project, i) => {
     project?.fieldSets?.forEach((field, j) => {
       field?.cropYears?.forEach((cropYear, k) => {
+        // Irrigation rows
         const reducer = (acc: number, crop: V1Crop): number => {
           if (crop?.irrigationEvents?.length > 0) {
             acc += crop.irrigationEvents.length;
@@ -168,15 +169,6 @@ export const collectV1Errors = (
           return acc;
         };
         const totalRequiredIrrigationRows = cropYear?.crops?.reduce(reducer, 0);
-        cropYear?.crops?.forEach((crop, l) => {
-          const filteredCrop = checkEventDates(
-            crop,
-            field.fieldSetName,
-            errorCollector
-          );
-          filteredProject.projects[i].fieldSets[j].cropYears[k].crops[l] =
-            filteredCrop;
-        });
         if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
           errorCollector.collectKeyedError(
             'projectDataError:irrigationEventOverflowError',
@@ -191,6 +183,16 @@ export const collectV1Errors = (
             ].irrigationEvents = [];
           });
         }
+        // Event dates
+        cropYear?.crops?.forEach((crop, l) => {
+          const filteredCrop = checkEventDates(
+            crop,
+            field.fieldSetName,
+            errorCollector
+          );
+          filteredProject.projects[i].fieldSets[j].cropYears[k].crops[l] =
+            filteredCrop;
+        });
       });
     });
   });
