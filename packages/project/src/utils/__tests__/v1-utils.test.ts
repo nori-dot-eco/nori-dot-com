@@ -1,6 +1,7 @@
 import { ContextualError, ErrorCollector } from '../../../../errors';
 import { collectV1Errors } from '../v1-utils';
 import type { V1Data } from '../../index';
+
 import { Logger } from './mocks/Logger';
 
 // Note this is not complete/valid project data -- for unit testing only

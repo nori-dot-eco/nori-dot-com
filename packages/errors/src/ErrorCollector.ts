@@ -1,5 +1,5 @@
-import { UnparsedError } from './utils';
 import { parseError } from './utils';
+import type { UnparsedError } from './utils';
 
 interface Logger {
   error(message: string, originalException: Error): void;
@@ -40,6 +40,7 @@ export class ContextualError implements Error {
 
 export class ErrorCollector {
   public errors: Error[];
+
   public logger: Logger;
 
   constructor(logger: Logger) {
