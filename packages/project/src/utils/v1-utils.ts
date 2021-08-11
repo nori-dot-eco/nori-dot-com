@@ -196,6 +196,5 @@ export const collectV1Errors = (
       });
     });
   });
-  console.log('post-errors project: ', JSON.stringify(filteredProject));
   return filteredProject;
 };
