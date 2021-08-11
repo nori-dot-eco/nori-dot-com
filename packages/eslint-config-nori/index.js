@@ -6,6 +6,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'airbnb',
     'airbnb/hooks',
     'plugin:require-path-exists/recommended',
@@ -197,6 +198,7 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],
         'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
         'import/first': 0,
@@ -230,6 +232,10 @@ module.exports = {
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           { selector: 'property', format: ['camelCase', 'PascalCase'] },
+          {
+            selector: 'objectLiteralProperty',
+            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+          },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/explicit-function-return-type': [
