@@ -160,7 +160,10 @@ export const convertFromV3ToV1 = ({
                               (
                                 harvestOrKillEvent: AnnualCropHarvestEvent
                               ): V1HarvestOrKillEvent => {
-                                if (harvestOrKillEvent.yieldUnit !== 'bu/ac') {
+                                if (
+                                  harvestOrKillEvent.yieldUnit &&
+                                  harvestOrKillEvent.yieldUnit !== 'bu/ac'
+                                ) {
                                   throw new Error(
                                     'Only bu/ac is supported as a yield unit'
                                   );
