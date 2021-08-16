@@ -161,15 +161,15 @@ const checkEventDates = (
 /**
  * The very first crop year on a field is subject to a problem where any fertilizer or tillage events
  * that occur in the calendar year PRIOR to the crop year (like fall fertilizer) will cause the import
- * code to throw because there doesn't yet exist a crop year to assign the event to.
+ * code to throw because there doesn't exist a crop in the corresponding year to assign the event to.
  * We therefore notify the user of the problematic event and remove it from the import.
  *
- * @param crop The crop for which we are detecting edge-case date problems.
- * @param fieldName The name of the field in which this error was encountered.
- * @param earliestCropYear The year of the earliest crop year that appears on this field.
- * @param errorCollector The error collector collecting all errors for this import.
+ * @param crop The crop for which we are looking for edge-case event date problems.
+ * @param fieldName The name of the field currently being checked.
+ * @param earliestCropYear The year of the earliest crop year that appears in this field.
+ * @param errorCollector The error collector aggregating all errors for this import file.
  *
- * @returns The V1Crop with offending events removed.
+ * @returns The original crop but with offending events removed.
  */
 const checkFertilizerTillageDateEdgeCase = (
   crop: V1Crop,
