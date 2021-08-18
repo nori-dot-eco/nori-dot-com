@@ -45,7 +45,7 @@ module.exports = {
     },
   },
   rules: {
-    'next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
+    '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
     'prefer-const': [
       'error',
       {
