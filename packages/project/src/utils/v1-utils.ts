@@ -47,112 +47,123 @@ const checkEventDates = (
   errorCollector: ErrorCollector
 ) => {
   const filteredCrop = { ...crop };
-  filteredCrop.harvestOrKillEvents = [];
-  crop.harvestOrKillEvents?.forEach((harvestEvent) => {
-    if (eventDateIsOutOfRange(crop.datePlanted, harvestEvent.date)) {
-      errorCollector.collectKeyedError(
-        'projectDataError:cropEventDateValidationRuleViolation',
-        {
-          field: fieldSetName,
-          crop: crop.cropName,
-          eventType: 'harvestEvent',
-          eventDate: harvestEvent.date,
-          datePlanted: crop.datePlanted,
-        }
+  filteredCrop.harvestOrKillEvents = crop.harvestOrKillEvents?.filter(
+    (event) => {
+      const dateIsOutOfRange = eventDateIsOutOfRange(
+        crop.datePlanted,
+        event.date
       );
-    } else {
-      filteredCrop.harvestOrKillEvents.push(harvestEvent);
+      if (dateIsOutOfRange) {
+        errorCollector.collectKeyedError(
+          'projectDataError:cropEventDateValidationRuleViolation',
+          {
+            field: fieldSetName,
+            crop: crop.cropName,
+            eventType: 'harvestEvent',
+            eventDate: event.date,
+            datePlanted: crop.datePlanted,
+          }
+        );
+      }
+      return !dateIsOutOfRange;
     }
-  });
-  filteredCrop.tillageEvents = [];
-  crop.tillageEvents?.forEach((tillageEvent) => {
-    if (eventDateIsOutOfRange(crop.datePlanted, tillageEvent.date)) {
+  );
+  filteredCrop.tillageEvents = crop.tillageEvents?.filter((event) => {
+    const dateIsOutOfRange = eventDateIsOutOfRange(
+      crop.datePlanted,
+      event.date
+    );
+    if (dateIsOutOfRange) {
       errorCollector.collectKeyedError(
         'projectDataError:cropEventDateValidationRuleViolation',
         {
           field: fieldSetName,
           crop: crop.cropName,
           eventType: 'tillageEvent',
-          eventDate: tillageEvent.date,
+          eventDate: event.date,
           datePlanted: crop.datePlanted,
         }
       );
-    } else {
-      filteredCrop.tillageEvents.push(tillageEvent);
     }
+    return !dateIsOutOfRange;
   });
-  filteredCrop.limingEvents = [];
-  crop.limingEvents?.forEach((limingEvent) => {
-    if (eventDateIsOutOfRange(crop.datePlanted, limingEvent.date)) {
+  filteredCrop.limingEvents = crop.limingEvents?.filter((event) => {
+    const dateIsOutOfRange = eventDateIsOutOfRange(
+      crop.datePlanted,
+      event.date
+    );
+    if (dateIsOutOfRange) {
       errorCollector.collectKeyedError(
         'projectDataError:cropEventDateValidationRuleViolation',
         {
           field: fieldSetName,
           crop: crop.cropName,
           eventType: 'limingEvent',
-          eventDate: limingEvent.date,
+          eventDate: event.date,
           datePlanted: crop.datePlanted,
         }
       );
-    } else {
-      filteredCrop.limingEvents.push(limingEvent);
     }
+    return !dateIsOutOfRange;
   });
-  filteredCrop.organicMatterEvents = [];
-  crop.organicMatterEvents?.forEach((organicMatterEvent) => {
-    if (eventDateIsOutOfRange(crop.datePlanted, organicMatterEvent.date)) {
-      errorCollector.collectKeyedError(
-        'projectDataError:cropEventDateValidationRuleViolation',
-        {
-          field: fieldSetName,
-          crop: crop.cropName,
-          eventType: 'organicMatterEvent',
-          eventDate: organicMatterEvent.date,
-          datePlanted: crop.datePlanted,
-        }
+  filteredCrop.organicMatterEvents = crop.organicMatterEvents?.filter(
+    (event) => {
+      const dateIsOutOfRange = eventDateIsOutOfRange(
+        crop.datePlanted,
+        event.date
       );
-    } else {
-      filteredCrop.organicMatterEvents.push(organicMatterEvent);
+      if (dateIsOutOfRange) {
+        errorCollector.collectKeyedError(
+          'projectDataError:cropEventDateValidationRuleViolation',
+          {
+            field: fieldSetName,
+            crop: crop.cropName,
+            eventType: 'organicMatterEvent',
+            eventDate: event.date,
+            datePlanted: crop.datePlanted,
+          }
+        );
+      }
+      return !dateIsOutOfRange;
     }
-  });
-  filteredCrop.fertilizerEvents = [];
-  crop.fertilizerEvents?.forEach((fertilizerEvent) => {
-    if (eventDateIsOutOfRange(crop.datePlanted, fertilizerEvent.date)) {
+  );
+  filteredCrop.fertilizerEvents = crop.fertilizerEvents?.filter((event) => {
+    const dateIsOutOfRange = eventDateIsOutOfRange(
+      crop.datePlanted,
+      event.date
+    );
+    if (dateIsOutOfRange) {
       errorCollector.collectKeyedError(
         'projectDataError:cropEventDateValidationRuleViolation',
         {
           field: fieldSetName,
           crop: crop.cropName,
           eventType: 'fertilizerEvent',
-          eventDate: fertilizerEvent.date,
+          eventDate: event.date,
           datePlanted: crop.datePlanted,
         }
       );
-    } else {
-      filteredCrop.fertilizerEvents.push(fertilizerEvent);
     }
+    return !dateIsOutOfRange;
   });
-  filteredCrop.irrigationEvents = [];
-  crop.irrigationEvents?.forEach((irrigationEvent) => {
-    if (
-      eventDateIsOutOfRange(
-        crop.datePlanted,
-        irrigationEvent.endDate ?? irrigationEvent.date
-      )
-    ) {
+  filteredCrop.irrigationEvents = crop.irrigationEvents?.filter((event) => {
+    const dateIsOutOfRange = eventDateIsOutOfRange(
+      crop.datePlanted,
+      event.endDate ?? event.date
+    );
+    if (dateIsOutOfRange) {
       errorCollector.collectKeyedError(
         'projectDataError:cropEventDateValidationRuleViolation',
         {
           field: fieldSetName,
           crop: crop.cropName,
           eventType: 'irrigationEvent',
-          eventDate: irrigationEvent.date,
+          eventDate: event.date,
           datePlanted: crop.datePlanted,
         }
       );
-    } else {
-      filteredCrop.irrigationEvents.push(irrigationEvent);
     }
+    return !dateIsOutOfRange;
   });
   return filteredCrop;
 };
@@ -178,42 +189,32 @@ const checkFertilizerTillageDateEdgeCase = (
   errorCollector: ErrorCollector
 ): V1Crop => {
   const filteredCrop = { ...crop };
-  const filteredFertilizerEvents: V1FertilizerEvent[] = [];
-  const filteredTillageEvents: V1TillageEvent[] = [];
-  crop.fertilizerEvents.forEach((fertilizerEvent) => {
-    const fertilizerEventYear = Number(
-      fertilizerEvent.date.split('/').slice(-1)
+  const earliestCropYearEventDateFilter = (
+    event: V1FertilizerEvent | V1TillageEvent
+  ): boolean => {
+    const eventDateIsBeforeEarliestCropYear = moment(event.date).isBefore(
+      moment(earliestCropYear, 'year')
     );
-    if (fertilizerEventYear < earliestCropYear) {
+    if (eventDateIsBeforeEarliestCropYear) {
       errorCollector.collectKeyedError(
         'projectDataError:priorYearEdgeCaseError',
         {
           field: fieldName,
-          event: fertilizerEvent,
+          event,
         }
       );
-    } else {
-      filteredFertilizerEvents.push(fertilizerEvent);
     }
-  });
-  crop.tillageEvents.forEach((tillageEvent) => {
-    const tillageEventYear = Number(tillageEvent.date.split('/').slice(-1));
-    if (tillageEventYear < earliestCropYear) {
-      errorCollector.collectKeyedError(
-        'projectDataError:priorYearEdgeCaseError',
-        {
-          field: fieldName,
-          event: tillageEvent,
-        }
-      );
-    } else {
-      filteredTillageEvents.push(tillageEvent);
-    }
-  });
-  filteredCrop.fertilizerEvents = filteredFertilizerEvents;
-  filteredCrop.tillageEvents = filteredTillageEvents;
+    return !eventDateIsBeforeEarliestCropYear;
+  };
+  filteredCrop.fertilizerEvents = crop.fertilizerEvents.filter(
+    earliestCropYearEventDateFilter
+  );
+  filteredCrop.tillageEvents = crop.tillageEvents.filter(
+    earliestCropYearEventDateFilter
+  );
   return filteredCrop;
 };
+
 export const collectV1Errors = (
   sanitizedProject: V1Data,
   errorCollector: ErrorCollector
