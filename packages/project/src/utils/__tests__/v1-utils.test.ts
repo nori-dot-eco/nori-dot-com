@@ -34,6 +34,58 @@ const exampleV1DataForErrorTests: V1Data = {
           srid: '4326',
           cropYears: [
             {
+              cropYear: 2014,
+              crops: [
+                {
+                  version: 2,
+                  cropName: 'corn',
+                  type: 'annual crop',
+                  cropNumber: 1,
+                  classification: 'corn',
+                  datePlanted: '03/30/2014',
+                  // The two 2013 fertilizer events should create errors.
+                  fertilizerEvents: [
+                    {
+                      date: '11/20/2013',
+                      type: 'Mixed Blends',
+                      productName: 'DAP',
+                      lbsOfN: 18.78,
+                      area: 51.69,
+                      quantityUnit: 'lbs/acre',
+                    },
+                    {
+                      date: '11/20/2013',
+                      type: 'Mixed Blends',
+                      productName: 'Potash',
+                      lbsOfN: null,
+                      area: 51.69,
+                      quantityUnit: 'lbs/acre',
+                    },
+                    {
+                      date: '03/18/2014',
+                      type: 'Mixed Blends',
+                      productName: 'Anhydrous Ammonia',
+                      lbsOfN: 110,
+                      area: 51.69,
+                      quantityUnit: 'lbs/acre',
+                    },
+                  ],
+                  harvestOrKillEvents: [],
+                  irrigationEvents: [],
+                  limingEvents: [],
+                  organicMatterEvents: [],
+                  tillageEvents: [
+                    {
+                      classification: 'mulch tillage',
+                      type: 'mulch tillage',
+                      date: '03/29/2014',
+                    },
+                  ],
+                  burningEvents: [],
+                },
+              ],
+            },
+            {
               // acceptable data values
               cropYear: 2015,
               crops: [
@@ -463,6 +515,41 @@ const expectedFilteredV1Data: V1Data = {
           srid: '4326',
           cropYears: [
             {
+              cropYear: 2014,
+              crops: [
+                {
+                  version: 2,
+                  cropName: 'corn',
+                  type: 'annual crop',
+                  cropNumber: 1,
+                  classification: 'corn',
+                  datePlanted: '03/30/2014',
+                  fertilizerEvents: [
+                    {
+                      date: '03/18/2014',
+                      type: 'Mixed Blends',
+                      productName: 'Anhydrous Ammonia',
+                      lbsOfN: 110,
+                      area: 51.69,
+                      quantityUnit: 'lbs/acre',
+                    },
+                  ],
+                  harvestOrKillEvents: [],
+                  irrigationEvents: [],
+                  limingEvents: [],
+                  organicMatterEvents: [],
+                  tillageEvents: [
+                    {
+                      classification: 'mulch tillage',
+                      type: 'mulch tillage',
+                      date: '03/29/2014',
+                    },
+                  ],
+                  burningEvents: [],
+                },
+              ],
+            },
+            {
               cropYear: 2015,
               crops: [
                 {
@@ -713,6 +800,34 @@ describe('collectV1Errors', () => {
           eventType: 'tillageEvent',
           eventDate: '04/25/2017',
           datePlanted: '03/30/2016',
+        }
+      ),
+      new ContextualError(
+        'This event must be entered manually, there is not yet a crop in the same year as this event.',
+        {
+          field: 'ExampleFieldset1',
+          event: {
+            date: '11/20/2013',
+            type: 'Mixed Blends',
+            productName: 'DAP',
+            lbsOfN: 18.78,
+            area: 51.69,
+            quantityUnit: 'lbs/acre',
+          },
+        }
+      ),
+      new ContextualError(
+        'This event must be entered manually, there is not yet a crop in the same year as this event.',
+        {
+          field: 'ExampleFieldset1',
+          event: {
+            date: '11/20/2013',
+            type: 'Mixed Blends',
+            productName: 'Potash',
+            lbsOfN: null,
+            area: 51.69,
+            quantityUnit: 'lbs/acre',
+          },
         }
       ),
     ];
