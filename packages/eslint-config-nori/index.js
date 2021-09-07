@@ -198,6 +198,8 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'no-shadow': 'off', // replaced by ts-eslint rule below
+        '@typescript-eslint/no-shadow': 'error',
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],
         'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
