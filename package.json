@@ -33,13 +33,6 @@
   "jest": {
     "projects": [
       {
-        "preset": "ts-jest",
-        "testMatch": [
-          "<rootDir>/packages/hooks/src/**/?(*.)+(test).[jt]s?(x)"
-        ],
-        "displayName": "hooks"
-      },
-      {
         "testMatch": [
           "<rootDir>/packages/math/src/**/?(*.)+(test).[jt]s?(x)"
         ],
