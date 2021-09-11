@@ -191,9 +191,15 @@ export const Errors = {
       message: 'There was an error building the annual crop ranges.',
     },
   },
+  /**
+   * stripeCheckoutError's are NOT retried
+   */
   stripeCheckoutError: {
     insufficientStock: {
       message: 'There is not enough stock remaining to fulfill this order',
+    },
+    certificateAlreadyExistsForOrder: {
+      message: 'A certificate already exists for this order',
     },
   },
 };
