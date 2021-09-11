@@ -191,4 +191,9 @@ export const Errors = {
       message: 'There was an error building the annual crop ranges.',
     },
   },
+  stripeCheckoutError: {
+    insufficientStock: {
+      message: 'There is not enough stock remaining to fulfill this order',
+    },
+  },
 };

@@ -773,38 +773,43 @@ describe('collectV1Errors', () => {
       errorCollector
     );
     const expectedErrors = [
-      new ContextualError(
-        'A crop event date was found to be outside of the allowed range',
-        {
+      new ContextualError({
+        message:
+          'A crop event date was found to be outside of the allowed range',
+        context: {
           field: 'ExampleFieldset1',
           crop: 'corn',
           eventType: 'fertilizerEvent',
           eventDate: '05/12/2017',
           datePlanted: '05/02/2016',
-        }
-      ),
-      new ContextualError(
-        'No more than 16 irrigation event data entries can be specified for a crop year.',
-        { cropYear: 2016, numberOfIrrigationEntries: 17 }
-      ),
-      new ContextualError(
-        'No more than 16 irrigation event data entries can be specified for a crop year.',
-        { cropYear: 2015, numberOfIrrigationEntries: 19 }
-      ),
+        },
+      }),
+      new ContextualError({
+        message:
+          'No more than 16 irrigation event data entries can be specified for a crop year.',
+        context: { cropYear: 2016, numberOfIrrigationEntries: 17 },
+      }),
+      new ContextualError({
+        message:
+          'No more than 16 irrigation event data entries can be specified for a crop year.',
+        context: { cropYear: 2015, numberOfIrrigationEntries: 19 },
+      }),
 
-      new ContextualError(
-        'A crop event date was found to be outside of the allowed range',
-        {
+      new ContextualError({
+        message:
+          'A crop event date was found to be outside of the allowed range',
+        context: {
           field: 'ExampleFieldset3',
           crop: 'corn',
           eventType: 'tillageEvent',
           eventDate: '04/25/2017',
           datePlanted: '03/30/2016',
-        }
-      ),
-      new ContextualError(
-        'This event must be entered manually, there is not yet a crop in the same year as this event.',
-        {
+        },
+      }),
+      new ContextualError({
+        message:
+          'This event must be entered manually, there is not yet a crop in the same year as this event.',
+        context: {
           field: 'ExampleFieldset1',
           event: {
             date: '11/20/2013',
@@ -814,11 +819,12 @@ describe('collectV1Errors', () => {
             area: 51.69,
             quantityUnit: 'lbs/acre',
           },
-        }
-      ),
-      new ContextualError(
-        'This event must be entered manually, there is not yet a crop in the same year as this event.',
-        {
+        },
+      }),
+      new ContextualError({
+        message:
+          'This event must be entered manually, there is not yet a crop in the same year as this event.',
+        context: {
           field: 'ExampleFieldset1',
           event: {
             date: '11/20/2013',
@@ -828,8 +834,8 @@ describe('collectV1Errors', () => {
             area: 51.69,
             quantityUnit: 'lbs/acre',
           },
-        }
-      ),
+        },
+      }),
     ];
     expect(errorCollector.errors).toEqual(
       expect.arrayContaining(expectedErrors)
