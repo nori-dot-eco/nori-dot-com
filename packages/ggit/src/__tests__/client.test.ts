@@ -7,7 +7,7 @@ jest.mock('node-fetch');
 
 describe('Soil Metrics GGIT API', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('Client', () => {
