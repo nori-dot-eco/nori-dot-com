@@ -192,7 +192,7 @@ export const Errors = {
     },
   },
   /**
-   * stripeCheckoutError's are NOT retried
+   * stripeCheckoutError's are NOT retried by the task queue
    */
   stripeCheckoutError: {
     insufficientStock: {

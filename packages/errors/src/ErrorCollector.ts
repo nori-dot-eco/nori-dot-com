@@ -4,7 +4,7 @@ import type { UnparsedError } from './utils';
 import type { ErrorCode, ErrorType } from '.';
 
 interface Logger {
-  error(message: string, originalException: Error): void;
+  error(message: string, originalException: ContextualError): void;
 }
 interface ErrorConstructorArgs {
   originalException?: Error;
@@ -18,19 +18,19 @@ interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
 }
 
 export class ContextualError implements Error {
-  public readonly name: string;
+  readonly #name: string;
 
-  public readonly type: ErrorType;
+  readonly #type: ErrorType;
 
-  public readonly errorKey: UnparsedError;
+  readonly #errorKey: UnparsedError;
 
-  public readonly code: ErrorCode;
+  readonly #code: ErrorCode;
 
-  public readonly context?: Record<string, unknown>;
+  readonly #context?: Record<string, unknown>;
 
-  public readonly originalException?: Error;
+  readonly #originalException?: Error;
 
-  #message: string;
+  readonly #message: string;
 
   constructor(
     args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
@@ -40,22 +40,30 @@ export class ContextualError implements Error {
     } else {
       const { message, code, type } = parseError({ error: args.errorKey });
       this.#message = message;
-      this.code = code;
-      this.type = type;
-      this.errorKey = args.errorKey;
+      this.#code = code;
+      this.#type = type;
+      this.#errorKey = args.errorKey;
     }
-    this.context = args.context;
-    this.originalException = args.originalException;
+    this.#context = args.context;
+    this.#originalException = args.originalException;
   }
 
-  public set message(value: string) {
-    this.#message = value;
+  public get type(): ErrorType {
+    return this.#type;
+  }
+
+  public get code(): ErrorCode {
+    return this.#code;
+  }
+
+  public get name(): string {
+    return this.#name;
   }
 
   public get message(): string {
-    if (this.context) {
-      return `${this.#message}: ${JSON.stringify(this.context)} [${
-        this.originalException?.message ?? ''
+    if (this.#context) {
+      return `${this.#message}: ${JSON.stringify(this.#context)} [${
+        this.#originalException?.message ?? ''
       }]`;
     }
     return this.#message;
@@ -63,31 +71,35 @@ export class ContextualError implements Error {
 }
 
 export class ErrorCollector {
-  public errors: Error[];
+  #errors: ContextualError[];
 
-  public logger: Logger;
+  readonly #logger: Logger;
 
   constructor(logger: Logger) {
-    this.errors = [];
-    this.logger = logger;
+    this.#errors = [];
+    this.#logger = logger;
   }
 
-  collectContextualError(error: ContextualError): void {
-    this.logger.error('Collected error while parsing data!', error);
-    this.errors.push(error);
+  public collectContextualError({ error }: { error: ContextualError }): void {
+    this.#logger.error('Collected error while parsing data!', error);
+    this.#errors.push(error);
   }
 
-  collectKeyedError(
+  public get errors(): ContextualError[] {
+    return this.#errors;
+  }
+
+  public collectKeyedError(
     errorKey: UnparsedError,
     context?: Record<string, unknown>,
     exception?: Error
   ): void {
-    this.collectContextualError(
-      new ContextualError({
+    this.collectContextualError({
+      error: new ContextualError({
         context,
         originalException: exception,
         errorKey,
-      })
-    );
+      }),
+    });
   }
 }
