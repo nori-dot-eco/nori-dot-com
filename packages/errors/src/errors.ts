@@ -202,4 +202,13 @@ export const Errors = {
       message: 'A certificate already exists for this order',
     },
   },
+  authenticationError: {
+    userNotFound: {
+      message:
+        'There is no user record corresponding to this identifier. The user may have been deleted.',
+    },
+    unknownError: {
+      message: 'An unknown error occurred',
+    },
+  },
 };
