@@ -210,5 +210,8 @@ export const Errors = {
     unknownError: {
       message: 'An unknown error occurred',
     },
+    wrongPassword:{
+      message: 'The password is invalid or the user does not have a password'
+    }
   },
 };
