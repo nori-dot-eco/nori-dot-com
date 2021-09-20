@@ -7,7 +7,7 @@ jest.mock('node-fetch');
 
 describe('Auth', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('constructor', () => {

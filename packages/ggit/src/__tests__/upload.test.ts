@@ -9,7 +9,7 @@ jest.mock('node-fetch');
 
 describe('Upload', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   describe('constructor', () => {

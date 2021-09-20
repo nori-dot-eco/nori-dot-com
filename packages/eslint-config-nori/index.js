@@ -13,12 +13,10 @@ module.exports = {
     'plugin:relay/recommended',
     'plugin:import/warnings',
     'plugin:import/errors',
-    'prettier',
-    'prettier/react',
-    'plugin:prettier/recommended',
     'plugin:jest/recommended',
     'plugin:@next/next/recommended',
     'next/core-web-vitals',
+    'plugin:prettier/recommended',
   ],
   plugins: [
     'import',
@@ -194,7 +192,6 @@ module.exports = {
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/typescript',
-        'prettier/@typescript-eslint',
         'plugin:prettier/recommended',
       ],
       rules: {

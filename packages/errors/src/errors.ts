@@ -191,4 +191,27 @@ export const Errors = {
       message: 'There was an error building the annual crop ranges.',
     },
   },
+  /**
+   * stripeCheckoutError's are NOT retried by the task queue
+   */
+  stripeCheckoutError: {
+    insufficientStock: {
+      message: 'There is not enough stock remaining to fulfill this order',
+    },
+    certificateAlreadyExistsForOrder: {
+      message: 'A certificate already exists for this order',
+    },
+  },
+  authenticationError: {
+    userNotFound: {
+      message:
+        'There is no user record corresponding to this identifier. The user may have been deleted.',
+    },
+    unknownError: {
+      message: 'An unknown error occurred',
+    },
+    wrongPassword:{
+      message: 'The password is invalid or the user does not have a password'
+    }
+  },
 };
