@@ -102,7 +102,7 @@ module.exports = {
     'one-var': 0,
     'no-underscore-dangle': 0,
     'import/no-cycle': [0], // todo look into enabling this
-    'import/extensions': ['error', 'never', { ts: 'never' }],
+    'import/extensions': ['error', 'never', { ts: 'never', json: 'always' }],
     'import/order': [
       'error',
       {
@@ -201,7 +201,11 @@ module.exports = {
         'require-await': 'off',
         '@typescript-eslint/require-await': 'error',
         'import/first': 0,
-        'import/extensions': ['error', 'never', { ts: 'never' }],
+        'import/extensions': [
+          'error',
+          'never',
+          { ts: 'never', json: 'always' },
+        ],
         '@typescript-eslint/consistent-type-imports': 'warn',
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
