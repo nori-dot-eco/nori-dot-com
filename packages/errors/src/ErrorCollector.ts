@@ -17,7 +17,7 @@ interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
   errorKey: UnparsedError;
 }
 
-export class ContextualError implements Error {
+export class ContextualError extends Error {
   readonly #name: string;
 
   readonly #type: ErrorType;
@@ -35,6 +35,11 @@ export class ContextualError implements Error {
   constructor(
     args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
   ) {
+    super(
+      'message' in args
+        ? args.message
+        : parseError({ error: args.errorKey }).message
+    );
     if ('message' in args) {
       this.#message = args.message;
     } else {
