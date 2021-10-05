@@ -192,9 +192,9 @@ export const Errors = {
     },
   },
   /**
-   * stripeCheckoutError's are NOT retried by the task queue
+   * checkoutError's are NOT retried by the task queue
    */
-  stripeCheckoutError: {
+  checkoutError: {
     insufficientStock: {
       message: 'There is not enough stock remaining to fulfill this order',
     },
@@ -210,8 +210,8 @@ export const Errors = {
     unknownError: {
       message: 'An unknown error occurred',
     },
-    wrongPassword:{
-      message: 'The password is invalid or the user does not have a password'
-    }
+    wrongPassword: {
+      message: 'The password is invalid or the user does not have a password',
+    },
   },
 };

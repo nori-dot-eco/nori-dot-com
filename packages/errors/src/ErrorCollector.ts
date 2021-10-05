@@ -17,9 +17,7 @@ interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
   errorKey: UnparsedError;
 }
 
-export class ContextualError implements Error {
-  readonly #name: string;
-
+export class ContextualError extends Error {
   readonly #type: ErrorType;
 
   readonly #errorKey: UnparsedError;
@@ -30,16 +28,25 @@ export class ContextualError implements Error {
 
   readonly #originalException?: Error;
 
-  readonly #message: string;
-
   constructor(
     args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
   ) {
+    super();
     if ('message' in args) {
-      this.#message = args.message;
+      super.message =
+        typeof args.context !== 'undefined'
+          ? `${args.message}: ${JSON.stringify(args.context)} [${
+              args.originalException?.message ?? ''
+            }]`
+          : args.message;
     } else {
       const { message, code, type } = parseError({ error: args.errorKey });
-      this.#message = message;
+      super.message =
+        typeof args.context !== 'undefined'
+          ? `${message}: ${JSON.stringify(args.context)} [${
+              args.originalException?.message ?? ''
+            }]`
+          : message;
       this.#code = code;
       this.#type = type;
       this.#errorKey = args.errorKey;
@@ -54,19 +61,6 @@ export class ContextualError implements Error {
 
   public get code(): ErrorCode {
     return this.#code;
-  }
-
-  public get name(): string {
-    return this.#name;
-  }
-
-  public get message(): string {
-    if (this.#context) {
-      return `${this.#message}: ${JSON.stringify(this.#context)} [${
-        this.#originalException?.message ?? ''
-      }]`;
-    }
-    return this.#message;
   }
 }
 
