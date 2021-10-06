@@ -27,6 +27,7 @@ module.exports = {
     'relay',
     'jsdoc',
     'jest',
+    'mui-unused-classes',
   ],
   settings: {
     'import/extensions': allExtensions,
@@ -43,6 +44,7 @@ module.exports = {
     },
   },
   rules: {
+    'mui-unused-classes/unused-classes': 'warn',
     '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
     'prefer-const': [
       'error',
@@ -187,7 +189,7 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
-      plugins: ['@typescript-eslint'],
+      plugins: ['@typescript-eslint', 'mui-unused-classes'],
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
