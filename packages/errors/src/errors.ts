@@ -201,6 +201,9 @@ export const Errors = {
     certificateAlreadyExistsForOrder: {
       message: 'A certificate already exists for this order',
     },
+    invalidIsoLocation: {
+      message: 'The specified ISO location is invalid',
+    },
   },
   authenticationError: {
     userNotFound: {
