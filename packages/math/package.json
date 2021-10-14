@@ -23,9 +23,6 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "dependencies": {
-    "mathjs": "^7.6.0"
-  },
-  "devDependencies": {
-    "@types/mathjs": "^6.0.7"
+    "mathjs": "^9.5.1"
   }
 }
