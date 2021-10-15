@@ -1,9 +1,18 @@
 import { Errors } from './index';
 
+type ObjectPaths<T extends object> = {
+  [P in keyof T]: T[P] extends object
+    ?
+        | `${string & P}`
+        | `${string & P}${keyof T[P] extends 'message'
+            ? never
+            : `:${ObjectPaths<T[P]>}`}`
+    : `${string & P}`;
+}[T extends any[] ? number & keyof T : keyof T];
 type KeysOfUnion<T> = T extends T ? keyof T : never;
 export type ErrorType = keyof typeof Errors;
 export type ErrorCode = KeysOfUnion<typeof Errors[ErrorType]>;
-export type UnparsedError = `${ErrorType}:${ErrorCode}`;
+export type UnparsedError = ObjectPaths<typeof Errors>;
 export type ErrorMessage = string;
 
 export const parseError = ({
@@ -18,6 +27,6 @@ export const parseError = ({
   const [type, code] = error.split(':') as [ErrorType, ErrorCode];
   const defaultErrorMessage = Errors.unknownErrorCode.unknownErrorType.message;
   const message: ErrorMessage =
-    (Errors as any)[type]?.[code]?.message ?? defaultErrorMessage;
+    (Errors[type] as any)?.[code]?.message ?? defaultErrorMessage;
   return { message, type, code };
 };

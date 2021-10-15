@@ -1,8 +1,6 @@
 import { parseError } from './utils';
 import type { UnparsedError } from './utils';
 
-import type { ErrorCode, ErrorType } from '.';
-
 interface Logger {
   error(message: string, originalException: ContextualError): void;
 }
@@ -18,49 +16,26 @@ interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
 }
 
 export class ContextualError extends Error {
-  readonly #type: ErrorType;
-
-  readonly #errorKey: UnparsedError;
-
-  readonly #code: ErrorCode;
-
-  readonly #context?: Record<string, unknown>;
-
-  readonly #originalException?: Error;
+  public readonly code: UnparsedError;
 
   constructor(
     args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
   ) {
     super();
-    if ('message' in args) {
-      super.message =
-        typeof args.context !== 'undefined'
-          ? `${args.message}: ${JSON.stringify(args.context)} [${
-              args.originalException?.message ?? ''
-            }]`
-          : args.message;
-    } else {
-      const { message, code, type } = parseError({ error: args.errorKey });
-      super.message =
-        typeof args.context !== 'undefined'
-          ? `${message}: ${JSON.stringify(args.context)} [${
-              args.originalException?.message ?? ''
-            }]`
-          : message;
-      this.#code = code;
-      this.#type = type;
-      this.#errorKey = args.errorKey;
-    }
-    this.#context = args.context;
-    this.#originalException = args.originalException;
-  }
-
-  public get type(): ErrorType {
-    return this.#type;
-  }
-
-  public get code(): ErrorCode {
-    return this.#code;
+    const originalMessage = args.originalException?.message ?? '';
+    const context = args.context;
+    const code: UnparsedError =
+      'errorKey' in args ? args.errorKey : 'unknownErrorCode:unknownErrorType';
+    const errorKey = 'errorKey' in args ? args.errorKey : undefined;
+    const title =
+      'message' in args
+        ? args.message
+        : parseError({ error: errorKey }).message;
+    this.code = code;
+    super.message =
+      typeof context !== 'undefined'
+        ? `${title}: ${JSON.stringify(context)} [${originalMessage}]`
+        : title;
   }
 }
 
