@@ -201,7 +201,7 @@ export const Errors = {
     certificateAlreadyExistsForOrder: {
       message: 'A certificate already exists for this order',
     },
-    notEnoughNORI: {
+    notEnoughNori: {
       message:
         '️Heads up! You don’t have enough assets in your wallet to complete this transaction.',
     },
@@ -211,7 +211,7 @@ export const Errors = {
     },
     ranOutOfGas: {
       message:
-        '⚠️ Sorry, we couldn’t complete the transaction because it ran out of gas, you were not charged. Please try again using a higher gas limit.',
+        'Sorry, we couldn’t complete the transaction because it ran out of gas, you were not charged. Please try again using a higher gas limit.',
     },
   },
   authenticationError: {
