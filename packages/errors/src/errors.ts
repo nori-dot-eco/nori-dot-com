@@ -209,6 +209,18 @@ export const Errors = {
     invalidIsoLocation: {
       message: 'The specified ISO location is invalid',
     },
+    notEnoughNori: {
+      message:
+        '️Heads up! You don’t have enough assets in your wallet to complete this transaction.',
+    },
+    unknownError: {
+      message:
+        'An unexpected error has occurred while processing your transaction. Please try again, and if the issue persists, contact support@nori.com.',
+    },
+    ranOutOfGas: {
+      message:
+        'Sorry, we couldn’t complete the transaction because it ran out of gas, you were not charged. Please try again using a higher gas limit.',
+    },
   },
   authenticationError: {
     userNotFound: {
@@ -220,6 +232,9 @@ export const Errors = {
     },
     wrongPassword: {
       message: 'The password is invalid or the user does not have a password',
+    },
+    missingRole: {
+      message: 'The user does not have the required admin role.',
     },
   },
 };
