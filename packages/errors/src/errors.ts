@@ -225,5 +225,8 @@ export const Errors = {
     wrongPassword: {
       message: 'The password is invalid or the user does not have a password',
     },
+    missingRole: {
+      message: 'The user does not have the required admin role.',
+    },
   },
 };
