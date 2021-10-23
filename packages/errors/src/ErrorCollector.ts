@@ -1,5 +1,5 @@
 import { parseError } from './utils';
-import type { UnparsedError } from './utils';
+import type { UnparsedError, ErrorType } from './utils';
 
 interface Logger {
   error(message: string, originalException: ContextualError): void;
@@ -18,6 +18,8 @@ interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
 export class ContextualError extends Error {
   public readonly code: UnparsedError;
 
+  public readonly type: ErrorType;
+
   constructor(
     args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
   ) {
@@ -32,6 +34,8 @@ export class ContextualError extends Error {
         ? args.message
         : parseError({ error: errorKey }).message;
     this.code = code;
+    this.type =
+      'message' in args ? undefined : parseError({ error: errorKey }).type;
     super.message =
       typeof context !== 'undefined'
         ? `${title}: ${JSON.stringify(context)} [${originalMessage}]`
