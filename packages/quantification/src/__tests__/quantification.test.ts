@@ -131,16 +131,7 @@ describe('getQuantificationSummary', () => {
       grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
       numberOfGrandfatheredYears: 5,
       modeledYears: [
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
+        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
       ],
       totalAcres: 119.00075350351062,
       totalM2: 481578.9635861122,
@@ -217,16 +208,7 @@ describe('getQuantificationSummary', () => {
         })
       ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
         modeledYears: [
-          2021,
-          2022,
-          2023,
-          2024,
-          2025,
-          2026,
-          2027,
-          2028,
-          2029,
-          2030,
+          2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
         ],
         tenYearProjectedTonnesTotalEstimate: 1082.7054,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
@@ -270,16 +252,7 @@ describe('getQuantificationSummary', () => {
       })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
       modeledYears: [
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
+        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
       ],
       tenYearProjectedTonnesTotalEstimate: 1681.0596,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 112.38744875127914,
