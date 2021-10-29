@@ -1,4 +1,9 @@
 export const Errors = {
+  apiError: {
+    invalidArguments: {
+      message: 'The arguments you provided are invalid',
+    },
+  },
   ggitInputError: {
     ggitInputDataUnknownError: {
       message: 'An unknown error occurred within the GGIT input data',
@@ -200,6 +205,9 @@ export const Errors = {
     },
     certificateAlreadyExistsForOrder: {
       message: 'A certificate already exists for this order',
+    },
+    invalidIsoLocation: {
+      message: 'The specified ISO location is invalid',
     },
     notEnoughNori: {
       message:
