@@ -10,6 +10,8 @@ import {
   MULTIPOLYGON_OUTPUT,
 } from './example-output';
 
+const MAX_NUMBER_OF_GRANDFATHERABLE_YEARS = 5;
+
 describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
   describe('When all annuals are net positive', () => {
     it('should take the lesser of either the somsc annual difference or the ten year projection average per year', () => {
@@ -124,7 +126,11 @@ describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
 describe('getQuantificationSummary', () => {
   it('will get the tonnes that are grandfatherable given a COMET output file', async () => {
     expect(
-      await getQuantificationSummary({ data: GRANDFATHERABLE_YEARS_OUTPUT })
+      await getQuantificationSummary({
+        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        maxNumberGrandfatheredYearsForProject:
+          MAX_NUMBER_OF_GRANDFATHERABLE_YEARS,
+      })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
       switchYear: 2016,
@@ -205,6 +211,8 @@ describe('getQuantificationSummary', () => {
       expect(
         await getQuantificationSummary({
           data: NO_GRANDFATHERABLE_YEARS_OUTPUT,
+          maxNumberGrandfatheredYearsForProject:
+            MAX_NUMBER_OF_GRANDFATHERABLE_YEARS,
         })
       ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
         modeledYears: [
@@ -249,6 +257,8 @@ describe('getQuantificationSummary', () => {
     expect(
       await getQuantificationSummary({
         data: MULTIPOLYGON_OUTPUT,
+        maxNumberGrandfatheredYearsForProject:
+          MAX_NUMBER_OF_GRANDFATHERABLE_YEARS,
       })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
       modeledYears: [
