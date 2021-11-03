@@ -122,9 +122,12 @@ describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
 });
 
 describe('getQuantificationSummary', () => {
-  it('will get the tonnes that are grandfatherable given a COMET output file', async () => {
+  it('will get the tonnes that are grandfatherable given a COMET output file for 5 grandfatherable years', async () => {
     expect(
-      await getQuantificationSummary({ data: GRANDFATHERABLE_YEARS_OUTPUT })
+      await getQuantificationSummary({
+        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        maxNumberGrandfatheredYearsForProject: 5,
+      })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
       switchYear: 2016,
@@ -200,11 +203,86 @@ describe('getQuantificationSummary', () => {
       grandfatheredTonnesPerYearPerAcreAverage: 0.4199935486561168,
     });
   });
+  it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', async () => {
+    expect(
+      await getQuantificationSummary({
+        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        maxNumberGrandfatheredYearsForProject: 4,
+      })
+    ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
+      methodologyVersion: METHODOLOGY_VERSION,
+      switchYear: 2017,
+      grandfatherableYears: [2017, 2018, 2019, 2020],
+      numberOfGrandfatheredYears: 4,
+      modeledYears: [
+        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
+      ],
+      totalAcres: 119.00075350351062,
+      totalM2: 481578.9635861122,
+      tenYearProjectedTonnesPerYearPerAcre: 0.5393865005914137,
+      tenYearProjectedTonnesTotalEstimate: 641.874,
+      tenYearProjectedBaselineTonnesPerYear: -24.6869,
+      tenYearProjectedFutureTonnesPerYear: 64.1874,
+      tenYearProjectedTonnesPerYear: 64.1874,
+      tenYearProjectedFutureTonnesPerYearPerAcre: 0.5393865005914137,
+      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.2074516276005909,
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+        {
+          '2015': 26.237005795497225,
+          '2016': 15.527376378425224,
+          '2017': 41.80816740503104,
+          '2018': 73.32904462643704,
+          '2019': 70.7172775187405,
+          '2020': 104.66050851613016,
+          '2021': 92.35887242848085,
+          '2022': 57.86029914122915,
+          '2023': 75.20936195948237,
+          '2024': NaN,
+        },
+      ],
+      somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+        '2017': 41.80816740503104,
+        '2018': 73.32904462643704,
+        '2019': 70.7172775187405,
+        '2020': 104.66050851613016,
+      },
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 72.62874951658468,
+      unadjustedGrandfatheredTonnesPerYear: {
+        '2017': {
+          amount: 41.80816740503104,
+          method: 'somsc',
+          averagePerAcre: 0.351326913268643,
+          totalAcres: 119.00075350351062,
+        },
+        '2018': {
+          amount: 64.1874,
+          method: 'projection',
+          averagePerAcre: 0.5393865005914137,
+          totalAcres: 119.00075350351062,
+        },
+        '2019': {
+          amount: 64.1874,
+          method: 'projection',
+          averagePerAcre: 0.5393865005914137,
+          totalAcres: 119.00075350351062,
+        },
+        '2020': {
+          amount: 64.1874,
+          averagePerAcre: 0.5393865005914137,
+          method: 'projection',
+          totalAcres: 119.00075350351062,
+        },
+      },
+      grandfatheredTonnes: 234.37036740503103,
+      grandfatheredTonnesPerYearPerAcreAverage: 0.492371603760721,
+    });
+  });
   describe('When there are no grandfatherable years', () => {
     it('will still return quantification for given a COMET output file', async () => {
       expect(
         await getQuantificationSummary({
           data: NO_GRANDFATHERABLE_YEARS_OUTPUT,
+          maxNumberGrandfatheredYearsForProject: 5,
         })
       ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
         modeledYears: [
@@ -249,6 +327,7 @@ describe('getQuantificationSummary', () => {
     expect(
       await getQuantificationSummary({
         data: MULTIPOLYGON_OUTPUT,
+        maxNumberGrandfatheredYearsForProject: 5,
       })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
       modeledYears: [

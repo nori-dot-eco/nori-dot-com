@@ -4,11 +4,6 @@ import type { Output } from '@nori-dot-com/ggit';
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
 export const CURRENT_YEAR = new Date().getFullYear();
-export const MAXIMUM_GRANDFATHERABLE_YEARS = 5;
-export const EARLIEST_GRANDFATHERABLE_YEAR = subtract(
-  CURRENT_YEAR,
-  MAXIMUM_GRANDFATHERABLE_YEARS
-);
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 export const METHODOLOGY_VERSION = '1.0.0';
 
@@ -341,8 +336,10 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
 
 const getGrandfatherableYears = ({
   modeledYears,
+  maxNumberGrandfatheredYearsForProject,
 }: {
   modeledYears: number[];
+  maxNumberGrandfatheredYearsForProject: number;
 }): {
   grandfatherableYears: UnadjustedQuantificationSummary['grandfatherableYears'];
   numberOfGrandfatheredYears: UnadjustedQuantificationSummary['numberOfGrandfatheredYears'];
@@ -350,7 +347,7 @@ const getGrandfatherableYears = ({
 } => {
   const startYearIndex = Math.max(
     modeledYears.findIndex(
-      (e) => e === subtract(CURRENT_YEAR, MAXIMUM_GRANDFATHERABLE_YEARS)
+      (e) => e === subtract(CURRENT_YEAR, maxNumberGrandfatheredYearsForProject)
     ),
     0
   );
@@ -405,11 +402,13 @@ const getGrandfatheredTonneQuantities = ({
   totalAcres,
   tenYearProjectedTonnesPerYear,
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+  maxNumberGrandfatheredYearsForProject,
 }: {
   modeledYears: number[];
   totalAcres: UnadjustedQuantificationSummary['totalAcres'];
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon'];
   tenYearProjectedTonnesPerYear: UnadjustedQuantificationSummary['tenYearProjectedTonnesPerYear'];
+  maxNumberGrandfatheredYearsForProject: number;
 }): {
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage'];
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenarios'];
@@ -424,7 +423,10 @@ const getGrandfatheredTonneQuantities = ({
     grandfatherableYears,
     firstGrandfatherableYear,
     numberOfGrandfatheredYears,
-  } = getGrandfatherableYears({ modeledYears });
+  } = getGrandfatherableYears({
+    modeledYears,
+    maxNumberGrandfatheredYearsForProject,
+  });
 
   const { somscAnnualDifferencesBetweenFutureAndBaselineScenarios } =
     getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios({
@@ -476,10 +478,12 @@ const createQuantificationSummary = ({
   modelRuns,
   futureScenarioName,
   baselineScenarioName,
+  maxNumberGrandfatheredYearsForProject,
 }: {
   modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
+  maxNumberGrandfatheredYearsForProject: number;
 }): UnadjustedQuantificationSummary => {
   const { somscAnnualDifferencesForScenarios } =
     calculateSomscAnnualDifferencesForScenarios({
@@ -531,6 +535,7 @@ const createQuantificationSummary = ({
     modeledYears,
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
     totalAcres,
+    maxNumberGrandfatheredYearsForProject,
   });
 
   return {
@@ -571,10 +576,12 @@ const createQuantificationSummary = ({
 
 export const getQuantificationSummary = async ({
   data,
+  maxNumberGrandfatheredYearsForProject,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
 }: {
   data: Output.OutputFile<Output.MapUnit>;
+  maxNumberGrandfatheredYearsForProject: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
 }): Promise<UnadjustedQuantificationSummary> => {
@@ -590,5 +597,6 @@ export const getQuantificationSummary = async ({
     modelRuns: Array.isArray(modelRuns) ? modelRuns : [modelRuns],
     futureScenarioName,
     baselineScenarioName,
+    maxNumberGrandfatheredYearsForProject,
   });
 };
