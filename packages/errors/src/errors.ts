@@ -209,6 +209,10 @@ export const Errors = {
     invalidIsoLocation: {
       message: 'The specified ISO location is invalid',
     },
+    failedPaymentIntentConfirmation: {
+      message:
+        'We were unable to process your payment. Please try a different card or contact your bank.',
+    },
     notEnoughNori: {
       message:
         '️Heads up! You don’t have enough assets in your wallet to complete this transaction.',
