@@ -63,7 +63,7 @@ export const TRANSLATIONS: Translations = {
   burnEvents: {
     type: {
       'yes, before planting': 'before planting',
-      'yes, after harvest': 'after harvesting',
+      'yes, after harvesting': 'after harvesting',
     },
   },
   soilOrCropDisturbanceEvents: {

@@ -508,7 +508,7 @@ export interface BurnEvent {
 export type BurnTime =
   | 'no burning'
   | 'yes, before planting'
-  | 'yes, after harvest';
+  | 'yes, after harvesting';
 
 /**
  * List of nitrogen applications.
