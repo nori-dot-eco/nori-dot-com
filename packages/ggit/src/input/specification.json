@@ -21,7 +21,7 @@
             "description": "Time burn event occurred.",
             "enum": [
                 "no burning",
-                "yes, after harvest",
+                "yes, after harvesting",
                 "yes, before planting"
             ],
             "title": "BurnTime",
