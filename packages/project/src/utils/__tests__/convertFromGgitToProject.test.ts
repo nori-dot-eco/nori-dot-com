@@ -885,16 +885,29 @@ describe('translateLimingEvents', () => {
 });
 
 describe('translateBurningEvent', () => {
-  it('will translate the burning event when it is not "no burning"', () => {
+  it('will translate the burning event when it is "yes, after harvesting"', () => {
     expect(
       translateBurningEvent({
         burnEvent: {
-          BurnTime: 'yes, after harvest',
+          BurnTime: 'yes, after harvesting',
         },
       })
     ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
       burningEvent: {
         type: 'after harvesting',
+      },
+    });
+  });
+  it('will translate the burning event when it is "yes, before planting"', () => {
+    expect(
+      translateBurningEvent({
+        burnEvent: {
+          BurnTime: 'yes, before planting',
+        },
+      })
+    ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
+      burningEvent: {
+        type: 'before planting',
       },
     });
   });
