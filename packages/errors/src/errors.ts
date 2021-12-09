@@ -213,6 +213,10 @@ export const Errors = {
       message:
         'We were unable to process your payment. Please try a different card or contact your bank.',
     },
+    paymentMethodNull: {
+      message:
+        'We were unable to process your payment. Please check your payment information and try again.',
+    },
     notEnoughNori: {
       message:
         '️Heads up! You don’t have enough assets in your wallet to complete this transaction.',
