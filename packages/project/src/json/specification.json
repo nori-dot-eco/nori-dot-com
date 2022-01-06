@@ -813,8 +813,7 @@
                     ]
                 },
                 "properties": {
-                    "additionalProperties": {
-                    },
+                    "additionalProperties": {},
                     "description": "Properties associated with this feature.",
                     "title": "properties",
                     "type": "object"
@@ -926,8 +925,7 @@
                     ]
                 },
                 "properties": {
-                    "additionalProperties": {
-                    },
+                    "additionalProperties": {},
                     "description": "Properties associated with this feature.",
                     "title": "properties",
                     "type": "object"
