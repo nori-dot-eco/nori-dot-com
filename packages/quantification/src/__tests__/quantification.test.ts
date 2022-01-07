@@ -1,7 +1,7 @@
+import { METHODOLOGY_VERSION } from '../constants';
 import {
   getQuantificationSummary,
   getUnadjustedGrandfatheredTonnesPerYear,
-  METHODOLOGY_VERSION,
 } from '../index';
 
 import {
@@ -9,6 +9,15 @@ import {
   NO_GRANDFATHERABLE_YEARS_OUTPUT,
   MULTIPOLYGON_OUTPUT,
 } from './example-output';
+
+jest.mock('../constants', () => ({
+  get CURRENT_YEAR() {
+    return 2021;
+  },
+  get METHODOLOGY_VERSION() {
+    return '1.0.0';
+  },
+}));
 
 describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
   describe('When all annuals are net positive', () => {
