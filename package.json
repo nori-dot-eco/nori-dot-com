@@ -24,10 +24,6 @@
   "workspaces": {
     "packages": [
       "packages/*"
-    ],
-    "nohoist": [
-      "**/ajv",
-      "**/ajv-errors"
     ]
   },
   "jest": {
