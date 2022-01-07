@@ -5,6 +5,7 @@ import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
 
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
+export * from './constants';
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 
 export interface AnnualTotals {
