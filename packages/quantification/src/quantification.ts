@@ -1,11 +1,12 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
 import type { Output } from '@nori-dot-com/ggit';
 
+import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
+
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
-export const CURRENT_YEAR = new Date().getFullYear();
+export * from './constants';
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
-export const METHODOLOGY_VERSION = '1.0.0';
 
 export interface AnnualTotals {
   [year: string]: number;

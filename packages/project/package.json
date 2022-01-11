@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
-    "make:schema": "typescript-json-schema ./tsconfig.json Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules",
+    "make:schema": "typescript-json-schema ./src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
     "prepare": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b"
@@ -41,7 +41,7 @@
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "moment": "2.29.1",
-    "typescript-json-schema": "^0.50.0",
+    "typescript-json-schema": "^0.52.0",
     "wicket": "^1.3.6"
   }
 }

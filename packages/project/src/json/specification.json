@@ -681,10 +681,10 @@
                             "$ref": "#/definitions/GeoJSON.GeometryCollection"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>"
+                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>"
+                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
                         }
                     ],
                     "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
@@ -723,7 +723,7 @@
             "title": "Field",
             "type": "object"
         },
-        "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>": {
+        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
             "additionalProperties": false,
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
@@ -813,11 +813,17 @@
                     ]
                 },
                 "properties": {
-                    "additionalProperties": {
-                    },
+                    "anyOf": [
+                        {
+                            "additionalProperties": {},
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Properties associated with this feature.",
-                    "title": "properties",
-                    "type": "object"
+                    "title": "properties"
                 },
                 "type": {
                     "description": "Specifies the type of GeoJSON object.",
@@ -833,10 +839,10 @@
                 "properties",
                 "type"
             ],
-            "title": "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>",
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
-        "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1": {
+        "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1": {
             "additionalProperties": false,
             "description": "A feature object which contains a geometry and associated properties.\nhttps://tools.ietf.org/html/rfc7946#section-3.2",
             "properties": {
@@ -926,11 +932,17 @@
                     ]
                 },
                 "properties": {
-                    "additionalProperties": {
-                    },
+                    "anyOf": [
+                        {
+                            "additionalProperties": {},
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Properties associated with this feature.",
-                    "title": "properties",
-                    "type": "object"
+                    "title": "properties"
                 },
                 "type": {
                     "description": "Specifies the type of GeoJSON object.",
@@ -946,10 +958,10 @@
                 "properties",
                 "type"
             ],
-            "title": "GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1",
+            "title": "GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1",
             "type": "object"
         },
-        "GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>": {
+        "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>": {
             "additionalProperties": false,
             "description": "A collection of feature objects.\n https://tools.ietf.org/html/rfc7946#section-3.3",
             "properties": {
@@ -1005,7 +1017,7 @@
                 },
                 "features": {
                     "items": {
-                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,{[name:string]:any;}>_1"
+                        "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>_1"
                     },
                     "title": "features",
                     "type": "array"
@@ -1023,7 +1035,7 @@
                 "features",
                 "type"
             ],
-            "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,{[name:string]:any;}>",
+            "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
         "GeoJSON.GeometryCollection": {
