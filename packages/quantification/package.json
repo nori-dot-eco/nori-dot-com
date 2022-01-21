@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/quantification",
-  "version": "1.2.0",
+  "version": "1.6.0",
   "description": "utilities for quantifying Nori's soil methodology based projects",
   "keywords": [
     "nori",
@@ -31,7 +31,7 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "dependencies": {
-    "@nori-dot-com/math": "*",
-    "@nori-dot-com/ggit": "*"
+    "@nori-dot-com/ggit": "^1.6.0",
+    "@nori-dot-com/math": "^1.6.0"
   }
 }

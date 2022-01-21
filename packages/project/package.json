@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/project",
-  "version": "1.2.0",
+  "version": "1.6.0",
   "description": "Nori supplier project specification and utilities",
   "keywords": [
     "nori"
@@ -34,9 +34,9 @@
     "typedoc-plugin-markdown": "^3.6.0"
   },
   "dependencies": {
-    "@nori-dot-com/errors": "*",
-    "@nori-dot-com/ggit": "*",
-    "@nori-dot-com/math": "*",
+    "@nori-dot-com/errors": "^1.6.0",
+    "@nori-dot-com/ggit": "^1.6.0",
+    "@nori-dot-com/math": "^1.6.0",
     "@turf/helpers": "^6.3.0",
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
