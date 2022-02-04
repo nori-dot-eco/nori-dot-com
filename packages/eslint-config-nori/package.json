@@ -50,6 +50,9 @@
     "eslint-plugin-relay": "^1.8.2",
     "eslint-plugin-require-path-exists": "^1.1.9",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
-    "prettier": "^2.4.0"
+    "prettier": "^2.5.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "solhint": "^3.3.6",
+    "solhint-plugin-prettier": "^0.0.5"
   }
 }
