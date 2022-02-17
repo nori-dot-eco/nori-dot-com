@@ -4,6 +4,13 @@ const allExtensions = jsExtensions.concat(tsExtensions);
 
 module.exports = {
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -19,6 +26,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   plugins: [
+    '@typescript-eslint',
     'import',
     'sort-imports-es6-autofix',
     'require-path-exists',
@@ -44,6 +52,12 @@ module.exports = {
     },
   },
   rules: {
+    'react/function-component-definition': [
+      'warn',
+      {
+        namedComponents: ['function-declaration', 'arrow-function'],
+      },
+    ],
     camelcase: ['warn', { allow: ['__'] }],
     'mui-unused-classes/unused-classes': 'warn',
     '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
@@ -190,7 +204,6 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
-      plugins: ['@typescript-eslint', 'mui-unused-classes'],
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',

@@ -13,3 +13,4 @@ k8s-*
 *.pdf
 *.svg
 *.lock
+!.eslintrc.js

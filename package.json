@@ -22,6 +22,9 @@
     "prepare": "yarn run build"
   },
   "workspaces": {
+    "nohoist": [
+      "@nori-dot-com/eslint-config-nori/**"
+    ],
     "packages": [
       "packages/*"
     ]
