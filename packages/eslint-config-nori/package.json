@@ -3,7 +3,7 @@
   "version": "1.6.0",
   "description": "eslint config for Nori",
   "keywords": [
-    "hooks"
+    "eslint"
   ],
   "author": "jaycen horton <jaycen@nori.com>",
   "homepage": "http://nori.com",

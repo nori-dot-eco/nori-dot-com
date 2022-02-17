@@ -29,12 +29,14 @@ jobs:
             fi
       - save_cache:
           key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
-          paths:
+          paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
             - packages/project/node_modules
             - packages/quantification/node_modules
             - packages/ggit/node_modules
             - packages/errors/node_modules
             - packages/math/node_modules
+            - packages/eslint-config-nori/node_modules
+            - packages/cspell/node_modules
             - node_modules
             - ~/.cache
   run-regular-tests:
