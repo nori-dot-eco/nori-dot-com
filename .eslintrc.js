@@ -1,10 +1,12 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
   extends: '@nori-dot-com/eslint-config-nori',
-  root: true,
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
+    project: ['./tsconfig.json', 'packages/project/tsconfig.json'],
+    ecmaVersion: 8,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  ignorePatterns: ['.eslintrc.js'],
 };
