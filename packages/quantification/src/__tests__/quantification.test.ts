@@ -286,6 +286,74 @@ describe('getQuantificationSummary', () => {
       grandfatheredTonnesPerYearPerAcreAverage: 0.492371603760721,
     });
   });
+  it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', async () => {
+    expect(
+      await getQuantificationSummary({
+        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        maxNumberGrandfatheredYearsForProject: 3,
+        quantifyAsOfYear: 2019,
+      })
+    ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
+      methodologyVersion: METHODOLOGY_VERSION,
+      switchYear: 2016,
+      grandfatherableYears: [2016, 2017, 2018],
+      numberOfGrandfatheredYears: 3,
+      modeledYears: [
+        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
+      ],
+      totalAcres: 119.00075350351062,
+      totalM2: 481578.9635861122,
+      tenYearProjectedTonnesPerYearPerAcre: 0.5393865005914137,
+      tenYearProjectedTonnesTotalEstimate: 641.874,
+      tenYearProjectedBaselineTonnesPerYear: -24.6869,
+      tenYearProjectedFutureTonnesPerYear: 64.1874,
+      tenYearProjectedTonnesPerYear: 64.1874,
+      tenYearProjectedFutureTonnesPerYearPerAcre: 0.5393865005914137,
+      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.2074516276005909,
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+        {
+          '2015': 26.237005795497225,
+          '2016': 15.527376378425224,
+          '2017': 41.80816740503104,
+          '2018': 73.32904462643704,
+          '2019': 70.7172775187405,
+          '2020': 104.66050851613016,
+          '2021': 92.35887242848085,
+          '2022': 57.86029914122915,
+          '2023': 75.20936195948237,
+          '2024': NaN,
+        },
+      ],
+      somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+        '2016': 15.527376378425224,
+        '2017': 41.80816740503104,
+        '2018': 73.32904462643704,
+      },
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 43.554862803297766,
+      unadjustedGrandfatheredTonnesPerYear: {
+        '2016': {
+          amount: 15.527376378425224,
+          method: 'somsc',
+          averagePerAcre: 0.13048132823770023,
+          totalAcres: 119.00075350351062,
+        },
+        '2017': {
+          amount: 41.80816740503104,
+          method: 'somsc',
+          averagePerAcre: 0.351326913268643,
+          totalAcres: 119.00075350351062,
+        },
+        '2018': {
+          amount: 64.1874,
+          method: 'projection',
+          averagePerAcre: 0.5393865005914137,
+          totalAcres: 119.00075350351062,
+        },
+      },
+      grandfatheredTonnes: 121.52294378345627,
+      grandfatheredTonnesPerYearPerAcreAverage: 0.340398247365919,
+    });
+  });
   describe('When there are no grandfatherable years', () => {
     it('will still return quantification for given a COMET output file', async () => {
       expect(
