@@ -338,28 +338,33 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
 const getGrandfatherableYears = ({
   modeledYears,
   maxNumberGrandfatheredYearsForProject,
+  quantifyAsOfYear,
 }: {
   modeledYears: number[];
   maxNumberGrandfatheredYearsForProject: number;
+  quantifyAsOfYear?: number;
 }): {
   grandfatherableYears: UnadjustedQuantificationSummary['grandfatherableYears'];
   numberOfGrandfatheredYears: UnadjustedQuantificationSummary['numberOfGrandfatheredYears'];
   firstGrandfatherableYear: UnadjustedQuantificationSummary['switchYear'];
 } => {
+  const effectiveCurrentYear = quantifyAsOfYear ?? CURRENT_YEAR;
   const startYearIndex = Math.max(
     modeledYears.findIndex(
-      (e) => e === subtract(CURRENT_YEAR, maxNumberGrandfatheredYearsForProject)
+      (e) =>
+        e ===
+        subtract(effectiveCurrentYear, maxNumberGrandfatheredYearsForProject)
     ),
     0
   );
   const grandfatherableYears = modeledYears.slice(
     startYearIndex,
-    modeledYears.findIndex((e) => e === CURRENT_YEAR)
+    modeledYears.findIndex((e) => e === effectiveCurrentYear)
   );
   const firstGrandfatherableYear =
-    Number(grandfatherableYears[0]) || CURRENT_YEAR;
+    Number(grandfatherableYears[0]) || effectiveCurrentYear;
   const numberOfGrandfatheredYears = subtract(
-    CURRENT_YEAR,
+    effectiveCurrentYear,
     firstGrandfatherableYear
   );
   return {
@@ -404,12 +409,14 @@ const getGrandfatheredTonneQuantities = ({
   tenYearProjectedTonnesPerYear,
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   maxNumberGrandfatheredYearsForProject,
+  quantifyAsOfYear,
 }: {
   modeledYears: number[];
   totalAcres: UnadjustedQuantificationSummary['totalAcres'];
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon'];
   tenYearProjectedTonnesPerYear: UnadjustedQuantificationSummary['tenYearProjectedTonnesPerYear'];
   maxNumberGrandfatheredYearsForProject: number;
+  quantifyAsOfYear?: number;
 }): {
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage'];
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenarios'];
@@ -427,6 +434,7 @@ const getGrandfatheredTonneQuantities = ({
   } = getGrandfatherableYears({
     modeledYears,
     maxNumberGrandfatheredYearsForProject,
+    quantifyAsOfYear,
   });
 
   const { somscAnnualDifferencesBetweenFutureAndBaselineScenarios } =
@@ -480,11 +488,13 @@ const createQuantificationSummary = ({
   futureScenarioName,
   baselineScenarioName,
   maxNumberGrandfatheredYearsForProject,
+  quantifyAsOfYear,
 }: {
   modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
   maxNumberGrandfatheredYearsForProject: number;
+  quantifyAsOfYear?: number;
 }): UnadjustedQuantificationSummary => {
   const { somscAnnualDifferencesForScenarios } =
     calculateSomscAnnualDifferencesForScenarios({
@@ -537,6 +547,7 @@ const createQuantificationSummary = ({
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
     totalAcres,
     maxNumberGrandfatheredYearsForProject,
+    quantifyAsOfYear,
   });
 
   return {
@@ -580,11 +591,13 @@ export const getQuantificationSummary = async ({
   maxNumberGrandfatheredYearsForProject,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
+  quantifyAsOfYear,
 }: {
   data: Output.OutputFile<Output.MapUnit>;
   maxNumberGrandfatheredYearsForProject: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
+  quantifyAsOfYear?: number;
 }): Promise<UnadjustedQuantificationSummary> => {
   const { parsedJsonOutput } = await parseYearlyMapUnitData({
     rawJsonOutput: data,
@@ -599,5 +612,6 @@ export const getQuantificationSummary = async ({
     futureScenarioName,
     baselineScenarioName,
     maxNumberGrandfatheredYearsForProject,
+    quantifyAsOfYear,
   });
 };
