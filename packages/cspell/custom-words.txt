@@ -59,6 +59,7 @@ diammonium
 disable
 dkim
 doesnt
+docgen
 dont
 dropdown
 ecrecover
@@ -177,6 +178,7 @@ param
 patreon
 plugin
 polyfill
+Polygonscan
 prebuild
 preinstall
 prepend
