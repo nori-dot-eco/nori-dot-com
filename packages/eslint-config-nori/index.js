@@ -198,6 +198,7 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'no-extra-boolean-cast': 'off',
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
