@@ -169,6 +169,9 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
+    'react/function-component-definition': [2, {
+      'namedComponents': 'arrow-function',
+    }],
     'relay/generated-flow-types': 0,
     'require-path-exists/exists': [
       2,
