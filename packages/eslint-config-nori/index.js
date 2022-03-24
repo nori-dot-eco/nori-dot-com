@@ -4,13 +4,6 @@ const allExtensions = jsExtensions.concat(tsExtensions);
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -26,7 +19,6 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   plugins: [
-    '@typescript-eslint',
     'import',
     'sort-imports-es6-autofix',
     'require-path-exists',
@@ -52,12 +44,6 @@ module.exports = {
     },
   },
   rules: {
-    'react/function-component-definition': [
-      'warn',
-      {
-        namedComponents: ['function-declaration', 'arrow-function'],
-      },
-    ],
     camelcase: ['warn', { allow: ['__'] }],
     'mui-unused-classes/unused-classes': 'warn',
     '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
@@ -183,6 +169,9 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
+    'react/function-component-definition': [2, {
+      'namedComponents': 'arrow-function',
+    }],
     'relay/generated-flow-types': 0,
     'require-path-exists/exists': [
       2,
@@ -204,6 +193,7 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
+      plugins: ['@typescript-eslint', 'mui-unused-classes'],
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
@@ -211,6 +201,20 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       rules: {
+        'no-extra-boolean-cast': 'off',
+        '@typescript-eslint/strict-boolean-expressions': [
+          'warn',
+          {
+            allowString: false,
+            allowNumber: false,
+            allowNullableObject: false,
+            allowNullableBoolean: false,
+            allowNullableString: false,
+            allowNullableNumber: false,
+            allowAny: false,
+            allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true,
+          },
+        ],
         'no-shadow': 'off', // replaced by ts-eslint rule below
         '@typescript-eslint/no-shadow': 'error',
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],

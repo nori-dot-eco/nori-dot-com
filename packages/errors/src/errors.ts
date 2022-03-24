@@ -245,4 +245,7 @@ export const Errors = {
       message: 'The user does not have the required admin role.',
     },
   },
+  miscError: {
+    unexpectedError: 'An unexpected error occurred',
+  },
 };

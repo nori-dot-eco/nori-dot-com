@@ -3,10 +3,9 @@ import { Errors } from './index';
 type ObjectPaths<T extends object> = {
   [P in keyof T]: T[P] extends object
     ?
-        | `${string & P}`
         | `${string & P}${keyof T[P] extends 'message'
             ? never
-            : `:${ObjectPaths<T[P]>}`}`
+            : `:${string & keyof T[P]}`}`
     : `${string & P}`;
 }[T extends any[] ? number & keyof T : keyof T];
 type KeysOfUnion<T> = T extends T ? keyof T : never;

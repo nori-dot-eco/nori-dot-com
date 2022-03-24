@@ -18,3 +18,5 @@ export const roundToDigit = (
   number: BigNumberArg,
   numberOfDigits: number
 ): number => round(bignumber(number), numberOfDigits).toNumber();
+
+export { unit } from 'mathjs';
