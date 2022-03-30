@@ -225,6 +225,10 @@ export const Errors = {
       message:
         'Sorry, we couldn’t complete the transaction because it ran out of gas, you were not charged. Please try again using a higher gas limit.',
     },
+    failedToCapturePaymentIntent: {
+      message:
+        'We were unable to process your payment. Please check your payment information and try again.',
+    },
   },
   authenticationError: {
     userNotFound: {
