@@ -30,8 +30,8 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^27.4.0",
-    "typedoc": "^0.20.32",
-    "typedoc-plugin-markdown": "^3.6.0"
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-markdown": "^3.12.1"
   },
   "dependencies": {
     "@nori-dot-com/errors": "^1.6.0",
@@ -41,7 +41,7 @@
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "moment": "2.29.1",
-    "typescript-json-schema": "^0.52.0",
+    "typescript-json-schema": "^0.53.0",
     "wicket": "^1.3.6"
   }
 }

@@ -1,39 +1,31 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / IrrigationEvent
+[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropEventWithOptionalDate
 
-# Interface: IrrigationEvent
+# Interface: CropEventWithOptionalDate
 
-[specification](../modules/specification.md).IrrigationEvent
-
-Irrigation event details.
-
-**`example`**
-
-```js
-{
- "volume": 1,
- "date": "01/01/2000",
-}
-```
+[specification](../modules/specification.md).CropEventWithOptionalDate
 
 ## Hierarchy
 
-- [`CropEvent`](specification.CropEvent.md)
+- [`CropEventIdentifier`](specification.CropEventIdentifier.md)
 
-  ↳ **`IrrigationEvent`**
+  ↳ **`CropEventWithOptionalDate`**
+
+  ↳↳ [`LimingEvent`](specification.LimingEvent.md)
+
+  ↳↳ [`BurningEvent`](specification.BurningEvent.md)
 
 ## Table of contents
 
 ### Properties
 
-- [date](specification.IrrigationEvent.md#date)
-- [id](specification.IrrigationEvent.md#id)
-- [volume](specification.IrrigationEvent.md#volume)
+- [date](specification.CropEventWithOptionalDate.md#date)
+- [id](specification.CropEventWithOptionalDate.md#id)
 
 ## Properties
 
 ### date
 
-• **date**: `string`
+• `Optional` **date**: `string`
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -55,13 +47,9 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
 }
 
-#### Inherited from
-
-[CropEvent](specification.CropEvent.md).[date](specification.CropEvent.md#date)
-
 #### Defined in
 
-[specification.ts:1315](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1315)
+[specification.ts:1339](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1339)
 
 ___
 
@@ -81,28 +69,8 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Inherited from
 
-[CropEvent](specification.CropEvent.md).[id](specification.CropEvent.md#id)
+[CropEventIdentifier](specification.CropEventIdentifier.md).[id](specification.CropEventIdentifier.md#id)
 
 #### Defined in
 
 [specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1279)
-
-___
-
-### volume
-
-• **volume**: `number`
-
-The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
-
-**`minimum`** 0
-
-**`example`** When 1 inch of volume was applied:
-
-```js
-"volume": 1,
-```
-
-#### Defined in
-
-[specification.ts:1854](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1854)

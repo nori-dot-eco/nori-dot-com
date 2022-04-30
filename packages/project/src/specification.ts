@@ -188,10 +188,10 @@ export const limingTypes = [
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
- * @example <caption>A project that uses specification v 0.1.0 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v3.1.0 and contains a list of fields:</caption>
  * ```js
  * {
- *  "version": "0.1.0",
+ *  "version": "3.1.0",
  *  "fields": [
  *    // define fields in this array
  *  ]
@@ -217,7 +217,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "0.1.0"
+   * "version": "3.1.0"
    * ```
    *
    */
@@ -787,6 +787,26 @@ export interface PlantedCrop {
    *
    */
   plantingDate: string;
+
+  /**
+   * Optional crop identifier.  Global crop profile or crop+field+year identifier from exporting system.
+   *
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "corn-456"
+   * ```
+   *
+   * @example
+   *
+   * ```js
+   * "id": "corn-456-2019"
+   * ```
+   *
+   */
+  id?: string;
 }
 
 /**
@@ -1243,6 +1263,22 @@ export interface AnnualCrop
   classification: 'annual crop';
 }
 
+export interface CropEventIdentifier {
+  /**
+   * Optional external crop event identifier.
+   *
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
+   * ```
+   *
+   */
+  id?: string;
+}
+
 /**
  * A crop event that happened on a particular date.
  *
@@ -1255,7 +1291,7 @@ export interface AnnualCrop
  * ```
  *
  */
-export interface CropEvent {
+export interface CropEvent extends CropEventIdentifier {
   /**
    * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
    *
@@ -1279,6 +1315,30 @@ export interface CropEvent {
   date: string;
 }
 
+export interface CropEventWithOptionalDate extends CropEventIdentifier {
+  /**
+   * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
+   *
+   * @nullable during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+   *
+   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   *
+   * @example <caption>When the crop event occurred on January 1st of 2000:</caption>
+   *
+   * ```js
+   * "date": "01/01/2000"
+   * ```
+   * @validationRules ["cropEventDateIsOnOrAfterContainingCropYear"]
+   *
+   * @errorMessage
+   * {
+   * "type": "projectDataError:cropEventDateTypeError",
+   * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+   * }
+   */
+  date?: string;
+}
+
 /**
  * A crop event that has a start and end date.
  *
@@ -1292,7 +1352,7 @@ export interface CropEvent {
  * ```
  *
  */
-export interface CropEventRange {
+export interface CropEventRange extends CropEventIdentifier {
   /**
    * The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
    *
@@ -1797,6 +1857,9 @@ export interface IrrigationEvent extends CropEvent {
 // todo liming tonsPerAcre max
 /**
  * Liming event details.
+ * 
+ * NOTE: The date that the liming occurred. Currently, liming dates do not impact quantification.
+ * As such, we will default to a reasonable date when this property is left out.
  *
  * @example
  *
@@ -1809,7 +1872,7 @@ export interface IrrigationEvent extends CropEvent {
  * ```
  *
  */
-export interface LimingEvent {
+export interface LimingEvent extends CropEventWithOptionalDate {
   /**
    * The liming type.
    *
@@ -1834,19 +1897,6 @@ export interface LimingEvent {
    *
    */
   tonsPerAcre: number;
-  /**
-   * The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * @example <caption>When liming occurred on January 1st of 2000:</caption>
-   *
-   * ```js
-   * "date": "01/01/2000"
-   * ```
-   *
-   */
-  date?: string;
 }
 
 /**
@@ -1915,7 +1965,7 @@ export interface GrazingEvent extends CropEventRange {
  * ```
  *
  */
-export interface BurningEvent {
+export interface BurningEvent extends CropEventWithOptionalDate {
   /**
    * The type of burning, if applicable.
    *

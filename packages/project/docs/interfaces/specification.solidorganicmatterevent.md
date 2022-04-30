@@ -6,7 +6,7 @@
 
 Solid/dry organic matter (OMAD) and manure event details.
 
-**`example`** 
+**`example`**
 
 ```js
 {
@@ -21,27 +21,28 @@ Solid/dry organic matter (OMAD) and manure event details.
 
 ## Hierarchy
 
-* [*OrganicMatterEvent*](specification.organicmatterevent.md)
+- [`OrganicMatterEvent`](specification.OrganicMatterEvent.md)
 
-  ↳ **SolidOrganicMatterEvent**
+  ↳ **`SolidOrganicMatterEvent`**
 
 ## Table of contents
 
 ### Properties
 
-- [amountPerAcre](specification.solidorganicmatterevent.md#amountperacre)
-- [carbonNitrogenRatio](specification.solidorganicmatterevent.md#carbonnitrogenratio)
-- [date](specification.solidorganicmatterevent.md#date)
-- [name](specification.solidorganicmatterevent.md#name)
-- [percentMoisture](specification.solidorganicmatterevent.md#percentmoisture)
-- [percentNitrogen](specification.solidorganicmatterevent.md#percentnitrogen)
-- [type](specification.solidorganicmatterevent.md#type)
+- [amountPerAcre](specification.SolidOrganicMatterEvent.md#amountperacre)
+- [carbonNitrogenRatio](specification.SolidOrganicMatterEvent.md#carbonnitrogenratio)
+- [date](specification.SolidOrganicMatterEvent.md#date)
+- [id](specification.SolidOrganicMatterEvent.md#id)
+- [name](specification.SolidOrganicMatterEvent.md#name)
+- [percentMoisture](specification.SolidOrganicMatterEvent.md#percentmoisture)
+- [percentNitrogen](specification.SolidOrganicMatterEvent.md#percentnitrogen)
+- [type](specification.SolidOrganicMatterEvent.md#type)
 
 ## Properties
 
 ### amountPerAcre
 
-• **amountPerAcre**: *number*
+• **amountPerAcre**: `number`
 
 Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
 
@@ -49,21 +50,25 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 **`maximum`** 200
 
-**`example`** <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
+**`example`** When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:
 
 ```js
 "amountPerAcre": 2
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[amountPerAcre](specification.organicmatterevent.md#amountperacre)
+#### Inherited from
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1655](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1655)
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[amountPerAcre](specification.OrganicMatterEvent.md#amountperacre)
+
+#### Defined in
+
+[specification.ts:1768](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1768)
 
 ___
 
 ### carbonNitrogenRatio
 
-• **carbonNitrogenRatio**: *number*
+• **carbonNitrogenRatio**: `number`
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
@@ -75,21 +80,25 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 **`minimum`** 0
 
-**`example`** <caption>When the carbon to nitrogen ration of the organic matter or manure was 30:</caption>
+**`example`** When the carbon to nitrogen ration of the organic matter or manure was 30:
 
 ```js
 "carbonNitrogenRatio": 30
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[carbonNitrogenRatio](specification.organicmatterevent.md#carbonnitrogenratio)
+#### Inherited from
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1694)
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[carbonNitrogenRatio](specification.OrganicMatterEvent.md#carbonnitrogenratio)
+
+#### Defined in
+
+[specification.ts:1807](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1807)
 
 ___
 
 ### date
 
-• **date**: *string*
+• **date**: `string`
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -97,41 +106,81 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
+**`example`** When the crop event occurred on January 1st of 2000:
 
 ```js
 "date": "01/01/2000"
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[date](specification.organicmatterevent.md#date)
+**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
+**`errormessage`**
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+
+#### Inherited from
+
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[date](specification.OrganicMatterEvent.md#date)
+
+#### Defined in
+
+[specification.ts:1315](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1315)
+
+___
+
+### id
+
+• `Optional` **id**: `string`
+
+Optional external crop event identifier.
+
+Used to correlate data back to the originating system and to synchronize repeated imports.
+
+**`example`**
+
+```js
+"id": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
+```
+
+#### Inherited from
+
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[id](specification.OrganicMatterEvent.md#id)
+
+#### Defined in
+
+[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1279)
 
 ___
 
 ### name
 
-• `Optional` **name**: *string*
+• `Optional` **name**: `string`
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
 **`todo`** this property will be deprecated in the future
 
-**`example`** <caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":</caption>
+**`example`** When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":
 
 ```js
 "name": "Joe's manure"
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[name](specification.organicmatterevent.md#name)
+#### Inherited from
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1641](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1641)
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[name](specification.OrganicMatterEvent.md#name)
+
+#### Defined in
+
+[specification.ts:1754](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1754)
 
 ___
 
 ### percentMoisture
 
-• **percentMoisture**: *number*
+• **percentMoisture**: `number`
 
 The percent moisture of the organic matter or manure
 
@@ -143,21 +192,25 @@ The percent moisture of the organic matter or manure
 
 **`maximum`** 100
 
-**`example`** <caption>When the percent moisture is 15:</caption>
+**`example`** When the percent moisture is 15:
 
 ```js
 "percentMoisture": 15
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[percentMoisture](specification.organicmatterevent.md#percentmoisture)
+#### Inherited from
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1712](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1712)
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[percentMoisture](specification.OrganicMatterEvent.md#percentmoisture)
+
+#### Defined in
+
+[specification.ts:1825](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1825)
 
 ___
 
 ### percentNitrogen
 
-• **percentNitrogen**: *number*
+• **percentNitrogen**: `number`
 
 The nitrogen percent makeup in the organic matter or manure.
 
@@ -171,28 +224,34 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 **`nullable`** during import (when defined as null, a default value will be assigned)
 
-**`example`** <caption>When the organic matter or manure contains 9% nitrogen:</caption>
+**`example`** When the organic matter or manure contains 9% nitrogen:
 
 ```js
 "percentNitrogen": 9
 ```
 
-Inherited from: [OrganicMatterEvent](specification.organicmatterevent.md).[percentNitrogen](specification.organicmatterevent.md#percentnitrogen)
+#### Inherited from
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1675](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1675)
+[OrganicMatterEvent](specification.OrganicMatterEvent.md).[percentNitrogen](specification.OrganicMatterEvent.md#percentnitrogen)
+
+#### Defined in
+
+[specification.ts:1788](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1788)
 
 ___
 
 ### type
 
-• **type**: *alfalfa meal* \| *beef manure, solid* \| *blood, dried* \| *bone meal* \| *chicken - broiler (litter), solid* \| *chicken - layer, solid* \| *compost or composted manure, solid* \| *dairy manure, solid* \| *farmyard manure, solid* \| *feather meal* \| *fish emulsion* \| *fish scrap* \| *guano* \| *horse manure, solid* \| *other manure, solid* \| *sheep manure, solid* \| *soybean meal* \| *swine manure, solid*
+• **type**: ``"alfalfa meal"`` \| ``"beef manure, solid"`` \| ``"blood, dried"`` \| ``"bone meal"`` \| ``"chicken - broiler (litter), solid"`` \| ``"chicken - layer, solid"`` \| ``"compost or composted manure, solid"`` \| ``"dairy manure, solid"`` \| ``"farmyard manure, solid"`` \| ``"feather meal"`` \| ``"fish emulsion"`` \| ``"fish scrap"`` \| ``"guano"`` \| ``"horse manure, solid"`` \| ``"other manure, solid"`` \| ``"sheep manure, solid"`` \| ``"soybean meal"`` \| ``"swine manure, solid"``
 
 The solid/dry organic matter or manure classification type.
 
-**`example`** <caption>When the amount of organic matter or manure type used was alfalfa meal:</caption>
+**`example`** When the amount of organic matter or manure type used was alfalfa meal:
 
 ```js
 "type": "alfalfa meal"
 ```
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1577](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1577)
+#### Defined in
+
+[specification.ts:1690](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1690)

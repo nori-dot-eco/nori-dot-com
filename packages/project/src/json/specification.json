@@ -68,6 +68,11 @@
                     "title": "harvestEvents",
                     "type": "array"
                 },
+                "id": {
+                    "description": "Optional crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -222,6 +227,11 @@
                     ],
                     "title": "grainFruitTuber"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "residueRemoved": {
                     "default": 0,
                     "description": "Crop residue removed.",
@@ -260,6 +270,31 @@
             "additionalProperties": false,
             "description": "Burning event details.",
             "properties": {
+                "date": {
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
+                },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "type": {
                     "description": "The type of burning, if applicable.",
                     "enum": [
@@ -326,6 +361,11 @@
                         }
                     ],
                     "title": "grazingEvents"
+                },
+                "id": {
+                    "description": "Optional crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
                 },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
@@ -457,6 +497,11 @@
                     ],
                     "title": "grainFruitTuber"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "residueRemoved": {
                     "default": 0,
                     "description": "Crop residue removed.",
@@ -572,6 +617,11 @@
                         }
                     ],
                     "title": "date"
+                },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
                 },
                 "lbsOfNPerAcre": {
                     "description": "Amount of nitrogen applied in lbs/ac.",
@@ -1643,6 +1693,11 @@
                     "title": "endDate",
                     "type": "string"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "restPeriod": {
                     "description": "The grazing rest period in days.\n\nZero and one are equivalent and indicate continuous grazing.",
                     "maximum": 365,
@@ -1872,6 +1927,11 @@
                     ],
                     "title": "date"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "volume": {
                     "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.",
                     "minimum": 0,
@@ -1888,12 +1948,31 @@
         },
         "LimingEvent": {
             "additionalProperties": false,
-            "description": "Liming event details.",
+            "description": "Liming event details.\n\nNOTE: The date that the liming occurred. Currently, liming dates do not impact quantification.\nAs such, we will default to a reasonable date when this property is left out.",
             "properties": {
                 "date": {
-                    "description": "The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "date",
+                    "anyOf": [
+                        {
+                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
+                            "errorMessage": {
+                                "type": "projectDataError:cropEventDateTypeError",
+                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                            },
+                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                            "type": "string",
+                            "validationRules": [
+                                "cropEventDateIsOnOrAfterContainingCropYear"
+                            ]
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "date"
+                },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
                     "type": "string"
                 },
                 "tonsPerAcre": {
@@ -1986,6 +2065,11 @@
                     },
                     "title": "harvestEvents",
                     "type": "array"
+                },
+                "id": {
+                    "description": "Optional crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
                 },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
@@ -2171,6 +2255,11 @@
                     "title": "harvestEvents",
                     "type": "array"
                 },
+                "id": {
+                    "description": "Optional crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -2302,6 +2391,11 @@
                     ],
                     "title": "date"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
                     "title": "name",
@@ -2383,6 +2477,11 @@
                     ],
                     "title": "date"
                 },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
+                },
                 "name": {
                     "default": "no tillage",
                     "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.\n\nWhen defaulting to \"no tillage\", a default value will also be used for the event data equal to the planting date of the crop.",
@@ -2458,6 +2557,11 @@
                         }
                     ],
                     "title": "date"
+                },
+                "id": {
+                    "description": "Optional external crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "id",
+                    "type": "string"
                 },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
