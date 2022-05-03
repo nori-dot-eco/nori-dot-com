@@ -6,7 +6,7 @@
 
 A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
 
-**`example`**
+**`example`** 
 
 ```js
 {
@@ -29,53 +29,44 @@ A field defining annual crop management practices. Fields are defined by geograp
 }
 ```
 
-**`errormessage`**
-{
-"required": "projectDataError:fieldRequiredPropertyMissing",
-"additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
-"_": "projectDataError:fieldUnknownError"
-}
-
 ## Table of contents
 
 ### Properties
 
-- [acres](specification.Field.md#acres)
-- [cropYears](specification.Field.md#cropyears)
-- [fieldName](specification.Field.md#fieldname)
-- [geojson](specification.Field.md#geojson)
-- [historicLandManagement](specification.Field.md#historiclandmanagement)
-- [regenerativeStartYear](specification.Field.md#regenerativestartyear)
+- [acres](specification.field.md#acres)
+- [cropYears](specification.field.md#cropyears)
+- [fieldName](specification.field.md#fieldname)
+- [geojson](specification.field.md#geojson)
+- [historicLandManagement](specification.field.md#historiclandmanagement)
+- [regenerativeStartYear](specification.field.md#regenerativestartyear)
 
 ## Properties
 
 ### acres
 
-• **acres**: `number`
+• **acres**: *number*
 
 The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).
 
 **`nullable`** during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
 
-**`example`** When the field's legal area is 100 acres:
+**`example`** <caption>When the field's legal area is 100 acres:</caption>
 
 ```js
 "acres": 100
 ```
 
-#### Defined in
-
-[specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L641)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:561](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L561)
 
 ___
 
 ### cropYears
 
-• **cropYears**: [`CropYear`](specification.CropYear.md)[]
+• **cropYears**: [*CropYear*](specification.cropyear.md)[]
 
 A list of crop management details grouped by the crop planting year.
 
-**`example`** When a field has management information for planting year 2000:
+**`example`** <caption>When a field has management information for planting year 2000:</caption>
 
 ```js
 "cropYears": [
@@ -88,45 +79,35 @@ A list of crop management details grouped by the crop planting year.
 ]
 ```
 
-#### Defined in
-
-[specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L676)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:596](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L596)
 
 ___
 
 ### fieldName
 
-• **fieldName**: `string`
+• **fieldName**: *string*
 
 The name of the field.
 
-**`example`** When a field is named "Pumpkin Pines":
+**`example`** <caption>When a field is named "Pumpkin Pines":</caption>
 
 ```js
 "fieldName": "Pumpkin Pines"
 ```
 
-**`errormessage`**
-{
-"type": "projectDataError:fieldNameTypeError",
-"_": "projectDataError:fieldNameUnknownError"
-}
-
-#### Defined in
-
-[specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L628)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:548](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L548)
 
 ___
 
 ### geojson
 
-• **geojson**: `GeoJSON`
+• **geojson**: Geometry \| *Feature*<Geometry, { [name: string]: *any*;  }\> \| *FeatureCollection*<Geometry, { [name: string]: *any*;  }\>
 
 The geographic boundaries (defined as GeoJSON) associated with crop management practices.
 
 For additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)
 
-**`example`** When a field boundary is defined as a simple polygon:
+**`example`** <caption>When a field boundary is defined as a simple polygon:</caption>
 
 ```js
 "geojson": {
@@ -136,21 +117,19 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 }
 ```
 
-#### Defined in
-
-[specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L658)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:578](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L578)
 
 ___
 
 ### historicLandManagement
 
-• **historicLandManagement**: [`HistoricNonCRPLandManagement`](specification.HistoricNonCRPLandManagement.md) \| [`HistoricCRPLandManagement`](specification.HistoricCRPLandManagement.md)
+• **historicLandManagement**: [*HistoricNonCRPLandManagement*](specification.historicnoncrplandmanagement.md) \| [*HistoricCRPLandManagement*](specification.historiccrplandmanagement.md)
 
 Details surrounding how the field was managed before year 2000.
 
 **`nullable`** during import (note: when historicLandManagement is defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
 
-**`example`** When the field did not participate in CRP (HistoricNonCRPLandManagement):
+**`example`** <caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
 
 ```js
 "historicLandManagement": {
@@ -161,7 +140,7 @@ Details surrounding how the field was managed before year 2000.
 }
 ```
 
-**`example`** When the field did participate in CRP (HistoricCRPLandManagement):
+**`example`** <caption>When the field did participate in CRP (HistoricCRPLandManagement):</caption>
 
 ```js
 "historicLandManagement":  {
@@ -177,15 +156,13 @@ Details surrounding how the field was managed before year 2000.
 }
 ```
 
-#### Defined in
-
-[specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L609)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:535](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L535)
 
 ___
 
 ### regenerativeStartYear
 
-• **regenerativeStartYear**: `number`
+• **regenerativeStartYear**: *number*
 
 The year that you most recently adopted regenerative agricultural practices
 
@@ -193,12 +170,10 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 **`minimum`** 2010
 
-**`example`** When regenerative practices started in year 2015:
+**`example`** <caption>When regenerative practices started in year 2015:</caption>
 
 ```js
 "regenerativeStartYear": 2015
 ```
 
-#### Defined in
-
-[specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L575)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:501](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L501)

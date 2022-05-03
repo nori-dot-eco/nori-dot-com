@@ -6,7 +6,7 @@
 
 An annual crop's harvest event details.
 
-**`example`** An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:
+**`example`** <caption>An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:</caption>
 
 ```js
 {
@@ -20,26 +20,25 @@ An annual crop's harvest event details.
 
 ## Hierarchy
 
-- [`CropManagementEvent`](specification.CropManagementEvent.md)
+* [*CropManagementEvent*](specification.cropmanagementevent.md)
 
-  ↳ **`AnnualCropHarvestEvent`**
+  ↳ **AnnualCropHarvestEvent**
 
 ## Table of contents
 
 ### Properties
 
-- [date](specification.AnnualCropHarvestEvent.md#date)
-- [grainFruitTuber](specification.AnnualCropHarvestEvent.md#grainfruittuber)
-- [id](specification.AnnualCropHarvestEvent.md#id)
-- [residueRemoved](specification.AnnualCropHarvestEvent.md#residueremoved)
-- [yield](specification.AnnualCropHarvestEvent.md#yield)
-- [yieldUnit](specification.AnnualCropHarvestEvent.md#yieldunit)
+- [date](specification.annualcropharvestevent.md#date)
+- [grainFruitTuber](specification.annualcropharvestevent.md#grainfruittuber)
+- [residueRemoved](specification.annualcropharvestevent.md#residueremoved)
+- [yield](specification.annualcropharvestevent.md#yield)
+- [yieldUnit](specification.annualcropharvestevent.md#yieldunit)
 
 ## Properties
 
 ### date
 
-• **date**: `string`
+• **date**: *string*
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
@@ -47,87 +46,47 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 **`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`example`** <caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[date](specification.cropmanagementevent.md#date)
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
-
-#### Inherited from
-
-[CropManagementEvent](specification.CropManagementEvent.md).[date](specification.CropManagementEvent.md#date)
-
-#### Defined in
-
-[specification.ts:1315](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1315)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1194)
 
 ___
 
 ### grainFruitTuber
 
-• **grainFruitTuber**: ``"no"`` \| ``"yes"``
+• **grainFruitTuber**: *no* \| *yes*
 
 Whether the crop was harvest for grain, fruit or tuber.
 
 **`nullable`** during import (specify null if you are unsure)
 
-**`example`** Select “yes” if the crop was harvested for grain, fruit, or tuber:
+**`example`** <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
 
 ```js
 "grainFruitTuber": "yes"
 ```
 
-**`example`** Select “no” if the crop was harvested before maturity for silage or haylage:
+**`example`** <caption>Select “no” if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "grainFruitTuber": "no"
 ```
 
-#### Inherited from
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[grainFruitTuber](specification.cropmanagementevent.md#grainfruittuber)
 
-[CropManagementEvent](specification.CropManagementEvent.md).[grainFruitTuber](specification.CropManagementEvent.md#grainfruittuber)
-
-#### Defined in
-
-[specification.ts:1417](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1417)
-
-___
-
-### id
-
-• `Optional` **id**: `string`
-
-Optional external crop event identifier.
-
-Used to correlate data back to the originating system and to synchronize repeated imports.
-
-**`example`**
-
-```js
-"id": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
-```
-
-#### Inherited from
-
-[CropManagementEvent](specification.CropManagementEvent.md).[id](specification.CropManagementEvent.md#id)
-
-#### Defined in
-
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1279)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1272)
 
 ___
 
 ### residueRemoved
 
-• `Optional` **residueRemoved**: `number`
+• `Optional` **residueRemoved**: *number*
 
 Crop residue removed.
 
@@ -137,37 +96,33 @@ Crop residue removed.
 
 **`maximum`** 100
 
-**`example`** Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:
+**`example`** <caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:</caption>
 
 ```js
 "residueRemoved": 0
 ```
 
-**`example`** Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:
+**`example`** <caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:</caption>
 
 ```js
 "residueRemoved": 5
 ```
 
-**`example`** Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:
+**`example`** <caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "residueRemoved": 10
 ```
 
-#### Inherited from
+Inherited from: [CropManagementEvent](specification.cropmanagementevent.md).[residueRemoved](specification.cropmanagementevent.md#residueremoved)
 
-[CropManagementEvent](specification.CropManagementEvent.md).[residueRemoved](specification.CropManagementEvent.md#residueremoved)
-
-#### Defined in
-
-[specification.ts:1445](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1445)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1300)
 
 ___
 
 ### yield
 
-• `Optional` **yield**: `number`
+• `Optional` **yield**: *number*
 
 The crop yield.
 
@@ -175,34 +130,30 @@ The current version of quantification does not consider yield when producing est
 
 **`default`** 0
 
-**`example`** When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:
+**`example`** <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:</caption>
 
 ```js
 "yield": 100
 ```
 
-#### Defined in
-
-[specification.ts:1479](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1479)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1334](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1334)
 
 ___
 
 ### yieldUnit
 
-• `Optional` **yieldUnit**: ``"bu/ac"`` \| ``"cwt/ac"`` \| ``"tons/ac"`` \| ``"lbs/ac"``
+• `Optional` **yieldUnit**: *bu/ac* \| *cwt/ac* \| *tons/ac* \| *lbs/ac*
 
 The crop yield units.
 
 The current version of quantification does not consider yield when producing estimates.
 
-**`default`** "lbs/ac"
+**`default`** 0
 
-**`example`** When the unit of the yield is submitted in lbs per acre:
+**`example`** <caption>When the unit of the yield is submitted in lbs per acre:</caption>
 
 ```js
 "yieldUnit": "lbs/ac"
 ```
 
-#### Defined in
-
-[specification.ts:1494](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L1494)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1349](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1349)

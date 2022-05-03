@@ -35,133 +35,86 @@ Throughout this documentation you will come across some vocab that indicate to w
 
 ### Interfaces
 
-- [AnnualCrop](../interfaces/specification.AnnualCrop.md)
-- [AnnualCropHarvestEvent](../interfaces/specification.AnnualCropHarvestEvent.md)
-- [BurningEvent](../interfaces/specification.BurningEvent.md)
-- [CoverCrop](../interfaces/specification.CoverCrop.md)
-- [CropEvent](../interfaces/specification.CropEvent.md)
-- [CropEventIdentifier](../interfaces/specification.CropEventIdentifier.md)
-- [CropEventRange](../interfaces/specification.CropEventRange.md)
-- [CropEventWithOptionalDate](../interfaces/specification.CropEventWithOptionalDate.md)
-- [CropEvents](../interfaces/specification.CropEvents.md)
-- [CropManagementEvent](../interfaces/specification.CropManagementEvent.md)
-- [CropYear](../interfaces/specification.CropYear.md)
-- [FertilizerEvent](../interfaces/specification.FertilizerEvent.md)
-- [Field](../interfaces/specification.Field.md)
-- [GrazingEvent](../interfaces/specification.GrazingEvent.md)
-- [HarvestableCropEvents](../interfaces/specification.HarvestableCropEvents.md)
-- [HistoricCRPLandManagement](../interfaces/specification.HistoricCRPLandManagement.md)
-- [HistoricLandManagement](../interfaces/specification.HistoricLandManagement.md)
-- [HistoricNonCRPLandManagement](../interfaces/specification.HistoricNonCRPLandManagement.md)
-- [IrrigationEvent](../interfaces/specification.IrrigationEvent.md)
-- [LimingEvent](../interfaces/specification.LimingEvent.md)
-- [OrchardOrVineyardCrop](../interfaces/specification.OrchardOrVineyardCrop.md)
-- [OrganicMatterEvent](../interfaces/specification.OrganicMatterEvent.md)
-- [PerennialCrop](../interfaces/specification.PerennialCrop.md)
-- [PlantedCrop](../interfaces/specification.PlantedCrop.md)
-- [Project](../interfaces/specification.Project.md)
-- [SlurryOrganicMatterEvent](../interfaces/specification.SlurryOrganicMatterEvent.md)
-- [SoilOrCropDisturbanceEvent](../interfaces/specification.SoilOrCropDisturbanceEvent.md)
-- [SolidOrganicMatterEvent](../interfaces/specification.SolidOrganicMatterEvent.md)
+- [AnnualCrop](../interfaces/specification.annualcrop.md)
+- [AnnualCropHarvestEvent](../interfaces/specification.annualcropharvestevent.md)
+- [BurningEvent](../interfaces/specification.burningevent.md)
+- [CoverCrop](../interfaces/specification.covercrop.md)
+- [CropEvent](../interfaces/specification.cropevent.md)
+- [CropEventRange](../interfaces/specification.cropeventrange.md)
+- [CropEvents](../interfaces/specification.cropevents.md)
+- [CropManagementEvent](../interfaces/specification.cropmanagementevent.md)
+- [CropYear](../interfaces/specification.cropyear.md)
+- [FertilizerEvent](../interfaces/specification.fertilizerevent.md)
+- [Field](../interfaces/specification.field.md)
+- [GrazingEvent](../interfaces/specification.grazingevent.md)
+- [HarvestableCropEvents](../interfaces/specification.harvestablecropevents.md)
+- [HistoricCRPLandManagement](../interfaces/specification.historiccrplandmanagement.md)
+- [HistoricLandManagement](../interfaces/specification.historiclandmanagement.md)
+- [HistoricNonCRPLandManagement](../interfaces/specification.historicnoncrplandmanagement.md)
+- [IrrigationEvent](../interfaces/specification.irrigationevent.md)
+- [LimingEvent](../interfaces/specification.limingevent.md)
+- [OrchardOrVineyardCrop](../interfaces/specification.orchardorvineyardcrop.md)
+- [OrganicMatterEvent](../interfaces/specification.organicmatterevent.md)
+- [PerennialCrop](../interfaces/specification.perennialcrop.md)
+- [PlantedCrop](../interfaces/specification.plantedcrop.md)
+- [Project](../interfaces/specification.project.md)
+- [SlurryOrganicMatterEvent](../interfaces/specification.slurryorganicmatterevent.md)
+- [SoilOrCropDisturbanceEvent](../interfaces/specification.soilorcropdisturbanceevent.md)
+- [SolidOrganicMatterEvent](../interfaces/specification.solidorganicmatterevent.md)
 
 ### Variables
 
 - [annualCropTypes](specification.md#annualcroptypes)
 - [coverCropTypes](specification.md#covercroptypes)
-- [fertilizerTypes](specification.md#fertilizertypes)
-- [limingTypes](specification.md#limingtypes)
 - [orchardOrVineyardCropTypes](specification.md#orchardorvineyardcroptypes)
 - [perennialCropTypes](specification.md#perennialcroptypes)
 - [slurryOmadTypes](specification.md#slurryomadtypes)
-- [soilOrCropDisturbanceTypes](specification.md#soilorcropdisturbancetypes)
 - [solidOmadTypes](specification.md#solidomadtypes)
 
 ## Variables
 
 ### annualCropTypes
 
-• `Const` **annualCropTypes**: readonly [``"barley"``, ``"broccoli-coast"``, ``"broccoli-desert"``, ``"carrots"``, ``"cauliflower"``, ``"corn"``, ``"corn silage"``, ``"cotton"``, ``"dry field beans"``, ``"dry field pea"``, ``"fallow"``, ``"grass-legume mix"``, ``"lettuce-head"``, ``"lettuce-leaf"``, ``"lettuce-romaine"``, ``"millet"``, ``"oats"``, ``"peanut"``, ``"potato"``, ``"rice - flooded"``, ``"rye"``, ``"sorghum"``, ``"sorghum"``, ``"sorghum silage"``, ``"soybean"``, ``"spring wheat"``, ``"strawberry"``, ``"sugar beets"``, ``"sunflower"``, ``"switchgrass"``, ``"tomatoes, fresh"``, ``"tomatoes, processing"``, ``"winter wheat"``]
+• `Const` **annualCropTypes**: readonly [*barley*, *broccoli-coast*, *broccoli-desert*, *carrots*, *cauliflower*, *corn*, *corn silage*, *cotton*, *dry field beans*, *dry field pea*, *fallow*, *grass-legume mix*, *lettuce-head*, *lettuce-leaf*, *lettuce-romaine*, *millet*, *oats*, *peanut*, *potato*, *rice - flooded*, *rye*, *sorghum*, *sorghum*, *sorghum silage*, *soybean*, *spring wheat*, *strawberry*, *sugar beets*, *sunflower*, *switchgrass*, *tomatoes, fresh*, *tomatoes, processing*, *winter wheat*]
 
-#### Defined in
-
-[specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L36)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L36)
 
 ___
 
 ### coverCropTypes
 
-• `Const` **coverCropTypes**: readonly [``"annual rye"``, ``"annual rye - legume"``, ``"annual rye - legume - radish"``, ``"austrian winter pea"``, ``"cereal rye"``, ``"forage radish"``, ``"oilseed radish"``, ``"vetch"``, ``"winter grain-other"``]
+• `Const` **coverCropTypes**: readonly [*annual rye*, *annual rye - legume*, *annual rye - legume - radish*, *austrian winter pea*, *cereal rye*, *forage radish*, *oilseed radish*, *vetch*, *winter grain-other*]
 
-#### Defined in
-
-[specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L72)
-
-___
-
-### fertilizerTypes
-
-• `Const` **fertilizerTypes**: readonly [``"ammonium nitrate (34-0-0)"``, ``"ammonium nitrate phosphate (23-23-00)"``, ``"ammonium nitrate phosphate (27-14-00)"``, ``"ammonium phosphate sulphate (16-20-00)"``, ``"ammonium polyphosphate solution (10-34-00)"``, ``"ammonium sulphate (21-00-00)"``, ``"ammonium thiosulphate solution (12-00-00)"``, ``"anhydrous ammonia (gas) (82-00-00)"``, ``"calcium ammonium nitrate"``, ``"calcium nitrate"``, ``"diammonium phosphate (18-46-00)"``, ``"element-n (n)"``, ``"element-p (p)"``, ``"mixed blends"``, ``"monoammonium phosphate (11-55-00)"``, ``"monoammonium phosphate (12-51-00)"``, ``"potassium nitrate"``, ``"urea (46-00-00)"``, ``"urea ammonium nitrate (30-00-00)"``, ``"urea ammonium phosphate (27-27-00)"``, ``"urea ammonium phosphate (34-17-00)"``]
-
-#### Defined in
-
-[specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L142)
-
-___
-
-### limingTypes
-
-• `Const` **limingTypes**: readonly [``"crushed limestone"``, ``"calcitic limestone"``, ``"dolomitic limestone"``, ``"other"``]
-
-#### Defined in
-
-[specification.ts:180](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L180)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:74](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L74)
 
 ___
 
 ### orchardOrVineyardCropTypes
 
-• `Const` **orchardOrVineyardCropTypes**: readonly [``"almond"``, ``"avocados"``, ``"cherries"``, ``"english walnuts"``, ``"grape, raisin"``, ``"grape, table"``, ``"grape, wine (<1390 gdd)"``, ``"grape, wine (>1950 gdd)"``, ``"grape, wine (1391-1670 gdd)"``, ``"grape, wine (1671-1950 gdd)"``, ``"grapefruit"``, ``"lemons & limes"``, ``"olives"``, ``"oranges"``, ``"peaches and nectarines"``, ``"pistachios"``, ``"tangerines & mandarins"``]
+• `Const` **orchardOrVineyardCropTypes**: readonly [*almond*, *avocados*, *cherries*, *english walnuts*, *grape, raisin*, *grape, table*, *grape, wine (<1390 gdd)*, *grape, wine (>1950 gdd)*, *grape, wine (1391-1670 gdd)*, *grape, wine (1671-1950 gdd)*, *grapefruit*, *lemons & limes*, *olives*, *oranges*, *peaches and nectarines*, *pistachios*, *tangerines & mandarins*]
 
-#### Defined in
-
-[specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L113)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:115](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L115)
 
 ___
 
 ### perennialCropTypes
 
-• `Const` **perennialCropTypes**: readonly [``"alfalfa"``, ``"clover"``, ``"grass"``, ``"grass-legume mix"``, ``"strawberry"``, ``"switchgrass"``]
+• `Const` **perennialCropTypes**: readonly [*alfalfa*, *clover*, *grass*]
 
-#### Defined in
-
-[specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L133)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L72)
 
 ___
 
 ### slurryOmadTypes
 
-• `Const` **slurryOmadTypes**: readonly [``"beef slurry"``, ``"chicken - broiler slurry"``, ``"chicken - layer slurry"``, ``"dairy slurry"``, ``"swine manure, slurry"``]
+• `Const` **slurryOmadTypes**: readonly [*beef slurry*, *chicken - broiler slurry*, *chicken - layer slurry*, *dairy slurry*, *swine manure, slurry*]
 
-#### Defined in
-
-[specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L84)
-
-___
-
-### soilOrCropDisturbanceTypes
-
-• `Const` **soilOrCropDisturbanceTypes**: readonly [``"intensive tillage"``, ``"reduced tillage"``, ``"mulch tillage"``, ``"ridge tillage"``, ``"strip tillage"``, ``"no tillage"``, ``"growing season cultivation"``, ``"mow"``, ``"crimp"``, ``"winter killed"``, ``"broad-spectrum herbicide"``]
-
-#### Defined in
-
-[specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L166)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:86](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L86)
 
 ___
 
 ### solidOmadTypes
 
-• `Const` **solidOmadTypes**: readonly [``"alfalfa meal"``, ``"beef manure, solid"``, ``"blood, dried"``, ``"bone meal"``, ``"chicken - broiler (litter), solid"``, ``"chicken - layer, solid"``, ``"compost or composted manure, solid"``, ``"dairy manure, solid"``, ``"farmyard manure, solid"``, ``"feather meal"``, ``"fish emulsion"``, ``"fish scrap"``, ``"guano"``, ``"horse manure, solid"``, ``"other manure, solid"``, ``"sheep manure, solid"``, ``"soybean meal"``, ``"swine manure, solid"``]
+• `Const` **solidOmadTypes**: readonly [*alfalfa meal*, *beef manure, solid*, *blood, dried*, *bone meal*, *chicken - broiler (litter), solid*, *chicken - layer, solid*, *compost or composted manure, solid*, *dairy manure, solid*, *farmyard manure, solid*, *feather meal*, *fish emulsion*, *fish scrap*, *guano*, *horse manure, solid*, *other manure, solid*, *sheep manure, solid*, *soybean meal*, *swine manure, solid*]
 
-#### Defined in
-
-[specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L92)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:94](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L94)

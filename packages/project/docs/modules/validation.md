@@ -12,33 +12,29 @@
 
 ### validateProjectData
 
-▸ **validateProjectData**(`data`): `Object`
+▸ `Const`**validateProjectData**(`data`: [*Project*](../interfaces/specification.project.md)): *object*
 
 Takes input data and checks whether its contents are valid or not. When the data is not valid, context is provided.
 
-**`example`** Validating project data using data that has an invalid number of fields defined:
+**`example`** <caption>Validating project data using data that has an invalid number of fields defined:</caption>
 
 ```js
-validateProjectData({version:'3.1.0',fields:[]}); // returns {valid:false, ...errors}
+validateProjectData({version:'1.0.0',fields:[]}); // returns {valid:false, ...errors}
 ```
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `data` | [`Project`](../interfaces/specification.Project.md) |
+Name | Type |
+:------ | :------ |
+`data` | [*Project*](../interfaces/specification.project.md) |
 
-#### Returns
+**Returns:** *object*
 
-`Object`
+Name | Type |
+:------ | :------ |
+`errors`? | ErrorObject[] |
+`formattedData` | [*Project*](../interfaces/specification.project.md) |
+`message`? | *string* |
+`valid` | *boolean* |
 
-| Name | Type |
-| :------ | :------ |
-| `errors?` | { `dataPath`: `string` ; `error`: `ErrorObject`<`string`, `Record`<`string`, `any`\>, `unknown`\> ; `type`: `string`  }[] |
-| `formattedData` | [`Project`](../interfaces/specification.Project.md) |
-| `message?` | `string` |
-| `valid` | `boolean` |
-
-#### Defined in
-
-[validation.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/validation.ts#L85)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/validation.ts:45](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/validation.ts#L45)

@@ -6,25 +6,21 @@
 
 ### Functions
 
-- [convertFromV2ToV1](utils_convertFromV2ToV1.md#convertfromv2tov1)
+- [convertFromV2ToV1](utils_convertfromv2tov1.md#convertfromv2tov1)
 
 ## Functions
 
 ### convertFromV2ToV1
 
-▸ **convertFromV2ToV1**(`__namedParameters`): `V1Data`
+▸ `Const`**convertFromV2ToV1**(`__namedParameters`: { `v2Data`: V2Data  }): V1Data
 
-#### Parameters
+#### Parameters:
 
-| Name | Type |
-| :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.v2Data` | `V2Data` |
+Name | Type |
+:------ | :------ |
+`__namedParameters` | *object* |
+`__namedParameters.v2Data` | V2Data |
 
-#### Returns
+**Returns:** V1Data
 
-`V1Data`
-
-#### Defined in
-
-[utils/convertFromV2ToV1.ts:14](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/utils/convertFromV2ToV1.ts#L14)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/utils/convertFromV2ToV1.ts:14](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/utils/convertFromV2ToV1.ts#L14)

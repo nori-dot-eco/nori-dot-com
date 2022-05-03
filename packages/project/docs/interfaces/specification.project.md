@@ -6,49 +6,38 @@
 
 A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
 
-**`example`** A project that uses specification v3.1.0 and contains a list of fields:
+**`example`** <caption>A project that uses specification v 0.1.0 and contains a list of fields:</caption>
 ```js
 {
- "version": "3.1.0",
+ "version": "0.1.0",
  "fields": [
    // define fields in this array
  ]
 }
 ```
 
-**`errormessage`**
-{
-"_": "projectDataError:projectUnknownError"
-}
-
 ## Table of contents
 
 ### Properties
 
-- [fields](specification.Project.md#fields)
-- [version](specification.Project.md#version)
+- [fields](specification.project.md#fields)
+- [version](specification.project.md#version)
 
 ## Properties
 
 ### fields
 
-• **fields**: [`Field`](specification.Field.md)[]
+• **fields**: [*Field*](specification.field.md)[]
 
 An array of fields defining annual crop management practices.
 
-**`errormessage`**
-{
-"minItems": "projectDataError:projectFieldsMinimumItemsError",
-"maxItems": "projectDataError:projectFieldsMaximumItemsError",
-"type": "projectDataError:projectFieldsTypeError",
-"_": "projectDataError:projectFieldsUnknownError"
-}
+**`errormessage`** must specify 1-25 fields
 
 **`minitems`** 1
 
 **`maxitems`** 25
 
-**`example`**
+**`example`** 
 
 ```js
 "fields": [
@@ -56,30 +45,22 @@ An array of fields defining annual crop management practices.
 ]
 ```
 
-#### Defined in
-
-[specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L248)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:181](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L181)
 
 ___
 
 ### version
 
-• **version**: `string`
+• **version**: *string*
 
 The specification version. This information is used to determine the logic Nori uses to import a project
 
-**`errormessage`**
-{
-"type": "projectDataError:projectVersionTypeError",
-"_": "projectDataError:projectVersionUnknownError"
-}
+**`errormessage`** must use a string value to indicate the version number
 
-**`example`**
+**`example`** 
 
 ```js
-"version": "3.1.0"
+"version": "0.1.0"
 ```
 
-#### Defined in
-
-[specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/8ea14b1/packages/project/src/specification.ts#L224)
+Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:163](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L163)
