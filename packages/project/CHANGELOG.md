@@ -12,3 +12,4 @@
  * Simplified specific crop types to behave more similarly and inherit the same hierarchy.
  * Renamed `PlantedCrop` to `Crop`, made it inherit `CropEvents` and the specific crop types inherit `Crop`.
  * Make units explicit for organic matter: `tonsPerAcre` for solid and `gallonsPerAcre` for liquid.
+ * Use boolean rather than yes/no strings in `grainFruitTuber` and crp definitions.

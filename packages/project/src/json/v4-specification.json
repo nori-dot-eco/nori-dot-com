@@ -246,11 +246,7 @@
                         {
                             "default": "no",
                             "description": "Whether the crop was harvest for grain, fruit or tuber.",
-                            "enum": [
-                                "no",
-                                "yes"
-                            ],
-                            "type": "string"
+                            "type": "boolean"
                         },
                         {
                             "type": "null"
@@ -559,11 +555,7 @@
                         {
                             "default": "no",
                             "description": "Whether the crop was harvest for grain, fruit or tuber.",
-                            "enum": [
-                                "no",
-                                "yes"
-                            ],
-                            "type": "string"
+                            "type": "boolean"
                         },
                         {
                             "type": "null"
@@ -1832,13 +1824,13 @@
             "description": "Details surrounding how the field was managed before year 2000\n\nNote that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
             "properties": {
                 "crp": {
-                    "default": "yes",
+                    "default": true,
                     "description": "Whether the field participated in CRP or not.",
                     "enum": [
-                        "yes"
+                        true
                     ],
                     "title": "crp",
-                    "type": "string"
+                    "type": "boolean"
                 },
                 "crpEndYear": {
                     "description": "The CRP end year",
@@ -1855,7 +1847,7 @@
                     "type": "number"
                 },
                 "crpType": {
-                    "description": "The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.",
+                    "description": "The type of CRP the field participated in. Only applicable if [crp](#crp) is set to true.",
                     "enum": [
                         "100% grass",
                         "grass/legume mixture"

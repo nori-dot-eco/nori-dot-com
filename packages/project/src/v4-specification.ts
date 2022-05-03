@@ -412,7 +412,7 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
  * ```js
  * {
  *  // HistoricCRPLandManagement:
- *  "crp": "yes",
+ *  "crp": true,
  *  "crpType": "100% grass",
  *  "crpStartYear": 1980,
  *  "crpEndYear": 2000,
@@ -430,18 +430,18 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
   /**
    * Whether the field participated in CRP or not.
    *
-   * @default "yes"
+   * @default true
    *
    * @example <caption>When the field participated in CRP:</caption>
    *
    * ```js
-   * "crp": "yes"
+   * "crp": true
    * ```
    *
    */
-  crp: 'yes';
+  crp: true;
   /**
-   * The type of CRP the field participated in. Only applicable if [crp](#crp) is set to yes.
+   * The type of CRP the field participated in. Only applicable if [crp](#crp) is set to true.
    *
    * @example <caption>When the field participated in 100% grass CRP:</caption>
    *
@@ -623,7 +623,7 @@ export interface Field {
    *
    * ```js
    * "historicLandManagement":  {
-   *  "crp": "yes",
+   *  "crp": true,
    *  "crpType": "100% grass",
    *  "crpStartYear": 1980,
    *  "crpEndYear": 2000,
@@ -1405,20 +1405,20 @@ export interface CropManagementEvent extends CropEvent {
    *
    * @default no
    *
-   * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
+   * @example <caption>Select true if the crop was harvested for grain, fruit, or tuber:</caption>
    *
    * ```js
-   * "grainFruitTuber": "yes"
+   * "grainFruitTuber": true
    * ```
    *
-   * @example <caption>Select “no” if the crop was harvested before maturity for silage or haylage:</caption>
+   * @example <caption>Select false if the crop was harvested before maturity for silage or haylage:</caption>
    *
    * ```js
-   * "grainFruitTuber": "no"
+   * "grainFruitTuber": false
    * ```
    *
    */
-  grainFruitTuber?: 'yes' | 'no';
+  grainFruitTuber?: boolean;
   /**
    * Crop residue removed.
    *
