@@ -2577,13 +2577,6 @@
             "additionalProperties": false,
             "description": "Slurry organic matter (OMAD) and manure event details.",
             "properties": {
-                "amountPerAcre": {
-                    "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
-                    "maximum": 200,
-                    "minimum": 0,
-                    "title": "amountPerAcre",
-                    "type": "number"
-                },
                 "carbonNitrogenRatio": {
                     "anyOf": [
                         {
@@ -2617,6 +2610,13 @@
                         "string",
                         "null"
                     ]
+                },
+                "gallonsPerAcre": {
+                    "description": "Amount of organic matter applied per acre (gallons per acre).",
+                    "maximum": 200,
+                    "minimum": 0,
+                    "title": "gallonsPerAcre",
+                    "type": "number"
                 },
                 "id": {
                     "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
@@ -2673,9 +2673,9 @@
                 }
             },
             "required": [
-                "amountPerAcre",
                 "carbonNitrogenRatio",
                 "date",
+                "gallonsPerAcre",
                 "percentMoisture",
                 "percentNitrogen",
                 "type"
@@ -2753,13 +2753,6 @@
             "additionalProperties": false,
             "description": "Solid/dry organic matter (OMAD) and manure event details.",
             "properties": {
-                "amountPerAcre": {
-                    "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
-                    "maximum": 200,
-                    "minimum": 0,
-                    "title": "amountPerAcre",
-                    "type": "number"
-                },
                 "carbonNitrogenRatio": {
                     "anyOf": [
                         {
@@ -2835,6 +2828,13 @@
                     ],
                     "title": "percentNitrogen"
                 },
+                "tonsPerAcre": {
+                    "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
+                    "maximum": 200,
+                    "minimum": 0,
+                    "title": "tonsPerAcre",
+                    "type": "number"
+                },
                 "type": {
                     "description": "The solid/dry organic matter or manure classification type.",
                     "enum": [
@@ -2862,11 +2862,11 @@
                 }
             },
             "required": [
-                "amountPerAcre",
                 "carbonNitrogenRatio",
                 "date",
                 "percentMoisture",
                 "percentNitrogen",
+                "tonsPerAcre",
                 "type"
             ],
             "title": "SolidOrganicMatterEvent",
