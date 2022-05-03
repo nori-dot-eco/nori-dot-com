@@ -1242,7 +1242,7 @@ export interface CoverCrop extends Crop {
    *
    * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
-   * @default "annual crop"
+   * @default "annual cover"
    *
    * @example
    *
