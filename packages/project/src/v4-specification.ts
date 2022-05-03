@@ -1093,7 +1093,7 @@ export interface CropEvents {
    *
    */
   pruningEvents?: PruningEvent[];
-    /**
+  /**
    * A list of harvest events, if applicable.
    *
    * Straw / Stover harvest exception: If the hay or stover was removed
@@ -1110,7 +1110,7 @@ export interface CropEvents {
    * ```
    *
    */
-     harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
+  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
 }
 
 /**
@@ -1692,6 +1692,20 @@ export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
    *
    */
   type: typeof solidOmadTypes[number];
+  /**
+   * Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
+   *
+   * @minimum 0
+   * @maximum 200
+   *
+   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
+   *
+   * ```js
+   * "tonsPerAcre": 2
+   * ```
+   *
+   */
+  tonsPerAcre: number;
 }
 
 /**
@@ -1723,6 +1737,20 @@ export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
    *
    */
   type: typeof slurryOmadTypes[number];
+  /**
+   * Amount of organic matter applied per acre (gallons per acre).
+   *
+   * @minimum 0
+   * @maximum 200
+   *
+   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 10 gals/acre:</caption>
+   *
+   * ```js
+   * "gallonsPerAcre": 10
+   * ```
+   *
+   */
+  gallonsPerAcre: number;
 }
 
 // todo confirm amountPerAcre max
@@ -1734,7 +1762,7 @@ export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
  * ```js
  * {
  *  "date": "2000-10-01",
- *  "amountPerAcre": 2,
+ *  "tonsPerAcre": 2,
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
  *  "percentMoisture": 0,
@@ -1756,20 +1784,6 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    */
   name?: string;
-  /**
-   * Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
-   *
-   * @minimum 0
-   * @maximum 200
-   *
-   * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
-   *
-   * ```js
-   * "amountPerAcre": 2
-   * ```
-   *
-   */
-  amountPerAcre: number;
   /**
    * The nitrogen percent makeup in the organic matter or manure.
    *
