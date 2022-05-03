@@ -6,20 +6,21 @@
             "additionalProperties": false,
             "description": "Crop management details and events for annual crops.",
             "properties": {
-                "burningEvent": {
+                "burningEvents": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurningEvent",
-                            "default": {
-                                "type": "no burning"
+                            "default": [],
+                            "description": "Burning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/BurningEvent"
                             },
-                            "description": "A burning event, if applicable."
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "title": "burningEvent"
+                    "title": "burningEvents"
                 },
                 "classification": {
                     "default": "annual crop",
@@ -29,6 +30,14 @@
                     ],
                     "title": "classification",
                     "type": "string"
+                },
+                "externalId": {
+                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "fertilizerEvents": {
                     "description": "A list of fertilizer events, if applicable.",
@@ -41,6 +50,7 @@
                 "grazingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of grazing events, if applicable",
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
@@ -68,6 +78,14 @@
                     "title": "harvestEvents",
                     "type": "array"
                 },
+                "id": {
+                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -79,6 +97,7 @@
                 "limingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
@@ -118,14 +137,29 @@
                     ],
                     "title": "organicMatterEvents"
                 },
-                "plantingDate": {
-                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "plantingDate",
-                    "type": "string"
+                "plantingEvent": {
+                    "$ref": "#/definitions/PlantingEvent",
+                    "description": "The planting event.",
+                    "title": "plantingEvent"
+                },
+                "pruningEvents": {
+                    "anyOf": [
+                        {
+                            "default": [],
+                            "description": "Pruning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/PruningEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "pruningEvents"
                 },
                 "soilOrCropDisturbanceEvents": {
-                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
                     "items": {
                         "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
@@ -175,7 +209,7 @@
             },
             "required": [
                 "classification",
-                "plantingDate",
+                "plantingEvent",
                 "soilOrCropDisturbanceEvents",
                 "type"
             ],
@@ -187,28 +221,30 @@
             "description": "An annual crop's harvest event details.",
             "properties": {
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "grainFruitTuber": {
                     "anyOf": [
                         {
+                            "default": "no",
                             "description": "Whether the crop was harvest for grain, fruit or tuber.",
                             "enum": [
                                 "no",
@@ -221,6 +257,14 @@
                         }
                     ],
                     "title": "grainFruitTuber"
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "residueRemoved": {
                     "default": 0,
@@ -250,8 +294,7 @@
                 }
             },
             "required": [
-                "date",
-                "grainFruitTuber"
+                "date"
             ],
             "title": "AnnualCropHarvestEvent",
             "type": "object"
@@ -260,18 +303,38 @@
             "additionalProperties": false,
             "description": "Burning event details.",
             "properties": {
-                "type": {
-                    "description": "The type of burning, if applicable.",
-                    "enum": [
-                        "after harvesting",
-                        "before planting"
-                    ],
-                    "title": "type",
-                    "type": "string"
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
-                "type"
+                "date"
             ],
             "title": "BurningEvent",
             "type": "object"
@@ -280,29 +343,38 @@
             "additionalProperties": false,
             "description": "Crop management details and events for cover crops.",
             "properties": {
-                "burningEvent": {
+                "burningEvents": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurningEvent",
-                            "default": {
-                                "type": "no burning"
+                            "default": [],
+                            "description": "Burning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/BurningEvent"
                             },
-                            "description": "A burning event, if applicable."
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "title": "burningEvent"
+                    "title": "burningEvents"
                 },
                 "classification": {
-                    "default": "annual cover",
+                    "default": "annual crop",
                     "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
                     "enum": [
                         "annual cover"
                     ],
                     "title": "classification",
                     "type": "string"
+                },
+                "externalId": {
+                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "fertilizerEvents": {
                     "description": "A list of fertilizer events, if applicable.",
@@ -315,6 +387,7 @@
                 "grazingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of grazing events, if applicable",
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
@@ -327,6 +400,29 @@
                     ],
                     "title": "grazingEvents"
                 },
+                "harvestEvents": {
+                    "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CropManagementEvent"
+                            },
+                            {
+                                "$ref": "#/definitions/AnnualCropHarvestEvent"
+                            }
+                        ]
+                    },
+                    "title": "harvestEvents",
+                    "type": "array"
+                },
+                "id": {
+                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -338,6 +434,7 @@
                 "limingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
@@ -377,14 +474,29 @@
                     ],
                     "title": "organicMatterEvents"
                 },
-                "plantingDate": {
-                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "plantingDate",
-                    "type": "string"
+                "plantingEvent": {
+                    "$ref": "#/definitions/PlantingEvent",
+                    "description": "The planting event.",
+                    "title": "plantingEvent"
+                },
+                "pruningEvents": {
+                    "anyOf": [
+                        {
+                            "default": [],
+                            "description": "Pruning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/PruningEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "pruningEvents"
                 },
                 "soilOrCropDisturbanceEvents": {
-                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
                     "items": {
                         "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
@@ -410,7 +522,7 @@
             },
             "required": [
                 "classification",
-                "plantingDate",
+                "plantingEvent",
                 "soilOrCropDisturbanceEvents",
                 "type"
             ],
@@ -422,28 +534,30 @@
             "description": "Crop management event details.",
             "properties": {
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "grainFruitTuber": {
                     "anyOf": [
                         {
+                            "default": "no",
                             "description": "Whether the crop was harvest for grain, fruit or tuber.",
                             "enum": [
                                 "no",
@@ -457,6 +571,14 @@
                     ],
                     "title": "grainFruitTuber"
                 },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "residueRemoved": {
                     "default": 0,
                     "description": "Crop residue removed.",
@@ -467,8 +589,7 @@
                 }
             },
             "required": [
-                "date",
-                "grainFruitTuber"
+                "date"
             ],
             "title": "CropManagementEvent",
             "type": "object"
@@ -554,24 +675,33 @@
             "description": "Fertilizer event details.",
             "properties": {
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "lbsOfNPerAcre": {
                     "description": "Amount of nitrogen applied in lbs/ac.",
@@ -648,6 +778,14 @@
                     "title": "cropYears",
                     "type": "array"
                 },
+                "externalId": {
+                    "description": "Field identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "fieldName": {
                     "description": "The name of the field.",
                     "errorMessage": {
@@ -705,8 +843,16 @@
                     "description": "Details surrounding how the field was managed before year 2000.",
                     "title": "historicLandManagement"
                 },
+                "id": {
+                    "description": "Nori's internal field identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "regenerativeStartYear": {
-                    "description": "The year that you most recently adopted regenerative agricultural practices\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
+                    "description": "The year that you most recently adopted regenerative agricultural practices. aka Switch Year\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
                     "minimum": 2010,
                     "title": "regenerativeStartYear",
                     "type": "number"
@@ -1637,38 +1783,46 @@
             "additionalProperties": false,
             "description": "Grazing event details.",
             "properties": {
-                "endDate": {
-                    "description": "The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "endDate",
-                    "type": "string"
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
                 },
-                "restPeriod": {
-                    "description": "The grazing rest period in days.\n\nZero and one are equivalent and indicate continuous grazing.",
+                "daysGrazed": {
+                    "description": "Number of days actively grazed from `CropEvent.date`",
                     "maximum": 365,
-                    "minimum": 0,
-                    "title": "restPeriod",
+                    "minimum": 1,
+                    "title": "daysGrazed",
                     "type": "number"
                 },
-                "startDate": {
-                    "description": "The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "startDate",
-                    "type": "string"
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "utilization": {
-                    "description": "The percentage of forage consumed by the animals per rest period days.",
-                    "maximum": 100,
-                    "minimum": 0,
-                    "title": "utilization",
-                    "type": "number"
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
-                "endDate",
-                "restPeriod",
-                "startDate",
-                "utilization"
+                "date",
+                "daysGrazed"
             ],
             "title": "GrazingEvent",
             "type": "object"
@@ -1853,24 +2007,33 @@
             "description": "Irrigation event details.",
             "properties": {
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "volume": {
                     "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.",
@@ -1888,13 +2051,36 @@
         },
         "LimingEvent": {
             "additionalProperties": false,
-            "description": "Liming event details.",
+            "description": "Liming event details.\n\nNOTE: The date that the liming occurred. Currently, liming dates do not impact quantification.\nAs such, we will default to a reasonable date when this property is left out.",
             "properties": {
                 "date": {
-                    "description": "The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
                     "title": "date",
-                    "type": "string"
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "tonsPerAcre": {
                     "description": "The liming amount (in tons per acre).",
@@ -1915,6 +2101,7 @@
                 }
             },
             "required": [
+                "date",
                 "tonsPerAcre",
                 "type"
             ],
@@ -1925,20 +2112,21 @@
             "additionalProperties": false,
             "description": "Crop management details and events for orchard and vineyard crops.",
             "properties": {
-                "burningEvent": {
+                "burningEvents": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurningEvent",
-                            "default": {
-                                "type": "no burning"
+                            "default": [],
+                            "description": "Burning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/BurningEvent"
                             },
-                            "description": "A burning event, if applicable."
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "title": "burningEvent"
+                    "title": "burningEvents"
                 },
                 "classification": {
                     "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).\n\nNote: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
@@ -1948,6 +2136,14 @@
                     ],
                     "title": "classification",
                     "type": "string"
+                },
+                "externalId": {
+                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "fertilizerEvents": {
                     "description": "A list of fertilizer events, if applicable.",
@@ -1960,6 +2156,7 @@
                 "grazingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of grazing events, if applicable",
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
@@ -1987,6 +2184,14 @@
                     "title": "harvestEvents",
                     "type": "array"
                 },
+                "id": {
+                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -1998,6 +2203,7 @@
                 "limingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
@@ -2037,32 +2243,29 @@
                     ],
                     "title": "organicMatterEvents"
                 },
-                "plantingDate": {
-                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "plantingDate",
-                    "type": "string"
+                "plantingEvent": {
+                    "$ref": "#/definitions/PlantingEvent",
+                    "description": "The planting event.",
+                    "title": "plantingEvent"
                 },
-                "prune": {
-                    "description": "Indicates if the crop was pruned.",
-                    "enum": [
-                        "no",
-                        "yes"
+                "pruningEvents": {
+                    "anyOf": [
+                        {
+                            "default": [],
+                            "description": "Pruning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/PruningEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ],
-                    "title": "prune",
-                    "type": "string"
-                },
-                "renewOrClear": {
-                    "description": "Indicates if the crop was renewed or cleared.",
-                    "enum": [
-                        "no",
-                        "yes"
-                    ],
-                    "title": "renewOrClear",
-                    "type": "string"
+                    "title": "pruningEvents"
                 },
                 "soilOrCropDisturbanceEvents": {
-                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
                     "items": {
                         "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
@@ -2096,9 +2299,7 @@
             },
             "required": [
                 "classification",
-                "plantingDate",
-                "prune",
-                "renewOrClear",
+                "plantingEvent",
                 "soilOrCropDisturbanceEvents",
                 "type"
             ],
@@ -2109,20 +2310,21 @@
             "additionalProperties": false,
             "description": "Perennial crop details.",
             "properties": {
-                "burningEvent": {
+                "burningEvents": {
                     "anyOf": [
                         {
-                            "$ref": "#/definitions/BurningEvent",
-                            "default": {
-                                "type": "no burning"
+                            "default": [],
+                            "description": "Burning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/BurningEvent"
                             },
-                            "description": "A burning event, if applicable."
+                            "type": "array"
                         },
                         {
                             "type": "null"
                         }
                     ],
-                    "title": "burningEvent"
+                    "title": "burningEvents"
                 },
                 "classification": {
                     "default": "perennial",
@@ -2132,6 +2334,14 @@
                     ],
                     "title": "classification",
                     "type": "string"
+                },
+                "externalId": {
+                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "fertilizerEvents": {
                     "description": "A list of fertilizer events, if applicable.",
@@ -2144,6 +2354,7 @@
                 "grazingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of grazing events, if applicable",
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
@@ -2171,6 +2382,14 @@
                     "title": "harvestEvents",
                     "type": "array"
                 },
+                "id": {
+                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "irrigationEvents": {
                     "description": "A list of irrigation events, if applicable.",
                     "items": {
@@ -2182,6 +2401,7 @@
                 "limingEvents": {
                     "anyOf": [
                         {
+                            "default": [],
                             "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
@@ -2221,14 +2441,29 @@
                     ],
                     "title": "organicMatterEvents"
                 },
-                "plantingDate": {
-                    "description": "The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).\n\nIf a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.",
-                    "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                    "title": "plantingDate",
-                    "type": "string"
+                "plantingEvent": {
+                    "$ref": "#/definitions/PlantingEvent",
+                    "description": "The planting event.",
+                    "title": "plantingEvent"
+                },
+                "pruningEvents": {
+                    "anyOf": [
+                        {
+                            "default": [],
+                            "description": "Pruning events, if applicable.",
+                            "items": {
+                                "$ref": "#/definitions/PruningEvent"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "pruningEvents"
                 },
                 "soilOrCropDisturbanceEvents": {
-                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.",
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
                     "items": {
                         "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                     },
@@ -2251,11 +2486,91 @@
             },
             "required": [
                 "classification",
-                "plantingDate",
+                "plantingEvent",
                 "soilOrCropDisturbanceEvents",
                 "type"
             ],
             "title": "PerennialCrop",
+            "type": "object"
+        },
+        "PlantingEvent": {
+            "additionalProperties": false,
+            "description": "Planting event details.\n\n(formatted as ISO8601 date format (YYYY-MM-DD) with YYYY > 2000 and YYYY < 2100).",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "title": "PlantingEvent",
+            "type": "object"
+        },
+        "PruningEvent": {
+            "additionalProperties": false,
+            "description": "Pruning Event.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "title": "PruningEvent",
             "type": "object"
         },
         "SlurryOrganicMatterEvent": {
@@ -2283,24 +2598,33 @@
                     "title": "carbonNitrogenRatio"
                 },
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
@@ -2364,24 +2688,33 @@
             "description": "Soil or crop disturbance event event details.",
             "properties": {
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "default": "no tillage",
@@ -2393,6 +2726,7 @@
                     "description": "The soil or crop disturbance events classification type.\n\nYou can find a list of common equivalents [here](https://go.nori.com/inputs).",
                     "enum": [
                         "broad-spectrum herbicide",
+                        "clear-renew",
                         "crimp",
                         "growing season cultivation",
                         "intensive tillage",
@@ -2440,24 +2774,33 @@
                     "title": "carbonNitrogenRatio"
                 },
                 "date": {
-                    "anyOf": [
-                        {
-                            "description": "The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).",
-                            "errorMessage": {
-                                "type": "projectDataError:cropEventDateTypeError",
-                                "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                            },
-                            "pattern": "^02\\/(?:[01]\\d|2\\d)\\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\\/(?:[0-2]\\d|3[01])\\/(?:20)\\d{2}|(?:0[469]|11)\\/(?:[0-2]\\d|30)\\/(?:20)\\d{2}|02\\/(?:[0-1]\\d|2[0-8])\\/(?:20)\\d{2}$",
-                            "type": "string",
-                            "validationRules": [
-                                "cropEventDateIsOnOrAfterContainingCropYear"
-                            ]
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "date"
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.",
@@ -2535,6 +2878,14 @@
         "_": "projectDataError:projectUnknownError"
     },
     "properties": {
+        "externalId": {
+            "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+            "title": "externalId",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
         "fields": {
             "description": "An array of fields defining annual crop management practices.",
             "errorMessage": {
@@ -2550,6 +2901,14 @@
             "minItems": 1,
             "title": "fields",
             "type": "array"
+        },
+        "id": {
+            "description": "Nori's internal project identifier.\n\nUsed to synchronize repeated imports.",
+            "title": "id",
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "version": {
             "description": "The specification version. This information is used to determine the logic Nori uses to import a project",

@@ -175,6 +175,7 @@ export const soilOrCropDisturbanceTypes = [
   'crimp',
   'winter killed',
   'broad-spectrum herbicide',
+  'clear-renew', // orchards / vineyards
 ] as const;
 
 export const limingTypes = [
@@ -188,10 +189,10 @@ export const limingTypes = [
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
- * @example <caption>A project that uses specification v 0.1.0 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.0.0 and contains a list of fields:</caption>
  * ```js
  * {
- *  "version": "0.1.0",
+ *  "version": "4.0.0",
  *  "fields": [
  *    // define fields in this array
  *  ]
@@ -217,11 +218,40 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "0.1.0"
+   * "version": "4.0.0"
    * ```
    *
    */
   version: string;
+  /**
+   * Project identifier from external system.
+   *
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "externalId": "blue-hill-201"
+   * ```
+   */
+  externalId?: string;
+  /**
+   * Nori's internal project identifier.
+   *
+   * Used to synchronize repeated imports.
+   *
+   * @nullable External systems leave this blank for new projects.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * ```
+   *
+   */
+  id?: string;
   /**
    * An array of fields defining annual crop management practices.
    *
@@ -559,7 +589,7 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
  */
 export interface Field {
   /**
-   * The year that you most recently adopted regenerative agricultural practices
+   * The year that you most recently adopted regenerative agricultural practices. aka Switch Year
    *
    * For more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).
    *
@@ -674,6 +704,37 @@ export interface Field {
    *
    */
   cropYears: CropYear[];
+
+  /**
+   * Field identifier from external system.
+   *
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "externalId": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * ```
+   *
+   */
+  externalId?: string;
+  /**
+   * Nori's internal field identifier.
+   *
+   * Used to synchronize repeated imports.
+   *
+   * @nullable External systems leave this blank for new projects.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * ```
+   *
+   */
+  id?: string;
 }
 /**
  * Crop management details grouped by a planting year.
@@ -719,20 +780,15 @@ export interface CropYear {
    *  {
    *    "type": "corn",
    *    "classification": "annual crop",
-   *    "plantingDate": "01/01/2000"
    *    // ...CropEvents
    *  },
    *  {
    *    "type": "annual rye",
    *    "classification": "perennial",
-   *    "plantingDate": "01/01/2000"
    *    // ...CropEvents
    *  },
    *  {
    *    "classification": "orchard",
-   *    "prune": "yes",
-   *    "renewOrClear": "yes",
-   *    "plantingDate": "01/01/2000"
    *    // ...CropEvents
    *  }
    * ]
@@ -753,12 +809,12 @@ export interface CropYear {
  *
  * ```js
  * {
- *  "plantingDate": "01/01/2000";
+ *  "name": "Corn1";
  * }
  * ```
  *
  */
-export interface PlantedCrop {
+export interface Crop extends CropEvents {
   /**
    * The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
@@ -772,59 +828,44 @@ export interface PlantedCrop {
    *
    */
   name?: string;
-  /**
-   * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
-   *
-   * If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * @example <caption>When the crop was planted on January 1st of year 2000:</caption>
-   *
-   * ```js
-   * "plantingDate": "01/01/2000"
-   * ```
-   *
-   */
-  plantingDate: string;
-}
 
-/**
- * Crop harvest events.
- *
- * @example <caption>When an annual crop had a harvest event:</caption>
- *
- * ```js
- *  "harvestEvents": [
- *    {
- *      "date": "10/01/2000",
- *      "yield": 100,
- *      "yieldUnit": "bu/ac",
- *      "grainFruitTuber": "n/a",
- *    }
- *  ]
- * ```
- *
- */
-export interface HarvestableCropEvents {
   /**
-   * A list of harvest events, if applicable.
+   * Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.
    *
-   * Straw / Stover harvest exception: If the hay or stover was removed
-   * separately after grain / fruit / tuber harvest, do NOT add this as
-   * a second harvest. Instead, enter the percent of the remaining residue
-   * that was removed on the grain harvest, regardless of removal date.
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
    *
-   * @example <caption>When crop had at least one harvest event:</caption>
+   * @nullable
+   *
+   * @example
    *
    * ```js
-   *  "harvestEvents": [
-   *    // ...list of AnnualCropHarvestEvents or CropManagementEvents
-   *  ]
+   * "externalId": "corn-456"
+   * ```
+   *
+   * @example
+   *
+   * ```js
+   * "externalId": "corn-456-2019"
    * ```
    *
    */
-  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
+  externalId?: string;
+
+  /**
+   * Nori's internal crop identifier.
+   *
+   * Used to synchronize repeated imports
+   *
+   * @nullable External systems leave this blank for new projects.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * ```
+   *
+   */
+  id?: string;
 }
 
 /**
@@ -834,6 +875,9 @@ export interface HarvestableCropEvents {
  *
  * ```js
  * {
+ *  "plantingEvent": {
+ *    // ...plantingEvent
+ *  },
  *  "soilOrCropDisturbanceEvents": [
  *    // ... SoilOrCropDisturbanceEvents
  *  ],
@@ -852,25 +896,45 @@ export interface HarvestableCropEvents {
  *  "grazingEvents": [
  *    // ... GrazingEvents
  *  ],
- *  "burningEvent": {
- *    // ... BurningEvent
- *  },
+ *  "burningEvent": [
+ *    // ... BurningEvents
+ *  ],
+ *  "pruningEvents": [
+ *    // ... PruningEvents
+ *  ],
+ *  "harvestEvents": [
+ *    // ... HarvestEvents
+ * ],
  * }
  * ```
  *
  */
 export interface CropEvents {
   /**
+   * The planting event.
+   *
+   * @example <caption>Planting on 2018-03-20</caption>
+   *
+   * ```js
+   * "plantingEvent": {
+   *  "date": "2018-03-20"
+   * }
+   * ```
+   *
+   **/
+  plantingEvent: PlantingEvent;
+
+  /**
    * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
    *
-   * All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
+   * All crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.
    *
    * @example <caption>When some soil or crop disturbance events occurred:</caption>
    *
    * ```js
    * "soilOrCropDisturbanceEvents": [
    *  {
-   *    "date": "10/01/2000",
+   *    "date": "2000-10-01",
    *    "type": "mow",
    *  }
    *  // ... other soul and crop disturbance events
@@ -887,7 +951,7 @@ export interface CropEvents {
    * ```js
    * "fertilizerEvents": [
    *  {
-   *    "date": "10/01/2000",
+   *    "date": "2000-10-01",
    *    "name": "Joe's fertilizer",
    *    "type": "mixed blends",
    *    "lbsOfNPerAcre": 10
@@ -908,7 +972,7 @@ export interface CropEvents {
    * ```js
    * "organicMatterEvents": [
    *  {
-   *    "date": "10/01/2000",
+   *    "date": "2000-10-01",
    *    "type": "alfalfa meal",
    *    "amountPerAcre": 2, // tons
    *    "percentNitrogen": 9,
@@ -930,7 +994,7 @@ export interface CropEvents {
    * "irrigationEvents": [
    *  {
    *    "volume": 1,
-   *    "date": "01/01/2000",
+   *    "date": "2000-10-01",
    *  }
    *  // ... other irrigation events
    * ]
@@ -941,14 +1005,16 @@ export interface CropEvents {
   /**
    * A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
    *
-   * @nullable during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+   * @nullable
+   *
+   * @default []
    *
    * @example <caption>When some liming events occurred:</caption>
    *
    * ```js
    * "limingEvents": [
    *  {
-   *    "date": "01/01/2000",
+   *    "date": "2000-01-01",
    *    "type": "crushed limestone",
    *    "tonsPerAcre": 10,
    *  }
@@ -961,7 +1027,9 @@ export interface CropEvents {
   /**
    * A list of grazing events, if applicable
    *
-   * @nullable during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
+   * @nullable
+   *
+   * @default []
    *
    * @example <caption>When some grazing events occurred:</caption>
    *
@@ -970,8 +1038,8 @@ export interface CropEvents {
    *  {
    *   "restPeriod": 0,
    *   "utilization": 20,
-   *   "startDate": "01/01/2000",
-   *   "endDate": "12/31/2000"
+   *   "startDate": "2000-01-01",
+   *   "endDate": "2000-12-31"
    *  }
    *  // .. additional grazing events
    * ]
@@ -980,51 +1048,86 @@ export interface CropEvents {
    */
   grazingEvents?: GrazingEvent[];
   /**
-   * A burning event, if applicable.
+   * Burning events, if applicable.
    *
-   * @nullable if no burning ever occurred, explicitly specify `burningEvent` as `null`
+   * @nullable
    *
-   * @default { "type": "no burning" }
+   * @default []
    *
    * @example <caption>When burning occurred after harvesting:</caption>
    *
    * ```js
-   * "burningEvent": {
-   *  "type": "after harvesting"
-   * }
+   * "burningEvents": [{
+   *  "date": "2010-10-31"
+   * }]
    * ```
    *
    * @example <caption>When no burning occurred:</caption>
    *
    * ```js
-   * "burningEvent": null
+   * "burningEvents": []
    * ```
    *
    */
-  burningEvent?: BurningEvent;
+  burningEvents?: BurningEvent[];
+  /**
+   * Pruning events, if applicable.
+   *
+   * @nullable
+   *
+   * @default []
+   *
+   * @example <caption>When burning occurred after harvesting:</caption>
+   *
+   * ```js
+   * "pruningEvents": [{
+   *  "date": "2010-10-31"
+   * }]
+   * ```
+   *
+   * @example <caption>When no pruning occurred:</caption>
+   *
+   * ```js
+   * "pruningEvents": []
+   * ```
+   *
+   */
+  pruningEvents?: PruningEvent[];
+    /**
+   * A list of harvest events, if applicable.
+   *
+   * Straw / Stover harvest exception: If the hay or stover was removed
+   * separately after grain / fruit / tuber harvest, do NOT add this as
+   * a second harvest. Instead, enter the percent of the remaining residue
+   * that was removed on the grain harvest, regardless of removal date.
+   *
+   * @example <caption>When crop had at least one harvest event:</caption>
+   *
+   * ```js
+   *  "harvestEvents": [
+   *    // ...list of AnnualCropHarvestEvents or CropManagementEvents
+   *  ]
+   * ```
+   *
+   */
+     harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
 }
 
 /**
  * Crop management details and events for orchard and vineyard crops.
  *
- * @example <caption>A crop definition for an orchard that was pruned and renewed or cleared:</caption>
+ * @example <caption>A crop definition for an orchard that was:</caption>
  *
  * ```js
  * {
  *  "type": "oranges",
  *  "classification": "orchard",
- *  "prune": "yes",
- *  "renewOrClear": "yes",
- *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
  * ```
  *
  */
-export interface OrchardOrVineyardCrop
-  extends CropEvents,
-    HarvestableCropEvents,
-    PlantedCrop {
+export interface OrchardOrVineyardCrop extends Crop {
   /**
    * The COMET equivalent type of the orchard or vineyard crop.
    *
@@ -1059,41 +1162,6 @@ export interface OrchardOrVineyardCrop
    *
    */
   classification: 'orchard' | 'vineyard';
-  /**
-   * Indicates if the crop was pruned.
-   *
-   *
-   * @example <caption>When the crop was pruned:</caption>
-   *
-   * ```js
-   * "prune": "yes"
-   * ```
-   *
-   * @example <caption>When the crop was not pruned:</caption>
-   *
-   * ```js
-   * "prune": "no"
-   * ```
-   *
-   */
-  prune: 'yes' | 'no';
-  /**
-   * Indicates if the crop was renewed or cleared.
-   *
-   * @example <caption>When the crop was renewed:</caption>
-   *
-   * ```js
-   * "renewOrClear": "yes"
-   * ```
-   *
-   * @example <caption>When the crop was not renewed:</caption>
-   *
-   * ```js
-   * "renewOrClear": "no"
-   * ```
-   *
-   */
-  renewOrClear: 'yes' | 'no';
 }
 
 /**
@@ -1105,16 +1173,12 @@ export interface OrchardOrVineyardCrop
  * {
  *  "type": "alfalfa",
  *  "classification": "perennial",
- *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
  * ```
  *
  */
-export interface PerennialCrop
-  extends CropEvents,
-    HarvestableCropEvents,
-    PlantedCrop {
+export interface PerennialCrop extends Crop {
   /**
    * The COMET equivalent type of the perennial crop
    *
@@ -1154,13 +1218,12 @@ export interface PerennialCrop
  * {
  *  "type": "annual rye",
  *  "classification": "annual cover",
- *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
  * ```
  *
  */
-export interface CoverCrop extends CropEvents, PlantedCrop {
+export interface CoverCrop extends Crop {
   /**
    * The COMET equivalent type of the crop.
    *
@@ -1179,7 +1242,7 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
    *
    * You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
    *
-   * @default "annual cover"
+   * @default "annual crop"
    *
    * @example
    *
@@ -1194,23 +1257,19 @@ export interface CoverCrop extends CropEvents, PlantedCrop {
 /**
  * Crop management details and events for annual crops.
  *
- * @example <caption>An crop definition for an annual crop planted in year 2000:</caption>
+ * @example <caption>A crop definition for an annual crop planted in year 2000:</caption>
  *
  * ```js
  * {
  *  "name": "Joe's corn",
  *  "type": "corn",
  *  "classification": "annual crop",
- *  "plantingDate": "01/01/2000"
  *  // ...CropEvents
  * }
  * ```
  *
  */
-export interface AnnualCrop
-  extends CropEvents,
-    HarvestableCropEvents,
-    PlantedCrop {
+export interface AnnualCrop extends Crop {
   /**
    * The COMET equivalent type of the crop
    *
@@ -1250,25 +1309,24 @@ export interface AnnualCrop
  *
  * ```js
  * {
- *  "date": "01/01/2000"
+ *  "date": "2000-01-01"
  * }
  * ```
  *
  */
 export interface CropEvent {
   /**
-   * The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
+   * The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
    *
-   * @nullable during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+   * Dates for liming and burning can be approximate or the first day of the crop year.
    *
    * @example <caption>When the crop event occurred on January 1st of 2000:</caption>
    *
    * ```js
-   * "date": "01/01/2000"
-   * ```
+   * "date": "2000-01-01"
+   *```
    * @validationRules ["cropEventDateIsOnOrAfterContainingCropYear"]
+   * @format date
    *
    * @errorMessage
    * {
@@ -1276,50 +1334,54 @@ export interface CropEvent {
    * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
    * }
    */
-  date: string;
+  date: Date;
+  /**
+   * External crop event identifier.
+   *
+   * Used to correlate data back to the originating system and to synchronize repeated imports.
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
+   * ```
+   *
+   */
+  externalId?: string;
+  /**
+   * Nori's internal crop event identifier.
+   *
+   * Used to synchronize repeated imports.
+   *
+   * @nullable External systems leave this blank for new projects.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
+   * ```
+   *
+   */
+  id?: string;
 }
 
 /**
- * A crop event that has a start and end date.
+ * Planting event details.
+ *
+ * (formatted as ISO8601 date format (YYYY-MM-DD) with YYYY > 2000 and YYYY < 2100).
  *
  * @example
  *
  * ```js
  * {
- *  "startDate": "01/01/2000",
- *  "endDate": "12/31/2000"
+ *  "date": "2000-03-02",
  * }
  * ```
  *
  */
-export interface CropEventRange {
-  /**
-   * The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * @example <caption>When the start date of the event range was on January 1st of 2000:</caption>
-   *
-   * ```js
-   * "startDate": "01/01/2000"
-   * ```
-   *
-   */
-  startDate: string;
-  /**
-   * The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * @example <caption>When the end date of the event range was on December 31st of 2000:</caption>
-   *
-   * ```js
-   * "endDate": "12/31/2000"
-   * ```
-   *
-   */
-  endDate: string;
-}
+export interface PlantingEvent extends CropEvent {}
 
 /**
  * Crop management event details.
@@ -1328,7 +1390,7 @@ export interface CropEventRange {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-02",
  *  "grainFruitTuber": "n/a",
  *  "residueRemoved": 0,
  * }
@@ -1340,6 +1402,8 @@ export interface CropManagementEvent extends CropEvent {
    * Whether the crop was harvest for grain, fruit or tuber.
    *
    * @nullable during import (specify null if you are unsure)
+   *
+   * @default no
    *
    * @example <caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
    *
@@ -1354,7 +1418,7 @@ export interface CropManagementEvent extends CropEvent {
    * ```
    *
    */
-  grainFruitTuber: 'yes' | 'no';
+  grainFruitTuber?: 'yes' | 'no';
   /**
    * Crop residue removed.
    *
@@ -1392,7 +1456,7 @@ export interface CropManagementEvent extends CropEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "yield": 100,
  *  "yieldUnit": "bu/ac",
  *  "grainFruitTuber": "n/a",
@@ -1441,7 +1505,7 @@ export interface AnnualCropHarvestEvent extends CropManagementEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "type": "mow",
  * }
  * ```
@@ -1547,7 +1611,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "name": "Joe's fertilizer",
  *  "type": "mixed blends",
  *  "lbsOfNPerAcre": 150
@@ -1606,7 +1670,7 @@ export interface FertilizerEvent extends CropEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "type": "alfalfa meal",
  *  "amountPerAcre": 2, // in tons
  *  "percentNitrogen": 9,
@@ -1637,7 +1701,7 @@ export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "type": "beef slurry",
  *  "amountPerAcre": 2, //  in gallons
  *  "percentNitrogen": 9,
@@ -1669,7 +1733,7 @@ export interface SlurryOrganicMatterEvent extends OrganicMatterEvent {
  *
  * ```js
  * {
- *  "date": "10/01/2000",
+ *  "date": "2000-10-01",
  *  "amountPerAcre": 2,
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
@@ -1773,7 +1837,7 @@ export interface OrganicMatterEvent extends CropEvent {
  * ```js
  * {
  *  "volume": 1,
- *  "date": "01/01/2000",
+ *  "date": "2000-10-01",
  * }
  * ```
  *
@@ -1798,18 +1862,21 @@ export interface IrrigationEvent extends CropEvent {
 /**
  * Liming event details.
  *
+ * NOTE: The date that the liming occurred. Currently, liming dates do not impact quantification.
+ * As such, we will default to a reasonable date when this property is left out.
+ *
  * @example
  *
  * ```js
  * {
- *  "date": "01/01/2000",
+ *  "date": "2000-01-01",
  *  "type": "crushed limestone",
  *  "tonsPerAcre": 10,
  * }
  * ```
  *
  */
-export interface LimingEvent {
+export interface LimingEvent extends CropEvent {
   /**
    * The liming type.
    *
@@ -1834,19 +1901,6 @@ export interface LimingEvent {
    *
    */
   tonsPerAcre: number;
-  /**
-   * The date that the liming occurred. Currently, liming dates do not impact quantification. As such, we will default to a reasonable date when this property is left out.
-   *
-   * @pattern ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
-   *
-   * @example <caption>When liming occurred on January 1st of 2000:</caption>
-   *
-   * ```js
-   * "date": "01/01/2000"
-   * ```
-   *
-   */
-  date?: string;
 }
 
 /**
@@ -1856,52 +1910,42 @@ export interface LimingEvent {
  *
  * ```js
  * {
- *  "restPeriod": 0,
- *  "utilization": 20,
- *  "startDate": "01/01/2000",
- *  "endDate": "12/31/2000"
+ *  "date": "2000-01-01",
+ *  "daysGrazed": "3s"
  * }
  * ```
  *
  */
-export interface GrazingEvent extends CropEventRange {
+export interface GrazingEvent extends CropEvent {
   /**
-   * The grazing rest period in days.
+   * Number of days actively grazed from `CropEvent.date`
    *
-   * Zero and one are equivalent and indicate continuous grazing.
-   *
-   * @minimum 0
+   * @minimum 1
    * @maximum 365
    *
-   * @example <caption>When animals are grazing continuously:</caption>
+   * @example <caption>When animals are on the field 3 days:</caption>
    *
    * ```js
-   * "restPeriod": 0
-   * ```
-   *
-   * @example <caption>When animals are on the field or in each paddock within the field every 30 days:</caption>
-   *
-   * ```js
-   * "restPeriod": 30
+   * "daysGrazed": 3
    * ```
    *
    */
-  restPeriod: number;
-  /**
-   * The percentage of forage consumed by the animals per rest period days.
-   *
-   * @minimum 0
-   * @maximum 100
-   *
-   * @example <caption>When 20% of the forage was consumed per period:</caption>
-   *
-   * ```js
-   * "utilization": 20
-   * ```
-   *
-   */
-  utilization: number;
+  daysGrazed: number;
 }
+
+/**
+ * Pruning Event.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "2008-10-31"
+ * }
+ * ```
+ *
+ */
+export interface PruningEvent extends CropEvent {}
 
 /**
  * Burning event details.
@@ -1910,27 +1954,9 @@ export interface GrazingEvent extends CropEventRange {
  *
  * ```js
  * {
- *  "type": "before planting"
+ *  "date": "2008-10-31"
  * }
  * ```
  *
  */
-export interface BurningEvent {
-  /**
-   * The type of burning, if applicable.
-   *
-   * @example <caption>When burning occurred before planting:</caption>
-   *
-   * ```js
-   * "type": "before planting"
-   * ```
-   *
-   * @example <caption>When burning occurred after harvesting:</caption>
-   *
-   * ```js
-   * "type": "after harvesting"
-   * ```
-   *
-   */
-  type: 'before planting' | 'after harvesting';
-}
+export interface BurningEvent extends CropEvent {}
