@@ -24,18 +24,18 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "eslint-import-resolver-typescript": "^2.5.0",
-    "@next/eslint-plugin-next": "^12.0.10",
+    "@next/eslint-plugin-next": "^12.1.6",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "eslint": "^8.9.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-next": "^12.0.10",
+    "eslint-config-next": "^12.1.6",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-typescript": "^3.0.0",
     "eslint-disable": "^1.0.2",
@@ -46,8 +46,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-mui-unused-classes": "^1.0.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-relay": "^1.8.3",
     "eslint-plugin-require-path-exists": "^1.1.9",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
