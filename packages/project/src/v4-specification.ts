@@ -224,6 +224,42 @@ export interface Project {
    */
   version: string;
   /**
+   * primaryContact Contact info for verifiers and other entities involved in the project
+   *
+   * @ullable
+   */
+  primaryContact?: ContactInfo;
+  /**
+   * farmAddress
+   *
+   * @nullable
+   */
+  farmAddress?: Address;
+  /**
+   * totalFarmAcres
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "totalFarmAcres": 3490
+   * ```
+   */
+  totalFarmAcres?: number;
+  /**
+   * totalCroppedAcres
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "totalCroppedAcres": 2456
+   * ```
+   */
+  totalCroppedAcres?: number;
+  /**
    * Project identifier from external system.
    *
    * Used to correlate data back to the originating system and to synchronize repeated imports.
@@ -276,6 +312,88 @@ export interface Project {
    *
    */
   fields: Field[];
+}
+
+export interface ContactInfo {
+  /**
+   * The project's primary contract person.  Provided to the verified.
+   *
+   * @nullable
+   */
+  name?: string;
+  /**
+   * phone
+   *
+   * @nullable
+   */
+  phone?: string;
+  /**
+   * email
+   *
+   * @nullable
+   */
+  email?: string;
+}
+
+export interface Address {
+  /**
+   * First address line
+   *
+   * @nullable
+   *
+   * @example 123 Cherry Lane
+   *
+   * @example PO Box 56789
+   */
+  line1?: string;
+  /**
+   * Second address line
+   *
+   * @nullable
+   *
+   * @example 123 Cherry Lane
+   *
+   * @example Station 99
+   */
+  line2?: string;
+  /**
+   * city
+   *
+   * @nullable
+   *
+   * @example Fargo
+   */
+  city?: string;
+  /**
+   * State or Province ISO3166-2 Code
+   *
+   * In the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US
+   *
+   * @nullable
+   *
+   * @example US-ND
+   */
+  admin1?: string;
+  /**
+   * County or second level subdivision
+   *
+   * In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697
+   *
+   * @nullable
+   *
+   * @example 02130
+   */
+  admin2?: string;
+  /**
+   * ISO3166 Country code
+   *
+   * See: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+   *
+   * @nullable
+   *
+   * @example US
+   */
+  country?: string;
 }
 
 /**
@@ -669,6 +787,47 @@ export interface Field {
    *
    */
   acres: number;
+  /**
+   * legalAcres Number of acres in this parcel per your insurance policy.
+   *
+   * @nullable
+   *
+   * @example 16.87595094
+   */
+  legalAcres?: number;
+  /**
+   * assignmentOfAuthority
+   *
+   * @nullable If operator owner land.
+   */
+  assignmentOfAuthority?: boolean;
+  /**
+   * landOwners (as shown on deed, MUST LIST ALL OWNERS)
+   *
+   * @nullable
+   *
+   */
+  landOwners?: ContactInfo[];
+  /**
+   * mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)
+   *
+   * @nullable
+   */
+  mailingAddress?: Address;
+  /**
+   * parcelNumber
+   *
+   * @nullable
+   */
+  parcelNumber?: string;
+  /**
+   * legalPropertyDescription
+   *
+   * @nullable
+   *
+   * @example 15 83 40 N 17.70 A OF W 33.67 A SW SE
+   */
+  legalPropertyDescription?: string;
   /**
    * The geographic boundaries (defined as GeoJSON) associated with crop management practices.
    *
