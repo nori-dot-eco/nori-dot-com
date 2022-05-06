@@ -229,6 +229,10 @@ export const Errors = {
       message:
         'We were unable to process your payment. Please check your payment information and try again.',
     },
+    failedToAuthorizePaymentIntent: {
+      message:
+        'We were unable to process your payment. Please check your payment information and try again.',
+    },
   },
   authenticationError: {
     userNotFound: {
