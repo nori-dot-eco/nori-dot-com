@@ -13,11 +13,10 @@ module.exports = {
     'plugin:relay/recommended',
     'plugin:import/warnings',
     'plugin:import/errors',
+    'plugin:import/recommended',
     'plugin:jest/recommended',
     'plugin:@next/next/recommended',
-    'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/typescript',
+    'plugin:@next/next/core-web-vitals',
     'plugin:prettier/recommended',
   ],
   plugins: [
@@ -38,7 +37,11 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: allExtensions,
+        extensions: jsExtensions,
+      },
+      typescript: {
+        alwaysTryTypes: true,
+        extensions: tsExtensions,
       },
     },
     jsdoc: {
@@ -198,6 +201,12 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
+      extends: [
+        'plugin:import/errors',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/typescript',
+        'plugin:prettier/recommended',
+      ],
       plugins: ['@typescript-eslint', 'mui-unused-classes'],
       rules: {
         'no-extra-boolean-cast': 'off',
