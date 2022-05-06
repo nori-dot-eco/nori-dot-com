@@ -2,6 +2,61 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
+        "Address": {
+            "additionalProperties": false,
+            "properties": {
+                "admin1": {
+                    "description": "State or Province ISO3166-2 Code\n\nIn the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US",
+                    "title": "admin1",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "admin2": {
+                    "description": "County or second level subdivision\n\nIn the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697",
+                    "title": "admin2",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "city": {
+                    "description": "city",
+                    "title": "city",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "country": {
+                    "description": "ISO3166 Country code\n\nSee: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes",
+                    "title": "country",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "line1": {
+                    "description": "First address line",
+                    "title": "line1",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "line2": {
+                    "description": "Second address line",
+                    "title": "line2",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Address",
+            "type": "object"
+        },
         "AnnualCrop": {
             "additionalProperties": false,
             "description": "Crop management details and events for annual crops.",
@@ -333,6 +388,37 @@
                 "date"
             ],
             "title": "BurningEvent",
+            "type": "object"
+        },
+        "ContactInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "email": {
+                    "description": "email",
+                    "title": "email",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The project's primary contract person.  Provided to the verified.",
+                    "title": "name",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "phone": {
+                    "description": "phone",
+                    "title": "phone",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "ContactInfo",
             "type": "object"
         },
         "CoverCrop": {
@@ -762,6 +848,14 @@
                         "null"
                     ]
                 },
+                "assignmentOfAuthority": {
+                    "description": "assignmentOfAuthority",
+                    "title": "assignmentOfAuthority",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "cropYears": {
                     "description": "A list of crop management details grouped by the crop planting year.",
                     "items": {
@@ -838,6 +932,57 @@
                 "id": {
                     "description": "Nori's internal field identifier.\n\nUsed to synchronize repeated imports.",
                     "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "landOwners": {
+                    "anyOf": [
+                        {
+                            "description": "landOwners (as shown on deed, MUST LIST ALL OWNERS)",
+                            "items": {
+                                "$ref": "#/definitions/ContactInfo"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "landOwners"
+                },
+                "legalAcres": {
+                    "description": "legalAcres Number of acres in this parcel per your insurance policy.",
+                    "title": "legalAcres",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "legalPropertyDescription": {
+                    "description": "legalPropertyDescription",
+                    "title": "legalPropertyDescription",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mailingAddress": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Address",
+                            "description": "mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "mailingAddress"
+                },
+                "parcelNumber": {
+                    "description": "parcelNumber",
+                    "title": "parcelNumber",
                     "type": [
                         "string",
                         "null"
@@ -2878,6 +3023,18 @@
                 "null"
             ]
         },
+        "farmAddress": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/Address",
+                    "description": "farmAddress"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "title": "farmAddress"
+        },
         "fields": {
             "description": "An array of fields defining annual crop management practices.",
             "errorMessage": {
@@ -2899,6 +3056,27 @@
             "title": "id",
             "type": [
                 "string",
+                "null"
+            ]
+        },
+        "primaryContact": {
+            "$ref": "#/definitions/ContactInfo",
+            "description": "primaryContact Contact info for verifiers and other entities involved in the project",
+            "title": "primaryContact"
+        },
+        "totalCroppedAcres": {
+            "description": "totalCroppedAcres",
+            "title": "totalCroppedAcres",
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "totalFarmAcres": {
+            "description": "totalFarmAcres",
+            "title": "totalFarmAcres",
+            "type": [
+                "number",
                 "null"
             ]
         },
