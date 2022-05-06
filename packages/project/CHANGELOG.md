@@ -13,3 +13,5 @@
  * Renamed `PlantedCrop` to `Crop`, made it inherit `CropEvents` and the specific crop types inherit `Crop`.
  * Make units explicit for organic matter: `tonsPerAcre` for solid and `gallonsPerAcre` for liquid.
  * Use boolean rather than yes/no strings in `grainFruitTuber` and crp definitions.
+ * Added additional fields for contact info and legal information about the farms and fields
+   that has historically been collected later in the process.
