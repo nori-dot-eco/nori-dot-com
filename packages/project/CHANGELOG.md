@@ -7,7 +7,6 @@
  * Switched to ISO8610 Date format throughout (YYYY-MM-DD)
  * Add `pruningEvents` to `CropEvents`
  * Dropped `pruned` and `cleared / renewed` flags from `orchardOrVineyardCrop`.
- * Added a corresponding termination method for clear/renew.
  * Simplified `GrazingEvent` to take a single event date and the number of days grazed on the field on or after that date.
  * Simplified specific crop types to behave more similarly and inherit the same hierarchy.
  * Renamed `PlantedCrop` to `Crop`, made it inherit `CropEvents` and the specific crop types inherit `Crop`.
@@ -15,3 +14,8 @@
  * Use boolean rather than yes/no strings in `grainFruitTuber` and crp definitions.
  * Added additional fields for contact info and legal information about the farms and fields
    that has historically been collected later in the process.
+ * Added a new event type for orchard and vineyard crops: `crop.clearingAndRenewalEvents` with a parameter of `percentRenewed`.
+ * Added a structured representation of regenerative practice changes (needs review) `field.practiceChangesAdopted`
+ * Made `plantingEvents` an array with max one element to keep the structure consistent.  Can be empty for perennials in years after the planting year.
+ * Simplified the type of `crop.harvestEvents` for remove the `(AnnualCropHarvestEvent | CropManagementEvent)` distinction and renamed the event to `HarvestEvent`.
+ * Added `GrazingEvent.percentResidueRemoved`
