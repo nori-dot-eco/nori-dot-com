@@ -23,7 +23,7 @@
  *
  * Throughout this documentation you will come across some vocab that indicate to what extent some data needs to be defined. There are effectively three different terms used here:
  *
- * 1. `nullable` - This means that data can be explicitly specified as null in an import file. However, the implication for nullable values is that unless it is marked as optional (i.e., with the `?` symbol after the property name's definition), AND it does not have an associated `default` value for the property, then the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+ * 1. `nullable` - This means that data can be explicitly specified as null in an import file.
  *
  * 2. `?` (AKA optional) - Specifies that a data property can be entirely excluded
  *
@@ -175,7 +175,6 @@ export const soilOrCropDisturbanceTypes = [
   'crimp',
   'winter killed',
   'broad-spectrum herbicide',
-  'clear-renew', // orchards / vineyards
 ] as const;
 
 export const limingTypes = [
@@ -672,6 +671,43 @@ export interface HistoricCRPLandManagement extends HistoricLandManagement {
 }
 
 /**
+ * Please indicate for `true` for the *newly adopted* practices only.
+ *
+ * @example <caption>When the field participated in CRP:</caption>
+ *
+ * ```js
+ * "coverCropping": true
+ * ```
+ *
+ */
+export interface PracticeChangesAdopted {
+  /**
+   * Added cover cropping
+   *
+   * @default false
+   */
+  coverCropping?: boolean;
+  /**
+   * Ceased tillage.
+   *
+   * @default false
+   */
+  noTill?: boolean;
+  /**
+   * Switched to strip tillage.
+   *
+   * @default false
+   */
+  stripTill?: boolean;
+  /**
+   * Other reduction in tillage.
+   *
+   * @default false
+   */
+  reducedTillage?: boolean;
+}
+
+/**
  * A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
  *
  * @example
@@ -721,6 +757,18 @@ export interface Field {
    *
    */
   regenerativeStartYear: number;
+  /**
+   * Details of new practice changes.
+   *
+   *
+ * ```js
+ * "practiceChangesAdopted": {
+ *   "coverCropping": true
+ * }
+ * ```
+   *
+   */
+  practiceChangesAdopted: PracticeChangesAdopted;
   /**
    * Details surrounding how the field was managed before year 2000.
    *
@@ -775,19 +823,6 @@ export interface Field {
    */
   fieldName: string;
   /**
-   * The number of acres that use the herein defined crop management practices (via [cropYears](#cropYears)).
-   *
-   * @nullable during import (note: when acres is defined as null in an import file it will instead be inferred from the geojson)
-   *
-   * @example <caption>When the field's legal area is 100 acres:</caption>
-   *
-   * ```js
-   * "acres": 100
-   * ```
-   *
-   */
-  acres: number;
-  /**
    * legalAcres Number of acres in this parcel per your insurance policy.
    *
    * @nullable
@@ -797,6 +832,12 @@ export interface Field {
   legalAcres?: number;
   /**
    * assignmentOfAuthority
+   *
+   *
+   * @example <caption>When the field's legal area is 100 acres:</caption>
+   *
+   * ```js
+   * "acres": 100
    *
    * @nullable If operator owner land.
    */
@@ -1070,23 +1111,36 @@ export interface Crop extends CropEvents {
  */
 export interface CropEvents {
   /**
-   * The planting event.
+   * The planting event(s) if there were any for the current crop year otherwise empty array or omit property.
+   *
+   * This will contain a single event for annuals and none for perennials outside of the planting year.
+   *
+   * @nullable
+   * @maximum 1
    *
    * @example <caption>Planting on 2018-03-20</caption>
    *
    * ```js
-   * "plantingEvent": {
+   * "plantingEvents": [{
    *  "date": "2018-03-20"
-   * }
+   * }]
+   * ```
+   *
+   * @example <caption>Perennial planted in a prior year.</caption>
+   *
+   * ```js
+   * "plantingEvents": []
    * ```
    *
    **/
-  plantingEvent: PlantingEvent;
+  plantingEvents?: PlantingEvent[];
 
   /**
    * A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
    *
    * All crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.
+   *
+   * @nullable
    *
    * @example <caption>When some soil or crop disturbance events occurred:</caption>
    *
@@ -1101,9 +1155,11 @@ export interface CropEvents {
    * ```
    *
    */
-  soilOrCropDisturbanceEvents: SoilOrCropDisturbanceEvent[];
+  soilOrCropDisturbanceEvents?: SoilOrCropDisturbanceEvent[];
   /**
    * A list of fertilizer events, if applicable.
+   *
+   * @nullable
    *
    * @example <caption>When some fertilizer events occurred:</caption>
    *
@@ -1146,6 +1202,8 @@ export interface CropEvents {
   organicMatterEvents?: (SolidOrganicMatterEvent | SlurryOrganicMatterEvent)[];
   /**
    * A list of irrigation events, if applicable.
+   *
+   * @nullable
    *
    * @example <caption>When some irrigation events occurred:</caption>
    *
@@ -1236,7 +1294,7 @@ export interface CropEvents {
    *
    * @default []
    *
-   * @example <caption>When burning occurred after harvesting:</caption>
+   * @example <caption>When pruning occurred after harvesting:</caption>
    *
    * ```js
    * "pruningEvents": [{
@@ -1253,12 +1311,38 @@ export interface CropEvents {
    */
   pruningEvents?: PruningEvent[];
   /**
+   * Clearing and renewal events for orchards and vinyards, if applicable.
+   *
+   * @nullable
+   *
+   * @default []
+   *
+   * @example <caption>When clearing occurred after harvesting:</caption>
+   *
+   * ```js
+   * "clearingAndRenewalEvents": [{
+   *  "date": "2010-10-31"
+   * }]
+   * ```
+   *
+   * @example <caption>When no clearing or removal occurred:</caption>
+   *
+   * ```js
+   * "clearingAndRenewalEvents": []
+   * ```
+   *
+   */
+  clearingAndRenewalEvents?: ClearingAndRenewalEvent[];
+  /**
    * A list of harvest events, if applicable.
    *
    * Straw / Stover harvest exception: If the hay or stover was removed
    * separately after grain / fruit / tuber harvest, do NOT add this as
    * a second harvest. Instead, enter the percent of the remaining residue
    * that was removed on the grain harvest, regardless of removal date.
+   *
+   * @nullable
+   * @maximum 1
    *
    * @example <caption>When crop had at least one harvest event:</caption>
    *
@@ -1269,7 +1353,7 @@ export interface CropEvents {
    * ```
    *
    */
-  harvestEvents?: (AnnualCropHarvestEvent | CropManagementEvent)[];
+  harvestEvents?: HarvestEvent[];
 }
 
 /**
@@ -1543,20 +1627,52 @@ export interface CropEvent {
 export interface PlantingEvent extends CropEvent {}
 
 /**
- * Crop management event details.
+ * An annual crop's harvest event details.
  *
- * @example
+ * @example <caption>An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:</caption>
  *
  * ```js
  * {
- *  "date": "2000-10-02",
+ *  "date": "2000-10-01",
+ *  "yield": 100,
+ *  "yieldUnit": "bu/ac",
  *  "grainFruitTuber": "n/a",
  *  "residueRemoved": 0,
  * }
  * ```
  *
  */
-export interface CropManagementEvent extends CropEvent {
+export interface HarvestEvent {
+  /**
+   * The crop yield.
+   *
+   * The current version of quantification does not consider yield when producing estimates. As such, we will default to 0 when left out.
+   *
+   * @default 0
+   *
+   * @example <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:</caption>
+   *
+   * ```js
+   * "yield": 100
+   * ```
+   *
+   */
+  yield?: number;
+  /**
+   * The crop yield units.
+   *
+   * The current version of quantification does not consider yield when producing estimates.
+   *
+   * @default "lbs/ac"
+   *
+   * @example <caption>When the unit of the yield is submitted in lbs per acre:</caption>
+   *
+   * ```js
+   * "yieldUnit": "lbs/ac"
+   * ```
+   *
+   */
+  yieldUnit?: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
   /**
    * Whether the crop was harvest for grain, fruit or tuber.
    *
@@ -1606,55 +1722,6 @@ export interface CropManagementEvent extends CropEvent {
    *
    */
   residueRemoved?: number;
-}
-
-/**
- * An annual crop's harvest event details.
- *
- * @example <caption>An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:</caption>
- *
- * ```js
- * {
- *  "date": "2000-10-01",
- *  "yield": 100,
- *  "yieldUnit": "bu/ac",
- *  "grainFruitTuber": "n/a",
- *  "residueRemoved": 0,
- * }
- * ```
- *
- */
-export interface AnnualCropHarvestEvent extends CropManagementEvent {
-  /**
-   * The crop yield.
-   *
-   * The current version of quantification does not consider yield when producing estimates. As such, we will default to 0 when left out.
-   *
-   * @default 0
-   *
-   * @example <caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:</caption>
-   *
-   * ```js
-   * "yield": 100
-   * ```
-   *
-   */
-  yield?: number;
-  /**
-   * The crop yield units.
-   *
-   * The current version of quantification does not consider yield when producing estimates.
-   *
-   * @default "lbs/ac"
-   *
-   * @example <caption>When the unit of the yield is submitted in lbs per acre:</caption>
-   *
-   * ```js
-   * "yieldUnit": "lbs/ac"
-   * ```
-   *
-   */
-  yieldUnit?: 'bu/ac' | 'cwt/ac' | 'tons/ac' | 'lbs/ac';
 }
 
 /**
@@ -2084,7 +2151,8 @@ export interface LimingEvent extends CropEvent {
  * ```js
  * {
  *  "date": "2000-01-01",
- *  "daysGrazed": "3s"
+ *  "daysGrazed": 3,
+ *  "percentResidueRemoved": 50
  * }
  * ```
  *
@@ -2104,6 +2172,20 @@ export interface GrazingEvent extends CropEvent {
    *
    */
   daysGrazed: number;
+  /**
+   * Percent of residue removed if known.
+   *
+   * @minimum 0
+   * @maximum 100
+   *
+   * @example <caption>When 50% of residue was removed:</caption>
+   *
+   * ```js
+   * "percentResidueRemoved": 50
+   * ```
+   *
+   */
+  percentResidueRemoved: number;
 }
 
 /**
@@ -2119,6 +2201,36 @@ export interface GrazingEvent extends CropEvent {
  *
  */
 export interface PruningEvent extends CropEvent {}
+
+/**
+ * Clearing and renewal event for orchards / vinyards.
+ *
+ * @example
+ *
+ * ```js
+ * {
+ *  "date": "2008-10-31",
+ *   "percentRenewed": 50
+ * }
+ * ```
+ *
+ */
+export interface ClearingAndRenewalEvent extends CropEvent {
+  /**
+   * Percentage or orchard or vinyard that was cleared and renewed.
+   *
+   * @minimum 1
+   * @maximum 100
+   *
+   * @example <caption>When 50% of the orchard was renewed:</caption>
+   *
+   * ```js
+   * "percentRenewed": 50
+   * ```
+   *
+   */
+  percentRenewed: number;
+}
 
 /**
  * Burning event details.
