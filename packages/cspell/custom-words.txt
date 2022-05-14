@@ -32,6 +32,7 @@ cloudsdk
 cls
 clus
 cmds
+codechecks
 codecov
 codegen
 commenter
@@ -48,6 +49,7 @@ datastore
 datetime
 daycent
 daycentv
+defi
 deliminated
 delisted
 deployer
@@ -73,6 +75,7 @@ ethereum
 ethereumjs
 ethernal
 etherscan
+ethersproject
 ethlint
 ethql
 etsc
@@ -159,6 +162,7 @@ nccr
 newsize
 nextjs
 nohoist
+nomiclabs
 nori
 noridoteco
 nowrap
@@ -210,7 +214,10 @@ shazam
 sidedress
 snackbar
 solc
+solcover
+solcoverjs
 soldoc
+solhint
 solium
 soliumrc
 somsc
