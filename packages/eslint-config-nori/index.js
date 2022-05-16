@@ -13,9 +13,10 @@ module.exports = {
     'plugin:relay/recommended',
     'plugin:import/warnings',
     'plugin:import/errors',
+    'plugin:import/recommended',
     'plugin:jest/recommended',
     'plugin:@next/next/recommended',
-    'next/core-web-vitals',
+    'plugin:@next/next/core-web-vitals',
     'plugin:prettier/recommended',
   ],
   plugins: [
@@ -36,7 +37,11 @@ module.exports = {
     },
     'import/resolver': {
       node: {
-        extensions: allExtensions,
+        extensions: jsExtensions,
+      },
+      typescript: {
+        alwaysTryTypes: true,
+        extensions: tsExtensions,
       },
     },
     jsdoc: {
@@ -169,9 +174,12 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/jsx-fragments': [1, 'element'],
-    'react/function-component-definition': [2, {
-      'namedComponents': 'arrow-function',
-    }],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
     'relay/generated-flow-types': 0,
     'require-path-exists/exists': [
       2,
@@ -193,13 +201,13 @@ module.exports = {
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
-      plugins: ['@typescript-eslint', 'mui-unused-classes'],
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
+      plugins: ['@typescript-eslint', 'mui-unused-classes'],
       rules: {
         'no-extra-boolean-cast': 'off',
         '@typescript-eslint/strict-boolean-expressions': [
