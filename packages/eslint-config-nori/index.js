@@ -1,8 +1,9 @@
+const path = require('path');
+const fs = require('fs');
+
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = jsExtensions.concat(tsExtensions);
-const path = require('path');
-const fs = require('fs');
 
 const schemaPath = path.join(
   __dirname,
@@ -61,6 +62,7 @@ module.exports = {
       processor: '@graphql-eslint/graphql',
       rules: {
         camelcase: ['warn', { allow: ['__'] }],
+        'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
         'mui-unused-classes/unused-classes': 'warn',
         '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
         'prefer-const': [
@@ -110,16 +112,7 @@ module.exports = {
             contexts: ['any'],
           },
         ],
-        'jsdoc/require-returns-type': [
-          'error',
-          {
-            contexts: ['any'],
-          },
-        ],
         'jsdoc/valid-types': 1,
-        'no-else-return': [0],
-        'one-var': 0,
-        'no-underscore-dangle': 0,
         'import/no-cycle': [0], // todo look into enabling this
         'import/extensions': [
           'error',
@@ -132,23 +125,7 @@ module.exports = {
             'newlines-between': 'always',
           },
         ],
-        'max-classes-per-file': 0,
-        'function-paren-newline': [0],
-        'react/prefer-stateless-function': 0,
-        'react/forbid-prop-types': 0,
-        'react/sort-comp': 0,
-        'react/no-multi-comp': 0,
-        'react/jsx-filename-extension': 0,
-        'react/jsx-curly-brace-presence': 0,
-        'react/prop-types': 0,
-        'jsx-a11y/anchor-is-valid': 0,
-        'no-plusplus': 0,
         'import/prefer-default-export': 0,
-        'prefer-destructuring': 0,
-        'no-use-before-define': ['error', { variables: false }],
-        'no-continue': 0,
-        'no-param-reassign': 0,
-        'global-require': 0,
         'import/no-extraneous-dependencies': [
           'error',
           {
@@ -167,6 +144,8 @@ module.exports = {
             namedComponents: 'arrow-function',
           },
         ],
+        'react/no-multi-comp': ['warn', { ignoreStateless: true }], // todo remove ignoreStateless
+        'react/jsx-curly-brace-presence': 0, // todo deprecate
         'relay/generated-flow-types': 0,
         'require-path-exists/exists': [
           2,
@@ -174,10 +153,9 @@ module.exports = {
             extensions: allExtensions,
           },
         ],
-        /**
-         * jest rules
-         */
         'jest/prefer-strict-equal': 'warn',
+        'max-classes-per-file': 0, // todo deprecate
+        'prefer-destructuring': 0,
       },
     },
     {
@@ -201,7 +179,6 @@ module.exports = {
       ],
       plugins: ['@typescript-eslint'],
       rules: {
-        'no-extra-boolean-cast': 'off',
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
@@ -215,23 +192,18 @@ module.exports = {
             allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true,
           },
         ],
+        'no-underscore-dangle': ['error', { enforceInMethodNames: false }],
         'no-shadow': 'off', // replaced by ts-eslint rule below
-        '@typescript-eslint/no-shadow': 'error',
-        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],
-        'require-await': 'off',
-        '@typescript-eslint/require-await': 'error',
-        'import/first': 0,
-        'import/extensions': [
-          'error',
-          'never',
-          { ts: 'never', json: 'always' },
-        ],
-        '@typescript-eslint/consistent-type-imports': 'warn',
+        '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
+        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
+        'require-await': 'off', // replaced by @typescript-eslint/require-await
+        '@typescript-eslint/require-await': 'error', // replaces require-await
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
           'interface',
         ],
+        'no-unused-vars': 0,
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: 'req|_' },
@@ -270,39 +242,78 @@ module.exports = {
         //   { ignoreRestArgs: true },
         // ],
         '@typescript-eslint/ban-types': ['warn'],
-        'no-use-before-define': 'off',
+        'no-use-before-define': 'off', // replaced by @typescript-eslint/no-use-before-define
         '@typescript-eslint/no-use-before-define': [
           'error',
           { functions: false, typedefs: false, classes: false },
         ],
-        '@typescript-eslint/no-unused-expressions': 'warn',
         'no-unused-expressions': 'off',
-        'no-unused-vars': 0,
+        '@typescript-eslint/no-unused-expressions': 'warn',
         'import/no-unresolved': 'off',
-        'no-undef': 'off',
-        'no-useless-constructor': 'off',
-        'no-empty-function': 'off',
-        'new-cap': 'warn',
+        'import/extensions': [
+          'error',
+          'never',
+          { ts: 'never', json: 'always' },
+        ],
+        '@typescript-eslint/consistent-type-imports': 'warn',
         'require-path-exists/exists': [0],
       },
     },
     {
-      files: ['**_spec.js', '**.test.js', '**/__mocks__/**.js'],
-      rules: {
-        // See https://github.com/benmosher/eslint-plugin-import/issues/458
-        'import/no-extraneous-dependencies': 0,
-        'dot-notation': [0],
-      },
+      files: [
+        '**.test.js',
+        '**/__mocks__/**.js',
+        '**/__mocks__/**.ts',
+        '**.test.ts',
+        'integration-util.ts',
+      ],
       env: {
         node: true,
         jest: true,
       },
     },
     {
-      files: ['**.test.ts', 'integration-util.ts'],
-      env: {
-        node: true,
-        jest: true,
+      files: ['**/*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/naming-convention': [
+          'error',
+          { selector: 'class', format: ['PascalCase'] },
+
+          // Need PascalCase to allow for functional react components that have generics
+          // on them. Like:
+          //   type MyComponentProps<T> { value: T };
+          //   function MyComponent<T>({value}: MyComponentProps<T>) { ... }
+          // because unfortunately you can't use generics with arrow functions in tsx files:
+          //   const MyComponent = <T>({value}: MyComponentProps<T>) => { ... } //parsing error!
+          { selector: 'function', format: ['camelCase', 'PascalCase'] },
+          {
+            selector: 'variable',
+            // Needed to allow for react functional components that
+            // are supposed to be CamelCase. Adding the types specifier
+            // requires specifying a tsconfig.json file path in parserOptions.project,
+            // which gets complicated because we have multiple...
+            // types: ['function'],
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+          },
+          {
+            selector: 'default',
+            format: ['camelCase', 'UPPER_CASE'],
+            leadingUnderscore: 'allow',
+          },
+          { selector: 'typeLike', format: ['PascalCase'] },
+          {
+            selector: 'parameter',
+            format: ['camelCase', 'PascalCase'],
+          },
+          { selector: 'property', format: ['camelCase', 'PascalCase'] },
+        ],
+      },
+    },
+    {
+      files: ['**/*.stories.*'],
+      rules: {
+        'react/jsx-props-no-spreading': ['off'],
       },
     },
   ],

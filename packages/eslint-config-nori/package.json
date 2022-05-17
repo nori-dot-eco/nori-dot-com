@@ -11,7 +11,8 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "package.json"
+    "package.json",
+    "rules.js"
   ],
   "repository": {
     "type": "git",

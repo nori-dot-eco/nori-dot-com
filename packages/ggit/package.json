@@ -39,5 +39,8 @@
     "ajv-errors": "^2.0.1",
     "node-fetch": "^2.6.1",
     "typescript-json-schema": "^0.50.0"
+  },
+  "devDependencies": {
+    "@nori-dot-com/eslint-config-nori": "*"
   }
 }
