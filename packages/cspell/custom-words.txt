@@ -188,6 +188,7 @@ preinstall
 prepend
 promisify
 prompts
+protobuf
 provider
 proxied
 pubsub

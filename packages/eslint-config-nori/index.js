@@ -61,8 +61,11 @@ module.exports = {
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
-        camelcase: ['warn', { allow: ['__'] }],
-        'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
+        'no-extra-boolean-cast': 0, // todo remove once strict is enabled for all tsconfigs
+        'react/jsx-filename-extension': [
+          1,
+          { extensions: ['.tsx', '.jsx', '.js'] },
+        ],
         'mui-unused-classes/unused-classes': 'warn',
         '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
         'prefer-const': [
@@ -192,7 +195,10 @@ module.exports = {
             allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true,
           },
         ],
-        'no-underscore-dangle': ['error', { enforceInMethodNames: false }],
+        'no-underscore-dangle': [
+          'error',
+          { enforceInMethodNames: false, allowAfterThis: true },
+        ],
         'no-shadow': 'off', // replaced by ts-eslint rule below
         '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
@@ -224,12 +230,18 @@ module.exports = {
             selector: 'default',
             format: ['camelCase', 'UPPER_CASE'],
             leadingUnderscore: 'allow',
+            filter: { regex: '(@Name|@cometEmailId)', match: false },
           },
           { selector: 'typeLike', format: ['PascalCase'] },
-          { selector: 'property', format: ['camelCase', 'PascalCase'] },
+          {
+            selector: 'property',
+            format: ['camelCase', 'PascalCase'],
+            filter: { regex: '(@Name|@cometEmailId)', match: false },
+          },
           {
             selector: 'objectLiteralProperty',
             format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+            filter: { regex: '(@Name|@cometEmailId)', match: false },
           },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
