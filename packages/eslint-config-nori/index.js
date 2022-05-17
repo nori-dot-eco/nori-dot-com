@@ -230,18 +230,30 @@ module.exports = {
             selector: 'default',
             format: ['camelCase', 'UPPER_CASE'],
             leadingUnderscore: 'allow',
-            filter: { regex: '(@Name|@cometEmailId)', match: false },
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+              match: false,
+            },
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           {
             selector: 'property',
             format: ['camelCase', 'PascalCase'],
-            filter: { regex: '(@Name|@cometEmailId)', match: false },
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+              match: false,
+            },
           },
           {
             selector: 'objectLiteralProperty',
             format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
-            filter: { regex: '(@Name|@cometEmailId)', match: false },
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+              match: false,
+            },
           },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
