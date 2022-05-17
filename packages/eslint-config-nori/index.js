@@ -1,35 +1,16 @@
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = jsExtensions.concat(tsExtensions);
+const path = require('path');
+const fs = require('fs');
+
+const schemaPath = path.join(
+  __dirname,
+  '../../../../nori-graphql/src/schema.graphql'
+);
+const schema = fs.existsSync(schemaPath) ? schemaPath : null;
 
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:require-path-exists/recommended',
-    'plugin:relay/recommended',
-    'plugin:import/warnings',
-    'plugin:import/errors',
-    'plugin:import/recommended',
-    'plugin:jest/recommended',
-    'plugin:@next/next/recommended',
-    'plugin:@next/next/core-web-vitals',
-    'plugin:prettier/recommended',
-  ],
-  plugins: [
-    'import',
-    'sort-imports-es6-autofix',
-    'require-path-exists',
-    'react-hooks',
-    'graphql',
-    'relay',
-    'jsdoc',
-    'jest',
-    'mui-unused-classes',
-  ],
   settings: {
     'import/extensions': allExtensions,
     'import/parsers': {
@@ -48,156 +29,167 @@ module.exports = {
       mode: 'typescript',
     },
   },
-  rules: {
-    camelcase: ['warn', { allow: ['__'] }],
-    'mui-unused-classes/unused-classes': 'warn',
-    '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
-    'prefer-const': [
-      'error',
-      {
-        destructuring: 'all',
-        ignoreReadBeforeAssign: false,
-      },
-    ],
-    'jsdoc/check-alignment': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/check-indentation': 1,
-    'jsdoc/check-syntax': 1,
-    'jsdoc/check-tag-names': 1,
-    'jsdoc/check-types': 1,
-    'jsdoc/implements-on-classes': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/match-description': [
-      'error',
-      {
-        mainDescription: false,
-        contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
-      },
-    ],
-    'jsdoc/newline-after-description': 1,
-    'jsdoc/no-types': 1,
-    'jsdoc/no-undefined-types': 1,
-    'jsdoc/require-description': 1,
-    'jsdoc/require-returns': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/require-returns-check': ['error'],
-    'jsdoc/require-returns-description': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/require-returns-type': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/valid-types': 1,
-    'no-else-return': [0],
-    'one-var': 0,
-    'no-underscore-dangle': 0,
-    'import/no-cycle': [0], // todo look into enabling this
-    'import/extensions': ['error', 'never', { ts: 'never', json: 'always' }],
-    'import/order': [
-      'error',
-      {
-        'newlines-between': 'always',
-      },
-    ],
-    'max-classes-per-file': 0,
-    'function-paren-newline': [0],
-    'react/prefer-stateless-function': 0,
-    'react/forbid-prop-types': 0,
-    'react/sort-comp': 0,
-    'react/no-multi-comp': 0,
-    'react/jsx-filename-extension': 0,
-    'react/jsx-curly-brace-presence': 0,
-    'react/prop-types': 0,
-    'jsx-a11y/anchor-is-valid': 0,
-    'no-plusplus': 0,
-    'import/prefer-default-export': 0,
-    'prefer-destructuring': 0,
-    'no-use-before-define': ['error', { variables: false }],
-    'no-continue': 0,
-    'no-param-reassign': 0,
-    'global-require': 0,
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-        optionalDependencies: true,
-        peerDependencies: true,
-      },
-    ],
-    'graphql/named-operations': [
-      'error',
-      {
-        env: 'relay',
-        tagName: 'graphql',
-      },
-    ],
-    'graphql/capitalized-type-name': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'graphql/no-deprecated-fields': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'graphql/template-strings': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'react/require-default-props': [0],
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-fragments': [1, 'element'],
-    'react/function-component-definition': [
-      2,
-      {
-        namedComponents: 'arrow-function',
-      },
-    ],
-    'relay/generated-flow-types': 0,
-    'require-path-exists/exists': [
-      2,
-      {
-        extensions: allExtensions,
-      },
-    ],
-    /**
-     * jest rules
-     */
-    'jest/prefer-strict-equal': 'warn',
-  },
   overrides: [
     {
-      files: ['**/cypress/**/*.js'],
+      files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+      extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'airbnb',
+        'airbnb/hooks',
+        'plugin:require-path-exists/recommended',
+        'plugin:relay/recommended',
+        'plugin:import/warnings',
+        'plugin:import/errors',
+        'plugin:import/recommended',
+        'plugin:jest/recommended',
+        'plugin:@next/next/recommended',
+        'plugin:@next/next/core-web-vitals',
+        'plugin:prettier/recommended',
+      ],
+      plugins: [
+        'import',
+        'sort-imports-es6-autofix',
+        'require-path-exists',
+        'react-hooks',
+        'relay',
+        'jsdoc',
+        'jest',
+        'mui-unused-classes',
+      ],
+      processor: '@graphql-eslint/graphql',
       rules: {
-        'spaced-comment': 0,
+        camelcase: ['warn', { allow: ['__'] }],
+        'mui-unused-classes/unused-classes': 'warn',
+        '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
+        'prefer-const': [
+          'error',
+          {
+            destructuring: 'all',
+            ignoreReadBeforeAssign: false,
+          },
+        ],
+        'jsdoc/check-alignment': [
+          'error',
+          {
+            contexts: ['any'],
+          },
+        ],
+        'jsdoc/check-indentation': 1,
+        'jsdoc/check-syntax': 1,
+        'jsdoc/check-tag-names': 1,
+        'jsdoc/check-types': 1,
+        'jsdoc/implements-on-classes': [
+          'error',
+          {
+            contexts: ['any'],
+          },
+        ],
+        'jsdoc/match-description': [
+          'error',
+          {
+            mainDescription: false,
+            contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
+          },
+        ],
+        'jsdoc/newline-after-description': 1,
+        'jsdoc/no-types': 1,
+        'jsdoc/no-undefined-types': 1,
+        'jsdoc/require-description': 1,
+        'jsdoc/require-returns': [
+          'error',
+          {
+            contexts: ['any'],
+          },
+        ],
+        'jsdoc/require-returns-check': ['error'],
+        'jsdoc/require-returns-description': [
+          'error',
+          {
+            contexts: ['any'],
+          },
+        ],
+        'jsdoc/require-returns-type': [
+          'error',
+          {
+            contexts: ['any'],
+          },
+        ],
+        'jsdoc/valid-types': 1,
+        'no-else-return': [0],
+        'one-var': 0,
+        'no-underscore-dangle': 0,
+        'import/no-cycle': [0], // todo look into enabling this
+        'import/extensions': [
+          'error',
+          'never',
+          { ts: 'never', json: 'always' },
+        ],
+        'import/order': [
+          'error',
+          {
+            'newlines-between': 'always',
+          },
+        ],
+        'max-classes-per-file': 0,
+        'function-paren-newline': [0],
+        'react/prefer-stateless-function': 0,
+        'react/forbid-prop-types': 0,
+        'react/sort-comp': 0,
+        'react/no-multi-comp': 0,
+        'react/jsx-filename-extension': 0,
+        'react/jsx-curly-brace-presence': 0,
+        'react/prop-types': 0,
+        'jsx-a11y/anchor-is-valid': 0,
+        'no-plusplus': 0,
+        'import/prefer-default-export': 0,
+        'prefer-destructuring': 0,
+        'no-use-before-define': ['error', { variables: false }],
+        'no-continue': 0,
+        'no-param-reassign': 0,
+        'global-require': 0,
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+            optionalDependencies: true,
+            peerDependencies: true,
+          },
+        ],
+        'react/require-default-props': [0],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/jsx-fragments': [1, 'element'],
+        'react/function-component-definition': [
+          2,
+          {
+            namedComponents: 'arrow-function',
+          },
+        ],
+        'relay/generated-flow-types': 0,
+        'require-path-exists/exists': [
+          2,
+          {
+            extensions: allExtensions,
+          },
+        ],
+        /**
+         * jest rules
+         */
+        'jest/prefer-strict-equal': 'warn',
       },
+    },
+    {
+      files: ['*.graphql'],
+      parserOptions: {
+        skipGraphQLConfig: true,
+        schema: [schema],
+      },
+      extends: [
+        'plugin:@graphql-eslint/schema-recommended',
+        'plugin:@graphql-eslint/relay',
+      ],
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
@@ -207,7 +199,7 @@ module.exports = {
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'mui-unused-classes'],
+      plugins: ['@typescript-eslint'],
       rules: {
         'no-extra-boolean-cast': 'off',
         '@typescript-eslint/strict-boolean-expressions': [
@@ -308,22 +300,6 @@ module.exports = {
     },
     {
       files: ['**.test.ts', 'integration-util.ts'],
-      rules: {
-        'graphql/capitalized-type-name': [
-          'error',
-          {
-            tagName: 'gql',
-          },
-        ],
-        'graphql/template-strings': [
-          'error',
-          {
-            tagName: 'gql',
-            env: 'apollo', // necessary for fragment field detection
-          },
-        ],
-        'dot-notation': [0],
-      },
       env: {
         node: true,
         jest: true,
