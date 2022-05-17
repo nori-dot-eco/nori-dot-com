@@ -15,12 +15,12 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   fields: [
     {
       acres: 174.01,
-      historicLandManagement: ({
+      historicLandManagement: {
         crp: 'No',
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
-      } as any) as HistoricNonCRPLandManagement,
+      } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
       fieldName: 'zyt0f1mnasi',
       geojson: {
@@ -91,12 +91,12 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
   fields: [
     {
       acres: 174.01,
-      historicLandManagement: ({
+      historicLandManagement: {
         crp: 'No',
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
-      } as any) as HistoricNonCRPLandManagement,
+      } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
       fieldName: 'zyt0f1mnasi',
       geojson: {
@@ -493,8 +493,9 @@ describe('validation', () => {
             describe('when the crop event dates fall within years prior to the planting year', () => {
               it('should throw validation errors', () => {
                 const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-                (data.fields[0].cropYears[0]
-                  .crops[0] as AnnualCrop).harvestEvents[0] = {
+                (
+                  data.fields[0].cropYears[0].crops[0] as AnnualCrop
+                ).harvestEvents[0] = {
                   date: `09/18/${data.fields[0].cropYears[0].plantingYear - 1}`,
                   yield: 211.88,
                   grainFruitTuber: null,
@@ -521,9 +522,10 @@ describe('validation', () => {
           describe('when the type is not a string', () => {
             it('should throw validation errors', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (data.fields[0].cropYears[0]
-                .crops[0] as AnnualCrop).harvestEvents[0] = {
-                date: (1 as unknown) as CropEvent['date'],
+              (
+                data.fields[0].cropYears[0].crops[0] as AnnualCrop
+              ).harvestEvents[0] = {
+                date: 1 as unknown as CropEvent['date'],
                 yield: 211.88,
                 grainFruitTuber: null,
                 residueRemoved: 0,
@@ -544,8 +546,9 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (data.fields[0].cropYears[0]
-                .crops[0] as AnnualCrop).harvestEvents[0] = {
+              (
+                data.fields[0].cropYears[0].crops[0] as AnnualCrop
+              ).harvestEvents[0] = {
                 date: null,
                 yield: 211.88,
                 grainFruitTuber: null,

@@ -2,7 +2,6 @@ import { Errors } from '@nori-dot-com/errors';
 
 import { validateInputData } from '../index';
 import { CURRENT_SCENARIO_NAME, FUTURE_SCENARIO_NAME } from '../input';
-
 import type { Input } from '../index';
 
 type InputDataOrAny<T> = T extends Input.InputData ? Input.InputData : any;

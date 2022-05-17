@@ -13,4 +13,10 @@ k8s-*
 *.pdf
 *.svg
 *.lock
+*.d.ts
 !.eslintrc.js
+.cache
+admin_local
+.tmp
+build
+coverage

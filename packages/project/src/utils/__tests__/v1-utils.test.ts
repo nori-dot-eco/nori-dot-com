@@ -1,4 +1,5 @@
-import { ContextualError, ErrorCollector } from '../../../../errors';
+import { ContextualError, ErrorCollector } from '@nori-dot-com/errors/dist';
+
 import { collectV1Errors } from '../v1-utils';
 import type { V1Data } from '../../index';
 

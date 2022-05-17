@@ -459,9 +459,8 @@ export const translateSoilOrCropDisturbanceEvents = ({
   const soilOrCropDisturbanceEvents =
     soilOrCropDisturbanceEventList?.TillageEvent?.reduce?.(
       (eventList, event) => {
-        const {
-          soilOrCropDisturbanceEvent,
-        } = translateSoilOrCropDisturbanceEvent({ event });
+        const { soilOrCropDisturbanceEvent } =
+          translateSoilOrCropDisturbanceEvent({ event });
         return [...eventList, soilOrCropDisturbanceEvent];
       },
       [] as CropEvents['soilOrCropDisturbanceEvents']
@@ -752,7 +751,7 @@ export const extractCrops = ({
         crop,
       ];
     },
-    ([] as unknown) as CropYear['crops']
+    [] as unknown as CropYear['crops']
   );
   return { crops };
 };
@@ -888,28 +887,28 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                 ];
                 cropYears[indexYearToInsertInto].Crop[indexCropToInsertInto] = {
                   ...cropToAppendTo,
-                  ...(appendedOmadList.length && {
+                  ...(appendedOmadList.length > 0 && {
                     OMADApplicationList: {
                       OMADApplicationEvent: appendedOmadList,
                     },
                   }),
-                  ...(appendedFertilizerList.length && {
+                  ...(appendedFertilizerList.length > 0 && {
                     NApplicationList: {
                       NApplicationEvent: appendedFertilizerList,
                     },
                   }),
-                  ...(appendedTillageList.length && {
+                  ...(appendedTillageList.length > 0 && {
                     TillageList: { TillageEvent: appendedTillageList },
                   }),
-                  ...(appendedIrrigationList.length && {
+                  ...(appendedIrrigationList.length > 0 && {
                     IrrigationList: {
                       IrrigationEvent: appendedIrrigationList,
                     },
                   }),
-                  ...(appendedHarvestList.length && {
+                  ...(appendedHarvestList.length > 0 && {
                     HarvestList: { HarvestEvent: appendedHarvestList },
                   }),
-                  ...(appendedGrazingList.length && {
+                  ...(appendedGrazingList.length > 0 && {
                     GrazingList: { GrazingEvent: appendedGrazingList },
                   }),
                 };
@@ -963,12 +962,10 @@ export const convertFromGgitToProject = ({
   const { cropScenarios } = shiftCropsTaggedAsContinueFromPreviousYear({
     unadjustedCropScenarios,
   });
-  const {
-    currentCropScenario,
-    futureCropScenario,
-  } = separateCurrentAndFutureScenarios({
-    cropScenarios,
-  });
+  const { currentCropScenario, futureCropScenario } =
+    separateCurrentAndFutureScenarios({
+      cropScenarios,
+    });
   const { regenerativeStartYear } = extractRegenerativeSwitchYear({
     futureCropScenario,
   });

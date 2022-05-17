@@ -204,9 +204,8 @@ export interface BaseCrop {
   Renew?: Renew;
 }
 
-export type Crop<
-  T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
-> = T extends ContinuedCrop ? ContinuedCrop : NewCrop;
+export type Crop<T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop> =
+  T extends ContinuedCrop ? ContinuedCrop : NewCrop;
 
 /**
  *

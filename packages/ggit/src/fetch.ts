@@ -11,6 +11,10 @@ import type {
   TokenApiResponse,
 } from './index';
 
+/**
+ *
+ * @example
+ */
 export interface Options<ApiType extends ApiCall> extends RequestInit {
   method: HttpMethod;
   redirect: 'follow';

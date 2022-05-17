@@ -265,11 +265,15 @@ module.exports = {
         '**/__mocks__/**.js',
         '**/__mocks__/**.ts',
         '**.test.ts',
+        '**.test.tsx',
         'integration-util.ts',
       ],
       env: {
         node: true,
         jest: true,
+      },
+      rules: {
+        'dot-notation': [0],
       },
     },
     {

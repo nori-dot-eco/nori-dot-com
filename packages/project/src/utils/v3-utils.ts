@@ -102,9 +102,8 @@ export const convertFromV3ToV1 = ({
                                   moment(arr[index]).diff(arr[index + 1]) ===
                                   moment(arr[0]).diff(arr[1])
                                 );
-                              } else {
-                                return true;
                               }
+                              return true;
                             }
                           );
                           if (everyDateIntervalIsEqual) {

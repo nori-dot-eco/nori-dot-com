@@ -1,7 +1,7 @@
 import * as moment from 'moment';
+import type { ErrorCollector } from '@nori-dot-com/errors/dist';
 
 import type { V1CropYear, V1Crop, V1Data } from '../index';
-import type { ErrorCollector } from '../../../errors';
 import type {
   V1FertilizerEvent,
   V1TillageEvent,

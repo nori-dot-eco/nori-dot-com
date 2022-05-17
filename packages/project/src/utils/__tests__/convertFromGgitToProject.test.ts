@@ -67,7 +67,7 @@ describe('isSlurryOrganicMatterEvent', () => {
   it('will return false when the event is not a slurry OMAD event', () => {
     expect(
       isSlurryOrganicMatterEvent({
-        OMADType: ('not a slurry OMAD type' as unknown) as Input.OMADType,
+        OMADType: 'not a slurry OMAD type' as unknown as Input.OMADType,
         OMADApplicationDate: null,
         OMADCNRatio: null,
         OMADPercentN: null,
@@ -92,7 +92,7 @@ describe('isSolidOrganicMatterEvent', () => {
   it('will return false when the event is not a solid OMAD event', () => {
     expect(
       isSolidOrganicMatterEvent({
-        OMADType: ('not a solid OMAD type' as unknown) as Input.OMADType,
+        OMADType: 'not a solid OMAD type' as unknown as Input.OMADType,
         OMADApplicationDate: null,
         OMADCNRatio: null,
         OMADPercentN: null,
@@ -119,7 +119,7 @@ describe('isAnnualCrop', () => {
       isAnnualCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not an annual crop' as unknown) as Input.CropName,
+        CropName: 'not an annual crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -162,7 +162,8 @@ describe('isOrchardOrVineyardCrop', () => {
       isOrchardOrVineyardCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not an orchard or vineyard crop' as unknown) as Input.CropName,
+        CropName:
+          'not an orchard or vineyard crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -205,7 +206,7 @@ describe('isPerennialCrop', () => {
       isPerennialCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not a perennial crop' as unknown) as Input.CropName,
+        CropName: 'not a perennial crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -248,7 +249,7 @@ describe('isCoverCrop', () => {
       isCoverCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not a cover crop' as unknown) as Input.CropName,
+        CropName: 'not a cover crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -735,7 +736,7 @@ describe('translateOrganicMatterEvent', () => {
           OMADApplicationDate: '01/01/2000',
           OMADCNRatio: 3,
           OMADPercentN: 2,
-          OMADType: ('not an OMAD type' as unknown) as Input.OMADType,
+          OMADType: 'not an OMAD type' as unknown as Input.OMADType,
         },
       })
     ).toThrow();
@@ -1269,7 +1270,7 @@ describe('translateCropEvent', () => {
         cropEvent: {
           '@CropNumber': null,
           BurnEvent: null,
-          CropName: ('invalid crop name' as unknown) as Input.CropName,
+          CropName: 'invalid crop name' as unknown as Input.CropName,
           PlantingDate: '01/01/2000',
           ContinueFromPreviousYear: null,
           HarvestList: {},
@@ -1466,7 +1467,7 @@ describe('extractCropYears', () => {
     ).toStrictEqual<ReturnType<typeof extractCropYears>>({
       cropYears: [
         {
-          crops: ([] as unknown) as any,
+          crops: [] as unknown as any,
           plantingYear: 2001,
         },
         {
