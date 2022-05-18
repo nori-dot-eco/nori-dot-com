@@ -48,8 +48,8 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
                 {
                   date: '04/28/2015',
                   name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: null,
-                  type: null,
+                  lbsOfNPerAcre: undefined,
+                  type: undefined,
                 },
                 {
                   date: '04/29/2015',
@@ -64,15 +64,15 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
+              limingEvents: undefined,
+              grazingEvents: undefined,
+              burningEvent: undefined,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
                   date: '09/18/2015',
                   yield: 211.88,
-                  grainFruitTuber: null,
+                  grainFruitTuber: undefined,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 },
@@ -124,7 +124,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
                 {
                   date: '04/28/2015',
                   name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: null,
+                  lbsOfNPerAcre: undefined,
                 },
                 {
                   date: '04/29/2015',
@@ -139,15 +139,15 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
+              limingEvents: undefined,
+              grazingEvents: undefined,
+              burningEvent: undefined,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
                   date: '09/18/2015',
                   yield: 211.88,
-                  grainFruitTuber: null,
+                  grainFruitTuber: undefined,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 },
@@ -225,7 +225,7 @@ describe('validation', () => {
         ReturnType<typeof validateProjectData>
       >({
         valid: true,
-        errors: null,
+        errors: undefined,
         message: 'No errors',
         formattedData: expect.anything(),
       });
@@ -324,7 +324,7 @@ describe('validation', () => {
             it('should throw a type validation error', () => {
               const data = {
                 ...BASIC_UNFORMATTED_VALID_PROJECT,
-                version: null as null,
+                version: null as undefined,
               };
               expect(
                 validateProjectData(data as ProjectOrAny<typeof data>)
@@ -360,7 +360,7 @@ describe('validation', () => {
               ReturnType<typeof validateProjectData>
             >({
               valid: true,
-              errors: null,
+              errors: undefined,
               message: 'No errors',
               formattedData: expect.anything(),
             });
@@ -453,7 +453,7 @@ describe('validation', () => {
                 fields: [
                   {
                     acres: 174.01,
-                    historicLandManagement: null,
+                    historicLandManagement: undefined,
                     regenerativeStartYear: 2015,
                     fieldName: 'zyt0f1mnasi',
                     geojson: {
@@ -477,7 +477,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData: data,
               });
@@ -498,7 +498,7 @@ describe('validation', () => {
                 ).harvestEvents[0] = {
                   date: `09/18/${data.fields[0].cropYears[0].plantingYear - 1}`,
                   yield: 211.88,
-                  grainFruitTuber: null,
+                  grainFruitTuber: undefined,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 };
@@ -527,7 +527,7 @@ describe('validation', () => {
               ).harvestEvents[0] = {
                 date: 1 as unknown as CropEvent['date'],
                 yield: 211.88,
-                grainFruitTuber: null,
+                grainFruitTuber: undefined,
                 residueRemoved: 0,
                 yieldUnit: 'bu/ac',
               };
@@ -549,9 +549,9 @@ describe('validation', () => {
               (
                 data.fields[0].cropYears[0].crops[0] as AnnualCrop
               ).harvestEvents[0] = {
-                date: null,
+                date: undefined,
                 yield: 211.88,
-                grainFruitTuber: null,
+                grainFruitTuber: undefined,
                 residueRemoved: 0,
                 yieldUnit: 'bu/ac',
               };
@@ -559,7 +559,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData: expect.anything(),
               });
@@ -593,7 +593,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData,
               });
@@ -604,7 +604,7 @@ describe('validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
               data.fields[0].cropYears[0].crops[0].fertilizerEvents[0] = {
                 ...data.fields[0].cropYears[0].crops[0].fertilizerEvents[0],
-                type: null,
+                type: undefined,
               };
               const formattedData = formatInputData(data);
               formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
@@ -618,7 +618,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData,
               });

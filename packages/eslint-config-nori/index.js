@@ -70,12 +70,14 @@ module.exports = {
         'unicorn/no-array-reduce': [0],
         'unicorn/prefer-module': [0],
         'unicorn/prefer-switch': [0],
-        'unicorn/filename-case': [
-          'warn',
-          {
-            case: 'kebabCase',
-          },
-        ],
+        'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
+        // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
+        //   'warn',
+        //   {
+        //     case: 'kebabCase',
+        //   },
+        // ],
+        'unicorn/filename-case': [0], // todo remove this after running kebab-case codemod to rename files
         'unicorn/no-useless-promise-resolve-reject': [0],
         'unicorn/prevent-abbreviations': [
           'error',
@@ -83,7 +85,10 @@ module.exports = {
             allowList: {
               seedDb: true,
               req: true,
+              e: true,
+              NConfConfig: true,
             },
+            ignore: ['a-z'],
           },
         ],
         'unicorn/prefer-spread': [0],
@@ -226,7 +231,7 @@ module.exports = {
             leadingUnderscore: 'allow',
             filter: {
               regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
               match: false,
             },
           },
@@ -237,7 +242,7 @@ module.exports = {
             leadingUnderscore: 'allow',
             filter: {
               regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
               match: false,
             },
           },
@@ -246,7 +251,7 @@ module.exports = {
             format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
             filter: {
               regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
               match: false,
             },
           },

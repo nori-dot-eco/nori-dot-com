@@ -234,7 +234,7 @@ export const translateFertilizerEvent = ({
       date,
       type,
       lbsOfNPerAcre,
-      name: null,
+      name: undefined,
     },
   };
 };
@@ -278,8 +278,8 @@ export const translateOrganicMatterEvent = ({
       amountPerAcre,
       percentNitrogen,
       carbonNitrogenRatio,
-      percentMoisture: null,
-      name: null,
+      percentMoisture: undefined,
+      name: undefined,
     },
   };
 };
@@ -347,7 +347,7 @@ export const translateLimingEvents = ({
               tonsPerAcre,
             },
           ]
-        : null,
+        : undefined,
   };
 };
 
@@ -440,7 +440,7 @@ export const translateSoilOrCropDisturbanceEvent = ({
   const { TillageDate: date, TillageType: type } = event;
   return {
     soilOrCropDisturbanceEvent: {
-      name: null,
+      name: undefined,
       date,
       type:
         TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
@@ -506,7 +506,7 @@ export const translateCoverCrop = ({
   });
   return {
     coverCrop: {
-      name: null,
+      name: undefined,
       plantingDate,
       type,
       classification,
@@ -533,7 +533,7 @@ export const translateCoverCrop = ({
                 },
               }).annualCropHarvestEvent as CropManagementEvent & { yield: 0 },
             ]
-          : null,
+          : undefined,
       }),
     },
   };
@@ -581,7 +581,7 @@ export const translateOrchardOrVineyardCrop = ({
   });
   return {
     orchardOrVineyard: {
-      name: null,
+      name: undefined,
       plantingDate,
       type,
       classification,
@@ -637,7 +637,7 @@ export const translateAnnualCrop = ({
   });
   return {
     annualCrop: {
-      name: null,
+      name: undefined,
       plantingDate,
       type,
       classification,
@@ -690,7 +690,7 @@ export const translatePerennialCrop = ({
   });
   return {
     perennialCrop: {
-      name: null,
+      name: undefined,
       ...('PlantingDate' in cropEvent && {
         plantingDate: cropEvent.PlantingDate,
       }),

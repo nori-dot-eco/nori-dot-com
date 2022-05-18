@@ -1711,12 +1711,12 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
    *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   * @todo In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
    *
    * @minimum 0
    * @maximum 100
    *
-   * @nullable during import (when defined as null, a default value will be assigned)
+   * @nullable during import (when defined as undefined, a default value will be assigned)
    *
    * @example <caption>When the organic matter or manure contains 9% nitrogen:</caption>
    *
@@ -1731,7 +1731,7 @@ export interface OrganicMatterEvent extends CropEvent {
    *
    * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
    *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   * @todo In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
    *
    * @nullable during import
    *
@@ -1748,7 +1748,7 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * The percent moisture of the organic matter or manure
    *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+   * @todo In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
    *
    * @nullable during import (explicitly specify null if you are unsure what the value is)
    *

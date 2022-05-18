@@ -14,8 +14,8 @@ const BASIC_CROP_DATA: Omit<
   '@CropNumber' | 'CropName' | 'PlantingDate'
 > = {
   ContinueFromPreviousYear: 'n',
-  HarvestList: null,
-  TillageList: null,
+  HarvestList: undefined,
+  TillageList: undefined,
   NApplicationList: {},
   OMADApplicationList: {},
   IrrigationList: {},
@@ -464,7 +464,7 @@ describe('validation', () => {
             ReturnType<typeof validateInputData>
           >({
             valid: true,
-            errors: null,
+            errors: undefined,
             message: 'No errors',
             formattedData: expect.anything(),
           });
