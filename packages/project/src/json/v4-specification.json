@@ -984,7 +984,7 @@
                 },
                 "practiceChangesAdopted": {
                     "$ref": "#/definitions/PracticeChangesAdopted",
-                    "description": "Details of new practice changes.\n\n\n```js\n\"practiceChangesAdopted\": {\n\"coverCropping\": true\n}\n```",
+                    "description": "Details of new practice changes.\n\n\n```js\n\"practiceChangesAdopted\": {\n  \"coverCropping\": true\n}\n```",
                     "title": "practiceChangesAdopted"
                 },
                 "regenerativeStartYear": {
@@ -2822,16 +2822,34 @@
             "additionalProperties": false,
             "description": "Please indicate for `true` for the *newly adopted* practices only.",
             "properties": {
+                "addedOMAD": {
+                    "default": false,
+                    "description": "Added OMAD",
+                    "title": "addedOMAD",
+                    "type": "boolean"
+                },
                 "coverCropping": {
                     "default": false,
                     "description": "Added cover cropping",
                     "title": "coverCropping",
                     "type": "boolean"
                 },
+                "increasedBiodiversity": {
+                    "default": false,
+                    "description": "Increased biodiversity of crop rotation",
+                    "title": "increasedBiodiversity",
+                    "type": "boolean"
+                },
                 "noTill": {
                     "default": false,
                     "description": "Ceased tillage.",
                     "title": "noTill",
+                    "type": "boolean"
+                },
+                "reducedFallow": {
+                    "default": false,
+                    "description": "Reduced fallow in rotation",
+                    "title": "reducedFallow",
                     "type": "boolean"
                 },
                 "reducedTillage": {
@@ -3193,6 +3211,7 @@
     "errorMessage": {
         "_": "projectDataError:projectUnknownError"
     },
+    "id": "https://schema.nori.com/soil/4-0-0",
     "properties": {
         "externalId": {
             "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",

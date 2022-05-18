@@ -2,6 +2,10 @@
 /**
  * ## About
  *
+ * Nori soil project import file format.
+ * 
+ * Version: 4.0
+ * 
  * Provides the definitions for [Nori project](../interfaces/_specification_.project.md) data using typescript interfaces.
  *
  * ## Usage
@@ -30,6 +34,7 @@
  * 3. `default` - Specifies that when the data used for a property is specified as `null`, as an empty string, or excluded, it will be assigned the specified default value.
  *
  * @packageDocumentation
+ * 
  */
 import type { GeoJSON } from 'geojson';
 
@@ -188,6 +193,8 @@ export const limingTypes = [
  *
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
+ * @id https://schema.nori.com/soil/4-0-0
+ * 
  * @example <caption>A project that uses specification v4.0.0 and contains a list of fields:</caption>
  * ```js
  * {
@@ -705,6 +712,24 @@ export interface PracticeChangesAdopted {
    * @default false
    */
   reducedTillage?: boolean;
+  /**
+   * Added OMAD
+   *
+   * @default false
+   */
+  addedOMAD?: boolean;
+  /**
+   * Reduced fallow in rotation
+   *
+   * @default false
+   */
+  reducedFallow?: boolean;
+  /**
+   * Increased biodiversity of crop rotation
+   *
+   * @default false
+   */
+  increasedBiodiversity?: boolean;
 }
 
 /**
@@ -761,11 +786,11 @@ export interface Field {
    * Details of new practice changes.
    *
    *
- * ```js
- * "practiceChangesAdopted": {
- *   "coverCropping": true
- * }
- * ```
+   * ```js
+   * "practiceChangesAdopted": {
+   *   "coverCropping": true
+   * }
+   * ```
    *
    */
   practiceChangesAdopted: PracticeChangesAdopted;
