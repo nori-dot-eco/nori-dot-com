@@ -11,7 +11,7 @@ const schemaPath = path.join(
   __dirname,
   '../../../../nori-graphql/src/schema.graphql'
 );
-const schema = fs.existsSync(schemaPath) ? schemaPath : null;
+const schema = fs.existsSync(schemaPath) ? schemaPath : undefined;
 
 module.exports = {
   settings: {
@@ -65,8 +65,11 @@ module.exports = {
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
+        'no-implicit-coercion': ['error'],
         'no-underscore-dangle': [0],
         'unicorn/no-array-reduce': [0],
+        'unicorn/prefer-module': [0],
+        'unicorn/prefer-switch': [0],
         'unicorn/filename-case': [
           'warn',
           {
@@ -83,6 +86,7 @@ module.exports = {
             },
           },
         ],
+        'unicorn/prefer-spread': [0],
         'eslint-comments/require-description': ['error'], // requires eslint directive comments to have descriptions
         'eslint-comments/disable-enable-pair': [
           'error',
