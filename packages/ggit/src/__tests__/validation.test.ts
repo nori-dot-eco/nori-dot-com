@@ -6,8 +6,8 @@ import type { Input } from '../index';
 
 type InputDataOrAny<T> = T extends Input.InputData ? Input.InputData : any;
 
-const clone = (obj: Input.InputData): Input.InputData =>
-  JSON.parse(JSON.stringify(obj));
+const clone = (object: Input.InputData): Input.InputData =>
+  JSON.parse(JSON.stringify(object));
 
 const BASIC_CROP_DATA: Omit<
   Input.Crop,

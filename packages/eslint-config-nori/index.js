@@ -1,9 +1,11 @@
 const path = require('path');
 const fs = require('fs');
 
+const { jsdocRules } = require('./rules');
+
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
-const allExtensions = jsExtensions.concat(tsExtensions);
+const allExtensions = [...jsExtensions, ...tsExtensions];
 
 const schemaPath = path.join(
   __dirname,
@@ -47,6 +49,8 @@ module.exports = {
         'plugin:jest/recommended',
         'plugin:@next/next/recommended',
         'plugin:@next/next/core-web-vitals',
+        'plugin:unicorn/recommended',
+        'plugin:eslint-comments/recommended',
         'plugin:prettier/recommended',
       ],
       plugins: [
@@ -61,6 +65,36 @@ module.exports = {
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
+        'no-underscore-dangle': [0],
+        'unicorn/no-array-reduce': [0],
+        'unicorn/filename-case': [
+          'warn',
+          {
+            case: 'kebabCase',
+          },
+        ],
+        'unicorn/no-useless-promise-resolve-reject': [0],
+        'unicorn/prevent-abbreviations': [
+          'error',
+          {
+            allowList: {
+              seedDb: true,
+              req: true,
+            },
+          },
+        ],
+        'eslint-comments/require-description': ['error'], // requires eslint directive comments to have descriptions
+        'eslint-comments/disable-enable-pair': [
+          'error',
+          { allowWholeFile: true }, // allows using eslint-disable directives for whole-file disables
+        ],
+        'eslint-comments/no-unused-disable': ['error'],
+        'no-restricted-syntax': [
+          'error',
+          'ForInStatement',
+          'LabeledStatement',
+          'WithStatement',
+        ], // overrides airbnb restricted syntax rules and allows for of loops
         'no-extra-boolean-cast': 0, // todo remove once strict is enabled for all tsconfigs
         'react/jsx-filename-extension': [
           1,
@@ -75,47 +109,7 @@ module.exports = {
             ignoreReadBeforeAssign: false,
           },
         ],
-        'jsdoc/check-alignment': [
-          'error',
-          {
-            contexts: ['any'],
-          },
-        ],
-        'jsdoc/check-indentation': 1,
-        'jsdoc/check-syntax': 1,
-        'jsdoc/check-tag-names': 1,
-        'jsdoc/check-types': 1,
-        'jsdoc/implements-on-classes': [
-          'error',
-          {
-            contexts: ['any'],
-          },
-        ],
-        'jsdoc/match-description': [
-          'error',
-          {
-            mainDescription: false,
-            contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
-          },
-        ],
-        'jsdoc/newline-after-description': 1,
-        'jsdoc/no-types': 1,
-        'jsdoc/no-undefined-types': 1,
-        'jsdoc/require-description': 1,
-        'jsdoc/require-returns': [
-          'error',
-          {
-            contexts: ['any'],
-          },
-        ],
-        'jsdoc/require-returns-check': ['error'],
-        'jsdoc/require-returns-description': [
-          'error',
-          {
-            contexts: ['any'],
-          },
-        ],
-        'jsdoc/valid-types': 1,
+        ...jsdocRules,
         'import/no-cycle': [0], // todo look into enabling this
         'import/extensions': [
           'error',
@@ -195,10 +189,6 @@ module.exports = {
             allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true,
           },
         ],
-        'no-underscore-dangle': [
-          'error',
-          { enforceInMethodNames: false, allowAfterThis: true },
-        ],
         'no-shadow': 'off', // replaced by ts-eslint rule below
         '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
@@ -240,6 +230,7 @@ module.exports = {
           {
             selector: 'property',
             format: ['camelCase', 'PascalCase'],
+            leadingUnderscore: 'allow',
             filter: {
               regex:
                 '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID)',

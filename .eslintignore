@@ -1,3 +1,4 @@
+# todo use ignorePatterns in .eslintrc.js instead
 .next
 __generated__
 _next
@@ -20,3 +21,4 @@ admin_local
 .tmp
 build
 coverage
+schema-types.ts
