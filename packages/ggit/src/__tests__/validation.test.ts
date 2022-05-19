@@ -42,7 +42,7 @@ const INPUT_DATA: Input.InputData = {
       CRP: 'no',
       CRPType: 'none',
       'Year1980-2000': 'irrigated: annual crops in rotation',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+
       'Year1980-2000_Tillage': 'intensive tillage',
       CRPStartYear: [],
       CRPEndYear: [],

@@ -65,12 +65,13 @@ module.exports = {
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
+        eqeqeq: ['error'],
         'no-implicit-coercion': ['error'],
         'no-underscore-dangle': [0],
         'unicorn/no-array-reduce': [0],
         'unicorn/prefer-module': [0],
         'unicorn/prefer-switch': [0],
-        'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
+        'unicorn/no-useless-undefined': [0],
         // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
         //   'warn',
         //   {
@@ -85,6 +86,7 @@ module.exports = {
             allowList: {
               seedDb: true,
               req: true,
+              res: true,
               e: true,
               NConfConfig: true,
             },
@@ -218,11 +220,6 @@ module.exports = {
           { selector: 'class', format: ['PascalCase'] },
           {
             selector: 'variable',
-            // Needed to allow for react functional components that
-            // are supposed to be CamelCase. Adding the types specifier
-            // requires specifying a tsconfig.json file path in parserOptions.project,
-            // which gets complicated because we have multiple...
-            // types: ['function'],
             format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
           },
           {
@@ -249,6 +246,7 @@ module.exports = {
           {
             selector: 'objectLiteralProperty',
             format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+            leadingUnderscore: 'allow',
             filter: {
               regex:
                 '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',

@@ -27,7 +27,7 @@ describe('v3-utils', () => {
                         coordinates: [
                           [
                             [-102.0256, 41.1624],
-                            [-102.02423, 41.1631],
+                            [-102.024_23, 41.1631],
                             [-102.0225, 41.1635],
                             [-102.0261, 41.161],
                             [-102.0256, 41.1624],
@@ -1522,7 +1522,7 @@ describe('v3-utils', () => {
                         coordinates: [
                           [
                             [-102.0256, 41.1624],
-                            [-102.02423, 41.1631],
+                            [-102.024_23, 41.1631],
                             [-102.0225, 41.1635],
                             [-102.0261, 41.161],
                             [-102.0256, 41.1624],
@@ -1634,83 +1634,83 @@ describe('v3-utils', () => {
                         irrigationEvents: [
                           {
                             date: '04/25/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '05/06/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '05/09/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '05/20/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '05/23/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '05/30/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '06/06/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '06/13/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '06/20/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '06/27/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '07/04/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '07/11/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '07/18/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '07/25/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '08/01/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '08/08/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '08/15/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '08/22/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '08/29/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                           {
                             date: '09/05/2007',
-                            volume: 1.0,
+                            volume: 1,
                           },
                         ],
                         limingEvents: [],

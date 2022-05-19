@@ -110,13 +110,13 @@ export const validateProjectData = (
       rules: (keyof typeof validationRules)[],
       value,
       _schema,
-      ctx: ProjectDataValidationContext
+      context: ProjectDataValidationContext
     ) => {
       const allRulesAreSatisfied =
         rules?.every(
           (rule) =>
             !value || // if there is no value, leave validation up to default schema validation rules
-            validationRules[rule]({ ctx, value }) === true
+            validationRules[rule]({ ctx: context, value }) === true
         ) ?? true;
       return allRulesAreSatisfied;
     },

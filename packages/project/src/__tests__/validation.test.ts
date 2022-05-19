@@ -27,10 +27,10 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
         coordinates: [
           [
             [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
+              [-102.024_237_239_743_85, 41.163_135_397_690_4],
+              [-102.026_168_430_234_58, 41.161_843_051_910_21],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
             ],
           ],
         ],
@@ -54,12 +54,12 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
                 {
                   date: '04/29/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 38.579204996202215,
+                  lbsOfNPerAcre: 38.579_204_996_202_215,
                 },
                 {
                   date: '09/05/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 126.25917798970379,
+                  lbsOfNPerAcre: 126.259_177_989_703_79,
                 },
               ],
               organicMatterEvents: [],
@@ -103,10 +103,10 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
         coordinates: [
           [
             [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
+              [-102.024_237_239_743_85, 41.163_135_397_690_4],
+              [-102.026_168_430_234_58, 41.161_843_051_910_21],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
             ],
           ],
         ],
@@ -129,12 +129,12 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
                 {
                   date: '04/29/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 38.579204996202215,
+                  lbsOfNPerAcre: 38.579_204_996_202_215,
                 },
                 {
                   date: '09/05/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 126.25917798970379,
+                  lbsOfNPerAcre: 126.259_177_989_703_79,
                 },
               ],
               organicMatterEvents: [],
@@ -160,7 +160,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
     },
   ],
 };
-const clone = (obj: Project): Project => JSON.parse(JSON.stringify(obj));
+const clone = (object: Project): Project => JSON.parse(JSON.stringify(object));
 // todo extend jest to expect NoriError
 
 const buildExpectedError = ({
@@ -283,7 +283,7 @@ describe('validation', () => {
             it('should throw a validation error', () => {
               const data = {
                 ...BASIC_UNFORMATTED_VALID_PROJECT,
-                fields: Array(26).fill(
+                fields: Array.from({ length: 26 }).fill(
                   BASIC_UNFORMATTED_VALID_PROJECT.fields[0]
                 ),
               };
@@ -460,10 +460,10 @@ describe('validation', () => {
                       coordinates: [
                         [
                           [
-                            [-102.02569636144796, 41.16245691933347],
-                            [-102.02423723974385, 41.1631353976904],
-                            [-102.02616843023458, 41.16184305191021],
-                            [-102.02569636144796, 41.16245691933347],
+                            [-102.025_696_361_447_96, 41.162_456_919_333_47],
+                            [-102.024_237_239_743_85, 41.163_135_397_690_4],
+                            [-102.026_168_430_234_58, 41.161_843_051_910_21],
+                            [-102.025_696_361_447_96, 41.162_456_919_333_47],
                           ],
                         ],
                       ],
@@ -574,21 +574,25 @@ describe('validation', () => {
           describe('when type is excluded', () => {
             it('should return true for validation and the default value for type', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              data.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  delete data.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type;
-                }
-              );
+              for (const [
+                index,
+                _,
+              ] of data.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                delete data.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type;
+              }
+
               const formattedData = formatInputData(data);
-              formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type = 'mixed blends';
-                }
-              );
+              for (const [
+                index,
+                _,
+              ] of formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type = 'mixed blends';
+              }
+
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({
@@ -607,13 +611,15 @@ describe('validation', () => {
                 type: undefined,
               };
               const formattedData = formatInputData(data);
-              formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type = 'mixed blends';
-                }
-              );
+              for (const [
+                index,
+                _,
+              ] of formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type = 'mixed blends';
+              }
+
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({

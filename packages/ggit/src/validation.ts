@@ -96,7 +96,7 @@ export const validateInputData = (
       rules: (keyof typeof validationRules)[],
       value,
       _schema,
-      ctx: InputDataValidationContext
+      context: InputDataValidationContext
     ) => {
       const allRulesAreSatisfied =
         rules?.every(

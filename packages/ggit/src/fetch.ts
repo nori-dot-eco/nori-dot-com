@@ -61,10 +61,10 @@ export class Fetch<ApiType extends ApiCall> {
       }
       const data = await response.json();
       return data;
-    } catch (e) {
+    } catch (error) {
       // eslint-disable-next-line no-console
-      console.error('Error making request', e);
-      throw e;
+      console.error('Error making request', error);
+      throw error;
     }
   }
 

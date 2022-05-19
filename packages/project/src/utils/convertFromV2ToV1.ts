@@ -77,7 +77,7 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
                                       organicMatterEvent.productName ??
                                       `OMAD product ${
                                         Math.random() *
-                                        Math.floor(Math.random() * 10000000)
+                                        Math.floor(Math.random() * 10_000_000)
                                       }`,
                                     percentN:
                                       organicMatterEvent.percentNitrogen,
@@ -100,7 +100,7 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
                       : null;
                     return v1Crop;
                   })
-                  .filter((c) => c) ?? [],
+                  .filter(Boolean) ?? [],
             };
             return v1VCropYear;
           })
