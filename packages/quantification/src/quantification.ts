@@ -108,13 +108,13 @@ const getProjectionFromCometSummaries = ({
 } => {
   const tenYearProjectedBaselineTonnesPerYear: number = multiply(
     scenarioSummaries.baseline.flat().reduce((accumulator, currentValue) => {
-      return add(accumulator, parseFloat(currentValue));
+      return add(accumulator, Number.parseFloat(currentValue));
     }, 0),
     -1
   );
   const tenYearProjectedFutureTonnesPerYear: number = multiply(
     scenarioSummaries.future.flat().reduce((accumulator, currentValue) => {
-      return add(accumulator, parseFloat(currentValue));
+      return add(accumulator, Number.parseFloat(currentValue));
     }, 0),
     -1
   );
@@ -136,9 +136,10 @@ const getTotalM2 = ({
   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
   baselineScenarioName: string;
 }): { totalM2: number } => {
-  const baselineSummariesForAllPolygons = somscAnnualDifferencesForScenarios
-    .map((s) => Object.values(s[`${baselineScenarioName} : FILE RESULTS`]))
-    .flat();
+  const baselineSummariesForAllPolygons =
+    somscAnnualDifferencesForScenarios.flatMap((s) =>
+      Object.values(s[`${baselineScenarioName} : FILE RESULTS`])
+    );
   const totalM2 = baselineSummariesForAllPolygons.reduce(
     (total, baselineSummariesForPolygon) => {
       return add(baselineSummariesForPolygon.area, total);
@@ -224,13 +225,13 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   });
   const differencesForPolygon = scenarioResults.reduce(
     (
-      acc: SomscAnnualDifferencesForPolygon,
+      accumulator: SomscAnnualDifferencesForPolygon,
       { '@name': scenarioName, MapUnit: mapUnits }
     ) => {
       const { differencesForMapUnits } =
         calculateSomscAnnualDifferencesForScenarioMapUnits({ mapUnits });
-      acc[scenarioName] = differencesForMapUnits;
-      return acc;
+      accumulator[scenarioName] = differencesForMapUnits;
+      return accumulator;
     },
     {}
   );
@@ -300,7 +301,7 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
             );
             const additionalTonnesOfCarbonForMapUnit = divide(
               additionalGramsOfCarbonForMapUnitInM2,
-              1000000 // 1 million
+              1_000_000 // 1 million
             );
             const additionalTonnesOfCO2eForMapUnit = multiply(
               additionalTonnesOfCarbonForMapUnit,
@@ -359,7 +360,7 @@ const getGrandfatherableYears = ({
   );
   const grandfatherableYears = modeledYears.slice(
     startYearIndex,
-    modeledYears.findIndex((e) => e === effectiveCurrentYear)
+    modeledYears.indexOf(effectiveCurrentYear)
   );
   const firstGrandfatherableYear =
     Number(grandfatherableYears[0]) || effectiveCurrentYear;
@@ -503,7 +504,7 @@ const createQuantificationSummary = ({
 
   const modeledYears = modelRuns[0].Scenario.find(
     (s) => s['@name'] === 'Future : FILE RESULTS'
-  ).MapUnit[0].Year.map((k) => Number(k));
+  ).MapUnit[0].Year.map(Number);
 
   const { somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon } =
     getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon({

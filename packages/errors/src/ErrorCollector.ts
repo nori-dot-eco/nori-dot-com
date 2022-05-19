@@ -4,14 +4,16 @@ import type { UnparsedError, ErrorType } from './utils';
 interface Logger {
   error(message: string, originalException: ContextualError): void;
 }
-interface ErrorConstructorArgs {
+interface ErrorConstructorArguments {
   originalException?: Error;
   context?: Record<string, unknown>;
 }
-interface NonContextualErrorConstructorArgs extends ErrorConstructorArgs {
+interface NonContextualErrorConstructorArguments
+  extends ErrorConstructorArguments {
   message: string;
 }
-interface ContextualErrorConstructorArgs extends ErrorConstructorArgs {
+interface ContextualErrorConstructorArguments
+  extends ErrorConstructorArguments {
   errorKey: UnparsedError;
 }
 
@@ -21,13 +23,17 @@ export class ContextualError extends Error {
   public readonly type: ErrorType;
 
   constructor(
-    args: NonContextualErrorConstructorArgs | ContextualErrorConstructorArgs
+    args:
+      | NonContextualErrorConstructorArguments
+      | ContextualErrorConstructorArguments
   ) {
     super();
     const originalMessage = args.originalException?.message ?? '';
     const context = args.context;
     const code: UnparsedError =
-      'errorKey' in args ? args.errorKey : 'unknownErrorCode:unknownErrorType';
+      'errorKey' in args
+        ? args.errorKey
+        : 'unknownErrorCode:unknownErrorType';
     const errorKey = 'errorKey' in args ? args.errorKey : undefined;
     const title =
       'message' in args
@@ -35,7 +41,9 @@ export class ContextualError extends Error {
         : parseError({ error: errorKey }).message;
     this.code = code;
     this.type =
-      'message' in args ? undefined : parseError({ error: errorKey }).type;
+      'message' in args
+        ? undefined
+        : parseError({ error: errorKey }).type;
     super.message =
       typeof context !== 'undefined'
         ? `${title}: ${JSON.stringify(context)} [${originalMessage}]`

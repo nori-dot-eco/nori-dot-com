@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null -- undefined is invalid in JSON so we use null instead in the example data */
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
@@ -15,22 +16,22 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   fields: [
     {
       acres: 174.01,
-      historicLandManagement: ({
+      historicLandManagement: {
         crp: 'No',
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
-      } as any) as HistoricNonCRPLandManagement,
+      } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
       fieldName: 'zyt0f1mnasi',
       geojson: {
         coordinates: [
           [
             [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
+              [-102.024_237_239_743_85, 41.163_135_397_690_4],
+              [-102.026_168_430_234_58, 41.161_843_051_910_21],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
             ],
           ],
         ],
@@ -54,12 +55,12 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
                 {
                   date: '04/29/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 38.579204996202215,
+                  lbsOfNPerAcre: 38.579_204_996_202_215,
                 },
                 {
                   date: '09/05/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 126.25917798970379,
+                  lbsOfNPerAcre: 126.259_177_989_703_79,
                 },
               ],
               organicMatterEvents: [],
@@ -91,22 +92,22 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
   fields: [
     {
       acres: 174.01,
-      historicLandManagement: ({
+      historicLandManagement: {
         crp: 'No',
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
-      } as any) as HistoricNonCRPLandManagement,
+      } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
       fieldName: 'zyt0f1mnasi',
       geojson: {
         coordinates: [
           [
             [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
+              [-102.024_237_239_743_85, 41.163_135_397_690_4],
+              [-102.026_168_430_234_58, 41.161_843_051_910_21],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
             ],
           ],
         ],
@@ -129,12 +130,12 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
                 {
                   date: '04/29/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 38.579204996202215,
+                  lbsOfNPerAcre: 38.579_204_996_202_215,
                 },
                 {
                   date: '09/05/2015',
                   name: 'wil corn 32-0-0 [uan]',
-                  lbsOfNPerAcre: 126.25917798970379,
+                  lbsOfNPerAcre: 126.259_177_989_703_79,
                 },
               ],
               organicMatterEvents: [],
@@ -160,7 +161,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
     },
   ],
 };
-const clone = (obj: Project): Project => JSON.parse(JSON.stringify(obj));
+const clone = (object: Project): Project => JSON.parse(JSON.stringify(object));
 // todo extend jest to expect NoriError
 
 const buildExpectedError = ({
@@ -225,7 +226,7 @@ describe('validation', () => {
         ReturnType<typeof validateProjectData>
       >({
         valid: true,
-        errors: null,
+        errors: undefined,
         message: 'No errors',
         formattedData: expect.anything(),
       });
@@ -283,7 +284,7 @@ describe('validation', () => {
             it('should throw a validation error', () => {
               const data = {
                 ...BASIC_UNFORMATTED_VALID_PROJECT,
-                fields: Array(26).fill(
+                fields: Array.from({ length: 26 }).fill(
                   BASIC_UNFORMATTED_VALID_PROJECT.fields[0]
                 ),
               };
@@ -324,7 +325,7 @@ describe('validation', () => {
             it('should throw a type validation error', () => {
               const data = {
                 ...BASIC_UNFORMATTED_VALID_PROJECT,
-                version: null as null,
+                version: null as undefined,
               };
               expect(
                 validateProjectData(data as ProjectOrAny<typeof data>)
@@ -360,7 +361,7 @@ describe('validation', () => {
               ReturnType<typeof validateProjectData>
             >({
               valid: true,
-              errors: null,
+              errors: undefined,
               message: 'No errors',
               formattedData: expect.anything(),
             });
@@ -460,10 +461,10 @@ describe('validation', () => {
                       coordinates: [
                         [
                           [
-                            [-102.02569636144796, 41.16245691933347],
-                            [-102.02423723974385, 41.1631353976904],
-                            [-102.02616843023458, 41.16184305191021],
-                            [-102.02569636144796, 41.16245691933347],
+                            [-102.025_696_361_447_96, 41.162_456_919_333_47],
+                            [-102.024_237_239_743_85, 41.163_135_397_690_4],
+                            [-102.026_168_430_234_58, 41.161_843_051_910_21],
+                            [-102.025_696_361_447_96, 41.162_456_919_333_47],
                           ],
                         ],
                       ],
@@ -477,7 +478,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData: data,
               });
@@ -493,11 +494,12 @@ describe('validation', () => {
             describe('when the crop event dates fall within years prior to the planting year', () => {
               it('should throw validation errors', () => {
                 const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-                (data.fields[0].cropYears[0]
-                  .crops[0] as AnnualCrop).harvestEvents[0] = {
+                (
+                  data.fields[0].cropYears[0].crops[0] as AnnualCrop
+                ).harvestEvents[0] = {
                   date: `09/18/${data.fields[0].cropYears[0].plantingYear - 1}`,
                   yield: 211.88,
-                  grainFruitTuber: null,
+                  grainFruitTuber: undefined,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 };
@@ -521,11 +523,12 @@ describe('validation', () => {
           describe('when the type is not a string', () => {
             it('should throw validation errors', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (data.fields[0].cropYears[0]
-                .crops[0] as AnnualCrop).harvestEvents[0] = {
-                date: (1 as unknown) as CropEvent['date'],
+              (
+                data.fields[0].cropYears[0].crops[0] as AnnualCrop
+              ).harvestEvents[0] = {
+                date: 1 as unknown as CropEvent['date'],
                 yield: 211.88,
-                grainFruitTuber: null,
+                grainFruitTuber: undefined,
                 residueRemoved: 0,
                 yieldUnit: 'bu/ac',
               };
@@ -544,8 +547,9 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (data.fields[0].cropYears[0]
-                .crops[0] as AnnualCrop).harvestEvents[0] = {
+              (
+                data.fields[0].cropYears[0].crops[0] as AnnualCrop
+              ).harvestEvents[0] = {
                 date: null,
                 yield: 211.88,
                 grainFruitTuber: null,
@@ -556,7 +560,7 @@ describe('validation', () => {
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData: expect.anything(),
               });
@@ -571,26 +575,27 @@ describe('validation', () => {
           describe('when type is excluded', () => {
             it('should return true for validation and the default value for type', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              data.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  delete data.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type;
-                }
-              );
+              for (const [
+                index,
+              ] of data.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                delete data.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type;
+              }
+
               const formattedData = formatInputData(data);
-              formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type = 'mixed blends';
-                }
-              );
+              for (const [
+                index,
+              ] of formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type = 'mixed blends';
+              }
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData,
               });
@@ -604,18 +609,19 @@ describe('validation', () => {
                 type: null,
               };
               const formattedData = formatInputData(data);
-              formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.forEach(
-                (_, i) => {
-                  formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
-                    i
-                  ].type = 'mixed blends';
-                }
-              );
+              for (const [
+                index,
+                _,
+              ] of formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
+                formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
+                  index
+                ].type = 'mixed blends';
+              }
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({
                 valid: true,
-                errors: null,
+                errors: undefined,
                 message: 'No errors',
                 formattedData,
               });

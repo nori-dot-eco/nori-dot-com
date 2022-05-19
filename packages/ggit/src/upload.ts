@@ -13,11 +13,19 @@ import type {
 
 export type DaycentV1ApiFormDataNames = '' | 'Id' | 'email' | 'callbackUrl';
 
+/**
+ *
+ * @example
+ */
 export interface DaycentV1ApiResponse {
   message: string;
   error: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface DaycentV1ApiRequestBody extends FormData {
   append(
     name: DaycentV1ApiFormDataNames,
@@ -26,11 +34,19 @@ export interface DaycentV1ApiRequestBody extends FormData {
   ): void;
 }
 
+/**
+ *
+ * @example
+ */
 export interface DaycentV1ApiCall {
   response: DaycentV1ApiResponse;
   request: DaycentV1ApiRequest;
 }
 
+/**
+ *
+ * @example
+ */
 export interface DaycentV1ApiRequest extends Options<DaycentV1ApiCall> {
   body: DaycentV1ApiRequestBody;
 }

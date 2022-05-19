@@ -1,7 +1,7 @@
 import * as moment from 'moment';
+import type { ErrorCollector } from '@nori-dot-com/errors/dist';
 
 import type { V1CropYear, V1Crop, V1Data } from '../index';
-import type { ErrorCollector } from '../../../errors';
 import type {
   V1FertilizerEvent,
   V1TillageEvent,
@@ -16,17 +16,19 @@ export const sanitizeV1Data = ({
   project: V1Data;
 }): { sanitizedProject: V1Data } => {
   const sanitizedProject = JSON.parse(JSON.stringify(project)); // https://stackoverflow.com/questions/48885194/typeerror-cannot-assign-to-read-only-property-x-of-object-object-react-j
-  project?.projects?.forEach((p, i) =>
-    p?.fieldSets?.forEach((f, j) =>
-      f?.cropYears?.forEach((cy, k) => {
-        sanitizedProject.projects[i].fieldSets[j].cropYears[k] = JSON.parse(
-          JSON.stringify(cy, (key, value) => {
-            return value?.toLowerCase?.() ?? (value || '');
-          })
-        ) as V1CropYear;
-      })
-    )
-  );
+  if (project?.projects)
+    for (const [index, p] of project?.projects.entries())
+      if (p?.fieldSets)
+        for (const [index_, f] of p?.fieldSets.entries())
+          if (f?.cropYears)
+            for (const [k, cy] of f?.cropYears.entries()) {
+              sanitizedProject.projects[index].fieldSets[index_].cropYears[k] =
+                JSON.parse(
+                  JSON.stringify(cy, (key, value) => {
+                    return value?.toLowerCase?.() ?? (value || '');
+                  })
+                ) as V1CropYear;
+            }
   return { sanitizedProject };
 };
 
@@ -220,53 +222,64 @@ export const collectV1Errors = (
   errorCollector: ErrorCollector
 ) => {
   const filteredProject = { ...sanitizedProject };
-  sanitizedProject?.projects?.forEach((project, i) => {
-    project?.fieldSets?.forEach((field, j) => {
-      const earliestCropYear = field?.cropYears?.[0];
-      earliestCropYear?.crops?.forEach((crop, l) => {
-        filteredProject.projects[i].fieldSets[j].cropYears[0].crops[l] =
-          checkFertilizerTillageDateEdgeCase(
-            crop,
-            field.fieldSetName,
-            earliestCropYear.cropYear,
-            errorCollector
-          );
-      });
-      field?.cropYears?.forEach((cropYear, k) => {
-        // Irrigation rows
-        const reducer = (acc: number, crop: V1Crop): number => {
-          if (crop?.irrigationEvents?.length > 0) {
-            acc += crop.irrigationEvents.length;
-          }
-          return acc;
-        };
-        const totalRequiredIrrigationRows = cropYear?.crops?.reduce(reducer, 0);
-        if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
-          errorCollector.collectKeyedError(
-            'projectDataError:irrigationEventOverflowError',
-            {
-              cropYear: cropYear.cropYear,
-              numberOfIrrigationEntries: totalRequiredIrrigationRows,
+  if (sanitizedProject?.projects)
+    for (const [index, project] of sanitizedProject?.projects.entries()) {
+      if (project?.fieldSets)
+        for (const [index_, field] of project?.fieldSets.entries()) {
+          const earliestCropYear = field?.cropYears?.[0];
+          if (earliestCropYear?.crops)
+            for (const [l, crop] of earliestCropYear?.crops.entries()) {
+              filteredProject.projects[index].fieldSets[
+                index_
+              ].cropYears[0].crops[l] = checkFertilizerTillageDateEdgeCase(
+                crop,
+                field.fieldSetName,
+                earliestCropYear.cropYear,
+                errorCollector
+              );
             }
-          );
-          cropYear?.crops?.forEach((crop, l) => {
-            filteredProject.projects[i].fieldSets[j].cropYears[k].crops[
-              l
-            ].irrigationEvents = [];
-          });
+          if (field?.cropYears)
+            for (const [k, cropYear] of field?.cropYears.entries()) {
+              // Irrigation rows
+              const reducer = (accumulator: number, crop: V1Crop): number => {
+                if (crop?.irrigationEvents?.length > 0) {
+                  accumulator += crop.irrigationEvents.length;
+                }
+                return accumulator;
+              };
+              const totalRequiredIrrigationRows = cropYear?.crops?.reduce(
+                reducer,
+                0
+              );
+              if (totalRequiredIrrigationRows > MAX_SHEET_ROWS_PER_YEAR) {
+                errorCollector.collectKeyedError(
+                  'projectDataError:irrigationEventOverflowError',
+                  {
+                    cropYear: cropYear.cropYear,
+                    numberOfIrrigationEntries: totalRequiredIrrigationRows,
+                  }
+                );
+                if (cropYear?.crops)
+                  for (const [l, crop] of cropYear?.crops.entries()) {
+                    filteredProject.projects[index].fieldSets[index_].cropYears[
+                      k
+                    ].crops[l].irrigationEvents = [];
+                  }
+              }
+              // Event dates
+              if (cropYear?.crops)
+                for (const [l, crop] of cropYear?.crops.entries()) {
+                  const filteredCrop = checkEventDates(
+                    crop,
+                    field.fieldSetName,
+                    errorCollector
+                  );
+                  filteredProject.projects[index].fieldSets[index_].cropYears[
+                    k
+                  ].crops[l] = filteredCrop;
+                }
+            }
         }
-        // Event dates
-        cropYear?.crops?.forEach((crop, l) => {
-          const filteredCrop = checkEventDates(
-            crop,
-            field.fieldSetName,
-            errorCollector
-          );
-          filteredProject.projects[i].fieldSets[j].cropYears[k].crops[l] =
-            filteredCrop;
-        });
-      });
-    });
-  });
+    }
   return filteredProject;
 };

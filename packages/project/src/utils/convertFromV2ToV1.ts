@@ -19,7 +19,7 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
         fieldSetName: field.fieldName,
         area: field.area,
         geometry: field.geometry,
-        clus: field.clus,
+        clus: field.clus ?? null,
         srid: field.srid,
         cropYears: field.cropYears
           .map((cropYear) => {
@@ -37,14 +37,15 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
                           harvestOrKillEvents:
                             crop.harvestOrKillEvents?.map(
                               (harvestOrKillEvent) => {
-                                const v1HarvestOrKillEvent: V1HarvestOrKillEvent = {
-                                  date: harvestOrKillEvent.date,
-                                  boundaryYield: harvestOrKillEvent.yield,
-                                  yieldNumeratorUnit:
-                                    harvestOrKillEvent.yieldNumeratorUnit,
-                                  yieldDenominatorUnit:
-                                    harvestOrKillEvent.yieldDenominatorUnit,
-                                };
+                                const v1HarvestOrKillEvent: V1HarvestOrKillEvent =
+                                  {
+                                    date: harvestOrKillEvent.date,
+                                    boundaryYield: harvestOrKillEvent.yield,
+                                    yieldNumeratorUnit:
+                                      harvestOrKillEvent.yieldNumeratorUnit,
+                                    yieldDenominatorUnit:
+                                      harvestOrKillEvent.yieldDenominatorUnit,
+                                  };
                                 return v1HarvestOrKillEvent;
                               }
                             ) ?? [],
@@ -69,22 +70,25 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
                           organicMatterEvents:
                             crop.organicMatterEvents?.map(
                               (organicMatterEvent) => {
-                                const v1OrganicMatterEvent: V1OrganicMatterEvent = {
-                                  date: organicMatterEvent.date,
-                                  productName:
-                                    organicMatterEvent.productName ??
-                                    `OMAD product ${
-                                      Math.random() *
-                                      Math.floor(Math.random() * 10000000)
-                                    }`,
-                                  percentN: organicMatterEvent.percentNitrogen,
-                                  tonsPerAcre: organicMatterEvent.amountPerAcre,
-                                  carbonToNitrogenRatio:
-                                    organicMatterEvent.carbonNitrogenRatio,
-                                  percentMoisture:
-                                    organicMatterEvent.percentMoisture,
-                                  quantityUnit: '1000gal',
-                                };
+                                const v1OrganicMatterEvent: V1OrganicMatterEvent =
+                                  {
+                                    date: organicMatterEvent.date,
+                                    productName:
+                                      organicMatterEvent.productName ??
+                                      `OMAD product ${
+                                        Math.random() *
+                                        Math.floor(Math.random() * 10_000_000)
+                                      }`,
+                                    percentN:
+                                      organicMatterEvent.percentNitrogen,
+                                    tonsPerAcre:
+                                      organicMatterEvent.amountPerAcre,
+                                    carbonToNitrogenRatio:
+                                      organicMatterEvent.carbonNitrogenRatio,
+                                    percentMoisture:
+                                      organicMatterEvent.percentMoisture,
+                                    quantityUnit: '1000gal',
+                                  };
                                 return v1OrganicMatterEvent;
                               }
                             ) ?? [],
@@ -96,7 +100,7 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
                       : null;
                     return v1Crop;
                   })
-                  .filter((c) => c) ?? [],
+                  .filter(Boolean) ?? [],
             };
             return v1VCropYear;
           })
