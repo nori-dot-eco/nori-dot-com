@@ -89,6 +89,7 @@ module.exports = {
               res: true,
               e: true,
               NConfConfig: true,
+              params: true,
             },
             ignore: ['a-z'],
           },
