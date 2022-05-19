@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null -- undefined is invalid in JSON so we use null instead in the example data */
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
@@ -48,8 +49,8 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
                 {
                   date: '04/28/2015',
                   name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: undefined,
-                  type: undefined,
+                  lbsOfNPerAcre: null,
+                  type: null,
                 },
                 {
                   date: '04/29/2015',
@@ -64,15 +65,15 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
                   date: '09/18/2015',
                   yield: 211.88,
-                  grainFruitTuber: undefined,
+                  grainFruitTuber: null,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 },
@@ -124,7 +125,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
                 {
                   date: '04/28/2015',
                   name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: undefined,
+                  lbsOfNPerAcre: null,
                 },
                 {
                   date: '04/29/2015',
@@ -139,15 +140,15 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
                   date: '09/18/2015',
                   yield: 211.88,
-                  grainFruitTuber: undefined,
+                  grainFruitTuber: null,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 },
@@ -453,7 +454,7 @@ describe('validation', () => {
                 fields: [
                   {
                     acres: 174.01,
-                    historicLandManagement: undefined,
+                    historicLandManagement: null,
                     regenerativeStartYear: 2015,
                     fieldName: 'zyt0f1mnasi',
                     geojson: {
@@ -549,9 +550,9 @@ describe('validation', () => {
               (
                 data.fields[0].cropYears[0].crops[0] as AnnualCrop
               ).harvestEvents[0] = {
-                date: undefined,
+                date: null,
                 yield: 211.88,
-                grainFruitTuber: undefined,
+                grainFruitTuber: null,
                 residueRemoved: 0,
                 yieldUnit: 'bu/ac',
               };
@@ -576,7 +577,6 @@ describe('validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
               for (const [
                 index,
-                _,
               ] of data.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
                 delete data.fields[0].cropYears[0].crops[0].fertilizerEvents[
                   index
@@ -586,13 +586,11 @@ describe('validation', () => {
               const formattedData = formatInputData(data);
               for (const [
                 index,
-                _,
               ] of formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents.entries()) {
                 formattedData.fields[0].cropYears[0].crops[0].fertilizerEvents[
                   index
                 ].type = 'mixed blends';
               }
-
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({
@@ -608,7 +606,7 @@ describe('validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
               data.fields[0].cropYears[0].crops[0].fertilizerEvents[0] = {
                 ...data.fields[0].cropYears[0].crops[0].fertilizerEvents[0],
-                type: undefined,
+                type: null,
               };
               const formattedData = formatInputData(data);
               for (const [
@@ -619,7 +617,6 @@ describe('validation', () => {
                   index
                 ].type = 'mixed blends';
               }
-
               expect(validateProjectData(data)).toStrictEqual<
                 ReturnType<typeof validateProjectData>
               >({

@@ -1101,8 +1101,8 @@ describe('translateSoilOrCropDisturbanceEvents', () => {
       })
     ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvents>>({
       soilOrCropDisturbanceEvents: [
-        { date: '01/01/2000', type: 'no tillage', name: null },
-        { date: '12/31/2000', type: 'winter killed', name: null },
+        { date: '01/01/2000', type: 'no tillage', name: undefined },
+        { date: '12/31/2000', type: 'winter killed', name: undefined },
       ],
     });
   });

@@ -359,7 +359,7 @@ export const translateBurningEvent = ({
   return {
     burningEvent:
       !burnEvent?.BurnTime || burnEvent?.BurnTime === 'no burning'
-        ? null
+        ? undefined
         : { type: TRANSLATIONS.burnEvents.type[burnEvent.BurnTime] },
   };
 };
@@ -389,7 +389,7 @@ export const translateGrazingEvents = ({
     grazingEventList?.GrazingEvent?.reduce?.((eventList, event) => {
       const { grazingEvent } = translateGrazingEvent({ event });
       return [...eventList, grazingEvent];
-    }, [] as CropEvents['grazingEvents']) ?? null;
+    }, [] as CropEvents['grazingEvents']) ?? undefined;
   return { grazingEvents };
 };
 

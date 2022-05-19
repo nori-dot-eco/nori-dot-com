@@ -135,7 +135,7 @@ export const validateProjectData = (
         dataPath: error.dataPath,
         error,
       };
-    }) ?? null;
+    }) ?? undefined;
   return {
     valid,
     message: errors?.map((e) => e.message).join(' ') ?? 'No errors',
