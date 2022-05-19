@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null -- undefined is not a valid JSON value so we need to use null instead */
 import { convertFromV2ToV1 } from '../../index';
 
 import { v2Data } from './fixtures';
@@ -45,7 +46,7 @@ describe('convertFromV2ToV1', () => {
                   type: 'Polygon',
                 },
               },
-              clus: undefined,
+              clus: null,
               srid: '',
               cropYears: [
                 {
@@ -185,8 +186,8 @@ describe('convertFromV2ToV1', () => {
                           productName: expect.any(String),
                           percentN: 0.64,
                           quantityUnit: '1000gal',
-                          percentMoisture: undefined,
-                          carbonToNitrogenRatio: undefined,
+                          percentMoisture: null,
+                          carbonToNitrogenRatio: null,
                           tonsPerAcre: 13.720_321_064_996_085,
                         },
                       ],
@@ -262,8 +263,8 @@ describe('convertFromV2ToV1', () => {
                           productName: expect.any(String),
                           percentN: 0.76,
                           quantityUnit: '1000gal',
-                          percentMoisture: undefined,
-                          carbonToNitrogenRatio: undefined,
+                          percentMoisture: null,
+                          carbonToNitrogenRatio: null,
                           tonsPerAcre: 13.439_464_627_151_052,
                         },
                       ],
