@@ -7,5 +7,5 @@ const schemaPath = path.join(
 );
 
 module.exports = {
-  schemaPath: fs.existsSync(schemaPath) ? schemaPath : null,
+  schemaPath: fs.existsSync(schemaPath) ? schemaPath : undefined,
 };

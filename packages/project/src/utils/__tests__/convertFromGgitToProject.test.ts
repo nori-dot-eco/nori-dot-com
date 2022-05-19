@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 import type { Input } from '@nori-dot-com/ggit';
 
 import {
@@ -67,7 +68,7 @@ describe('isSlurryOrganicMatterEvent', () => {
   it('will return false when the event is not a slurry OMAD event', () => {
     expect(
       isSlurryOrganicMatterEvent({
-        OMADType: ('not a slurry OMAD type' as unknown) as Input.OMADType,
+        OMADType: 'not a slurry OMAD type' as unknown as Input.OMADType,
         OMADApplicationDate: null,
         OMADCNRatio: null,
         OMADPercentN: null,
@@ -92,7 +93,7 @@ describe('isSolidOrganicMatterEvent', () => {
   it('will return false when the event is not a solid OMAD event', () => {
     expect(
       isSolidOrganicMatterEvent({
-        OMADType: ('not a solid OMAD type' as unknown) as Input.OMADType,
+        OMADType: 'not a solid OMAD type' as unknown as Input.OMADType,
         OMADApplicationDate: null,
         OMADCNRatio: null,
         OMADPercentN: null,
@@ -119,7 +120,7 @@ describe('isAnnualCrop', () => {
       isAnnualCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not an annual crop' as unknown) as Input.CropName,
+        CropName: 'not an annual crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -162,7 +163,8 @@ describe('isOrchardOrVineyardCrop', () => {
       isOrchardOrVineyardCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not an orchard or vineyard crop' as unknown) as Input.CropName,
+        CropName:
+          'not an orchard or vineyard crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -205,7 +207,7 @@ describe('isPerennialCrop', () => {
       isPerennialCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not a perennial crop' as unknown) as Input.CropName,
+        CropName: 'not a perennial crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -248,7 +250,7 @@ describe('isCoverCrop', () => {
       isCoverCrop({
         '@CropNumber': null,
         BurnEvent: null,
-        CropName: ('not a cover crop' as unknown) as Input.CropName,
+        CropName: 'not a cover crop' as unknown as Input.CropName,
         PlantingDate: null,
         ContinueFromPreviousYear: null,
         HarvestList: null,
@@ -302,7 +304,7 @@ describe('extractGeometryData', () => {
             CRP: null,
             CRPType: null,
             'Year1980-2000': null,
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             'Year1980-2000_Tillage': null,
             CRPStartYear: null,
             CRPEndYear: null,
@@ -322,27 +324,27 @@ describe('extractGeometryData', () => {
             geometry: {
               coordinates: [
                 [
-                  [-102.025696361448, 41.1624569193335],
-                  [-102.024237239744, 41.1631353976904],
-                  [-102.022520625974, 41.1635554045818],
-                  [-102.020460689451, 41.1632646308668],
-                  [-102.019044483091, 41.1625861538478],
-                  [-102.01822909155, 41.1617784339522],
-                  [-102.017542446043, 41.1607122284469],
-                  [-102.017585361387, 41.1594844551661],
-                  [-102.01771410742, 41.1587413180595],
-                  [-102.01822909155, 41.1579658616607],
-                  [-102.019301975156, 41.1571257735422],
-                  [-102.020589435484, 41.1566734139417],
-                  [-102.021962726499, 41.1563826096929],
-                  [-102.023336017515, 41.1564795445859],
-                  [-102.024880969907, 41.1570611509333],
-                  [-102.025996768858, 41.15790123988],
-                  [-102.026554668333, 41.1586120759635],
-                  [-102.026812160398, 41.1597752456533],
-                  [-102.026683414365, 41.161035322856],
-                  [-102.026168430235, 41.1618430519102],
-                  [-102.025696361448, 41.1624569193335],
+                  [-102.025_696_361_448, 41.162_456_919_333_5],
+                  [-102.024_237_239_744, 41.163_135_397_690_4],
+                  [-102.022_520_625_974, 41.163_555_404_581_8],
+                  [-102.020_460_689_451, 41.163_264_630_866_8],
+                  [-102.019_044_483_091, 41.162_586_153_847_8],
+                  [-102.018_229_091_55, 41.161_778_433_952_2],
+                  [-102.017_542_446_043, 41.160_712_228_446_9],
+                  [-102.017_585_361_387, 41.159_484_455_166_1],
+                  [-102.017_714_107_42, 41.158_741_318_059_5],
+                  [-102.018_229_091_55, 41.157_965_861_660_7],
+                  [-102.019_301_975_156, 41.157_125_773_542_2],
+                  [-102.020_589_435_484, 41.156_673_413_941_7],
+                  [-102.021_962_726_499, 41.156_382_609_692_9],
+                  [-102.023_336_017_515, 41.156_479_544_585_9],
+                  [-102.024_880_969_907, 41.157_061_150_933_3],
+                  [-102.025_996_768_858, 41.157_901_239_88],
+                  [-102.026_554_668_333, 41.158_612_075_963_5],
+                  [-102.026_812_160_398, 41.159_775_245_653_3],
+                  [-102.026_683_414_365, 41.161_035_322_856],
+                  [-102.026_168_430_235, 41.161_843_051_910_2],
+                  [-102.025_696_361_448, 41.162_456_919_333_5],
                 ],
               ],
               type: 'Polygon',
@@ -372,7 +374,7 @@ describe('extractGeometryData', () => {
             CRP: null,
             CRPType: null,
             'Year1980-2000': null,
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             'Year1980-2000_Tillage': null,
             CRPStartYear: null,
             CRPEndYear: null,
@@ -394,7 +396,7 @@ describe('extractGeometryData', () => {
             CRP: null,
             CRPType: null,
             'Year1980-2000': null,
-            // eslint-disable-next-line @typescript-eslint/naming-convention
+
             'Year1980-2000_Tillage': null,
             CRPStartYear: null,
             CRPEndYear: null,
@@ -414,27 +416,27 @@ describe('extractGeometryData', () => {
             geometry: {
               coordinates: [
                 [
-                  [-90.025696361448, 41.1624569193335],
-                  [-90.024237239744, 41.1631353976904],
-                  [-90.022520625974, 41.1635554045818],
-                  [-90.020460689451, 41.1632646308668],
-                  [-90.019044483091, 41.1625861538478],
-                  [-90.01822909155, 41.1617784339522],
-                  [-90.017542446043, 41.1607122284469],
-                  [-90.017585361387, 41.1594844551661],
-                  [-90.01771410742, 41.1587413180595],
-                  [-90.01822909155, 41.1579658616607],
-                  [-90.019301975156, 41.1571257735422],
-                  [-90.020589435484, 41.1566734139417],
-                  [-90.021962726499, 41.1563826096929],
-                  [-90.023336017515, 41.1564795445859],
-                  [-90.024880969907, 41.1570611509333],
-                  [-90.025996768858, 41.15790123988],
-                  [-90.026554668333, 41.1586120759635],
-                  [-90.026812160398, 41.1597752456533],
-                  [-90.026683414365, 41.161035322856],
-                  [-90.026168430235, 41.16184305199],
-                  [-90.025696361448, 41.1624569193335],
+                  [-90.025_696_361_448, 41.162_456_919_333_5],
+                  [-90.024_237_239_744, 41.163_135_397_690_4],
+                  [-90.022_520_625_974, 41.163_555_404_581_8],
+                  [-90.020_460_689_451, 41.163_264_630_866_8],
+                  [-90.019_044_483_091, 41.162_586_153_847_8],
+                  [-90.018_229_091_55, 41.161_778_433_952_2],
+                  [-90.017_542_446_043, 41.160_712_228_446_9],
+                  [-90.017_585_361_387, 41.159_484_455_166_1],
+                  [-90.017_714_107_42, 41.158_741_318_059_5],
+                  [-90.018_229_091_55, 41.157_965_861_660_7],
+                  [-90.019_301_975_156, 41.157_125_773_542_2],
+                  [-90.020_589_435_484, 41.156_673_413_941_7],
+                  [-90.021_962_726_499, 41.156_382_609_692_9],
+                  [-90.023_336_017_515, 41.156_479_544_585_9],
+                  [-90.024_880_969_907, 41.157_061_150_933_3],
+                  [-90.025_996_768_858, 41.157_901_239_88],
+                  [-90.026_554_668_333, 41.158_612_075_963_5],
+                  [-90.026_812_160_398, 41.159_775_245_653_3],
+                  [-90.026_683_414_365, 41.161_035_322_856],
+                  [-90.026_168_430_235, 41.161_843_051_99],
+                  [-90.025_696_361_448, 41.162_456_919_333_5],
                 ],
               ],
               type: 'Polygon',
@@ -446,27 +448,27 @@ describe('extractGeometryData', () => {
             geometry: {
               coordinates: [
                 [
-                  [-102.025696361448, 41.1624569193335],
-                  [-102.024237239744, 41.1631353976904],
-                  [-102.022520625974, 41.1635554045818],
-                  [-102.020460689451, 41.1632646308668],
-                  [-102.019044483091, 41.1625861538478],
-                  [-102.01822909155, 41.1617784339522],
-                  [-102.017542446043, 41.1607122284469],
-                  [-102.017585361387, 41.1594844551661],
-                  [-102.01771410742, 41.1587413180595],
-                  [-102.01822909155, 41.1579658616607],
-                  [-102.019301975156, 41.1571257735422],
-                  [-102.020589435484, 41.1566734139417],
-                  [-102.021962726499, 41.1563826096929],
-                  [-102.023336017515, 41.1564795445859],
-                  [-102.024880969907, 41.1570611509333],
-                  [-102.025996768858, 41.15790123988],
-                  [-102.026554668333, 41.1586120759635],
-                  [-102.026812160398, 41.1597752456533],
-                  [-102.026683414365, 41.161035322856],
-                  [-102.026168430235, 41.1618430519102],
-                  [-102.025696361448, 41.1624569193335],
+                  [-102.025_696_361_448, 41.162_456_919_333_5],
+                  [-102.024_237_239_744, 41.163_135_397_690_4],
+                  [-102.022_520_625_974, 41.163_555_404_581_8],
+                  [-102.020_460_689_451, 41.163_264_630_866_8],
+                  [-102.019_044_483_091, 41.162_586_153_847_8],
+                  [-102.018_229_091_55, 41.161_778_433_952_2],
+                  [-102.017_542_446_043, 41.160_712_228_446_9],
+                  [-102.017_585_361_387, 41.159_484_455_166_1],
+                  [-102.017_714_107_42, 41.158_741_318_059_5],
+                  [-102.018_229_091_55, 41.157_965_861_660_7],
+                  [-102.019_301_975_156, 41.157_125_773_542_2],
+                  [-102.020_589_435_484, 41.156_673_413_941_7],
+                  [-102.021_962_726_499, 41.156_382_609_692_9],
+                  [-102.023_336_017_515, 41.156_479_544_585_9],
+                  [-102.024_880_969_907, 41.157_061_150_933_3],
+                  [-102.025_996_768_858, 41.157_901_239_88],
+                  [-102.026_554_668_333, 41.158_612_075_963_5],
+                  [-102.026_812_160_398, 41.159_775_245_653_3],
+                  [-102.026_683_414_365, 41.161_035_322_856],
+                  [-102.026_168_430_235, 41.161_843_051_910_2],
+                  [-102.025_696_361_448, 41.162_456_919_333_5],
                 ],
               ],
               type: 'Polygon',
@@ -506,7 +508,7 @@ describe('buildHistoricNonCrpLandManagement', () => {
       buildHistoricNonCrpLandManagement({
         'Pre-1980': 'upland non-irrigated (pre 1980s)',
         'Year1980-2000': 'irrigated: annual crops in rotation',
-        // eslint-disable-next-line @typescript-eslint/naming-convention
+
         'Year1980-2000_Tillage': 'intensive tillage',
       })
     ).toStrictEqual<ReturnType<typeof buildHistoricNonCrpLandManagement>>({
@@ -532,7 +534,7 @@ describe('buildHistoricLandManagement', () => {
         PostCRPTillage: null,
         'Pre-1980': 'irrigation (pre 1980s)',
         'Year1980-2000': 'irrigated: continuous hay',
-        // eslint-disable-next-line @typescript-eslint/naming-convention
+
         'Year1980-2000_Tillage': 'no till',
       })
     ).toStrictEqual<ReturnType<typeof buildHistoricLandManagement>>({
@@ -555,7 +557,7 @@ describe('buildHistoricLandManagement', () => {
         PostCRPTillage: null,
         'Pre-1980': null,
         'Year1980-2000': null,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
+
         'Year1980-2000_Tillage': null,
       })
     ).toThrow();
@@ -735,7 +737,7 @@ describe('translateOrganicMatterEvent', () => {
           OMADApplicationDate: '01/01/2000',
           OMADCNRatio: 3,
           OMADPercentN: 2,
-          OMADType: ('not an OMAD type' as unknown) as Input.OMADType,
+          OMADType: 'not an OMAD type' as unknown as Input.OMADType,
         },
       })
     ).toThrow();
@@ -796,13 +798,13 @@ describe('translateIrrigationEvent', () => {
       translateIrrigationEvent({
         event: {
           IrrigationDate: '01/01/2000',
-          IrrigationInches: 1.0,
+          IrrigationInches: 1,
         },
       })
     ).toStrictEqual<ReturnType<typeof translateIrrigationEvent>>({
       irrigationEvent: {
         date: '01/01/2000',
-        volume: 1.0,
+        volume: 1,
       },
     });
   });
@@ -816,11 +818,11 @@ describe('translateIrrigationEvents', () => {
           IrrigationEvent: [
             {
               IrrigationDate: '01/01/2000',
-              IrrigationInches: 1.0,
+              IrrigationInches: 1,
             },
             {
               IrrigationDate: '01/02/2000',
-              IrrigationInches: 2.0,
+              IrrigationInches: 2,
             },
           ],
         },
@@ -829,11 +831,11 @@ describe('translateIrrigationEvents', () => {
       irrigationEvents: [
         {
           date: '01/01/2000',
-          volume: 1.0,
+          volume: 1,
         },
         {
           date: '01/02/2000',
-          volume: 2.0,
+          volume: 2,
         },
       ],
     });
@@ -1269,7 +1271,7 @@ describe('translateCropEvent', () => {
         cropEvent: {
           '@CropNumber': null,
           BurnEvent: null,
-          CropName: ('invalid crop name' as unknown) as Input.CropName,
+          CropName: 'invalid crop name' as unknown as Input.CropName,
           PlantingDate: '01/01/2000',
           ContinueFromPreviousYear: null,
           HarvestList: {},
@@ -1466,7 +1468,7 @@ describe('extractCropYears', () => {
     ).toStrictEqual<ReturnType<typeof extractCropYears>>({
       cropYears: [
         {
-          crops: ([] as unknown) as any,
+          crops: [] as unknown as any,
           plantingYear: 2001,
         },
         {
@@ -1502,7 +1504,7 @@ describe('extractCroplandsAndScenarios', () => {
       PreCRPManagement: [],
       PreCRPTillage: [],
       'Year1980-2000': null,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+
       'Year1980-2000_Tillage': null,
     };
     expect(
@@ -1539,7 +1541,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                         {
                           HarvestDate: '09/14/2000',
                           Grain: 'yes',
-                          yield: 38.0,
+                          yield: 38,
                           StrawStoverHayRemoval: 0,
                         },
                       ],
@@ -1576,7 +1578,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                         {
                           HarvestDate: '09/14/2001',
                           Grain: 'yes',
-                          yield: 38.0,
+                          yield: 38,
                           StrawStoverHayRemoval: 0,
                         },
                       ],
@@ -1612,7 +1614,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                         {
                           HarvestDate: '09/14/2002',
                           Grain: 'yes',
-                          yield: 38.0,
+                          yield: 38,
                           StrawStoverHayRemoval: 0,
                         },
                       ],
@@ -1649,7 +1651,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                         {
                           HarvestDate: '09/14/2003',
                           Grain: 'yes',
-                          yield: 38.0,
+                          yield: 38,
                           StrawStoverHayRemoval: 0,
                         },
                       ],
@@ -1690,7 +1692,7 @@ describe('shiftCropsTaggedAsContinueFromPreviousYear', () => {
                         {
                           HarvestDate: '09/14/2004',
                           Grain: 'yes',
-                          yield: 38.0,
+                          yield: 38,
                           StrawStoverHayRemoval: 0,
                         },
                       ],
