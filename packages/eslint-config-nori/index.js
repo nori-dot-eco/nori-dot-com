@@ -90,6 +90,7 @@ module.exports = {
               e: true,
               NConfConfig: true,
               params: true,
+              args: true,
             },
             ignore: ['a-z'],
           },

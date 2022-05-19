@@ -23,25 +23,25 @@ export class ContextualError extends Error {
   public readonly type: ErrorType;
 
   constructor(
-    arguments_:
+    args:
       | NonContextualErrorConstructorArguments
       | ContextualErrorConstructorArguments
   ) {
     super();
-    const originalMessage = arguments_.originalException?.message ?? '';
-    const context = arguments_.context;
+    const originalMessage = args.originalException?.message ?? '';
+    const context = args.context;
     const code: UnparsedError =
-      'errorKey' in arguments_
-        ? arguments_.errorKey
+      'errorKey' in args
+        ? args.errorKey
         : 'unknownErrorCode:unknownErrorType';
-    const errorKey = 'errorKey' in arguments_ ? arguments_.errorKey : undefined;
+    const errorKey = 'errorKey' in args ? args.errorKey : undefined;
     const title =
-      'message' in arguments_
-        ? arguments_.message
+      'message' in args
+        ? args.message
         : parseError({ error: errorKey }).message;
     this.code = code;
     this.type =
-      'message' in arguments_
+      'message' in args
         ? undefined
         : parseError({ error: errorKey }).type;
     super.message =
