@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 /* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
 
 import { Input } from '@nori-dot-com/ggit';
@@ -459,9 +460,8 @@ export const translateSoilOrCropDisturbanceEvents = ({
   const soilOrCropDisturbanceEvents =
     soilOrCropDisturbanceEventList?.TillageEvent?.reduce?.(
       (eventList, event) => {
-        const {
-          soilOrCropDisturbanceEvent,
-        } = translateSoilOrCropDisturbanceEvent({ event });
+        const { soilOrCropDisturbanceEvent } =
+          translateSoilOrCropDisturbanceEvent({ event });
         return [...eventList, soilOrCropDisturbanceEvent];
       },
       [] as CropEvents['soilOrCropDisturbanceEvents']
@@ -752,7 +752,7 @@ export const extractCrops = ({
         crop,
       ];
     },
-    ([] as unknown) as CropYear['crops']
+    [] as unknown as CropYear['crops']
   );
   return { crops };
 };
@@ -832,20 +832,20 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
     ...current.scenarios.CropYear,
     ...future.scenarios.CropYear,
   ];
-  cropYears.forEach((cropYear, i) => {
+  for (const [index, cropYear] of cropYears.entries()) {
     cropYear.Crop.forEach((crop: Input.Crop) => {
       if (crop.ContinueFromPreviousYear === 'y') {
         cropYears
-          .slice(0, i)
+          .slice(0, index)
           .reverse()
-          .some((lookupCropYear, j) => {
+          .some((lookupCropYear, index_) => {
             let adjusted = false;
-            lookupCropYear.Crop.forEach((lookupCrop, k) => {
+            for (const [k, lookupCrop] of lookupCropYear.Crop.entries()) {
               if (
                 lookupCrop.ContinueFromPreviousYear === 'n' &&
                 lookupCrop.CropName === crop.CropName
               ) {
-                const indexYearToInsertInto = i - (j + 1);
+                const indexYearToInsertInto = index - (index_ + 1);
                 const indexCropToInsertInto = k;
                 const cropToAppendTo =
                   cropYears[indexYearToInsertInto].Crop[indexCropToInsertInto];
@@ -888,40 +888,40 @@ export const shiftCropsTaggedAsContinueFromPreviousYear = ({
                 ];
                 cropYears[indexYearToInsertInto].Crop[indexCropToInsertInto] = {
                   ...cropToAppendTo,
-                  ...(appendedOmadList.length && {
+                  ...(appendedOmadList.length > 0 && {
                     OMADApplicationList: {
                       OMADApplicationEvent: appendedOmadList,
                     },
                   }),
-                  ...(appendedFertilizerList.length && {
+                  ...(appendedFertilizerList.length > 0 && {
                     NApplicationList: {
                       NApplicationEvent: appendedFertilizerList,
                     },
                   }),
-                  ...(appendedTillageList.length && {
+                  ...(appendedTillageList.length > 0 && {
                     TillageList: { TillageEvent: appendedTillageList },
                   }),
-                  ...(appendedIrrigationList.length && {
+                  ...(appendedIrrigationList.length > 0 && {
                     IrrigationList: {
                       IrrigationEvent: appendedIrrigationList,
                     },
                   }),
-                  ...(appendedHarvestList.length && {
+                  ...(appendedHarvestList.length > 0 && {
                     HarvestList: { HarvestEvent: appendedHarvestList },
                   }),
-                  ...(appendedGrazingList.length && {
+                  ...(appendedGrazingList.length > 0 && {
                     GrazingList: { GrazingEvent: appendedGrazingList },
                   }),
                 };
-                cropYears[i].Crop.splice(indexCropToInsertInto, 1);
+                cropYears[index].Crop.splice(indexCropToInsertInto, 1);
                 adjusted = true;
               }
-            });
+            }
             return adjusted;
           });
       }
     });
-  });
+  }
   return {
     cropScenarios: [
       {
@@ -963,12 +963,10 @@ export const convertFromGgitToProject = ({
   const { cropScenarios } = shiftCropsTaggedAsContinueFromPreviousYear({
     unadjustedCropScenarios,
   });
-  const {
-    currentCropScenario,
-    futureCropScenario,
-  } = separateCurrentAndFutureScenarios({
-    cropScenarios,
-  });
+  const { currentCropScenario, futureCropScenario } =
+    separateCurrentAndFutureScenarios({
+      cropScenarios,
+    });
   const { regenerativeStartYear } = extractRegenerativeSwitchYear({
     futureCropScenario,
   });

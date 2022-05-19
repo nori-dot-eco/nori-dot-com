@@ -31,7 +31,8 @@
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^27.4.0",
     "typedoc": "^0.20.32",
-    "typedoc-plugin-markdown": "^3.6.0"
+    "typedoc-plugin-markdown": "^3.6.0",
+    "@nori-dot-com/eslint-config-nori": "*"
   },
   "dependencies": {
     "@nori-dot-com/errors": "^1.6.0",

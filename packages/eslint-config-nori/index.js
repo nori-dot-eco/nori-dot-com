@@ -1,35 +1,19 @@
+const path = require('path');
+const fs = require('fs');
+
+const { jsdocRules } = require('./rules');
+
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
-const allExtensions = jsExtensions.concat(tsExtensions);
+const allExtensions = [...jsExtensions, ...tsExtensions];
+
+const schemaPath = path.join(
+  __dirname,
+  '../../../../nori-graphql/src/schema.graphql'
+);
+const schema = fs.existsSync(schemaPath) ? schemaPath : undefined;
 
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:require-path-exists/recommended',
-    'plugin:relay/recommended',
-    'plugin:import/warnings',
-    'plugin:import/errors',
-    'plugin:import/recommended',
-    'plugin:jest/recommended',
-    'plugin:@next/next/recommended',
-    'plugin:@next/next/core-web-vitals',
-    'plugin:prettier/recommended',
-  ],
-  plugins: [
-    'import',
-    'sort-imports-es6-autofix',
-    'require-path-exists',
-    'react-hooks',
-    'graphql',
-    'relay',
-    'jsdoc',
-    'jest',
-    'mui-unused-classes',
-  ],
   settings: {
     'import/extensions': allExtensions,
     'import/parsers': {
@@ -48,156 +32,152 @@ module.exports = {
       mode: 'typescript',
     },
   },
-  rules: {
-    camelcase: ['warn', { allow: ['__'] }],
-    'mui-unused-classes/unused-classes': 'warn',
-    '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
-    'prefer-const': [
-      'error',
-      {
-        destructuring: 'all',
-        ignoreReadBeforeAssign: false,
-      },
-    ],
-    'jsdoc/check-alignment': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/check-indentation': 1,
-    'jsdoc/check-syntax': 1,
-    'jsdoc/check-tag-names': 1,
-    'jsdoc/check-types': 1,
-    'jsdoc/implements-on-classes': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/match-description': [
-      'error',
-      {
-        mainDescription: false,
-        contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
-      },
-    ],
-    'jsdoc/newline-after-description': 1,
-    'jsdoc/no-types': 1,
-    'jsdoc/no-undefined-types': 1,
-    'jsdoc/require-description': 1,
-    'jsdoc/require-returns': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/require-returns-check': ['error'],
-    'jsdoc/require-returns-description': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/require-returns-type': [
-      'error',
-      {
-        contexts: ['any'],
-      },
-    ],
-    'jsdoc/valid-types': 1,
-    'no-else-return': [0],
-    'one-var': 0,
-    'no-underscore-dangle': 0,
-    'import/no-cycle': [0], // todo look into enabling this
-    'import/extensions': ['error', 'never', { ts: 'never', json: 'always' }],
-    'import/order': [
-      'error',
-      {
-        'newlines-between': 'always',
-      },
-    ],
-    'max-classes-per-file': 0,
-    'function-paren-newline': [0],
-    'react/prefer-stateless-function': 0,
-    'react/forbid-prop-types': 0,
-    'react/sort-comp': 0,
-    'react/no-multi-comp': 0,
-    'react/jsx-filename-extension': 0,
-    'react/jsx-curly-brace-presence': 0,
-    'react/prop-types': 0,
-    'jsx-a11y/anchor-is-valid': 0,
-    'no-plusplus': 0,
-    'import/prefer-default-export': 0,
-    'prefer-destructuring': 0,
-    'no-use-before-define': ['error', { variables: false }],
-    'no-continue': 0,
-    'no-param-reassign': 0,
-    'global-require': 0,
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-        optionalDependencies: true,
-        peerDependencies: true,
-      },
-    ],
-    'graphql/named-operations': [
-      'error',
-      {
-        env: 'relay',
-        tagName: 'graphql',
-      },
-    ],
-    'graphql/capitalized-type-name': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'graphql/no-deprecated-fields': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'graphql/template-strings': [
-      'error',
-      {
-        tagName: 'graphql',
-        env: 'relay',
-      },
-    ],
-    'react/require-default-props': [0],
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-fragments': [1, 'element'],
-    'react/function-component-definition': [
-      2,
-      {
-        namedComponents: 'arrow-function',
-      },
-    ],
-    'relay/generated-flow-types': 0,
-    'require-path-exists/exists': [
-      2,
-      {
-        extensions: allExtensions,
-      },
-    ],
-    /**
-     * jest rules
-     */
-    'jest/prefer-strict-equal': 'warn',
-  },
   overrides: [
     {
-      files: ['**/cypress/**/*.js'],
+      files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+      extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'airbnb',
+        'airbnb/hooks',
+        'plugin:require-path-exists/recommended',
+        'plugin:relay/recommended',
+        'plugin:import/warnings',
+        'plugin:import/errors',
+        'plugin:import/recommended',
+        'plugin:jest/recommended',
+        'plugin:@next/next/recommended',
+        'plugin:@next/next/core-web-vitals',
+        'plugin:unicorn/recommended',
+        'plugin:eslint-comments/recommended',
+        'plugin:prettier/recommended',
+      ],
+      plugins: [
+        'import',
+        'sort-imports-es6-autofix',
+        'require-path-exists',
+        'react-hooks',
+        'relay',
+        'jsdoc',
+        'jest',
+        'mui-unused-classes',
+      ],
+      processor: '@graphql-eslint/graphql',
       rules: {
-        'spaced-comment': 0,
+        'no-implicit-coercion': ['error'],
+        'no-underscore-dangle': [0],
+        'unicorn/no-array-reduce': [0],
+        'unicorn/prefer-module': [0],
+        'unicorn/prefer-switch': [0],
+        'unicorn/no-useless-undefined': [0],
+        'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatile version of node (~18)
+        // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
+        //   'warn',
+        //   {
+        //     case: 'kebabCase',
+        //   },
+        // ],
+        'unicorn/filename-case': [0], // todo remove this after running kebab-case codemod to rename files
+        'unicorn/no-useless-promise-resolve-reject': [0],
+        'unicorn/prevent-abbreviations': [
+          'error',
+          {
+            allowList: {
+              seedDb: true,
+              req: true,
+              res: true,
+              e: true,
+              NConfConfig: true,
+              params: true,
+              args: true,
+            },
+            ignore: ['a-z'],
+          },
+        ],
+        'unicorn/prefer-spread': [0],
+        'eslint-comments/require-description': ['error'], // requires eslint directive comments to have descriptions
+        'eslint-comments/disable-enable-pair': [
+          'error',
+          { allowWholeFile: true }, // allows using eslint-disable directives for whole-file disables
+        ],
+        'eslint-comments/no-unused-disable': ['error'],
+        'no-restricted-syntax': [
+          'error',
+          'ForInStatement',
+          'LabeledStatement',
+          'WithStatement',
+        ], // overrides airbnb restricted syntax rules and allows for of loops
+        'no-extra-boolean-cast': 0, // todo remove once strict is enabled for all tsconfigs
+        'react/jsx-filename-extension': [
+          1,
+          { extensions: ['.tsx', '.jsx', '.js'] },
+        ],
+        'mui-unused-classes/unused-classes': 'warn',
+        '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
+        'prefer-const': [
+          'error',
+          {
+            destructuring: 'all',
+            ignoreReadBeforeAssign: false,
+          },
+        ],
+        ...jsdocRules,
+        'import/no-cycle': [0], // todo look into enabling this
+        'import/extensions': [
+          'error',
+          'never',
+          { ts: 'never', json: 'always' },
+        ],
+        'import/order': [
+          'error',
+          {
+            'newlines-between': 'always',
+          },
+        ],
+        'import/prefer-default-export': 0,
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: true,
+            optionalDependencies: true,
+            peerDependencies: true,
+          },
+        ],
+        'react/require-default-props': [0],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
+        'react/jsx-fragments': [1, 'element'],
+        'react/function-component-definition': [
+          2,
+          {
+            namedComponents: 'arrow-function',
+          },
+        ],
+        'react/no-multi-comp': ['warn', { ignoreStateless: true }], // todo remove ignoreStateless
+        'react/jsx-curly-brace-presence': 0, // todo deprecate
+        'relay/generated-flow-types': 0,
+        'require-path-exists/exists': [
+          2,
+          {
+            extensions: allExtensions,
+          },
+        ],
+        'jest/prefer-strict-equal': 'warn',
+        'max-classes-per-file': 0, // todo deprecate
+        'prefer-destructuring': 0,
       },
+    },
+    {
+      files: ['*.graphql'],
+      parserOptions: {
+        skipGraphQLConfig: true,
+        schema: [schema],
+      },
+      extends: [
+        'plugin:@graphql-eslint/schema-recommended',
+        'plugin:@graphql-eslint/relay',
+      ],
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
@@ -207,9 +187,9 @@ module.exports = {
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
-      plugins: ['@typescript-eslint', 'mui-unused-classes'],
+      plugins: ['@typescript-eslint'],
       rules: {
-        'no-extra-boolean-cast': 'off',
+        camelcase: [0], // replaced by @typescript-eslint/naming-convention rules
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
@@ -224,22 +204,16 @@ module.exports = {
           },
         ],
         'no-shadow': 'off', // replaced by ts-eslint rule below
-        '@typescript-eslint/no-shadow': 'error',
-        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'],
-        'require-await': 'off',
-        '@typescript-eslint/require-await': 'error',
-        'import/first': 0,
-        'import/extensions': [
-          'error',
-          'never',
-          { ts: 'never', json: 'always' },
-        ],
-        '@typescript-eslint/consistent-type-imports': 'warn',
+        '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
+        // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
+        'require-await': 'off', // replaced by @typescript-eslint/require-await
+        '@typescript-eslint/require-await': 'error', // replaces require-await
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
           'interface',
         ],
+        'no-unused-vars': 0,
         '@typescript-eslint/no-unused-vars': [
           'error',
           { argsIgnorePattern: 'req|_' },
@@ -247,6 +221,101 @@ module.exports = {
         '@typescript-eslint/naming-convention': [
           'error',
           { selector: 'class', format: ['PascalCase'] },
+          {
+            selector: 'variable',
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+          },
+          {
+            selector: 'default',
+            format: ['camelCase', 'UPPER_CASE'],
+            leadingUnderscore: 'allow',
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
+              match: false,
+            },
+          },
+          { selector: 'typeLike', format: ['PascalCase'] },
+          {
+            selector: 'property',
+            format: ['camelCase', 'PascalCase'],
+            leadingUnderscore: 'allow',
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
+              match: false,
+            },
+          },
+          {
+            selector: 'objectLiteralProperty',
+            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+            leadingUnderscore: 'allow',
+            filter: {
+              regex:
+                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
+              match: false,
+            },
+          },
+        ],
+        '@typescript-eslint/explicit-member-accessibility': 0,
+        '@typescript-eslint/explicit-function-return-type': [
+          'warn',
+          { allowExpressions: true, allowTypedFunctionExpressions: true },
+        ],
+        // '@typescript-eslint/no-explicit-any': [
+        //   'error',
+        //   { ignoreRestArgs: true },
+        // ],
+        '@typescript-eslint/ban-types': ['warn'],
+        'no-use-before-define': 'off', // replaced by @typescript-eslint/no-use-before-define
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          { functions: false, typedefs: false, classes: false },
+        ],
+        'no-unused-expressions': 'off',
+        '@typescript-eslint/no-unused-expressions': 'warn',
+        'import/no-unresolved': 'off',
+        'import/extensions': [
+          'error',
+          'never',
+          { ts: 'never', json: 'always' },
+        ],
+        '@typescript-eslint/consistent-type-imports': 'warn',
+        'require-path-exists/exists': [0],
+      },
+    },
+    {
+      files: [
+        '**.test.js',
+        '**/__mocks__/**.js',
+        '**/__mocks__/**.ts',
+        '**.test.ts',
+        '**.test.tsx',
+        'integration-util.ts',
+      ],
+      env: {
+        node: true,
+        jest: true,
+      },
+      rules: {
+        'dot-notation': [0],
+      },
+    },
+    {
+      files: ['**/*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/naming-convention': [
+          'error',
+          { selector: 'class', format: ['PascalCase'] },
+
+          // Need PascalCase to allow for functional react components that have generics
+          // on them. Like:
+          //   type MyComponentProps<T> { value: T };
+          //   function MyComponent<T>({value}: MyComponentProps<T>) { ... }
+          // because unfortunately you can't use generics with arrow functions in tsx files:
+          //   const MyComponent = <T>({value}: MyComponentProps<T>) => { ... } //parsing error!
+          { selector: 'function', format: ['camelCase', 'PascalCase'] },
           {
             selector: 'variable',
             // Needed to allow for react functional components that
@@ -262,71 +331,18 @@ module.exports = {
             leadingUnderscore: 'allow',
           },
           { selector: 'typeLike', format: ['PascalCase'] },
+          {
+            selector: 'parameter',
+            format: ['camelCase', 'PascalCase'],
+          },
           { selector: 'property', format: ['camelCase', 'PascalCase'] },
-          {
-            selector: 'objectLiteralProperty',
-            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
-          },
         ],
-        '@typescript-eslint/explicit-member-accessibility': 0,
-        '@typescript-eslint/explicit-function-return-type': [
-          'warn',
-          { allowExpressions: true, allowTypedFunctionExpressions: true },
-        ],
-        // '@typescript-eslint/no-explicit-any': [
-        //   'error',
-        //   { ignoreRestArgs: true },
-        // ],
-        '@typescript-eslint/ban-types': ['warn'],
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': [
-          'error',
-          { functions: false, typedefs: false, classes: false },
-        ],
-        '@typescript-eslint/no-unused-expressions': 'warn',
-        'no-unused-expressions': 'off',
-        'no-unused-vars': 0,
-        'import/no-unresolved': 'off',
-        'no-undef': 'off',
-        'no-useless-constructor': 'off',
-        'no-empty-function': 'off',
-        'new-cap': 'warn',
-        'require-path-exists/exists': [0],
       },
     },
     {
-      files: ['**_spec.js', '**.test.js', '**/__mocks__/**.js'],
+      files: ['**/*.stories.*'],
       rules: {
-        // See https://github.com/benmosher/eslint-plugin-import/issues/458
-        'import/no-extraneous-dependencies': 0,
-        'dot-notation': [0],
-      },
-      env: {
-        node: true,
-        jest: true,
-      },
-    },
-    {
-      files: ['**.test.ts', 'integration-util.ts'],
-      rules: {
-        'graphql/capitalized-type-name': [
-          'error',
-          {
-            tagName: 'gql',
-          },
-        ],
-        'graphql/template-strings': [
-          'error',
-          {
-            tagName: 'gql',
-            env: 'apollo', // necessary for fragment field detection
-          },
-        ],
-        'dot-notation': [0],
-      },
-      env: {
-        node: true,
-        jest: true,
+        'react/jsx-props-no-spreading': ['off'],
       },
     },
   ],

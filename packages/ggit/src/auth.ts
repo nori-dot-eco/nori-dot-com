@@ -1,6 +1,10 @@
 import { Fetch } from './index';
 import type { Options, ApiEndpoint, ApiMethod, Method, Email } from './index';
 
+/**
+ *
+ * @example
+ */
 export interface UnparsedTokenApiRequestBody {
   Email: Email;
   Password: string;
@@ -8,15 +12,27 @@ export interface UnparsedTokenApiRequestBody {
 
 export type TokenApiRequestBody = string;
 
+/**
+ *
+ * @example
+ */
 export interface TokenApiCall {
   response: TokenApiResponse;
   request: TokenApiRequest;
 }
 
+/**
+ *
+ * @example
+ */
 export interface TokenApiRequest extends Options<TokenApiCall> {
   body: TokenApiRequestBody;
 }
 
+/**
+ *
+ * @example
+ */
 export interface TokenApiResponse {
   jwtToken: string;
   id: string;

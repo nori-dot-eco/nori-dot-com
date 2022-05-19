@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable camelcase */
 
+/**
+ *
+ * @example
+ */
 export interface Agroforestry {
   AFLiveTrees: string[];
   AFLiveTreesUncertainty: string[];
@@ -16,6 +19,10 @@ export interface Agroforestry {
 
 export type Animal = any;
 
+/**
+ *
+ * @example
+ */
 export interface Forestry {
   FORLiveTrees: string[];
   FORLiveTreesUncertainty: string[];
@@ -33,43 +40,79 @@ export interface Forestry {
   FORInLandfillsUncertainty: string[];
 }
 
+/**
+ *
+ * @example
+ */
 export interface OutputFile<M> {
   Day: Daycent<M>;
 }
 
 export type ErrorResponse = InputValidationError | AllErrors;
 
+/**
+ *
+ * @example
+ */
 export interface InputValidationError {
   InputErrors: InputErrors;
 }
 
+/**
+ *
+ * @example
+ */
 export interface AllErrors {
   AllErrors: {
     Errors: Error;
   };
 }
 
+/**
+ *
+ * @example
+ */
 export interface Errors {
   AllErrors: InputErrors;
 }
+/**
+ *
+ * @example
+ */
 interface InputErrors {
   InputValidationErrors: Error;
 }
 
+/**
+ *
+ * @example
+ */
 interface Error {
   ModelRun: ModelRunErrors;
 }
 
+/**
+ *
+ * @example
+ */
 interface ModelRunErrors {
   '@name': string;
   Error: Error | Error[];
 }
 
+/**
+ *
+ * @example
+ */
 interface Error {
   '@index': string;
   '@message': string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface Daycent<M> {
   '@cometEmailId': string;
   '@CFARMVersion': string;
@@ -79,15 +122,27 @@ export interface Daycent<M> {
   Forestry: Forestry;
 }
 
+/**
+ *
+ * @example
+ */
 export interface Cropland<M> {
   ModelRun: ModelRun<M> | ModelRun<M>[];
 }
 
+/**
+ *
+ * @example
+ */
 export interface ModelRun<M> {
   '@name': string;
   Scenario: Scenario<M>[];
 }
 
+/**
+ *
+ * @example
+ */
 export interface Scenario<M = MapUnit> {
   '@name': string;
   MapUnit?: M[];
@@ -97,12 +152,20 @@ export interface Scenario<M = MapUnit> {
   CH4?: CH4;
 }
 
+/**
+ *
+ * @example
+ */
 export interface CH4 {
   SoilCH4: string;
   WetlandRiceCultivationCH4: string;
   BiomassBurningCH4: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface N2O {
   SoilN2O: string;
   SoilN2O_Direct: string;
@@ -113,12 +176,20 @@ export interface N2O {
   DrainedOrganicSoilsN2O: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface CO2 {
   LimingCO2: string;
   UreaFertilizationCO2: string;
   DrainedOrganicSoilsCO2: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface Carbon {
   SoilCarbon: string;
   BiomassBurningCarbon: string;
@@ -127,6 +198,10 @@ export interface Carbon {
   SoilCarbonStockEnd: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface MapUnit {
   '@id': string;
   '@area': string;
@@ -182,6 +257,10 @@ export interface MapUnit {
   noflux: string;
 }
 
+/**
+ *
+ * @example
+ */
 export interface ParsedMapUnit {
   '@id': string;
   '@area': string;

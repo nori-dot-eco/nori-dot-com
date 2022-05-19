@@ -35,7 +35,7 @@ export interface Cropland {
   CRP: CRP;
   CRPType: CRPType;
   'Year1980-2000'?: Year1980To2000; // todo CRP/Non-CRP types
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+
   'Year1980-2000_Tillage'?: Year1980To2000Tillage;
   CRPStartYear: CRPStartYear;
   CRPEndYear: CRPEndYear;
@@ -204,9 +204,8 @@ export interface BaseCrop {
   Renew?: Renew;
 }
 
-export type Crop<
-  T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
-> = T extends ContinuedCrop ? ContinuedCrop : NewCrop;
+export type Crop<T extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop> =
+  T extends ContinuedCrop ? ContinuedCrop : NewCrop;
 
 /**
  *
