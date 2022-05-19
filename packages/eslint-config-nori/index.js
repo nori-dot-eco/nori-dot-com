@@ -65,13 +65,13 @@ module.exports = {
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
-        eqeqeq: ['error'],
         'no-implicit-coercion': ['error'],
         'no-underscore-dangle': [0],
         'unicorn/no-array-reduce': [0],
         'unicorn/prefer-module': [0],
         'unicorn/prefer-switch': [0],
         'unicorn/no-useless-undefined': [0],
+        'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatile version of node (~18)
         // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
         //   'warn',
         //   {
@@ -187,6 +187,7 @@ module.exports = {
       ],
       plugins: ['@typescript-eslint'],
       rules: {
+        camelcase: [0], // replaced by @typescript-eslint/naming-convention rules
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
