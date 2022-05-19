@@ -68,10 +68,10 @@ describe('isSlurryOrganicMatterEvent', () => {
     expect(
       isSlurryOrganicMatterEvent({
         OMADType: 'not a slurry OMAD type' as unknown as Input.OMADType,
-        OMADApplicationDate: undefined,
-        OMADCNRatio: undefined,
-        OMADPercentN: undefined,
-        OMADAmount: undefined,
+        OMADApplicationDate: null,
+        OMADCNRatio: null,
+        OMADPercentN: null,
+        OMADAmount: null,
       })
     ).toStrictEqual<ReturnType<typeof isSlurryOrganicMatterEvent>>(false);
   });
@@ -79,10 +79,10 @@ describe('isSlurryOrganicMatterEvent', () => {
     expect(
       isSlurryOrganicMatterEvent({
         OMADType: 'beef slurry',
-        OMADApplicationDate: undefined,
-        OMADCNRatio: undefined,
-        OMADPercentN: undefined,
-        OMADAmount: undefined,
+        OMADApplicationDate: null,
+        OMADCNRatio: null,
+        OMADPercentN: null,
+        OMADAmount: null,
       })
     ).toStrictEqual<ReturnType<typeof isSlurryOrganicMatterEvent>>(true);
   });
@@ -93,10 +93,10 @@ describe('isSolidOrganicMatterEvent', () => {
     expect(
       isSolidOrganicMatterEvent({
         OMADType: 'not a solid OMAD type' as unknown as Input.OMADType,
-        OMADApplicationDate: undefined,
-        OMADCNRatio: undefined,
-        OMADPercentN: undefined,
-        OMADAmount: undefined,
+        OMADApplicationDate: null,
+        OMADCNRatio: null,
+        OMADPercentN: null,
+        OMADAmount: null,
       })
     ).toStrictEqual<ReturnType<typeof isSolidOrganicMatterEvent>>(false);
   });
@@ -104,10 +104,10 @@ describe('isSolidOrganicMatterEvent', () => {
     expect(
       isSolidOrganicMatterEvent({
         OMADType: 'alfalfa meal',
-        OMADApplicationDate: undefined,
-        OMADCNRatio: undefined,
-        OMADPercentN: undefined,
-        OMADAmount: undefined,
+        OMADApplicationDate: null,
+        OMADCNRatio: null,
+        OMADPercentN: null,
+        OMADAmount: null,
       })
     ).toStrictEqual<ReturnType<typeof isSolidOrganicMatterEvent>>(true);
   });
@@ -117,40 +117,40 @@ describe('isAnnualCrop', () => {
   it('will return false crop is not an annual crop', () => {
     expect(
       isAnnualCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'not an annual crop' as unknown as Input.CropName,
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isAnnualCrop>>(false);
   });
   it('will return true crop is an annual crop', () => {
     expect(
       isAnnualCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'corn',
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isAnnualCrop>>(true);
   });
@@ -160,41 +160,41 @@ describe('isOrchardOrVineyardCrop', () => {
   it('will return false crop is not a orchard/vineyard crop', () => {
     expect(
       isOrchardOrVineyardCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName:
           'not an orchard or vineyard crop' as unknown as Input.CropName,
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isOrchardOrVineyardCrop>>(false);
   });
   it('will return true crop is an orchard/vineyard crop', () => {
     expect(
       isOrchardOrVineyardCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'oranges',
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isOrchardOrVineyardCrop>>(true);
   });
@@ -204,40 +204,40 @@ describe('isPerennialCrop', () => {
   it('will return false crop is not a a perennial crop', () => {
     expect(
       isPerennialCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'not a perennial crop' as unknown as Input.CropName,
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isPerennialCrop>>(false);
   });
   it('will return true crop is a perennial crop', () => {
     expect(
       isPerennialCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'alfalfa',
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isPerennialCrop>>(true);
   });
@@ -247,40 +247,40 @@ describe('isCoverCrop', () => {
   it('will return false crop is not a a cover crop', () => {
     expect(
       isCoverCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'not a cover crop' as unknown as Input.CropName,
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isCoverCrop>>(false);
   });
   it('will return true crop is a cover crop', () => {
     expect(
       isCoverCrop({
-        '@CropNumber': undefined,
-        BurnEvent: undefined,
+        '@CropNumber': null,
+        BurnEvent: null,
         CropName: 'annual rye',
-        PlantingDate: undefined,
-        ContinueFromPreviousYear: undefined,
-        HarvestList: undefined,
-        TillageList: undefined,
-        NApplicationList: undefined,
-        OMADApplicationList: undefined,
-        IrrigationList: undefined,
-        LimingEvent: undefined,
-        GrazingList: undefined,
-        Prune: undefined,
-        Renew: undefined,
+        PlantingDate: null,
+        ContinueFromPreviousYear: null,
+        HarvestList: null,
+        TillageList: null,
+        NApplicationList: null,
+        OMADApplicationList: null,
+        IrrigationList: null,
+        LimingEvent: null,
+        GrazingList: null,
+        Prune: null,
+        Renew: null,
       })
     ).toStrictEqual<ReturnType<typeof isCoverCrop>>(true);
   });
@@ -292,26 +292,26 @@ describe('extractGeometryData', () => {
       extractGeometryData({
         croplands: [
           {
-            '@Name': undefined,
+            '@Name': null,
             GEOM: {
               '@SRID': '4326',
               '@AREA': 0,
               '#text':
                 'polygon((-102.025696361448 41.1624569193335, -102.024237239744 41.1631353976904, -102.022520625974 41.1635554045818, -102.020460689451 41.1632646308668, -102.019044483091 41.1625861538478, -102.01822909155 41.1617784339522, -102.017542446043 41.1607122284469, -102.017585361387 41.1594844551661, -102.01771410742 41.1587413180595, -102.01822909155 41.1579658616607, -102.019301975156 41.1571257735422, -102.020589435484 41.1566734139417, -102.021962726499 41.1563826096929, -102.023336017515 41.1564795445859, -102.024880969907 41.1570611509333, -102.025996768858 41.15790123988, -102.026554668333 41.1586120759635, -102.026812160398 41.1597752456533, -102.026683414365 41.161035322856, -102.026168430235 41.1618430519102, -102.025696361448 41.1624569193335))',
             },
-            'Pre-1980': undefined,
-            CRP: undefined,
-            CRPType: undefined,
-            'Year1980-2000': undefined,
+            'Pre-1980': null,
+            CRP: null,
+            CRPType: null,
+            'Year1980-2000': null,
 
-            'Year1980-2000_Tillage': undefined,
-            CRPStartYear: undefined,
-            CRPEndYear: undefined,
-            PreCRPManagement: undefined,
-            PreCRPTillage: undefined,
-            PostCRPManagement: undefined,
-            PostCRPTillage: undefined,
-            CropScenario: undefined,
+            'Year1980-2000_Tillage': null,
+            CRPStartYear: null,
+            CRPEndYear: null,
+            PreCRPManagement: null,
+            PreCRPTillage: null,
+            PostCRPManagement: null,
+            PostCRPTillage: null,
+            CropScenario: null,
           },
         ],
       })
@@ -362,48 +362,48 @@ describe('extractGeometryData', () => {
       extractGeometryData({
         croplands: [
           {
-            '@Name': undefined,
+            '@Name': null,
             GEOM: {
               '@SRID': '4326',
               '@AREA': 0,
               '#text':
                 'polygon((-102.025696361448 41.1624569193335, -102.024237239744 41.1631353976904, -102.022520625974 41.1635554045818, -102.020460689451 41.1632646308668, -102.019044483091 41.1625861538478, -102.01822909155 41.1617784339522, -102.017542446043 41.1607122284469, -102.017585361387 41.1594844551661, -102.01771410742 41.1587413180595, -102.01822909155 41.1579658616607, -102.019301975156 41.1571257735422, -102.020589435484 41.1566734139417, -102.021962726499 41.1563826096929, -102.023336017515 41.1564795445859, -102.024880969907 41.1570611509333, -102.025996768858 41.15790123988, -102.026554668333 41.1586120759635, -102.026812160398 41.1597752456533, -102.026683414365 41.161035322856, -102.026168430235 41.1618430519102, -102.025696361448 41.1624569193335))',
             },
-            'Pre-1980': undefined,
-            CRP: undefined,
-            CRPType: undefined,
-            'Year1980-2000': undefined,
+            'Pre-1980': null,
+            CRP: null,
+            CRPType: null,
+            'Year1980-2000': null,
 
-            'Year1980-2000_Tillage': undefined,
-            CRPStartYear: undefined,
-            CRPEndYear: undefined,
-            PreCRPManagement: undefined,
-            PreCRPTillage: undefined,
-            PostCRPManagement: undefined,
-            PostCRPTillage: undefined,
-            CropScenario: undefined,
+            'Year1980-2000_Tillage': null,
+            CRPStartYear: null,
+            CRPEndYear: null,
+            PreCRPManagement: null,
+            PreCRPTillage: null,
+            PostCRPManagement: null,
+            PostCRPTillage: null,
+            CropScenario: null,
           },
           {
-            '@Name': undefined,
+            '@Name': null,
             GEOM: {
               '@SRID': '4326',
               '@AREA': 0,
               '#text':
                 'polygon((-90.025696361448 41.1624569193335, -90.024237239744 41.1631353976904, -90.022520625974 41.1635554045818, -90.020460689451 41.1632646308668, -90.019044483091 41.1625861538478, -90.01822909155 41.1617784339522, -90.017542446043 41.1607122284469, -90.017585361387 41.1594844551661, -90.01771410742 41.1587413180595, -90.01822909155 41.1579658616607, -90.019301975156 41.1571257735422, -90.020589435484 41.1566734139417, -90.021962726499 41.1563826096929, -90.023336017515 41.1564795445859, -90.024880969907 41.1570611509333, -90.025996768858 41.15790123988, -90.026554668333 41.1586120759635, -90.026812160398 41.1597752456533, -90.026683414365 41.161035322856, -90.026168430235 41.161843051990, -90.025696361448 41.1624569193335))',
             },
-            'Pre-1980': undefined,
-            CRP: undefined,
-            CRPType: undefined,
-            'Year1980-2000': undefined,
+            'Pre-1980': null,
+            CRP: null,
+            CRPType: null,
+            'Year1980-2000': null,
 
-            'Year1980-2000_Tillage': undefined,
-            CRPStartYear: undefined,
-            CRPEndYear: undefined,
-            PreCRPManagement: undefined,
-            PreCRPTillage: undefined,
-            PostCRPManagement: undefined,
-            PostCRPTillage: undefined,
-            CropScenario: undefined,
+            'Year1980-2000_Tillage': null,
+            CRPStartYear: null,
+            CRPEndYear: null,
+            PreCRPManagement: null,
+            PreCRPTillage: null,
+            PostCRPManagement: null,
+            PostCRPTillage: null,
+            CropScenario: null,
           },
         ],
       })
@@ -524,13 +524,13 @@ describe('buildHistoricLandManagement', () => {
     expect(
       buildHistoricLandManagement({
         CRP: 'no',
-        CRPType: undefined,
-        CRPStartYear: undefined,
-        CRPEndYear: undefined,
-        PreCRPManagement: undefined,
-        PreCRPTillage: undefined,
-        PostCRPManagement: undefined,
-        PostCRPTillage: undefined,
+        CRPType: null,
+        CRPStartYear: null,
+        CRPEndYear: null,
+        PreCRPManagement: null,
+        PreCRPTillage: null,
+        PostCRPManagement: null,
+        PostCRPTillage: null,
         'Pre-1980': 'irrigation (pre 1980s)',
         'Year1980-2000': 'irrigated: continuous hay',
 
@@ -547,17 +547,17 @@ describe('buildHistoricLandManagement', () => {
     expect(() =>
       buildHistoricLandManagement({
         CRP: 'yes',
-        CRPType: undefined,
-        CRPStartYear: undefined,
-        CRPEndYear: undefined,
-        PreCRPManagement: undefined,
-        PreCRPTillage: undefined,
-        PostCRPManagement: undefined,
-        PostCRPTillage: undefined,
-        'Pre-1980': undefined,
-        'Year1980-2000': undefined,
+        CRPType: null,
+        CRPStartYear: null,
+        CRPEndYear: null,
+        PreCRPManagement: null,
+        PreCRPTillage: null,
+        PostCRPManagement: null,
+        PostCRPTillage: null,
+        'Pre-1980': null,
+        'Year1980-2000': null,
 
-        'Year1980-2000_Tillage': undefined,
+        'Year1980-2000_Tillage': null,
       })
     ).toThrow();
   });
@@ -573,7 +573,7 @@ describe('separateCurrentAndFutureScenarios', () => {
             CropYear: [
               {
                 '@Year': 2001,
-                Crop: undefined,
+                Crop: null,
               },
             ],
           },
@@ -582,7 +582,7 @@ describe('separateCurrentAndFutureScenarios', () => {
             CropYear: [
               {
                 '@Year': 2020,
-                Crop: undefined,
+                Crop: null,
               },
             ],
           },
@@ -594,7 +594,7 @@ describe('separateCurrentAndFutureScenarios', () => {
         CropYear: [
           {
             '@Year': 2001,
-            Crop: undefined,
+            Crop: null,
           },
         ],
       },
@@ -603,7 +603,7 @@ describe('separateCurrentAndFutureScenarios', () => {
         CropYear: [
           {
             '@Year': 2020,
-            Crop: undefined,
+            Crop: null,
           },
         ],
       },
@@ -620,15 +620,15 @@ describe('extractRegenerativeSwitchYear', () => {
           CropYear: [
             {
               '@Year': 2020,
-              Crop: undefined,
+              Crop: null,
             },
             {
               '@Year': 2025,
-              Crop: undefined,
+              Crop: null,
             },
             {
               '@Year': 2019,
-              Crop: undefined,
+              Crop: null,
             },
           ],
         },
@@ -644,10 +644,10 @@ describe('translateFertilizerEvent', () => {
     expect(
       translateFertilizerEvent({
         event: {
-          EEP: undefined,
+          EEP: null,
           NApplicationAmount: 1,
           NApplicationDate: '01/01/2000',
-          NApplicationMethod: undefined,
+          NApplicationMethod: null,
           NApplicationType: 'ammonium nitrate (34-0-0)',
         },
       })
@@ -656,7 +656,7 @@ describe('translateFertilizerEvent', () => {
         lbsOfNPerAcre: 1,
         date: '01/01/2000',
         type: 'ammonium nitrate (34-0-0)',
-        name: undefined,
+        name: null,
       },
     });
   });
@@ -669,17 +669,17 @@ describe('translateFertilizerEvents', () => {
         fertilizerEventList: {
           NApplicationEvent: [
             {
-              EEP: undefined,
+              EEP: null,
               NApplicationAmount: 1,
               NApplicationDate: '01/01/2000',
-              NApplicationMethod: undefined,
+              NApplicationMethod: null,
               NApplicationType: 'ammonium nitrate (34-0-0)',
             },
             {
-              EEP: undefined,
+              EEP: null,
               NApplicationAmount: 5,
               NApplicationDate: '01/02/2000',
-              NApplicationMethod: undefined,
+              NApplicationMethod: null,
               NApplicationType: 'calcium nitrate',
             },
           ],
@@ -691,13 +691,13 @@ describe('translateFertilizerEvents', () => {
           lbsOfNPerAcre: 1,
           date: '01/01/2000',
           type: 'ammonium nitrate (34-0-0)',
-          name: undefined,
+          name: null,
         },
         {
           lbsOfNPerAcre: 5,
           date: '01/02/2000',
           type: 'calcium nitrate',
-          name: undefined,
+          name: null,
         },
       ],
     });
@@ -721,10 +721,10 @@ describe('translateOrganicMatterEvent', () => {
         amountPerAcre: 1,
         carbonNitrogenRatio: 3,
         date: '01/01/2000',
-        percentMoisture: undefined,
+        percentMoisture: null,
         percentNitrogen: 2,
         type: 'alfalfa meal',
-        name: undefined,
+        name: null,
       },
     });
   });
@@ -772,19 +772,19 @@ describe('translateOrganicMatterEvents', () => {
           amountPerAcre: 1,
           carbonNitrogenRatio: 3,
           date: '01/01/2000',
-          percentMoisture: undefined,
+          percentMoisture: null,
           percentNitrogen: 2,
           type: 'blood, dried',
-          name: undefined,
+          name: null,
         },
         {
           amountPerAcre: 2,
           carbonNitrogenRatio: 3,
           date: '01/05/2000',
-          percentMoisture: undefined,
+          percentMoisture: null,
           percentNitrogen: 2,
           type: 'compost or composted manure, solid',
-          name: undefined,
+          name: null,
         },
       ],
     });
@@ -865,13 +865,13 @@ describe('translateLimingEvents', () => {
     expect(
       translateLimingEvents({
         limingEventList: {
-          LimingDate: undefined,
+          LimingDate: null,
           LimingMethod: 'none',
-          LimingRate: undefined,
+          LimingRate: null,
         },
       })
     ).toStrictEqual<ReturnType<typeof translateLimingEvents>>({
-      limingEvents: undefined,
+      limingEvents: null,
     });
   });
   it('will translate the liming event when there is not one when indicated by none being specified', () => {
@@ -880,7 +880,7 @@ describe('translateLimingEvents', () => {
         limingEventList: {},
       })
     ).toStrictEqual<ReturnType<typeof translateLimingEvents>>({
-      limingEvents: undefined,
+      limingEvents: null,
     });
   });
 });
@@ -920,7 +920,7 @@ describe('translateBurningEvent', () => {
         },
       })
     ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
-      burningEvent: undefined,
+      burningEvent: null,
     });
   });
   it('will exclude the burning event when it is "no burning', () => {
@@ -931,7 +931,7 @@ describe('translateBurningEvent', () => {
         },
       })
     ).toStrictEqual<ReturnType<typeof translateBurningEvent>>({
-      burningEvent: undefined,
+      burningEvent: null,
     });
   });
 });
@@ -1076,7 +1076,7 @@ describe('translateSoilOrCropDisturbanceEvent', () => {
       soilOrCropDisturbanceEvent: {
         date: '01/01/2000',
         type: 'mow',
-        name: undefined,
+        name: null,
       },
     });
   });
@@ -1101,8 +1101,8 @@ describe('translateSoilOrCropDisturbanceEvents', () => {
       })
     ).toStrictEqual<ReturnType<typeof translateSoilOrCropDisturbanceEvents>>({
       soilOrCropDisturbanceEvents: [
-        { date: '01/01/2000', type: 'no tillage', name: undefined },
-        { date: '12/31/2000', type: 'winter killed', name: undefined },
+        { date: '01/01/2000', type: 'no tillage', name: null },
+        { date: '12/31/2000', type: 'winter killed', name: null },
       ],
     });
   });
@@ -1113,11 +1113,11 @@ describe('translateCoverCrop', () => {
     expect(
       translateCoverCrop({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'annual rye',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1136,10 +1136,10 @@ describe('translateCoverCrop', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
       },
     });
   });
@@ -1150,11 +1150,11 @@ describe('translateOrchardOrVineyardCrop', () => {
     expect(
       translateOrchardOrVineyardCrop({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'grape, wine (1391-1670 gdd)',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1175,10 +1175,10 @@ describe('translateOrchardOrVineyardCrop', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         prune: 'yes',
         renewOrClear: 'yes',
         harvestEvents: [],
@@ -1192,11 +1192,11 @@ describe('translateAnnualCrop', () => {
     expect(
       translateAnnualCrop({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'barley',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1215,10 +1215,10 @@ describe('translateAnnualCrop', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         harvestEvents: [],
       },
     });
@@ -1230,11 +1230,11 @@ describe('translatePerennialCrop', () => {
     expect(
       translatePerennialCrop({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'alfalfa',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1253,10 +1253,10 @@ describe('translatePerennialCrop', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         harvestEvents: [],
       },
     });
@@ -1268,11 +1268,11 @@ describe('translateCropEvent', () => {
     expect(() =>
       translateCropEvent({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'invalid crop name' as unknown as Input.CropName,
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1288,11 +1288,11 @@ describe('translateCropEvent', () => {
     expect(
       translateCropEvent({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'annual rye',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1311,10 +1311,10 @@ describe('translateCropEvent', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
       },
     });
   });
@@ -1322,11 +1322,11 @@ describe('translateCropEvent', () => {
     expect(
       translateCropEvent({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'grape, wine (1391-1670 gdd)',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1347,10 +1347,10 @@ describe('translateCropEvent', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         prune: 'yes',
         renewOrClear: 'yes',
         harvestEvents: [],
@@ -1361,11 +1361,11 @@ describe('translateCropEvent', () => {
     expect(
       translateCropEvent({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'barley',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1384,10 +1384,10 @@ describe('translateCropEvent', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         harvestEvents: [],
       },
     });
@@ -1396,11 +1396,11 @@ describe('translateCropEvent', () => {
     expect(
       translateCropEvent({
         cropEvent: {
-          '@CropNumber': undefined,
-          BurnEvent: undefined,
+          '@CropNumber': null,
+          BurnEvent: null,
           CropName: 'alfalfa',
           PlantingDate: '01/01/2000',
-          ContinueFromPreviousYear: undefined,
+          ContinueFromPreviousYear: null,
           HarvestList: {},
           TillageList: {},
           NApplicationList: {},
@@ -1419,10 +1419,10 @@ describe('translateCropEvent', () => {
         fertilizerEvents: [],
         organicMatterEvents: [],
         irrigationEvents: [],
-        limingEvents: undefined,
-        grazingEvents: undefined,
-        burningEvent: undefined,
-        name: undefined,
+        limingEvents: null,
+        grazingEvents: null,
+        burningEvent: null,
+        name: null,
         harvestEvents: [],
       },
     });
@@ -1483,10 +1483,10 @@ describe('extractCroplandsAndScenarios', () => {
   it('will extract the croplands and scenarios', () => {
     const cropland: Input.Cropland = {
       '@Name': 'project name|field name|1|2|2021-03-09T16:52:15.223Z|120|0',
-      CRP: undefined,
+      CRP: null,
       CRPEndYear: [],
       CRPStartYear: [],
-      CRPType: undefined,
+      CRPType: null,
       CropScenario: [
         { '@Name': 'Current', CropYear: [{ '@Year': 2000, Crop: [] }] },
         { '@Name': 'Future', CropYear: [{ '@Year': 2010, Crop: [] }] },
@@ -1502,9 +1502,9 @@ describe('extractCroplandsAndScenarios', () => {
       'Pre-1980': 'irrigation (pre 1980s)',
       PreCRPManagement: [],
       PreCRPTillage: [],
-      'Year1980-2000': undefined,
+      'Year1980-2000': null,
 
-      'Year1980-2000_Tillage': undefined,
+      'Year1980-2000_Tillage': null,
     };
     expect(
       extractCroplandsAndScenarios({
