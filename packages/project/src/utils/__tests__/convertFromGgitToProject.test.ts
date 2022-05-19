@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 import type { Input } from '@nori-dot-com/ggit';
 
 import {

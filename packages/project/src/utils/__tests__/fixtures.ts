@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null -- undefined is not a valid JSON value so we need to use null instead */
 import type { Input } from '@nori-dot-com/ggit';
 
 import type { V2Data, Project } from '../../index';
@@ -41,15 +42,15 @@ export const v3Data: Project = {
           plantingYear: 2000,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2000',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               harvestEvents: [
                 {
                   date: '09/14/2000',
@@ -63,7 +64,7 @@ export const v3Data: Project = {
                 {
                   date: '04/20/2000',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               classification: 'annual crop',
@@ -74,26 +75,26 @@ export const v3Data: Project = {
           plantingYear: 2001,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2001',
               fertilizerEvents: [
                 {
                   date: '06/15/2001',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2001',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [
@@ -178,14 +179,14 @@ export const v3Data: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2001',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -205,13 +206,13 @@ export const v3Data: Project = {
           plantingYear: 2002,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2002',
               fertilizerEvents: [
                 {
                   date: '06/15/2003',
-                  name: undefined,
+                  name: null,
                   type: 'urea ammonium nitrate (30-00-00)',
                   lbsOfNPerAcre: 149.8,
                 },
@@ -220,26 +221,26 @@ export const v3Data: Project = {
                 {
                   date: '04/01/2003',
                   type: 'chicken - broiler (litter), solid',
-                  name: undefined,
+                  name: null,
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2002',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
                 {
                   date: '04/19/2003',
-                  name: undefined,
+                  name: null,
                   type: 'intensive tillage',
                 },
               ],
@@ -271,20 +272,20 @@ export const v3Data: Project = {
           plantingYear: 2004,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2004',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2004',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -304,37 +305,37 @@ export const v3Data: Project = {
           plantingYear: 2005,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2005',
               fertilizerEvents: [
                 {
                   date: '06/15/2005',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2005',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2005',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -354,20 +355,20 @@ export const v3Data: Project = {
           plantingYear: 2006,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/20/2006',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2006',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -387,26 +388,26 @@ export const v3Data: Project = {
           plantingYear: 2007,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [
                 {
                   date: '06/15/2007',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2007',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [
@@ -491,14 +492,14 @@ export const v3Data: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2007',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -513,27 +514,27 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2007',
               fertilizerEvents: [
                 {
                   date: '03/01/2008',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/19/2007',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -553,7 +554,7 @@ export const v3Data: Project = {
           plantingYear: 2008,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2008',
               fertilizerEvents: [],
@@ -566,13 +567,13 @@ export const v3Data: Project = {
                   tonsPerAcre: 1,
                 },
               ],
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/15/2008',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -592,37 +593,37 @@ export const v3Data: Project = {
           plantingYear: 2009,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2009',
               fertilizerEvents: [
                 {
                   date: '06/15/2009',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2009',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2009',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -637,7 +638,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2009',
               fertilizerEvents: [
@@ -645,19 +646,19 @@ export const v3Data: Project = {
                   date: '03/01/2010',
                   lbsOfNPerAcre: 90.2,
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/19/2009',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -677,20 +678,20 @@ export const v3Data: Project = {
           plantingYear: 2010,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2010',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/15/2010',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -710,37 +711,37 @@ export const v3Data: Project = {
           plantingYear: 2011,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2011',
               fertilizerEvents: [
                 {
                   date: '06/15/2011',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2011',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2011',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -755,7 +756,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2011',
               fertilizerEvents: [
@@ -763,7 +764,7 @@ export const v3Data: Project = {
                   date: '03/01/2012',
                   type: 'urea ammonium nitrate (30-00-00)',
                   lbsOfNPerAcre: 90.2,
-                  name: undefined,
+                  name: null,
                 },
               ],
               organicMatterEvents: [],
@@ -775,13 +776,13 @@ export const v3Data: Project = {
                   tonsPerAcre: 1,
                 },
               ],
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/19/2011',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -801,20 +802,20 @@ export const v3Data: Project = {
           plantingYear: 2012,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2012',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/15/2012',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -834,37 +835,37 @@ export const v3Data: Project = {
           plantingYear: 2013,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2013',
               fertilizerEvents: [
                 {
                   date: '06/15/2013',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2013',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/19/2013',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -879,27 +880,27 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2013',
               fertilizerEvents: [
                 {
                   date: '03/01/2014',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/19/2013',
                   type: 'intensive tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -919,19 +920,19 @@ export const v3Data: Project = {
           plantingYear: 2014,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2014',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/14/2014',
-                  name: undefined,
+                  name: null,
                   type: 'intensive tillage',
                 },
               ],
@@ -952,37 +953,37 @@ export const v3Data: Project = {
           plantingYear: 2015,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2015',
               fertilizerEvents: [
                 {
                   date: '06/15/2015',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2015',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2015',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -997,27 +998,27 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2015',
               fertilizerEvents: [
                 {
                   date: '03/01/2016',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/20/2015',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1037,20 +1038,20 @@ export const v3Data: Project = {
           plantingYear: 2016,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2016',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/15/2016',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1070,37 +1071,37 @@ export const v3Data: Project = {
           plantingYear: 2017,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2017',
               fertilizerEvents: [
                 {
                   date: '06/15/2017',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2017',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2017',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1115,27 +1116,27 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'winter wheat',
               plantingDate: '09/20/2017',
               fertilizerEvents: [
                 {
                   date: '03/01/2018',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 90.2,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/20/2017',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1155,25 +1156,25 @@ export const v3Data: Project = {
           plantingYear: 2018,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '06/15/2018',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '06/15/2018',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
                 {
                   date: '09/22/2018',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1188,21 +1189,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2018',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/22/2018',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1212,30 +1213,30 @@ export const v3Data: Project = {
           plantingYear: 2019,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2019',
               fertilizerEvents: [],
               organicMatterEvents: [
                 {
                   date: '04/01/2020',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2019',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1250,7 +1251,7 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2019',
@@ -1258,20 +1259,20 @@ export const v3Data: Project = {
                 {
                   date: '06/15/2020',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/20/2019',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1281,20 +1282,20 @@ export const v3Data: Project = {
           plantingYear: 2020,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2020',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/27/2020',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1309,21 +1310,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2020',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/22/2020',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1333,37 +1334,37 @@ export const v3Data: Project = {
           plantingYear: 2021,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2021',
               fertilizerEvents: [
                 {
                   date: '06/15/2021',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2021',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2021',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1378,21 +1379,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2021',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/20/2021',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1402,20 +1403,20 @@ export const v3Data: Project = {
           plantingYear: 2022,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2022',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/27/2022',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1430,21 +1431,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2022',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/22/2022',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1454,37 +1455,37 @@ export const v3Data: Project = {
           plantingYear: 2023,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2023',
               fertilizerEvents: [
                 {
                   date: '06/15/2023',
                   type: 'urea ammonium nitrate (30-00-00)',
-                  name: undefined,
+                  name: null,
                   lbsOfNPerAcre: 149.8,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '04/01/2023',
-                  name: undefined,
+                  name: null,
                   type: 'chicken - broiler (litter), solid',
                   amountPerAcre: 0.78,
                   percentNitrogen: 2.3,
                   carbonNitrogenRatio: 7.8,
-                  percentMoisture: undefined,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/20/2023',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1499,21 +1500,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/20/2023',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/20/2023',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1523,20 +1524,20 @@ export const v3Data: Project = {
           plantingYear: 2024,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'soybean',
               plantingDate: '04/27/2024',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '04/27/2024',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
               harvestEvents: [
@@ -1551,21 +1552,21 @@ export const v3Data: Project = {
               classification: 'annual crop',
             },
             {
-              name: undefined,
+              name: null,
               type: 'annual rye - legume',
               classification: 'annual cover',
               plantingDate: '09/22/2024',
               fertilizerEvents: [],
               organicMatterEvents: [],
               irrigationEvents: [],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [
                 {
                   date: '09/22/2024',
                   type: 'no tillage',
-                  name: undefined,
+                  name: null,
                 },
               ],
             },
@@ -1616,7 +1617,7 @@ export const v3DataForIrrigationTests: Project = {
           plantingYear: 2000,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
@@ -1628,9 +1629,9 @@ export const v3DataForIrrigationTests: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [],
               classification: 'annual crop',
@@ -1641,7 +1642,7 @@ export const v3DataForIrrigationTests: Project = {
           plantingYear: 2001,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
@@ -1657,9 +1658,9 @@ export const v3DataForIrrigationTests: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [],
               classification: 'annual crop',
@@ -1670,7 +1671,7 @@ export const v3DataForIrrigationTests: Project = {
           plantingYear: 2002,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
@@ -1758,9 +1759,9 @@ export const v3DataForIrrigationTests: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [],
               classification: 'annual crop',
@@ -1771,7 +1772,7 @@ export const v3DataForIrrigationTests: Project = {
           plantingYear: 2003,
           crops: [
             {
-              name: undefined,
+              name: null,
               type: 'corn',
               plantingDate: '04/20/2007',
               fertilizerEvents: [],
@@ -1859,9 +1860,9 @@ export const v3DataForIrrigationTests: Project = {
                   volume: 1,
                 },
               ],
-              limingEvents: undefined,
-              grazingEvents: undefined,
-              burningEvent: undefined,
+              limingEvents: null,
+              grazingEvents: null,
+              burningEvent: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [],
               classification: 'annual crop',
@@ -3666,8 +3667,8 @@ export const v2Data: V2Data = {
                   date: '12/19/2019',
                   percentNitrogen: 0.76,
                   amountPerAcre: 13.439_464_627_151_052,
-                  carbonNitrogenRatio: undefined,
-                  percentMoisture: undefined,
+                  carbonNitrogenRatio: null,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],
@@ -3746,8 +3747,8 @@ export const v2Data: V2Data = {
                   date: '11/30/2017',
                   percentNitrogen: 0.64,
                   amountPerAcre: 13.720_321_064_996_085,
-                  carbonNitrogenRatio: undefined,
-                  percentMoisture: undefined,
+                  carbonNitrogenRatio: null,
+                  percentMoisture: null,
                 },
               ],
               irrigationEvents: [],

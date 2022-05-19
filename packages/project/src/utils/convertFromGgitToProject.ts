@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null */
 /* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
 
 import { Input } from '@nori-dot-com/ggit';
