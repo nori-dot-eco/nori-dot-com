@@ -19,7 +19,7 @@ export const convertFromV2ToV1 = ({ v2Data }: { v2Data: V2Data }): V1Data => {
         fieldSetName: field.fieldName,
         area: field.area,
         geometry: field.geometry,
-        clus: field.clus,
+        clus: field.clus ?? null,
         srid: field.srid,
         cropYears: field.cropYears
           .map((cropYear) => {
