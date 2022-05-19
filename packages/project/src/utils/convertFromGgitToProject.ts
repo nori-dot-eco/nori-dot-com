@@ -234,7 +234,7 @@ export const translateFertilizerEvent = ({
       date,
       type,
       lbsOfNPerAcre,
-      name: undefined,
+      name: null,
     },
   };
 };
@@ -278,8 +278,8 @@ export const translateOrganicMatterEvent = ({
       amountPerAcre,
       percentNitrogen,
       carbonNitrogenRatio,
-      percentMoisture: undefined,
-      name: undefined,
+      percentMoisture: null,
+      name: null,
     },
   };
 };
@@ -347,7 +347,7 @@ export const translateLimingEvents = ({
               tonsPerAcre,
             },
           ]
-        : undefined,
+        : null,
   };
 };
 
@@ -359,7 +359,7 @@ export const translateBurningEvent = ({
   return {
     burningEvent:
       !burnEvent?.BurnTime || burnEvent?.BurnTime === 'no burning'
-        ? undefined
+        ? null
         : { type: TRANSLATIONS.burnEvents.type[burnEvent.BurnTime] },
   };
 };
@@ -389,7 +389,7 @@ export const translateGrazingEvents = ({
     grazingEventList?.GrazingEvent?.reduce?.((eventList, event) => {
       const { grazingEvent } = translateGrazingEvent({ event });
       return [...eventList, grazingEvent];
-    }, [] as CropEvents['grazingEvents']) ?? undefined;
+    }, [] as CropEvents['grazingEvents']) ?? null;
   return { grazingEvents };
 };
 
@@ -440,7 +440,7 @@ export const translateSoilOrCropDisturbanceEvent = ({
   const { TillageDate: date, TillageType: type } = event;
   return {
     soilOrCropDisturbanceEvent: {
-      name: undefined,
+      name: null,
       date,
       type:
         TRANSLATIONS.soilOrCropDisturbanceEvents.type[type] ||
@@ -506,7 +506,7 @@ export const translateCoverCrop = ({
   });
   return {
     coverCrop: {
-      name: undefined,
+      name: null,
       plantingDate,
       type,
       classification,
@@ -533,7 +533,7 @@ export const translateCoverCrop = ({
                 },
               }).annualCropHarvestEvent as CropManagementEvent & { yield: 0 },
             ]
-          : undefined,
+          : null,
       }),
     },
   };
@@ -581,7 +581,7 @@ export const translateOrchardOrVineyardCrop = ({
   });
   return {
     orchardOrVineyard: {
-      name: undefined,
+      name: null,
       plantingDate,
       type,
       classification,
@@ -637,7 +637,7 @@ export const translateAnnualCrop = ({
   });
   return {
     annualCrop: {
-      name: undefined,
+      name: null,
       plantingDate,
       type,
       classification,
@@ -690,7 +690,7 @@ export const translatePerennialCrop = ({
   });
   return {
     perennialCrop: {
-      name: undefined,
+      name: null,
       ...('PlantingDate' in cropEvent && {
         plantingDate: cropEvent.PlantingDate,
       }),
