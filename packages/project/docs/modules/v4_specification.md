@@ -4,36 +4,29 @@
 
 ## About
 
-Nori soil project import file format.
+Nori croplands project import file format.
 
 Version: 4.0
 
-Provides the definitions for [Nori project](../interfaces/_specification_.project.md) data using typescript interfaces.
+Provides the definitions for Nori croplands project data import using typescript interfaces.
 
 ## Usage
 
-### Nori [project](../interfaces/_specification_.project.md) import JSON files
+This croplands project data import specification defines Nori's requirements for receipt of project import data.
 
-The [project specification](../interfaces/_specification_.project.md) interfaces can be used as a guide to create project imports.
-For example, the highest level interface of the specification is the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
+Nori requires complete data as follows:
+* Historical best practices from 2000 to three years prior to the switch year.
+* Detailed management practices from three years prior to the switch year to the present.
+* Ten years of projected future practices.
 
 #### Example
 
-You can find an example of a full implementation [here](../../src/example/example.json)
+You can find an example of a full implementation [here](../../src/example/croplands_v4_example.json)
 
 ## Navigation
 
-Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
-
-## Vocabulary
-
-Throughout this documentation you will come across some vocab that indicate to what extent some data needs to be defined. There are effectively three different terms used here:
-
-1. `nullable` - This means that data can be explicitly specified as null in an import file.
-
-2. `?` (AKA optional) - Specifies that a data property can be entirely excluded
-
-3. `default` - Specifies that when the data used for a property is specified as `null`, as an empty string, or excluded, it will be assigned the specified default value.
+[Project](../interfaces/v4_specification.Project.md) is the top level entrypoint of the file format.
+You can find definitions for all of the interfaces in Nori croplands project from the [index](#index).
 
 ## Table of contents
 
@@ -89,7 +82,7 @@ Throughout this documentation you will come across some vocab that indicate to w
 
 #### Defined in
 
-[v4-specification.ts:41](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L41)
+[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L34)
 
 ___
 
@@ -99,7 +92,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:77](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L77)
+[v4-specification.ts:70](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L70)
 
 ___
 
@@ -109,7 +102,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:147](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L147)
+[v4-specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L140)
 
 ___
 
@@ -119,7 +112,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:185](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L185)
+[v4-specification.ts:178](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L178)
 
 ___
 
@@ -129,7 +122,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:118](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L118)
+[v4-specification.ts:111](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L111)
 
 ___
 
@@ -139,7 +132,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L138)
+[v4-specification.ts:131](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L131)
 
 ___
 
@@ -149,7 +142,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:89](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L89)
+[v4-specification.ts:82](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L82)
 
 ___
 
@@ -159,7 +152,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:171](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L171)
+[v4-specification.ts:164](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L164)
 
 ___
 
@@ -169,4 +162,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:97](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L97)
+[v4-specification.ts:90](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L90)

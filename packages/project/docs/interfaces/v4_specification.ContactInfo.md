@@ -4,6 +4,16 @@
 
 [v4-specification](../modules/v4_specification.md).ContactInfo
 
+**`example`**
+
+```js
+{
+ "name": "Lonny Long",
+ "phone": "999 555-1212",
+ "email": "lon@long.com"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -24,7 +34,7 @@ email
 
 #### Defined in
 
-[v4-specification.ts:341](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L341)
+[v4-specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L345)
 
 ___
 
@@ -38,7 +48,7 @@ The project's primary contract person.  Provided to the verified.
 
 #### Defined in
 
-[v4-specification.ts:329](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L329)
+[v4-specification.ts:333](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L333)
 
 ___
 
@@ -52,4 +62,4 @@ phone
 
 #### Defined in
 
-[v4-specification.ts:335](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L335)
+[v4-specification.ts:339](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L339)

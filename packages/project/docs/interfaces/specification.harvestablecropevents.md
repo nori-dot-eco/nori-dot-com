@@ -6,7 +6,7 @@
 
 Crop harvest events.
 
-**`example`** <caption>When an annual crop had a harvest event:</caption>
+**`example`** When an annual crop had a harvest event:
 
 ```js
  "harvestEvents": [
@@ -21,25 +21,25 @@ Crop harvest events.
 
 ## Hierarchy
 
-* **HarvestableCropEvents**
+- **`HarvestableCropEvents`**
 
-  ↳ [*OrchardOrVineyardCrop*](specification.orchardorvineyardcrop.md)
+  ↳ [`OrchardOrVineyardCrop`](specification.OrchardOrVineyardCrop.md)
 
-  ↳ [*PerennialCrop*](specification.perennialcrop.md)
+  ↳ [`PerennialCrop`](specification.PerennialCrop.md)
 
-  ↳ [*AnnualCrop*](specification.annualcrop.md)
+  ↳ [`AnnualCrop`](specification.AnnualCrop.md)
 
 ## Table of contents
 
 ### Properties
 
-- [harvestEvents](specification.harvestablecropevents.md#harvestevents)
+- [harvestEvents](specification.HarvestableCropEvents.md#harvestevents)
 
 ## Properties
 
 ### harvestEvents
 
-• `Optional` **harvestEvents**: ([*AnnualCropHarvestEvent*](specification.annualcropharvestevent.md) \| [*CropManagementEvent*](specification.cropmanagementevent.md))[]
+• `Optional` **harvestEvents**: ([`AnnualCropHarvestEvent`](specification.AnnualCropHarvestEvent.md) \| [`CropManagementEvent`](specification.CropManagementEvent.md))[]
 
 A list of harvest events, if applicable.
 
@@ -48,7 +48,7 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
-**`example`** <caption>When crop had at least one harvest event:</caption>
+**`example`** When crop had at least one harvest event:
 
 ```js
  "harvestEvents": [
@@ -56,4 +56,6 @@ that was removed on the grain harvest, regardless of removal date.
  ]
 ```
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:748](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L748)
+#### Defined in
+
+[specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L827)

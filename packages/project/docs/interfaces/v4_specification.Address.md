@@ -4,6 +4,18 @@
 
 [v4-specification](../modules/v4_specification.md).Address
 
+**`example`**
+
+```js
+{
+ "line1": "123 Cherry Lane",
+ "line2": "#99",
+ "city": "Bushing",
+ "admin1": "MA",
+ "country": "US"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -31,7 +43,7 @@ In the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US
 
 #### Defined in
 
-[v4-specification.ts:382](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L382)
+[v4-specification.ts:400](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L400)
 
 ___
 
@@ -49,7 +61,7 @@ In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/nation
 
 #### Defined in
 
-[v4-specification.ts:392](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L392)
+[v4-specification.ts:410](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L410)
 
 ___
 
@@ -65,7 +77,7 @@ city
 
 #### Defined in
 
-[v4-specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L372)
+[v4-specification.ts:390](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L390)
 
 ___
 
@@ -83,7 +95,7 @@ See: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
 #### Defined in
 
-[v4-specification.ts:402](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L402)
+[v4-specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L420)
 
 ___
 
@@ -101,7 +113,7 @@ First address line
 
 #### Defined in
 
-[v4-specification.ts:354](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L354)
+[v4-specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L372)
 
 ___
 
@@ -119,4 +131,4 @@ Second address line
 
 #### Defined in
 
-[v4-specification.ts:364](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L364)
+[v4-specification.ts:382](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L382)

@@ -2,36 +2,29 @@
 /**
  * ## About
  *
- * Nori soil project import file format.
+ * Nori croplands project import file format.
  * 
  * Version: 4.0
  * 
- * Provides the definitions for [Nori project](../interfaces/_specification_.project.md) data using typescript interfaces.
+ * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
  * ## Usage
  *
- * ### Nori [project](../interfaces/_specification_.project.md) import JSON files
+ * This croplands project data import specification defines Nori's requirements for receipt of project import data.
  *
- * The [project specification](../interfaces/_specification_.project.md) interfaces can be used as a guide to create project imports.
- * For example, the highest level interface of the specification is the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
- *
+ * Nori requires complete data as follows:
+ * * Historical best practices from 2000 to three years prior to the switch year.
+ * * Detailed management practices from three years prior to the switch year to the present.
+ * * Ten years of projected future practices.
+ * 
  * #### Example
  *
- * You can find an example of a full implementation [here](../../src/example/example.json)
+ * You can find an example of a full implementation [here](../../src/example/croplands_v4_example.json)
  *
  * ## Navigation
  *
- * Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/_specification_.project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
- *
- * ## Vocabulary
- *
- * Throughout this documentation you will come across some vocab that indicate to what extent some data needs to be defined. There are effectively three different terms used here:
- *
- * 1. `nullable` - This means that data can be explicitly specified as null in an import file.
- *
- * 2. `?` (AKA optional) - Specifies that a data property can be entirely excluded
- *
- * 3. `default` - Specifies that when the data used for a property is specified as `null`, as an empty string, or excluded, it will be assigned the specified default value.
+ * [Project](../interfaces/v4_specification.Project.md) is the top level entrypoint of the file format.
+ * You can find definitions for all of the interfaces in Nori croplands project from the [index](#index).
  *
  * @packageDocumentation
  * 
@@ -200,7 +193,6 @@ export const limingTypes = [
  * {
  *  "version": "4.0.0",
  *  "fields": [
- *    // define fields in this array
  *  ]
  * }
  * ```
@@ -320,6 +312,18 @@ export interface Project {
   fields: Field[];
 }
 
+/**
+ * @example
+ *
+ * ```js
+ * {
+ *  "name": "Lonny Long",
+ *  "phone": "999 555-1212",
+ *  "email": "lon@long.com"
+ * }
+ * ```
+ *
+ */
 export interface ContactInfo {
   /**
    * The project's primary contract person.  Provided to the verified.
@@ -341,6 +345,20 @@ export interface ContactInfo {
   email?: string;
 }
 
+/**
+ * @example
+ *
+ * ```js
+ * {
+ *  "line1": "123 Cherry Lane",
+ *  "line2": "#99",
+ *  "city": "Bushing",
+ *  "admin1": "MA",
+ *  "country": "US"
+ * }
+ * ```
+ *
+ */
 export interface Address {
   /**
    * First address line
@@ -455,7 +473,7 @@ export interface HistoricLandManagement {
  *
  * ```js
  * {
- *  "crp": "no",
+ *  "crp": false,
  *  "preYear1980": "irrigation",
  *  "tillageForYears1980To2000": "intensive tillage",
  *  "year1980To2000": "irrigated: annual crops in rotation",
@@ -467,16 +485,16 @@ export interface HistoricNonCRPLandManagement extends HistoricLandManagement {
   /**
    * Whether the field participated in CRP or not.
    *
-   * @default "no"
+   * @default false
    *
    * @example <caption>When the field did not participate in CRP:</caption>
    *
    * ```js
-   * "crp": "no"
+   * "crp": false
    * ```
    *
    */
-  crp: 'no';
+  crp: false;
   /**
    * The type of soil or crop disturbance events used on the field between 1980 and 2000.
    *
@@ -741,7 +759,15 @@ export interface PracticeChangesAdopted {
  * {
  *  "regenerativeStartYear": 2015,
  *  "fieldName": "Pumpkin Pines",
- *  "acres": 100,
+ *  "legalAcres": 100,
+ *  "assignmentOfAuthority": true,
+ *  "landOwners": [{
+ *    "name": "Lonny Long",
+ *    "phone": "999 555-1212",
+ *    "email": "lon@long.com"
+ *   }],
+ *  "parcelNumber": "",
+ *  "legalPropertyDescription": "15 83 40 N 17.70 A OF W 33.67 A SW SE",
  *  "geojson": {
  *    // exmaple GeoJSON:
  *    "type": "Polygon",
@@ -754,7 +780,9 @@ export interface PracticeChangesAdopted {
  *  ],
  *  "historicLandManagement": {
  *    // ...HistoricNonCRPLandManagement or HistoricCRPLandManagement
- *  }
+ *  },
+ *  "externalId": "faec5e0b-8ce2-4161-93ff-4c9734f22334",
+ *  "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
  * }
  * ```
  *
@@ -803,7 +831,7 @@ export interface Field {
    *
    * ```js
    * "historicLandManagement": {
-   *  "crp": "no",
+   *  "crp": false,
    *  "preYear1980": "irrigation",
    *  "tillageForYears1980To2000": "intensive tillage",
    *  "year1980To2000": "irrigated: annual crops in rotation",
@@ -1034,7 +1062,9 @@ export interface CropYear {
  *
  * ```js
  * {
- *  "name": "Corn1";
+ *  "name": "Corn1",
+ *  "externalId": "f1-corn1",
+ *  "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
  * }
  * ```
  *
@@ -1100,9 +1130,9 @@ export interface Crop extends CropEvents {
  *
  * ```js
  * {
- *  "plantingEvent": {
+ *  "plantingEvents": [{
  *    // ...plantingEvent
- *  },
+ *  }],
  *  "soilOrCropDisturbanceEvents": [
  *    // ... SoilOrCropDisturbanceEvents
  *  ],
@@ -1278,10 +1308,9 @@ export interface CropEvents {
    * ```js
    * "grazingEvents": [
    *  {
-   *   "restPeriod": 0,
-   *   "utilization": 20,
-   *   "startDate": "2000-01-01",
-   *   "endDate": "2000-12-31"
+   *   "date": "2000-01-01",
+   *   "daysGrazed": "10",
+   *   "percentResidueRemoved": "50"
    *  }
    *  // .. additional grazing events
    * ]
@@ -1577,7 +1606,9 @@ export interface AnnualCrop extends Crop {
  *
  * ```js
  * {
- *  "date": "2000-01-01"
+ *  "date": "2000-01-01",
+ *  "externalId": "f1-corn1-1234",
+ *  "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
  * }
  * ```
  *
@@ -1923,7 +1954,7 @@ export interface FertilizerEvent extends CropEvent {
  * {
  *  "date": "2000-10-01",
  *  "type": "alfalfa meal",
- *  "amountPerAcre": 2, // in tons
+ *  "tonsPerAcre": 2,
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
  *  "percentMoisture": 0,
@@ -1968,7 +1999,7 @@ export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
  * {
  *  "date": "2000-10-01",
  *  "type": "beef slurry",
- *  "amountPerAcre": 2, //  in gallons
+ *  "gallonsPerAcre": 2,
  *  "percentNitrogen": 9,
  *  "carbonNitrogenRatio": 30,
  *  "percentMoisture": 0,

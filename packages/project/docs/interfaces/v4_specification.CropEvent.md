@@ -10,7 +10,9 @@ A crop event that happened on a particular date.
 
 ```js
 {
- "date": "2000-01-01"
+ "date": "2000-01-01",
+ "externalId": "f1-corn1-1234",
+ "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
 }
 ```
 
@@ -74,7 +76,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1605)
+[v4-specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1636)
 
 ___
 
@@ -96,7 +98,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1620](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1620)
+[v4-specification.ts:1651](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1651)
 
 ___
 
@@ -118,4 +120,4 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1666](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1666)

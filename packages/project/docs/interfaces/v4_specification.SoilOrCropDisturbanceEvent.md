@@ -63,7 +63,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1605)
+[v4-specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1636)
 
 ___
 
@@ -89,7 +89,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1620](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1620)
+[v4-specification.ts:1651](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1651)
 
 ___
 
@@ -115,7 +115,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1666](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1666)
 
 ___
 
@@ -139,7 +139,7 @@ When defaulting to "no tillage", a default value will also be used for the event
 
 #### Defined in
 
-[v4-specification.ts:1782](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1782)
+[v4-specification.ts:1813](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1813)
 
 ___
 
@@ -219,4 +219,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1855](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1855)
+[v4-specification.ts:1886](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1886)

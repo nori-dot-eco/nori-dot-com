@@ -10,7 +10,7 @@ Land management details for when a field did not participate in CRP
 
 ```js
 {
- "crp": "no",
+ "crp": false,
  "preYear1980": "irrigation",
  "tillageForYears1980To2000": "intensive tillage",
  "year1980To2000": "irrigated: annual crops in rotation",
@@ -36,21 +36,21 @@ Land management details for when a field did not participate in CRP
 
 ### crp
 
-• **crp**: ``"no"``
+• **crp**: ``false``
 
 Whether the field participated in CRP or not.
 
-**`default`** "no"
+**`default`** false
 
 **`example`** When the field did not participate in CRP:
 
 ```js
-"crp": "no"
+"crp": false
 ```
 
 #### Defined in
 
-[v4-specification.ts:479](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L479)
+[v4-specification.ts:497](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L497)
 
 ___
 
@@ -90,7 +90,7 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v4-specification.ts:444](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L444)
+[v4-specification.ts:462](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L462)
 
 ___
 
@@ -120,7 +120,7 @@ The type of soil or crop disturbance events used on the field between 1980 and 2
 
 #### Defined in
 
-[v4-specification.ts:502](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L502)
+[v4-specification.ts:520](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L520)
 
 ___
 
@@ -138,4 +138,4 @@ A description of how the land was managed between 1980 and 2000.
 
 #### Defined in
 
-[v4-specification.ts:516](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L516)
+[v4-specification.ts:534](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L534)

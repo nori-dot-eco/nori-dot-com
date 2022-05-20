@@ -6,7 +6,7 @@
 
 Crop management details grouped by a planting year.
 
-**`example`** <caption>For crop management practices in 2000:</caption>
+**`example`** For crop management practices in 2000:
 
 ```js
 {
@@ -21,14 +21,14 @@ Crop management details grouped by a planting year.
 
 ### Properties
 
-- [crops](specification.cropyear.md#crops)
-- [plantingYear](specification.cropyear.md#plantingyear)
+- [crops](specification.CropYear.md#crops)
+- [plantingYear](specification.CropYear.md#plantingyear)
 
 ## Properties
 
 ### crops
 
-• **crops**: [[*AnnualCrop*](specification.annualcrop.md) \| [*CoverCrop*](specification.covercrop.md) \| [*OrchardOrVineyardCrop*](specification.orchardorvineyardcrop.md) \| [*PerennialCrop*](specification.perennialcrop.md), (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?]
+• **crops**: [(AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?]
 
 A list of crops for a given planting year.
 
@@ -36,9 +36,7 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 **`maxitems`** 3
 
-**`minitems`** 1
-
-**`example`** <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
+**`example`** When 3 crops (an annual, perennial and orchard) were planted in year 2000:
 
 ```js
 "crops": [
@@ -64,13 +62,15 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 ]
 ```
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:663](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L663)
+#### Defined in
+
+[specification.ts:742](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L742)
 
 ___
 
 ### plantingYear
 
-• **plantingYear**: *number*
+• **plantingYear**: `number`
 
 The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 
@@ -78,10 +78,12 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 **`maximum`** 2099
 
-**`example`** <caption>When the herein defined crops were planted in year 2000:</caption>
+**`example`** When the herein defined crops were planted in year 2000:
 
 ```js
 "plantingYear": 2000
 ```
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:627](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L627)
+#### Defined in
+
+[specification.ts:707](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L707)

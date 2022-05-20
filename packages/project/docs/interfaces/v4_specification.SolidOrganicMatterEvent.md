@@ -12,7 +12,7 @@ Solid/dry organic matter (OMAD) and manure event details.
 {
  "date": "2000-10-01",
  "type": "alfalfa meal",
- "amountPerAcre": 2, // in tons
+ "tonsPerAcre": 2,
  "percentNitrogen": 9,
  "carbonNitrogenRatio": 30,
  "percentMoisture": 0,
@@ -67,7 +67,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2076](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L2076)
+[v4-specification.ts:2107](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L2107)
 
 ___
 
@@ -101,7 +101,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1605)
+[v4-specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1636)
 
 ___
 
@@ -127,7 +127,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1620](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1620)
+[v4-specification.ts:1651](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1651)
 
 ___
 
@@ -153,7 +153,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1666](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1666)
 
 ___
 
@@ -177,7 +177,7 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2037](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L2037)
+[v4-specification.ts:2068](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L2068)
 
 ___
 
@@ -207,7 +207,7 @@ The percent moisture of the organic matter or manure
 
 #### Defined in
 
-[v4-specification.ts:2094](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L2094)
+[v4-specification.ts:2125](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L2125)
 
 ___
 
@@ -239,7 +239,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2057](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L2057)
+[v4-specification.ts:2088](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L2088)
 
 ___
 
@@ -261,7 +261,7 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 #### Defined in
 
-[v4-specification.ts:1959](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1959)
+[v4-specification.ts:1990](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1990)
 
 ___
 
@@ -279,4 +279,4 @@ The solid/dry organic matter or manure classification type.
 
 #### Defined in
 
-[v4-specification.ts:1945](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1945)
+[v4-specification.ts:1976](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1976)

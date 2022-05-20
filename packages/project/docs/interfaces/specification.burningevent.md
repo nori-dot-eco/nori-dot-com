@@ -6,7 +6,7 @@
 
 Burning event details.
 
-**`example`** 
+**`example`**
 
 ```js
 {
@@ -18,26 +18,28 @@ Burning event details.
 
 ### Properties
 
-- [type](specification.burningevent.md#type)
+- [type](specification.BurningEvent.md#type)
 
 ## Properties
 
 ### type
 
-• **type**: *before planting* \| *after harvesting*
+• **type**: ``"before planting"`` \| ``"after harvesting"``
 
 The type of burning, if applicable.
 
-**`example`** <caption>When burning occurred before planting:</caption>
+**`example`** When burning occurred before planting:
 
 ```js
 "type": "before planting"
 ```
 
-**`example`** <caption>When burning occurred after harvesting:</caption>
+**`example`** When burning occurred after harvesting:
 
 ```js
 "type": "after harvesting"
 ```
 
-Defined in: [@nori-dot-com/nori-dot-com/packages/project/src/specification.ts:1878](https://github.com/nori-dot-eco/nori-dot-com/blob/88bf3ab/packages/project/src/specification.ts#L1878)
+#### Defined in
+
+[specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1935)

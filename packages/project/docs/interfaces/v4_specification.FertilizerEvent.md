@@ -66,7 +66,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1605)
+[v4-specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1636)
 
 ___
 
@@ -92,7 +92,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1620](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1620)
+[v4-specification.ts:1651](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1651)
 
 ___
 
@@ -118,7 +118,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1666](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1666)
 
 ___
 
@@ -138,7 +138,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-[v4-specification.ts:1914](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1914)
+[v4-specification.ts:1945](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1945)
 
 ___
 
@@ -158,7 +158,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:1886](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1886)
+[v4-specification.ts:1917](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1917)
 
 ___
 
@@ -180,4 +180,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/36162c5/packages/project/src/v4-specification.ts#L1901)
+[v4-specification.ts:1932](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/v4-specification.ts#L1932)
