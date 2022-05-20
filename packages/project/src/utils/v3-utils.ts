@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/require-example, jsdoc/require-jsdoc */
 import * as moment from 'moment';
 
 import type {
@@ -78,7 +77,7 @@ export const convertFromV3ToV1 = ({
                           new Date(a.plantingDate).getTime() -
                           new Date(b.plantingDate).getTime()
                       )
-                      .map((crop, i): V1Crop => {
+                      .map((crop, index): V1Crop => {
                         let irrigationEvents: V1IrrigationEvent[] =
                           crop.irrigationEvents?.map(
                             (irrigationEvent): V1IrrigationEvent => {
@@ -96,15 +95,15 @@ export const convertFromV3ToV1 = ({
                             }
                           );
                           const everyDateIntervalIsEqual = dates.every(
-                            (e, index, arr) => {
-                              if (arr[index + 1]) {
+                            (e, index, array) => {
+                              if (array[index + 1]) {
                                 return (
-                                  moment(arr[index]).diff(arr[index + 1]) ===
-                                  moment(arr[0]).diff(arr[1])
+                                  moment(array[index]).diff(
+                                    array[index + 1]
+                                  ) === moment(array[0]).diff(array[1])
                                 );
-                              } else {
-                                return true;
                               }
+                              return true;
                             }
                           );
                           if (everyDateIntervalIsEqual) {
@@ -132,7 +131,7 @@ export const convertFromV3ToV1 = ({
                           version: 2,
                           cropName: crop.name || crop.type,
                           type: crop.classification,
-                          cropNumber: (i + 1) as V1Crop['cropNumber'],
+                          cropNumber: (index + 1) as V1Crop['cropNumber'],
                           classification: crop.type,
                           datePlanted: crop.plantingDate,
                           fertilizerEvents: (
@@ -204,7 +203,7 @@ export const convertFromV3ToV1 = ({
                                     organicMatterEvent.name ??
                                     `OMAD product ${
                                       Math.random() *
-                                      Math.floor(Math.random() * 10000000)
+                                      Math.floor(Math.random() * 10_000_000)
                                     }`,
                                   percentN: organicMatterEvent.percentNitrogen,
                                   tonsPerAcre: organicMatterEvent.amountPerAcre,

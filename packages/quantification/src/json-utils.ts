@@ -34,20 +34,22 @@ export const parseYearlyMapUnitData = ({
                         !['Year', '@area', '@id'].includes(key) &&
                         value.includes(',')
                       ) {
-                        const data = value.split(',').filter((e: string) => e);
+                        const data = value.split(',').filter(Boolean);
                         const annualData = Array.from(
                           { length: Math.ceil(data.length / 2) },
-                          (v, i) => data.slice(i * 2, i * 2 + 2)
-                        ).reduce((acc, [year, annualMeasurement]) => {
-                          acc[year] = Number.isNaN(Number(annualMeasurement))
+                          (v, index) => data.slice(index * 2, index * 2 + 2)
+                        ).reduce((accumulator, [year, annualMeasurement]) => {
+                          accumulator[year] = Number.isNaN(
+                            Number(annualMeasurement)
+                          )
                             ? annualMeasurement
                             : Number(annualMeasurement);
-                          return acc;
+                          return accumulator;
                         }, {} as Output.ParsedMapUnit);
                         parsedMapUnit[key] = annualData;
                       } else if (key === 'Year') {
-                        const data = value.split(',').filter((e: string) => e);
-                        parsedMapUnit[key] = data.map((y: string) => Number(y));
+                        const data = value.split(',').filter(Boolean);
+                        parsedMapUnit[key] = data.map(Number);
                       } else if (key === '@area') {
                         parsedMapUnit[key] = value;
                       } else if (key === '@id') {

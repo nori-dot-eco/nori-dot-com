@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-null -- undefined is not a valid JSON value so we need to use null instead */
 import type { Input } from '@nori-dot-com/ggit';
 
 import type { V2Data, Project } from '../../index';
@@ -25,7 +26,7 @@ export const v3Data: Project = {
               coordinates: [
                 [
                   [-102.0256, 41.1624],
-                  [-102.02423, 41.1631],
+                  [-102.024_23, 41.1631],
                   [-102.0225, 41.1635],
                   [-102.0261, 41.161],
                   [-102.0256, 41.1624],
@@ -99,83 +100,83 @@ export const v3Data: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/02/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/09/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/16/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/23/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/30/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/06/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/13/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/20/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/27/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/04/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/11/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/18/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/25/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/01/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/08/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/15/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/22/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/29/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '09/05/2001',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -254,7 +255,7 @@ export const v3Data: Project = {
                 {
                   date: '09/14/2003',
                   grainFruitTuber: 'yes',
-                  yield: 134.0,
+                  yield: 134,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -412,83 +413,83 @@ export const v3Data: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/02/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/09/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/16/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/23/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/30/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/06/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/13/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/20/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/27/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/04/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/11/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/18/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/01/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/08/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/15/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/22/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/29/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '09/05/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -540,7 +541,7 @@ export const v3Data: Project = {
                 {
                   date: '06/10/2008',
                   grainFruitTuber: 'yes',
-                  yield: 84.0,
+                  yield: 84,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -563,7 +564,7 @@ export const v3Data: Project = {
                 {
                   date: '12/30/2008',
                   type: 'dolomitic limestone',
-                  tonsPerAcre: 1.0,
+                  tonsPerAcre: 1,
                 },
               ],
               grazingEvents: null,
@@ -772,7 +773,7 @@ export const v3Data: Project = {
                 {
                   date: '12/30/2011',
                   type: 'calcitic limestone',
-                  tonsPerAcre: 1.0,
+                  tonsPerAcre: 1,
                 },
               ],
               grazingEvents: null,
@@ -788,7 +789,7 @@ export const v3Data: Project = {
                 {
                   date: '06/10/2012',
                   grainFruitTuber: 'yes',
-                  yield: 84.0,
+                  yield: 84,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -906,7 +907,7 @@ export const v3Data: Project = {
                 {
                   date: '06/10/2014',
                   grainFruitTuber: 'yes',
-                  yield: 84.0,
+                  yield: 84,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -1024,7 +1025,7 @@ export const v3Data: Project = {
                 {
                   date: '06/10/2016',
                   grainFruitTuber: 'yes',
-                  yield: 84.0,
+                  yield: 84,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -1107,7 +1108,7 @@ export const v3Data: Project = {
                 {
                   date: '09/14/2017',
                   grainFruitTuber: 'yes',
-                  yield: 134.0,
+                  yield: 134,
                   yieldUnit: 'bu/ac',
                   residueRemoved: 0,
                 },
@@ -1599,7 +1600,7 @@ export const v3DataForIrrigationTests: Project = {
               coordinates: [
                 [
                   [-102.0256, 41.1624],
-                  [-102.02423, 41.1631],
+                  [-102.024_23, 41.1631],
                   [-102.0225, 41.1635],
                   [-102.0261, 41.161],
                   [-102.0256, 41.1624],
@@ -1625,7 +1626,7 @@ export const v3DataForIrrigationTests: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -1650,11 +1651,11 @@ export const v3DataForIrrigationTests: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/02/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -1679,83 +1680,83 @@ export const v3DataForIrrigationTests: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/02/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/09/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/16/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/23/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/30/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/06/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/13/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/20/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/27/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/04/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/11/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/18/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/01/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/08/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/15/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/22/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/29/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '09/05/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -1780,83 +1781,83 @@ export const v3DataForIrrigationTests: Project = {
               irrigationEvents: [
                 {
                   date: '04/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/06/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/09/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/20/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/23/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '05/30/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/06/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/13/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/20/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '06/27/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/04/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/11/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/18/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '07/25/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/01/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/08/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/15/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/22/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '08/29/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
                 {
                   date: '09/05/2007',
-                  volume: 1.0,
+                  volume: 1,
                 },
               ],
               limingEvents: null,
@@ -1897,7 +1898,7 @@ export const ggitInputData: Input.InputData = {
       CRP: 'no',
       CRPType: 'none',
       'Year1980-2000': 'irrigated: annual crops in rotation',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+
       'Year1980-2000_Tillage': 'intensive tillage',
       CRPStartYear: [],
       CRPEndYear: [],
@@ -1922,7 +1923,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2000',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -1957,7 +1958,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2001',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -1996,83 +1997,83 @@ export const ggitInputData: Input.InputData = {
                     IrrigationEvent: [
                       {
                         IrrigationDate: '04/25/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/02/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/09/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/16/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/23/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/30/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/06/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/13/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/20/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/27/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/04/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/11/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/18/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/25/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/01/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/08/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/15/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/22/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/29/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '09/05/2001',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                     ],
                   },
@@ -2095,7 +2096,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2002',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2129,7 +2130,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2003',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2184,7 +2185,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2004',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2219,7 +2220,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2005',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2274,7 +2275,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2006',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2309,7 +2310,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2007',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2348,83 +2349,83 @@ export const ggitInputData: Input.InputData = {
                     IrrigationEvent: [
                       {
                         IrrigationDate: '04/25/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/02/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/09/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/16/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/23/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '05/30/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/06/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/13/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/20/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '06/27/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/04/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/11/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/18/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '07/25/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/01/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/08/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/15/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/22/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '08/29/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                       {
                         IrrigationDate: '09/05/2007',
-                        IrrigationInches: 1.0,
+                        IrrigationInches: 1,
                       },
                     ],
                   },
@@ -2442,7 +2443,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2008',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2487,7 +2488,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2008',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2507,7 +2508,7 @@ export const ggitInputData: Input.InputData = {
                   LimingEvent: {
                     LimingDate: '12/30/2008',
                     LimingMethod: 'dolomitic limestone',
-                    LimingRate: 1.0,
+                    LimingRate: 1,
                   },
                   GrazingList: {},
                 },
@@ -2526,7 +2527,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2009',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2576,7 +2577,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2010',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2621,7 +2622,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2010',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2656,7 +2657,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2011',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2706,7 +2707,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2012',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2736,7 +2737,7 @@ export const ggitInputData: Input.InputData = {
                   LimingEvent: {
                     LimingDate: '12/30/2011',
                     LimingMethod: 'calcitic limestone',
-                    LimingRate: 1.0,
+                    LimingRate: 1,
                   },
                   GrazingList: {},
                 },
@@ -2755,7 +2756,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2012',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2790,7 +2791,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2013',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2840,7 +2841,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2014',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2885,7 +2886,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2014',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2925,7 +2926,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2015',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -2975,7 +2976,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2016',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3020,7 +3021,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2016',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3055,7 +3056,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2017',
                         Grain: 'yes',
-                        yield: 134.0,
+                        yield: 134,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3105,7 +3106,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '06/10/2018',
                         Grain: 'yes',
-                        yield: 84.0,
+                        yield: 84,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3150,7 +3151,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '11/15/2018',
                         Grain: 'yes',
-                        yield: 38.0,
+                        yield: 38,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3210,7 +3211,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2019',
                         Grain: 'yes',
-                        yield: 150.0,
+                        yield: 150,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3286,7 +3287,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/20/2020',
                         Grain: 'yes',
-                        yield: 50.0,
+                        yield: 50,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3342,7 +3343,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2021',
                         Grain: 'yes',
-                        yield: 150.0,
+                        yield: 150,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3418,7 +3419,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/20/2022',
                         Grain: 'yes',
-                        yield: 50.0,
+                        yield: 50,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3474,7 +3475,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/14/2023',
                         Grain: 'yes',
-                        yield: 150.0,
+                        yield: 150,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3550,7 +3551,7 @@ export const ggitInputData: Input.InputData = {
                       {
                         HarvestDate: '09/20/2024',
                         Grain: 'yes',
-                        yield: 50.0,
+                        yield: 50,
                         StrawStoverHayRemoval: 0,
                       },
                     ],
@@ -3653,19 +3654,19 @@ export const v2Data: V2Data = {
                 {
                   date: '4/21/2020',
                   productName: 'Anhydrous Ammonia (gas) (82-00-00)',
-                  lbsOfNPerAcre: 70.22333594361778,
+                  lbsOfNPerAcre: 70.223_335_943_617_78,
                 },
                 {
                   date: '6/6/2020',
                   productName: 'Urea Ammonium Phosphate (27-27-00)',
-                  lbsOfNPerAcre: 45.995459919179325,
+                  lbsOfNPerAcre: 45.995_459_919_179_325,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '12/19/2019',
                   percentNitrogen: 0.76,
-                  amountPerAcre: 13.439464627151052,
+                  amountPerAcre: 13.439_464_627_151_052,
                   carbonNitrogenRatio: null,
                   percentMoisture: null,
                 },
@@ -3733,19 +3734,19 @@ export const v2Data: V2Data = {
                 {
                   date: '5/16/2018',
                   productName: 'Anhydrous Ammonia (gas) (82-00-00)',
-                  lbsOfNPerAcre: 28.118872357086893,
+                  lbsOfNPerAcre: 28.118_872_357_086_893,
                 },
                 {
                   date: '6/24/2018',
                   productName: 'Urea Ammonium Phosphate (34-17-00)',
-                  lbsOfNPerAcre: 46.50650679961159,
+                  lbsOfNPerAcre: 46.506_506_799_611_59,
                 },
               ],
               organicMatterEvents: [
                 {
                   date: '11/30/2017',
                   percentNitrogen: 0.64,
-                  amountPerAcre: 13.720321064996085,
+                  amountPerAcre: 13.720_321_064_996_085,
                   carbonNitrogenRatio: null,
                   percentMoisture: null,
                 },
@@ -3808,12 +3809,12 @@ export const v2Data: V2Data = {
                 {
                   date: '4/13/2016',
                   productName: 'Anhydrous Ammonia (gas) (82-00-00)',
-                  lbsOfNPerAcre: 110.85090294972589,
+                  lbsOfNPerAcre: 110.850_902_949_725_89,
                 },
                 {
                   date: '4/26/2016',
                   productName: 'Urea (46-00-00)',
-                  lbsOfNPerAcre: 47.81910517541112,
+                  lbsOfNPerAcre: 47.819_105_175_411_12,
                 },
               ],
               organicMatterEvents: [],
@@ -3822,7 +3823,7 @@ export const v2Data: V2Data = {
                 {
                   date: '12/8/2015',
                   productName: 'crushed limestone',
-                  tonsPerAcre: 2.4856850715746424,
+                  tonsPerAcre: 2.485_685_071_574_642_4,
                 },
               ],
               burningEvents: [],
@@ -3866,27 +3867,27 @@ export const v2Data: V2Data = {
         geometry: {
           coordinates: [
             [
-              [-102.02569636144796, 41.16245691933347],
-              [-102.02423723974385, 41.1631353976904],
-              [-102.02252062597432, 41.163555404581764],
-              [-102.02046068945089, 41.16326463086678],
-              [-102.01904448309102, 41.16258615384778],
-              [-102.0182290915505, 41.1617784339522],
-              [-102.01754244604268, 41.160712228446904],
-              [-102.01758536138692, 41.15948445516609],
-              [-102.01771410741964, 41.15874131805951],
-              [-102.0182290915505, 41.15796586166069],
-              [-102.01930197515645, 41.15712577354221],
-              [-102.0205894354836, 41.156673413941746],
-              [-102.02196272649923, 41.156382609692926],
-              [-102.02333601751485, 41.156479544585906],
-              [-102.02488096990743, 41.157061150933295],
-              [-102.02599676885762, 41.157901239879976],
-              [-102.02655466833272, 41.1586120759635],
-              [-102.02681216039815, 41.15977524565328],
-              [-102.02668341436544, 41.161035322856],
-              [-102.02616843023458, 41.16184305191021],
-              [-102.02569636144796, 41.16245691933347],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
+              [-102.024_237_239_743_85, 41.163_135_397_690_4],
+              [-102.022_520_625_974_32, 41.163_555_404_581_764],
+              [-102.020_460_689_450_89, 41.163_264_630_866_78],
+              [-102.019_044_483_091_02, 41.162_586_153_847_78],
+              [-102.018_229_091_550_5, 41.161_778_433_952_2],
+              [-102.017_542_446_042_68, 41.160_712_228_446_904],
+              [-102.017_585_361_386_92, 41.159_484_455_166_09],
+              [-102.017_714_107_419_64, 41.158_741_318_059_51],
+              [-102.018_229_091_550_5, 41.157_965_861_660_69],
+              [-102.019_301_975_156_45, 41.157_125_773_542_21],
+              [-102.020_589_435_483_6, 41.156_673_413_941_746],
+              [-102.021_962_726_499_23, 41.156_382_609_692_926],
+              [-102.023_336_017_514_85, 41.156_479_544_585_906],
+              [-102.024_880_969_907_43, 41.157_061_150_933_295],
+              [-102.025_996_768_857_62, 41.157_901_239_879_976],
+              [-102.026_554_668_332_72, 41.158_612_075_963_5],
+              [-102.026_812_160_398_15, 41.159_775_245_653_28],
+              [-102.026_683_414_365_44, 41.161_035_322_856],
+              [-102.026_168_430_234_58, 41.161_843_051_910_21],
+              [-102.025_696_361_447_96, 41.162_456_919_333_47],
             ],
           ],
           type: 'Polygon',

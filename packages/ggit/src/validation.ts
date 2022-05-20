@@ -96,7 +96,7 @@ export const validateInputData = (
       rules: (keyof typeof validationRules)[],
       value,
       _schema,
-      ctx: InputDataValidationContext
+      context: InputDataValidationContext
     ) => {
       const allRulesAreSatisfied =
         rules?.every(
@@ -122,7 +122,7 @@ export const validateInputData = (
         dataPath: error.dataPath,
         error,
       };
-    }) ?? null;
+    }) ?? undefined;
   return {
     valid,
     message: errors?.map((e) => e.message).join(' ') ?? 'No errors',

@@ -2,21 +2,20 @@ import { Errors } from '@nori-dot-com/errors';
 
 import { validateInputData } from '../index';
 import { CURRENT_SCENARIO_NAME, FUTURE_SCENARIO_NAME } from '../input';
-
 import type { Input } from '../index';
 
 type InputDataOrAny<T> = T extends Input.InputData ? Input.InputData : any;
 
-const clone = (obj: Input.InputData): Input.InputData =>
-  JSON.parse(JSON.stringify(obj));
+const clone = (object: Input.InputData): Input.InputData =>
+  JSON.parse(JSON.stringify(object));
 
 const BASIC_CROP_DATA: Omit<
   Input.Crop,
   '@CropNumber' | 'CropName' | 'PlantingDate'
 > = {
   ContinueFromPreviousYear: 'n',
-  HarvestList: null,
-  TillageList: null,
+  HarvestList: undefined,
+  TillageList: undefined,
   NApplicationList: {},
   OMADApplicationList: {},
   IrrigationList: {},
@@ -43,7 +42,7 @@ const INPUT_DATA: Input.InputData = {
       CRP: 'no',
       CRPType: 'none',
       'Year1980-2000': 'irrigated: annual crops in rotation',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
+
       'Year1980-2000_Tillage': 'intensive tillage',
       CRPStartYear: [],
       CRPEndYear: [],
@@ -465,7 +464,7 @@ describe('validation', () => {
             ReturnType<typeof validateInputData>
           >({
             valid: true,
-            errors: null,
+            errors: undefined,
             message: 'No errors',
             formattedData: expect.anything(),
           });
