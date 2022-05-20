@@ -2137,13 +2137,13 @@
             "description": "Land management details for when a field did not participate in CRP",
             "properties": {
                 "crp": {
-                    "default": "no",
+                    "default": false,
                     "description": "Whether the field participated in CRP or not.",
                     "enum": [
-                        "no"
+                        false
                     ],
                     "title": "crp",
-                    "type": "string"
+                    "type": "boolean"
                 },
                 "preYear1980": {
                     "description": "A description of how the land was managed before 1980.",
