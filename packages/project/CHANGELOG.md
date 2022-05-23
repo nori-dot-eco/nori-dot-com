@@ -19,3 +19,5 @@
  * Made `plantingEvents` an array with max one element to keep the structure consistent.  Can be empty for perennials in years after the planting year.
  * Simplified the type of `crop.harvestEvents` for remove the `(AnnualCropHarvestEvent | CropManagementEvent)` distinction and renamed the event to `HarvestEvent`.
  * Added `GrazingEvent.percentResidueRemoved`
+ * Renamed `specification` to `v3-specification`
+ * Added additional crop names and tilage types Nori accepts that are mappable to Soil Metrics.

@@ -3,9 +3,9 @@
  * ## About
  *
  * Nori croplands project import file format.
- * 
+ *
  * Version: 4.0
- * 
+ *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
  * ## Usage
@@ -16,7 +16,7 @@
  * * Historical best practices from 2000 to three years prior to the switch year.
  * * Detailed management practices from three years prior to the switch year to the present.
  * * Ten years of projected future practices.
- * 
+ *
  * #### Example
  *
  * You can find an example of a full implementation [here](../../src/example/v4-example.json)
@@ -27,43 +27,94 @@
  * You can find definitions for all of the interfaces in Nori croplands project from the [index](#index).
  *
  * @packageDocumentation
- * 
+ *
  */
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
   'barley',
+  'black beans',
+  'broccoli',
   'broccoli-coast',
   'broccoli-desert',
+  'buckwheat',
+  'cabbage',
+  'camelina',
+  'canola',
+  'cantaloupes', // not currently supported
   'carrots',
   'cauliflower',
+  'celery', // not currently supported
+  'chick peas',
   'corn',
   'corn silage',
   'cotton',
+  'cucumbers', // not currently supported
+  'dry beans',
   'dry field beans',
   'dry field pea',
+  'durum wheat',
+  'eggplants', // not currently supported
   'fallow',
+  'flaxseed',
+  'garbanzo beans',
+  'garlic', // not currently supported
+  'gourds', // not currently supported
   'grass-legume mix',
+  'greens',
+  'hemp (for fiber)',
+  'hemp (for flowers)',
+  'hemp (for seed)',
+  'herbs', // not currently supported
+  'honeydew melons', // not currently supported
+  'lentils',
+  'lettuce',
   'lettuce-head',
   'lettuce-leaf',
   'lettuce-romaine',
   'millet',
+  'misc vegs & fruits',
+  'navy beans',
   'oats',
-  'peanut',
-  'potato',
+  'onions', // not currently supported
+  'other hay/non alfalfa',
+  'other small grains',
+  'peanuts',
+  'peas',
+  'peppers', // not currently supported
+  'pinto beans',
+  'pop or om corn',
+  'potatoes',
+  'pumpkins', // not currently supported
+  'radishes',
+  'rapeseed',
+  'rice',
   'rice - flooded',
   'rye',
+  'safflower',
   'sorghum',
   'sorghum',
   'sorghum silage',
-  'soybean',
+  'soybeans',
+  'speltz',
   'spring wheat',
-  'strawberry',
-  'sugar beets',
+  'squash', // not currently supported
+  'strawberries',
+  'sugarbeets',
   'sunflower',
+  'sweet corn',
+  'sweet potatoes',
   'switchgrass',
+  'tobacco',
+  'tomatoes',
   'tomatoes, fresh',
   'tomatoes, processing',
+  'triticale',
+  'turnips',
+  'watermelons', // not currently supported
+  'wheat',
+  'winter barley',
+  'winter oats',
   'winter wheat',
 ] as const;
 
@@ -72,10 +123,18 @@ export const coverCropTypes = [
   'annual rye - legume',
   'annual rye - legume - radish',
   'austrian winter pea',
+  'barley-bin run wheat mix',
+  'barley-radish mix',
   'cereal rye',
+  'cereal rye-crimson clover mix',
+  'clover/wildflowers',
   'forage radish',
+  'lemons',
+  'mustard',
   'oilseed radish',
+  'radish-crimson clover-barley-dwarf rape mix',
   'vetch',
+  'winter clover',
   'winter grain-other',
 ] as const;
 
@@ -109,9 +168,15 @@ export const solidOmadTypes = [
 ] as const;
 
 export const orchardOrVineyardCropTypes = [
-  'almond',
+  'almonds',
+  'apples', // not currently supported
+  'apricots',
   'avocados',
+  'blueberries', // not currently supported
+  'caneberries', // not currently supported
   'cherries',
+  'citrus',
+  'cranberries', // not currently supported
   'english walnuts',
   'grape, raisin',
   'grape, table',
@@ -120,20 +185,40 @@ export const orchardOrVineyardCropTypes = [
   'grape, wine (1391-1670 gdd)',
   'grape, wine (1671-1950 gdd)',
   'grapefruit',
+  'grapes',
+  'hazelnuts',
   'lemons & limes',
+  'limes',
+  'nectarines',
   'olives',
   'oranges',
+  'peaches',
   'peaches and nectarines',
+  'pears', // not currently supported
+  'pecans',
   'pistachios',
+  'plums',
+  'pomegranates', // not currently supported
+  'prunes',
   'tangerines & mandarins',
+  'walnuts',
 ] as const;
 
 export const perennialCropTypes = [
   'alfalfa',
+  'asparagus', // not currently supported
   'clover',
   'grass',
   'grass-legume mix',
+  'grassland herbaceous', // not currently supported
+  'herbaceous wetlands',
+  'hops', // not currently supported
+  'mint', // not currently supported
+  'pasture/grass',
+  'pasture/hay',
+  'sod/grass seed',
   'strawberry',
+  'sugarcane', // not currently supported
   'switchgrass',
 ] as const;
 
@@ -162,16 +247,39 @@ export const fertilizerTypes = [
 ] as const;
 
 export const soilOrCropDisturbanceTypes = [
-  'intensive tillage',
-  'reduced tillage',
-  'mulch tillage',
-  'ridge tillage',
-  'strip tillage',
-  'no tillage',
-  'growing season cultivation',
-  'mow',
+  'bedder/hipper',
+  'chisel plow',
   'crimp',
-  'winter killed',
+  'cultipacker',
+  'cultivator',
+  'cultivator - field',
+  'cultivator - row',
+  'disk',
+  'finisher',
+  'harrow',
+  'herbicide burn down',
+  'hipper bedder',
+  'intensive tillage',
+  'landstar',
+  'minimum tillage',
+  'moldboard plow',
+  'mow',
+  'mulch tillage',
+  'mulcher',
+  'no-till planting',
+  'reduced tillage',
+  'residue tillage',
+  'ridge tillage',
+  'ripper - disk',
+  'ripper - inline',
+  'roller',
+  'speed till',
+  'strip till',
+  'strip tillage',
+  'tandem disk',
+  'vertical',
+  'zone till',
+  'winter kill',
   'broad-spectrum herbicide',
 ] as const;
 
@@ -187,7 +295,7 @@ export const limingTypes = [
  * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
  *
  * @id https://schema.nori.com/soil/4-0-0
- * 
+ *
  * @example <caption>A project that uses specification v4.0.0 and contains a list of fields:</caption>
  * ```js
  * {
