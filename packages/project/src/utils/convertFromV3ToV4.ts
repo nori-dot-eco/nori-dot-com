@@ -163,21 +163,21 @@ const convertV3CropToV4Crop = (
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      };
+      } as V4.AnnualCrop // TODO: translation function for updated crop types;
     case 'annual cover':
       return {
         classification: 'annual cover',
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      };
+      } as V4.CoverCrop; // TODO: translation function for updated crop types
     case 'perennial':
       return {
         classification: 'perennial',
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      };
+      } as V4.PerennialCrop; // TODO: translation function for updated crop types
     case 'vineyard':
     case 'orchard':
       return {
@@ -185,7 +185,7 @@ const convertV3CropToV4Crop = (
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      };
+      } as V4.OrchardOrVineyardCrop; // TODO: translation function for updated crop types
   }
 };
 
