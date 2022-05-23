@@ -181,6 +181,7 @@ openzeppelin
 oppenlander
 param
 patreon
+pino
 plugin
 polyfill
 Polygonscan
