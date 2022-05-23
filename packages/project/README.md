@@ -20,9 +20,11 @@ npm i @nori-dot-com/project
 
 - [Nori Croplands Project Specification v4](./docs/modules/v4_specification.md) - Nori "v4" croplands project data import specification documentation
 
-- [specification](./docs/modules/specification.md) - Nori "v3" project data specification documentation lives here
+- [Nori Croplands Project specification v3](./docs/modules/v3_specification.md) - Nori "v3" project data specification documentation lives here
 
 - [validation](./docs/modules/validation.md) - documentation on how to use the validation module to validate Nori project data (i.e. data that was exported from a data platform to conform with the latest project data specification)
+
+- [convertFromV3ToV4](./docs/modules/utils_convertfromv3tov4.md) - Basic conversion logic to transform v3 files to v4.  Not thorougly tested yet.
 
 - [convertFromV2ToV1](./docs/modules/utils_convertfromv2tov1.md) - documentation on how to use the script to convert "v2" project data files into "v1" project data files (neither version are what is specified in the specification files as that is referred to as "v3")
 
