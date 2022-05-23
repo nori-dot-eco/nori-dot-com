@@ -19,7 +19,7 @@
  * 
  * #### Example
  *
- * You can find an example of a full implementation [here](../../src/example/croplands_v4_example.json)
+ * You can find an example of a full implementation [here](../../src/example/v4-example.json)
  *
  * ## Navigation
  *

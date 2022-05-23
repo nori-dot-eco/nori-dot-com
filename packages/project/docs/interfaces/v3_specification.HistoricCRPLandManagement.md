@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / HistoricCRPLandManagement
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / HistoricCRPLandManagement
 
 # Interface: HistoricCRPLandManagement
 
-[specification](../modules/specification.md).HistoricCRPLandManagement
+[v3-specification](../modules/v3_specification.md).HistoricCRPLandManagement
 
 Details surrounding how the field was managed before year 2000
 
@@ -28,7 +28,7 @@ Note that the state the field exists within restricts the allowed values per obj
 
 ## Hierarchy
 
-- [`HistoricLandManagement`](specification.HistoricLandManagement.md)
+- [`HistoricLandManagement`](v3_specification.HistoricLandManagement.md)
 
   ↳ **`HistoricCRPLandManagement`**
 
@@ -36,15 +36,15 @@ Note that the state the field exists within restricts the allowed values per obj
 
 ### Properties
 
-- [crp](specification.HistoricCRPLandManagement.md#crp)
-- [crpEndYear](specification.HistoricCRPLandManagement.md#crpendyear)
-- [crpStartYear](specification.HistoricCRPLandManagement.md#crpstartyear)
-- [crpType](specification.HistoricCRPLandManagement.md#crptype)
-- [postCRPManagement](specification.HistoricCRPLandManagement.md#postcrpmanagement)
-- [postCRPTillage](specification.HistoricCRPLandManagement.md#postcrptillage)
-- [preCRPManagement](specification.HistoricCRPLandManagement.md#precrpmanagement)
-- [preCRPTillage](specification.HistoricCRPLandManagement.md#precrptillage)
-- [preYear1980](specification.HistoricCRPLandManagement.md#preyear1980)
+- [crp](v3_specification.HistoricCRPLandManagement.md#crp)
+- [crpEndYear](v3_specification.HistoricCRPLandManagement.md#crpendyear)
+- [crpStartYear](v3_specification.HistoricCRPLandManagement.md#crpstartyear)
+- [crpType](v3_specification.HistoricCRPLandManagement.md#crptype)
+- [postCRPManagement](v3_specification.HistoricCRPLandManagement.md#postcrpmanagement)
+- [postCRPTillage](v3_specification.HistoricCRPLandManagement.md#postcrptillage)
+- [preCRPManagement](v3_specification.HistoricCRPLandManagement.md#precrpmanagement)
+- [preCRPTillage](v3_specification.HistoricCRPLandManagement.md#precrptillage)
+- [preYear1980](v3_specification.HistoricCRPLandManagement.md#preyear1980)
 
 ## Properties
 
@@ -64,7 +64,7 @@ Whether the field participated in CRP or not.
 
 #### Defined in
 
-[specification.ts:412](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L412)
+v3-specification.ts:412
 
 ___
 
@@ -86,7 +86,7 @@ The CRP end year
 
 #### Defined in
 
-[specification.ts:457](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L457)
+v3-specification.ts:457
 
 ___
 
@@ -108,7 +108,7 @@ The CRP start year
 
 #### Defined in
 
-[specification.ts:443](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L443)
+v3-specification.ts:443
 
 ___
 
@@ -132,7 +132,7 @@ The type of CRP the field participated in. Only applicable if [crp](#crp) is set
 
 #### Defined in
 
-[specification.ts:429](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L429)
+v3-specification.ts:429
 
 ___
 
@@ -152,7 +152,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[specification.ts:503](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L503)
+v3-specification.ts:503
 
 ___
 
@@ -170,7 +170,7 @@ How was the field managed after tillage
 
 #### Defined in
 
-[specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L523)
+v3-specification.ts:523
 
 ___
 
@@ -190,7 +190,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L470)
+v3-specification.ts:470
 
 ___
 
@@ -208,7 +208,7 @@ How was the field tilled before the field entered into CRP
 
 #### Defined in
 
-[specification.ts:490](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L490)
+v3-specification.ts:490
 
 ___
 
@@ -244,8 +244,8 @@ A description of how the land was managed before 1980.
 
 #### Inherited from
 
-[HistoricLandManagement](specification.HistoricLandManagement.md).[preYear1980](specification.HistoricLandManagement.md#preyear1980)
+[HistoricLandManagement](v3_specification.HistoricLandManagement.md).[preYear1980](v3_specification.HistoricLandManagement.md#preyear1980)
 
 #### Defined in
 
-[specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L290)
+v3-specification.ts:290

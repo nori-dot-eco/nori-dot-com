@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropYear
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / CropYear
 
 # Interface: CropYear
 
-[specification](../modules/specification.md).CropYear
+[v3-specification](../modules/v3_specification.md).CropYear
 
 Crop management details grouped by a planting year.
 
@@ -21,8 +21,8 @@ Crop management details grouped by a planting year.
 
 ### Properties
 
-- [crops](specification.CropYear.md#crops)
-- [plantingYear](specification.CropYear.md#plantingyear)
+- [crops](v3_specification.CropYear.md#crops)
+- [plantingYear](v3_specification.CropYear.md#plantingyear)
 
 ## Properties
 
@@ -64,7 +64,7 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[specification.ts:742](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L742)
+v3-specification.ts:742
 
 ___
 
@@ -86,4 +86,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[specification.ts:707](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L707)
+v3-specification.ts:707

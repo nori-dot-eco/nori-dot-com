@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / FertilizerEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / FertilizerEvent
 
 # Interface: FertilizerEvent
 
-[specification](../modules/specification.md).FertilizerEvent
+[v3-specification](../modules/v3_specification.md).FertilizerEvent
 
 Fertilizer event details.
 
@@ -19,7 +19,7 @@ Fertilizer event details.
 
 ## Hierarchy
 
-- [`CropEvent`](specification.CropEvent.md)
+- [`CropEvent`](v3_specification.CropEvent.md)
 
   ↳ **`FertilizerEvent`**
 
@@ -27,10 +27,10 @@ Fertilizer event details.
 
 ### Properties
 
-- [date](specification.FertilizerEvent.md#date)
-- [lbsOfNPerAcre](specification.FertilizerEvent.md#lbsofnperacre)
-- [name](specification.FertilizerEvent.md#name)
-- [type](specification.FertilizerEvent.md#type)
+- [date](v3_specification.FertilizerEvent.md#date)
+- [lbsOfNPerAcre](v3_specification.FertilizerEvent.md#lbsofnperacre)
+- [name](v3_specification.FertilizerEvent.md#name)
+- [type](v3_specification.FertilizerEvent.md#type)
 
 ## Properties
 
@@ -60,11 +60,11 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Inherited from
 
-[CropEvent](specification.CropEvent.md).[date](specification.CropEvent.md#date)
+[CropEvent](v3_specification.CropEvent.md).[date](v3_specification.CropEvent.md#date)
 
 #### Defined in
 
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1279)
+v3-specification.ts:1279
 
 ___
 
@@ -84,7 +84,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-[specification.ts:1599](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1599)
+v3-specification.ts:1599
 
 ___
 
@@ -104,7 +104,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-[specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1571)
+v3-specification.ts:1571
 
 ___
 
@@ -126,4 +126,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[specification.ts:1586](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1586)
+v3-specification.ts:1586

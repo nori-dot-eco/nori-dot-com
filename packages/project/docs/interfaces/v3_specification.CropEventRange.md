@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropEventRange
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / CropEventRange
 
 # Interface: CropEventRange
 
-[specification](../modules/specification.md).CropEventRange
+[v3-specification](../modules/v3_specification.md).CropEventRange
 
 A crop event that has a start and end date.
 
@@ -19,14 +19,14 @@ A crop event that has a start and end date.
 
 - **`CropEventRange`**
 
-  ↳ [`GrazingEvent`](specification.GrazingEvent.md)
+  ↳ [`GrazingEvent`](v3_specification.GrazingEvent.md)
 
 ## Table of contents
 
 ### Properties
 
-- [endDate](specification.CropEventRange.md#enddate)
-- [startDate](specification.CropEventRange.md#startdate)
+- [endDate](v3_specification.CropEventRange.md#enddate)
+- [startDate](v3_specification.CropEventRange.md#startdate)
 
 ## Properties
 
@@ -46,7 +46,7 @@ The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 a
 
 #### Defined in
 
-[specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1321)
+v3-specification.ts:1321
 
 ___
 
@@ -66,4 +66,4 @@ The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 
 
 #### Defined in
 
-[specification.ts:1308](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1308)
+v3-specification.ts:1308

@@ -1,7 +1,7 @@
 import { Project as ProjectV4, Field as FieldV4 } from '../v4-specification';
-import { Project as ProjectV3, Field as FieldV3 } from '../specification';
+import { Project as ProjectV3, Field as FieldV3 } from '../v3-specification';
 import * as V4 from '../v4-specification';
-import * as V3 from '../specification';
+import * as V3 from '../v3-specification';
 
 const yesNoToBool = (value: string): boolean => value?.toLowerCase() === 'yes';
 

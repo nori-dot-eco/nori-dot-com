@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / BurningEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / BurningEvent
 
 # Interface: BurningEvent
 
-[specification](../modules/specification.md).BurningEvent
+[v3-specification](../modules/v3_specification.md).BurningEvent
 
 Burning event details.
 
@@ -18,7 +18,7 @@ Burning event details.
 
 ### Properties
 
-- [type](specification.BurningEvent.md#type)
+- [type](v3_specification.BurningEvent.md#type)
 
 ## Properties
 
@@ -42,4 +42,4 @@ The type of burning, if applicable.
 
 #### Defined in
 
-[specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1935)
+v3-specification.ts:1935

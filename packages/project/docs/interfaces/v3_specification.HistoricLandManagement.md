@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / HistoricLandManagement
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / HistoricLandManagement
 
 # Interface: HistoricLandManagement
 
-[specification](../modules/specification.md).HistoricLandManagement
+[v3-specification](../modules/v3_specification.md).HistoricLandManagement
 
 **`example`**
 
@@ -16,15 +16,15 @@
 
 - **`HistoricLandManagement`**
 
-  ↳ [`HistoricNonCRPLandManagement`](specification.HistoricNonCRPLandManagement.md)
+  ↳ [`HistoricNonCRPLandManagement`](v3_specification.HistoricNonCRPLandManagement.md)
 
-  ↳ [`HistoricCRPLandManagement`](specification.HistoricCRPLandManagement.md)
+  ↳ [`HistoricCRPLandManagement`](v3_specification.HistoricCRPLandManagement.md)
 
 ## Table of contents
 
 ### Properties
 
-- [preYear1980](specification.HistoricLandManagement.md#preyear1980)
+- [preYear1980](v3_specification.HistoricLandManagement.md#preyear1980)
 
 ## Properties
 
@@ -60,4 +60,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L290)
+v3-specification.ts:290

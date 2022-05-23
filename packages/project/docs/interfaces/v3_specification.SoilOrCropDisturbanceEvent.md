@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / SoilOrCropDisturbanceEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / SoilOrCropDisturbanceEvent
 
 # Interface: SoilOrCropDisturbanceEvent
 
-[specification](../modules/specification.md).SoilOrCropDisturbanceEvent
+[v3-specification](../modules/v3_specification.md).SoilOrCropDisturbanceEvent
 
 Soil or crop disturbance event event details.
 
@@ -17,7 +17,7 @@ Soil or crop disturbance event event details.
 
 ## Hierarchy
 
-- [`CropEvent`](specification.CropEvent.md)
+- [`CropEvent`](v3_specification.CropEvent.md)
 
   ↳ **`SoilOrCropDisturbanceEvent`**
 
@@ -25,9 +25,9 @@ Soil or crop disturbance event event details.
 
 ### Properties
 
-- [date](specification.SoilOrCropDisturbanceEvent.md#date)
-- [name](specification.SoilOrCropDisturbanceEvent.md#name)
-- [type](specification.SoilOrCropDisturbanceEvent.md#type)
+- [date](v3_specification.SoilOrCropDisturbanceEvent.md#date)
+- [name](v3_specification.SoilOrCropDisturbanceEvent.md#name)
+- [type](v3_specification.SoilOrCropDisturbanceEvent.md#type)
 
 ## Properties
 
@@ -57,11 +57,11 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Inherited from
 
-[CropEvent](specification.CropEvent.md).[date](specification.CropEvent.md#date)
+[CropEvent](v3_specification.CropEvent.md).[date](v3_specification.CropEvent.md#date)
 
 #### Defined in
 
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1279)
+v3-specification.ts:1279
 
 ___
 
@@ -85,7 +85,7 @@ When defaulting to "no tillage", a default value will also be used for the event
 
 #### Defined in
 
-[specification.ts:1467](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1467)
+v3-specification.ts:1467
 
 ___
 
@@ -165,4 +165,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[specification.ts:1540](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1540)
+v3-specification.ts:1540

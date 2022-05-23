@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / OrchardOrVineyardCrop
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / OrchardOrVineyardCrop
 
 # Interface: OrchardOrVineyardCrop
 
-[specification](../modules/specification.md).OrchardOrVineyardCrop
+[v3-specification](../modules/v3_specification.md).OrchardOrVineyardCrop
 
 Crop management details and events for orchard and vineyard crops.
 
@@ -21,11 +21,11 @@ Crop management details and events for orchard and vineyard crops.
 
 ## Hierarchy
 
-- [`CropEvents`](specification.CropEvents.md)
+- [`CropEvents`](v3_specification.CropEvents.md)
 
-- [`HarvestableCropEvents`](specification.HarvestableCropEvents.md)
+- [`HarvestableCropEvents`](v3_specification.HarvestableCropEvents.md)
 
-- [`PlantedCrop`](specification.PlantedCrop.md)
+- [`PlantedCrop`](v3_specification.PlantedCrop.md)
 
   ↳ **`OrchardOrVineyardCrop`**
 
@@ -33,26 +33,26 @@ Crop management details and events for orchard and vineyard crops.
 
 ### Properties
 
-- [burningEvent](specification.OrchardOrVineyardCrop.md#burningevent)
-- [classification](specification.OrchardOrVineyardCrop.md#classification)
-- [fertilizerEvents](specification.OrchardOrVineyardCrop.md#fertilizerevents)
-- [grazingEvents](specification.OrchardOrVineyardCrop.md#grazingevents)
-- [harvestEvents](specification.OrchardOrVineyardCrop.md#harvestevents)
-- [irrigationEvents](specification.OrchardOrVineyardCrop.md#irrigationevents)
-- [limingEvents](specification.OrchardOrVineyardCrop.md#limingevents)
-- [name](specification.OrchardOrVineyardCrop.md#name)
-- [organicMatterEvents](specification.OrchardOrVineyardCrop.md#organicmatterevents)
-- [plantingDate](specification.OrchardOrVineyardCrop.md#plantingdate)
-- [prune](specification.OrchardOrVineyardCrop.md#prune)
-- [renewOrClear](specification.OrchardOrVineyardCrop.md#reneworclear)
-- [soilOrCropDisturbanceEvents](specification.OrchardOrVineyardCrop.md#soilorcropdisturbanceevents)
-- [type](specification.OrchardOrVineyardCrop.md#type)
+- [burningEvent](v3_specification.OrchardOrVineyardCrop.md#burningevent)
+- [classification](v3_specification.OrchardOrVineyardCrop.md#classification)
+- [fertilizerEvents](v3_specification.OrchardOrVineyardCrop.md#fertilizerevents)
+- [grazingEvents](v3_specification.OrchardOrVineyardCrop.md#grazingevents)
+- [harvestEvents](v3_specification.OrchardOrVineyardCrop.md#harvestevents)
+- [irrigationEvents](v3_specification.OrchardOrVineyardCrop.md#irrigationevents)
+- [limingEvents](v3_specification.OrchardOrVineyardCrop.md#limingevents)
+- [name](v3_specification.OrchardOrVineyardCrop.md#name)
+- [organicMatterEvents](v3_specification.OrchardOrVineyardCrop.md#organicmatterevents)
+- [plantingDate](v3_specification.OrchardOrVineyardCrop.md#plantingdate)
+- [prune](v3_specification.OrchardOrVineyardCrop.md#prune)
+- [renewOrClear](v3_specification.OrchardOrVineyardCrop.md#reneworclear)
+- [soilOrCropDisturbanceEvents](v3_specification.OrchardOrVineyardCrop.md#soilorcropdisturbanceevents)
+- [type](v3_specification.OrchardOrVineyardCrop.md#type)
 
 ## Properties
 
 ### burningEvent
 
-• `Optional` **burningEvent**: [`BurningEvent`](specification.BurningEvent.md)
+• `Optional` **burningEvent**: [`BurningEvent`](v3_specification.BurningEvent.md)
 
 A burning event, if applicable.
 
@@ -76,11 +76,11 @@ A burning event, if applicable.
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[burningEvent](specification.CropEvents.md#burningevent)
+[CropEvents](v3_specification.CropEvents.md).[burningEvent](v3_specification.CropEvents.md#burningevent)
 
 #### Defined in
 
-[specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1004)
+v3-specification.ts:1004
 
 ___
 
@@ -108,13 +108,13 @@ Note: if a crop ever changes classifications during the lifetime of the field (i
 
 #### Defined in
 
-[specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1061)
+v3-specification.ts:1061
 
 ___
 
 ### fertilizerEvents
 
-• `Optional` **fertilizerEvents**: [`FertilizerEvent`](specification.FertilizerEvent.md)[]
+• `Optional` **fertilizerEvents**: [`FertilizerEvent`](v3_specification.FertilizerEvent.md)[]
 
 A list of fertilizer events, if applicable.
 
@@ -134,17 +134,17 @@ A list of fertilizer events, if applicable.
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[fertilizerEvents](specification.CropEvents.md#fertilizerevents)
+[CropEvents](v3_specification.CropEvents.md).[fertilizerEvents](v3_specification.CropEvents.md#fertilizerevents)
 
 #### Defined in
 
-[specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L900)
+v3-specification.ts:900
 
 ___
 
 ### grazingEvents
 
-• `Optional` **grazingEvents**: [`GrazingEvent`](specification.GrazingEvent.md)[]
+• `Optional` **grazingEvents**: [`GrazingEvent`](v3_specification.GrazingEvent.md)[]
 
 A list of grazing events, if applicable
 
@@ -166,17 +166,17 @@ A list of grazing events, if applicable
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[grazingEvents](specification.CropEvents.md#grazingevents)
+[CropEvents](v3_specification.CropEvents.md).[grazingEvents](v3_specification.CropEvents.md#grazingevents)
 
 #### Defined in
 
-[specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L981)
+v3-specification.ts:981
 
 ___
 
 ### harvestEvents
 
-• `Optional` **harvestEvents**: ([`AnnualCropHarvestEvent`](specification.AnnualCropHarvestEvent.md) \| [`CropManagementEvent`](specification.CropManagementEvent.md))[]
+• `Optional` **harvestEvents**: ([`AnnualCropHarvestEvent`](v3_specification.AnnualCropHarvestEvent.md) \| [`CropManagementEvent`](v3_specification.CropManagementEvent.md))[]
 
 A list of harvest events, if applicable.
 
@@ -195,17 +195,17 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Inherited from
 
-[HarvestableCropEvents](specification.HarvestableCropEvents.md).[harvestEvents](specification.HarvestableCropEvents.md#harvestevents)
+[HarvestableCropEvents](v3_specification.HarvestableCropEvents.md).[harvestEvents](v3_specification.HarvestableCropEvents.md#harvestevents)
 
 #### Defined in
 
-[specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L827)
+v3-specification.ts:827
 
 ___
 
 ### irrigationEvents
 
-• `Optional` **irrigationEvents**: [`IrrigationEvent`](specification.IrrigationEvent.md)[]
+• `Optional` **irrigationEvents**: [`IrrigationEvent`](v3_specification.IrrigationEvent.md)[]
 
 A list of irrigation events, if applicable.
 
@@ -223,17 +223,17 @@ A list of irrigation events, if applicable.
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[irrigationEvents](specification.CropEvents.md#irrigationevents)
+[CropEvents](v3_specification.CropEvents.md).[irrigationEvents](v3_specification.CropEvents.md#irrigationevents)
 
 #### Defined in
 
-[specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L940)
+v3-specification.ts:940
 
 ___
 
 ### limingEvents
 
-• `Optional` **limingEvents**: [`LimingEvent`](specification.LimingEvent.md)[]
+• `Optional` **limingEvents**: [`LimingEvent`](v3_specification.LimingEvent.md)[]
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
@@ -254,11 +254,11 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[limingEvents](specification.CropEvents.md#limingevents)
+[CropEvents](v3_specification.CropEvents.md).[limingEvents](v3_specification.CropEvents.md#limingevents)
 
 #### Defined in
 
-[specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L960)
+v3-specification.ts:960
 
 ___
 
@@ -278,17 +278,17 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Inherited from
 
-[PlantedCrop](specification.PlantedCrop.md).[name](specification.PlantedCrop.md#name)
+[PlantedCrop](v3_specification.PlantedCrop.md).[name](v3_specification.PlantedCrop.md#name)
 
 #### Defined in
 
-[specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L774)
+v3-specification.ts:774
 
 ___
 
 ### organicMatterEvents
 
-• `Optional` **organicMatterEvents**: ([`SolidOrganicMatterEvent`](specification.SolidOrganicMatterEvent.md) \| [`SlurryOrganicMatterEvent`](specification.SlurryOrganicMatterEvent.md))[]
+• `Optional` **organicMatterEvents**: ([`SolidOrganicMatterEvent`](v3_specification.SolidOrganicMatterEvent.md) \| [`SlurryOrganicMatterEvent`](v3_specification.SlurryOrganicMatterEvent.md))[]
 
 A list of organic matter and manure application events, if applicable.
 
@@ -312,11 +312,11 @@ A list of organic matter and manure application events, if applicable.
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[organicMatterEvents](specification.CropEvents.md#organicmatterevents)
+[CropEvents](v3_specification.CropEvents.md).[organicMatterEvents](v3_specification.CropEvents.md#organicmatterevents)
 
 #### Defined in
 
-[specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L923)
+v3-specification.ts:923
 
 ___
 
@@ -338,11 +338,11 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Inherited from
 
-[PlantedCrop](specification.PlantedCrop.md).[plantingDate](specification.PlantedCrop.md#plantingdate)
+[PlantedCrop](v3_specification.PlantedCrop.md).[plantingDate](v3_specification.PlantedCrop.md#plantingdate)
 
 #### Defined in
 
-[specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L789)
+v3-specification.ts:789
 
 ___
 
@@ -366,7 +366,7 @@ Indicates if the crop was pruned.
 
 #### Defined in
 
-[specification.ts:1079](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1079)
+v3-specification.ts:1079
 
 ___
 
@@ -390,13 +390,13 @@ Indicates if the crop was renewed or cleared.
 
 #### Defined in
 
-[specification.ts:1096](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1096)
+v3-specification.ts:1096
 
 ___
 
 ### soilOrCropDisturbanceEvents
 
-• **soilOrCropDisturbanceEvents**: [`SoilOrCropDisturbanceEvent`](specification.SoilOrCropDisturbanceEvent.md)[]
+• **soilOrCropDisturbanceEvents**: [`SoilOrCropDisturbanceEvent`](v3_specification.SoilOrCropDisturbanceEvent.md)[]
 
 A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).
 
@@ -416,11 +416,11 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Inherited from
 
-[CropEvents](specification.CropEvents.md).[soilOrCropDisturbanceEvents](specification.CropEvents.md#soilorcropdisturbanceevents)
+[CropEvents](v3_specification.CropEvents.md).[soilOrCropDisturbanceEvents](v3_specification.CropEvents.md#soilorcropdisturbanceevents)
 
 #### Defined in
 
-[specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L881)
+v3-specification.ts:881
 
 ___
 
@@ -440,4 +440,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[specification.ts:1040](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1040)
+v3-specification.ts:1040

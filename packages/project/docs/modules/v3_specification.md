@@ -1,6 +1,6 @@
-[@nori-dot-com/project](../README.md) / specification
+[@nori-dot-com/project](../README.md) / v3-specification
 
-# Module: specification
+# Module: v3-specification
 
 ## About
 
@@ -35,44 +35,44 @@ Throughout this documentation you will come across some vocab that indicate to w
 
 ### Interfaces
 
-- [AnnualCrop](../interfaces/specification.AnnualCrop.md)
-- [AnnualCropHarvestEvent](../interfaces/specification.AnnualCropHarvestEvent.md)
-- [BurningEvent](../interfaces/specification.BurningEvent.md)
-- [CoverCrop](../interfaces/specification.CoverCrop.md)
-- [CropEvent](../interfaces/specification.CropEvent.md)
-- [CropEventRange](../interfaces/specification.CropEventRange.md)
-- [CropEvents](../interfaces/specification.CropEvents.md)
-- [CropManagementEvent](../interfaces/specification.CropManagementEvent.md)
-- [CropYear](../interfaces/specification.CropYear.md)
-- [FertilizerEvent](../interfaces/specification.FertilizerEvent.md)
-- [Field](../interfaces/specification.Field.md)
-- [GrazingEvent](../interfaces/specification.GrazingEvent.md)
-- [HarvestableCropEvents](../interfaces/specification.HarvestableCropEvents.md)
-- [HistoricCRPLandManagement](../interfaces/specification.HistoricCRPLandManagement.md)
-- [HistoricLandManagement](../interfaces/specification.HistoricLandManagement.md)
-- [HistoricNonCRPLandManagement](../interfaces/specification.HistoricNonCRPLandManagement.md)
-- [IrrigationEvent](../interfaces/specification.IrrigationEvent.md)
-- [LimingEvent](../interfaces/specification.LimingEvent.md)
-- [OrchardOrVineyardCrop](../interfaces/specification.OrchardOrVineyardCrop.md)
-- [OrganicMatterEvent](../interfaces/specification.OrganicMatterEvent.md)
-- [PerennialCrop](../interfaces/specification.PerennialCrop.md)
-- [PlantedCrop](../interfaces/specification.PlantedCrop.md)
-- [Project](../interfaces/specification.Project.md)
-- [SlurryOrganicMatterEvent](../interfaces/specification.SlurryOrganicMatterEvent.md)
-- [SoilOrCropDisturbanceEvent](../interfaces/specification.SoilOrCropDisturbanceEvent.md)
-- [SolidOrganicMatterEvent](../interfaces/specification.SolidOrganicMatterEvent.md)
+- [AnnualCrop](../interfaces/v3_specification.AnnualCrop.md)
+- [AnnualCropHarvestEvent](../interfaces/v3_specification.AnnualCropHarvestEvent.md)
+- [BurningEvent](../interfaces/v3_specification.BurningEvent.md)
+- [CoverCrop](../interfaces/v3_specification.CoverCrop.md)
+- [CropEvent](../interfaces/v3_specification.CropEvent.md)
+- [CropEventRange](../interfaces/v3_specification.CropEventRange.md)
+- [CropEvents](../interfaces/v3_specification.CropEvents.md)
+- [CropManagementEvent](../interfaces/v3_specification.CropManagementEvent.md)
+- [CropYear](../interfaces/v3_specification.CropYear.md)
+- [FertilizerEvent](../interfaces/v3_specification.FertilizerEvent.md)
+- [Field](../interfaces/v3_specification.Field.md)
+- [GrazingEvent](../interfaces/v3_specification.GrazingEvent.md)
+- [HarvestableCropEvents](../interfaces/v3_specification.HarvestableCropEvents.md)
+- [HistoricCRPLandManagement](../interfaces/v3_specification.HistoricCRPLandManagement.md)
+- [HistoricLandManagement](../interfaces/v3_specification.HistoricLandManagement.md)
+- [HistoricNonCRPLandManagement](../interfaces/v3_specification.HistoricNonCRPLandManagement.md)
+- [IrrigationEvent](../interfaces/v3_specification.IrrigationEvent.md)
+- [LimingEvent](../interfaces/v3_specification.LimingEvent.md)
+- [OrchardOrVineyardCrop](../interfaces/v3_specification.OrchardOrVineyardCrop.md)
+- [OrganicMatterEvent](../interfaces/v3_specification.OrganicMatterEvent.md)
+- [PerennialCrop](../interfaces/v3_specification.PerennialCrop.md)
+- [PlantedCrop](../interfaces/v3_specification.PlantedCrop.md)
+- [Project](../interfaces/v3_specification.Project.md)
+- [SlurryOrganicMatterEvent](../interfaces/v3_specification.SlurryOrganicMatterEvent.md)
+- [SoilOrCropDisturbanceEvent](../interfaces/v3_specification.SoilOrCropDisturbanceEvent.md)
+- [SolidOrganicMatterEvent](../interfaces/v3_specification.SolidOrganicMatterEvent.md)
 
 ### Variables
 
-- [annualCropTypes](specification.md#annualcroptypes)
-- [coverCropTypes](specification.md#covercroptypes)
-- [fertilizerTypes](specification.md#fertilizertypes)
-- [limingTypes](specification.md#limingtypes)
-- [orchardOrVineyardCropTypes](specification.md#orchardorvineyardcroptypes)
-- [perennialCropTypes](specification.md#perennialcroptypes)
-- [slurryOmadTypes](specification.md#slurryomadtypes)
-- [soilOrCropDisturbanceTypes](specification.md#soilorcropdisturbancetypes)
-- [solidOmadTypes](specification.md#solidomadtypes)
+- [annualCropTypes](v3_specification.md#annualcroptypes)
+- [coverCropTypes](v3_specification.md#covercroptypes)
+- [fertilizerTypes](v3_specification.md#fertilizertypes)
+- [limingTypes](v3_specification.md#limingtypes)
+- [orchardOrVineyardCropTypes](v3_specification.md#orchardorvineyardcroptypes)
+- [perennialCropTypes](v3_specification.md#perennialcroptypes)
+- [slurryOmadTypes](v3_specification.md#slurryomadtypes)
+- [soilOrCropDisturbanceTypes](v3_specification.md#soilorcropdisturbancetypes)
+- [solidOmadTypes](v3_specification.md#solidomadtypes)
 
 ## Variables
 
@@ -82,7 +82,7 @@ Throughout this documentation you will come across some vocab that indicate to w
 
 #### Defined in
 
-[specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L36)
+v3-specification.ts:36
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L72)
+v3-specification.ts:72
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L142)
+v3-specification.ts:142
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[specification.ts:180](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L180)
+v3-specification.ts:180
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L113)
+v3-specification.ts:113
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L133)
+v3-specification.ts:133
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L84)
+v3-specification.ts:84
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L166)
+v3-specification.ts:166
 
 ___
 
@@ -162,4 +162,4 @@ ___
 
 #### Defined in
 
-[specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L92)
+v3-specification.ts:92

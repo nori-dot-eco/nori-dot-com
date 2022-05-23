@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / Project
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / Project
 
 # Interface: Project
 
-[specification](../modules/specification.md).Project
+[v3-specification](../modules/v3_specification.md).Project
 
 A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
 
@@ -25,14 +25,14 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 ### Properties
 
-- [fields](specification.Project.md#fields)
-- [version](specification.Project.md#version)
+- [fields](v3_specification.Project.md#fields)
+- [version](v3_specification.Project.md#version)
 
 ## Properties
 
 ### fields
 
-• **fields**: [`Field`](specification.Field.md)[]
+• **fields**: [`Field`](v3_specification.Field.md)[]
 
 An array of fields defining annual crop management practices.
 
@@ -58,7 +58,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L248)
+v3-specification.ts:248
 
 ___
 
@@ -82,4 +82,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L224)
+v3-specification.ts:224

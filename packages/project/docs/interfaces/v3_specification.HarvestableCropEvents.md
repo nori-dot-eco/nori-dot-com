@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / HarvestableCropEvents
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / HarvestableCropEvents
 
 # Interface: HarvestableCropEvents
 
-[specification](../modules/specification.md).HarvestableCropEvents
+[v3-specification](../modules/v3_specification.md).HarvestableCropEvents
 
 Crop harvest events.
 
@@ -23,23 +23,23 @@ Crop harvest events.
 
 - **`HarvestableCropEvents`**
 
-  ↳ [`OrchardOrVineyardCrop`](specification.OrchardOrVineyardCrop.md)
+  ↳ [`OrchardOrVineyardCrop`](v3_specification.OrchardOrVineyardCrop.md)
 
-  ↳ [`PerennialCrop`](specification.PerennialCrop.md)
+  ↳ [`PerennialCrop`](v3_specification.PerennialCrop.md)
 
-  ↳ [`AnnualCrop`](specification.AnnualCrop.md)
+  ↳ [`AnnualCrop`](v3_specification.AnnualCrop.md)
 
 ## Table of contents
 
 ### Properties
 
-- [harvestEvents](specification.HarvestableCropEvents.md#harvestevents)
+- [harvestEvents](v3_specification.HarvestableCropEvents.md#harvestevents)
 
 ## Properties
 
 ### harvestEvents
 
-• `Optional` **harvestEvents**: ([`AnnualCropHarvestEvent`](specification.AnnualCropHarvestEvent.md) \| [`CropManagementEvent`](specification.CropManagementEvent.md))[]
+• `Optional` **harvestEvents**: ([`AnnualCropHarvestEvent`](v3_specification.AnnualCropHarvestEvent.md) \| [`CropManagementEvent`](v3_specification.CropManagementEvent.md))[]
 
 A list of harvest events, if applicable.
 
@@ -58,4 +58,4 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L827)
+v3-specification.ts:827

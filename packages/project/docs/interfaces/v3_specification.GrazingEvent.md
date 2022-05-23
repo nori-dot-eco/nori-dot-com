@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / GrazingEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / GrazingEvent
 
 # Interface: GrazingEvent
 
-[specification](../modules/specification.md).GrazingEvent
+[v3-specification](../modules/v3_specification.md).GrazingEvent
 
 Grazing event details.
 
@@ -19,7 +19,7 @@ Grazing event details.
 
 ## Hierarchy
 
-- [`CropEventRange`](specification.CropEventRange.md)
+- [`CropEventRange`](v3_specification.CropEventRange.md)
 
   ↳ **`GrazingEvent`**
 
@@ -27,10 +27,10 @@ Grazing event details.
 
 ### Properties
 
-- [endDate](specification.GrazingEvent.md#enddate)
-- [restPeriod](specification.GrazingEvent.md#restperiod)
-- [startDate](specification.GrazingEvent.md#startdate)
-- [utilization](specification.GrazingEvent.md#utilization)
+- [endDate](v3_specification.GrazingEvent.md#enddate)
+- [restPeriod](v3_specification.GrazingEvent.md#restperiod)
+- [startDate](v3_specification.GrazingEvent.md#startdate)
+- [utilization](v3_specification.GrazingEvent.md#utilization)
 
 ## Properties
 
@@ -50,11 +50,11 @@ The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 a
 
 #### Inherited from
 
-[CropEventRange](specification.CropEventRange.md).[endDate](specification.CropEventRange.md#enddate)
+[CropEventRange](v3_specification.CropEventRange.md).[endDate](v3_specification.CropEventRange.md#enddate)
 
 #### Defined in
 
-[specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1321)
+v3-specification.ts:1321
 
 ___
 
@@ -84,7 +84,7 @@ Zero and one are equivalent and indicate continuous grazing.
 
 #### Defined in
 
-[specification.ts:1889](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1889)
+v3-specification.ts:1889
 
 ___
 
@@ -104,11 +104,11 @@ The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 
 
 #### Inherited from
 
-[CropEventRange](specification.CropEventRange.md).[startDate](specification.CropEventRange.md#startdate)
+[CropEventRange](v3_specification.CropEventRange.md).[startDate](v3_specification.CropEventRange.md#startdate)
 
 #### Defined in
 
-[specification.ts:1308](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1308)
+v3-specification.ts:1308
 
 ___
 
@@ -130,4 +130,4 @@ The percentage of forage consumed by the animals per rest period days.
 
 #### Defined in
 
-[specification.ts:1903](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1903)
+v3-specification.ts:1903

@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / HistoricNonCRPLandManagement
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / HistoricNonCRPLandManagement
 
 # Interface: HistoricNonCRPLandManagement
 
-[specification](../modules/specification.md).HistoricNonCRPLandManagement
+[v3-specification](../modules/v3_specification.md).HistoricNonCRPLandManagement
 
 Land management details for when a field did not participate in CRP
 
@@ -19,7 +19,7 @@ Land management details for when a field did not participate in CRP
 
 ## Hierarchy
 
-- [`HistoricLandManagement`](specification.HistoricLandManagement.md)
+- [`HistoricLandManagement`](v3_specification.HistoricLandManagement.md)
 
   ↳ **`HistoricNonCRPLandManagement`**
 
@@ -27,10 +27,10 @@ Land management details for when a field did not participate in CRP
 
 ### Properties
 
-- [crp](specification.HistoricNonCRPLandManagement.md#crp)
-- [preYear1980](specification.HistoricNonCRPLandManagement.md#preyear1980)
-- [tillageForYears1980To2000](specification.HistoricNonCRPLandManagement.md#tillageforyears1980to2000)
-- [year1980To2000](specification.HistoricNonCRPLandManagement.md#year1980to2000)
+- [crp](v3_specification.HistoricNonCRPLandManagement.md#crp)
+- [preYear1980](v3_specification.HistoricNonCRPLandManagement.md#preyear1980)
+- [tillageForYears1980To2000](v3_specification.HistoricNonCRPLandManagement.md#tillageforyears1980to2000)
+- [year1980To2000](v3_specification.HistoricNonCRPLandManagement.md#year1980to2000)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Whether the field participated in CRP or not.
 
 #### Defined in
 
-[specification.ts:325](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L325)
+v3-specification.ts:325
 
 ___
 
@@ -86,11 +86,11 @@ A description of how the land was managed before 1980.
 
 #### Inherited from
 
-[HistoricLandManagement](specification.HistoricLandManagement.md).[preYear1980](specification.HistoricLandManagement.md#preyear1980)
+[HistoricLandManagement](v3_specification.HistoricLandManagement.md).[preYear1980](v3_specification.HistoricLandManagement.md#preyear1980)
 
 #### Defined in
 
-[specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L290)
+v3-specification.ts:290
 
 ___
 
@@ -120,7 +120,7 @@ The type of soil or crop disturbance events used on the field between 1980 and 2
 
 #### Defined in
 
-[specification.ts:348](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L348)
+v3-specification.ts:348
 
 ___
 
@@ -138,4 +138,4 @@ A description of how the land was managed between 1980 and 2000.
 
 #### Defined in
 
-[specification.ts:362](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L362)
+v3-specification.ts:362

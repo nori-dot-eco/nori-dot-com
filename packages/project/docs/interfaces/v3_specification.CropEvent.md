@@ -1,32 +1,38 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / IrrigationEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / CropEvent
 
-# Interface: IrrigationEvent
+# Interface: CropEvent
 
-[specification](../modules/specification.md).IrrigationEvent
+[v3-specification](../modules/v3_specification.md).CropEvent
 
-Irrigation event details.
+A crop event that happened on a particular date.
 
 **`example`**
 
 ```js
 {
- "volume": 1,
- "date": "01/01/2000",
+ "date": "01/01/2000"
 }
 ```
 
 ## Hierarchy
 
-- [`CropEvent`](specification.CropEvent.md)
+- **`CropEvent`**
 
-  ↳ **`IrrigationEvent`**
+  ↳ [`CropManagementEvent`](v3_specification.CropManagementEvent.md)
+
+  ↳ [`SoilOrCropDisturbanceEvent`](v3_specification.SoilOrCropDisturbanceEvent.md)
+
+  ↳ [`FertilizerEvent`](v3_specification.FertilizerEvent.md)
+
+  ↳ [`OrganicMatterEvent`](v3_specification.OrganicMatterEvent.md)
+
+  ↳ [`IrrigationEvent`](v3_specification.IrrigationEvent.md)
 
 ## Table of contents
 
 ### Properties
 
-- [date](specification.IrrigationEvent.md#date)
-- [volume](specification.IrrigationEvent.md#volume)
+- [date](v3_specification.CropEvent.md#date)
 
 ## Properties
 
@@ -54,30 +60,6 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
 }
 
-#### Inherited from
-
-[CropEvent](specification.CropEvent.md).[date](specification.CropEvent.md#date)
-
 #### Defined in
 
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1279)
-
-___
-
-### volume
-
-• **volume**: `number`
-
-The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
-
-**`minimum`** 0
-
-**`example`** When 1 inch of volume was applied:
-
-```js
-"volume": 1,
-```
-
-#### Defined in
-
-[specification.ts:1794](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1794)
+v3-specification.ts:1279

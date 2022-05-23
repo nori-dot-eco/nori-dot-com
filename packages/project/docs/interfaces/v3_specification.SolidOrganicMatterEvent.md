@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / SolidOrganicMatterEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / SolidOrganicMatterEvent
 
 # Interface: SolidOrganicMatterEvent
 
-[specification](../modules/specification.md).SolidOrganicMatterEvent
+[v3-specification](../modules/v3_specification.md).SolidOrganicMatterEvent
 
 Solid/dry organic matter (OMAD) and manure event details.
 
@@ -21,7 +21,7 @@ Solid/dry organic matter (OMAD) and manure event details.
 
 ## Hierarchy
 
-- [`OrganicMatterEvent`](specification.OrganicMatterEvent.md)
+- [`OrganicMatterEvent`](v3_specification.OrganicMatterEvent.md)
 
   ↳ **`SolidOrganicMatterEvent`**
 
@@ -29,13 +29,13 @@ Solid/dry organic matter (OMAD) and manure event details.
 
 ### Properties
 
-- [amountPerAcre](specification.SolidOrganicMatterEvent.md#amountperacre)
-- [carbonNitrogenRatio](specification.SolidOrganicMatterEvent.md#carbonnitrogenratio)
-- [date](specification.SolidOrganicMatterEvent.md#date)
-- [name](specification.SolidOrganicMatterEvent.md#name)
-- [percentMoisture](specification.SolidOrganicMatterEvent.md#percentmoisture)
-- [percentNitrogen](specification.SolidOrganicMatterEvent.md#percentnitrogen)
-- [type](specification.SolidOrganicMatterEvent.md#type)
+- [amountPerAcre](v3_specification.SolidOrganicMatterEvent.md#amountperacre)
+- [carbonNitrogenRatio](v3_specification.SolidOrganicMatterEvent.md#carbonnitrogenratio)
+- [date](v3_specification.SolidOrganicMatterEvent.md#date)
+- [name](v3_specification.SolidOrganicMatterEvent.md#name)
+- [percentMoisture](v3_specification.SolidOrganicMatterEvent.md#percentmoisture)
+- [percentNitrogen](v3_specification.SolidOrganicMatterEvent.md#percentnitrogen)
+- [type](v3_specification.SolidOrganicMatterEvent.md#type)
 
 ## Properties
 
@@ -57,11 +57,11 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[amountPerAcre](specification.OrganicMatterEvent.md#amountperacre)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[amountPerAcre](v3_specification.OrganicMatterEvent.md#amountperacre)
 
 #### Defined in
 
-[specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1708)
+v3-specification.ts:1708
 
 ___
 
@@ -73,7 +73,7 @@ The carbon to nitrogen ratio in the organic matter or manure.
 
 You can find a list of default values per `type` [here](https://go.nori.com/inputs).
 
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+**`todo`** In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
 
 **`nullable`** during import
 
@@ -87,11 +87,11 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[carbonNitrogenRatio](specification.OrganicMatterEvent.md#carbonnitrogenratio)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[carbonNitrogenRatio](v3_specification.OrganicMatterEvent.md#carbonnitrogenratio)
 
 #### Defined in
 
-[specification.ts:1747](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1747)
+v3-specification.ts:1747
 
 ___
 
@@ -121,11 +121,11 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[date](specification.OrganicMatterEvent.md#date)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[date](v3_specification.OrganicMatterEvent.md#date)
 
 #### Defined in
 
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1279)
+v3-specification.ts:1279
 
 ___
 
@@ -145,11 +145,11 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[name](specification.OrganicMatterEvent.md#name)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[name](v3_specification.OrganicMatterEvent.md#name)
 
 #### Defined in
 
-[specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1694)
+v3-specification.ts:1694
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 The percent moisture of the organic matter or manure
 
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+**`todo`** In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
 
 **`nullable`** during import (explicitly specify null if you are unsure what the value is)
 
@@ -175,11 +175,11 @@ The percent moisture of the organic matter or manure
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[percentMoisture](specification.OrganicMatterEvent.md#percentmoisture)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[percentMoisture](v3_specification.OrganicMatterEvent.md#percentmoisture)
 
 #### Defined in
 
-[specification.ts:1765](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1765)
+v3-specification.ts:1765
 
 ___
 
@@ -191,13 +191,13 @@ The nitrogen percent makeup in the organic matter or manure.
 
 You can find a list of default values per `type` [here](https://go.nori.com/inputs).
 
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
+**`todo`** In the future, when this value is defined as undefined, the importer will attempt to find a reasonable a default value based on the [type](#type)
 
 **`minimum`** 0
 
 **`maximum`** 100
 
-**`nullable`** during import (when defined as null, a default value will be assigned)
+**`nullable`** during import (when defined as undefined, a default value will be assigned)
 
 **`example`** When the organic matter or manure contains 9% nitrogen:
 
@@ -207,11 +207,11 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Inherited from
 
-[OrganicMatterEvent](specification.OrganicMatterEvent.md).[percentNitrogen](specification.OrganicMatterEvent.md#percentnitrogen)
+[OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[percentNitrogen](v3_specification.OrganicMatterEvent.md#percentnitrogen)
 
 #### Defined in
 
-[specification.ts:1728](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1728)
+v3-specification.ts:1728
 
 ___
 
@@ -229,4 +229,4 @@ The solid/dry organic matter or manure classification type.
 
 #### Defined in
 
-[specification.ts:1630](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1630)
+v3-specification.ts:1630

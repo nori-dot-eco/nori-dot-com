@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / Field
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / Field
 
 # Interface: Field
 
-[specification](../modules/specification.md).Field
+[v3-specification](../modules/v3_specification.md).Field
 
 A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
 
@@ -40,12 +40,12 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 ### Properties
 
-- [acres](specification.Field.md#acres)
-- [cropYears](specification.Field.md#cropyears)
-- [fieldName](specification.Field.md#fieldname)
-- [geojson](specification.Field.md#geojson)
-- [historicLandManagement](specification.Field.md#historiclandmanagement)
-- [regenerativeStartYear](specification.Field.md#regenerativestartyear)
+- [acres](v3_specification.Field.md#acres)
+- [cropYears](v3_specification.Field.md#cropyears)
+- [fieldName](v3_specification.Field.md#fieldname)
+- [geojson](v3_specification.Field.md#geojson)
+- [historicLandManagement](v3_specification.Field.md#historiclandmanagement)
+- [regenerativeStartYear](v3_specification.Field.md#regenerativestartyear)
 
 ## Properties
 
@@ -65,13 +65,13 @@ The number of acres that use the herein defined crop management practices (via [
 
 #### Defined in
 
-[specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L641)
+v3-specification.ts:641
 
 ___
 
 ### cropYears
 
-• **cropYears**: [`CropYear`](specification.CropYear.md)[]
+• **cropYears**: [`CropYear`](v3_specification.CropYear.md)[]
 
 A list of crop management details grouped by the crop planting year.
 
@@ -90,7 +90,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-[specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L676)
+v3-specification.ts:676
 
 ___
 
@@ -114,7 +114,7 @@ The name of the field.
 
 #### Defined in
 
-[specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L628)
+v3-specification.ts:628
 
 ___
 
@@ -138,13 +138,13 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-[specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L658)
+v3-specification.ts:658
 
 ___
 
 ### historicLandManagement
 
-• **historicLandManagement**: [`HistoricNonCRPLandManagement`](specification.HistoricNonCRPLandManagement.md) \| [`HistoricCRPLandManagement`](specification.HistoricCRPLandManagement.md)
+• **historicLandManagement**: [`HistoricNonCRPLandManagement`](v3_specification.HistoricNonCRPLandManagement.md) \| [`HistoricCRPLandManagement`](v3_specification.HistoricCRPLandManagement.md)
 
 Details surrounding how the field was managed before year 2000.
 
@@ -179,7 +179,7 @@ Details surrounding how the field was managed before year 2000.
 
 #### Defined in
 
-[specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L609)
+v3-specification.ts:609
 
 ___
 
@@ -201,4 +201,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-[specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L575)
+v3-specification.ts:575

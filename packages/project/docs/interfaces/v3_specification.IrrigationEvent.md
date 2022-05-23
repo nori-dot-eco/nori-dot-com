@@ -1,38 +1,32 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / CropEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / IrrigationEvent
 
-# Interface: CropEvent
+# Interface: IrrigationEvent
 
-[specification](../modules/specification.md).CropEvent
+[v3-specification](../modules/v3_specification.md).IrrigationEvent
 
-A crop event that happened on a particular date.
+Irrigation event details.
 
 **`example`**
 
 ```js
 {
- "date": "01/01/2000"
+ "volume": 1,
+ "date": "01/01/2000",
 }
 ```
 
 ## Hierarchy
 
-- **`CropEvent`**
+- [`CropEvent`](v3_specification.CropEvent.md)
 
-  ↳ [`CropManagementEvent`](specification.CropManagementEvent.md)
-
-  ↳ [`SoilOrCropDisturbanceEvent`](specification.SoilOrCropDisturbanceEvent.md)
-
-  ↳ [`FertilizerEvent`](specification.FertilizerEvent.md)
-
-  ↳ [`OrganicMatterEvent`](specification.OrganicMatterEvent.md)
-
-  ↳ [`IrrigationEvent`](specification.IrrigationEvent.md)
+  ↳ **`IrrigationEvent`**
 
 ## Table of contents
 
 ### Properties
 
-- [date](specification.CropEvent.md#date)
+- [date](v3_specification.IrrigationEvent.md#date)
+- [volume](v3_specification.IrrigationEvent.md#volume)
 
 ## Properties
 
@@ -60,6 +54,30 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
 }
 
+#### Inherited from
+
+[CropEvent](v3_specification.CropEvent.md).[date](v3_specification.CropEvent.md#date)
+
 #### Defined in
 
-[specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1279)
+v3-specification.ts:1279
+
+___
+
+### volume
+
+• **volume**: `number`
+
+The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.
+
+**`minimum`** 0
+
+**`example`** When 1 inch of volume was applied:
+
+```js
+"volume": 1,
+```
+
+#### Defined in
+
+v3-specification.ts:1794

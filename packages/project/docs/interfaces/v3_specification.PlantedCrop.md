@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / PlantedCrop
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / PlantedCrop
 
 # Interface: PlantedCrop
 
-[specification](../modules/specification.md).PlantedCrop
+[v3-specification](../modules/v3_specification.md).PlantedCrop
 
 Crop properties relevant to planted crops.
 
@@ -18,20 +18,20 @@ Crop properties relevant to planted crops.
 
 - **`PlantedCrop`**
 
-  ↳ [`OrchardOrVineyardCrop`](specification.OrchardOrVineyardCrop.md)
+  ↳ [`OrchardOrVineyardCrop`](v3_specification.OrchardOrVineyardCrop.md)
 
-  ↳ [`PerennialCrop`](specification.PerennialCrop.md)
+  ↳ [`PerennialCrop`](v3_specification.PerennialCrop.md)
 
-  ↳ [`CoverCrop`](specification.CoverCrop.md)
+  ↳ [`CoverCrop`](v3_specification.CoverCrop.md)
 
-  ↳ [`AnnualCrop`](specification.AnnualCrop.md)
+  ↳ [`AnnualCrop`](v3_specification.AnnualCrop.md)
 
 ## Table of contents
 
 ### Properties
 
-- [name](specification.PlantedCrop.md#name)
-- [plantingDate](specification.PlantedCrop.md#plantingdate)
+- [name](v3_specification.PlantedCrop.md#name)
+- [plantingDate](v3_specification.PlantedCrop.md#plantingdate)
 
 ## Properties
 
@@ -51,7 +51,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L774)
+v3-specification.ts:774
 
 ___
 
@@ -73,4 +73,4 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-[specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L789)
+v3-specification.ts:789

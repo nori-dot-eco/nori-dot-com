@@ -1,8 +1,8 @@
-[@nori-dot-com/project](../README.md) / [specification](../modules/specification.md) / LimingEvent
+[@nori-dot-com/project](../README.md) / [v3-specification](../modules/v3_specification.md) / LimingEvent
 
 # Interface: LimingEvent
 
-[specification](../modules/specification.md).LimingEvent
+[v3-specification](../modules/v3_specification.md).LimingEvent
 
 Liming event details.
 
@@ -20,9 +20,9 @@ Liming event details.
 
 ### Properties
 
-- [date](specification.LimingEvent.md#date)
-- [tonsPerAcre](specification.LimingEvent.md#tonsperacre)
-- [type](specification.LimingEvent.md#type)
+- [date](v3_specification.LimingEvent.md#date)
+- [tonsPerAcre](v3_specification.LimingEvent.md#tonsperacre)
+- [type](v3_specification.LimingEvent.md#type)
 
 ## Properties
 
@@ -42,7 +42,7 @@ The date that the liming occurred. Currently, liming dates do not impact quantif
 
 #### Defined in
 
-[specification.ts:1849](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1849)
+v3-specification.ts:1849
 
 ___
 
@@ -62,7 +62,7 @@ The liming amount (in tons per acre).
 
 #### Defined in
 
-[specification.ts:1836](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1836)
+v3-specification.ts:1836
 
 ___
 
@@ -80,4 +80,4 @@ The liming type.
 
 #### Defined in
 
-[specification.ts:1823](https://github.com/nori-dot-eco/nori-dot-com/blob/0db6c17/packages/project/src/specification.ts#L1823)
+v3-specification.ts:1823
