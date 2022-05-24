@@ -16,21 +16,12 @@ const schema = fs.existsSync(schemaPath) ? schemaPath : undefined;
 module.exports = {
   settings: {
     'import/extensions': allExtensions,
-    'import/parsers': {
-      '@typescript-eslint/parser': tsExtensions,
-    },
+    'import/parsers': { '@typescript-eslint/parser': tsExtensions },
     'import/resolver': {
-      node: {
-        extensions: jsExtensions,
-      },
-      typescript: {
-        alwaysTryTypes: true,
-        extensions: tsExtensions,
-      },
+      node: { extensions: jsExtensions },
+      typescript: { alwaysTryTypes: true, extensions: tsExtensions },
     },
-    jsdoc: {
-      mode: 'typescript',
-    },
+    jsdoc: { mode: 'typescript' },
   },
   overrides: [
     {
@@ -38,15 +29,12 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       extends: [
         'eslint:recommended',
-        'plugin:react/recommended',
-        'airbnb',
-        'airbnb/hooks',
+        'airbnb-base',
         'plugin:require-path-exists/recommended',
         'plugin:relay/recommended',
         'plugin:import/warnings',
         'plugin:import/errors',
         'plugin:import/recommended',
-        'plugin:jest/recommended',
         'plugin:@next/next/recommended',
         'plugin:@next/next/core-web-vitals',
         'plugin:unicorn/recommended',
@@ -54,10 +42,11 @@ module.exports = {
         'plugin:prettier/recommended',
       ],
       plugins: [
+        'react',
+        'react-hooks',
         'import',
         'sort-imports-es6-autofix',
         'require-path-exists',
-        'react-hooks',
         'relay',
         'jsdoc',
         'jest',
@@ -91,6 +80,7 @@ module.exports = {
               NConfConfig: true,
               params: true,
               args: true,
+              getStaticProps: true,
             },
             ignore: ['a-z'],
           },
@@ -109,18 +99,11 @@ module.exports = {
           'WithStatement',
         ], // overrides airbnb restricted syntax rules and allows for of loops
         'no-extra-boolean-cast': 0, // todo remove once strict is enabled for all tsconfigs
-        'react/jsx-filename-extension': [
-          1,
-          { extensions: ['.tsx', '.jsx', '.js'] },
-        ],
         'mui-unused-classes/unused-classes': 'warn',
         '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
         'prefer-const': [
           'error',
-          {
-            destructuring: 'all',
-            ignoreReadBeforeAssign: false,
-          },
+          { destructuring: 'all', ignoreReadBeforeAssign: false },
         ],
         ...jsdocRules,
         'import/no-cycle': [0], // todo look into enabling this
@@ -129,12 +112,7 @@ module.exports = {
           'never',
           { ts: 'never', json: 'always' },
         ],
-        'import/order': [
-          'error',
-          {
-            'newlines-between': 'always',
-          },
-        ],
+        'import/order': ['error', { 'newlines-between': 'always' }],
         'import/prefer-default-export': 0,
         'import/no-extraneous-dependencies': [
           'error',
@@ -144,36 +122,16 @@ module.exports = {
             peerDependencies: true,
           },
         ],
-        'react/require-default-props': [0],
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
-        'react/jsx-fragments': [1, 'element'],
-        'react/function-component-definition': [
-          2,
-          {
-            namedComponents: 'arrow-function',
-          },
-        ],
-        'react/no-multi-comp': ['warn', { ignoreStateless: true }], // todo remove ignoreStateless
-        'react/jsx-curly-brace-presence': 0, // todo deprecate
+
         'relay/generated-flow-types': 0,
-        'require-path-exists/exists': [
-          2,
-          {
-            extensions: allExtensions,
-          },
-        ],
-        'jest/prefer-strict-equal': 'warn',
+        'require-path-exists/exists': [2, { extensions: allExtensions }],
         'max-classes-per-file': 0, // todo deprecate
         'prefer-destructuring': 0,
       },
     },
     {
       files: ['*.graphql'],
-      parserOptions: {
-        skipGraphQLConfig: true,
-        schema: [schema],
-      },
+      parserOptions: { skipGraphQLConfig: true, schema: [schema] },
       extends: [
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
@@ -285,6 +243,7 @@ module.exports = {
       },
     },
     {
+      extends: ['plugin:jest/recommended'],
       files: [
         '**.test.js',
         '**/__mocks__/**.js',
@@ -293,13 +252,8 @@ module.exports = {
         '**.test.tsx',
         'integration-util.ts',
       ],
-      env: {
-        node: true,
-        jest: true,
-      },
-      rules: {
-        'dot-notation': [0],
-      },
+      env: { node: true, jest: true },
+      rules: { 'dot-notation': [0], 'jest/prefer-strict-equal': 'warn' },
     },
     {
       files: ['**/*.tsx'],
@@ -331,19 +285,14 @@ module.exports = {
             leadingUnderscore: 'allow',
           },
           { selector: 'typeLike', format: ['PascalCase'] },
-          {
-            selector: 'parameter',
-            format: ['camelCase', 'PascalCase'],
-          },
+          { selector: 'parameter', format: ['camelCase', 'PascalCase'] },
           { selector: 'property', format: ['camelCase', 'PascalCase'] },
         ],
       },
     },
     {
       files: ['**/*.stories.*'],
-      rules: {
-        'react/jsx-props-no-spreading': ['off'],
-      },
+      rules: { 'react/jsx-props-no-spreading': ['off'] },
     },
   ],
 };

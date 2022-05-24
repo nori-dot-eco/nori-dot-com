@@ -8,6 +8,6 @@
     "rootDir": "./src"
   },
   "files": ["./src/json/specification.json", "./src/example/example.json"],
-  "include": ["./src", "../../.eslintrc.js"],
+  "include": ["./src", "./.eslintrc.js"],
   "exclude": ["node_modules", "dist"]
 }

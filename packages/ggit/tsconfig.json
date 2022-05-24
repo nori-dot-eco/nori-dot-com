@@ -4,6 +4,6 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": ["./src", "./src/input/specification.json"],
+  "include": ["./src", "./src/input/specification.json", "./.eslintrc.js"],
   "exclude": ["node_modules", "dist"]
 }
