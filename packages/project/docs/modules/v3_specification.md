@@ -4,22 +4,22 @@
 
 ## About
 
-Provides the definitions for [Nori project](../interfaces/specification.Project.md) data using typescript interfaces.
+Provides the definitions for [Nori project](../interfaces/v3_specification.Project.md) data using typescript interfaces.
 
 ## Usage
 
-### Nori [project](../interfaces/specification.Project.md) import JSON files
+### Nori [project](../interfaces/v3_specification.Project.md) import JSON files
 
-The [project specification](../interfaces/specification.Project.md) interfaces can be used as a guide to create project imports.
+The [project v3 specification](../interfaces/v3_specification.Project.md) interfaces can be used as a guide to create project imports.
 For example, the highest level interface of the specification is the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
 
 #### Example
 
-You can find an example of a full implementation [here](../../src/example/example.json)
+You can find an example of a full implementation [here](../../src/example/v3-example.json)
 
 ## Navigation
 
-Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/specification.Project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
+Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/v3_specification.Project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
 
 ## Vocabulary
 
@@ -82,7 +82,7 @@ Throughout this documentation you will come across some vocab that indicate to w
 
 #### Defined in
 
-v3-specification.ts:36
+[v3-specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L36)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:72
+[v3-specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L72)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:142
+[v3-specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L142)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:180
+[v3-specification.ts:180](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L180)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:113
+[v3-specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L113)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:133
+[v3-specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L133)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:84
+[v3-specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L84)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-v3-specification.ts:166
+[v3-specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L166)
 
 ___
 
@@ -162,4 +162,4 @@ ___
 
 #### Defined in
 
-v3-specification.ts:92
+[v3-specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L92)

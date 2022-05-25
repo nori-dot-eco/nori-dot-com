@@ -51,7 +51,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-v3-specification.ts:774
+[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L774)
 
 ___
 
@@ -73,4 +73,4 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-v3-specification.ts:789
+[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L789)

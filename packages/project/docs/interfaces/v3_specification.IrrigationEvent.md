@@ -60,7 +60,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-v3-specification.ts:1279
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -80,4 +80,4 @@ The irrigation volume in inches. If volume is 0, simply do not define an irrigat
 
 #### Defined in
 
-v3-specification.ts:1794
+[v3-specification.ts:1794](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1794)

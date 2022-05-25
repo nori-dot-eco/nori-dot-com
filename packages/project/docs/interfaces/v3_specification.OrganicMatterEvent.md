@@ -59,7 +59,7 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 #### Defined in
 
-v3-specification.ts:1708
+[v3-specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1708)
 
 ___
 
@@ -85,7 +85,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-v3-specification.ts:1747
+[v3-specification.ts:1747](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1747)
 
 ___
 
@@ -119,7 +119,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-v3-specification.ts:1279
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -139,7 +139,7 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Defined in
 
-v3-specification.ts:1694
+[v3-specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1694)
 
 ___
 
@@ -165,7 +165,7 @@ The percent moisture of the organic matter or manure
 
 #### Defined in
 
-v3-specification.ts:1765
+[v3-specification.ts:1765](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1765)
 
 ___
 
@@ -193,4 +193,4 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-v3-specification.ts:1728
+[v3-specification.ts:1728](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1728)

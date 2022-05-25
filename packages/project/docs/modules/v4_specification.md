@@ -21,7 +21,7 @@ Nori requires complete data as follows:
 
 #### Example
 
-You can find an example of a full implementation [here](../../src/example/croplands_v4_example.json)
+You can find an example of a full implementation [here](../../src/example/v4-example.json)
 
 ## Navigation
 
@@ -78,21 +78,21 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 ### annualCropTypes
 
-• `Const` **annualCropTypes**: readonly [``"barley"``, ``"broccoli-coast"``, ``"broccoli-desert"``, ``"carrots"``, ``"cauliflower"``, ``"corn"``, ``"corn silage"``, ``"cotton"``, ``"dry field beans"``, ``"dry field pea"``, ``"fallow"``, ``"grass-legume mix"``, ``"lettuce-head"``, ``"lettuce-leaf"``, ``"lettuce-romaine"``, ``"millet"``, ``"oats"``, ``"peanut"``, ``"potato"``, ``"rice - flooded"``, ``"rye"``, ``"sorghum"``, ``"sorghum"``, ``"sorghum silage"``, ``"soybean"``, ``"spring wheat"``, ``"strawberry"``, ``"sugar beets"``, ``"sunflower"``, ``"switchgrass"``, ``"tomatoes, fresh"``, ``"tomatoes, processing"``, ``"winter wheat"``]
+• `Const` **annualCropTypes**: readonly [``"austrian winter pea"``, ``"barley"``, ``"barley-bin run wheat mix"``, ``"black beans"``, ``"broccoli"``, ``"broccoli-coast"``, ``"broccoli-desert"``, ``"buckwheat"``, ``"cabbage"``, ``"camelina"``, ``"canola"``, ``"cantaloupes"``, ``"carrots"``, ``"cauliflower"``, ``"celery"``, ``"chick peas"``, ``"corn"``, ``"corn silage"``, ``"cotton"``, ``"cucumbers"``, ``"dry beans"``, ``"dry field beans"``, ``"dry field pea"``, ``"durum wheat"``, ``"eggplants"``, ``"fallow"``, ``"flaxseed"``, ``"garbanzo beans"``, ``"garlic"``, ``"gourds"``, ``"greens"``, ``"hemp (for fiber)"``, ``"hemp (for flowers)"``, ``"hemp (for seed)"``, ``"herbs"``, ``"honeydew melons"``, ``"lentils"``, ``"lettuce"``, ``"lettuce-head"``, ``"lettuce-leaf"``, ``"lettuce-romaine"``, ``"millet"``, ``"misc vegs & fruits"``, ``"mustard"``, ``"navy beans"``, ``"oats"``, ``"onions"``, ``"other small grains"``, ``"peanuts"``, ``"peas"``, ``"peppers"``, ``"pinto beans"``, ``"pop or om corn"``, ``"potatoes"``, ``"pumpkins"``, ``"radishes"``, ``"rapeseed"``, ``"rice"``, ``"rice - flooded"``, ``"rye"``, ``"safflower"``, ``"sorghum"``, ``"sorghum silage"``, ``"soybeans"``, ``"speltz"``, ``"spring wheat"``, ``"squash"``, ``"strawberries"``, ``"sugarbeets"``, ``"sunflower"``, ``"sweet corn"``, ``"sweet potatoes"``, ``"switchgrass"``, ``"tobacco"``, ``"tomatoes"``, ``"tomatoes, fresh"``, ``"tomatoes, processing"``, ``"triticale"``, ``"turnips"``, ``"watermelons"``, ``"wheat"``, ``"winter barley"``, ``"winter grain-other"``, ``"winter oats"``, ``"winter wheat"``]
 
 #### Defined in
 
-[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L34)
+[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L34)
 
 ___
 
 ### coverCropTypes
 
-• `Const` **coverCropTypes**: readonly [``"annual rye"``, ``"annual rye - legume"``, ``"annual rye - legume - radish"``, ``"austrian winter pea"``, ``"cereal rye"``, ``"forage radish"``, ``"oilseed radish"``, ``"vetch"``, ``"winter grain-other"``]
+• `Const` **coverCropTypes**: readonly [``"annual rye"``, ``"annual rye - legume"``, ``"annual rye - legume - radish"``, ``"barley-radish mix"``, ``"cereal rye"``, ``"cereal rye-crimson clover mix"``, ``"clover/wildflowers"``, ``"forage radish"``, ``"grass-legume mix"``, ``"oilseed radish"``, ``"radish-crimson clover-barley-dwarf rape mix"``, ``"vetch"``, ``"winter clover"``]
 
 #### Defined in
 
-[v4-specification.ts:70](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L70)
+[v4-specification.ts:122](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L122)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L140)
+[v4-specification.ts:225](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L225)
 
 ___
 
@@ -112,27 +112,27 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:178](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L178)
+[v4-specification.ts:286](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L286)
 
 ___
 
 ### orchardOrVineyardCropTypes
 
-• `Const` **orchardOrVineyardCropTypes**: readonly [``"almond"``, ``"avocados"``, ``"cherries"``, ``"english walnuts"``, ``"grape, raisin"``, ``"grape, table"``, ``"grape, wine (<1390 gdd)"``, ``"grape, wine (>1950 gdd)"``, ``"grape, wine (1391-1670 gdd)"``, ``"grape, wine (1671-1950 gdd)"``, ``"grapefruit"``, ``"lemons & limes"``, ``"olives"``, ``"oranges"``, ``"peaches and nectarines"``, ``"pistachios"``, ``"tangerines & mandarins"``]
+• `Const` **orchardOrVineyardCropTypes**: readonly [``"almonds"``, ``"apples"``, ``"apricots"``, ``"avocados"``, ``"blueberries"``, ``"caneberries"``, ``"cherries"``, ``"citrus"``, ``"cranberries"``, ``"english walnuts"``, ``"grape, raisin"``, ``"grape, table"``, ``"grape, wine (<1390 gdd)"``, ``"grape, wine (>1950 gdd)"``, ``"grape, wine (1391-1670 gdd)"``, ``"grape, wine (1671-1950 gdd)"``, ``"grapefruit"``, ``"grapes"``, ``"hazelnuts"``, ``"lemons"``, ``"lemons & limes"``, ``"limes"``, ``"nectarines"``, ``"olives"``, ``"oranges"``, ``"peaches"``, ``"peaches and nectarines"``, ``"pears"``, ``"pecans"``, ``"pistachios"``, ``"plums"``, ``"pomegranates"``, ``"prunes"``, ``"tangerines & mandarins"``, ``"walnuts"``]
 
 #### Defined in
 
-[v4-specification.ts:111](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L111)
+[v4-specification.ts:167](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L167)
 
 ___
 
 ### perennialCropTypes
 
-• `Const` **perennialCropTypes**: readonly [``"alfalfa"``, ``"clover"``, ``"grass"``, ``"grass-legume mix"``, ``"strawberry"``, ``"switchgrass"``]
+• `Const` **perennialCropTypes**: readonly [``"alfalfa"``, ``"asparagus"``, ``"clover"``, ``"clover/wildflowers"``, ``"grass"``, ``"grass-legume mix"``, ``"grassland herbaceous"``, ``"herbaceous wetlands"``, ``"hops"``, ``"mint"``, ``"other hay/non alfalfa"``, ``"pasture/grass"``, ``"pasture/hay"``, ``"sod/grass seed"``, ``"strawberry"``, ``"sugarcane"``, ``"vetch"``]
 
 #### Defined in
 
-[v4-specification.ts:131](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L131)
+[v4-specification.ts:205](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L205)
 
 ___
 
@@ -142,17 +142,17 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:82](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L82)
+[v4-specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L138)
 
 ___
 
 ### soilOrCropDisturbanceTypes
 
-• `Const` **soilOrCropDisturbanceTypes**: readonly [``"intensive tillage"``, ``"reduced tillage"``, ``"mulch tillage"``, ``"ridge tillage"``, ``"strip tillage"``, ``"no tillage"``, ``"growing season cultivation"``, ``"mow"``, ``"crimp"``, ``"winter killed"``, ``"broad-spectrum herbicide"``]
+• `Const` **soilOrCropDisturbanceTypes**: readonly [``"bedder/hipper"``, ``"chisel plow"``, ``"crimp"``, ``"cultipacker"``, ``"cultivator"``, ``"cultivator - field"``, ``"cultivator - row"``, ``"disk"``, ``"finisher"``, ``"harrow"``, ``"herbicide burn down"``, ``"hipper bedder"``, ``"intensive tillage"``, ``"landstar"``, ``"minimum tillage"``, ``"moldboard plow"``, ``"mow"``, ``"mulch tillage"``, ``"mulcher"``, ``"no-till planting"``, ``"reduced tillage"``, ``"residue tillage"``, ``"ridge tillage"``, ``"ripper - disk"``, ``"ripper - inline"``, ``"roller"``, ``"speed till"``, ``"strip till"``, ``"strip tillage"``, ``"tandem disk"``, ``"vertical"``, ``"zone till"``, ``"winter kill"``, ``"broad-spectrum herbicide"``]
 
 #### Defined in
 
-[v4-specification.ts:164](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L164)
+[v4-specification.ts:249](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L249)
 
 ___
 
@@ -162,4 +162,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:90](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L90)
+[v4-specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L146)

@@ -80,7 +80,7 @@ A burning event, if applicable.
 
 #### Defined in
 
-v3-specification.ts:1004
+[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1004)
 
 ___
 
@@ -108,7 +108,7 @@ Note: if a crop ever changes classifications during the lifetime of the field (i
 
 #### Defined in
 
-v3-specification.ts:1061
+[v3-specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1061)
 
 ___
 
@@ -138,7 +138,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:900
+[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L900)
 
 ___
 
@@ -170,7 +170,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-v3-specification.ts:981
+[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L981)
 
 ___
 
@@ -199,7 +199,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-v3-specification.ts:827
+[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L827)
 
 ___
 
@@ -227,7 +227,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:940
+[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L940)
 
 ___
 
@@ -258,7 +258,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-v3-specification.ts:960
+[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L960)
 
 ___
 
@@ -282,7 +282,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-v3-specification.ts:774
+[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L774)
 
 ___
 
@@ -316,7 +316,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:923
+[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L923)
 
 ___
 
@@ -342,7 +342,7 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-v3-specification.ts:789
+[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L789)
 
 ___
 
@@ -366,7 +366,7 @@ Indicates if the crop was pruned.
 
 #### Defined in
 
-v3-specification.ts:1079
+[v3-specification.ts:1079](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1079)
 
 ___
 
@@ -390,7 +390,7 @@ Indicates if the crop was renewed or cleared.
 
 #### Defined in
 
-v3-specification.ts:1096
+[v3-specification.ts:1096](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1096)
 
 ___
 
@@ -420,13 +420,13 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-v3-specification.ts:881
+[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L881)
 
 ___
 
 ### type
 
-• **type**: ``"almond"`` \| ``"avocados"`` \| ``"cherries"`` \| ``"english walnuts"`` \| ``"grape, raisin"`` \| ``"grape, table"`` \| ``"grape, wine (<1390 gdd)"`` \| ``"grape, wine (>1950 gdd)"`` \| ``"grape, wine (1391-1670 gdd)"`` \| ``"grape, wine (1671-1950 gdd)"`` \| ``"grapefruit"`` \| ``"lemons & limes"`` \| ``"olives"`` \| ``"oranges"`` \| ``"peaches and nectarines"`` \| ``"pistachios"`` \| ``"tangerines & mandarins"``
+• **type**: ``"avocados"`` \| ``"cherries"`` \| ``"english walnuts"`` \| ``"grape, raisin"`` \| ``"grape, table"`` \| ``"grape, wine (<1390 gdd)"`` \| ``"grape, wine (>1950 gdd)"`` \| ``"grape, wine (1391-1670 gdd)"`` \| ``"grape, wine (1671-1950 gdd)"`` \| ``"grapefruit"`` \| ``"lemons & limes"`` \| ``"olives"`` \| ``"oranges"`` \| ``"peaches and nectarines"`` \| ``"pistachios"`` \| ``"tangerines & mandarins"`` \| ``"almond"``
 
 The COMET equivalent type of the orchard or vineyard crop.
 
@@ -440,4 +440,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-v3-specification.ts:1040
+[v3-specification.ts:1040](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1040)

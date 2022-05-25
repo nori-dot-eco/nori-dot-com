@@ -64,7 +64,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-v3-specification.ts:1279
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -84,7 +84,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-v3-specification.ts:1599
+[v3-specification.ts:1599](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1599)
 
 ___
 
@@ -104,7 +104,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-v3-specification.ts:1571
+[v3-specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1571)
 
 ___
 
@@ -126,4 +126,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-v3-specification.ts:1586
+[v3-specification.ts:1586](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1586)

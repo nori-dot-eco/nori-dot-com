@@ -58,7 +58,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-v3-specification.ts:248
+[v3-specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L248)
 
 ___
 
@@ -82,4 +82,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-v3-specification.ts:224
+[v3-specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L224)

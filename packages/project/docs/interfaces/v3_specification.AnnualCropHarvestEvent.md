@@ -66,7 +66,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-v3-specification.ts:1279
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -96,7 +96,7 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 #### Defined in
 
-v3-specification.ts:1357
+[v3-specification.ts:1357](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1357)
 
 ___
 
@@ -136,7 +136,7 @@ Crop residue removed.
 
 #### Defined in
 
-v3-specification.ts:1385
+[v3-specification.ts:1385](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1385)
 
 ___
 
@@ -158,7 +158,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-v3-specification.ts:1419
+[v3-specification.ts:1419](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1419)
 
 ___
 
@@ -180,4 +180,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-v3-specification.ts:1434
+[v3-specification.ts:1434](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1434)

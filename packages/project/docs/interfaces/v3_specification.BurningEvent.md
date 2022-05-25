@@ -42,4 +42,4 @@ The type of burning, if applicable.
 
 #### Defined in
 
-v3-specification.ts:1935
+[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1935)

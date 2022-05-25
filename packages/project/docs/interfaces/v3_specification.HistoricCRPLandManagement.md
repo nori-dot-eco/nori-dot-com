@@ -64,7 +64,7 @@ Whether the field participated in CRP or not.
 
 #### Defined in
 
-v3-specification.ts:412
+[v3-specification.ts:412](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L412)
 
 ___
 
@@ -86,7 +86,7 @@ The CRP end year
 
 #### Defined in
 
-v3-specification.ts:457
+[v3-specification.ts:457](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L457)
 
 ___
 
@@ -108,7 +108,7 @@ The CRP start year
 
 #### Defined in
 
-v3-specification.ts:443
+[v3-specification.ts:443](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L443)
 
 ___
 
@@ -132,7 +132,7 @@ The type of CRP the field participated in. Only applicable if [crp](#crp) is set
 
 #### Defined in
 
-v3-specification.ts:429
+[v3-specification.ts:429](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L429)
 
 ___
 
@@ -152,7 +152,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-v3-specification.ts:503
+[v3-specification.ts:503](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L503)
 
 ___
 
@@ -170,7 +170,7 @@ How was the field managed after tillage
 
 #### Defined in
 
-v3-specification.ts:523
+[v3-specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L523)
 
 ___
 
@@ -190,7 +190,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-v3-specification.ts:470
+[v3-specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L470)
 
 ___
 
@@ -208,7 +208,7 @@ How was the field tilled before the field entered into CRP
 
 #### Defined in
 
-v3-specification.ts:490
+[v3-specification.ts:490](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L490)
 
 ___
 
@@ -248,4 +248,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-v3-specification.ts:290
+[v3-specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L290)

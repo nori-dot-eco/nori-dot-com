@@ -32,7 +32,9 @@
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
+  'austrian winter pea',
   'barley',
+  'barley-bin run wheat mix',
   'black beans',
   'broccoli',
   'broccoli-coast',
@@ -60,7 +62,6 @@ export const annualCropTypes = [
   'garbanzo beans',
   'garlic', // not currently supported
   'gourds', // not currently supported
-  'grass-legume mix',
   'greens',
   'hemp (for fiber)',
   'hemp (for flowers)',
@@ -74,10 +75,10 @@ export const annualCropTypes = [
   'lettuce-romaine',
   'millet',
   'misc vegs & fruits',
+  'mustard',
   'navy beans',
   'oats',
   'onions', // not currently supported
-  'other hay/non alfalfa',
   'other small grains',
   'peanuts',
   'peas',
@@ -88,11 +89,10 @@ export const annualCropTypes = [
   'pumpkins', // not currently supported
   'radishes',
   'rapeseed',
-  'rice',
-  'rice - flooded',
+  'rice', // not currently supported
+  'rice - flooded', // not currently supported
   'rye',
   'safflower',
-  'sorghum',
   'sorghum',
   'sorghum silage',
   'soybeans',
@@ -114,6 +114,7 @@ export const annualCropTypes = [
   'watermelons', // not currently supported
   'wheat',
   'winter barley',
+  'winter grain-other',
   'winter oats',
   'winter wheat',
 ] as const;
@@ -122,20 +123,16 @@ export const coverCropTypes = [
   'annual rye',
   'annual rye - legume',
   'annual rye - legume - radish',
-  'austrian winter pea',
-  'barley-bin run wheat mix',
   'barley-radish mix',
   'cereal rye',
   'cereal rye-crimson clover mix',
   'clover/wildflowers',
   'forage radish',
-  'lemons',
-  'mustard',
+  'grass-legume mix',
   'oilseed radish',
   'radish-crimson clover-barley-dwarf rape mix',
   'vetch',
   'winter clover',
-  'winter grain-other',
 ] as const;
 
 export const slurryOmadTypes = [
@@ -187,6 +184,7 @@ export const orchardOrVineyardCropTypes = [
   'grapefruit',
   'grapes',
   'hazelnuts',
+  'lemons',
   'lemons & limes',
   'limes',
   'nectarines',
@@ -208,18 +206,20 @@ export const perennialCropTypes = [
   'alfalfa',
   'asparagus', // not currently supported
   'clover',
+  'clover/wildflowers',
   'grass',
   'grass-legume mix',
   'grassland herbaceous', // not currently supported
   'herbaceous wetlands',
   'hops', // not currently supported
   'mint', // not currently supported
+  'other hay/non alfalfa',
   'pasture/grass',
   'pasture/hay',
   'sod/grass seed',
   'strawberry',
   'sugarcane', // not currently supported
-  'switchgrass',
+  'vetch',
 ] as const;
 
 export const fertilizerTypes = [

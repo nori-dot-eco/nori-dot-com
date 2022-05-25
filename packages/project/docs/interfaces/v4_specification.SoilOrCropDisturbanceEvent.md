@@ -63,7 +63,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1636](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1636)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -89,7 +89,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1651](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1651)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -115,7 +115,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1666](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1666)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -139,13 +139,13 @@ When defaulting to "no tillage", a default value will also be used for the event
 
 #### Defined in
 
-[v4-specification.ts:1813](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1813)
+[v4-specification.ts:1921](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1921)
 
 ___
 
 ### type
 
-• **type**: ``"intensive tillage"`` \| ``"reduced tillage"`` \| ``"mulch tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"no tillage"`` \| ``"growing season cultivation"`` \| ``"mow"`` \| ``"crimp"`` \| ``"winter killed"`` \| ``"broad-spectrum herbicide"``
+• **type**: ``"bedder/hipper"`` \| ``"chisel plow"`` \| ``"crimp"`` \| ``"cultipacker"`` \| ``"cultivator"`` \| ``"cultivator - field"`` \| ``"cultivator - row"`` \| ``"disk"`` \| ``"finisher"`` \| ``"harrow"`` \| ``"herbicide burn down"`` \| ``"hipper bedder"`` \| ``"intensive tillage"`` \| ``"landstar"`` \| ``"minimum tillage"`` \| ``"moldboard plow"`` \| ``"mow"`` \| ``"mulch tillage"`` \| ``"mulcher"`` \| ``"no-till planting"`` \| ``"reduced tillage"`` \| ``"residue tillage"`` \| ``"ridge tillage"`` \| ``"ripper - disk"`` \| ``"ripper - inline"`` \| ``"roller"`` \| ``"speed till"`` \| ``"strip till"`` \| ``"strip tillage"`` \| ``"tandem disk"`` \| ``"vertical"`` \| ``"zone till"`` \| ``"winter kill"`` \| ``"broad-spectrum herbicide"``
 
 The soil or crop disturbance events classification type.
 
@@ -219,4 +219,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1886](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1886)
+[v4-specification.ts:1994](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1994)

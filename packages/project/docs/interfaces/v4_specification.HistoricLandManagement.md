@@ -60,4 +60,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v4-specification.ts:462](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L462)
+[v4-specification.ts:570](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L570)

@@ -65,7 +65,7 @@ The number of acres that use the herein defined crop management practices (via [
 
 #### Defined in
 
-v3-specification.ts:641
+[v3-specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L641)
 
 ___
 
@@ -90,7 +90,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-v3-specification.ts:676
+[v3-specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L676)
 
 ___
 
@@ -114,7 +114,7 @@ The name of the field.
 
 #### Defined in
 
-v3-specification.ts:628
+[v3-specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L628)
 
 ___
 
@@ -138,7 +138,7 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-v3-specification.ts:658
+[v3-specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L658)
 
 ___
 
@@ -179,7 +179,7 @@ Details surrounding how the field was managed before year 2000.
 
 #### Defined in
 
-v3-specification.ts:609
+[v3-specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L609)
 
 ___
 
@@ -201,4 +201,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-v3-specification.ts:575
+[v3-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L575)

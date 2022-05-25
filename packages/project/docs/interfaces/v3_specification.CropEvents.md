@@ -86,7 +86,7 @@ A burning event, if applicable.
 
 #### Defined in
 
-v3-specification.ts:1004
+[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1004)
 
 ___
 
@@ -112,7 +112,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:900
+[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L900)
 
 ___
 
@@ -140,7 +140,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-v3-specification.ts:981
+[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L981)
 
 ___
 
@@ -164,7 +164,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:940
+[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L940)
 
 ___
 
@@ -191,7 +191,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-v3-specification.ts:960
+[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L960)
 
 ___
 
@@ -221,7 +221,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-v3-specification.ts:923
+[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L923)
 
 ___
 
@@ -247,4 +247,4 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-v3-specification.ts:881
+[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L881)

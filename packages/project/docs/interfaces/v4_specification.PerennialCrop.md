@@ -75,7 +75,7 @@ Burning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1343](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1343)
+[v4-specification.ts:1451](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1451)
 
 ___
 
@@ -97,7 +97,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v4-specification.ts:1506](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1506)
+[v4-specification.ts:1614](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1614)
 
 ___
 
@@ -131,7 +131,7 @@ Clearing and renewal events for orchards and vinyards, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1389](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1389)
+[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1497)
 
 ___
 
@@ -163,7 +163,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1107](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1107)
+[v4-specification.ts:1215](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1215)
 
 ___
 
@@ -195,7 +195,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1234](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1234)
+[v4-specification.ts:1342](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1342)
 
 ___
 
@@ -228,7 +228,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v4-specification.ts:1320](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1320)
+[v4-specification.ts:1428](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1428)
 
 ___
 
@@ -261,7 +261,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v4-specification.ts:1410](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1410)
+[v4-specification.ts:1518](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1518)
 
 ___
 
@@ -287,7 +287,7 @@ Used to synchronize repeated imports
 
 #### Defined in
 
-[v4-specification.ts:1123](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1123)
+[v4-specification.ts:1231](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1231)
 
 ___
 
@@ -317,7 +317,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1276](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1276)
+[v4-specification.ts:1384](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1384)
 
 ___
 
@@ -350,7 +350,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v4-specification.ts:1298](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1298)
+[v4-specification.ts:1406](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1406)
 
 ___
 
@@ -374,7 +374,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[v4-specification.ts:1085](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1085)
+[v4-specification.ts:1193](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1193)
 
 ___
 
@@ -408,7 +408,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1257](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1257)
+[v4-specification.ts:1365](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1365)
 
 ___
 
@@ -444,7 +444,7 @@ This will contain a single event for annuals and none for perennials outside of 
 
 #### Defined in
 
-[v4-specification.ts:1191](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1191)
+[v4-specification.ts:1299](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1299)
 
 ___
 
@@ -478,7 +478,7 @@ Pruning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1366](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1366)
+[v4-specification.ts:1474](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1474)
 
 ___
 
@@ -510,13 +510,13 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v4-specification.ts:1213](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1213)
+[v4-specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1321)
 
 ___
 
 ### type
 
-• **type**: ``"grass-legume mix"`` \| ``"strawberry"`` \| ``"switchgrass"`` \| ``"alfalfa"`` \| ``"clover"`` \| ``"grass"``
+• **type**: ``"clover/wildflowers"`` \| ``"grass-legume mix"`` \| ``"vetch"`` \| ``"alfalfa"`` \| ``"asparagus"`` \| ``"clover"`` \| ``"grass"`` \| ``"grassland herbaceous"`` \| ``"herbaceous wetlands"`` \| ``"hops"`` \| ``"mint"`` \| ``"other hay/non alfalfa"`` \| ``"pasture/grass"`` \| ``"pasture/hay"`` \| ``"sod/grass seed"`` \| ``"strawberry"`` \| ``"sugarcane"``
 
 The COMET equivalent type of the perennial crop
 
@@ -530,4 +530,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1491](https://github.com/nori-dot-eco/nori-dot-com/blob/a06cfe9/packages/project/src/v4-specification.ts#L1491)
+[v4-specification.ts:1599](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1599)

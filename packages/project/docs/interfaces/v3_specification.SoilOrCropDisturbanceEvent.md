@@ -61,7 +61,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-v3-specification.ts:1279
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -85,13 +85,13 @@ When defaulting to "no tillage", a default value will also be used for the event
 
 #### Defined in
 
-v3-specification.ts:1467
+[v3-specification.ts:1467](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1467)
 
 ___
 
 ### type
 
-• **type**: ``"intensive tillage"`` \| ``"reduced tillage"`` \| ``"mulch tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"no tillage"`` \| ``"growing season cultivation"`` \| ``"mow"`` \| ``"crimp"`` \| ``"winter killed"`` \| ``"broad-spectrum herbicide"``
+• **type**: ``"crimp"`` \| ``"intensive tillage"`` \| ``"mow"`` \| ``"mulch tillage"`` \| ``"reduced tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"broad-spectrum herbicide"`` \| ``"no tillage"`` \| ``"growing season cultivation"`` \| ``"winter killed"``
 
 The soil or crop disturbance events classification type.
 
@@ -165,4 +165,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-v3-specification.ts:1540
+[v3-specification.ts:1540](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1540)
