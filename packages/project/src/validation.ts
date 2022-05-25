@@ -5,8 +5,8 @@ import type { DataValidationCxt } from 'ajv/dist/types';
 import type { UnparsedError } from '@nori-dot-com/errors';
 import { parseError } from '@nori-dot-com/errors';
 
-import * as schema from './json/specification.json';
-import type { CropEvent } from './specification';
+import * as schema from './json/v3-specification.json';
+import type { CropEvent } from './v3-specification';
 
 import type { Project } from './index';
 
@@ -78,7 +78,7 @@ const validationRules = {
  * @example <caption>Validating project data using data that has an invalid number of fields defined:</caption>
  *
  * ```js
- * validateProjectData({version:'1.0.0',fields:[]}); // returns {valid:false, ...errors}
+ * validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...errors}
  * ```
  *
  */
