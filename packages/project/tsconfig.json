@@ -13,6 +13,6 @@
     "./src/json/v4-specification.json",
     "./src/example/v4-example.json"
   ],
-  "include": ["./src", "../../.eslintrc.js"],
+  "include": ["./src", "./.eslintrc.js"],
   "exclude": ["node_modules", "dist"]
 }
