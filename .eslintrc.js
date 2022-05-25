@@ -1,12 +1,15 @@
+const {
+  parserOptions,
+  importRules,
+} = require('@nori-dot-com/eslint-config-nori/rules'); // eslint-disable-line import/no-extraneous-dependencies -- this is a workspace package
+
 module.exports = {
   extends: '@nori-dot-com/eslint-config-nori',
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', 'packages/project/tsconfig.json'],
-    ecmaVersion: 8,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  parserOptions: parserOptions({
+    projectDirectories: ['./tsconfig.json', 'packages/project/tsconfig.json'],
+    typescript: true,
+    react: false,
+    dir: __dirname,
+  }),
+  rules: importRules({ dir: __dirname }),
 };

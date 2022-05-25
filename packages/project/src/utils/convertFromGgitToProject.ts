@@ -33,7 +33,7 @@ import {
   coverCropTypes,
   orchardOrVineyardCropTypes,
 } from '../index';
-import type { CropManagementEvent } from '../specification';
+import type { CropManagementEvent } from '../v3-specification';
 
 interface Translations {
   historicNonCrpLandManagement: {

@@ -18,8 +18,8 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown  src/specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
-    "make:schema": "typescript-json-schema ./src/specification.ts Project -o ./src/json/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
+    "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown src/v4-specification.ts src/v3-specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
+    "make:schema": "typescript-json-schema ./src/v4-specification.ts Project -o ./src/json/v4-specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
     "prepare": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b"
@@ -30,8 +30,8 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^27.4.0",
-    "typedoc": "^0.20.32",
-    "typedoc-plugin-markdown": "^3.6.0",
+    "typedoc": "^0.22.15",
+    "typedoc-plugin-markdown": "^3.12.1",
     "@nori-dot-com/eslint-config-nori": "*"
   },
   "dependencies": {
@@ -42,7 +42,7 @@
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "moment": "2.29.2",
-    "typescript-json-schema": "^0.52.0",
+    "typescript-json-schema": "^0.53.0",
     "wicket": "^1.3.6"
   }
 }

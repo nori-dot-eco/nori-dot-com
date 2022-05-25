@@ -7,7 +7,12 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "files": ["./src/json/specification.json", "./src/example/example.json"],
-  "include": ["./src", "../../.eslintrc.js"],
+  "files": [
+    "./src/json/v3-specification.json",
+    "./src/example/v3-example.json",
+    "./src/json/v4-specification.json",
+    "./src/example/v4-example.json"
+  ],
+  "include": ["./src", "./.eslintrc.js"],
   "exclude": ["node_modules", "dist"]
 }
