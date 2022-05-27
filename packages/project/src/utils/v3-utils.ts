@@ -23,7 +23,7 @@ import type {
   HistoricNonCRPLandManagement,
   Project,
   AnnualCropHarvestEvent,
-} from '../specification';
+} from '../v3-specification';
 
 export const isOrchardOrVineyardCrop = (
   crop: AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop

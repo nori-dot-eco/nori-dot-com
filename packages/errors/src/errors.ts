@@ -233,6 +233,15 @@ export const Errors = {
       message:
         'We were unable to process your payment. Please check your payment information and try again.',
     },
+    specialOrderCertificateExists: {
+      message: 'Certificate already exists for this order.',
+    },
+    specialOrderWrongType: {
+      message: 'This order is not a special order.',
+    },
+    specialOrderTransactionInProgress: {
+      message: 'A transaction has already been created for this order.',
+    },
   },
   authenticationError: {
     userNotFound: {
