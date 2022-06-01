@@ -64,6 +64,11 @@ export interface UnadjustedQuantificationSummary {
   modeledYears: number[];
   grandfatheredTonnesPerYearPerAcreAverage: number;
   methodologyVersion: string;
+  /**
+   * The net carbon removed by year, calculated by the algorithm in
+   * [net-quantification.ts](./net-quantification.ts)
+   */
+  netRemovalsByYear?: AnnualTotals;
 }
 
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
