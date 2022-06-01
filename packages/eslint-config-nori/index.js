@@ -119,7 +119,7 @@ module.exports = {
           {
             devDependencies: true,
             optionalDependencies: true,
-            peerDependencies: true,
+            peerDependencies: false,
           },
         ],
 
