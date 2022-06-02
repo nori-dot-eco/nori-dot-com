@@ -4,7 +4,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0
+ * Version: 4.0.1
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -1772,6 +1772,27 @@ export interface CropEvent {
    *
    */
   id?: string;
+   /**
+   * Source of the event
+   *
+   * Optional field to indicate what system this data point originated from.
+   *
+   * @nullable
+   *
+   * @example
+   *
+   * ```js
+   * "source": "CDL"
+   * ```
+   * 
+   * @example
+   *
+   * ```js
+   * "source": "FMS name"
+   * ```
+   *
+   */
+  source?: string;
 }
 
 /**

@@ -39,6 +39,7 @@ Organic matter (OMAD) and manure event details.
 - [name](v4_specification.OrganicMatterEvent.md#name)
 - [percentMoisture](v4_specification.OrganicMatterEvent.md#percentmoisture)
 - [percentNitrogen](v4_specification.OrganicMatterEvent.md#percentnitrogen)
+- [source](v4_specification.OrganicMatterEvent.md#source)
 
 ## Properties
 
@@ -64,7 +65,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2215](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2215)
+[v4-specification.ts:2236](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2236)
 
 ___
 
@@ -98,7 +99,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -124,7 +125,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -150,7 +151,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -170,7 +171,7 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2176](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2176)
+[v4-specification.ts:2197](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2197)
 
 ___
 
@@ -196,7 +197,7 @@ The percent moisture of the organic matter or manure
 
 #### Defined in
 
-[v4-specification.ts:2233](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2233)
+[v4-specification.ts:2254](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2254)
 
 ___
 
@@ -224,4 +225,36 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2196](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2196)
+[v4-specification.ts:2217](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2217)
+
+___
+
+### source
+
+• `Optional` **source**: `string`
+
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"source": "CDL"
+```
+
+**`example`**
+
+```js
+"source": "FMS name"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
+
+#### Defined in
+
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)

@@ -28,6 +28,7 @@ Irrigation event details.
 - [date](v4_specification.IrrigationEvent.md#date)
 - [externalId](v4_specification.IrrigationEvent.md#externalid)
 - [id](v4_specification.IrrigationEvent.md#id)
+- [source](v4_specification.IrrigationEvent.md#source)
 - [volume](v4_specification.IrrigationEvent.md#volume)
 
 ## Properties
@@ -62,7 +63,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -88,7 +89,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -114,7 +115,39 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
+
+___
+
+### source
+
+• `Optional` **source**: `string`
+
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"source": "CDL"
+```
+
+**`example`**
+
+```js
+"source": "FMS name"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
+
+#### Defined in
+
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)
 
 ___
 
@@ -134,4 +167,4 @@ The irrigation volume in inches. If volume is 0, simply do not define an irrigat
 
 #### Defined in
 
-[v4-specification.ts:2262](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2262)
+[v4-specification.ts:2283](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2283)

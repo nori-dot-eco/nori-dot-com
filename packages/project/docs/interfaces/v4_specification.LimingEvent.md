@@ -32,6 +32,7 @@ As such, we will default to a reasonable date when this property is left out.
 - [date](v4_specification.LimingEvent.md#date)
 - [externalId](v4_specification.LimingEvent.md#externalid)
 - [id](v4_specification.LimingEvent.md#id)
+- [source](v4_specification.LimingEvent.md#source)
 - [tonsPerAcre](v4_specification.LimingEvent.md#tonsperacre)
 - [type](v4_specification.LimingEvent.md#type)
 
@@ -67,7 +68,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -93,7 +94,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -119,7 +120,39 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
+
+___
+
+### source
+
+• `Optional` **source**: `string`
+
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"source": "CDL"
+```
+
+**`example`**
+
+```js
+"source": "FMS name"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
+
+#### Defined in
+
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)
 
 ___
 
@@ -139,7 +172,7 @@ The liming amount (in tons per acre).
 
 #### Defined in
 
-[v4-specification.ts:2307](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2307)
+[v4-specification.ts:2328](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2328)
 
 ___
 
@@ -157,4 +190,4 @@ The liming type.
 
 #### Defined in
 
-[v4-specification.ts:2294](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2294)
+[v4-specification.ts:2315](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2315)
