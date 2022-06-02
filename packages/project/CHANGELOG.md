@@ -1,4 +1,9 @@
-# V4 (May 2022)
+# v4.0.1 (June 2022)
+
+* Added a `source` attribute to `interface CropEvent` to optionally identify the source system
+the data point originated in.
+
+# V4.0.0 (May 2022)
 
  * Adds externalId and id optional fields at every level to make re-imports and synchronization between systems more stable.
  * Moves `plantingDate` to `PlantingEvent.date`

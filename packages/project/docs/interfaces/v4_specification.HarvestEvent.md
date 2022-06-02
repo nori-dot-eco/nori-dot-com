@@ -53,7 +53,7 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 #### Defined in
 
-[v4-specification.ts:1860](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1860)
+[v4-specification.ts:1881](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1881)
 
 ___
 
@@ -89,7 +89,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v4-specification.ts:1888](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1888)
+[v4-specification.ts:1909](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1909)
 
 ___
 
@@ -111,7 +111,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1824](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1824)
+[v4-specification.ts:1845](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1845)
 
 ___
 
@@ -133,4 +133,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1839](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1839)
+[v4-specification.ts:1860](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1860)

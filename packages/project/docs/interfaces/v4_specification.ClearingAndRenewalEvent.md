@@ -29,6 +29,7 @@ Clearing and renewal event for orchards / vinyards.
 - [externalId](v4_specification.ClearingAndRenewalEvent.md#externalid)
 - [id](v4_specification.ClearingAndRenewalEvent.md#id)
 - [percentRenewed](v4_specification.ClearingAndRenewalEvent.md#percentrenewed)
+- [source](v4_specification.ClearingAndRenewalEvent.md#source)
 
 ## Properties
 
@@ -62,7 +63,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -88,7 +89,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -114,7 +115,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -136,4 +137,36 @@ Percentage or orchard or vinyard that was cleared and renewed.
 
 #### Defined in
 
-[v4-specification.ts:2396](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L2396)
+[v4-specification.ts:2417](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2417)
+
+___
+
+### source
+
+• `Optional` **source**: `string`
+
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"source": "CDL"
+```
+
+**`example`**
+
+```js
+"source": "FMS name"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
+
+#### Defined in
+
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)

@@ -6,7 +6,7 @@
 
 Nori croplands project import file format.
 
-Version: 4.0
+Version: 4.0.1
 
 Provides the definitions for Nori croplands project data import using typescript interfaces.
 
@@ -82,7 +82,7 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 #### Defined in
 
-[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L34)
+[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L34)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:122](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L122)
+[v4-specification.ts:122](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L122)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:225](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L225)
+[v4-specification.ts:225](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L225)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:286](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L286)
+[v4-specification.ts:286](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L286)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:167](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L167)
+[v4-specification.ts:167](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L167)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:205](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L205)
+[v4-specification.ts:205](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L205)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L138)
+[v4-specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L138)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:249](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L249)
+[v4-specification.ts:249](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L249)
 
 ___
 
@@ -162,4 +162,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L146)
+[v4-specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L146)

@@ -403,6 +403,14 @@
                         "string",
                         "null"
                     ]
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -450,6 +458,14 @@
                     "minimum": 1,
                     "title": "percentRenewed",
                     "type": "number"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -852,6 +868,14 @@
                     "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",
                     "title": "name",
                     "type": "string"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "default": "mixed blends",
@@ -2018,6 +2042,14 @@
                     "minimum": 0,
                     "title": "percentResidueRemoved",
                     "type": "number"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -2283,6 +2315,14 @@
                         "null"
                     ]
                 },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "volume": {
                     "description": "The irrigation volume in inches. If volume is 0, simply do not define an irrigation event.",
                     "minimum": 0,
@@ -2325,6 +2365,14 @@
                 "id": {
                     "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
                     "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
                     "type": [
                         "string",
                         "null"
@@ -2896,6 +2944,14 @@
                         "string",
                         "null"
                     ]
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
@@ -2982,6 +3038,14 @@
                 "id": {
                     "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
                     "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
                     "type": [
                         "string",
                         "null"
@@ -3080,6 +3144,14 @@
                     ],
                     "title": "percentNitrogen"
                 },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "The organic matter or manure classification type.",
                     "enum": [
@@ -3142,6 +3214,14 @@
                     "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.\n\nWhen defaulting to \"no tillage\", a default value will also be used for the event data equal to the planting date of the crop.",
                     "title": "name",
                     "type": "string"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "The soil or crop disturbance events classification type.\n\nYou can find a list of common equivalents [here](https://go.nori.com/inputs).",
@@ -3270,6 +3350,14 @@
                         }
                     ],
                     "title": "percentNitrogen"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "tonsPerAcre": {
                     "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
