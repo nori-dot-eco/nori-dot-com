@@ -181,38 +181,58 @@ module.exports = {
           { selector: 'class', format: ['PascalCase'] },
           {
             selector: 'variable',
-            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+            format: [
+              'camelCase',
+              'PascalCase', // todo remove
+              'UPPER_CASE',
+            ],
           },
           {
             selector: 'default',
-            format: ['camelCase', 'UPPER_CASE'],
-            leadingUnderscore: 'allow',
-            filter: {
-              regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
-              match: false,
-            },
+            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
+            format: null,
           },
+          { selector: 'variableLike', format: ['camelCase', 'UPPER_CASE'] },
           { selector: 'typeLike', format: ['PascalCase'] },
           {
-            selector: 'property',
-            format: ['camelCase', 'PascalCase'],
+            selector: ['property'],
+            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
+            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
+            modifiers: ['requiresQuotes'],
             leadingUnderscore: 'allow',
-            filter: {
-              regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
-              match: false,
-            },
           },
           {
-            selector: 'objectLiteralProperty',
-            format: ['camelCase', 'snake_case', 'UPPER_CASE', 'PascalCase'],
+            selector: ['property'],
+            format: ['camelCase', 'UPPER_CASE'], // overrides format for same selector while persisting "requiresQuotes"
             leadingUnderscore: 'allow',
-            filter: {
-              regex:
-                '(@Name|@cometEmailId|@CropNumber|@Year|#text|@AREA|@SRID|[0-9]+)',
-              match: false,
-            },
+          },
+          {
+            selector: ['objectLiteralProperty'],
+            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
+            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
+            leadingUnderscore: 'allow',
+            modifiers: ['requiresQuotes'],
+          },
+          {
+            selector: ['objectLiteralProperty'],
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE'], // overrides format for same selector while persisting "requiresQuotes"
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: ['typeProperty'],
+            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
+            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
+            modifiers: ['requiresQuotes'],
+          },
+          {
+            selector: ['typeProperty'],
+            format: ['camelCase', 'PascalCase'], // overrides format for same selector while persisting "requiresQuotes"
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: ['classProperty'],
+            format: ['camelCase'],
+            leadingUnderscore: 'allow',
           },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
@@ -261,32 +281,13 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/naming-convention': [
           'error',
-          { selector: 'class', format: ['PascalCase'] },
-
           // Need PascalCase to allow for functional react components that have generics
           // on them. Like:
           //   type MyComponentProps<T> { value: T };
           //   function MyComponent<T>({value}: MyComponentProps<T>) { ... }
           // because unfortunately you can't use generics with arrow functions in tsx files:
-          //   const MyComponent = <T>({value}: MyComponentProps<T>) => { ... } //parsing error!
-          { selector: 'function', format: ['camelCase', 'PascalCase'] },
-          {
-            selector: 'variable',
-            // Needed to allow for react functional components that
-            // are supposed to be CamelCase. Adding the types specifier
-            // requires specifying a tsconfig.json file path in parserOptions.project,
-            // which gets complicated because we have multiple...
-            // types: ['function'],
-            format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
-          },
-          {
-            selector: 'default',
-            format: ['camelCase', 'UPPER_CASE'],
-            leadingUnderscore: 'allow',
-          },
-          { selector: 'typeLike', format: ['PascalCase'] },
-          { selector: 'parameter', format: ['camelCase', 'PascalCase'] },
-          { selector: 'property', format: ['camelCase', 'PascalCase'] },
+          //   const MyComponent = <T>({value}: MyComponentProps<T>) => { ... } //parsing error! // todo verify this is true
+          { selector: 'function', format: ['camelCase', 'PascalCase'] }, // todo remove after verifying the above is false (only allow `const` function components)
         ],
       },
     },
