@@ -1,3 +1,5 @@
+import { add } from '@nori-dot-com/math';
+
 import type {
   AnnualTotals,
   UnadjustedQuantificationSummary,
@@ -106,7 +108,7 @@ export const getNetQuantificationProjection = (
 
       if (value < 0) {
         logger?.debug(`Found negative number (${value}), adding to debt`);
-        debt += value;
+        debt = add(debt, value);
         netQuantifications[rowIndex][yearIndex] = 0;
       }
 
@@ -134,7 +136,7 @@ export const getNetQuantificationProjection = (
           const cellRemainder = accountingCellValue - amountToTake;
           netQuantifications[accountingRowIndex][accountingYearIndex] =
             cellRemainder;
-          debt += amountToTake;
+          debt = add(debt, amountToTake);
 
           logger?.debug(
             `Removing ${amountToTake} from [${accountingRowIndex}, ${accountingYearIndex}] = ${cellRemainder}`
