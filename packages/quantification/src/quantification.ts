@@ -12,6 +12,15 @@ export interface AnnualTotals {
   [year: string]: number;
 }
 
+/**
+ * Meant to be used in place of `AnnualTotals`, this interface is preferable
+ * to allow for better type inference with graphql.
+ */
+export interface AnnualTotalItem {
+  year: string;
+  value: number;
+}
+
 export interface UnadjustedGrandfatheredTotals {
   [year: string]: {
     amount: number;
@@ -68,7 +77,7 @@ export interface UnadjustedQuantificationSummary {
    * The net carbon removed by year, calculated by the algorithm in
    * [net-quantification.ts](./net-quantification.ts)
    */
-  netRemovalsByYear?: AnnualTotals;
+  netRemovalsByYear?: AnnualTotalItem[];
 }
 
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({

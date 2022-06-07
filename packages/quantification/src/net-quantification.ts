@@ -2,6 +2,7 @@ import { add } from '@nori-dot-com/math';
 
 import type {
   AnnualTotals,
+  AnnualTotalItem,
   UnadjustedQuantificationSummary,
 } from './quantification';
 
@@ -66,7 +67,7 @@ export const getNetQuantificationProjection = (
     'somscAnnualDifferencesBetweenFutureAndBaselineScenarios'
   >[],
   logger?: Pick<Console, 'debug' | 'table'>
-): AnnualTotals[] => {
+): AnnualTotalItem[][] => {
   const netQuantifications: AnnualTotals[] = quantifications.map(
     (quantification) => ({
       ...quantification.somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
@@ -183,5 +184,7 @@ export const getNetQuantificationProjection = (
     rowIndex += 1;
   }
 
-  return netQuantifications;
+  return netQuantifications.map((netQuantification) =>
+    Object.entries(netQuantification).map(([year, value]) => ({ year, value }))
+  );
 };

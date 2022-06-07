@@ -26,20 +26,20 @@ describe('getNetQuantificationProjection', () => {
     ];
 
     expect(getNetQuantificationProjection(testData)).toStrictEqual([
-      {
-        '2014': 0,
-        '2015': 0,
-        '2016': 0,
-        '2017': 0,
-        '2018': 0,
-      },
-      {
-        '2014': 0,
-        '2015': 10,
-        '2016': 0,
-        '2017': 8,
-        '2018': 0,
-      },
+      [
+        { year: '2014', value: 0 },
+        { year: '2015', value: 0 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 0 },
+        { year: '2018', value: 0 },
+      ],
+      [
+        { year: '2014', value: 0 },
+        { year: '2015', value: 10 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 8 },
+        { year: '2018', value: 0 },
+      ],
     ]);
   });
 
@@ -73,21 +73,11 @@ describe('getNetQuantificationProjection', () => {
     ];
 
     expect(getNetQuantificationProjection(testData)).toStrictEqual([
-      {
-        '2016': 0,
-      },
-      {
-        '2016': 0,
-      },
-      {
-        '2016': 12,
-      },
-      {
-        '2016': 0,
-      },
-      {
-        '2016': 0,
-      },
+      [{ year: '2016', value: 0 }],
+      [{ year: '2016', value: 0 }],
+      [{ year: '2016', value: 12 }],
+      [{ year: '2016', value: 0 }],
+      [{ year: '2016', value: 0 }],
     ]);
   });
 
@@ -131,31 +121,31 @@ describe('getNetQuantificationProjection', () => {
     ];
 
     expect(getNetQuantificationProjection(testData)).toStrictEqual([
-      {
-        '2015': 0,
-        '2016': 0,
-        '2017': 0,
-      },
-      {
-        '2015': 0,
-        '2016': -50,
-        '2017': 0,
-      },
-      {
-        '2015': 0,
-        '2016': -40,
-        '2017': 0,
-      },
-      {
-        '2015': 0,
-        '2016': -20,
-        '2017': 0,
-      },
-      {
-        '2015': 0,
-        '2016': 0,
-        '2017': 0,
-      },
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 0 },
+      ],
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: -50 },
+        { year: '2017', value: 0 },
+      ],
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: -40 },
+        { year: '2017', value: 0 },
+      ],
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: -20 },
+        { year: '2017', value: 0 },
+      ],
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 0 },
+      ],
     ]);
   });
 });
