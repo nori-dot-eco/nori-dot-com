@@ -1,4 +1,4 @@
-import { add } from '@nori-dot-com/math';
+import { add, subtract } from '@nori-dot-com/math';
 
 import type {
   AnnualTotals,
@@ -92,7 +92,7 @@ export const getNetQuantificationProjection = (
   // No guarantee that all fields have data for each year, so we need to add zeroes for the missing years
   for (const quantification of netQuantifications) {
     for (const year of years) {
-      if (quantification[year] === undefined) {
+      if (quantification[year] === undefined || quantification[year] === null) {
         quantification[year] = 0;
       }
     }
@@ -134,7 +134,7 @@ export const getNetQuantificationProjection = (
           // the amount available
           const amountAvailable = Math.max(accountingCellValue, 0);
           const amountToTake = Math.min(amountAvailable, Math.abs(debt));
-          const cellRemainder = accountingCellValue - amountToTake;
+          const cellRemainder = subtract(accountingCellValue, amountToTake);
           netQuantifications[accountingRowIndex][accountingYearIndex] =
             cellRemainder;
           debt = add(debt, amountToTake);
