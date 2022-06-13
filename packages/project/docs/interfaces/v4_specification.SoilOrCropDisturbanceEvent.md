@@ -64,7 +64,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -90,7 +90,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -116,7 +116,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -140,7 +140,7 @@ When defaulting to "no tillage", a default value will also be used for the event
 
 #### Defined in
 
-[v4-specification.ts:1942](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1942)
+[v4-specification.ts:1942](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1942)
 
 ___
 
@@ -172,7 +172,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1795)
 
 ___
 
@@ -252,4 +252,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:2015](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2015)
+[v4-specification.ts:2015](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L2015)

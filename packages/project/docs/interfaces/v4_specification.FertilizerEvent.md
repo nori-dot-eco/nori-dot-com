@@ -13,7 +13,7 @@ Fertilizer event details.
  "date": "2000-10-01",
  "name": "Joe's fertilizer",
  "type": "mixed blends",
- "lbsOfNPerAcre": 150
+ "lbsOfNPerAcre": 10
 }
 ```
 
@@ -67,7 +67,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1744)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -93,7 +93,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1759)
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1759)
 
 ___
 
@@ -119,7 +119,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1774)
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -134,12 +134,12 @@ Amount of nitrogen applied in lbs/ac.
 **`example`** When 10 lbs of Nitrogen per acre was applied:
 
 ```js
-"lbsOfNPerAcre": 150
+"lbsOfNPerAcre": 10
 ```
 
 #### Defined in
 
-[v4-specification.ts:2074](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2074)
+[v4-specification.ts:2074](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L2074)
 
 ___
 
@@ -159,7 +159,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2046](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2046)
+[v4-specification.ts:2046](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L2046)
 
 ___
 
@@ -191,7 +191,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1795)
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1795)
 
 ___
 
@@ -213,4 +213,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[v4-specification.ts:2061](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L2061)
+[v4-specification.ts:2061](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L2061)

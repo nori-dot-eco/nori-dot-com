@@ -82,7 +82,7 @@ assignmentOfAuthority
 
 #### Defined in
 
-[v4-specification.ts:1005](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1005)
+[v4-specification.ts:1005](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1005)
 
 ___
 
@@ -107,7 +107,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-[v4-specification.ts:1067](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1067)
+[v4-specification.ts:1067](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1067)
 
 ___
 
@@ -129,7 +129,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1083)
+[v4-specification.ts:1083](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1083)
 
 ___
 
@@ -153,7 +153,7 @@ The name of the field.
 
 #### Defined in
 
-[v4-specification.ts:985](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L985)
+[v4-specification.ts:985](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L985)
 
 ___
 
@@ -177,7 +177,7 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-[v4-specification.ts:1049](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1049)
+[v4-specification.ts:1049](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1049)
 
 ___
 
@@ -218,7 +218,7 @@ Details surrounding how the field was managed before year 2000.
 
 #### Defined in
 
-[v4-specification.ts:966](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L966)
+[v4-specification.ts:966](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L966)
 
 ___
 
@@ -240,7 +240,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1098](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1098)
+[v4-specification.ts:1098](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1098)
 
 ___
 
@@ -254,7 +254,7 @@ landOwners (as shown on deed, MUST LIST ALL OWNERS)
 
 #### Defined in
 
-[v4-specification.ts:1012](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1012)
+[v4-specification.ts:1012](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1012)
 
 ___
 
@@ -270,7 +270,7 @@ legalAcres Number of acres in this parcel per your insurance policy.
 
 #### Defined in
 
-[v4-specification.ts:993](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L993)
+[v4-specification.ts:993](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L993)
 
 ___
 
@@ -286,7 +286,7 @@ legalPropertyDescription
 
 #### Defined in
 
-[v4-specification.ts:1032](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1032)
+[v4-specification.ts:1032](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1032)
 
 ___
 
@@ -300,7 +300,7 @@ mailingAddress Mailing Address (where your property tax notice for lands in ques
 
 #### Defined in
 
-[v4-specification.ts:1018](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1018)
+[v4-specification.ts:1018](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1018)
 
 ___
 
@@ -314,7 +314,7 @@ parcelNumber
 
 #### Defined in
 
-[v4-specification.ts:1024](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1024)
+[v4-specification.ts:1024](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1024)
 
 ___
 
@@ -332,7 +332,7 @@ Details of new practice changes.
 
 #### Defined in
 
-[v4-specification.ts:932](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L932)
+[v4-specification.ts:932](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L932)
 
 ___
 
@@ -354,4 +354,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-[v4-specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L920)
+[v4-specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L920)

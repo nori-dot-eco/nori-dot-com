@@ -36,7 +36,7 @@ Added OMAD
 
 #### Defined in
 
-[v4-specification.ts:846](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L846)
+[v4-specification.ts:846](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L846)
 
 ___
 
@@ -50,7 +50,7 @@ Added cover cropping
 
 #### Defined in
 
-[v4-specification.ts:822](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L822)
+[v4-specification.ts:822](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L822)
 
 ___
 
@@ -64,7 +64,7 @@ Increased biodiversity of crop rotation
 
 #### Defined in
 
-[v4-specification.ts:858](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L858)
+[v4-specification.ts:858](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L858)
 
 ___
 
@@ -78,7 +78,7 @@ Ceased tillage.
 
 #### Defined in
 
-[v4-specification.ts:828](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L828)
+[v4-specification.ts:828](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L828)
 
 ___
 
@@ -92,7 +92,7 @@ Reduced fallow in rotation
 
 #### Defined in
 
-[v4-specification.ts:852](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L852)
+[v4-specification.ts:852](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L852)
 
 ___
 
@@ -106,7 +106,7 @@ Other reduction in tillage.
 
 #### Defined in
 
-[v4-specification.ts:840](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L840)
+[v4-specification.ts:840](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L840)
 
 ___
 
@@ -120,4 +120,4 @@ Switched to strip tillage.
 
 #### Defined in
 
-[v4-specification.ts:834](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L834)
+[v4-specification.ts:834](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L834)

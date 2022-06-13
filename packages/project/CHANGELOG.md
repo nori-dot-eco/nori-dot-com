@@ -1,3 +1,7 @@
+# v4.0.2 (June 13, 2022)
+* Fixed a bug where `HarvestEvent` did not inherit `CropEvent`.
+* Corrected a confusing `lbsOfNPerAcre` example.
+
 # v4.0.1 (June 2022)
 
 * Added a `source` attribute to `interface CropEvent` to optionally identify the source system

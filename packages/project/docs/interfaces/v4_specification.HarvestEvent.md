@@ -18,16 +18,86 @@ An annual crop's harvest event details.
 }
 ```
 
+## Hierarchy
+
+- [`CropEvent`](v4_specification.CropEvent.md)
+
+  ↳ **`HarvestEvent`**
+
 ## Table of contents
 
 ### Properties
 
+- [date](v4_specification.HarvestEvent.md#date)
+- [externalId](v4_specification.HarvestEvent.md#externalid)
 - [grainFruitTuber](v4_specification.HarvestEvent.md#grainfruittuber)
+- [id](v4_specification.HarvestEvent.md#id)
 - [residueRemoved](v4_specification.HarvestEvent.md#residueremoved)
+- [source](v4_specification.HarvestEvent.md#source)
 - [yield](v4_specification.HarvestEvent.md#yield)
 - [yieldUnit](v4_specification.HarvestEvent.md#yieldunit)
 
 ## Properties
+
+### date
+
+• **date**: `Date`
+
+The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
+
+Dates for liming and burning can be approximate or the first day of the crop year.
+
+**`example`** When the crop event occurred on January 1st of 2000:
+
+```js
+"date": "2000-01-01"
+```
+
+**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+
+**`format`** date
+
+**`errormessage`**
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[date](v4_specification.CropEvent.md#date)
+
+#### Defined in
+
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1744)
+
+___
+
+### externalId
+
+• `Optional` **externalId**: `string`
+
+External crop event identifier.
+
+Used to correlate data back to the originating system and to synchronize repeated imports.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[externalId](v4_specification.CropEvent.md#externalid)
+
+#### Defined in
+
+[v4-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1759)
+
+___
 
 ### grainFruitTuber
 
@@ -53,7 +123,33 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 #### Defined in
 
-[v4-specification.ts:1881](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1881)
+[v4-specification.ts:1881](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1881)
+
+___
+
+### id
+
+• `Optional` **id**: `string`
+
+Nori's internal crop event identifier.
+
+Used to synchronize repeated imports.
+
+**`nullable`** External systems leave this blank for new projects.
+
+**`example`**
+
+```js
+"id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[id](v4_specification.CropEvent.md#id)
+
+#### Defined in
+
+[v4-specification.ts:1774](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1774)
 
 ___
 
@@ -89,7 +185,39 @@ Crop residue removed.
 
 #### Defined in
 
-[v4-specification.ts:1909](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1909)
+[v4-specification.ts:1909](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1909)
+
+___
+
+### source
+
+• `Optional` **source**: `string`
+
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`nullable`**
+
+**`example`**
+
+```js
+"source": "CDL"
+```
+
+**`example`**
+
+```js
+"source": "FMS name"
+```
+
+#### Inherited from
+
+[CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
+
+#### Defined in
+
+[v4-specification.ts:1795](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1795)
 
 ___
 
@@ -111,7 +239,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1845](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1845)
+[v4-specification.ts:1845](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1845)
 
 ___
 
@@ -133,4 +261,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1860](https://github.com/nori-dot-eco/nori-dot-com/blob/036808b/packages/project/src/v4-specification.ts#L1860)
+[v4-specification.ts:1860](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1860)

@@ -2064,6 +2064,27 @@
             "additionalProperties": false,
             "description": "An annual crop's harvest event details.",
             "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "grainFruitTuber": {
                     "anyOf": [
                         {
@@ -2077,6 +2098,14 @@
                     ],
                     "title": "grainFruitTuber"
                 },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "residueRemoved": {
                     "default": 0,
                     "description": "Crop residue removed.",
@@ -2084,6 +2113,14 @@
                     "minimum": 0,
                     "title": "residueRemoved",
                     "type": "number"
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "yield": {
                     "default": 0,
@@ -2104,6 +2141,9 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "date"
+            ],
             "title": "HarvestEvent",
             "type": "object"
         },

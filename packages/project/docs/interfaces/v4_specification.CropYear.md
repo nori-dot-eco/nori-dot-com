@@ -59,7 +59,7 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v4-specification.ts:1159](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1159)
+[v4-specification.ts:1159](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1159)
 
 ___
 
@@ -81,4 +81,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1129](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v4-specification.ts#L1129)
+[v4-specification.ts:1129](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L1129)

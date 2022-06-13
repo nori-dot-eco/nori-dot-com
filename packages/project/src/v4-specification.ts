@@ -4,7 +4,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.1
+ * Version: 4.0.2
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -1827,7 +1827,7 @@ export interface PlantingEvent extends CropEvent {}
  * ```
  *
  */
-export interface HarvestEvent {
+export interface HarvestEvent extends CropEvent {
   /**
    * The crop yield.
    *
@@ -2025,7 +2025,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
  *  "date": "2000-10-01",
  *  "name": "Joe's fertilizer",
  *  "type": "mixed blends",
- *  "lbsOfNPerAcre": 150
+ *  "lbsOfNPerAcre": 10
  * }
  * ```
  *
@@ -2067,7 +2067,7 @@ export interface FertilizerEvent extends CropEvent {
    * @example <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
    *
    * ```js
-   * "lbsOfNPerAcre": 150
+   * "lbsOfNPerAcre": 10
    * ```
    *
    */
