@@ -234,6 +234,11 @@ module.exports = {
             format: ['camelCase'],
             leadingUnderscore: 'allow',
           },
+          {
+            selector: ['parameter'],
+            format: ['camelCase'],
+            leadingUnderscore: 'allow',
+          },
         ],
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/explicit-function-return-type': [
