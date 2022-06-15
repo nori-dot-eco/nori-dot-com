@@ -80,6 +80,7 @@ module.exports = {
               NConfConfig: true,
               params: true,
               args: true,
+              Args: true,
               getStaticProps: true,
             },
             ignore: ['a-z'],
