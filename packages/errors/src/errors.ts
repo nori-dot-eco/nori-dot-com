@@ -261,4 +261,15 @@ export const Errors = {
   miscError: {
     unexpectedError: 'An unexpected error occurred',
   },
+  parcelError: {
+    mustHaveIsoLocation: {
+      message: 'Parcel must have ISO location set',
+    },
+    mustHaveNetRemovals: {
+      message: 'Parcel must have net removals calculated',
+    },
+    alreadyHasIssuance: {
+      message: 'Parcel already has an issuance created',
+    },
+  },
 };
