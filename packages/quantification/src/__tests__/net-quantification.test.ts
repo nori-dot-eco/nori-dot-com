@@ -1,3 +1,6 @@
+import * as fs from 'fs';
+import * as path from 'path';
+
 import { getNetQuantificationProjection } from '../net-quantification';
 
 /**
@@ -28,7 +31,7 @@ describe('getNetQuantificationProjection', () => {
     expect(getNetQuantificationProjection(testData)).toStrictEqual([
       [
         { year: '2014', value: 0 },
-        { year: '2015', value: 0 },
+        { year: '2015', value: 8 },
         { year: '2016', value: 0 },
         { year: '2017', value: 0 },
         { year: '2018', value: 0 },
@@ -37,7 +40,7 @@ describe('getNetQuantificationProjection', () => {
         { year: '2014', value: 0 },
         { year: '2015', value: 10 },
         { year: '2016', value: 0 },
-        { year: '2017', value: 8 },
+        { year: '2017', value: 0 },
         { year: '2018', value: 0 },
       ],
     ]);
@@ -78,6 +81,52 @@ describe('getNetQuantificationProjection', () => {
       [{ year: '2016', value: 12 }],
       [{ year: '2016', value: 0 }],
       [{ year: '2016', value: 0 }],
+    ]);
+  });
+
+  it('should handle a single field', () => {
+    const testData = [
+      {
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2016': 5,
+          '2017': -20,
+          '2018': 18,
+        },
+      },
+    ];
+
+    expect(getNetQuantificationProjection(testData)).toStrictEqual([
+      [
+        { year: '2016', value: 3 },
+        { year: '2017', value: 0 },
+        { year: '2018', value: 0 },
+      ],
+    ]);
+  });
+
+  it('should handle a single field and a single year', () => {
+    const negativeTestData = [
+      {
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2017': -20,
+        },
+      },
+    ];
+
+    expect(getNetQuantificationProjection(negativeTestData)).toStrictEqual([
+      [{ year: '2017', value: -20 }],
+    ]);
+
+    const positiveTestData = [
+      {
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2017': 20,
+        },
+      },
+    ];
+
+    expect(getNetQuantificationProjection(positiveTestData)).toStrictEqual([
+      [{ year: '2017', value: 20 }],
     ]);
   });
 
@@ -147,5 +196,42 @@ describe('getNetQuantificationProjection', () => {
         { year: '2017', value: 0 },
       ],
     ]);
+  });
+
+  /**
+   * These examples were established to be correct by a SAM and developer
+   */
+  describe('IRL examples', () => {
+    /**
+     * Validation date: 6/20/2022
+     * Developer: Dave Martinez
+     * SAM: Rebekah Carlson
+     */
+    it('Knuth Farm', () => {
+      const testData = JSON.parse(
+        fs
+          .readFileSync(
+            path.resolve(
+              __dirname,
+              'test-fixtures/net-quantification-knuth.json'
+            )
+          )
+          .toString()
+      );
+
+      const expectedResult = JSON.parse(
+        fs
+          .readFileSync(
+            path.resolve(
+              __dirname,
+              'test-fixtures/net-quantification-knuth-result.json'
+            )
+          )
+          .toString()
+      );
+      expect(getNetQuantificationProjection(testData)).toStrictEqual(
+        expectedResult
+      );
+    });
   });
 });

@@ -13,11 +13,11 @@ import type {
  *
  * Algorithm overview:
  * 1. Years with negative numbers are set to zero
- * 2. The amount emitted will be debited from the subsequent years of the same field
- * 3. Should the amount emitted exceed the amount available from subsequent years, wrap to the
- * start year and continue to the currently considered year
- * 4. Should the amount exceed all available tonnes removed from this project, repeat step 1
- * starting with the currently considered year in the next quantification
+ * 2. The amount emitted will be debited from the same vintage of other fields
+ * 3. Should the amount emitted exceed the amount available from the vintage year, continue
+ * to the next vintage year in the same field
+ * 4. Continue with steps 2 and 3, wrapping from the last field to the first, and from the
+ * last vintage year to the first in each step
  * 5. Should the negative amount exceed the total tonnes available, the negative amount should
  * persist in the year it originated
  *
@@ -35,30 +35,30 @@ import type {
  * | A     | 10   | 0    | 9    |
  * | B     | 10   | 10   | 9    |
  *
- * 21 left
+ * 20 left
  * | field | 2015 | 2016 | 2017 |
  * |-------|------|------|------|
- * | A     | 10   | 0    | 0    |
- * | B     | 10   | 10   | 9    |
+ * | A     | 10   | 0    | 9    |
+ * | B     | 10   | 0    | 9    |
  *
  * 11 left
  * | field | 2015 | 2016 | 2017 |
  * |-------|------|------|------|
- * | A     | 0    | 0    | 0    |
- * | B     | 10   | 10   | 9    |
- *
- * 1 left
- * | field | 2015 | 2016 | 2017 |
- * |-------|------|------|------|
- * | A     | 0    | 0    | 0    |
+ * | A     | 10   | 0    | 0    |
  * | B     | 10   | 0    | 9    |
  *
- * 0
+ * 2 left
  * | field | 2015 | 2016 | 2017 |
  * |-------|------|------|------|
- * | A     | 0    | 0    | 0    |
- * | B     | 10   | 0    | 8    |
- * | final | 10   | 0    | 8    |
+ * | A     | 10   | 0    | 0    |
+ * | B     | 10   | 0    | 0    |
+ *
+ * 0 left
+ * | field | 2015 | 2016 | 2017 |
+ * |-------|------|------|------|
+ * | A     | 8    | 0    | 0    |
+ * | B     | 10   | 0    | 0    |
+ * | final | 18   | 0    | 0    |
  *
  */
 export const getNetQuantificationProjection = (
@@ -101,8 +101,9 @@ export const getNetQuantificationProjection = (
   let rowIndex = 0;
   let colIndex = 0;
   let debt = 0;
-  while (rowIndex < netQuantifications.length) {
-    while (colIndex < yearsOrderedAsc.length) {
+  // "Year-first" traversal -- iterate through all fields in a year before moving on
+  while (colIndex < yearsOrderedAsc.length) {
+    while (rowIndex < netQuantifications.length) {
       const yearIndex = yearsOrderedAsc[colIndex];
       const value = netQuantifications[rowIndex][yearIndex];
       logger?.debug(`Visiting [${rowIndex}, ${yearIndex}] = ${value}`);
@@ -115,12 +116,8 @@ export const getNetQuantificationProjection = (
 
       if (debt < 0) {
         logger?.debug(`Accounting for debt of ${debt}`);
-        // Edge case: if there's only one year, start on the next field, otherwise start on the current
-        let accountingRowIndex =
-          yearsOrderedAsc.length === 1
-            ? rowIndex + (1 % netQuantifications.length)
-            : rowIndex;
-        let accountingColIndex = (colIndex + 1) % years.size;
+        let accountingRowIndex = rowIndex + (1 % netQuantifications.length);
+        let accountingColIndex = colIndex;
         let accountingYearIndex = yearsOrderedAsc[accountingColIndex];
         while (debt < 0) {
           const accountingCellValue =
@@ -145,19 +142,17 @@ export const getNetQuantificationProjection = (
           logger?.debug(`Debt left: ${debt}`);
           logger?.table(netQuantifications);
 
-          // Go to the next column
-          accountingColIndex =
-            (accountingColIndex + 1) % yearsOrderedAsc.length;
-          accountingYearIndex = yearsOrderedAsc[accountingColIndex];
-          logger?.debug(`Advancing to next year (col ${accountingYearIndex})`);
+          // Go to the next row
+          accountingRowIndex =
+            (accountingRowIndex + 1) % netQuantifications.length;
+          logger?.debug(`Advancing to next field (row ${accountingRowIndex})`);
 
-          // If we're back to the row's starting year, advance to the next field
-          if (accountingColIndex === colIndex) {
-            accountingRowIndex =
-              (accountingRowIndex + 1) % netQuantifications.length;
-            logger?.debug(
-              `Advancing to next field (row ${accountingRowIndex})`
-            );
+          // If we're back to the columns's starting row, advance to the next column
+          if (accountingRowIndex === rowIndex) {
+            accountingColIndex =
+              (accountingColIndex + 1) % yearsOrderedAsc.length;
+            accountingYearIndex = yearsOrderedAsc[accountingColIndex];
+            logger?.debug(`Advancing to next year (col ${accountingRowIndex})`);
           }
 
           // If we get back to where we started, we can't account for the debt
@@ -176,12 +171,12 @@ export const getNetQuantificationProjection = (
         }
       }
 
-      colIndex += 1;
+      rowIndex += 1;
       logger?.table(netQuantifications);
     }
 
-    colIndex = 0;
-    rowIndex += 1;
+    rowIndex = 0;
+    colIndex += 1;
   }
 
   return netQuantifications.map((netQuantification) =>
