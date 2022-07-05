@@ -16,8 +16,8 @@
     "nx": "14.3.6"
   },
   "scripts": {
-    "build": "lerna run build -- --force",
-    "watch": "lerna run watch --parallel",
+    "build": "nx run-many --target=build --all -- --force",
+    "watch": "nx run-many --target=watch --all",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build"
