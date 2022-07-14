@@ -1,0 +1,33 @@
+{
+  "extends": "nx/presets/npm.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "test",
+          "prepare",
+          "watch",
+          "build",
+          "make:schema",
+          "make:docs"
+        ]
+      }
+    }
+  },
+  "targetDefaults": {
+    "prepare": {
+      "dependsOn": [
+        "^prepare"
+      ]
+    },
+    "build": {
+      "dependsOn": [
+        "^build"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}
