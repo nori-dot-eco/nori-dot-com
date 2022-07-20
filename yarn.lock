@@ -2268,7 +2268,7 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@solidity-parser/parser@^0.14.1", "@solidity-parser/parser@^0.14.3":
+"@solidity-parser/parser@^0.14.1", "@solidity-parser/parser@^0.14.2":
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/@solidity-parser/parser/-/parser-0.14.3.tgz#0d627427b35a40d8521aaa933cc3df7d07bfa36f"
   integrity sha512-29g2SZ29HtsqA58pLCtopI1P/cPy5/UAzlcAXO6T/CNJimG6yA8kx4NaseMyJULiC+TEs02Y9/yeHzClqoA0hw==
@@ -4454,15 +4454,6 @@ eslint-plugin-sort-imports-es6-autofix@^0.6.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-sort-imports-es6-autofix/-/eslint-plugin-sort-imports-es6-autofix-0.6.0.tgz#b8cd8639d7a54cefce6b17898b102fd5ec31e52b"
   integrity sha512-2NVaBGF9NN+727Fyq+jJYihdIeegjXeUUrZED9Q8FVB8MsV3YQEyXG96GVnXqWt0pmn7xfCZOZf3uKnIhBrfeQ==
 
-eslint-plugin-toml@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-toml/-/eslint-plugin-toml-0.3.1.tgz#3033df5b21de7506860922d9a68d05cea69c6534"
-  integrity sha512-glaDFIEeDUYb9VrNdKGiSOmeRQ+jAFJVV5xhu3chYOF8+YfMYiUQhpCwzgYYiFTR2Hv5TYlO02oRwKxjMIw17Q==
-  dependencies:
-    debug "^4.1.1"
-    lodash "^4.17.19"
-    toml-eslint-parser "^0.4.0"
-
 eslint-plugin-unicorn@42.0.0:
   version "42.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-42.0.0.tgz#47d60c00c263ad743403b052db689e39acbacff1"
@@ -4531,7 +4522,7 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-2.1.0.tgz#f65328259305927392c938ed44eb0a5c9b2bd303"
   integrity sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==
 
-eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0:
+eslint-visitor-keys@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
@@ -4579,9 +4570,9 @@ eslint@^5.6.0:
     text-table "^0.2.0"
 
 eslint@^8.15.0:
-  version "8.20.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.20.0.tgz#048ac56aa18529967da8354a478be4ec0a2bc81b"
-  integrity sha512-d4ixhz5SKCa1D6SCPrivP7yYVi7nyD6A4vs6HIAul9ujBzcEmZVM3/0NN/yu5nKhmO1wjp5xQ46iRfmDGlOviA==
+  version "8.19.0"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.19.0.tgz#7342a3cbc4fbc5c106a1eefe0fd0b50b6b1a7d28"
+  integrity sha512-SXOPj3x9VKvPe81TjjUJCYlV4oJjQw68Uek+AM0X4p+33dj2HY5bpTZOgnQHcG2eAm1mtCU9uNMnJi7exU/kYw==
   dependencies:
     "@eslint/eslintrc" "^1.3.0"
     "@humanwhocodes/config-array" "^0.9.2"
@@ -7212,10 +7203,10 @@ modify-values@^1.0.0:
   resolved "https://registry.npmjs.org/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-moment@2.29.2:
-  version "2.29.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
-  integrity sha512-UgzG4rvxYpN15jgCmVJwac49h9ly9NurikMWGPdVxm8GZD6XjkKPxDTjQQ43gtGgnV3X0cAyWDdP2Wexoquifg==
+moment@2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.0.0:
   version "2.0.0"
@@ -8058,11 +8049,11 @@ prettier-linter-helpers@^1.0.0:
     fast-diff "^1.1.2"
 
 prettier-plugin-solidity@^1.0.0-beta.19:
-  version "1.0.0-dev.23"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-solidity/-/prettier-plugin-solidity-1.0.0-dev.23.tgz#e1edf0693d69fe1518519ab704d5e46ee4f842fc"
-  integrity sha512-440/jZzvtDJcqtoRCQiigo1DYTPAZ85pjNg7gvdd+Lds6QYgID8RyOdygmudzHdFmV2UfENt//A8tzx7iS58GA==
+  version "1.0.0-dev.22"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-solidity/-/prettier-plugin-solidity-1.0.0-dev.22.tgz#08c07816884d17bd9171c073c2421559057230c3"
+  integrity sha512-0v+O2/sqq6WMlZ2TsnRBXaNmKF4zANn0uLLWuvNra4BjmKUtp33EZ4AVKB26fzWy14BkVGeJfPAtKry0x3SFfQ==
   dependencies:
-    "@solidity-parser/parser" "^0.14.3"
+    "@solidity-parser/parser" "^0.14.2"
     emoji-regex "^10.1.0"
     escape-string-regexp "^4.0.0"
     semver "^7.3.7"
@@ -9345,13 +9336,6 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-toml-eslint-parser@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/toml-eslint-parser/-/toml-eslint-parser-0.4.0.tgz#4c7ebdc4ae585be886d881a0855ac0b089a85666"
-  integrity sha512-lwMC8RPBoAksoMFpQnB4c3zz+o9JPv1sxsduVH9AHb2o4kxQl7mtP5YaYoS33+6IdVrzHAXxi4JgowJDERoynw==
-  dependencies:
-    eslint-visitor-keys "^3.0.0"
-
 tough-cookie@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-4.0.0.tgz#d822234eeca882f991f0f908824ad2622ddbece4"
@@ -10001,9 +9985,9 @@ ws@^7.4.6:
   integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
 
 ws@^8.3.0:
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
-  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
+  version "8.8.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.0.tgz#8e71c75e2f6348dbf8d78005107297056cb77769"
+  integrity sha512-JDAgSYQ1ksuwqfChJusw1LSJ8BizJ2e/vVu5Lxjq3YvNJNlROv1ui4i+c/kUUrPheBvQl4c5UbERhTwKa6QBJQ==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"
