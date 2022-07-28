@@ -83,6 +83,7 @@ module.exports = {
               args: true,
               Args: true,
               getStaticProps: true,
+              Lib: true,
             },
             ignore: ['a-z'],
           },
