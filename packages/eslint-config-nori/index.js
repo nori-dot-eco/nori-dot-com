@@ -39,7 +39,7 @@ module.exports = {
         'plugin:@next/next/core-web-vitals',
         'plugin:unicorn/recommended',
         'plugin:eslint-comments/recommended',
-        'plugin:prettier/recommended',
+        'plugin:prettier/recommended', // todo define prettier rules in this file
       ],
       plugins: [
         'react',
@@ -301,6 +301,10 @@ module.exports = {
     {
       files: ['**/*.stories.*'],
       rules: { 'react/jsx-props-no-spreading': ['off'] },
+    },
+    {
+      extends: ['airbnb-base', 'plugin:toml/standard'],
+      files: ['*.toml'],
     },
   ],
 };
