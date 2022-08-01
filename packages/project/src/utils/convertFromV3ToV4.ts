@@ -195,6 +195,7 @@ export const convertV3FieldToV4Field = (v3Field: FieldV3): FieldV4 => {
     historicLandManagement: convertHistoricLandManagement(
       v3Field.historicLandManagement
     ),
+    earliestEvidenceYear: v3Field.regenerativeStartYear,
     practiceChangesAdopted: {},
     cropYears: v3Field.cropYears.map((v3CropYear: V3.CropYear): V4.CropYear => {
       const crops = v3CropYear.crops.map(

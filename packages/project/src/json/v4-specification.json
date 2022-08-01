@@ -939,6 +939,11 @@
                     "title": "cropYears",
                     "type": "array"
                 },
+                "earliestEvidenceYear": {
+                    "description": "Earliest evidence is the first year a field has any digital or hard copy records of its practices\n(instead of an external data set to infer practices) and is used to calculate the number of eligible years to issue NRTs.",
+                    "title": "earliestEvidenceYear",
+                    "type": "number"
+                },
                 "externalId": {
                     "description": "Field identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
                     "title": "externalId",
@@ -1077,6 +1082,7 @@
             },
             "required": [
                 "cropYears",
+                "earliestEvidenceYear",
                 "fieldName",
                 "geojson",
                 "historicLandManagement",

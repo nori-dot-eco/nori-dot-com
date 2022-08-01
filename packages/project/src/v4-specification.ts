@@ -918,6 +918,18 @@ export interface Field {
    *
    */
   regenerativeStartYear: number;
+    /**
+   * Earliest evidence is the first year a field has any digital or hard copy records of its practices
+   * (instead of an external data set to infer practices) and is used to calculate the number of eligible years to issue NRTs.
+   *
+   * @example <caption>When earliest available detailed practice records date back to 2010:</caption>
+   *
+   * ```js
+   * "earliestEvidenceYear": 2010
+   * ```
+   *
+   */
+  earliestEvidenceYear: number;
   /**
    * Details of new practice changes.
    *
