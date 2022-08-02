@@ -406,7 +406,7 @@ export interface Project {
    * }
    *
    * @minItems 1
-   * @maxItems 25
+   * @maxItems 200
    *
    * @example
    *
