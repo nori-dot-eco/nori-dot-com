@@ -234,4 +234,25 @@ describe('getNetQuantificationProjection', () => {
       );
     });
   });
+
+  describe('regression cases', () => {
+    it('should not access an index over the row length', () => {
+      const negativeTestData = [
+        {
+          somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+              '2018': 10, '2019': 18, '2020': -5, '2021': 11
+          },
+        },
+        {
+          somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+              '2018': -10, '2019': 18, '2020': 5, '2021': 11
+          },
+        },
+      ];
+      expect(getNetQuantificationProjection(negativeTestData)).toStrictEqual([
+        [{ year: '2018', value: 0 }, {year: '2019', value: 18}, {year: '2020', value: 0}, {year: '2021', value: 11}],
+        [{ year: '2018', value: 0 }, {year: '2019', value: 18}, {year: '2020', value: 0}, {year: '2021', value: 11}],
+      ]);
+    })
+  })
 });
