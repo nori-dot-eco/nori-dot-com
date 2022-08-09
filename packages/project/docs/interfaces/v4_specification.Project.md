@@ -55,7 +55,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:381](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L381)
+[v4-specification.ts:381](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L381)
 
 ___
 
@@ -69,7 +69,7 @@ farmAddress
 
 #### Defined in
 
-[v4-specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L343)
+[v4-specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L343)
 
 ___
 
@@ -89,7 +89,7 @@ An array of fields defining annual crop management practices.
 
 **`minitems`** 1
 
-**`maxitems`** 25
+**`maxitems`** 200
 
 **`example`**
 
@@ -101,7 +101,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L420)
+[v4-specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L420)
 
 ___
 
@@ -123,7 +123,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:396](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L396)
+[v4-specification.ts:396](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L396)
 
 ___
 
@@ -137,7 +137,7 @@ primaryContact Contact info for verifiers and other entities involved in the pro
 
 #### Defined in
 
-[v4-specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L337)
+[v4-specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L337)
 
 ___
 
@@ -157,7 +157,7 @@ totalCroppedAcres
 
 #### Defined in
 
-[v4-specification.ts:367](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L367)
+[v4-specification.ts:367](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L367)
 
 ___
 
@@ -177,7 +177,7 @@ totalFarmAcres
 
 #### Defined in
 
-[v4-specification.ts:355](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L355)
+[v4-specification.ts:355](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L355)
 
 ___
 
@@ -201,4 +201,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v4-specification.ts:331](https://github.com/nori-dot-eco/nori-dot-com/blob/b53d13d/packages/project/src/v4-specification.ts#L331)
+[v4-specification.ts:331](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L331)
