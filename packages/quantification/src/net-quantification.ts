@@ -116,7 +116,7 @@ export const getNetQuantificationProjection = (
 
       if (debt < 0) {
         logger?.debug(`Accounting for debt of ${debt}`);
-        let accountingRowIndex = rowIndex + (1 % netQuantifications.length);
+        let accountingRowIndex = (rowIndex + 1) % netQuantifications.length;
         let accountingColIndex = colIndex;
         let accountingYearIndex = yearsOrderedAsc[accountingColIndex];
         while (debt < 0) {
