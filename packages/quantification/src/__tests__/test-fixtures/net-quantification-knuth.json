@@ -1,155 +1,155 @@
 [
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 14.6,
-      "2019": 32.5,
-      "2020": 8.77
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 14.6},
+      "2019": {"amount": 32.5},
+      "2020": {"amount": 8.77}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": 19.75,
-      "2017": 19.75,
-      "2018": 9.93,
-      "2019": -18.1,
-      "2020": 19.75
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": 19.75},
+      "2017": {"amount": 19.75},
+      "2018": {"amount": 9.93},
+      "2019": {"amount": -18.1},
+      "2020": {"amount": 19.75}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 6.78,
-      "2019": -81.4,
-      "2020": 113.28
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 6.78},
+      "2019": {"amount": -81.4},
+      "2020": {"amount": 113.28}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": 43.5,
-      "2017": 43.5,
-      "2018": 41.66,
-      "2019": 38.88,
-      "2020": -28.86
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": 43.5},
+      "2017": {"amount": 43.5},
+      "2018": {"amount": 41.66},
+      "2019": {"amount": 38.88},
+      "2020": {"amount": -28.86}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 31.05,
-      "2019": 33.69,
-      "2020": 18.22
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 31.05},
+      "2019": {"amount": 33.69},
+      "2020": {"amount": 18.22}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": 15.13,
-      "2018": 15.1,
-      "2019": 31.51,
-      "2020": -6.91
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": 15.13},
+      "2018": {"amount": 15.1},
+      "2019": {"amount": 31.51},
+      "2020": {"amount": -6.91}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 40.9,
-      "2019": 4.32,
-      "2020": -8.82
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 40.9},
+      "2019": {"amount": 4.32},
+      "2020": {"amount": -8.82}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": 44.65,
-      "2017": 44.65,
-      "2018": 44.65,
-      "2019": -18.21,
-      "2020": -27.84
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": 44.65},
+      "2017": {"amount": 44.65},
+      "2018": {"amount": 44.65},
+      "2019": {"amount": -18.21},
+      "2020": {"amount": -27.84}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 28.82,
-      "2019": -11.92,
-      "2020": 17.84
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 28.82},
+      "2019": {"amount": -11.92},
+      "2020": {"amount": 17.84}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 39.88,
-      "2019": -78.91,
-      "2020": -15.45
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 39.88},
+      "2019": {"amount": -78.91},
+      "2020": {"amount": -15.45}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": -28.13,
-      "2018": 35.13,
-      "2019": 1.95,
-      "2020": -6.58
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": -28.13},
+      "2018": {"amount": 35.13},
+      "2019": {"amount": 1.95},
+      "2020": {"amount": -6.58}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": 2.89,
-      "2018": 2.89,
-      "2019": -8.27,
-      "2020": 2.89
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": 2.89},
+      "2018": {"amount": 2.89},
+      "2019": {"amount": -8.27},
+      "2020": {"amount": 2.89}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": -9.18,
-      "2019": -21.65,
-      "2020": 17.59
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": -9.18},
+      "2019": {"amount": -21.65},
+      "2020": {"amount": 17.59}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 18.69,
-      "2019": 18.69,
-      "2020": -47.68
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 18.69},
+      "2019": {"amount": 18.69},
+      "2020": {"amount": -47.68}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": 29.86,
-      "2017": 29.86,
-      "2018": 29.86,
-      "2019": -10.75,
-      "2020": 29.86
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": 29.86},
+      "2017": {"amount": 29.86},
+      "2018": {"amount": 29.86},
+      "2019": {"amount": -10.75},
+      "2020": {"amount": 29.86}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": 3.96,
-      "2018": 11.72,
-      "2019": -11.09,
-      "2020": 11.72
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": 3.96},
+      "2018": {"amount": 11.72},
+      "2019": {"amount": -11.09},
+      "2020": {"amount": 11.72}
     }
   },
   {
-    "somscAnnualDifferencesBetweenFutureAndBaselineScenarios": {
-      "2016": null,
-      "2017": null,
-      "2018": 25.07,
-      "2019": 19.8,
-      "2020": 42.47
+    "unadjustedGrandfatheredTonnesPerYear": {
+      "2016": {"amount": null},
+      "2017": {"amount": null},
+      "2018": {"amount": 25.07},
+      "2019": {"amount": 19.8},
+      "2020": {"amount": 42.47}
     }
   }
 ]

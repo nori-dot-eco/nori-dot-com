@@ -11,19 +11,35 @@ describe('getNetQuantificationProjection', () => {
   it('should return a total of 18 NRT', () => {
     const testData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': -30,
-          '2015': 10,
-          '2017': 9,
-          '2014': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: -30,
+          },
+          '2015': {
+            amount: 10,
+          },
+          '2017': {
+            amount: 9,
+          },
+          '2014': {
+            amount: 0,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 10,
-          '2017': 9,
-          '2018': 0,
-          '2015': 10,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 10,
+          },
+          '2017': {
+            amount: 9,
+          },
+          '2018': {
+            amount: 0,
+          },
+          '2015': {
+            amount: 10,
+          },
         },
       },
     ];
@@ -49,28 +65,38 @@ describe('getNetQuantificationProjection', () => {
   it('should handle a single year', () => {
     const testData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 5,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 5,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 10,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 10,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 15,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 15,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': -20,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: -20,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 2,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 2,
+          },
         },
       },
     ];
@@ -87,10 +113,16 @@ describe('getNetQuantificationProjection', () => {
   it('should handle a single field', () => {
     const testData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2016': 5,
-          '2017': -20,
-          '2018': 18,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 5,
+          },
+          '2017': {
+            amount: -20,
+          },
+          '2018': {
+            amount: 18,
+          },
         },
       },
     ];
@@ -107,8 +139,10 @@ describe('getNetQuantificationProjection', () => {
   it('should handle a single field and a single year', () => {
     const negativeTestData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2017': -20,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2017': {
+            amount: -20,
+          },
         },
       },
     ];
@@ -119,8 +153,10 @@ describe('getNetQuantificationProjection', () => {
 
     const positiveTestData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2017': 20,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2017': {
+            amount: 20,
+          },
         },
       },
     ];
@@ -133,38 +169,68 @@ describe('getNetQuantificationProjection', () => {
   it('should persist a left-over negative amount in the cell it originated from', () => {
     const testData = [
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2015': 0,
-          '2016': 0,
-          '2017': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: 0,
+          },
+          '2016': {
+            amount: 0,
+          },
+          '2017': {
+            amount: 0,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2015': 0,
-          '2016': -50,
-          '2017': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: 0,
+          },
+          '2016': {
+            amount: -50,
+          },
+          '2017': {
+            amount: 0,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2015': 0,
-          '2016': -40,
-          '2017': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: 0,
+          },
+          '2016': {
+            amount: -40,
+          },
+          '2017': {
+            amount: 0,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2015': 0,
-          '2016': -20,
-          '2017': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: 0,
+          },
+          '2016': {
+            amount: -20,
+          },
+          '2017': {
+            amount: 0,
+          },
         },
       },
       {
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-          '2015': 0,
-          '2016': 0,
-          '2017': 0,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: 0,
+          },
+          '2016': {
+            amount: 0,
+          },
+          '2017': {
+            amount: 0,
+          },
         },
       },
     ];
@@ -239,20 +305,52 @@ describe('getNetQuantificationProjection', () => {
     it('should not access an index over the row length', () => {
       const negativeTestData = [
         {
-          somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-              '2018': 10, '2019': 18, '2020': -5, '2021': 11
+          unadjustedGrandfatheredTonnesPerYear: {
+            '2018': {
+              amount: 10,
+            },
+            '2019': {
+              amount: 18,
+            },
+            '2020': {
+              amount: -5,
+            },
+            '2021': {
+              amount: 11,
+            },
           },
         },
         {
-          somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-              '2018': -10, '2019': 18, '2020': 5, '2021': 11
+          unadjustedGrandfatheredTonnesPerYear: {
+            '2018': {
+              amount: -10,
+            },
+            '2019': {
+              amount: 18,
+            },
+            '2020': {
+              amount: 5,
+            },
+            '2021': {
+              amount: 11,
+            },
           },
         },
       ];
       expect(getNetQuantificationProjection(negativeTestData)).toStrictEqual([
-        [{ year: '2018', value: 0 }, {year: '2019', value: 18}, {year: '2020', value: 0}, {year: '2021', value: 11}],
-        [{ year: '2018', value: 0 }, {year: '2019', value: 18}, {year: '2020', value: 0}, {year: '2021', value: 11}],
+        [
+          { year: '2018', value: 0 },
+          { year: '2019', value: 18 },
+          { year: '2020', value: 0 },
+          { year: '2021', value: 11 },
+        ],
+        [
+          { year: '2018', value: 0 },
+          { year: '2019', value: 18 },
+          { year: '2020', value: 0 },
+          { year: '2021', value: 11 },
+        ],
       ]);
-    })
-  })
+    });
+  });
 });
