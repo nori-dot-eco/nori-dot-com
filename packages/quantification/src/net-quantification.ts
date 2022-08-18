@@ -3,8 +3,14 @@ import { add, subtract } from '@nori-dot-com/math';
 import type {
   AnnualTotals,
   AnnualTotalItem,
-  UnadjustedQuantificationSummary,
+  UnadjustedGrandfatheredTotals,
 } from './quantification';
+
+export type NetQuantificationInput = {
+  unadjustedGrandfatheredTonnesPerYear: {
+    [year: string]: Pick<UnadjustedGrandfatheredTotals[string], 'amount'>;
+  };
+}[];
 
 /**
  * Calculates the net tonnes removed accounting for years with emissions. Years with emissions (represented
@@ -62,16 +68,16 @@ import type {
  *
  */
 export const getNetQuantificationProjection = (
-  quantifications: Pick<
-    UnadjustedQuantificationSummary,
-    'somscAnnualDifferencesBetweenFutureAndBaselineScenarios'
-  >[],
+  quantificationSummaries: NetQuantificationInput,
   logger?: Pick<Console, 'debug' | 'table'>
 ): AnnualTotalItem[][] => {
-  const netQuantifications: AnnualTotals[] = quantifications.map(
-    (quantification) => ({
-      ...quantification.somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
-    })
+  const netQuantifications: AnnualTotals[] = quantificationSummaries.map(
+    (quantificationSummary) =>
+      Object.fromEntries(
+        Object.entries(
+          quantificationSummary.unadjustedGrandfatheredTonnesPerYear
+        ).map(([year, { amount }]) => [year, amount])
+      )
   );
 
   // Get the set of years in all quantifications
