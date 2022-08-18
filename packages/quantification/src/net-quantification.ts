@@ -95,15 +95,6 @@ export const getNetQuantificationProjection = (
   const yearsOrderedAsc = Array.from(years.values()).sort();
   logger?.debug('All years:', yearsOrderedAsc);
 
-  // No guarantee that all fields have data for each year, so we need to add zeroes for the missing years
-  for (const quantification of netQuantifications) {
-    for (const year of years) {
-      if (quantification[year] === undefined || quantification[year] === null) {
-        quantification[year] = 0;
-      }
-    }
-  }
-
   let rowIndex = 0;
   let colIndex = 0;
   let debt = 0;
@@ -129,24 +120,29 @@ export const getNetQuantificationProjection = (
           const accountingCellValue =
             netQuantifications[accountingRowIndex][accountingYearIndex];
 
-          logger?.debug(
-            `Accounting visiting [${accountingRowIndex}, ${accountingYearIndex}] = ${accountingCellValue}`
-          );
+          if (
+            accountingCellValue !== null &&
+            accountingCellValue !== undefined
+          ) {
+            logger?.debug(
+              `Accounting visiting [${accountingRowIndex}, ${accountingYearIndex}] = ${accountingCellValue}`
+            );
 
-          // Core logic: the amount to take is the lesser of the absolute value of the debt or the
-          // the amount available
-          const amountAvailable = Math.max(accountingCellValue, 0);
-          const amountToTake = Math.min(amountAvailable, Math.abs(debt));
-          const cellRemainder = subtract(accountingCellValue, amountToTake);
-          netQuantifications[accountingRowIndex][accountingYearIndex] =
-            cellRemainder;
-          debt = add(debt, amountToTake);
+            // Core logic: the amount to take is the lesser of the absolute value of the debt or the
+            // the amount available
+            const amountAvailable = Math.max(accountingCellValue, 0);
+            const amountToTake = Math.min(amountAvailable, Math.abs(debt));
+            const cellRemainder = subtract(accountingCellValue, amountToTake);
+            netQuantifications[accountingRowIndex][accountingYearIndex] =
+              cellRemainder;
+            debt = add(debt, amountToTake);
 
-          logger?.debug(
-            `Removing ${amountToTake} from [${accountingRowIndex}, ${accountingYearIndex}] = ${cellRemainder}`
-          );
-          logger?.debug(`Debt left: ${debt}`);
-          logger?.table(netQuantifications);
+            logger?.debug(
+              `Removing ${amountToTake} from [${accountingRowIndex}, ${accountingYearIndex}] = ${cellRemainder}`
+            );
+            logger?.debug(`Debt left: ${debt}`);
+            logger?.table(netQuantifications);
+          }
 
           // Go to the next row
           accountingRowIndex =
