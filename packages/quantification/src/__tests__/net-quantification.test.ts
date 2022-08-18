@@ -262,7 +262,7 @@ describe('getNetQuantificationProjection', () => {
     ]);
   });
 
-  it('should not return a value for years that are in a other fields', () => {
+  it('should not return a value for years that are only in other fields', () => {
     const testData = [
       {
         unadjustedGrandfatheredTonnesPerYear: {
