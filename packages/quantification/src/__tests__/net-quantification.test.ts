@@ -50,10 +50,8 @@ describe('getNetQuantificationProjection', () => {
         { year: '2015', value: 8 },
         { year: '2016', value: 0 },
         { year: '2017', value: 0 },
-        { year: '2018', value: 0 },
       ],
       [
-        { year: '2014', value: 0 },
         { year: '2015', value: 10 },
         { year: '2016', value: 0 },
         { year: '2017', value: 0 },
@@ -261,6 +259,39 @@ describe('getNetQuantificationProjection', () => {
         { year: '2016', value: 0 },
         { year: '2017', value: 0 },
       ],
+    ]);
+  });
+
+  it('should not return a value for years that are in a other fields', () => {
+    const testData = [
+      {
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2015': {
+            amount: -5,
+          },
+          '2016': {
+            amount: 0,
+          },
+          '2017': {
+            amount: 0,
+          },
+        },
+      },
+      {
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 10,
+          },
+        },
+      },
+    ];
+    expect(getNetQuantificationProjection(testData)).toStrictEqual([
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 0 },
+      ],
+      [{ year: '2016', value: 5 }],
     ]);
   });
 
