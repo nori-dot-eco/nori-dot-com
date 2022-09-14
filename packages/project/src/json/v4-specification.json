@@ -3487,7 +3487,7 @@
             "items": {
                 "$ref": "#/definitions/Field"
             },
-            "maxItems": 25,
+            "maxItems": 200,
             "minItems": 1,
             "title": "fields",
             "type": "array"
