@@ -271,5 +271,8 @@ export const Errors = {
     alreadyHasIssuance: {
       message: 'Parcel already has an issuance created',
     },
+    hasMintedRemovals: {
+      message: 'Parcel already has at least one removal minted to chain',
+    },
   },
 };
