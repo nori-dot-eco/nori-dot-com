@@ -6,7 +6,11 @@ const {
 module.exports = {
   extends: '@nori-dot-com/eslint-config-nori',
   parserOptions: parserOptions({
-    projectDirectories: ['./tsconfig.json', 'packages/project/tsconfig.json'],
+    projectDirectories: [
+      './tsconfig.json',
+      './tsconfig.eslint.json',
+      'packages/project/tsconfig.json',
+    ],
     typescript: true,
     react: false,
     dir: __dirname,
