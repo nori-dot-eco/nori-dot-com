@@ -31,9 +31,7 @@ export class ContextualError extends Error {
     const originalMessage = args.originalException?.message ?? '';
     const context = args.context;
     const code: UnparsedError =
-      'errorKey' in args
-        ? args.errorKey
-        : 'unknownErrorCode:unknownErrorType';
+      'errorKey' in args ? args.errorKey : 'unknownErrorCode:unknownErrorType';
     const errorKey = 'errorKey' in args ? args.errorKey : undefined;
     const title =
       'message' in args
@@ -41,9 +39,7 @@ export class ContextualError extends Error {
         : parseError({ error: errorKey }).message;
     this.code = code;
     this.type =
-      'message' in args
-        ? undefined
-        : parseError({ error: errorKey }).type;
+      'message' in args ? undefined : parseError({ error: errorKey }).type;
     super.message =
       typeof context !== 'undefined'
         ? `${title}: ${JSON.stringify(context)} [${originalMessage}]`
@@ -61,13 +57,13 @@ export class ErrorCollector {
     this.#logger = logger;
   }
 
+  public get errors(): ContextualError[] {
+    return this.#errors;
+  }
+
   public collectContextualError({ error }: { error: ContextualError }): void {
     this.#logger.error('Collected error while parsing data!', error);
     this.#errors.push(error);
-  }
-
-  public get errors(): ContextualError[] {
-    return this.#errors;
   }
 
   public collectKeyedError(

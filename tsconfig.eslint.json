@@ -1,0 +1,5 @@
+{
+  // https://github.com/typescript-eslint/typescript-eslint/issues/5457#issuecomment-1210625587
+  "extends": "./tsconfig.json",
+  "include": ["**/*.ts", "**/*.js", ".eslintrc.js"]
+}
