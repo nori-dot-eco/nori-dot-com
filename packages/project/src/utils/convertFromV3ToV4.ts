@@ -1,11 +1,17 @@
-import { Project as ProjectV4, Field as FieldV4 } from '../v4-specification';
-import { Project as ProjectV3, Field as FieldV3 } from '../v3-specification';
-import * as V4 from '../v4-specification';
+import type {
+  Project as ProjectV4,
+  Field as FieldV4,
+} from '../v4-specification';
+import type {
+  Project as ProjectV3,
+  Field as FieldV3,
+} from '../v3-specification';
+import type * as V4 from '../v4-specification';
 import * as V3 from '../v3-specification';
 
 const yesNoToBool = (value: string): boolean => value?.toLowerCase() === 'yes';
 
-const dateRegex = /^(\d\d)\/(\d\d)\/(\d\d\d\d)$/;
+const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
 const parseV3Date = (value: string): Date => {
   const match = value.match(dateRegex);
   if (match) {
@@ -25,12 +31,11 @@ const convertHistoricLandManagement = (
       ...v3Mgmt,
       crp: true,
     };
-  } else {
-    return {
-      ...v3Mgmt,
-      crp: false,
-    };
   }
+  return {
+    ...v3Mgmt,
+    crp: false,
+  };
 };
 
 const convertV3CropToV4Crop = (
@@ -52,10 +57,10 @@ const convertV3CropToV4Crop = (
     v3Crop.classification === 'orchard' ||
     v3Crop.classification === 'vineyard'
   ) {
-    harvestEvents = v3Crop.harvestEvents?.map((evt) => ({
-      ...evt,
-      date: parseV3Date(evt.date),
-      grainFruitTuber: yesNoToBool(evt.grainFruitTuber),
+    harvestEvents = v3Crop.harvestEvents?.map((event) => ({
+      ...event,
+      date: parseV3Date(event.date),
+      grainFruitTuber: yesNoToBool(event.grainFruitTuber),
     }));
   }
 
@@ -95,22 +100,22 @@ const convertV3CropToV4Crop = (
     ];
   }
 
-  let events = {
+  const events = {
     plantingEvents: [{ date: parseV3Date(v3Crop.plantingDate) }],
     soilOrCropDisturbanceEvents: v3Crop.soilOrCropDisturbanceEvents?.map(
-      (evt) => ({
-        ...evt,
-        date: parseV3Date(evt.date),
+      (event) => ({
+        ...event,
+        date: parseV3Date(event.date),
       })
     ),
-    fertilizerEvents: v3Crop.fertilizerEvents?.map((evt) => ({
-      ...evt,
-      date: parseV3Date(evt.date),
+    fertilizerEvents: v3Crop.fertilizerEvents?.map((event) => ({
+      ...event,
+      date: parseV3Date(event.date),
     })),
     organicMatterEvents: v3Crop.organicMatterEvents?.map(
-      (evt): V4.SolidOrganicMatterEvent | V4.SlurryOrganicMatterEvent => {
-        if (V3.solidOmadTypes.includes(evt.type as any)) {
-          const solid = evt as V3.SolidOrganicMatterEvent;
+      (event): V4.SolidOrganicMatterEvent | V4.SlurryOrganicMatterEvent => {
+        if (V3.solidOmadTypes.includes(event.type as any)) {
+          const solid = event as V3.SolidOrganicMatterEvent;
           return {
             date: parseV3Date(solid.date),
             name: solid.name,
@@ -120,36 +125,35 @@ const convertV3CropToV4Crop = (
             carbonNitrogenRatio: solid.carbonNitrogenRatio,
             tonsPerAcre: solid.amountPerAcre,
           };
-        } else {
-          const slurry = evt as V3.SlurryOrganicMatterEvent;
-          return {
-            date: parseV3Date(slurry.date),
-            name: slurry.name,
-            type: slurry.type,
-            percentMoisture: slurry.percentMoisture,
-            percentNitrogen: slurry.percentNitrogen,
-            carbonNitrogenRatio: slurry.carbonNitrogenRatio,
-            gallonsPerAcre: slurry.amountPerAcre,
-          };
         }
+        const slurry = event as V3.SlurryOrganicMatterEvent;
+        return {
+          date: parseV3Date(slurry.date),
+          name: slurry.name,
+          type: slurry.type,
+          percentMoisture: slurry.percentMoisture,
+          percentNitrogen: slurry.percentNitrogen,
+          carbonNitrogenRatio: slurry.carbonNitrogenRatio,
+          gallonsPerAcre: slurry.amountPerAcre,
+        };
       }
     ),
-    irrigationEvents: v3Crop.irrigationEvents?.map((evt) => ({
-      ...evt,
-      date: parseV3Date(evt.date),
+    irrigationEvents: v3Crop.irrigationEvents?.map((event) => ({
+      ...event,
+      date: parseV3Date(event.date),
     })),
-    limingEvents: v3Crop.limingEvents?.map((evt) => ({
-      ...evt,
-      date: parseV3Date(evt.date),
+    limingEvents: v3Crop.limingEvents?.map((event) => ({
+      ...event,
+      date: parseV3Date(event.date),
     })),
-    grazingEvents: v3Crop.grazingEvents?.map((evt) => ({
-      ...evt,
-      date: parseV3Date(evt.startDate),
+    grazingEvents: v3Crop.grazingEvents?.map((event) => ({
+      ...event,
+      date: parseV3Date(event.startDate),
       daysGrazed: daysBetween(
-        parseV3Date(evt.endDate),
-        parseV3Date(evt.startDate)
+        parseV3Date(event.endDate),
+        parseV3Date(event.startDate)
       ),
-      percentResidueRemoved: evt.utilization,
+      percentResidueRemoved: event.utilization,
     })),
     harvestEvents,
     pruningEvents,
@@ -163,7 +167,7 @@ const convertV3CropToV4Crop = (
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      } as V4.AnnualCrop // TODO: translation function for updated crop types;
+      } as V4.AnnualCrop; // TODO: translation function for updated crop types;
     case 'annual cover':
       return {
         classification: 'annual cover',

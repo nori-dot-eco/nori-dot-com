@@ -332,7 +332,7 @@ export interface Project {
   /**
    * primaryContact Contact info for verifiers and other entities involved in the project
    *
-   * @ullable
+   * @nullable
    */
   primaryContact?: ContactInfo;
   /**
@@ -918,7 +918,7 @@ export interface Field {
    *
    */
   regenerativeStartYear: number;
-    /**
+  /**
    * Earliest evidence is the first year a field has any digital or hard copy records of its practices
    * (instead of an external data set to infer practices) and is used to calculate the number of eligible years to issue NRTs.
    *
@@ -1307,7 +1307,7 @@ export interface CropEvents {
    * "plantingEvents": []
    * ```
    *
-   **/
+   */
   plantingEvents?: PlantingEvent[];
 
   /**
@@ -1784,7 +1784,7 @@ export interface CropEvent {
    *
    */
   id?: string;
-   /**
+  /**
    * Source of the event
    *
    * Optional field to indicate what system this data point originated from.
@@ -1796,7 +1796,7 @@ export interface CropEvent {
    * ```js
    * "source": "CDL"
    * ```
-   * 
+   *
    * @example
    *
    * ```js
