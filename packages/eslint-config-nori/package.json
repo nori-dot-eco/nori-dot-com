@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/eslint-config-nori",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "eslint config for Nori",
   "keywords": [
     "eslint"
@@ -13,7 +13,8 @@
     "index.js",
     "package.json",
     "rules.js",
-    "eslint-local-rules/index.js"
+    "eslint-local-rules/index.js",
+    "eslint-local-rules/waffle-as-promised.js"
   ],
   "repository": {
     "type": "git",
