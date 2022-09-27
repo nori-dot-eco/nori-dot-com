@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/eslint-config-nori",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "eslint config for Nori",
   "keywords": [
     "eslint"
@@ -29,7 +29,7 @@
     "react": "~17",
     "react-dom": "~17"
   },
-  "devDependencies": {
+  "dependencies": {
     "@fintechstudios/eslint-plugin-chai-as-promised": "3.1.0",
     "@graphql-eslint/eslint-plugin": "^3.10.3",
     "@next/eslint-plugin-next": "^12.1.6",
