@@ -257,6 +257,16 @@ export const Errors = {
     missingRole: {
       message: 'The user does not have the required admin role.',
     },
+    tooManyRequests: {
+      message:
+        'Access to this account was paused due to too many attempts during sign in. Please wait a bit and try again.',
+    },
+    invalidVerificationCode: {
+      message: 'That code is incorrect. Please try again.',
+    },
+    invalidPhoneNumber: {
+      message: 'Enter a valid phone number.',
+    },
   },
   miscError: {
     unexpectedError: 'An unexpected error occurred',
