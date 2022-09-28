@@ -361,7 +361,7 @@ export interface Project {
   /**
    * totalCroppedAcres
    *
-   * @nullable if import file representa a batch rather than an entire project for a single farm.
+   * @nullable if import file represents a batch rather than an entire project for a single farm.
    *
    * @example
    *
