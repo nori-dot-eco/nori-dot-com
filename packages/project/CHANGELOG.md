@@ -3,6 +3,7 @@
 * Clarified documentation in several spots.
 * Added additional fertilizer types: `phosphate (00-32-00)` and `potash (00-00-60)`.
 * Made `Field.assignmentOfAuthority` required and improved documentation.
+* Added `Field.physicalEvidenceDoesNotCorroborateSwitchYear`.
 
 # v4.0.3 (Aughst 9, 2022)
 * Added `Field.earliestEvidenceYear`

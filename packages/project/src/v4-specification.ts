@@ -936,6 +936,15 @@ export interface Field {
    */
   earliestEvidenceYear: number;
   /**
+   * Used to indicate the the availalable physical evidence does not corroborate the provided switch year.
+   * 
+   * @example <caption>If the physical evidence of a switch to no-till was an undated photo of the no-till planter.</caption>
+   * ```js
+   * "physicalEvidenceDoesNotCorroborateSwitchYear": true
+   * ````
+  */
+  physicalEvidenceDoesNotCorroborateSwitchYear?: boolean;
+  /**
    * Details of new practice changes.
    *
    *
