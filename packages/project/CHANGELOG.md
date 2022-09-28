@@ -1,3 +1,9 @@
+# v4.0.4 (September 28, 2022)
+* Added `Field.farmOperator`.
+* Clarified documentation in several spots.
+* Added additional fertilizer types: `phosphate (00-32-00)` and `potash (00-00-60)`.
+* Made `Field.assignmentOfAuthority` required and improved documentation.
+
 # v4.0.2 (June 13, 2022)
 * Fixed a bug where `HarvestEvent` did not inherit `CropEvent`.
 * Corrected a confusing `lbsOfNPerAcre` example.

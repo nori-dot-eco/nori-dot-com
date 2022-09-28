@@ -4,7 +4,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.2
+ * Version: 4.0.4
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -239,6 +239,8 @@ export const fertilizerTypes = [
   'mixed blends',
   'monoammonium phosphate (11-55-00)',
   'monoammonium phosphate (12-51-00)',
+  'phosphate (00-32-00)',
+  'potash (00-00-60)',
   'potassium nitrate',
   'urea (46-00-00)',
   'urea ammonium nitrate (30-00-00)',
@@ -287,19 +289,21 @@ export const limingTypes = [
   'crushed limestone',
   'calcitic limestone',
   'dolomitic limestone',
-  'other',
+  'other
 ] as const;
 
 /**
+ * A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.
  *
- * A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
+ * A project maye represent either a complete farming operation for a single operator or a batch
+ * of fields from a data aggregator.
  *
- * @id https://schema.nori.com/soil/4-0-0
+ * @id https://schema.nori.com/soil/4-0-4
  *
- * @example <caption>A project that uses specification v4.0.0 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.0.4 and contains a list of fields:</caption>
  * ```js
  * {
- *  "version": "4.0.0",
+ *  "version": "4.0.4",
  *  "fields": [
  *  ]
  * }
@@ -324,27 +328,28 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.0.0"
+   * "version": "4.0.4"
    * ```
    *
    */
   version: string;
   /**
-   * primaryContact Contact info for verifiers and other entities involved in the project
+   * primaryContact Contact info for the operator or data aggregator preparing this file.
    *
-   * @nullable
+   * This will be the primary point of contract for verifiers.
+   *
    */
-  primaryContact?: ContactInfo;
+  primaryContact: ContactInfo;
   /**
-   * farmAddress
+   * farmAddress Mailing address for the farm in question if the file represents a single operation.
    *
-   * @nullable
+   * @nullable if import file represents a batch rather than an entire project for a single farm.
    */
   farmAddress?: Address;
   /**
    * totalFarmAcres
    *
-   * @nullable
+   * @nullable if import file represents a batch rather than an entire project for a single farm.
    *
    * @example
    *
@@ -356,7 +361,7 @@ export interface Project {
   /**
    * totalCroppedAcres
    *
-   * @nullable
+   * @nullable if import file representa a batch rather than an entire project for a single farm.
    *
    * @example
    *
@@ -998,34 +1003,45 @@ export interface Field {
   /**
    * legalAcres Number of acres in this parcel per your insurance policy.
    *
-   * @nullable
-   *
-   * @example 16.87595094
+   * @example 152.8
    */
-  legalAcres?: number;
+  legalAcres: number;
   /**
-   * assignmentOfAuthority
+   * assignmentOfAuthority - Is there an assignment of authority in place?
+   * i.e. Is the field leased land?
    *
-   *
-   * @example <caption>When the field's legal area is 100 acres:</caption>
+   * @example <caption>When the operation is on leased land:</caption>
    *
    * ```js
-   * "acres": 100
+   * "assignmentOfAuthority": true
+   * ```
    *
-   * @nullable If operator owner land.
+   * @example <caption>When the operator is the land owner:</caption>
+   *
+   * ```js
+   * "assignmentOfAuthority": true
+   * ```
+   *
    */
-  assignmentOfAuthority?: boolean;
+  assignmentOfAuthority: boolean;
   /**
    * landOwners (as shown on deed, MUST LIST ALL OWNERS)
    *
-   * @nullable
+   * @nullable If this information will be communicated directly to the verifier.
    *
    */
   landOwners?: ContactInfo[];
   /**
+   * operator (lessee as shown on lease if land is leased)
+   *
+   * @nullable if ownwer is operator or if this information will be communicated directly to the verifier.
+   *
+   */
+  farmOperator?: ContactInfo;
+  /**
    * mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)
    *
-   * @nullable
+   * @nullable If this information will be communicated directly to the verifier.
    */
   mailingAddress?: Address;
   /**
@@ -1205,7 +1221,7 @@ export interface Crop extends CropEvents {
   name?: string;
 
   /**
-   * Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.
+   * Crop identifier.  Free form external reference
    *
    * Used to correlate data back to the originating system and to synchronize repeated imports.
    *
@@ -1938,16 +1954,10 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
   /**
    * The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
-   * When defaulting to "no tillage", a default value will also be used for the event data equal to the planting date of the crop.
-   *
-   * @todo this property will be deprecated in the future
-   *
-   * @default "no tillage"
-   *
-   * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":</caption>
+   * @example <caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Orange Tiller":</caption>
    *
    * ```js
-   * "name": "Joe's tillage method"
+   * "name": "Orange Tiller"
    * ```
    *
    */
@@ -1990,13 +2000,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * @example <caption>75% or more of crop residue remains on the surface after tillage:</caption>
    *
    * ```js
-   * "type": "no tillage"
-   * ```
-   *
-   * @example <caption>Weeds are killed and turned into the soil surface layer:</caption>
-   *
-   * ```js
-   * "type": "growing season cultivation"
+   * "type": "no-till planting"
    * ```
    *
    * @example <caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing:</caption>
@@ -2014,7 +2018,7 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * @example <caption>Cover crop died in winter:</caption>
    *
    * ```js
-   * "type": "winter killed"
+   * "type": "winter kill"
    * ```
    *
    * @example <caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds:</caption>
@@ -2059,14 +2063,15 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * The fertilizer classification type.
    *
-   * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled.
+   * Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions.
+   * As such, we default the type to "mixed blends" when this property is excluded/nulled.
    *
    * @default "mixed blends"
    *
-   * @example <caption>When the fertilizer type can be classified as mixed blends:</caption>
+   * @example <caption>Potash applied:</caption>
    *
    * ```js
-   * "type": "mixed blends",
+   * "type": "potash (00-00-60)",
    * ```
    *
    */
