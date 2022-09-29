@@ -76,7 +76,7 @@ Burning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1463](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1463)
+[v4-specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1488)
 
 ___
 
@@ -98,7 +98,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v4-specification.ts:1719](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1719)
+[v4-specification.ts:1744](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1744)
 
 ___
 
@@ -132,7 +132,7 @@ Clearing and renewal events for orchards and vinyards, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1509](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1509)
+[v4-specification.ts:1534](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1534)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 • `Optional` **externalId**: `string`
 
-Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.
+Crop identifier.  Free form external reference
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
@@ -164,7 +164,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1227)
+[v4-specification.ts:1252](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1252)
 
 ___
 
@@ -196,7 +196,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1354](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1354)
+[v4-specification.ts:1379](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1379)
 
 ___
 
@@ -229,7 +229,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v4-specification.ts:1440](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1440)
+[v4-specification.ts:1465](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1465)
 
 ___
 
@@ -262,7 +262,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v4-specification.ts:1530](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1530)
+[v4-specification.ts:1555](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1555)
 
 ___
 
@@ -288,7 +288,7 @@ Used to synchronize repeated imports
 
 #### Defined in
 
-[v4-specification.ts:1243](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1243)
+[v4-specification.ts:1268](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1268)
 
 ___
 
@@ -318,7 +318,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1396](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1396)
+[v4-specification.ts:1421](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1421)
 
 ___
 
@@ -351,7 +351,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v4-specification.ts:1418](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1418)
+[v4-specification.ts:1443](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1443)
 
 ___
 
@@ -375,7 +375,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[v4-specification.ts:1205](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1205)
+[v4-specification.ts:1230](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1230)
 
 ___
 
@@ -409,7 +409,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1377](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1377)
+[v4-specification.ts:1402](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1402)
 
 ___
 
@@ -445,7 +445,7 @@ This will contain a single event for annuals and none for perennials outside of 
 
 #### Defined in
 
-[v4-specification.ts:1311](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1311)
+[v4-specification.ts:1336](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1336)
 
 ___
 
@@ -479,7 +479,7 @@ Pruning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1486](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1486)
+[v4-specification.ts:1511](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1511)
 
 ___
 
@@ -511,7 +511,7 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v4-specification.ts:1333](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1333)
+[v4-specification.ts:1358](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1358)
 
 ___
 
@@ -533,4 +533,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1704](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1704)
+[v4-specification.ts:1729](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1729)

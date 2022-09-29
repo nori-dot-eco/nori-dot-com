@@ -43,7 +43,7 @@ In the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US
 
 #### Defined in
 
-[v4-specification.ts:508](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L508)
+[v4-specification.ts:513](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L513)
 
 ___
 
@@ -61,7 +61,7 @@ In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/nation
 
 #### Defined in
 
-[v4-specification.ts:518](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L518)
+[v4-specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L523)
 
 ___
 
@@ -77,7 +77,7 @@ city
 
 #### Defined in
 
-[v4-specification.ts:498](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L498)
+[v4-specification.ts:503](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L503)
 
 ___
 
@@ -95,7 +95,7 @@ See: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
 #### Defined in
 
-[v4-specification.ts:528](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L528)
+[v4-specification.ts:533](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L533)
 
 ___
 
@@ -113,7 +113,7 @@ First address line
 
 #### Defined in
 
-[v4-specification.ts:480](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L480)
+[v4-specification.ts:485](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L485)
 
 ___
 
@@ -131,4 +131,4 @@ Second address line
 
 #### Defined in
 
-[v4-specification.ts:490](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L490)
+[v4-specification.ts:495](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L495)

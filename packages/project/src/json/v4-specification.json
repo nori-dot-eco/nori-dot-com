@@ -103,7 +103,7 @@
                     "title": "clearingAndRenewalEvents"
                 },
                 "externalId": {
-                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
                     "title": "externalId",
                     "type": [
                         "string",
@@ -552,7 +552,7 @@
                     "title": "clearingAndRenewalEvents"
                 },
                 "externalId": {
-                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
                     "title": "externalId",
                     "type": [
                         "string",
@@ -879,7 +879,7 @@
                 },
                 "type": {
                     "default": "mixed blends",
-                    "description": "The fertilizer classification type.\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to \"mixed blends\" when this property is excluded/nulled.",
+                    "description": "The fertilizer classification type.\n\nNote that the fertilizer type does not currently impact quantification as it only impacts n2o emissions.\nAs such, we default the type to \"mixed blends\" when this property is excluded/nulled.",
                     "enum": [
                         "ammonium nitrate (34-0-0)",
                         "ammonium nitrate phosphate (23-23-00)",
@@ -897,6 +897,8 @@
                         "mixed blends",
                         "monoammonium phosphate (11-55-00)",
                         "monoammonium phosphate (12-51-00)",
+                        "phosphate (00-32-00)",
+                        "potash (00-00-60)",
                         "potassium nitrate",
                         "urea (46-00-00)",
                         "urea ammonium nitrate (30-00-00)",
@@ -924,12 +926,9 @@
             },
             "properties": {
                 "assignmentOfAuthority": {
-                    "description": "assignmentOfAuthority",
+                    "description": "assignmentOfAuthority - Is there an assignment of authority in place?\ni.e. Is the field leased land?",
                     "title": "assignmentOfAuthority",
-                    "type": [
-                        "boolean",
-                        "null"
-                    ]
+                    "type": "boolean"
                 },
                 "cropYears": {
                     "description": "A list of crop management details grouped by the crop planting year.",
@@ -951,6 +950,18 @@
                         "string",
                         "null"
                     ]
+                },
+                "farmOperator": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ContactInfo",
+                            "description": "operator (lessee as shown on lease if land is leased)"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "farmOperator"
                 },
                 "fieldName": {
                     "description": "The name of the field.",
@@ -1035,10 +1046,7 @@
                 "legalAcres": {
                     "description": "legalAcres Number of acres in this parcel per your insurance policy.",
                     "title": "legalAcres",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "type": "number"
                 },
                 "legalPropertyDescription": {
                     "description": "legalPropertyDescription",
@@ -1068,6 +1076,11 @@
                         "null"
                     ]
                 },
+                "physicalEvidenceDoesNotCorroborateSwitchYear": {
+                    "description": "Used to indicate that the available physical evidence does not corroborate the provided switch year.",
+                    "title": "physicalEvidenceDoesNotCorroborateSwitchYear",
+                    "type": "boolean"
+                },
                 "practiceChangesAdopted": {
                     "$ref": "#/definitions/PracticeChangesAdopted",
                     "description": "Details of new practice changes.\n\n\n```js\n\"practiceChangesAdopted\": {\n  \"coverCropping\": true\n}\n```",
@@ -1081,11 +1094,13 @@
                 }
             },
             "required": [
+                "assignmentOfAuthority",
                 "cropYears",
                 "earliestEvidenceYear",
                 "fieldName",
                 "geojson",
                 "historicLandManagement",
+                "legalAcres",
                 "practiceChangesAdopted",
                 "regenerativeStartYear"
             ],
@@ -2496,7 +2511,7 @@
                     "title": "clearingAndRenewalEvents"
                 },
                 "externalId": {
-                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
                     "title": "externalId",
                     "type": [
                         "string",
@@ -2759,7 +2774,7 @@
                     "title": "clearingAndRenewalEvents"
                 },
                 "externalId": {
-                    "description": "Crop identifier.  Global crop profile or crop+field+year identifier from exporting system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
                     "title": "externalId",
                     "type": [
                         "string",
@@ -3256,8 +3271,7 @@
                     ]
                 },
                 "name": {
-                    "default": "no tillage",
-                    "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.\n\nWhen defaulting to \"no tillage\", a default value will also be used for the event data equal to the planting date of the crop.",
+                    "description": "The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.",
                     "title": "name",
                     "type": "string"
                 },
@@ -3450,11 +3464,11 @@
             "type": "object"
         }
     },
-    "description": "A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.",
+    "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project maye represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
     "errorMessage": {
         "_": "projectDataError:projectUnknownError"
     },
-    "id": "https://schema.nori.com/soil/4-0-0",
+    "id": "https://schema.nori.com/soil/4-0-4",
     "properties": {
         "externalId": {
             "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
@@ -3468,7 +3482,7 @@
             "anyOf": [
                 {
                     "$ref": "#/definitions/Address",
-                    "description": "farmAddress"
+                    "description": "farmAddress Mailing address for the farm in question if the file represents a single operation."
                 },
                 {
                     "type": "null"
@@ -3502,7 +3516,7 @@
         },
         "primaryContact": {
             "$ref": "#/definitions/ContactInfo",
-            "description": "primaryContact Contact info for verifiers and other entities involved in the project",
+            "description": "primaryContact Contact info for the operator or data aggregator preparing this file.\n\nThis will be the primary point of contract for verifiers.",
             "title": "primaryContact"
         },
         "totalCroppedAcres": {
@@ -3533,6 +3547,7 @@
     },
     "required": [
         "fields",
+        "primaryContact",
         "version"
     ],
     "type": "object"

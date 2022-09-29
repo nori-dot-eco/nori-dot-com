@@ -64,7 +64,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1756](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1756)
+[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
 
 ___
 
@@ -90,7 +90,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1771](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1771)
+[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
 
 ___
 
@@ -116,7 +116,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1786](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1786)
+[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
 
 ___
 
@@ -126,21 +126,15 @@ ___
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-When defaulting to "no tillage", a default value will also be used for the event data equal to the planting date of the crop.
-
-**`todo`** this property will be deprecated in the future
-
-**`default`** "no tillage"
-
-**`example`** When the name of the soil or crop disturbance used on the crop was known to the supplier as "Joe's tillage method":
+**`example`** When the name of the soil or crop disturbance used on the crop was known to the supplier as "Orange Tiller":
 
 ```js
-"name": "Joe's tillage method"
+"name": "Orange Tiller"
 ```
 
 #### Defined in
 
-[v4-specification.ts:1954](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1954)
+[v4-specification.ts:1973](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1973)
 
 ___
 
@@ -172,7 +166,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1807](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1807)
+[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
 
 ___
 
@@ -217,13 +211,7 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 **`example`** 75% or more of crop residue remains on the surface after tillage:
 
 ```js
-"type": "no tillage"
-```
-
-**`example`** Weeds are killed and turned into the soil surface layer:
-
-```js
-"type": "growing season cultivation"
+"type": "no-till planting"
 ```
 
 **`example`** 50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing:
@@ -241,7 +229,7 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 **`example`** Cover crop died in winter:
 
 ```js
-"type": "winter killed"
+"type": "winter kill"
 ```
 
 **`example`** 100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds:
@@ -252,4 +240,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:2027](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L2027)
+[v4-specification.ts:2040](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2040)

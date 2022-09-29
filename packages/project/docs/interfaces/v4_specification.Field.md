@@ -54,6 +54,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 - [cropYears](v4_specification.Field.md#cropyears)
 - [earliestEvidenceYear](v4_specification.Field.md#earliestevidenceyear)
 - [externalId](v4_specification.Field.md#externalid)
+- [farmOperator](v4_specification.Field.md#farmoperator)
 - [fieldName](v4_specification.Field.md#fieldname)
 - [geojson](v4_specification.Field.md#geojson)
 - [historicLandManagement](v4_specification.Field.md#historiclandmanagement)
@@ -63,6 +64,7 @@ A field defining annual crop management practices. Fields are defined by geograp
 - [legalPropertyDescription](v4_specification.Field.md#legalpropertydescription)
 - [mailingAddress](v4_specification.Field.md#mailingaddress)
 - [parcelNumber](v4_specification.Field.md#parcelnumber)
+- [physicalEvidenceDoesNotCorroborateSwitchYear](v4_specification.Field.md#physicalevidencedoesnotcorroborateswitchyear)
 - [practiceChangesAdopted](v4_specification.Field.md#practicechangesadopted)
 - [regenerativeStartYear](v4_specification.Field.md#regenerativestartyear)
 
@@ -70,20 +72,26 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 ### assignmentOfAuthority
 
-• `Optional` **assignmentOfAuthority**: `boolean`
+• **assignmentOfAuthority**: `boolean`
 
-assignmentOfAuthority
+assignmentOfAuthority - Is there an assignment of authority in place?
+i.e. Is the field leased land?
 
-**`example`** When the field's legal area is 100 acres:
+**`example`** When the operation is on leased land:
 
 ```js
-"acres": 100
+"assignmentOfAuthority": true
+```
 
-@nullable If operator owner land.
+**`example`** When the operator is the land owner:
+
+```js
+"assignmentOfAuthority": true
+```
 
 #### Defined in
 
-[v4-specification.ts:1017](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1017)
+[v4-specification.ts:1035](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1035)
 
 ___
 
@@ -108,7 +116,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-[v4-specification.ts:1079](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1079)
+[v4-specification.ts:1104](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1104)
 
 ___
 
@@ -127,7 +135,7 @@ Earliest evidence is the first year a field has any digital or hard copy records
 
 #### Defined in
 
-[v4-specification.ts:932](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L932)
+[v4-specification.ts:937](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L937)
 
 ___
 
@@ -149,7 +157,21 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1095](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1095)
+[v4-specification.ts:1120](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1120)
+
+___
+
+### farmOperator
+
+• `Optional` **farmOperator**: [`ContactInfo`](v4_specification.ContactInfo.md)
+
+operator (lessee as shown on lease if land is leased)
+
+**`nullable`** if ownwer is operator or if this information will be communicated directly to the verifier.
+
+#### Defined in
+
+[v4-specification.ts:1049](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1049)
 
 ___
 
@@ -173,7 +195,7 @@ The name of the field.
 
 #### Defined in
 
-[v4-specification.ts:997](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L997)
+[v4-specification.ts:1011](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1011)
 
 ___
 
@@ -197,7 +219,7 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-[v4-specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1061)
+[v4-specification.ts:1086](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1086)
 
 ___
 
@@ -238,7 +260,7 @@ Details surrounding how the field was managed before year 2000.
 
 #### Defined in
 
-[v4-specification.ts:978](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L978)
+[v4-specification.ts:992](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L992)
 
 ___
 
@@ -260,7 +282,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1110](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1110)
+[v4-specification.ts:1135](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1135)
 
 ___
 
@@ -270,27 +292,25 @@ ___
 
 landOwners (as shown on deed, MUST LIST ALL OWNERS)
 
-**`nullable`**
+**`nullable`** If this information will be communicated directly to the verifier.
 
 #### Defined in
 
-[v4-specification.ts:1024](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1024)
+[v4-specification.ts:1042](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1042)
 
 ___
 
 ### legalAcres
 
-• `Optional` **legalAcres**: `number`
+• **legalAcres**: `number`
 
 legalAcres Number of acres in this parcel per your insurance policy.
 
-**`nullable`**
-
-**`example`** 16.87595094
+**`example`** 152.8
 
 #### Defined in
 
-[v4-specification.ts:1005](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1005)
+[v4-specification.ts:1017](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1017)
 
 ___
 
@@ -306,7 +326,7 @@ legalPropertyDescription
 
 #### Defined in
 
-[v4-specification.ts:1044](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1044)
+[v4-specification.ts:1069](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1069)
 
 ___
 
@@ -316,11 +336,11 @@ ___
 
 mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)
 
-**`nullable`**
+**`nullable`** If this information will be communicated directly to the verifier.
 
 #### Defined in
 
-[v4-specification.ts:1030](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1030)
+[v4-specification.ts:1055](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1055)
 
 ___
 
@@ -334,7 +354,24 @@ parcelNumber
 
 #### Defined in
 
-[v4-specification.ts:1036](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L1036)
+[v4-specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1061)
+
+___
+
+### physicalEvidenceDoesNotCorroborateSwitchYear
+
+• `Optional` **physicalEvidenceDoesNotCorroborateSwitchYear**: `boolean`
+
+Used to indicate that the available physical evidence does not corroborate the provided switch year.
+
+**`example`** If the physical evidence of a switch to no-till was an undated photo of the no-till planter.
+```js
+"physicalEvidenceDoesNotCorroborateSwitchYear": true
+````
+
+#### Defined in
+
+[v4-specification.ts:946](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L946)
 
 ___
 
@@ -352,7 +389,7 @@ Details of new practice changes.
 
 #### Defined in
 
-[v4-specification.ts:944](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L944)
+[v4-specification.ts:958](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L958)
 
 ___
 
@@ -374,4 +411,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-[v4-specification.ts:920](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L920)
+[v4-specification.ts:925](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L925)

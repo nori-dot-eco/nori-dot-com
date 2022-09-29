@@ -196,6 +196,8 @@ const convertV3CropToV4Crop = (
 export const convertV3FieldToV4Field = (v3Field: FieldV3): FieldV4 => {
   return {
     ...v3Field,
+    legalAcres: v3Field.acres,
+    assignmentOfAuthority: false,
     historicLandManagement: convertHistoricLandManagement(
       v3Field.historicLandManagement
     ),
@@ -217,6 +219,7 @@ export const convertV3FieldToV4Field = (v3Field: FieldV3): FieldV4 => {
 export const convertFromV3ToV4 = ({ v3 }: { v3: ProjectV3 }): ProjectV4 => {
   return {
     ...v3,
+    primaryContact: {},
     version: '4.0.0',
     fields: v3.fields.map(convertV3FieldToV4Field),
   };

@@ -4,14 +4,17 @@
 
 [v4-specification](../modules/v4_specification.md).Project
 
-A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
+A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.
 
-**`id`** https://schema.nori.com/soil/4-0-0
+A project maye represent either a complete farming operation for a single operator or a batch
+of fields from a data aggregator.
 
-**`example`** A project that uses specification v4.0.0 and contains a list of fields:
+**`id`** https://schema.nori.com/soil/4-0-4
+
+**`example`** A project that uses specification v4.0.4 and contains a list of fields:
 ```js
 {
- "version": "4.0.0",
+ "version": "4.0.4",
  "fields": [
  ]
 }
@@ -55,7 +58,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:381](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L381)
+[v4-specification.ts:386](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L386)
 
 ___
 
@@ -63,13 +66,13 @@ ___
 
 • `Optional` **farmAddress**: [`Address`](v4_specification.Address.md)
 
-farmAddress
+farmAddress Mailing address for the farm in question if the file represents a single operation.
 
-**`nullable`**
+**`nullable`** if import file represents a batch rather than an entire project for a single farm.
 
 #### Defined in
 
-[v4-specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L343)
+[v4-specification.ts:348](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L348)
 
 ___
 
@@ -101,7 +104,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:420](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L420)
+[v4-specification.ts:425](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L425)
 
 ___
 
@@ -123,21 +126,21 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:396](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L396)
+[v4-specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L401)
 
 ___
 
 ### primaryContact
 
-• `Optional` **primaryContact**: [`ContactInfo`](v4_specification.ContactInfo.md)
+• **primaryContact**: [`ContactInfo`](v4_specification.ContactInfo.md)
 
-primaryContact Contact info for verifiers and other entities involved in the project
+primaryContact Contact info for the operator or data aggregator preparing this file.
 
-**`ullable`**
+This will be the primary point of contract for verifiers.
 
 #### Defined in
 
-[v4-specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L337)
+[v4-specification.ts:342](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L342)
 
 ___
 
@@ -147,7 +150,7 @@ ___
 
 totalCroppedAcres
 
-**`nullable`**
+**`nullable`** if import file represents a batch rather than an entire project for a single farm.
 
 **`example`**
 
@@ -157,7 +160,7 @@ totalCroppedAcres
 
 #### Defined in
 
-[v4-specification.ts:367](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L367)
+[v4-specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L372)
 
 ___
 
@@ -167,7 +170,7 @@ ___
 
 totalFarmAcres
 
-**`nullable`**
+**`nullable`** if import file represents a batch rather than an entire project for a single farm.
 
 **`example`**
 
@@ -177,7 +180,7 @@ totalFarmAcres
 
 #### Defined in
 
-[v4-specification.ts:355](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L355)
+[v4-specification.ts:360](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L360)
 
 ___
 
@@ -196,9 +199,9 @@ The specification version. This information is used to determine the logic Nori 
 **`example`**
 
 ```js
-"version": "4.0.0"
+"version": "4.0.4"
 ```
 
 #### Defined in
 
-[v4-specification.ts:331](https://github.com/nori-dot-eco/nori-dot-com/blob/8cfa392/packages/project/src/v4-specification.ts#L331)
+[v4-specification.ts:335](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L335)

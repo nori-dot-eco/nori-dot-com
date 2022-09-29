@@ -289,7 +289,7 @@ export const limingTypes = [
   'crushed limestone',
   'calcitic limestone',
   'dolomitic limestone',
-  'other
+  'other',
 ] as const;
 
 /**
@@ -937,12 +937,12 @@ export interface Field {
   earliestEvidenceYear: number;
   /**
    * Used to indicate that the available physical evidence does not corroborate the provided switch year.
-   * 
+   *
    * @example <caption>If the physical evidence of a switch to no-till was an undated photo of the no-till planter.</caption>
    * ```js
    * "physicalEvidenceDoesNotCorroborateSwitchYear": true
    * ````
-  */
+   */
   physicalEvidenceDoesNotCorroborateSwitchYear?: boolean;
   /**
    * Details of new practice changes.
