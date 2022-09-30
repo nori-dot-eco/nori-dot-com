@@ -60,6 +60,10 @@ export const Errors = {
       message:
         'This event must be entered manually, there is not yet a crop in the same year as this event.',
     },
+    projectHasIssuanceCannotDeleteError: {
+      message:
+        'This project has a parcel with an issuance and cannot be deleted.',
+    },
   },
   unknownErrorCode: {
     unknownErrorType: {
