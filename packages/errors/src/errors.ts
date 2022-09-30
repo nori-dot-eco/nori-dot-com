@@ -288,5 +288,8 @@ export const Errors = {
     hasMintedRemovals: {
       message: 'Parcel already has at least one removal minted to chain',
     },
+    parcelHasIssuanceCannotDeleteError: {
+      message: 'This parcel has an issuance and cannot be deleted.',
+    },
   },
 };
