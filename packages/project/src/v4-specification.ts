@@ -4,7 +4,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.4
+ * Version: 4.0.5
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -32,6 +32,7 @@
 import type { GeoJSON } from 'geojson';
 
 export const annualCropTypes = [
+  'alfalfa',
   'austrian winter pea',
   'barley',
   'barley-bin run wheat mix',
@@ -48,6 +49,7 @@ export const annualCropTypes = [
   'cauliflower',
   'celery', // not currently supported
   'chick peas',
+  'clover/wildflowers',
   'corn',
   'corn silage',
   'cotton',
@@ -298,12 +300,12 @@ export const limingTypes = [
  * A project maye represent either a complete farming operation for a single operator or a batch
  * of fields from a data aggregator.
  *
- * @id https://schema.nori.com/soil/4-0-4
+ * @id https://schema.nori.com/soil/4-0-5
  *
- * @example <caption>A project that uses specification v4.0.4 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.0.5 and contains a list of fields:</caption>
  * ```js
  * {
- *  "version": "4.0.4",
+ *  "version": "4.0.5",
  *  "fields": [
  *  ]
  * }
@@ -328,7 +330,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.0.4"
+   * "version": "4.0.5"
    * ```
    *
    */
@@ -2224,14 +2226,10 @@ export interface OrganicMatterEvent extends CropEvent {
   /**
    * The nitrogen percent makeup in the organic matter or manure.
    *
-   * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
-   *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
-   *
    * @minimum 0
    * @maximum 100
    *
-   * @nullable during import (when defined as null, a default value will be assigned)
+   * @nullable A default based on the selected type will be used if not specified here.
    *
    * @example <caption>When the organic matter or manure contains 9% nitrogen:</caption>
    *
@@ -2240,32 +2238,26 @@ export interface OrganicMatterEvent extends CropEvent {
    * ```
    *
    */
-  percentNitrogen: number;
+  percentNitrogen?: number;
   /**
    * The carbon to nitrogen ratio in the organic matter or manure.
    *
-   * You can find a list of default values per `type` [here](https://go.nori.com/inputs).
-   *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
-   *
-   * @nullable during import
+   * @nullable A default based on the selected type will be used if not specified here.
    *
    * @minimum 0
    *
-   * @example <caption>When the carbon to nitrogen ration of the organic matter or manure was 30:</caption>
+   * @example <caption>When the C:N ratio was 18.6:</caption>
    *
    * ```js
-   * "carbonNitrogenRatio": 30
+   * "carbonNitrogenRatio": 18.6
    * ```
    *
    */
-  carbonNitrogenRatio: number;
+  carbonNitrogenRatio?: number;
   /**
    * The percent moisture of the organic matter or manure
    *
-   * @todo In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
-   *
-   * @nullable during import (explicitly specify null if you are unsure what the value is)
+   * @nullable A default based on the selected type will be used if not specified here.
    *
    * @minimum 0
    * @maximum 100
@@ -2277,7 +2269,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * ```
    *
    */
-  percentMoisture: number;
+  percentMoisture?: number;
 }
 
 /**
