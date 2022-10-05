@@ -49,7 +49,7 @@ export const annualCropTypes = [
   'cauliflower',
   'celery', // not currently supported
   'chick peas',
-  'clover/wildflowers',
+  'clover',
   'corn',
   'corn silage',
   'cotton',
