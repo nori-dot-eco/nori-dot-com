@@ -44,22 +44,18 @@ Solid/dry organic matter (OMAD) and manure event details.
 
 ### carbonNitrogenRatio
 
-• **carbonNitrogenRatio**: `number`
+• `Optional` **carbonNitrogenRatio**: `number`
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
-You can find a list of default values per `type` [here](https://go.nori.com/inputs).
-
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
-
-**`nullable`** during import
+**`nullable`** A default based on the selected type will be used if not specified here.
 
 **`minimum`** 0
 
-**`example`** When the carbon to nitrogen ration of the organic matter or manure was 30:
+**`example`** When the C:N ratio was 18.6:
 
 ```js
-"carbonNitrogenRatio": 30
+"carbonNitrogenRatio": 18.6
 ```
 
 #### Inherited from
@@ -68,7 +64,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2262](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2262)
+[v4-specification.ts:2256](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2256)
 
 ___
 
@@ -102,7 +98,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1783](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1783)
 
 ___
 
@@ -128,7 +124,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1798](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1798)
 
 ___
 
@@ -154,7 +150,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1813](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1813)
 
 ___
 
@@ -178,19 +174,17 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2223](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2223)
+[v4-specification.ts:2225](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2225)
 
 ___
 
 ### percentMoisture
 
-• **percentMoisture**: `number`
+• `Optional` **percentMoisture**: `number`
 
 The percent moisture of the organic matter or manure
 
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
-
-**`nullable`** during import (explicitly specify null if you are unsure what the value is)
+**`nullable`** A default based on the selected type will be used if not specified here.
 
 **`minimum`** 0
 
@@ -208,25 +202,21 @@ The percent moisture of the organic matter or manure
 
 #### Defined in
 
-[v4-specification.ts:2280](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2280)
+[v4-specification.ts:2272](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2272)
 
 ___
 
 ### percentNitrogen
 
-• **percentNitrogen**: `number`
+• `Optional` **percentNitrogen**: `number`
 
 The nitrogen percent makeup in the organic matter or manure.
-
-You can find a list of default values per `type` [here](https://go.nori.com/inputs).
-
-**`todo`** In the future, when this value is defined as null, the importer will attempt to find a reasonable a default value based on the [type](#type)
 
 **`minimum`** 0
 
 **`maximum`** 100
 
-**`nullable`** during import (when defined as null, a default value will be assigned)
+**`nullable`** A default based on the selected type will be used if not specified here.
 
 **`example`** When the organic matter or manure contains 9% nitrogen:
 
@@ -240,7 +230,7 @@ You can find a list of default values per `type` [here](https://go.nori.com/inpu
 
 #### Defined in
 
-[v4-specification.ts:2243](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2243)
+[v4-specification.ts:2241](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2241)
 
 ___
 
@@ -272,7 +262,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1834](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1834)
 
 ___
 
@@ -294,7 +284,7 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 #### Defined in
 
-[v4-specification.ts:2145](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2145)
+[v4-specification.ts:2147](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2147)
 
 ___
 
@@ -312,4 +302,4 @@ The solid/dry organic matter or manure classification type.
 
 #### Defined in
 
-[v4-specification.ts:2131](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2131)
+[v4-specification.ts:2133](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2133)

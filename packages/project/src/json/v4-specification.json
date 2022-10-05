@@ -273,6 +273,7 @@
                 "type": {
                     "description": "The COMET equivalent type of the crop\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
                     "enum": [
+                        "alfalfa",
                         "austrian winter pea",
                         "barley",
                         "barley-bin run wheat mix",
@@ -289,6 +290,7 @@
                         "cauliflower",
                         "celery",
                         "chick peas",
+                        "clover",
                         "corn",
                         "corn silage",
                         "cotton",
@@ -3126,7 +3128,7 @@
                 "carbonNitrogenRatio": {
                     "anyOf": [
                         {
-                            "description": "The carbon to nitrogen ratio in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "description": "The carbon to nitrogen ratio in the organic matter or manure.",
                             "minimum": 0,
                             "type": "number"
                         },
@@ -3194,7 +3196,7 @@
                 "percentNitrogen": {
                     "anyOf": [
                         {
-                            "description": "The nitrogen percent makeup in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "description": "The nitrogen percent makeup in the organic matter or manure.",
                             "maximum": 100,
                             "minimum": 0,
                             "type": "number"
@@ -3227,11 +3229,8 @@
                 }
             },
             "required": [
-                "carbonNitrogenRatio",
                 "date",
                 "gallonsPerAcre",
-                "percentMoisture",
-                "percentNitrogen",
                 "type"
             ],
             "title": "SlurryOrganicMatterEvent",
@@ -3339,7 +3338,7 @@
                 "carbonNitrogenRatio": {
                     "anyOf": [
                         {
-                            "description": "The carbon to nitrogen ratio in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "description": "The carbon to nitrogen ratio in the organic matter or manure.",
                             "minimum": 0,
                             "type": "number"
                         },
@@ -3400,7 +3399,7 @@
                 "percentNitrogen": {
                     "anyOf": [
                         {
-                            "description": "The nitrogen percent makeup in the organic matter or manure.\n\nYou can find a list of default values per `type` [here](https://go.nori.com/inputs).",
+                            "description": "The nitrogen percent makeup in the organic matter or manure.",
                             "maximum": 100,
                             "minimum": 0,
                             "type": "number"
@@ -3453,10 +3452,7 @@
                 }
             },
             "required": [
-                "carbonNitrogenRatio",
                 "date",
-                "percentMoisture",
-                "percentNitrogen",
                 "tonsPerAcre",
                 "type"
             ],
@@ -3468,7 +3464,7 @@
     "errorMessage": {
         "_": "projectDataError:projectUnknownError"
     },
-    "id": "https://schema.nori.com/soil/4-0-4",
+    "id": "https://schema.nori.com/soil/4-0-5",
     "properties": {
         "externalId": {
             "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
