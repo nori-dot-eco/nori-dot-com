@@ -6,7 +6,7 @@
 
 Nori croplands project import file format.
 
-Version: 4.0.4
+Version: 4.0.5
 
 Provides the definitions for Nori croplands project data import using typescript interfaces.
 
@@ -78,11 +78,11 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 ### annualCropTypes
 
-• `Const` **annualCropTypes**: readonly [``"austrian winter pea"``, ``"barley"``, ``"barley-bin run wheat mix"``, ``"black beans"``, ``"broccoli"``, ``"broccoli-coast"``, ``"broccoli-desert"``, ``"buckwheat"``, ``"cabbage"``, ``"camelina"``, ``"canola"``, ``"cantaloupes"``, ``"carrots"``, ``"cauliflower"``, ``"celery"``, ``"chick peas"``, ``"corn"``, ``"corn silage"``, ``"cotton"``, ``"cucumbers"``, ``"dry beans"``, ``"dry field beans"``, ``"dry field pea"``, ``"durum wheat"``, ``"eggplants"``, ``"fallow"``, ``"flaxseed"``, ``"garbanzo beans"``, ``"garlic"``, ``"gourds"``, ``"greens"``, ``"hemp (for fiber)"``, ``"hemp (for flowers)"``, ``"hemp (for seed)"``, ``"herbs"``, ``"honeydew melons"``, ``"lentils"``, ``"lettuce"``, ``"lettuce-head"``, ``"lettuce-leaf"``, ``"lettuce-romaine"``, ``"millet"``, ``"misc vegs & fruits"``, ``"mustard"``, ``"navy beans"``, ``"oats"``, ``"onions"``, ``"other small grains"``, ``"peanuts"``, ``"peas"``, ``"peppers"``, ``"pinto beans"``, ``"pop or om corn"``, ``"potatoes"``, ``"pumpkins"``, ``"radishes"``, ``"rapeseed"``, ``"rice"``, ``"rice - flooded"``, ``"rye"``, ``"safflower"``, ``"sorghum"``, ``"sorghum silage"``, ``"soybeans"``, ``"speltz"``, ``"spring wheat"``, ``"squash"``, ``"strawberries"``, ``"sugarbeets"``, ``"sunflower"``, ``"sweet corn"``, ``"sweet potatoes"``, ``"switchgrass"``, ``"tobacco"``, ``"tomatoes"``, ``"tomatoes, fresh"``, ``"tomatoes, processing"``, ``"triticale"``, ``"turnips"``, ``"watermelons"``, ``"wheat"``, ``"winter barley"``, ``"winter grain-other"``, ``"winter oats"``, ``"winter wheat"``]
+• `Const` **annualCropTypes**: readonly [``"alfalfa"``, ``"austrian winter pea"``, ``"barley"``, ``"barley-bin run wheat mix"``, ``"black beans"``, ``"broccoli"``, ``"broccoli-coast"``, ``"broccoli-desert"``, ``"buckwheat"``, ``"cabbage"``, ``"camelina"``, ``"canola"``, ``"cantaloupes"``, ``"carrots"``, ``"cauliflower"``, ``"celery"``, ``"chick peas"``, ``"clover"``, ``"corn"``, ``"corn silage"``, ``"cotton"``, ``"cucumbers"``, ``"dry beans"``, ``"dry field beans"``, ``"dry field pea"``, ``"durum wheat"``, ``"eggplants"``, ``"fallow"``, ``"flaxseed"``, ``"garbanzo beans"``, ``"garlic"``, ``"gourds"``, ``"greens"``, ``"hemp (for fiber)"``, ``"hemp (for flowers)"``, ``"hemp (for seed)"``, ``"herbs"``, ``"honeydew melons"``, ``"lentils"``, ``"lettuce"``, ``"lettuce-head"``, ``"lettuce-leaf"``, ``"lettuce-romaine"``, ``"millet"``, ``"misc vegs & fruits"``, ``"mustard"``, ``"navy beans"``, ``"oats"``, ``"onions"``, ``"other small grains"``, ``"peanuts"``, ``"peas"``, ``"peppers"``, ``"pinto beans"``, ``"pop or om corn"``, ``"potatoes"``, ``"pumpkins"``, ``"radishes"``, ``"rapeseed"``, ``"rice"``, ``"rice - flooded"``, ``"rye"``, ``"safflower"``, ``"sorghum"``, ``"sorghum silage"``, ``"soybeans"``, ``"speltz"``, ``"spring wheat"``, ``"squash"``, ``"strawberries"``, ``"sugarbeets"``, ``"sunflower"``, ``"sweet corn"``, ``"sweet potatoes"``, ``"switchgrass"``, ``"tobacco"``, ``"tomatoes"``, ``"tomatoes, fresh"``, ``"tomatoes, processing"``, ``"triticale"``, ``"turnips"``, ``"watermelons"``, ``"wheat"``, ``"winter barley"``, ``"winter grain-other"``, ``"winter oats"``, ``"winter wheat"``]
 
 #### Defined in
 
-[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L34)
+[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L34)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:122](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L122)
+[v4-specification.ts:124](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L124)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:225](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L225)
+[v4-specification.ts:227](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L227)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:288](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L288)
+[v4-specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L290)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:167](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L167)
+[v4-specification.ts:169](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L169)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:205](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L205)
+[v4-specification.ts:207](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L207)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:138](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L138)
+[v4-specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L140)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:251](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L251)
+[v4-specification.ts:253](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L253)
 
 ___
 
@@ -162,4 +162,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L146)
+[v4-specification.ts:148](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L148)
