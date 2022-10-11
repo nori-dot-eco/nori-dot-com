@@ -1,17 +1,8 @@
-const path = require('path');
-const fs = require('fs');
-
 const { jsdocRules } = require('./rules');
 
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = [...jsExtensions, ...tsExtensions];
-
-const schemaPath = path.join(
-  __dirname,
-  '../../../../nori-graphql/src/schema.graphql'
-);
-const schema = fs.existsSync(schemaPath) ? schemaPath : undefined;
 
 module.exports = {
   settings: {
@@ -134,7 +125,6 @@ module.exports = {
     },
     {
       files: ['*.graphql'],
-      parserOptions: { skipGraphQLConfig: true, schema: [schema] },
       extends: [
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
