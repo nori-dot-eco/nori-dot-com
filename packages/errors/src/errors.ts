@@ -303,5 +303,8 @@ export const Errors = {
       message:
         'There was an error submitting the `mintBatch` transaction to the blockchain',
     },
+    differentProjects: {
+      message: 'Cannot mint removals from different projects in the same batch',
+    },
   },
 };
