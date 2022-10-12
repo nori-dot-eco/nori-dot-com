@@ -1,11 +1,10 @@
 const path = require('path');
 const fs = require('fs');
 
-const schemaPath = path.join(
-  __dirname,
-  '../../nori-graphql/src/schema.graphql'
-);
+const schemaPath = './nori-graphql/src/schema.graphql';
+
+const relayExtensions = path.join(__dirname, './relay-extensions.graphql');
 
 module.exports = {
-  schemaPath: fs.existsSync(schemaPath) ? schemaPath : undefined,
+  schema: [...(fs.existsSync(schemaPath) ? [schemaPath] : []), relayExtensions],
 };

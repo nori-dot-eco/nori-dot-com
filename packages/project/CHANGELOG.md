@@ -1,3 +1,7 @@
+# v4.0.5 (October 5, 2022)
+* Corrected OrganinicMatterEvent properties `percentNitrogen`, `carbonNitrogenRatio` and `percentMoisture` to be optional.  Default values for these properties will be used based on the selected OMAD when running the SoilMetrics model.
+* Added `alfalfa` and `clover` to `annualCropTypes`
+
 # v4.0.4 (September 28, 2022)
 * Added `Field.farmOperator`.
 * Clarified documentation in several spots.

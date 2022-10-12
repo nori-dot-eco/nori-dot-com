@@ -296,4 +296,19 @@ export const Errors = {
       message: 'This parcel has an issuance and cannot be deleted.',
     },
   },
+  mintingError: {
+    emptyBatch: {
+      message: 'Cannot mint empty batch of removals',
+    },
+    missingProjectData: {
+      message: 'Missing required project metadata',
+    },
+    transactionSubmissionError: {
+      message:
+        'There was an error submitting the `mintBatch` transaction to the blockchain',
+    },
+    differentProjects: {
+      message: 'Cannot mint removals from different projects in the same batch',
+    },
+  },
 };
