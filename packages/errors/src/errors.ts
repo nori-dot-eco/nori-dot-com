@@ -271,6 +271,10 @@ export const Errors = {
     invalidPhoneNumber: {
       message: 'Enter a valid phone number.',
     },
+    captchaCheckFailed: {
+      message:
+        'A recaptcha error occurred.  You are most likely seeing this because you are trying to log into an mfa-enabled account on a test environment with a real phone number. Either disable MFA or use one of the test phone numbers in the Firebase Console.',
+    },
   },
   miscError: {
     unexpectedError: 'An unexpected error occurred',
