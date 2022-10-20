@@ -811,8 +811,19 @@
                     "type": "array"
                 },
                 "dataTimeFrame": {
-                    "$ref": "#/definitions/DataTimeFrame",
-                    "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+                    "anyOf": [
+                        {
+                            "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+                            "enum": [
+                                "GROWER_REPORTED",
+                                "PROJECTED"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "title": "dataTimeFrame"
                 },
                 "plantingYear": {
@@ -825,20 +836,10 @@
             },
             "required": [
                 "crops",
-                "dataTimeFrame",
                 "plantingYear"
             ],
             "title": "CropYear",
             "type": "object"
-        },
-        "DataTimeFrame": {
-            "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
-            "enum": [
-                "GROWER_REPORTED",
-                "PROJECTED"
-            ],
-            "title": "DataTimeFrame",
-            "type": "string"
         },
         "FertilizerEvent": {
             "additionalProperties": false,

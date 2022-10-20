@@ -1212,6 +1212,8 @@ export interface CropYear {
   /**
    * Enum indicating whether data is historical data reported by the grower,
    * or a projection of future data.
+   * 
+   * @nullable Currently this is only for Bayer, nullable for backwards compatibility
    *
    * @example <caption>When data is from a projection of future data:</caption>
    *
@@ -1220,7 +1222,7 @@ export interface CropYear {
    * ```
    *
    */
-  dataTimeFrame: DataTimeFrame;
+  dataTimeFrame?: DataTimeFrame;
 }
 
 /**

@@ -18,4 +18,4 @@
 
 #### Defined in
 
-[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1935)
+[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1935)

@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1004)
+[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1004)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1061)
+[v3-specification.ts:1061](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1061)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L900)
+[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L900)
 
 ___
 
@@ -83,7 +83,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L981)
+[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L981)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L827)
+[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L827)
 
 ___
 
@@ -111,7 +111,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L940)
+[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L940)
 
 ___
 
@@ -125,7 +125,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L960)
+[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L960)
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L774)
+[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L774)
 
 ___
 
@@ -153,7 +153,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L923)
+[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L923)
 
 ___
 
@@ -167,7 +167,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L789)
+[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L789)
 
 ___
 
@@ -177,7 +177,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1079](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1079)
+[v3-specification.ts:1079](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1079)
 
 ___
 
@@ -187,7 +187,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1096](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1096)
+[v3-specification.ts:1096](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1096)
 
 ___
 
@@ -201,7 +201,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L881)
+[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L881)
 
 ___
 
@@ -211,4 +211,4 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1040](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v3-specification.ts#L1040)
+[v3-specification.ts:1040](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1040)
