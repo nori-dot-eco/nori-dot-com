@@ -1,7 +1,8 @@
 const {
   parserOptions,
   importRules,
-} = require('@nori-dot-com/eslint-config-nori/rules'); // eslint-disable-line import/no-extraneous-dependencies -- this is a workspace package
+  // eslint-disable-next-line import/no-extraneous-dependencies -- this is a dev file that uses the workspace dependency.
+} = require('@nori-dot-com/eslint-config-nori/rules');
 
 module.exports = {
   extends: '@nori-dot-com/eslint-config-nori',
