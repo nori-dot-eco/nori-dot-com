@@ -14,14 +14,6 @@
 
 ▸ **validateProjectData**(`data`): `Object`
 
-Takes input data and checks whether its contents are valid or not. When the data is not valid, context is provided.
-
-**`example`** Validating project data using data that has an invalid number of fields defined:
-
-```js
-validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...errors}
-```
-
 #### Parameters
 
 | Name | Type |
@@ -41,4 +33,4 @@ validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...er
 
 #### Defined in
 
-[validation.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/validation.ts#L85)
+[validation.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/validation.ts#L85)

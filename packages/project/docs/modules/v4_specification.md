@@ -2,32 +2,6 @@
 
 # Module: v4-specification
 
-## About
-
-Nori croplands project import file format.
-
-Version: 4.0.5
-
-Provides the definitions for Nori croplands project data import using typescript interfaces.
-
-## Usage
-
-This croplands project data import specification defines Nori's requirements for receipt of project import data.
-
-Nori requires complete data as follows:
-* Historical best practices from 2000 to three years prior to the switch year.
-* Detailed management practices from three years prior to the switch year to the present.
-* Ten years of projected future practices.
-
-#### Example
-
-You can find an example of a full implementation [here](../../src/example/v4-example.json)
-
-## Navigation
-
-[Project](../interfaces/v4_specification.Project.md) is the top level entrypoint of the file format.
-You can find definitions for all of the interfaces in Nori croplands project from the [index](#index).
-
 ## Table of contents
 
 ### Interfaces
@@ -82,7 +56,7 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 #### Defined in
 
-[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L34)
+[v4-specification.ts:34](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L34)
 
 ___
 
@@ -92,7 +66,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:124](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L124)
+[v4-specification.ts:124](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L124)
 
 ___
 
@@ -102,7 +76,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:227](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L227)
+[v4-specification.ts:227](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L227)
 
 ___
 
@@ -112,7 +86,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L290)
+[v4-specification.ts:290](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L290)
 
 ___
 
@@ -122,7 +96,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:169](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L169)
+[v4-specification.ts:169](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L169)
 
 ___
 
@@ -132,7 +106,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:207](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L207)
+[v4-specification.ts:207](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L207)
 
 ___
 
@@ -142,7 +116,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L140)
+[v4-specification.ts:140](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L140)
 
 ___
 
@@ -152,7 +126,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:253](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L253)
+[v4-specification.ts:253](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L253)
 
 ___
 
@@ -162,4 +136,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:148](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L148)
+[v4-specification.ts:148](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L148)

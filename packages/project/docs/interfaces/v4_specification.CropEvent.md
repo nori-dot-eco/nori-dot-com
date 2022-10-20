@@ -4,18 +4,6 @@
 
 [v4-specification](../modules/v4_specification.md).CropEvent
 
-A crop event that happened on a particular date.
-
-**`example`**
-
-```js
-{
- "date": "2000-01-01",
- "externalId": "f1-corn1-1234",
- "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
-}
-```
-
 ## Hierarchy
 
 - **`CropEvent`**
@@ -57,29 +45,9 @@ A crop event that happened on a particular date.
 
 • **date**: `Date`
 
-The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
-
-Dates for liming and burning can be approximate or the first day of the crop year.
-
-**`example`** When the crop event occurred on January 1st of 2000:
-
-```js
-"date": "2000-01-01"
-```
-
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
-
-**`format`** date
-
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
-
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1804](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L1804)
 
 ___
 
@@ -87,21 +55,9 @@ ___
 
 • `Optional` **externalId**: `string`
 
-External crop event identifier.
-
-Used to correlate data back to the originating system and to synchronize repeated imports.
-
-**`nullable`**
-
-**`example`**
-
-```js
-"externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
-```
-
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1819](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L1819)
 
 ___
 
@@ -109,21 +65,9 @@ ___
 
 • `Optional` **id**: `string`
 
-Nori's internal crop event identifier.
-
-Used to synchronize repeated imports.
-
-**`nullable`** External systems leave this blank for new projects.
-
-**`example`**
-
-```js
-"id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
-```
-
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1834](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L1834)
 
 ___
 
@@ -131,24 +75,6 @@ ___
 
 • `Optional` **source**: `string`
 
-Source of the event
-
-Optional field to indicate what system this data point originated from.
-
-**`nullable`**
-
-**`example`**
-
-```js
-"source": "CDL"
-```
-
-**`example`**
-
-```js
-"source": "FMS name"
-```
-
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1855](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L1855)

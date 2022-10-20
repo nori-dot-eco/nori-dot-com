@@ -810,6 +810,11 @@
                     "title": "crops",
                     "type": "array"
                 },
+                "dataTimeFrame": {
+                    "$ref": "#/definitions/DataTimeFrame",
+                    "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+                    "title": "dataTimeFrame"
+                },
                 "plantingYear": {
                     "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
                     "maximum": 2099,
@@ -820,10 +825,20 @@
             },
             "required": [
                 "crops",
+                "dataTimeFrame",
                 "plantingYear"
             ],
             "title": "CropYear",
             "type": "object"
+        },
+        "DataTimeFrame": {
+            "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+            "enum": [
+                "GROWER_REPORTED",
+                "PROJECTED"
+            ],
+            "title": "DataTimeFrame",
+            "type": "string"
         },
         "FertilizerEvent": {
             "additionalProperties": false,
@@ -995,7 +1010,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         },
                         {
                             "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
@@ -1184,7 +1199,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1303,7 +1318,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1424,7 +1439,7 @@
             "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
-        "GeoJSON.GeometryCollection": {
+        "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
             "additionalProperties": false,
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
             "properties": {
@@ -1500,7 +1515,7 @@
                                 "$ref": "#/definitions/GeoJSON.MultiPolygon"
                             },
                             {
-                                "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                                "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                             }
                         ],
                         "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
@@ -1521,7 +1536,7 @@
                 "geometries",
                 "type"
             ],
-            "title": "GeoJSON.GeometryCollection",
+            "title": "GeoJSON.GeometryCollection<GeoJSON.Geometry>",
             "type": "object"
         },
         "GeoJSON.LineString": {

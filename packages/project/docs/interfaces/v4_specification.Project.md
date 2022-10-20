@@ -4,27 +4,6 @@
 
 [v4-specification](../modules/v4_specification.md).Project
 
-A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.
-
-A project maye represent either a complete farming operation for a single operator or a batch
-of fields from a data aggregator.
-
-**`id`** https://schema.nori.com/soil/4-0-4
-
-**`example`** A project that uses specification v4.0.4 and contains a list of fields:
-```js
-{
- "version": "4.0.4",
- "fields": [
- ]
-}
-```
-
-**`errormessage`**
-{
-"_": "projectDataError:projectUnknownError"
-}
-
 ## Table of contents
 
 ### Properties
@@ -44,21 +23,9 @@ of fields from a data aggregator.
 
 • `Optional` **externalId**: `string`
 
-Project identifier from external system.
-
-Used to correlate data back to the originating system and to synchronize repeated imports.
-
-**`nullable`**
-
-**`example`**
-
-```js
-"externalId": "blue-hill-201"
-```
-
 #### Defined in
 
-[v4-specification.ts:386](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L386)
+[v4-specification.ts:388](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L388)
 
 ___
 
@@ -66,13 +33,9 @@ ___
 
 • `Optional` **farmAddress**: [`Address`](v4_specification.Address.md)
 
-farmAddress Mailing address for the farm in question if the file represents a single operation.
-
-**`nullable`** if import file represents a batch rather than an entire project for a single farm.
-
 #### Defined in
 
-[v4-specification.ts:348](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L348)
+[v4-specification.ts:350](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L350)
 
 ___
 
@@ -80,31 +43,9 @@ ___
 
 • **fields**: [`Field`](v4_specification.Field.md)[]
 
-An array of fields defining annual crop management practices.
-
-**`errormessage`**
-{
-"minItems": "projectDataError:projectFieldsMinimumItemsError",
-"maxItems": "projectDataError:projectFieldsMaximumItemsError",
-"type": "projectDataError:projectFieldsTypeError",
-"_": "projectDataError:projectFieldsUnknownError"
-}
-
-**`minitems`** 1
-
-**`maxitems`** 200
-
-**`example`**
-
-```js
-"fields": [
- // ...Field
-]
-```
-
 #### Defined in
 
-[v4-specification.ts:425](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L425)
+[v4-specification.ts:427](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L427)
 
 ___
 
@@ -112,21 +53,9 @@ ___
 
 • `Optional` **id**: `string`
 
-Nori's internal project identifier.
-
-Used to synchronize repeated imports.
-
-**`nullable`** External systems leave this blank for new projects.
-
-**`example`**
-
-```js
-"id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
-```
-
 #### Defined in
 
-[v4-specification.ts:401](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L401)
+[v4-specification.ts:403](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L403)
 
 ___
 
@@ -134,13 +63,9 @@ ___
 
 • **primaryContact**: [`ContactInfo`](v4_specification.ContactInfo.md)
 
-primaryContact Contact info for the operator or data aggregator preparing this file.
-
-This will be the primary point of contract for verifiers.
-
 #### Defined in
 
-[v4-specification.ts:342](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L342)
+[v4-specification.ts:344](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L344)
 
 ___
 
@@ -148,19 +73,9 @@ ___
 
 • `Optional` **totalCroppedAcres**: `number`
 
-totalCroppedAcres
-
-**`nullable`** if import file represents a batch rather than an entire project for a single farm.
-
-**`example`**
-
-```js
-"totalCroppedAcres": 2456
-```
-
 #### Defined in
 
-[v4-specification.ts:372](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L372)
+[v4-specification.ts:374](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L374)
 
 ___
 
@@ -168,19 +83,9 @@ ___
 
 • `Optional` **totalFarmAcres**: `number`
 
-totalFarmAcres
-
-**`nullable`** if import file represents a batch rather than an entire project for a single farm.
-
-**`example`**
-
-```js
-"totalFarmAcres": 3490
-```
-
 #### Defined in
 
-[v4-specification.ts:360](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L360)
+[v4-specification.ts:362](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L362)
 
 ___
 
@@ -188,20 +93,6 @@ ___
 
 • **version**: `string`
 
-The specification version. This information is used to determine the logic Nori uses to import a project
-
-**`errormessage`**
-{
-"type": "projectDataError:projectVersionTypeError",
-"_": "projectDataError:projectVersionUnknownError"
-}
-
-**`example`**
-
-```js
-"version": "4.0.4"
-```
-
 #### Defined in
 
-[v4-specification.ts:335](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L335)
+[v4-specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/e34c57a/packages/project/src/v4-specification.ts#L337)

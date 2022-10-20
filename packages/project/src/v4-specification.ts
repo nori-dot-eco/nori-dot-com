@@ -1137,6 +1137,14 @@ export interface Field {
   id?: string;
 }
 /**
+ * Enum indicating whether data is historical data reported by the grower,
+ * or a projection of future data.
+ */
+enum DataTimeFrame {
+  GrowerReported = 'GROWER_REPORTED',
+  Projected = 'PROJECTED',
+}
+/**
  * Crop management details grouped by a planting year.
  *
  * @example <caption>For crop management practices in 2000:</caption>
@@ -1147,6 +1155,7 @@ export interface Field {
  *  "crops": [
  *    // ... crops that were planted in year 2000
  *  ],
+ *  "dataTimeFrame": GROWER_REPORTED,
  * }
  * ```
  *
@@ -1200,6 +1209,18 @@ export interface CropYear {
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
     (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?
   ];
+  /**
+   * Enum indicating whether data is historical data reported by the grower,
+   * or a projection of future data.
+   *
+   * @example <caption>When data is from a projection of future data:</caption>
+   *
+   * ```js
+   * "dataTimeFrame": "PROJECTED"
+   * ```
+   *
+   */
+  dataTimeFrame: DataTimeFrame;
 }
 
 /**
