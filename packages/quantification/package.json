@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prepare": "tsc -b",
+    "postinstall": "tsc -b",
     "watch": "tsc -b -w",
     "build": "tsc -b"
   },

@@ -6,7 +6,7 @@
       "options": {
         "cacheableOperations": [
           "test",
-          "prepare",
+          "postinstall",
           "watch",
           "build",
           "make:schema",
@@ -16,15 +16,11 @@
     }
   },
   "targetDefaults": {
-    "prepare": {
-      "dependsOn": [
-        "^prepare"
-      ]
+    "postinstall": {
+      "dependsOn": ["^postinstall"]
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "affected": {

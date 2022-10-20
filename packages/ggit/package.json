@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prepare": "yarn run build",
+    "postinstall": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b",
     "make:schema": "npx typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"

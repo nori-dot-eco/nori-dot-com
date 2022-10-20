@@ -20,7 +20,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown src/v4-specification.ts src/v3-specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
     "make:schema": "typescript-json-schema ./src/v4-specification.ts Project -o ./src/json/v4-specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
-    "prepare": "yarn run build",
+    "postinstall": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b"
   },
