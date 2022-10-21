@@ -4,6 +4,18 @@
 
 [v4-specification](../modules/v4_specification.md).Address
 
+**`Example`**
+
+```js
+{
+ "line1": "123 Cherry Lane",
+ "line2": "#99",
+ "city": "Bushing",
+ "admin1": "MA",
+ "country": "US"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -21,9 +33,21 @@
 
 • `Optional` **admin1**: `string`
 
+State or Province ISO3166-2 Code
+
+In the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+US-ND
+```
+
 #### Defined in
 
-[v4-specification.ts:515](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L515)
+[v4-specification.ts:514](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L514)
 
 ___
 
@@ -31,9 +55,21 @@ ___
 
 • `Optional` **admin2**: `string`
 
+County or second level subdivision
+
+In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+02130
+```
+
 #### Defined in
 
-[v4-specification.ts:525](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L525)
+[v4-specification.ts:524](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L524)
 
 ___
 
@@ -41,9 +77,19 @@ ___
 
 • `Optional` **city**: `string`
 
+city
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+Fargo
+```
+
 #### Defined in
 
-[v4-specification.ts:505](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L505)
+[v4-specification.ts:504](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L504)
 
 ___
 
@@ -51,9 +97,21 @@ ___
 
 • `Optional` **country**: `string`
 
+ISO3166 Country code
+
+See: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+US
+```
+
 #### Defined in
 
-[v4-specification.ts:535](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L535)
+[v4-specification.ts:534](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L534)
 
 ___
 
@@ -61,9 +119,25 @@ ___
 
 • `Optional` **line1**: `string`
 
+First address line
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+123 Cherry Lane
+```
+
+**`Example`**
+
+```ts
+PO Box 56789
+```
+
 #### Defined in
 
-[v4-specification.ts:487](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L487)
+[v4-specification.ts:486](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L486)
 
 ___
 
@@ -71,6 +145,22 @@ ___
 
 • `Optional` **line2**: `string`
 
+Second address line
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+123 Cherry Lane
+```
+
+**`Example`**
+
+```ts
+Station 99
+```
+
 #### Defined in
 
-[v4-specification.ts:497](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L497)
+[v4-specification.ts:496](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L496)

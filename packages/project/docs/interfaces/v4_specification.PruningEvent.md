@@ -4,6 +4,16 @@
 
 [v4-specification](../modules/v4_specification.md).PruningEvent
 
+Pruning Event.
+
+**`Example`**
+
+```js
+{
+ "date": "2008-10-31"
+}
+```
+
 ## Hierarchy
 
 - [`CropEvent`](v4_specification.CropEvent.md)
@@ -25,13 +35,35 @@
 
 • **date**: `Date`
 
+The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
+
+Dates for liming and burning can be approximate or the first day of the crop year.
+
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
+
+```js
+"date": "2000-01-01"
+```
+
+**`Validation Rules`**
+
+["cropEventDateIsOnOrAfterContainingCropYear"]
+
+**`Format`**
+
+date
+
+**`Error Message`**
+
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[date](v4_specification.CropEvent.md#date)
 
 #### Defined in
 
-[v4-specification.ts:1806](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1806)
+[v4-specification.ts:1805](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1805)
 
 ___
 
@@ -39,13 +71,25 @@ ___
 
 • `Optional` **externalId**: `string`
 
+External crop event identifier.
+
+Used to correlate data back to the originating system and to synchronize repeated imports.
+
+**`Nullable`**
+
+**`Example`**
+
+```js
+"externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
+```
+
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[externalId](v4_specification.CropEvent.md#externalid)
 
 #### Defined in
 
-[v4-specification.ts:1821](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1821)
+[v4-specification.ts:1820](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1820)
 
 ___
 
@@ -53,13 +97,27 @@ ___
 
 • `Optional` **id**: `string`
 
+Nori's internal crop event identifier.
+
+Used to synchronize repeated imports.
+
+**`Nullable`**
+
+External systems leave this blank for new projects.
+
+**`Example`**
+
+```js
+"id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
+```
+
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[id](v4_specification.CropEvent.md#id)
 
 #### Defined in
 
-[v4-specification.ts:1836](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1836)
+[v4-specification.ts:1835](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1835)
 
 ___
 
@@ -67,10 +125,28 @@ ___
 
 • `Optional` **source**: `string`
 
+Source of the event
+
+Optional field to indicate what system this data point originated from.
+
+**`Nullable`**
+
+**`Example`**
+
+```js
+"source": "CDL"
+```
+
+**`Example`**
+
+```js
+"source": "FMS name"
+```
+
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[source](v4_specification.CropEvent.md#source)
 
 #### Defined in
 
-[v4-specification.ts:1857](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1857)
+[v4-specification.ts:1856](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1856)

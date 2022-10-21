@@ -4,6 +4,16 @@
 
 [v4-specification](../modules/v4_specification.md).PracticeChangesAdopted
 
+Please indicate for `true` for the *newly adopted* practices only.
+
+**`Example`**
+
+<caption>When the field participated in CRP:</caption>
+
+```js
+"coverCropping": true
+```
+
 ## Table of contents
 
 ### Properties
@@ -22,9 +32,15 @@
 
 • `Optional` **addedOMAD**: `boolean`
 
+Added OMAD
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:853](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L853)
+[v4-specification.ts:852](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L852)
 
 ___
 
@@ -32,9 +48,15 @@ ___
 
 • `Optional` **coverCropping**: `boolean`
 
+Added cover cropping
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:829](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L829)
+[v4-specification.ts:828](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L828)
 
 ___
 
@@ -42,9 +64,15 @@ ___
 
 • `Optional` **increasedBiodiversity**: `boolean`
 
+Increased biodiversity of crop rotation
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:865](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L865)
+[v4-specification.ts:864](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L864)
 
 ___
 
@@ -52,9 +80,15 @@ ___
 
 • `Optional` **noTill**: `boolean`
 
+Ceased tillage.
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:835](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L835)
+[v4-specification.ts:834](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L834)
 
 ___
 
@@ -62,9 +96,15 @@ ___
 
 • `Optional` **reducedFallow**: `boolean`
 
+Reduced fallow in rotation
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:859](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L859)
+[v4-specification.ts:858](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L858)
 
 ___
 
@@ -72,9 +112,15 @@ ___
 
 • `Optional` **reducedTillage**: `boolean`
 
+Other reduction in tillage.
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:847](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L847)
+[v4-specification.ts:846](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L846)
 
 ___
 
@@ -82,6 +128,12 @@ ___
 
 • `Optional` **stripTill**: `boolean`
 
+Switched to strip tillage.
+
+**`Default`**
+
+false
+
 #### Defined in
 
-[v4-specification.ts:841](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L841)
+[v4-specification.ts:840](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L840)

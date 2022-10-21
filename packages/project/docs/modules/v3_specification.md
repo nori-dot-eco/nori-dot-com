@@ -2,6 +2,35 @@
 
 # Module: v3-specification
 
+## About
+
+Provides the definitions for [Nori project](../interfaces/v3_specification.Project.md) data using typescript interfaces.
+
+## Usage
+
+### Nori [project](../interfaces/v3_specification.Project.md) import JSON files
+
+The [project v3 specification](../interfaces/v3_specification.Project.md) interfaces can be used as a guide to create project imports.
+For example, the highest level interface of the specification is the Project interface. Using the properties and types of the project interface, one can begin to define a JSON object that represents a set of supplier fields.
+
+#### Example
+
+You can find an example of a full implementation [here](../../src/example/v3-example.json)
+
+## Navigation
+
+Whilst it is likely easiest to navigate this document by starting at the highest level interface ["Project"](../interfaces/v3_specification.Project.md), you can also find definitions for all of the interfaces for a Nori project listed in the [index section](#index).
+
+## Vocabulary
+
+Throughout this documentation you will come across some vocab that indicate to what extent some data needs to be defined. There are effectively three different terms used here:
+
+1. `nullable` - This means that data can be explicitly specified as null in an import file. However, the implication for nullable values is that unless it is marked as optional (i.e., with the `?` symbol after the property name's definition), AND it does not have an associated `default` value for the property, then the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+
+2. `?` (AKA optional) - Specifies that a data property can be entirely excluded
+
+3. `default` - Specifies that when the data used for a property is specified as `null`, as an empty string, or excluded, it will be assigned the specified default value.
+
 ## Table of contents
 
 ### Interfaces
@@ -53,7 +82,7 @@
 
 #### Defined in
 
-[v3-specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L36)
+[v3-specification.ts:36](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L36)
 
 ___
 
@@ -63,7 +92,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L72)
+[v3-specification.ts:72](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L72)
 
 ___
 
@@ -73,7 +102,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L142)
+[v3-specification.ts:142](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L142)
 
 ___
 
@@ -83,7 +112,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:180](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L180)
+[v3-specification.ts:180](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L180)
 
 ___
 
@@ -93,7 +122,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L113)
+[v3-specification.ts:113](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L113)
 
 ___
 
@@ -103,7 +132,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L133)
+[v3-specification.ts:133](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L133)
 
 ___
 
@@ -113,7 +142,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L84)
+[v3-specification.ts:84](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L84)
 
 ___
 
@@ -123,7 +152,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L166)
+[v3-specification.ts:166](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L166)
 
 ___
 
@@ -133,4 +162,4 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L92)
+[v3-specification.ts:92](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L92)

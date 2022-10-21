@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface, jsdoc/check-tag-names */
 /**
  * ## About
  *

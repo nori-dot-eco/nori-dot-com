@@ -4,6 +4,16 @@
 
 [v3-specification](../modules/v3_specification.md).BurningEvent
 
+Burning event details.
+
+**`Example`**
+
+```js
+{
+ "type": "before planting"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -16,6 +26,24 @@
 
 • **type**: ``"before planting"`` \| ``"after harvesting"``
 
+The type of burning, if applicable.
+
+**`Example`**
+
+<caption>When burning occurred before planting:</caption>
+
+```js
+"type": "before planting"
+```
+
+**`Example`**
+
+<caption>When burning occurred after harvesting:</caption>
+
+```js
+"type": "after harvesting"
+```
+
 #### Defined in
 
-[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1935)
+[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1935)

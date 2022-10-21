@@ -4,6 +4,43 @@
 
 [v4-specification](../modules/v4_specification.md).Field
 
+A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.
+
+**`Example`**
+
+```js
+{
+ "regenerativeStartYear": 2015,
+ "fieldName": "Pumpkin Pines",
+ "legalAcres": 100,
+ "assignmentOfAuthority": true,
+ "landOwners": [{
+   "name": "Lonny Long",
+   "phone": "999 555-1212",
+   "email": "lon@long.com"
+  }],
+ "parcelNumber": "",
+ "legalPropertyDescription": "15 83 40 N 17.70 A OF W 33.67 A SW SE",
+ "geojson": {
+   // exmaple GeoJSON:
+   "type": "Polygon",
+    "coordinates": [
+        [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
+    ]
+ },
+ "cropYears": [
+   // a list of annual crop management practices
+ ],
+ "historicLandManagement": {
+   // ...HistoricNonCRPLandManagement or HistoricCRPLandManagement
+ },
+ "externalId": "faec5e0b-8ce2-4161-93ff-4c9734f22334",
+ "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+}
+```
+
+**`Error Message`**
+
 ## Table of contents
 
 ### Properties
@@ -32,9 +69,28 @@
 
 • **assignmentOfAuthority**: `boolean`
 
+assignmentOfAuthority - Is there an assignment of authority in place?
+i.e. Is the field leased land?
+
+**`Example`**
+
+<caption>When the operation is on leased land:</caption>
+
+```js
+"assignmentOfAuthority": true
+```
+
+**`Example`**
+
+<caption>When the operator is the land owner:</caption>
+
+```js
+"assignmentOfAuthority": true
+```
+
 #### Defined in
 
-[v4-specification.ts:1037](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1037)
+[v4-specification.ts:1036](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1036)
 
 ___
 
@@ -42,9 +98,26 @@ ___
 
 • **cropYears**: [`CropYear`](v4_specification.CropYear.md)[]
 
+A list of crop management details grouped by the crop planting year.
+
+**`Example`**
+
+<caption>When a field has management information for planting year 2000:</caption>
+
+```js
+"cropYears": [
+ {
+   "plantingYear": 2000,
+   "crops": [
+     // ...(AnnualCrop | OrchardOrVineyardCrop | PerennialCrop)[] (crops that were planted in year 2000)
+   ],
+ }
+]
+```
+
 #### Defined in
 
-[v4-specification.ts:1106](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1106)
+[v4-specification.ts:1105](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1105)
 
 ___
 
@@ -52,9 +125,20 @@ ___
 
 • **earliestEvidenceYear**: `number`
 
+Earliest evidence is the first year a field has any digital or hard copy records of its practices
+(instead of an external data set to infer practices) and is used to calculate the number of eligible years to issue NRTs.
+
+**`Example`**
+
+<caption>When earliest available detailed practice records date back to 2010:</caption>
+
+```js
+"earliestEvidenceYear": 2010
+```
+
 #### Defined in
 
-[v4-specification.ts:939](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L939)
+[v4-specification.ts:938](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L938)
 
 ___
 
@@ -62,9 +146,21 @@ ___
 
 • `Optional` **externalId**: `string`
 
+Field identifier from external system.
+
+Used to correlate data back to the originating system and to synchronize repeated imports.
+
+**`Nullable`**
+
+**`Example`**
+
+```js
+"externalId": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+```
+
 #### Defined in
 
-[v4-specification.ts:1122](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1122)
+[v4-specification.ts:1121](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1121)
 
 ___
 
@@ -72,9 +168,15 @@ ___
 
 • `Optional` **farmOperator**: [`ContactInfo`](v4_specification.ContactInfo.md)
 
+operator (lessee as shown on lease if land is leased)
+
+**`Nullable`**
+
+if ownwer is operator or if this information will be communicated directly to the verifier.
+
 #### Defined in
 
-[v4-specification.ts:1051](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1051)
+[v4-specification.ts:1050](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1050)
 
 ___
 
@@ -82,9 +184,21 @@ ___
 
 • **fieldName**: `string`
 
+The name of the field.
+
+**`Example`**
+
+<caption>When a field is named "Pumpkin Pines":</caption>
+
+```js
+"fieldName": "Pumpkin Pines"
+```
+
+**`Error Message`**
+
 #### Defined in
 
-[v4-specification.ts:1013](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1013)
+[v4-specification.ts:1012](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1012)
 
 ___
 
@@ -92,9 +206,25 @@ ___
 
 • **geojson**: `GeoJSON`
 
+The geographic boundaries (defined as GeoJSON) associated with crop management practices.
+
+For additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)
+
+**`Example`**
+
+<caption>When a field boundary is defined as a simple polygon:</caption>
+
+```js
+"geojson": {
+ "type": "Polygon", "coordinates": [
+   [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
+ ]
+}
+```
+
 #### Defined in
 
-[v4-specification.ts:1088](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1088)
+[v4-specification.ts:1087](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1087)
 
 ___
 
@@ -102,9 +232,46 @@ ___
 
 • **historicLandManagement**: [`HistoricNonCRPLandManagement`](v4_specification.HistoricNonCRPLandManagement.md) \| [`HistoricCRPLandManagement`](v4_specification.HistoricCRPLandManagement.md)
 
+Details surrounding how the field was managed before year 2000.
+
+**`Nullable`**
+
+during import (note: when historicLandManagement is defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+
+**`Example`**
+
+<caption>When the field did not participate in CRP (HistoricNonCRPLandManagement):</caption>
+
+```js
+"historicLandManagement": {
+ "crp": false,
+ "preYear1980": "irrigation",
+ "tillageForYears1980To2000": "intensive tillage",
+ "year1980To2000": "irrigated: annual crops in rotation",
+}
+```
+
+**`Example`**
+
+<caption>When the field did participate in CRP (HistoricCRPLandManagement):</caption>
+
+```js
+"historicLandManagement":  {
+ "crp": true,
+ "crpType": "100% grass",
+ "crpStartYear": 1980,
+ "crpEndYear": 2000,
+ "preCRPManagement": "irrigated: annual crops in rotation",
+ "preCRPTillage": "intensive tillage",
+ "postCRPManagement": "livestock grazing",
+ "postCRPTillage": "intensive tillage",
+ "preYear1980": "irrigation"
+}
+```
+
 #### Defined in
 
-[v4-specification.ts:994](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L994)
+[v4-specification.ts:993](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L993)
 
 ___
 
@@ -112,9 +279,23 @@ ___
 
 • `Optional` **id**: `string`
 
+Nori's internal field identifier.
+
+Used to synchronize repeated imports.
+
+**`Nullable`**
+
+External systems leave this blank for new projects.
+
+**`Example`**
+
+```js
+"id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+```
+
 #### Defined in
 
-[v4-specification.ts:1137](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1137)
+[v4-specification.ts:1136](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1136)
 
 ___
 
@@ -122,9 +303,15 @@ ___
 
 • `Optional` **landOwners**: [`ContactInfo`](v4_specification.ContactInfo.md)[]
 
+landOwners (as shown on deed, MUST LIST ALL OWNERS)
+
+**`Nullable`**
+
+If this information will be communicated directly to the verifier.
+
 #### Defined in
 
-[v4-specification.ts:1044](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1044)
+[v4-specification.ts:1043](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1043)
 
 ___
 
@@ -132,9 +319,17 @@ ___
 
 • **legalAcres**: `number`
 
+legalAcres Number of acres in this parcel per your insurance policy.
+
+**`Example`**
+
+```ts
+152.8
+```
+
 #### Defined in
 
-[v4-specification.ts:1019](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1019)
+[v4-specification.ts:1018](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1018)
 
 ___
 
@@ -142,9 +337,19 @@ ___
 
 • `Optional` **legalPropertyDescription**: `string`
 
+legalPropertyDescription
+
+**`Nullable`**
+
+**`Example`**
+
+```ts
+15 83 40 N 17.70 A OF W 33.67 A SW SE
+```
+
 #### Defined in
 
-[v4-specification.ts:1071](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1071)
+[v4-specification.ts:1070](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1070)
 
 ___
 
@@ -152,9 +357,15 @@ ___
 
 • `Optional` **mailingAddress**: [`Address`](v4_specification.Address.md)
 
+mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)
+
+**`Nullable`**
+
+If this information will be communicated directly to the verifier.
+
 #### Defined in
 
-[v4-specification.ts:1057](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1057)
+[v4-specification.ts:1056](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1056)
 
 ___
 
@@ -162,9 +373,13 @@ ___
 
 • `Optional` **parcelNumber**: `string`
 
+parcelNumber
+
+**`Nullable`**
+
 #### Defined in
 
-[v4-specification.ts:1063](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L1063)
+[v4-specification.ts:1062](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1062)
 
 ___
 
@@ -172,9 +387,18 @@ ___
 
 • `Optional` **physicalEvidenceDoesNotCorroborateSwitchYear**: `boolean`
 
+Used to indicate that the available physical evidence does not corroborate the provided switch year.
+
+**`Example`**
+
+<caption>If the physical evidence of a switch to no-till was an undated photo of the no-till planter.</caption>
+```js
+"physicalEvidenceDoesNotCorroborateSwitchYear": true
+````
+
 #### Defined in
 
-[v4-specification.ts:948](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L948)
+[v4-specification.ts:947](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L947)
 
 ___
 
@@ -182,9 +406,17 @@ ___
 
 • **practiceChangesAdopted**: [`PracticeChangesAdopted`](v4_specification.PracticeChangesAdopted.md)
 
+Details of new practice changes.
+
+```js
+"practiceChangesAdopted": {
+  "coverCropping": true
+}
+```
+
 #### Defined in
 
-[v4-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L960)
+[v4-specification.ts:959](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L959)
 
 ___
 
@@ -192,6 +424,22 @@ ___
 
 • **regenerativeStartYear**: `number`
 
+The year that you most recently adopted regenerative agricultural practices. aka Switch Year
+
+For more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).
+
+**`Minimum`**
+
+2010
+
+**`Example`**
+
+<caption>When regenerative practices started in year 2015:</caption>
+
+```js
+"regenerativeStartYear": 2015
+```
+
 #### Defined in
 
-[v4-specification.ts:927](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v4-specification.ts#L927)
+[v4-specification.ts:926](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L926)
