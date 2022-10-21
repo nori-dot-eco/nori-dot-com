@@ -25,7 +25,7 @@
 
 #### Defined in
 
-[v3-specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1321)
+[v3-specification.ts:1321](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1321)
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1308](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1308)
+[v3-specification.ts:1308](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1308)

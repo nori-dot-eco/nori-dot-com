@@ -211,7 +211,6 @@ export const convertV3FieldToV4Field = (v3Field: FieldV3): FieldV4 => {
       return {
         plantingYear: v3CropYear.plantingYear,
         crops: [crops[0], crops[1], crops[2]],
-        dataTimeFrame: undefined,
       };
     }),
   };

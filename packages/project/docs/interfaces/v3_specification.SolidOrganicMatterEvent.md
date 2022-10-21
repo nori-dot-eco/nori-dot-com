@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[v3-specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1708)
+[v3-specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1708)
 
 ___
 
@@ -48,7 +48,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1747](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1747)
+[v3-specification.ts:1747](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1747)
 
 ___
 
@@ -62,7 +62,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1279)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1694)
+[v3-specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1694)
 
 ___
 
@@ -90,7 +90,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1765](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1765)
+[v3-specification.ts:1765](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1765)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1728](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1728)
+[v3-specification.ts:1728](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1728)
 
 ___
 
@@ -114,4 +114,4 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:1630](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L1630)
+[v3-specification.ts:1630](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L1630)

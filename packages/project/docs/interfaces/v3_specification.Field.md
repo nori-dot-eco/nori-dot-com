@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[v3-specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L641)
+[v3-specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L641)
 
 ___
 
@@ -33,7 +33,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L676)
+[v3-specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L676)
 
 ___
 
@@ -43,7 +43,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L628)
+[v3-specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L628)
 
 ___
 
@@ -53,7 +53,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L658)
+[v3-specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L658)
 
 ___
 
@@ -63,7 +63,7 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L609)
+[v3-specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L609)
 
 ___
 
@@ -73,4 +73,4 @@ ___
 
 #### Defined in
 
-[v3-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/8e6dd1a/packages/project/src/v3-specification.ts#L575)
+[v3-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/efae8bc/packages/project/src/v3-specification.ts#L575)
