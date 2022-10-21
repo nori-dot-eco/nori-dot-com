@@ -311,9 +311,11 @@ export const limingTypes = [
  * ```
  *
  * @errorMessage
+ * ```js
  * {
  * "_": "projectDataError:projectUnknownError"
  * }
+ * ```
  *
  */
 export interface Project {
@@ -321,10 +323,12 @@ export interface Project {
    * The specification version. This information is used to determine the logic Nori uses to import a project
    *
    * @errorMessage
+   * ```js
    * {
    * "type": "projectDataError:projectVersionTypeError",
    * "_": "projectDataError:projectVersionUnknownError"
    * }
+   * ```
    *
    * @example
    *
@@ -404,12 +408,14 @@ export interface Project {
    * An array of fields defining annual crop management practices.
    *
    * @errorMessage
+   * ```js
    * {
    * "minItems": "projectDataError:projectFieldsMinimumItemsError",
    * "maxItems": "projectDataError:projectFieldsMaximumItemsError",
    * "type": "projectDataError:projectFieldsTypeError",
    * "_": "projectDataError:projectFieldsUnknownError"
    * }
+   * ```
    *
    * @minItems 1
    * @maxItems 200
@@ -901,11 +907,13 @@ export interface PracticeChangesAdopted {
  * ```
  *
  * @errorMessage
+ * ```js
  * {
  * "required": "projectDataError:fieldRequiredPropertyMissing",
  * "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
  * "_": "projectDataError:fieldUnknownError"
  * }
+ * ```
  *
  */
 export interface Field {
@@ -1003,10 +1011,12 @@ export interface Field {
    * ```
    *
    * @errorMessage
+   * ```js
    * {
    * "type": "projectDataError:fieldNameTypeError",
    * "_": "projectDataError:fieldNameUnknownError"
    * }
+   * ```
    *
    */
   fieldName: string;
@@ -1797,10 +1807,12 @@ export interface CropEvent {
    * @format date
    *
    * @errorMessage
+   * ```js
    * {
    * "type": "projectDataError:cropEventDateTypeError",
    * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
    * }
+   * ```
    */
   date: Date;
   /**

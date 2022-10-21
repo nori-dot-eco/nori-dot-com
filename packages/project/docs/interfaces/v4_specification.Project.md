@@ -26,6 +26,12 @@ https://schema.nori.com/soil/4-0-5
 
 **`Error Message`**
 
+```js
+{
+"_": "projectDataError:projectUnknownError"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -59,7 +65,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:387](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L387)
+[v4-specification.ts:391](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L391)
 
 ___
 
@@ -75,7 +81,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:349](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L349)
+[v4-specification.ts:353](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L353)
 
 ___
 
@@ -86,6 +92,15 @@ ___
 An array of fields defining annual crop management practices.
 
 **`Error Message`**
+
+```js
+{
+"minItems": "projectDataError:projectFieldsMinimumItemsError",
+"maxItems": "projectDataError:projectFieldsMaximumItemsError",
+"type": "projectDataError:projectFieldsTypeError",
+"_": "projectDataError:projectFieldsUnknownError"
+}
+```
 
 **`Min Items`**
 
@@ -105,7 +120,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:426](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L426)
+[v4-specification.ts:432](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L432)
 
 ___
 
@@ -129,7 +144,7 @@ External systems leave this blank for new projects.
 
 #### Defined in
 
-[v4-specification.ts:402](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L402)
+[v4-specification.ts:406](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L406)
 
 ___
 
@@ -143,7 +158,7 @@ This will be the primary point of contract for verifiers.
 
 #### Defined in
 
-[v4-specification.ts:343](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L343)
+[v4-specification.ts:347](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L347)
 
 ___
 
@@ -165,7 +180,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:373](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L373)
+[v4-specification.ts:377](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L377)
 
 ___
 
@@ -187,7 +202,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:361](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L361)
+[v4-specification.ts:365](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L365)
 
 ___
 
@@ -199,6 +214,13 @@ The specification version. This information is used to determine the logic Nori 
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:projectVersionTypeError",
+"_": "projectDataError:projectVersionUnknownError"
+}
+```
+
 **`Example`**
 
 ```js
@@ -207,4 +229,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v4-specification.ts:336](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L336)
+[v4-specification.ts:340](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L340)

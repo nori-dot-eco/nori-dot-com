@@ -67,7 +67,7 @@ Amount of organic matter or manure applied per acre (in tons per acre for solid/
 
 #### Defined in
 
-[v3-specification.ts:1708](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1708)
+[v3-specification.ts:1720](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1720)
 
 ___
 
@@ -105,7 +105,7 @@ during import
 
 #### Defined in
 
-[v3-specification.ts:1747](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1747)
+[v3-specification.ts:1759](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1759)
 
 ___
 
@@ -137,13 +137,20 @@ during import (note: when dates are defined as null in an import file, the data 
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+```
+
 #### Inherited from
 
 [OrganicMatterEvent](v3_specification.OrganicMatterEvent.md).[date](v3_specification.OrganicMatterEvent.md#date)
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -171,7 +178,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:1694](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1694)
+[v3-specification.ts:1706](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1706)
 
 ___
 
@@ -211,7 +218,7 @@ during import (explicitly specify null if you are unsure what the value is)
 
 #### Defined in
 
-[v3-specification.ts:1765](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1765)
+[v3-specification.ts:1777](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1777)
 
 ___
 
@@ -253,7 +260,7 @@ during import (when defined as undefined, a default value will be assigned)
 
 #### Defined in
 
-[v3-specification.ts:1728](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1728)
+[v3-specification.ts:1740](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1740)
 
 ___
 
@@ -273,4 +280,4 @@ The organic matter or manure classification type.
 
 #### Defined in
 
-[v3-specification.ts:1661](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1661)
+[v3-specification.ts:1673](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1673)

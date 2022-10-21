@@ -66,13 +66,20 @@ during import (note: when dates are defined as null in an import file, the data 
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+```
+
 #### Inherited from
 
 [CropManagementEvent](v3_specification.CropManagementEvent.md).[date](v3_specification.CropManagementEvent.md#date)
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -108,7 +115,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1357](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1357)
+[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1369)
 
 ___
 
@@ -160,7 +167,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v3-specification.ts:1385](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1385)
+[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1397)
 
 ___
 
@@ -186,7 +193,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1419](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1419)
+[v3-specification.ts:1431](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1431)
 
 ___
 
@@ -212,4 +219,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1434](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1434)
+[v3-specification.ts:1446](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1446)

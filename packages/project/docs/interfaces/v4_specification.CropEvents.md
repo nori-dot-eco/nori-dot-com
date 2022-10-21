@@ -101,7 +101,7 @@ Burning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1512](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1512)
+[v4-specification.ts:1522](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1522)
 
 ___
 
@@ -137,7 +137,7 @@ Clearing and renewal events for orchards and vinyards, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1558](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1558)
+[v4-specification.ts:1568](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1568)
 
 ___
 
@@ -167,7 +167,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1403](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1403)
+[v4-specification.ts:1413](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1413)
 
 ___
 
@@ -200,7 +200,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v4-specification.ts:1489](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1489)
+[v4-specification.ts:1499](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1499)
 
 ___
 
@@ -233,7 +233,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v4-specification.ts:1579](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1579)
+[v4-specification.ts:1589](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1589)
 
 ___
 
@@ -261,7 +261,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1445](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1445)
+[v4-specification.ts:1455](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1455)
 
 ___
 
@@ -294,7 +294,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v4-specification.ts:1467](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1467)
+[v4-specification.ts:1477](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1477)
 
 ___
 
@@ -328,7 +328,7 @@ during import (explicitly specify null if no organic matter events occurred, oth
 
 #### Defined in
 
-[v4-specification.ts:1426](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1426)
+[v4-specification.ts:1436](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1436)
 
 ___
 
@@ -366,7 +366,7 @@ This will contain a single event for annuals and none for perennials outside of 
 
 #### Defined in
 
-[v4-specification.ts:1360](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1360)
+[v4-specification.ts:1370](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1370)
 
 ___
 
@@ -402,7 +402,7 @@ Pruning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1535](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1535)
+[v4-specification.ts:1545](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1545)
 
 ___
 
@@ -432,4 +432,4 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v4-specification.ts:1382](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1382)
+[v4-specification.ts:1392](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1392)

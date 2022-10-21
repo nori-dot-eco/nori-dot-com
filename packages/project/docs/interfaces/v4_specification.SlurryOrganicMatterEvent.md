@@ -70,7 +70,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2278](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2278)
+[v4-specification.ts:2290](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2290)
 
 ___
 
@@ -100,13 +100,20 @@ date
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+```
+
 #### Inherited from
 
 [OrganicMatterEvent](v4_specification.OrganicMatterEvent.md).[date](v4_specification.OrganicMatterEvent.md#date)
 
 #### Defined in
 
-[v4-specification.ts:1805](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1805)
+[v4-specification.ts:1817](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1817)
 
 ___
 
@@ -132,7 +139,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1820](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1820)
+[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1832)
 
 ___
 
@@ -160,7 +167,7 @@ Amount of organic matter applied per acre (gallons per acre).
 
 #### Defined in
 
-[v4-specification.ts:2214](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2214)
+[v4-specification.ts:2226](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2226)
 
 ___
 
@@ -188,7 +195,7 @@ External systems leave this blank for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1835](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1835)
+[v4-specification.ts:1847](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1847)
 
 ___
 
@@ -216,7 +223,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:2247](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2247)
+[v4-specification.ts:2259](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2259)
 
 ___
 
@@ -252,7 +259,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2294](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2294)
+[v4-specification.ts:2306](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2306)
 
 ___
 
@@ -288,7 +295,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2263](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2263)
+[v4-specification.ts:2275](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2275)
 
 ___
 
@@ -320,7 +327,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1856](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1856)
+[v4-specification.ts:1868](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1868)
 
 ___
 
@@ -340,4 +347,4 @@ The organic matter or manure classification type.
 
 #### Defined in
 
-[v4-specification.ts:2200](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2200)
+[v4-specification.ts:2212](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2212)

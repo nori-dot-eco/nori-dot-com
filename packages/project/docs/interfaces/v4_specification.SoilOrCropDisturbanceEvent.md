@@ -60,13 +60,20 @@ date
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+```
+
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[date](v4_specification.CropEvent.md#date)
 
 #### Defined in
 
-[v4-specification.ts:1805](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1805)
+[v4-specification.ts:1817](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1817)
 
 ___
 
@@ -92,7 +99,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1820](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1820)
+[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1832)
 
 ___
 
@@ -120,7 +127,7 @@ External systems leave this blank for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1835](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1835)
+[v4-specification.ts:1847](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1847)
 
 ___
 
@@ -140,7 +147,7 @@ The name/alias that the soil or crop disturbance events practice is known by. Th
 
 #### Defined in
 
-[v4-specification.ts:1997](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1997)
+[v4-specification.ts:2009](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2009)
 
 ___
 
@@ -172,7 +179,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1856](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L1856)
+[v4-specification.ts:1868](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1868)
 
 ___
 
@@ -266,4 +273,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:2064](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L2064)
+[v4-specification.ts:2076](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L2076)

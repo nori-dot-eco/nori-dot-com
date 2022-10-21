@@ -47,7 +47,7 @@ US-ND
 
 #### Defined in
 
-[v4-specification.ts:514](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L514)
+[v4-specification.ts:520](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L520)
 
 ___
 
@@ -69,7 +69,7 @@ In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/nation
 
 #### Defined in
 
-[v4-specification.ts:524](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L524)
+[v4-specification.ts:530](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L530)
 
 ___
 
@@ -89,7 +89,7 @@ Fargo
 
 #### Defined in
 
-[v4-specification.ts:504](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L504)
+[v4-specification.ts:510](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L510)
 
 ___
 
@@ -111,7 +111,7 @@ US
 
 #### Defined in
 
-[v4-specification.ts:534](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L534)
+[v4-specification.ts:540](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L540)
 
 ___
 
@@ -137,7 +137,7 @@ PO Box 56789
 
 #### Defined in
 
-[v4-specification.ts:486](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L486)
+[v4-specification.ts:492](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L492)
 
 ___
 
@@ -163,4 +163,4 @@ Station 99
 
 #### Defined in
 
-[v4-specification.ts:496](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v4-specification.ts#L496)
+[v4-specification.ts:502](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L502)

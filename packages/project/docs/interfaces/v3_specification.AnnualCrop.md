@@ -85,7 +85,7 @@ if no burning ever occurred, explicitly specify `burningEvent` as `null`
 
 #### Defined in
 
-[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1004)
+[v3-specification.ts:1014](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1014)
 
 ___
 
@@ -109,7 +109,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v3-specification.ts:1243](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1243)
+[v3-specification.ts:1253](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1253)
 
 ___
 
@@ -141,7 +141,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L900)
+[v3-specification.ts:910](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L910)
 
 ___
 
@@ -177,7 +177,7 @@ during import (explicitly specify null if grazing did not occur, otherwise exclu
 
 #### Defined in
 
-[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L981)
+[v3-specification.ts:991](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L991)
 
 ___
 
@@ -208,7 +208,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L827)
+[v3-specification.ts:837](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L837)
 
 ___
 
@@ -238,7 +238,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L940)
+[v3-specification.ts:950](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L950)
 
 ___
 
@@ -273,7 +273,7 @@ during import (explicitly specify null if no liming events occurred, otherwise e
 
 #### Defined in
 
-[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L960)
+[v3-specification.ts:970](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L970)
 
 ___
 
@@ -299,7 +299,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L774)
+[v3-specification.ts:784](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L784)
 
 ___
 
@@ -337,7 +337,7 @@ during import (explicitly specify null if no organic matter events occurred, oth
 
 #### Defined in
 
-[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L923)
+[v3-specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L933)
 
 ___
 
@@ -367,7 +367,7 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L789)
+[v3-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L799)
 
 ___
 
@@ -399,7 +399,7 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L881)
+[v3-specification.ts:891](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L891)
 
 ___
 
@@ -425,4 +425,4 @@ must specify one of the allowed crop types if you are specifying an annual crop
 
 #### Defined in
 
-[v3-specification.ts:1228](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1228)
+[v3-specification.ts:1238](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1238)

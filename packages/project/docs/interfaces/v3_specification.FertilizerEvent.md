@@ -62,13 +62,20 @@ during import (note: when dates are defined as null in an import file, the data 
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:cropEventDateTypeError",
+"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+}
+```
+
 #### Inherited from
 
 [CropEvent](v3_specification.CropEvent.md).[date](v3_specification.CropEvent.md#date)
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -92,7 +99,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1599](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1599)
+[v3-specification.ts:1611](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1611)
 
 ___
 
@@ -116,7 +123,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1571)
+[v3-specification.ts:1583](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1583)
 
 ___
 
@@ -142,4 +149,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[v3-specification.ts:1586](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L1586)
+[v3-specification.ts:1598](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1598)

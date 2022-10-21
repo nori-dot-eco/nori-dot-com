@@ -31,6 +31,14 @@ A field defining annual crop management practices. Fields are defined by geograp
 
 **`Error Message`**
 
+```js
+{
+"required": "projectDataError:fieldRequiredPropertyMissing",
+"additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+"_": "projectDataError:fieldUnknownError"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -64,7 +72,7 @@ during import (note: when acres is defined as null in an import file it will ins
 
 #### Defined in
 
-[v3-specification.ts:641](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L641)
+[v3-specification.ts:651](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L651)
 
 ___
 
@@ -91,7 +99,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-[v3-specification.ts:676](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L676)
+[v3-specification.ts:686](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L686)
 
 ___
 
@@ -111,9 +119,16 @@ The name of the field.
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:fieldNameTypeError",
+"_": "projectDataError:fieldNameUnknownError"
+}
+```
+
 #### Defined in
 
-[v3-specification.ts:628](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L628)
+[v3-specification.ts:638](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L638)
 
 ___
 
@@ -139,7 +154,7 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-[v3-specification.ts:658](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L658)
+[v3-specification.ts:668](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L668)
 
 ___
 
@@ -186,7 +201,7 @@ during import (note: when historicLandManagement is defined as null in an import
 
 #### Defined in
 
-[v3-specification.ts:609](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L609)
+[v3-specification.ts:617](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L617)
 
 ___
 
@@ -212,4 +227,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-[v3-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L575)
+[v3-specification.ts:583](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L583)

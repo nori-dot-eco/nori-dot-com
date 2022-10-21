@@ -20,6 +20,12 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 **`Error Message`**
 
+```js
+{
+"_": "projectDataError:projectUnknownError"
+}
+```
+
 ## Table of contents
 
 ### Properties
@@ -36,6 +42,15 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 An array of fields defining annual crop management practices.
 
 **`Error Message`**
+
+```js
+{
+"minItems": "projectDataError:projectFieldsMinimumItemsError",
+"maxItems": "projectDataError:projectFieldsMaximumItemsError",
+"type": "projectDataError:projectFieldsTypeError",
+"_": "projectDataError:projectFieldsUnknownError"
+}
+```
 
 **`Min Items`**
 
@@ -55,7 +70,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v3-specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L248)
+[v3-specification.ts:254](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L254)
 
 ___
 
@@ -67,6 +82,13 @@ The specification version. This information is used to determine the logic Nori 
 
 **`Error Message`**
 
+```js
+{
+"type": "projectDataError:projectVersionTypeError",
+"_": "projectDataError:projectVersionUnknownError"
+}
+```
+
 **`Example`**
 
 ```js
@@ -75,4 +97,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v3-specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/aa5eddd/packages/project/src/v3-specification.ts#L224)
+[v3-specification.ts:228](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L228)
