@@ -379,10 +379,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -427,10 +424,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -847,10 +841,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -937,11 +928,7 @@
         "Field": {
             "additionalProperties": false,
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
-            "errorMessage": {
-                "_": "projectDataError:fieldUnknownError",
-                "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
-                "required": "projectDataError:fieldRequiredPropertyMissing"
-            },
+            "errorMessage": "```js\n{\n\"required\": \"projectDataError:fieldRequiredPropertyMissing\",\n\"additionalProperties\": \"projectDataError:fieldUnknownAdditionalProperty\",\n\"_\": \"projectDataError:fieldUnknownError\"\n}\n```",
             "properties": {
                 "assignmentOfAuthority": {
                     "description": "assignmentOfAuthority - Is there an assignment of authority in place?\ni.e. Is the field leased land?",
@@ -983,10 +970,7 @@
                 },
                 "fieldName": {
                     "description": "The name of the field.",
-                    "errorMessage": {
-                        "_": "projectDataError:fieldNameUnknownError",
-                        "type": "projectDataError:fieldNameTypeError"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:fieldNameTypeError\",\n\"_\": \"projectDataError:fieldNameUnknownError\"\n}\n```",
                     "title": "fieldName",
                     "type": "string"
                 },
@@ -2041,10 +2025,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2105,10 +2086,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2367,10 +2345,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2422,10 +2397,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2997,10 +2969,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3095,10 +3064,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3156,10 +3122,7 @@
                 },
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3258,10 +3221,7 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3366,10 +3326,7 @@
                 },
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
+                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3477,9 +3434,7 @@
         }
     },
     "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project maye represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
-    "errorMessage": {
-        "_": "projectDataError:projectUnknownError"
-    },
+    "errorMessage": "```js\n{\n\"_\": \"projectDataError:projectUnknownError\"\n}\n```",
     "id": "https://schema.nori.com/soil/4-0-5",
     "properties": {
         "externalId": {
@@ -3504,12 +3459,7 @@
         },
         "fields": {
             "description": "An array of fields defining annual crop management practices.",
-            "errorMessage": {
-                "_": "projectDataError:projectFieldsUnknownError",
-                "maxItems": "projectDataError:projectFieldsMaximumItemsError",
-                "minItems": "projectDataError:projectFieldsMinimumItemsError",
-                "type": "projectDataError:projectFieldsTypeError"
-            },
+            "errorMessage": "```js\n{\n\"minItems\": \"projectDataError:projectFieldsMinimumItemsError\",\n\"maxItems\": \"projectDataError:projectFieldsMaximumItemsError\",\n\"type\": \"projectDataError:projectFieldsTypeError\",\n\"_\": \"projectDataError:projectFieldsUnknownError\"\n}\n```",
             "items": {
                 "$ref": "#/definitions/Field"
             },
@@ -3549,10 +3499,7 @@
         },
         "version": {
             "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
-            "errorMessage": {
-                "_": "projectDataError:projectVersionUnknownError",
-                "type": "projectDataError:projectVersionTypeError"
-            },
+            "errorMessage": "```js\n{\n\"type\": \"projectDataError:projectVersionTypeError\",\n\"_\": \"projectDataError:projectVersionUnknownError\"\n}\n```",
             "title": "version",
             "type": "string"
         }
