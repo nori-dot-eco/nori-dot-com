@@ -4,6 +4,7 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
+        "parallel": 5,
         "cacheableOperations": [
           "test",
           "prepare",
@@ -17,14 +18,10 @@
   },
   "targetDefaults": {
     "prepare": {
-      "dependsOn": [
-        "^prepare"
-      ]
+      "dependsOn": ["^prepare"]
     },
     "build": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     }
   },
   "affected": {
