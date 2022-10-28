@@ -43,7 +43,7 @@ An annual crop's harvest event details.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
@@ -67,20 +67,13 @@ date
 
 **`Error Message`**
 
-```js
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
-```
-
 #### Inherited from
 
 [CropEvent](v4_specification.CropEvent.md).[date](v4_specification.CropEvent.md#date)
 
 #### Defined in
 
-[v4-specification.ts:1817](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1817)
+[v4-specification.ts:1843](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1843)
 
 ___
 
@@ -106,7 +99,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1858](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1858)
 
 ___
 
@@ -142,7 +135,7 @@ no
 
 #### Defined in
 
-[v4-specification.ts:1954](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1954)
+[v4-specification.ts:1980](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1980)
 
 ___
 
@@ -156,7 +149,7 @@ Used to synchronize repeated imports.
 
 **`Nullable`**
 
-External systems leave this blank for new projects.
+External systems pass null or omit the property for new projects.
 
 **`Example`**
 
@@ -170,7 +163,7 @@ External systems leave this blank for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1847](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1847)
+[v4-specification.ts:1873](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1873)
 
 ___
 
@@ -218,7 +211,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v4-specification.ts:1982](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1982)
+[v4-specification.ts:2008](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L2008)
 
 ___
 
@@ -250,7 +243,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1868](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1868)
+[v4-specification.ts:1894](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1894)
 
 ___
 
@@ -276,7 +269,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1918](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1918)
+[v4-specification.ts:1944](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1944)
 
 ___
 
@@ -302,4 +295,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1933](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1933)
+[v4-specification.ts:1959](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1959)

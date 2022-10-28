@@ -12,10 +12,10 @@ import * as V3 from '../v3-specification';
 const yesNoToBool = (value: string): boolean => value?.toLowerCase() === 'yes';
 
 const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-const parseV3Date = (value: string): Date => {
+const parseV3Date = (value: string): string => {
   const match = value.match(dateRegex);
   if (match) {
-    return new Date(`${match[3]}-${match[1]}-${match[2]}`);
+    return `${match[3]}-${match[1]}-${match[2]}`;
   }
   throw new Error(`Unable to parse date: ${value}`);
 };
@@ -68,7 +68,7 @@ const convertV3CropToV4Crop = (
   if (v3Crop.burningEvent) {
     burningEvents = [
       {
-        date: new Date(`${year}-01-01`),
+        date: `${year}-01-01`,
       },
     ];
   }
@@ -81,7 +81,7 @@ const convertV3CropToV4Crop = (
   ) {
     pruningEvents = [
       {
-        date: new Date(`${year}-01-01`),
+        date: `${year}-01-01`,
       },
     ];
   }
@@ -94,7 +94,7 @@ const convertV3CropToV4Crop = (
   ) {
     clearingAndRenewalEvents = [
       {
-        date: new Date(`${year}-01-01`),
+        date: `${year}-01-01`,
         percentRenewed: 100,
       },
     ];
@@ -150,8 +150,8 @@ const convertV3CropToV4Crop = (
       ...event,
       date: parseV3Date(event.startDate),
       daysGrazed: daysBetween(
-        parseV3Date(event.endDate),
-        parseV3Date(event.startDate)
+        new Date(parseV3Date(event.endDate)),
+        new Date(parseV3Date(event.startDate))
       ),
       percentResidueRemoved: event.utilization,
     })),

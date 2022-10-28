@@ -75,7 +75,7 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -107,7 +107,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1369)
+[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L1369)
 
 ___
 
@@ -155,4 +155,4 @@ Crop residue removed.
 
 #### Defined in
 
-[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v3-specification.ts#L1397)
+[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L1397)

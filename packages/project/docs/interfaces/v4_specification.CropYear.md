@@ -25,18 +25,22 @@ Crop management details grouped by a planting year.
 ### Properties
 
 - [crops](v4_specification.CropYear.md#crops)
-- [dataTimeFrame](v4_specification.CropYear.md#datatimeframe)
+- [dataSourceType](v4_specification.CropYear.md#datasourcetype)
 - [plantingYear](v4_specification.CropYear.md#plantingyear)
 
 ## Properties
 
 ### crops
 
-• **crops**: [(AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?]
+• **crops**: `CropTypes`[]
 
 A list of crops for a given planting year.
 
 Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
+
+**`Min Items`**
+
+1
 
 **`Max Items`**
 
@@ -67,20 +71,20 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v4-specification.ts:1216](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1216)
+[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1227)
 
 ___
 
-### dataTimeFrame
+### dataSourceType
 
-• `Optional` **dataTimeFrame**: `DataTimeFrame`
+• `Optional` **dataSourceType**: `DataSourceType`
 
 Enum indicating whether data is historical data reported by the grower,
 or a projection of future data.
 
 **`Nullable`**
 
-Currently this is only for Bayer, nullable for backwards compatibility
+Nullable for backwards compatibility
 
 **`Example`**
 
@@ -92,7 +96,7 @@ Currently this is only for Bayer, nullable for backwards compatibility
 
 #### Defined in
 
-[v4-specification.ts:1234](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1234)
+[v4-specification.ts:1241](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1241)
 
 ___
 
@@ -120,4 +124,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1186](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1186)
+[v4-specification.ts:1196](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1196)

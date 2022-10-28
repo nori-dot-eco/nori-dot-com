@@ -28,7 +28,7 @@ validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...er
 
 | Name | Type |
 | :------ | :------ |
-| `data` | [`Project`](../interfaces/v3_specification.Project.md) |
+| `data` | [`Project`](../interfaces/v4_specification.Project.md) |
 
 #### Returns
 
@@ -37,10 +37,10 @@ validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...er
 | Name | Type |
 | :------ | :------ |
 | `errors?` | { `dataPath`: `string` ; `error`: `ErrorObject`<`string`, `Record`<`string`, `any`\>, `unknown`\> ; `type`: `string`  }[] |
-| `formattedData` | [`Project`](../interfaces/v3_specification.Project.md) |
+| `formattedData` | [`Project`](../interfaces/v4_specification.Project.md) |
 | `message?` | `string` |
 | `valid` | `boolean` |
 
 #### Defined in
 
-[validation.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/validation.ts#L85)
+[validation.ts:81](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/validation.ts#L81)

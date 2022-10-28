@@ -54,7 +54,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:617](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L617)
+[v4-specification.ts:627](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L627)
 
 ___
 
@@ -102,7 +102,7 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v4-specification.ts:582](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L582)
+[v4-specification.ts:592](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L592)
 
 ___
 
@@ -138,7 +138,7 @@ The type of soil or crop disturbance events used on the field between 1980 and 2
 
 #### Defined in
 
-[v4-specification.ts:640](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L640)
+[v4-specification.ts:650](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L650)
 
 ___
 
@@ -156,4 +156,4 @@ A description of how the land was managed between 1980 and 2000.
 
 #### Defined in
 
-[v4-specification.ts:654](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L654)
+[v4-specification.ts:664](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L664)

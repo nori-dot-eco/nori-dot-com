@@ -3,7 +3,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.5
+ * Version: 4.0.6
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -296,26 +296,26 @@ export const limingTypes = [
 /**
  * A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.
  *
- * A project maye represent either a complete farming operation for a single operator or a batch
+ * A project may represent either a complete farming operation for a single operator or a batch
  * of fields from a data aggregator.
  *
- * @id https://schema.nori.com/soil/4-0-5
+ * @$id https://schema.nori.com/soil/4-0-6
  *
- * @example <caption>A project that uses specification v4.0.5 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.0.6 and contains a list of fields:</caption>
+ *
  * ```js
  * {
- *  "version": "4.0.5",
+ *  "version": "4.0.6",
  *  "fields": [
+ *    ...fields
  *  ]
  * }
  * ```
  *
  * @errorMessage
- * ```js
  * {
  * "_": "projectDataError:projectUnknownError"
  * }
- * ```
  *
  */
 export interface Project {
@@ -323,17 +323,15 @@ export interface Project {
    * The specification version. This information is used to determine the logic Nori uses to import a project
    *
    * @errorMessage
-   * ```js
    * {
    * "type": "projectDataError:projectVersionTypeError",
    * "_": "projectDataError:projectVersionUnknownError"
    * }
-   * ```
    *
    * @example
    *
    * ```js
-   * "version": "4.0.5"
+   * "version": "4.0.6"
    * ```
    *
    */
@@ -394,7 +392,7 @@ export interface Project {
    *
    * Used to synchronize repeated imports.
    *
-   * @nullable External systems leave this blank for new projects.
+   * @nullable External systems pass null or omit the property for new projects.
    *
    * @example
    *
@@ -405,17 +403,30 @@ export interface Project {
    */
   id?: string;
   /**
+   * Nori's internal supplier identifier.
+   *
+   * Used to correlate projects / batches to a supplier.
+   *
+   * @nullable External systems leave this null.
+   *
+   * @example
+   *
+   * ```js
+   * "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * ```
+   *
+   */
+  supplierId?: string;
+  /**
    * An array of fields defining annual crop management practices.
    *
    * @errorMessage
-   * ```js
    * {
    * "minItems": "projectDataError:projectFieldsMinimumItemsError",
    * "maxItems": "projectDataError:projectFieldsMaximumItemsError",
    * "type": "projectDataError:projectFieldsTypeError",
    * "_": "projectDataError:projectFieldsUnknownError"
    * }
-   * ```
    *
    * @minItems 1
    * @maxItems 200
@@ -907,13 +918,11 @@ export interface PracticeChangesAdopted {
  * ```
  *
  * @errorMessage
- * ```js
  * {
  * "required": "projectDataError:fieldRequiredPropertyMissing",
  * "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
  * "_": "projectDataError:fieldUnknownError"
  * }
- * ```
  *
  */
 export interface Field {
@@ -1011,12 +1020,10 @@ export interface Field {
    * ```
    *
    * @errorMessage
-   * ```js
    * {
    * "type": "projectDataError:fieldNameTypeError",
    * "_": "projectDataError:fieldNameUnknownError"
    * }
-   * ```
    *
    */
   fieldName: string;
@@ -1134,7 +1141,7 @@ export interface Field {
    *
    * Used to synchronize repeated imports.
    *
-   * @nullable External systems leave this blank for new projects.
+   * @nullable External systems pass null or omit the property for new projects.
    *
    * @example
    *
@@ -1145,14 +1152,18 @@ export interface Field {
    */
   id?: string;
 }
+
 /**
  * Enum indicating whether data is historical data reported by the grower,
  * or a projection of future data.
  */
-enum DataTimeFrame {
+enum DataSourceType {
   GrowerReported = 'GROWER_REPORTED',
   Projected = 'PROJECTED',
 }
+
+type CropTypes = AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop;
+
 /**
  * Crop management details grouped by a planting year.
  *
@@ -1189,6 +1200,7 @@ export interface CropYear {
    *
    * Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
    *
+   * @minItems 1
    * @maxItems 3
    *
    * @example <caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
@@ -1213,16 +1225,12 @@ export interface CropYear {
    * ```
    *
    */
-  crops: [
-    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
-    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?,
-    (AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop)?
-  ];
+  crops: CropTypes[];
   /**
    * Enum indicating whether data is historical data reported by the grower,
    * or a projection of future data.
-   * 
-   * @nullable Currently this is only for Bayer, nullable for backwards compatibility
+   *
+   * @nullable Nullable for backwards compatibility
    *
    * @example <caption>When data is from a projection of future data:</caption>
    *
@@ -1231,7 +1239,7 @@ export interface CropYear {
    * ```
    *
    */
-  dataTimeFrame?: DataTimeFrame;
+  dataSourceType?: DataSourceType;
 }
 
 /**
@@ -1290,7 +1298,7 @@ export interface Crop extends CropEvents {
    *
    * Used to synchronize repeated imports
    *
-   * @nullable External systems leave this blank for new projects.
+   * @nullable External systems pass null or omit the property for new projects.
    *
    * @example
    *
@@ -1330,7 +1338,7 @@ export interface Crop extends CropEvents {
  *  "grazingEvents": [
  *    // ... GrazingEvents
  *  ],
- *  "burningEvent": [
+ *  "burningEvents": [
  *    // ... BurningEvents
  *  ],
  *  "pruningEvents": [
@@ -1350,7 +1358,9 @@ export interface CropEvents {
    * This will contain a single event for annuals and none for perennials outside of the planting year.
    *
    * @nullable
-   * @maximum 1
+   * @minItems 0
+   * @maxItems 1
+   * @additionalItems false
    *
    * @example <caption>Planting on 2018-03-20</caption>
    *
@@ -1375,6 +1385,8 @@ export interface CropEvents {
    * All crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When some soil or crop disturbance events occurred:</caption>
    *
@@ -1394,6 +1406,8 @@ export interface CropEvents {
    * A list of fertilizer events, if applicable.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When some fertilizer events occurred:</caption>
    *
@@ -1415,6 +1429,8 @@ export interface CropEvents {
    * A list of organic matter and manure application events, if applicable.
    *
    * @nullable during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When some organic matter was applied:</caption>
    *
@@ -1438,6 +1454,8 @@ export interface CropEvents {
    * A list of irrigation events, if applicable.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When some irrigation events occurred:</caption>
    *
@@ -1459,6 +1477,8 @@ export interface CropEvents {
    * @nullable
    *
    * @default []
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When some liming events occurred:</caption>
    *
@@ -1479,6 +1499,8 @@ export interface CropEvents {
    * A list of grazing events, if applicable
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @default []
    *
@@ -1501,6 +1523,8 @@ export interface CropEvents {
    * Burning events, if applicable.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @default []
    *
@@ -1524,6 +1548,8 @@ export interface CropEvents {
    * Pruning events, if applicable.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @default []
    *
@@ -1544,9 +1570,11 @@ export interface CropEvents {
    */
   pruningEvents?: PruningEvent[];
   /**
-   * Clearing and renewal events for orchards and vinyards, if applicable.
+   * Clearing and renewal events for orchards and vineyards, if applicable.
    *
    * @nullable
+   * @minItems 0
+   * @additionalItems false
    *
    * @default []
    *
@@ -1575,7 +1603,8 @@ export interface CropEvents {
    * that was removed on the grain harvest, regardless of removal date.
    *
    * @nullable
-   * @maximum 1
+   * @minItems 0
+   * @additionalItems false
    *
    * @example <caption>When crop had at least one harvest event:</caption>
    *
@@ -1803,18 +1832,16 @@ export interface CropEvent {
    * ```js
    * "date": "2000-01-01"
    *```
+   *
    * @validationRules ["cropEventDateIsOnOrAfterContainingCropYear"]
    * @format date
    *
-   * @errorMessage
-   * ```js
-   * {
+   * @errorMessage {
    * "type": "projectDataError:cropEventDateTypeError",
    * "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
    * }
-   * ```
    */
-  date: Date;
+  date: string;
   /**
    * External crop event identifier.
    *
@@ -1835,7 +1862,7 @@ export interface CropEvent {
    *
    * Used to synchronize repeated imports.
    *
-   * @nullable External systems leave this blank for new projects.
+   * @nullable External systems pass null or omit the property for new projects.
    *
    * @example
    *

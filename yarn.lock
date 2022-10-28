@@ -2799,10 +2799,27 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-ajv-errors@^2.0.1:
+ajv-errors@2.0.1, ajv-errors@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/ajv-errors/-/ajv-errors-2.0.1.tgz#af5a199a0de65e6c5be738e108ad480578898a9f"
   integrity sha512-hGH2npS6nUdBr61gf3rcG8R04DwwgQsdt6goZGmaZHYRHtLF948Emsdta/bcP9AD6/X1jnHm9lMbgujOQG7W6A==
+
+ajv-formats@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/ajv-formats/-/ajv-formats-1.6.1.tgz#35c7cdcd2a12d509171c37bac32f2e8eb010a536"
+  integrity sha512-4CjkH20If1lhR5CGtqkrVg3bbOtFEG80X9v6jDOIUhbzzbB+UzPBGy8GQhUNVZ0yvMHdMpawCOcy5ydGMsagGQ==
+  dependencies:
+    ajv "^7.0.0"
+
+ajv@7.2.4, ajv@^7.0.0, ajv@^7.2.4:
+  version "7.2.4"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.2.4.tgz#8e239d4d56cf884bccca8cca362f508446dc160f"
+  integrity sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
 
 ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.4, ajv@^6.6.1, ajv@^6.9.1:
   version "6.12.6"
@@ -2812,16 +2829,6 @@ ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.4, ajv@^6.6.1, ajv@^6.9.1:
     fast-deep-equal "^3.1.1"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
-    uri-js "^4.2.2"
-
-ajv@^7.2.4:
-  version "7.2.4"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-7.2.4.tgz#8e239d4d56cf884bccca8cca362f508446dc160f"
-  integrity sha512-nBeQgg/ZZA3u3SYxyaDvpvDtgZ/EZPF547ARgZBrG9Bhu1vKDwAIjtIf+sDtJUKa2zOcEbmRLBRSyMraS/Oy1A==
-  dependencies:
-    fast-deep-equal "^3.1.1"
-    json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
     uri-js "^4.2.2"
 
 ansi-colors@^4.1.1:
@@ -8006,6 +8013,11 @@ parse5@6.0.1:
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
+path-equal@^1.1.2:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/path-equal/-/path-equal-1.2.4.tgz#98b94ac8fb6348605d4c3a766866fd25055a4b3d"
+  integrity sha512-qYtLj9MtoSedTVGfJ1VesEKnO3378nofKJUSTKDZY658T3eXHGPCPnFQiH4bFyHg0TIRBI5qJb6MKjbv2LAmsQ==
+
 path-exists@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/path-exists/-/path-exists-2.1.0.tgz#0feb6c64f0fc518d9a754dd5efb62c7022761f4b"
@@ -9735,17 +9747,18 @@ typescript-json-schema@^0.50.0:
     typescript "^4.2.3"
     yargs "^16.2.0"
 
-typescript-json-schema@^0.53.0:
-  version "0.53.0"
-  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.53.0.tgz#ac5b89e4b0af55be422f475a041360e0556f88ea"
-  integrity sha512-BcFxC9nipQQOXxrBGI/jOWU31BwzVh6vqJR008G8VHKJtQ8YrZX6veriXfTK1l+L0/ff0yKl3mZigMLA6ZqkHg==
+typescript-json-schema@^0.54.0:
+  version "0.54.0"
+  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.54.0.tgz#b3fc42ad90df6a0f6ab57571ebc8b4d41125df4f"
+  integrity sha512-/MNhm1pjdxXiVspjjyRCrQAA1B768cRzHU83aIqN5vQqQEW2NgyyKOfcguiRIMM64lseIZIelegnHOHEu7YDCg==
   dependencies:
     "@types/json-schema" "^7.0.9"
     "@types/node" "^16.9.2"
     glob "^7.1.7"
+    path-equal "^1.1.2"
     safe-stable-stringify "^2.2.0"
     ts-node "^10.2.1"
-    typescript "~4.5.0"
+    typescript "~4.6.0"
     yargs "^17.1.1"
 
 typescript@^4.2.3:
@@ -9758,10 +9771,10 @@ typescript@^4.6.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.2.tgz#fe12d2727b708f4eef40f51598b3398baa9611d4"
   integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
 
-typescript@~4.5.0:
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
-  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
+typescript@~4.6.0:
+  version "4.6.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 uglify-js@^3.1.4:
   version "3.13.8"

@@ -55,7 +55,7 @@ A crop event that happened on a particular date.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
@@ -79,16 +79,9 @@ date
 
 **`Error Message`**
 
-```js
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
-```
-
 #### Defined in
 
-[v4-specification.ts:1817](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1817)
+[v4-specification.ts:1843](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1843)
 
 ___
 
@@ -110,7 +103,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1858](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1858)
 
 ___
 
@@ -124,7 +117,7 @@ Used to synchronize repeated imports.
 
 **`Nullable`**
 
-External systems leave this blank for new projects.
+External systems pass null or omit the property for new projects.
 
 **`Example`**
 
@@ -134,7 +127,7 @@ External systems leave this blank for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1847](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1847)
+[v4-specification.ts:1873](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1873)
 
 ___
 
@@ -162,4 +155,4 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1868](https://github.com/nori-dot-eco/nori-dot-com/blob/9000427/packages/project/src/v4-specification.ts#L1868)
+[v4-specification.ts:1894](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1894)

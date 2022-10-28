@@ -1,3 +1,9 @@
+# v4.0.6 (October 27, 2022)
+* Added `Project.supplierId`
+* Added `CropYear.dataSourceType` enum to permit the supplier to specify whether the CropYear's data is source from actual grower past data or project future practice data.
+* Updated unit tests and validation sample code to operate on v4 of project import schema.
+* Tuned up some warnings in the validation code and simplified the schema around the array of fields in a CropYear.
+
 # v4.0.5 (October 5, 2022)
 * Corrected OrganinicMatterEvent properties `percentNitrogen`, `carbonNitrogenRatio` and `percentMoisture` to be optional.  Default values for these properties will be used based on the selected OMAD when running the SoilMetrics model.
 * Added `alfalfa` and `clover` to `annualCropTypes`

@@ -1,4 +1,5 @@
 {
+    "$id": "https://schema.nori.com/soil/4-0-6",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
@@ -69,6 +70,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -90,10 +92,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -117,6 +120,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -133,6 +137,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -148,7 +153,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -172,6 +177,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -188,6 +194,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -215,6 +222,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -230,7 +238,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -247,6 +256,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -262,6 +272,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -379,7 +390,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -424,7 +438,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -514,6 +531,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -535,10 +553,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -562,6 +581,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -578,6 +598,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -593,7 +614,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -617,6 +638,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -633,6 +655,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -660,6 +683,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -675,7 +699,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -692,6 +717,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -707,6 +733,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -749,62 +776,28 @@
             "properties": {
                 "crops": {
                     "description": "A list of crops for a given planting year.\n\nDue to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)",
-                    "items": [
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        },
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        },
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        }
-                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/AnnualCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/CoverCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/OrchardOrVineyardCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/PerennialCrop"
+                            }
+                        ]
+                    },
                     "maxItems": 3,
-                    "minItems": 0,
+                    "minItems": 1,
                     "title": "crops",
                     "type": "array"
                 },
-                "dataTimeFrame": {
+                "dataSourceType": {
                     "anyOf": [
                         {
                             "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
@@ -818,7 +811,7 @@
                             "type": "null"
                         }
                     ],
-                    "title": "dataTimeFrame"
+                    "title": "dataSourceType"
                 },
                 "plantingYear": {
                     "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
@@ -841,7 +834,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -928,7 +924,11 @@
         "Field": {
             "additionalProperties": false,
             "description": "A field defining annual crop management practices. Fields are defined by geographic boundaries that contain crop management practices that are identical across the whole of that boundary.",
-            "errorMessage": "```js\n{\n\"required\": \"projectDataError:fieldRequiredPropertyMissing\",\n\"additionalProperties\": \"projectDataError:fieldUnknownAdditionalProperty\",\n\"_\": \"projectDataError:fieldUnknownError\"\n}\n```",
+            "errorMessage": {
+                "_": "projectDataError:fieldUnknownError",
+                "additionalProperties": "projectDataError:fieldUnknownAdditionalProperty",
+                "required": "projectDataError:fieldRequiredPropertyMissing"
+            },
             "properties": {
                 "assignmentOfAuthority": {
                     "description": "assignmentOfAuthority - Is there an assignment of authority in place?\ni.e. Is the field leased land?",
@@ -970,7 +970,10 @@
                 },
                 "fieldName": {
                     "description": "The name of the field.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:fieldNameTypeError\",\n\"_\": \"projectDataError:fieldNameUnknownError\"\n}\n```",
+                    "errorMessage": {
+                        "_": "projectDataError:fieldNameUnknownError",
+                        "type": "projectDataError:fieldNameTypeError"
+                    },
                     "title": "fieldName",
                     "type": "string"
                 },
@@ -2025,7 +2028,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2086,7 +2092,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2345,7 +2354,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2397,7 +2409,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -2467,6 +2482,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2488,10 +2504,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2515,6 +2532,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2531,6 +2549,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2546,7 +2565,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2570,6 +2589,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2586,6 +2606,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2613,6 +2634,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2628,7 +2650,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2645,6 +2668,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2660,6 +2684,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2730,6 +2755,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2751,10 +2777,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2778,6 +2805,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2794,6 +2822,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2809,7 +2838,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2833,6 +2862,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2849,6 +2879,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2876,6 +2907,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2891,7 +2923,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2908,6 +2941,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2923,6 +2957,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2969,7 +3004,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3064,7 +3102,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3122,7 +3163,10 @@
                 },
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3221,7 +3265,10 @@
             "properties": {
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3326,7 +3373,10 @@
                 },
                 "date": {
                     "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": "```js\n{\n\"type\": \"projectDataError:cropEventDateTypeError\",\n\"validationRules\": \"projectDataError:cropEventDateValidationRuleViolation\"\n}\n```",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
                     "format": "date",
                     "title": "date",
                     "type": "string",
@@ -3433,9 +3483,10 @@
             "type": "object"
         }
     },
-    "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project maye represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
-    "errorMessage": "```js\n{\n\"_\": \"projectDataError:projectUnknownError\"\n}\n```",
-    "id": "https://schema.nori.com/soil/4-0-5",
+    "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project may represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
+    "errorMessage": {
+        "_": "projectDataError:projectUnknownError"
+    },
     "properties": {
         "externalId": {
             "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
@@ -3459,7 +3510,12 @@
         },
         "fields": {
             "description": "An array of fields defining annual crop management practices.",
-            "errorMessage": "```js\n{\n\"minItems\": \"projectDataError:projectFieldsMinimumItemsError\",\n\"maxItems\": \"projectDataError:projectFieldsMaximumItemsError\",\n\"type\": \"projectDataError:projectFieldsTypeError\",\n\"_\": \"projectDataError:projectFieldsUnknownError\"\n}\n```",
+            "errorMessage": {
+                "_": "projectDataError:projectFieldsUnknownError",
+                "maxItems": "projectDataError:projectFieldsMaximumItemsError",
+                "minItems": "projectDataError:projectFieldsMinimumItemsError",
+                "type": "projectDataError:projectFieldsTypeError"
+            },
             "items": {
                 "$ref": "#/definitions/Field"
             },
@@ -3481,6 +3537,14 @@
             "description": "primaryContact Contact info for the operator or data aggregator preparing this file.\n\nThis will be the primary point of contract for verifiers.",
             "title": "primaryContact"
         },
+        "supplierId": {
+            "description": "Nori's internal supplier identifier.\n\nUsed to correlate projects / batches to a supplier.",
+            "title": "supplierId",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
         "totalCroppedAcres": {
             "description": "totalCroppedAcres",
             "title": "totalCroppedAcres",
@@ -3499,7 +3563,10 @@
         },
         "version": {
             "description": "The specification version. This information is used to determine the logic Nori uses to import a project",
-            "errorMessage": "```js\n{\n\"type\": \"projectDataError:projectVersionTypeError\",\n\"_\": \"projectDataError:projectVersionUnknownError\"\n}\n```",
+            "errorMessage": {
+                "_": "projectDataError:projectVersionUnknownError",
+                "type": "projectDataError:projectVersionTypeError"
+            },
             "title": "version",
             "type": "string"
         }
