@@ -6,7 +6,9 @@
 
 A supplier project entity which encapsulates a set of fields. This top-level interface defines all necessary properties for a supplier project created manually or via a data import file.
 
-**`example`** A project that uses specification v 0.1.0 and contains a list of fields:
+**`Example`**
+
+<caption>A project that uses specification v 0.1.0 and contains a list of fields:</caption>
 ```js
 {
  "version": "0.1.0",
@@ -16,10 +18,13 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 }
 ```
 
-**`errormessage`**
+**`Error Message`**
+
+```js
 {
 "_": "projectDataError:projectUnknownError"
 }
+```
 
 ## Table of contents
 
@@ -36,19 +41,26 @@ A supplier project entity which encapsulates a set of fields. This top-level int
 
 An array of fields defining annual crop management practices.
 
-**`errormessage`**
+**`Error Message`**
+
+```js
 {
 "minItems": "projectDataError:projectFieldsMinimumItemsError",
 "maxItems": "projectDataError:projectFieldsMaximumItemsError",
 "type": "projectDataError:projectFieldsTypeError",
 "_": "projectDataError:projectFieldsUnknownError"
 }
+```
 
-**`minitems`** 1
+**`Min Items`**
 
-**`maxitems`** 25
+1
 
-**`example`**
+**`Max Items`**
+
+25
+
+**`Example`**
 
 ```js
 "fields": [
@@ -58,7 +70,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v3-specification.ts:248](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L248)
+[v3-specification.ts:254](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L254)
 
 ___
 
@@ -68,13 +80,16 @@ ___
 
 The specification version. This information is used to determine the logic Nori uses to import a project
 
-**`errormessage`**
+**`Error Message`**
+
+```js
 {
 "type": "projectDataError:projectVersionTypeError",
 "_": "projectDataError:projectVersionUnknownError"
 }
+```
 
-**`example`**
+**`Example`**
 
 ```js
 "version": "0.1.0"
@@ -82,4 +97,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v3-specification.ts:224](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L224)
+[v3-specification.ts:228](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L228)

@@ -6,7 +6,9 @@
 
 Crop management details grouped by a planting year.
 
-**`example`** For crop management practices in 2000:
+**`Example`**
+
+<caption>For crop management practices in 2000:</caption>
 
 ```js
 {
@@ -14,6 +16,7 @@ Crop management details grouped by a planting year.
  "crops": [
    // ... crops that were planted in year 2000
  ],
+ "dataSourceType": "GROWER_REPORTED",
 }
 ```
 
@@ -22,21 +25,30 @@ Crop management details grouped by a planting year.
 ### Properties
 
 - [crops](v4_specification.CropYear.md#crops)
+- [dataSourceType](v4_specification.CropYear.md#datasourcetype)
 - [plantingYear](v4_specification.CropYear.md#plantingyear)
 
 ## Properties
 
 ### crops
 
-• **crops**: [(AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?, (AnnualCrop \| CoverCrop \| OrchardOrVineyardCrop \| PerennialCrop)?]
+• **crops**: `CropTypes`[]
 
 A list of crops for a given planting year.
 
 Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
 
-**`maxitems`** 3
+**`Min Items`**
 
-**`example`** When 3 crops (an annual, perennial and orchard) were planted in year 2000:
+1
+
+**`Max Items`**
+
+3
+
+**`Example`**
+
+<caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
 
 ```js
 "crops": [
@@ -59,7 +71,32 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v4-specification.ts:1196](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1196)
+[v4-specification.ts:1228](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1228)
+
+___
+
+### dataSourceType
+
+• `Optional` **dataSourceType**: `DataSourceType`
+
+Enum indicating whether data is historical data reported by the grower,
+or a projection of future data.
+
+**`Nullable`**
+
+Nullable for backwards compatibility
+
+**`Example`**
+
+<caption>When data is from a projection of future data:</caption>
+
+```js
+"dataSourceType": "PROJECTED"
+```
+
+#### Defined in
+
+[v4-specification.ts:1242](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1242)
 
 ___
 
@@ -69,11 +106,17 @@ ___
 
 The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 
-**`minimum`** 2000
+**`Minimum`**
 
-**`maximum`** 2099
+2000
 
-**`example`** When the herein defined crops were planted in year 2000:
+**`Maximum`**
+
+2099
+
+**`Example`**
+
+<caption>When the herein defined crops were planted in year 2000:</caption>
 
 ```js
 "plantingYear": 2000
@@ -81,4 +124,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1166](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1166)
+[v4-specification.ts:1197](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1197)

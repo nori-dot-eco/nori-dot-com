@@ -6,7 +6,9 @@
 
 Crop management details and events for annual crops.
 
-**`example`** An crop definition for an annual crop planted in year 2000:
+**`Example`**
+
+<caption>An crop definition for an annual crop planted in year 2000:</caption>
 
 ```js
 {
@@ -53,11 +55,15 @@ Crop management details and events for annual crops.
 
 A burning event, if applicable.
 
-**`nullable`** if no burning ever occurred, explicitly specify `burningEvent` as `null`
+**`Nullable`**
 
-**`default`** { "type": "no burning" }
+if no burning ever occurred, explicitly specify `burningEvent` as `null`
 
-**`example`** When burning occurred after harvesting:
+**`Default`**
+
+**`Example`**
+
+<caption>When burning occurred after harvesting:</caption>
 
 ```js
 "burningEvent": {
@@ -65,7 +71,9 @@ A burning event, if applicable.
 }
 ```
 
-**`example`** When no burning occurred:
+**`Example`**
+
+<caption>When no burning occurred:</caption>
 
 ```js
 "burningEvent": null
@@ -77,7 +85,7 @@ A burning event, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1004)
+[v3-specification.ts:1014](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1014)
 
 ___
 
@@ -89,9 +97,11 @@ The crop classification.
 
 You can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).
 
-**`default`** "annual crop"
+**`Default`**
 
-**`example`**
+"annual crop"
+
+**`Example`**
 
 ```js
 "classification": "annual crop"
@@ -99,7 +109,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v3-specification.ts:1243](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1243)
+[v3-specification.ts:1253](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1253)
 
 ___
 
@@ -109,7 +119,9 @@ ___
 
 A list of fertilizer events, if applicable.
 
-**`example`** When some fertilizer events occurred:
+**`Example`**
+
+<caption>When some fertilizer events occurred:</caption>
 
 ```js
 "fertilizerEvents": [
@@ -129,7 +141,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L900)
+[v3-specification.ts:910](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L910)
 
 ___
 
@@ -139,9 +151,13 @@ ___
 
 A list of grazing events, if applicable
 
-**`nullable`** during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some grazing events occurred:
+during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some grazing events occurred:</caption>
 
 ```js
 "grazingEvents": [
@@ -161,7 +177,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L981)
+[v3-specification.ts:991](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L991)
 
 ___
 
@@ -176,7 +192,9 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
-**`example`** When crop had at least one harvest event:
+**`Example`**
+
+<caption>When crop had at least one harvest event:</caption>
 
 ```js
  "harvestEvents": [
@@ -190,7 +208,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L827)
+[v3-specification.ts:837](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L837)
 
 ___
 
@@ -200,7 +218,9 @@ ___
 
 A list of irrigation events, if applicable.
 
-**`example`** When some irrigation events occurred:
+**`Example`**
+
+<caption>When some irrigation events occurred:</caption>
 
 ```js
 "irrigationEvents": [
@@ -218,7 +238,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L940)
+[v3-specification.ts:950](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L950)
 
 ___
 
@@ -228,9 +248,13 @@ ___
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
-**`nullable`** during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some liming events occurred:
+during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some liming events occurred:</caption>
 
 ```js
 "limingEvents": [
@@ -249,7 +273,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L960)
+[v3-specification.ts:970](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L970)
 
 ___
 
@@ -259,9 +283,11 @@ ___
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`**
+this property will be deprecated in the future
+
+**`Example`**
 
 ```js
 "name": "Joe's corn"
@@ -273,7 +299,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L774)
+[v3-specification.ts:784](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L784)
 
 ___
 
@@ -283,9 +309,13 @@ ___
 
 A list of organic matter and manure application events, if applicable.
 
-**`nullable`** during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some organic matter was applied:
+during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some organic matter was applied:</caption>
 
 ```js
 "organicMatterEvents": [
@@ -307,7 +337,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L923)
+[v3-specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L933)
 
 ___
 
@@ -319,9 +349,13 @@ The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY 
 
 If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.
 
-**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+**`Pattern`**
 
-**`example`** When the crop was planted on January 1st of year 2000:
+^02/(?:[01]\d|2\d)/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)/(?:[0-2]\d|3[01])/(?:20)\d{2}|(?:0[469]|11)/(?:[0-2]\d|30)/(?:20)\d{2}|02/(?:[0-1]\d|2[0-8])/(?:20)\d{2}$
+
+**`Example`**
+
+<caption>When the crop was planted on January 1st of year 2000:</caption>
 
 ```js
 "plantingDate": "01/01/2000"
@@ -333,7 +367,7 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L789)
+[v3-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L799)
 
 ___
 
@@ -345,7 +379,9 @@ A list of soil or crop disturbance events events, if applicable (such as tillage
 
 All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
 
-**`example`** When some soil or crop disturbance events occurred:
+**`Example`**
+
+<caption>When some soil or crop disturbance events occurred:</caption>
 
 ```js
 "soilOrCropDisturbanceEvents": [
@@ -363,7 +399,7 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L881)
+[v3-specification.ts:891](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L891)
 
 ___
 
@@ -375,9 +411,13 @@ The COMET equivalent type of the crop
 
 You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
-**`errormessage`** must specify one of the allowed crop types if you are specifying an annual crop
+**`Error Message`**
 
-**`example`** When the annual crop is corn:
+must specify one of the allowed crop types if you are specifying an annual crop
+
+**`Example`**
+
+<caption>When the annual crop is corn:</caption>
 
 ```js
 "type": "corn"
@@ -385,4 +425,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v3-specification.ts:1228](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1228)
+[v3-specification.ts:1238](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1238)

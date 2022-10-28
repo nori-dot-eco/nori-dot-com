@@ -4,7 +4,7 @@
 
 [v4-specification](../modules/v4_specification.md).HistoricLandManagement
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -34,25 +34,33 @@
 
 A description of how the land was managed before 1980.
 
-**`example`** When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:
+**`Example`**
+
+<caption>When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "upland non-irrigated"
 ```
 
-**`example`** When the land was irrigated before 1980:
+**`Example`**
+
+<caption>When the land was irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "irrigation"
 ```
 
-**`example`** When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:
+**`Example`**
+
+<caption>When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"
 ```
 
-**`example`** When the land employed livestock grazing before 1980:
+**`Example`**
+
+<caption>When the land employed livestock grazing before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"
@@ -60,4 +68,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v4-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L575)
+[v4-specification.ts:593](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L593)

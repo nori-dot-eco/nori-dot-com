@@ -4,7 +4,7 @@
 
 [v4-specification](../modules/v4_specification.md).Address
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -37,13 +37,17 @@ State or Province ISO3166-2 Code
 
 In the US see: https://en.wikipedia.org/wiki/ISO_3166-2:US
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** US-ND
+**`Example`**
+
+```ts
+US-ND
+```
 
 #### Defined in
 
-[v4-specification.ts:513](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L513)
+[v4-specification.ts:531](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L531)
 
 ___
 
@@ -55,13 +59,17 @@ County or second level subdivision
 
 In the US use FIPS code: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** 02130
+**`Example`**
+
+```ts
+02130
+```
 
 #### Defined in
 
-[v4-specification.ts:523](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L523)
+[v4-specification.ts:541](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L541)
 
 ___
 
@@ -71,13 +79,17 @@ ___
 
 city
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** Fargo
+**`Example`**
+
+```ts
+Fargo
+```
 
 #### Defined in
 
-[v4-specification.ts:503](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L503)
+[v4-specification.ts:521](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L521)
 
 ___
 
@@ -89,13 +101,17 @@ ISO3166 Country code
 
 See: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** US
+**`Example`**
+
+```ts
+US
+```
 
 #### Defined in
 
-[v4-specification.ts:533](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L533)
+[v4-specification.ts:551](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L551)
 
 ___
 
@@ -105,15 +121,23 @@ ___
 
 First address line
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** 123 Cherry Lane
+**`Example`**
 
-**`example`** PO Box 56789
+```ts
+123 Cherry Lane
+```
+
+**`Example`**
+
+```ts
+PO Box 56789
+```
 
 #### Defined in
 
-[v4-specification.ts:485](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L485)
+[v4-specification.ts:503](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L503)
 
 ___
 
@@ -123,12 +147,20 @@ ___
 
 Second address line
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** 123 Cherry Lane
+**`Example`**
 
-**`example`** Station 99
+```ts
+123 Cherry Lane
+```
+
+**`Example`**
+
+```ts
+Station 99
+```
 
 #### Defined in
 
-[v4-specification.ts:495](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L495)
+[v4-specification.ts:513](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L513)

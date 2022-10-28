@@ -1,4 +1,5 @@
 {
+    "$id": "https://schema.nori.com/soil/4-0-6",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
@@ -69,6 +70,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -90,10 +92,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -117,6 +120,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -133,6 +137,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -148,7 +153,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -172,6 +177,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -188,6 +194,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -215,6 +222,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -230,7 +238,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -247,6 +256,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -262,6 +272,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -520,6 +531,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -541,10 +553,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -568,6 +581,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -584,6 +598,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -599,7 +614,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -623,6 +638,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -639,6 +655,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -666,6 +683,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -681,7 +699,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -698,6 +717,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -713,6 +733,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -755,60 +776,42 @@
             "properties": {
                 "crops": {
                     "description": "A list of crops for a given planting year.\n\nDue to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)",
-                    "items": [
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        },
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        },
-                        {
-                            "anyOf": [
-                                {
-                                    "$ref": "#/definitions/OrchardOrVineyardCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/PerennialCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/CoverCrop"
-                                },
-                                {
-                                    "$ref": "#/definitions/AnnualCrop"
-                                }
-                            ]
-                        }
-                    ],
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/AnnualCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/CoverCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/OrchardOrVineyardCrop"
+                            },
+                            {
+                                "$ref": "#/definitions/PerennialCrop"
+                            }
+                        ]
+                    },
                     "maxItems": 3,
-                    "minItems": 0,
+                    "minItems": 1,
                     "title": "crops",
                     "type": "array"
+                },
+                "dataSourceType": {
+                    "anyOf": [
+                        {
+                            "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+                            "enum": [
+                                "GROWER_REPORTED",
+                                "PROJECTED"
+                            ],
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "dataSourceType"
                 },
                 "plantingYear": {
                     "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
@@ -995,7 +998,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         },
                         {
                             "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
@@ -1184,7 +1187,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1303,7 +1306,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1424,7 +1427,7 @@
             "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
-        "GeoJSON.GeometryCollection": {
+        "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
             "additionalProperties": false,
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
             "properties": {
@@ -1500,7 +1503,7 @@
                                 "$ref": "#/definitions/GeoJSON.MultiPolygon"
                             },
                             {
-                                "$ref": "#/definitions/GeoJSON.GeometryCollection"
+                                "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
                             }
                         ],
                         "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
@@ -1521,7 +1524,7 @@
                 "geometries",
                 "type"
             ],
-            "title": "GeoJSON.GeometryCollection",
+            "title": "GeoJSON.GeometryCollection<GeoJSON.Geometry>",
             "type": "object"
         },
         "GeoJSON.LineString": {
@@ -2479,6 +2482,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2500,10 +2504,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2527,6 +2532,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2543,6 +2549,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2558,7 +2565,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2582,6 +2589,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2598,6 +2606,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2625,6 +2634,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2640,7 +2650,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2657,6 +2668,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2672,6 +2684,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2742,6 +2755,7 @@
                             "items": {
                                 "$ref": "#/definitions/BurningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2763,10 +2777,11 @@
                     "anyOf": [
                         {
                             "default": [],
-                            "description": "Clearing and renewal events for orchards and vinyards, if applicable.",
+                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
                             "items": {
                                 "$ref": "#/definitions/ClearingAndRenewalEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2790,6 +2805,7 @@
                             "items": {
                                 "$ref": "#/definitions/FertilizerEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2806,6 +2822,7 @@
                             "items": {
                                 "$ref": "#/definitions/GrazingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2821,7 +2838,7 @@
                             "items": {
                                 "$ref": "#/definitions/HarvestEvent"
                             },
-                            "maximum": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2845,6 +2862,7 @@
                             "items": {
                                 "$ref": "#/definitions/IrrigationEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2861,6 +2879,7 @@
                             "items": {
                                 "$ref": "#/definitions/LimingEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2888,6 +2907,7 @@
                                     }
                                 ]
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2903,7 +2923,8 @@
                             "items": {
                                 "$ref": "#/definitions/PlantingEvent"
                             },
-                            "maximum": 1,
+                            "maxItems": 1,
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2920,6 +2941,7 @@
                             "items": {
                                 "$ref": "#/definitions/PruningEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -2935,6 +2957,7 @@
                             "items": {
                                 "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
                             },
+                            "minItems": 0,
                             "type": "array"
                         },
                         {
@@ -3460,11 +3483,10 @@
             "type": "object"
         }
     },
-    "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project maye represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
+    "description": "A project encapsulates a set of fields. This is the top-level interface of Nori's Croplands Data Import format.\n\nA project may represent either a complete farming operation for a single operator or a batch\nof fields from a data aggregator.",
     "errorMessage": {
         "_": "projectDataError:projectUnknownError"
     },
-    "id": "https://schema.nori.com/soil/4-0-5",
     "properties": {
         "externalId": {
             "description": "Project identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
@@ -3514,6 +3536,14 @@
             "$ref": "#/definitions/ContactInfo",
             "description": "primaryContact Contact info for the operator or data aggregator preparing this file.\n\nThis will be the primary point of contract for verifiers.",
             "title": "primaryContact"
+        },
+        "supplierId": {
+            "description": "Nori's internal supplier identifier.\n\nUsed to correlate projects / batches to a supplier.",
+            "title": "supplierId",
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "totalCroppedAcres": {
             "description": "totalCroppedAcres",

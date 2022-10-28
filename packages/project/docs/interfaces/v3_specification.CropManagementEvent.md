@@ -6,7 +6,7 @@
 
 Crop management event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -40,23 +40,34 @@ Crop management event details.
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
-**`nullable`** during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+**`Nullable`**
 
-**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Pattern`**
+
+^02/(?:[01]\d|2\d)/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)/(?:[0-2]\d|3[01])/(?:20)\d{2}|(?:0[469]|11)/(?:[0-2]\d|30)/(?:20)\d{2}|02/(?:[0-1]\d|2[0-8])/(?:20)\d{2}$
+
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`errormessage`**
+["cropEventDateIsOnOrAfterContainingCropYear"]
+
+**`Error Message`**
+
+```js
 {
 "type": "projectDataError:cropEventDateTypeError",
 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
 }
+```
 
 #### Inherited from
 
@@ -64,7 +75,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -74,15 +85,21 @@ ___
 
 Whether the crop was harvest for grain, fruit or tuber.
 
-**`nullable`** during import (specify null if you are unsure)
+**`Nullable`**
 
-**`example`** Select “yes” if the crop was harvested for grain, fruit, or tuber:
+during import (specify null if you are unsure)
+
+**`Example`**
+
+<caption>Select “yes” if the crop was harvested for grain, fruit, or tuber:</caption>
 
 ```js
 "grainFruitTuber": "yes"
 ```
 
-**`example`** Select “no” if the crop was harvested before maturity for silage or haylage:
+**`Example`**
+
+<caption>Select “no” if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "grainFruitTuber": "no"
@@ -90,7 +107,7 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 #### Defined in
 
-[v3-specification.ts:1357](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1357)
+[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1369)
 
 ___
 
@@ -100,25 +117,37 @@ ___
 
 Crop residue removed.
 
-**`default`** 0
+**`Default`**
 
-**`minimum`** 0
+0
 
-**`maximum`** 100
+**`Minimum`**
 
-**`example`** Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:
+0
+
+**`Maximum`**
+
+100
+
+**`Example`**
+
+<caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:</caption>
 
 ```js
 "residueRemoved": 0
 ```
 
-**`example`** Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:
+**`Example`**
+
+<caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:</caption>
 
 ```js
 "residueRemoved": 5
 ```
 
-**`example`** Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:
+**`Example`**
+
+<caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "residueRemoved": 10
@@ -126,4 +155,4 @@ Crop residue removed.
 
 #### Defined in
 
-[v3-specification.ts:1385](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1385)
+[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1397)

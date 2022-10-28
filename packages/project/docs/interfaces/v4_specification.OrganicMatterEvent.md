@@ -6,7 +6,7 @@
 
 Organic matter (OMAD) and manure event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -49,11 +49,17 @@ Organic matter (OMAD) and manure event details.
 
 The carbon to nitrogen ratio in the organic matter or manure.
 
-**`nullable`** A default based on the selected type will be used if not specified here.
+**`Nullable`**
 
-**`minimum`** 0
+A default based on the selected type will be used if not specified here.
 
-**`example`** When the C:N ratio was 18.6:
+**`Minimum`**
+
+0
+
+**`Example`**
+
+<caption>When the C:N ratio was 18.6:</caption>
 
 ```js
 "carbonNitrogenRatio": 18.6
@@ -61,33 +67,35 @@ The carbon to nitrogen ratio in the organic matter or manure.
 
 #### Defined in
 
-[v4-specification.ts:2256](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2256)
+[v4-specification.ts:2317](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L2317)
 
 ___
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
 Dates for liming and burning can be approximate or the first day of the crop year.
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "2000-01-01"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`format`** date
+["cropEventDateIsOnOrAfterContainingCropYear"]
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
+**`Format`**
+
+date
+
+**`Error Message`**
 
 #### Inherited from
 
@@ -95,7 +103,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1783](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1783)
+[v4-specification.ts:1844](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1844)
 
 ___
 
@@ -107,9 +115,9 @@ External crop event identifier.
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
@@ -121,7 +129,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1798](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1798)
+[v4-specification.ts:1859](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1859)
 
 ___
 
@@ -133,9 +141,11 @@ Nori's internal crop event identifier.
 
 Used to synchronize repeated imports.
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
@@ -147,7 +157,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1813](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1813)
+[v4-specification.ts:1874](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1874)
 
 ___
 
@@ -157,9 +167,13 @@ ___
 
 The name/alias that the OMAD event is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`** When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":
+this property will be deprecated in the future
+
+**`Example`**
+
+<caption>When the name of the organic matter or manure used on the crop was known by the supplier as "Joe's manure":</caption>
 
 ```js
 "name": "Joe's manure"
@@ -167,7 +181,7 @@ The name/alias that the OMAD event is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2225](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2225)
+[v4-specification.ts:2286](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L2286)
 
 ___
 
@@ -177,13 +191,21 @@ ___
 
 The percent moisture of the organic matter or manure
 
-**`nullable`** A default based on the selected type will be used if not specified here.
+**`Nullable`**
 
-**`minimum`** 0
+A default based on the selected type will be used if not specified here.
 
-**`maximum`** 100
+**`Minimum`**
 
-**`example`** When the percent moisture is 15:
+0
+
+**`Maximum`**
+
+100
+
+**`Example`**
+
+<caption>When the percent moisture is 15:</caption>
 
 ```js
 "percentMoisture": 15
@@ -191,7 +213,7 @@ The percent moisture of the organic matter or manure
 
 #### Defined in
 
-[v4-specification.ts:2272](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2272)
+[v4-specification.ts:2333](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L2333)
 
 ___
 
@@ -201,13 +223,21 @@ ___
 
 The nitrogen percent makeup in the organic matter or manure.
 
-**`minimum`** 0
+**`Minimum`**
 
-**`maximum`** 100
+0
 
-**`nullable`** A default based on the selected type will be used if not specified here.
+**`Maximum`**
 
-**`example`** When the organic matter or manure contains 9% nitrogen:
+100
+
+**`Nullable`**
+
+A default based on the selected type will be used if not specified here.
+
+**`Example`**
+
+<caption>When the organic matter or manure contains 9% nitrogen:</caption>
 
 ```js
 "percentNitrogen": 9
@@ -215,7 +245,7 @@ The nitrogen percent makeup in the organic matter or manure.
 
 #### Defined in
 
-[v4-specification.ts:2241](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L2241)
+[v4-specification.ts:2302](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L2302)
 
 ___
 
@@ -227,15 +257,15 @@ Source of the event
 
 Optional field to indicate what system this data point originated from.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "CDL"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "FMS name"
@@ -247,4 +277,4 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1834](https://github.com/nori-dot-eco/nori-dot-com/blob/a61be63/packages/project/src/v4-specification.ts#L1834)
+[v4-specification.ts:1895](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1895)

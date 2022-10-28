@@ -6,7 +6,7 @@
 
 Burning event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -28,13 +28,17 @@ Burning event details.
 
 The type of burning, if applicable.
 
-**`example`** When burning occurred before planting:
+**`Example`**
+
+<caption>When burning occurred before planting:</caption>
 
 ```js
 "type": "before planting"
 ```
 
-**`example`** When burning occurred after harvesting:
+**`Example`**
+
+<caption>When burning occurred after harvesting:</caption>
 
 ```js
 "type": "after harvesting"
@@ -42,4 +46,4 @@ The type of burning, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:1935](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1935)
+[v3-specification.ts:1947](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L1947)

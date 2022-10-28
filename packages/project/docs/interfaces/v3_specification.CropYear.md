@@ -6,7 +6,9 @@
 
 Crop management details grouped by a planting year.
 
-**`example`** For crop management practices in 2000:
+**`Example`**
+
+<caption>For crop management practices in 2000:</caption>
 
 ```js
 {
@@ -34,9 +36,13 @@ A list of crops for a given planting year.
 
 Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
 
-**`maxitems`** 3
+**`Max Items`**
 
-**`example`** When 3 crops (an annual, perennial and orchard) were planted in year 2000:
+3
+
+**`Example`**
+
+<caption>When 3 crops (an annual, perennial and orchard) were planted in year 2000:</caption>
 
 ```js
 "crops": [
@@ -64,7 +70,7 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v3-specification.ts:742](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L742)
+[v3-specification.ts:752](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L752)
 
 ___
 
@@ -74,11 +80,17 @@ ___
 
 The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
 
-**`minimum`** 2000
+**`Minimum`**
 
-**`maximum`** 2099
+2000
 
-**`example`** When the herein defined crops were planted in year 2000:
+**`Maximum`**
+
+2099
+
+**`Example`**
+
+<caption>When the herein defined crops were planted in year 2000:</caption>
 
 ```js
 "plantingYear": 2000
@@ -86,4 +98,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v3-specification.ts:707](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L707)
+[v3-specification.ts:717](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L717)
