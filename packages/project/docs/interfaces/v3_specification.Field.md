@@ -72,7 +72,7 @@ during import (note: when acres is defined as null in an import file it will ins
 
 #### Defined in
 
-[v3-specification.ts:651](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L651)
+[v3-specification.ts:651](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L651)
 
 ___
 
@@ -99,7 +99,7 @@ A list of crop management details grouped by the crop planting year.
 
 #### Defined in
 
-[v3-specification.ts:686](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L686)
+[v3-specification.ts:686](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L686)
 
 ___
 
@@ -128,7 +128,7 @@ The name of the field.
 
 #### Defined in
 
-[v3-specification.ts:638](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L638)
+[v3-specification.ts:638](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L638)
 
 ___
 
@@ -154,7 +154,7 @@ For additional guidance and limitation of boundary files, [refer to the FAQ here
 
 #### Defined in
 
-[v3-specification.ts:668](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L668)
+[v3-specification.ts:668](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L668)
 
 ___
 
@@ -201,7 +201,7 @@ during import (note: when historicLandManagement is defined as null in an import
 
 #### Defined in
 
-[v3-specification.ts:617](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L617)
+[v3-specification.ts:617](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L617)
 
 ___
 
@@ -227,4 +227,4 @@ For more information on how to select a start year see [here](https://go.nori.co
 
 #### Defined in
 
-[v3-specification.ts:583](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v3-specification.ts#L583)
+[v3-specification.ts:583](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L583)

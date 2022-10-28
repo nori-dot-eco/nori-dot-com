@@ -19,6 +19,7 @@ of fields from a data aggregator.
 {
  "version": "4.0.6",
  "fields": [
+   ...fields
  ]
 }
 ```
@@ -59,7 +60,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:388](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L388)
+[v4-specification.ts:389](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L389)
 
 ___
 
@@ -75,7 +76,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:350](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L350)
+[v4-specification.ts:351](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L351)
 
 ___
 
@@ -105,7 +106,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:442](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L442)
+[v4-specification.ts:443](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L443)
 
 ___
 
@@ -129,7 +130,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:403](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L403)
+[v4-specification.ts:404](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L404)
 
 ___
 
@@ -143,7 +144,7 @@ This will be the primary point of contract for verifiers.
 
 #### Defined in
 
-[v4-specification.ts:344](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L344)
+[v4-specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L345)
 
 ___
 
@@ -167,7 +168,7 @@ External systems leave this null.
 
 #### Defined in
 
-[v4-specification.ts:418](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L418)
+[v4-specification.ts:419](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L419)
 
 ___
 
@@ -189,7 +190,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:374](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L374)
+[v4-specification.ts:375](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L375)
 
 ___
 
@@ -211,7 +212,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:362](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L362)
+[v4-specification.ts:363](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L363)
 
 ___
 
@@ -231,4 +232,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v4-specification.ts:337](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L337)
+[v4-specification.ts:338](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L338)

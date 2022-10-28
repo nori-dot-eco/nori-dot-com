@@ -1175,7 +1175,7 @@ type CropTypes = AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop;
  *  "crops": [
  *    // ... crops that were planted in year 2000
  *  ],
- *  "dataTimeFrame": GROWER_REPORTED,
+ *  "dataSourceType": "GROWER_REPORTED",
  * }
  * ```
  *
@@ -1235,7 +1235,7 @@ export interface CropYear {
    * @example <caption>When data is from a projection of future data:</caption>
    *
    * ```js
-   * "dataTimeFrame": "PROJECTED"
+   * "dataSourceType": "PROJECTED"
    * ```
    *
    */

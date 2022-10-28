@@ -16,7 +16,7 @@ Crop management details grouped by a planting year.
  "crops": [
    // ... crops that were planted in year 2000
  ],
- "dataTimeFrame": GROWER_REPORTED,
+ "dataSourceType": "GROWER_REPORTED",
 }
 ```
 
@@ -71,7 +71,7 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1227)
+[v4-specification.ts:1228](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1228)
 
 ___
 
@@ -91,12 +91,12 @@ Nullable for backwards compatibility
 <caption>When data is from a projection of future data:</caption>
 
 ```js
-"dataTimeFrame": "PROJECTED"
+"dataSourceType": "PROJECTED"
 ```
 
 #### Defined in
 
-[v4-specification.ts:1241](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1241)
+[v4-specification.ts:1242](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1242)
 
 ___
 
@@ -124,4 +124,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1196](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L1196)
+[v4-specification.ts:1197](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1197)

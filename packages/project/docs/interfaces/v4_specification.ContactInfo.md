@@ -34,7 +34,7 @@ email
 
 #### Defined in
 
-[v4-specification.ts:475](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L475)
+[v4-specification.ts:476](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L476)
 
 ___
 
@@ -48,7 +48,7 @@ The project's primary contract person.  Provided to the verified.
 
 #### Defined in
 
-[v4-specification.ts:463](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L463)
+[v4-specification.ts:464](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L464)
 
 ___
 
@@ -62,4 +62,4 @@ phone
 
 #### Defined in
 
-[v4-specification.ts:469](https://github.com/nori-dot-eco/nori-dot-com/blob/4a106bf/packages/project/src/v4-specification.ts#L469)
+[v4-specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L470)
