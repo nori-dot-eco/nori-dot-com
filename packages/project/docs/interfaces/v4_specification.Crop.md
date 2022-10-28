@@ -95,7 +95,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1546](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1546)
+[v4-specification.ts:1546](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1546)
 
 ___
 
@@ -143,7 +143,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1596](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1596)
+[v4-specification.ts:1596](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1596)
 
 ___
 
@@ -171,7 +171,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1294](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1294)
+[v4-specification.ts:1294](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1294)
 
 ___
 
@@ -213,7 +213,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1427](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1427)
+[v4-specification.ts:1427](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1427)
 
 ___
 
@@ -258,7 +258,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1521](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1521)
+[v4-specification.ts:1521](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1521)
 
 ___
 
@@ -299,7 +299,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1618](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1618)
+[v4-specification.ts:1618](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1618)
 
 ___
 
@@ -323,7 +323,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1310](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1310)
+[v4-specification.ts:1310](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1310)
 
 ___
 
@@ -363,7 +363,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1473)
+[v4-specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1473)
 
 ___
 
@@ -408,7 +408,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1497)
+[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1497)
 
 ___
 
@@ -430,7 +430,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1272)
+[v4-specification.ts:1272](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1272)
 
 ___
 
@@ -476,7 +476,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1452](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1452)
+[v4-specification.ts:1452](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1452)
 
 ___
 
@@ -526,7 +526,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1380](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1380)
+[v4-specification.ts:1380](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1380)
 
 ___
 
@@ -574,7 +574,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1571)
+[v4-specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1571)
 
 ___
 
@@ -616,4 +616,4 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1404](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v4-specification.ts#L1404)
+[v4-specification.ts:1404](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L1404)

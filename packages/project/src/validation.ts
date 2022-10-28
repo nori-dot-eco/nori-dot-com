@@ -18,7 +18,7 @@ type ProjectDataValidationContext = Omit<DataValidationCxt, 'rootData'> & {
  *
  * @internal
  */
-export const formatInputData = (data: any) => {
+export const formatInputData = (data: Project): Project => {
   const toLowercase = (key: string, value: any): string =>
     typeof value === 'string' &&
     ![

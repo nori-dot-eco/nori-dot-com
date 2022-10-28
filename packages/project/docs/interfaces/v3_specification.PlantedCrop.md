@@ -53,7 +53,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:784](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L784)
+[v3-specification.ts:784](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L784)
 
 ___
 
@@ -79,4 +79,4 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-[v3-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/f3f67a7/packages/project/src/v3-specification.ts#L799)
+[v3-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v3-specification.ts#L799)

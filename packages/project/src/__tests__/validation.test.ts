@@ -2,7 +2,7 @@
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
-import type { Project, CropEvent } from '../v4-specification';
+import type { Project } from '../v4-specification';
 import * as FULL_FORMATTED_VALID_PROJECT from '../example/v4-example.json';
 import type {
   AnnualCrop,
@@ -11,7 +11,7 @@ import type {
 
 type ProjectOrAny<T> = T extends Project ? Project : any;
 
-const BASIC_UNFORMATTED_VALID_PROJECT = {
+const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   version: '4.0.6',
   primaryContact: {},
   fields: [
@@ -77,12 +77,6 @@ const BASIC_UNFORMATTED_VALID_PROJECT = {
                   type: 'mixed blends',
                 },
               ],
-              //   organicMatterEvents: [],
-              //   irrigationEvents: [],
-              //   limingEvents: null,
-              //   grazingEvents: null,
-              //   burningEvents: null,
-              //   soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
                   date: '2015-09-18',
@@ -180,7 +174,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
     },
   ],
 };
-const clone = (object: Object) => JSON.parse(JSON.stringify(object));
+const clone = (object: Project): Project => JSON.parse(JSON.stringify(object));
 // todo extend jest to expect NoriError
 
 const buildExpectedError = ({
@@ -553,7 +547,7 @@ describe('validation', () => {
         describe('cropEventDateTypeError', () => {
           describe('when the type is not a string', () => {
             it('should throw validation errors', () => {
-              const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
+              const data = clone(BASIC_UNFORMATTED_VALID_PROJECT) as any;
               data.fields[0].cropYears[0].crops[0].harvestEvents[0] = {
                 date: 1,
                 yield: 211.88,
