@@ -74,7 +74,7 @@ const validationRules = {
  * @example <caption>Validating project data using data that has an invalid number of fields defined:</caption>
  *
  * ```js
- * validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...errors}
+ * validateProjectData({version:'4.0.6', data}); // returns {valid:false, ...errors}
  * ```
  *
  */
