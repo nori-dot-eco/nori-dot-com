@@ -1158,8 +1158,8 @@ export interface Field {
  * or a projection of future data.
  */
 enum DataSourceType {
-  GrowerReported = 'GROWER_REPORTED',
-  Projected = 'PROJECTED',
+  GROWER_REPORTED = 'GROWER_REPORTED',
+  PROJECTED = 'PROJECTED',
 }
 
 type CropTypes = AnnualCrop | CoverCrop | OrchardOrVineyardCrop | PerennialCrop;
