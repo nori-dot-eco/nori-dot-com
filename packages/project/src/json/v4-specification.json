@@ -1,5 +1,5 @@
 {
-    "$id": "https://schema.nori.com/soil/4-0-6",
+    "$id": "https://schema.nori.com/soil/4-0-7",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
@@ -3536,6 +3536,14 @@
             "$ref": "#/definitions/ContactInfo",
             "description": "primaryContact Contact info for the operator or data aggregator preparing this file.\n\nThis will be the primary point of contract for verifiers.",
             "title": "primaryContact"
+        },
+        "projectName": {
+            "description": "The name for the project to be created.",
+            "title": "projectName",
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "supplierId": {
             "description": "Nori's internal supplier identifier.\n\nUsed to correlate projects / batches to a supplier.",

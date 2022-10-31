@@ -3,7 +3,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.6
+ * Version: 4.0.7
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -299,13 +299,13 @@ export const limingTypes = [
  * A project may represent either a complete farming operation for a single operator or a batch
  * of fields from a data aggregator.
  *
- * @$id https://schema.nori.com/soil/4-0-6
+ * @$id https://schema.nori.com/soil/4-0-7
  *
- * @example <caption>A project that uses specification v4.0.6 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.0.7 and contains a list of fields:</caption>
  *
  * ```js
  * {
- *  "version": "4.0.6",
+ *  "version": "4.0.7",
  *  "fields": [
  *    ...fields
  *  ]
@@ -331,7 +331,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.0.6"
+   * "version": "4.0.7"
    * ```
    *
    */
@@ -417,6 +417,12 @@ export interface Project {
    *
    */
   supplierId?: string;
+  /**
+   * The name for the project to be created.
+   * 
+   * @nullable External systems leave this null.
+   */
+  projectName?: string;
   /**
    * An array of fields defining annual crop management practices.
    *

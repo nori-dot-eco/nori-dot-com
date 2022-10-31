@@ -21,7 +21,7 @@ Takes input data and checks whether its contents are valid or not. When the data
 <caption>Validating project data using data that has an invalid number of fields defined:</caption>
 
 ```js
-validateProjectData({version:'4.0.6', data}); // returns {valid:false, ...errors}
+validateProjectData(data); // returns {valid:false, ...errors}
 ```
 
 #### Parameters

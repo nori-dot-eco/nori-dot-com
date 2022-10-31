@@ -9,15 +9,15 @@ A project encapsulates a set of fields. This is the top-level interface of Nori'
 A project may represent either a complete farming operation for a single operator or a batch
 of fields from a data aggregator.
 
-@$id https://schema.nori.com/soil/4-0-6
+@$id https://schema.nori.com/soil/4-0-7
 
 **`Example`**
 
-<caption>A project that uses specification v4.0.6 and contains a list of fields:</caption>
+<caption>A project that uses specification v4.0.7 and contains a list of fields:</caption>
 
 ```js
 {
- "version": "4.0.6",
+ "version": "4.0.7",
  "fields": [
    ...fields
  ]
@@ -35,6 +35,7 @@ of fields from a data aggregator.
 - [fields](v4_specification.Project.md#fields)
 - [id](v4_specification.Project.md#id)
 - [primaryContact](v4_specification.Project.md#primarycontact)
+- [projectName](v4_specification.Project.md#projectname)
 - [supplierId](v4_specification.Project.md#supplierid)
 - [totalCroppedAcres](v4_specification.Project.md#totalcroppedacres)
 - [totalFarmAcres](v4_specification.Project.md#totalfarmacres)
@@ -60,7 +61,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:389](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L389)
+[v4-specification.ts:389](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L389)
 
 ___
 
@@ -76,7 +77,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:351](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L351)
+[v4-specification.ts:351](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L351)
 
 ___
 
@@ -106,7 +107,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:443](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L443)
+[v4-specification.ts:449](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L449)
 
 ___
 
@@ -130,7 +131,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:404](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L404)
+[v4-specification.ts:404](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L404)
 
 ___
 
@@ -144,7 +145,23 @@ This will be the primary point of contract for verifiers.
 
 #### Defined in
 
-[v4-specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L345)
+[v4-specification.ts:345](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L345)
+
+___
+
+### projectName
+
+• `Optional` **projectName**: `string`
+
+The name for the project to be created.
+
+**`Nullable`**
+
+External systems leave this null.
+
+#### Defined in
+
+[v4-specification.ts:425](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L425)
 
 ___
 
@@ -168,7 +185,7 @@ External systems leave this null.
 
 #### Defined in
 
-[v4-specification.ts:419](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L419)
+[v4-specification.ts:419](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L419)
 
 ___
 
@@ -190,7 +207,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:375](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L375)
+[v4-specification.ts:375](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L375)
 
 ___
 
@@ -212,7 +229,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:363](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L363)
+[v4-specification.ts:363](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L363)
 
 ___
 
@@ -227,9 +244,9 @@ The specification version. This information is used to determine the logic Nori 
 **`Example`**
 
 ```js
-"version": "4.0.6"
+"version": "4.0.7"
 ```
 
 #### Defined in
 
-[v4-specification.ts:338](https://github.com/nori-dot-eco/nori-dot-com/blob/ba4a1c9/packages/project/src/v4-specification.ts#L338)
+[v4-specification.ts:338](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L338)
