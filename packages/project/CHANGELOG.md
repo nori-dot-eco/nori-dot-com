@@ -1,3 +1,6 @@
+# v4.0.7 (October 31, 2022)
+* added `Project.projectName`
+
 # v4.0.6 (October 27, 2022)
 * Added `Project.supplierId`
 * Added `CropYear.dataSourceType` enum to permit the supplier to specify whether the CropYear's data is source from actual grower past data or project future practice data.
