@@ -43,4 +43,4 @@ validateProjectData(data); // returns {valid:false, ...errors}
 
 #### Defined in
 
-[validation.ts:81](https://github.com/nori-dot-eco/nori-dot-com/blob/01ec85d/packages/project/src/validation.ts#L81)
+[validation.ts:81](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/validation.ts#L81)
