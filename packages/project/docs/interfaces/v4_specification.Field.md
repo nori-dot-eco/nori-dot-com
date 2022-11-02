@@ -85,7 +85,7 @@ i.e. Is the field leased land?
 <caption>When the operator is the land owner:</caption>
 
 ```js
-"assignmentOfAuthority": true
+"assignmentOfAuthority": false
 ```
 
 #### Defined in

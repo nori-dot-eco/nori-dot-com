@@ -419,7 +419,7 @@ export interface Project {
   supplierId?: string;
   /**
    * The name for the project to be created.
-   * 
+   *
    * @nullable External systems leave this null.
    */
   projectName?: string;
@@ -906,7 +906,7 @@ export interface PracticeChangesAdopted {
  *  "parcelNumber": "",
  *  "legalPropertyDescription": "15 83 40 N 17.70 A OF W 33.67 A SW SE",
  *  "geojson": {
- *    // exmaple GeoJSON:
+ *    // example GeoJSON:
  *    "type": "Polygon",
  *     "coordinates": [
  *         [[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]
@@ -1052,7 +1052,7 @@ export interface Field {
    * @example <caption>When the operator is the land owner:</caption>
    *
    * ```js
-   * "assignmentOfAuthority": true
+   * "assignmentOfAuthority": false
    * ```
    *
    */
