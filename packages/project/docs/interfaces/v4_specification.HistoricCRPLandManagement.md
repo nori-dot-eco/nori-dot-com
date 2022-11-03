@@ -8,7 +8,7 @@ Details surrounding how the field was managed before year 2000
 
 Note that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -54,9 +54,13 @@ Note that the state the field exists within restricts the allowed values per obj
 
 Whether the field participated in CRP or not.
 
-**`default`** true
+**`Default`**
 
-**`example`** When the field participated in CRP:
+true
+
+**`Example`**
+
+<caption>When the field participated in CRP:</caption>
 
 ```js
 "crp": true
@@ -64,7 +68,7 @@ Whether the field participated in CRP or not.
 
 #### Defined in
 
-[v4-specification.ts:697](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L697)
+[v4-specification.ts:721](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L721)
 
 ___
 
@@ -74,11 +78,17 @@ ___
 
 The CRP end year
 
-**`minimum`** 1980
+**`Minimum`**
 
-**`maximum`** 2000
+1980
 
-**`example`** When CRP enrollment ended in 2000:
+**`Maximum`**
+
+2000
+
+**`Example`**
+
+<caption>When CRP enrollment ended in 2000:</caption>
 
 ```js
 "crpEndYear": 2000
@@ -86,7 +96,7 @@ The CRP end year
 
 #### Defined in
 
-[v4-specification.ts:742](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L742)
+[v4-specification.ts:766](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L766)
 
 ___
 
@@ -96,11 +106,17 @@ ___
 
 The CRP start year
 
-**`minimum`** 1980
+**`Minimum`**
 
-**`maximum`** 2000
+1980
 
-**`example`** When CRP enrollment started in 1980:
+**`Maximum`**
+
+2000
+
+**`Example`**
+
+<caption>When CRP enrollment started in 1980:</caption>
 
 ```js
 "crpStartYear": 1980
@@ -108,7 +124,7 @@ The CRP start year
 
 #### Defined in
 
-[v4-specification.ts:728](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L728)
+[v4-specification.ts:752](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L752)
 
 ___
 
@@ -118,13 +134,17 @@ ___
 
 The type of CRP the field participated in. Only applicable if [crp](#crp) is set to true.
 
-**`example`** When the field participated in 100% grass CRP:
+**`Example`**
+
+<caption>When the field participated in 100% grass CRP:</caption>
 
 ```js
 "crpType": "100% grass"
 ```
 
-**`example`** When the field participated in grass/legume mixture CRP:
+**`Example`**
+
+<caption>When the field participated in grass/legume mixture CRP:</caption>
 
 ```js
 "crpType": "grass/legume mixture"
@@ -132,7 +152,7 @@ The type of CRP the field participated in. Only applicable if [crp](#crp) is set
 
 #### Defined in
 
-[v4-specification.ts:714](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L714)
+[v4-specification.ts:738](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L738)
 
 ___
 
@@ -144,7 +164,7 @@ How was the field managed after CRP
 
 To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
-**`example`**
+**`Example`**
 
 ```js
 "postCRPManagement": "non-irrigated: livestock grazing"
@@ -152,7 +172,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[v4-specification.ts:788](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L788)
+[v4-specification.ts:812](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L812)
 
 ___
 
@@ -162,7 +182,7 @@ ___
 
 How was the field managed after tillage
 
-**`example`**
+**`Example`**
 
 ```js
 "postCRPTillage": "intensive tillage"
@@ -170,7 +190,7 @@ How was the field managed after tillage
 
 #### Defined in
 
-[v4-specification.ts:808](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L808)
+[v4-specification.ts:832](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L832)
 
 ___
 
@@ -182,7 +202,7 @@ How was the field managed before the field entered into CRP
 
 To find applicable values per field location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)
 
-**`example`**
+**`Example`**
 
 ```js
 "preCRPManagement": "irrigated: annual crops in rotation"
@@ -190,7 +210,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[v4-specification.ts:755](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L755)
+[v4-specification.ts:779](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L779)
 
 ___
 
@@ -200,7 +220,7 @@ ___
 
 How was the field tilled before the field entered into CRP
 
-**`example`**
+**`Example`**
 
 ```js
 "preCRPTillage": "intensive tillage"
@@ -208,7 +228,7 @@ How was the field tilled before the field entered into CRP
 
 #### Defined in
 
-[v4-specification.ts:775](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L775)
+[v4-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L799)
 
 ___
 
@@ -218,25 +238,33 @@ ___
 
 A description of how the land was managed before 1980.
 
-**`example`** When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:
+**`Example`**
+
+<caption>When the land was not upland (referring to any land that is not low or marsh-like) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "upland non-irrigated"
 ```
 
-**`example`** When the land was irrigated before 1980:
+**`Example`**
+
+<caption>When the land was irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "irrigation"
 ```
 
-**`example`** When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:
+**`Example`**
+
+<caption>When the land was not lowland (referring to land that is low and subject to flooding) irrigated before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"
 ```
 
-**`example`** When the land employed livestock grazing before 1980:
+**`Example`**
+
+<caption>When the land employed livestock grazing before 1980:</caption>
 
 ```js
 "preYear1980": "lowland non-irrigated"
@@ -248,4 +276,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v4-specification.ts:575](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L575)
+[v4-specification.ts:599](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L599)

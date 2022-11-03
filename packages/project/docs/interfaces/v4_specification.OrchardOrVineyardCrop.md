@@ -6,7 +6,9 @@
 
 Crop management details and events for orchard and vineyard crops.
 
-**`example`** A crop definition for an orchard that was:
+**`Example`**
+
+<caption>A crop definition for an orchard that was:</caption>
 
 ```js
 {
@@ -51,11 +53,23 @@ Crop management details and events for orchard and vineyard crops.
 
 Burning events, if applicable.
 
-**`nullable`**
+**`Nullable`**
 
-**`default`** []
+**`Min Items`**
 
-**`example`** When burning occurred after harvesting:
+0
+
+**`Additional Items`**
+
+false
+
+**`Default`**
+
+[]
+
+**`Example`**
+
+<caption>When burning occurred after harvesting:</caption>
 
 ```js
 "burningEvents": [{
@@ -63,7 +77,9 @@ Burning events, if applicable.
 }]
 ```
 
-**`example`** When no burning occurred:
+**`Example`**
+
+<caption>When no burning occurred:</caption>
 
 ```js
 "burningEvents": []
@@ -75,7 +91,7 @@ Burning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1488](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1488)
+[v4-specification.ts:1552](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1552)
 
 ___
 
@@ -89,13 +105,17 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 Note: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.
 
-**`example`** When the crop is an orchard:
+**`Example`**
+
+<caption>When the crop is an orchard:</caption>
 
 ```js
 "classification": "orchard"
 ```
 
-**`example`** When the crop is a vineyard:
+**`Example`**
+
+<caption>When the crop is a vineyard:</caption>
 
 ```js
 "classification": "vineyard"
@@ -103,7 +123,7 @@ Note: if a crop ever changes classifications during the lifetime of the field (i
 
 #### Defined in
 
-[v4-specification.ts:1606](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1606)
+[v4-specification.ts:1675](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1675)
 
 ___
 
@@ -111,13 +131,25 @@ ___
 
 • `Optional` **clearingAndRenewalEvents**: [`ClearingAndRenewalEvent`](v4_specification.ClearingAndRenewalEvent.md)[]
 
-Clearing and renewal events for orchards and vinyards, if applicable.
+Clearing and renewal events for orchards and vineyards, if applicable.
 
-**`nullable`**
+**`Nullable`**
 
-**`default`** []
+**`Min Items`**
 
-**`example`** When clearing occurred after harvesting:
+0
+
+**`Additional Items`**
+
+false
+
+**`Default`**
+
+[]
+
+**`Example`**
+
+<caption>When clearing occurred after harvesting:</caption>
 
 ```js
 "clearingAndRenewalEvents": [{
@@ -125,7 +157,9 @@ Clearing and renewal events for orchards and vinyards, if applicable.
 }]
 ```
 
-**`example`** When no clearing or removal occurred:
+**`Example`**
+
+<caption>When no clearing or removal occurred:</caption>
 
 ```js
 "clearingAndRenewalEvents": []
@@ -137,7 +171,7 @@ Clearing and renewal events for orchards and vinyards, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1534](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1534)
+[v4-specification.ts:1602](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1602)
 
 ___
 
@@ -149,15 +183,15 @@ Crop identifier.  Free form external reference
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "corn-456"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "corn-456-2019"
@@ -169,7 +203,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1252](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1252)
+[v4-specification.ts:1300](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1300)
 
 ___
 
@@ -179,9 +213,19 @@ ___
 
 A list of fertilizer events, if applicable.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** When some fertilizer events occurred:
+**`Min Items`**
+
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When some fertilizer events occurred:</caption>
 
 ```js
 "fertilizerEvents": [
@@ -201,7 +245,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1379](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1379)
+[v4-specification.ts:1433](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1433)
 
 ___
 
@@ -211,11 +255,23 @@ ___
 
 A list of grazing events, if applicable
 
-**`nullable`**
+**`Nullable`**
 
-**`default`** []
+**`Min Items`**
 
-**`example`** When some grazing events occurred:
+0
+
+**`Additional Items`**
+
+false
+
+**`Default`**
+
+[]
+
+**`Example`**
+
+<caption>When some grazing events occurred:</caption>
 
 ```js
 "grazingEvents": [
@@ -234,7 +290,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v4-specification.ts:1465](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1465)
+[v4-specification.ts:1527](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1527)
 
 ___
 
@@ -249,11 +305,19 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
-**`nullable`**
+**`Nullable`**
 
-**`maximum`** 1
+**`Min Items`**
 
-**`example`** When crop had at least one harvest event:
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When crop had at least one harvest event:</caption>
 
 ```js
  "harvestEvents": [
@@ -267,7 +331,7 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v4-specification.ts:1555](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1555)
+[v4-specification.ts:1624](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1624)
 
 ___
 
@@ -279,9 +343,11 @@ Nori's internal crop identifier.
 
 Used to synchronize repeated imports
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
@@ -293,7 +359,7 @@ Used to synchronize repeated imports
 
 #### Defined in
 
-[v4-specification.ts:1268](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1268)
+[v4-specification.ts:1316](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1316)
 
 ___
 
@@ -303,9 +369,19 @@ ___
 
 A list of irrigation events, if applicable.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** When some irrigation events occurred:
+**`Min Items`**
+
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When some irrigation events occurred:</caption>
 
 ```js
 "irrigationEvents": [
@@ -323,7 +399,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1421](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1421)
+[v4-specification.ts:1479](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1479)
 
 ___
 
@@ -333,11 +409,23 @@ ___
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
-**`nullable`**
+**`Nullable`**
 
-**`default`** []
+**`Default`**
 
-**`example`** When some liming events occurred:
+[]
+
+**`Min Items`**
+
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When some liming events occurred:</caption>
 
 ```js
 "limingEvents": [
@@ -356,7 +444,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v4-specification.ts:1443](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1443)
+[v4-specification.ts:1503](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1503)
 
 ___
 
@@ -366,9 +454,11 @@ ___
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`**
+this property will be deprecated in the future
+
+**`Example`**
 
 ```js
 "name": "Joe's corn"
@@ -380,7 +470,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[v4-specification.ts:1230](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1230)
+[v4-specification.ts:1278](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1278)
 
 ___
 
@@ -390,9 +480,21 @@ ___
 
 A list of organic matter and manure application events, if applicable.
 
-**`nullable`** during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some organic matter was applied:
+during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+
+**`Min Items`**
+
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When some organic matter was applied:</caption>
 
 ```js
 "organicMatterEvents": [
@@ -414,7 +516,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1402](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1402)
+[v4-specification.ts:1458](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1458)
 
 ___
 
@@ -426,11 +528,23 @@ The planting event(s) if there were any for the current crop year otherwise empt
 
 This will contain a single event for annuals and none for perennials outside of the planting year.
 
-**`nullable`**
+**`Nullable`**
 
-**`maximum`** 1
+**`Min Items`**
 
-**`example`** Planting on 2018-03-20
+0
+
+**`Max Items`**
+
+1
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>Planting on 2018-03-20</caption>
 
 ```js
 "plantingEvents": [{
@@ -438,7 +552,9 @@ This will contain a single event for annuals and none for perennials outside of 
 }]
 ```
 
-**`example`** Perennial planted in a prior year.
+**`Example`**
+
+<caption>Perennial planted in a prior year.</caption>
 
 ```js
 "plantingEvents": []
@@ -450,7 +566,7 @@ This will contain a single event for annuals and none for perennials outside of 
 
 #### Defined in
 
-[v4-specification.ts:1336](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1336)
+[v4-specification.ts:1386](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1386)
 
 ___
 
@@ -460,11 +576,23 @@ ___
 
 Pruning events, if applicable.
 
-**`nullable`**
+**`Nullable`**
 
-**`default`** []
+**`Min Items`**
 
-**`example`** When pruning occurred after harvesting:
+0
+
+**`Additional Items`**
+
+false
+
+**`Default`**
+
+[]
+
+**`Example`**
+
+<caption>When pruning occurred after harvesting:</caption>
 
 ```js
 "pruningEvents": [{
@@ -472,7 +600,9 @@ Pruning events, if applicable.
 }]
 ```
 
-**`example`** When no pruning occurred:
+**`Example`**
+
+<caption>When no pruning occurred:</caption>
 
 ```js
 "pruningEvents": []
@@ -484,7 +614,7 @@ Pruning events, if applicable.
 
 #### Defined in
 
-[v4-specification.ts:1511](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1511)
+[v4-specification.ts:1577](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1577)
 
 ___
 
@@ -496,9 +626,19 @@ A list of soil or crop disturbance events events, if applicable (such as tillage
 
 All crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`** When some soil or crop disturbance events occurred:
+**`Min Items`**
+
+0
+
+**`Additional Items`**
+
+false
+
+**`Example`**
+
+<caption>When some soil or crop disturbance events occurred:</caption>
 
 ```js
 "soilOrCropDisturbanceEvents": [
@@ -516,7 +656,7 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v4-specification.ts:1358](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1358)
+[v4-specification.ts:1410](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1410)
 
 ___
 
@@ -528,7 +668,9 @@ The COMET equivalent type of the orchard or vineyard crop.
 
 You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
-**`example`** When the crop planted is "oranges":
+**`Example`**
+
+<caption>When the crop planted is "oranges":</caption>
 
 ```js
 "type": "oranges"
@@ -536,4 +678,4 @@ You can find a list of accepted crops [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1585](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1585)
+[v4-specification.ts:1654](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1654)

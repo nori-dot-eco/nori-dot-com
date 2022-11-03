@@ -6,7 +6,7 @@
 
 Fertilizer event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -40,23 +40,34 @@ Fertilizer event details.
 
 The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
 
-**`nullable`** during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
+**`Nullable`**
 
-**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+during import (note: when dates are defined as null in an import file, the data will still need to be collected at a later point in the enrollment process (i.e., either in the Nori front-end experience, or in a subsequent data import file).
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Pattern`**
+
+^02/(?:[01]\d|2\d)/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)/(?:[0-2]\d|3[01])/(?:20)\d{2}|(?:0[469]|11)/(?:[0-2]\d|30)/(?:20)\d{2}|02/(?:[0-1]\d|2[0-8])/(?:20)\d{2}$
+
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "01/01/2000"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`errormessage`**
+["cropEventDateIsOnOrAfterContainingCropYear"]
+
+**`Error Message`**
+
+```js
 {
 "type": "projectDataError:cropEventDateTypeError",
 "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
 }
+```
 
 #### Inherited from
 
@@ -64,7 +75,7 @@ The date the crop event happened (formatted as MM/DD/YYYY and YYYY > 2000 and YY
 
 #### Defined in
 
-[v3-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1279)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -74,9 +85,13 @@ ___
 
 Amount of nitrogen applied in lbs/ac.
 
-**`nullable`** during import (specify null if you are unsure)
+**`Nullable`**
 
-**`example`** When 10 lbs of Nitrogen per acre was applied:
+during import (specify null if you are unsure)
+
+**`Example`**
+
+<caption>When 10 lbs of Nitrogen per acre was applied:</caption>
 
 ```js
 "lbsOfNPerAcre": 150
@@ -84,7 +99,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-[v3-specification.ts:1599](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1599)
+[v3-specification.ts:1611](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1611)
 
 ___
 
@@ -94,9 +109,13 @@ ___
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`** When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":
+this property will be deprecated in the future
+
+**`Example`**
+
+<caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
 
 ```js
 "name": "Joe's fertilizer"
@@ -104,7 +123,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-[v3-specification.ts:1571](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1571)
+[v3-specification.ts:1583](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1583)
 
 ___
 
@@ -116,9 +135,13 @@ The fertilizer classification type.
 
 Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions. As such, we default the type to "mixed blends" when this property is excluded/nulled.
 
-**`default`** "mixed blends"
+**`Default`**
 
-**`example`** When the fertilizer type can be classified as mixed blends:
+"mixed blends"
+
+**`Example`**
+
+<caption>When the fertilizer type can be classified as mixed blends:</caption>
 
 ```js
 "type": "mixed blends",
@@ -126,4 +149,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[v3-specification.ts:1586](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1586)
+[v3-specification.ts:1598](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1598)

@@ -4,7 +4,7 @@
 
 [v4-specification](../modules/v4_specification.md).ContactInfo
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -30,11 +30,11 @@
 
 email
 
-**`nullable`**
+**`Nullable`**
 
 #### Defined in
 
-[v4-specification.ts:458](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L458)
+[v4-specification.ts:482](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L482)
 
 ___
 
@@ -44,11 +44,11 @@ ___
 
 The project's primary contract person.  Provided to the verified.
 
-**`nullable`**
+**`Nullable`**
 
 #### Defined in
 
-[v4-specification.ts:446](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L446)
+[v4-specification.ts:470](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L470)
 
 ___
 
@@ -58,8 +58,8 @@ ___
 
 phone
 
-**`nullable`**
+**`Nullable`**
 
 #### Defined in
 
-[v4-specification.ts:452](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L452)
+[v4-specification.ts:476](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L476)

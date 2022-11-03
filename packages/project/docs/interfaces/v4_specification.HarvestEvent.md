@@ -6,7 +6,9 @@
 
 An annual crop's harvest event details.
 
-**`example`** An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:
+**`Example`**
+
+<caption>An annual harvest event that yielded 100 bu/ac that took place on October 1st of 2000:</caption>
 
 ```js
 {
@@ -41,27 +43,29 @@ An annual crop's harvest event details.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
 Dates for liming and burning can be approximate or the first day of the crop year.
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "2000-01-01"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`format`** date
+["cropEventDateIsOnOrAfterContainingCropYear"]
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
+**`Format`**
+
+date
+
+**`Error Message`**
 
 #### Inherited from
 
@@ -69,7 +73,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1850](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1850)
 
 ___
 
@@ -81,9 +85,9 @@ External crop event identifier.
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
@@ -95,7 +99,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1865](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1865)
 
 ___
 
@@ -105,17 +109,25 @@ ___
 
 Whether the crop was harvest for grain, fruit or tuber.
 
-**`nullable`** during import (specify null if you are unsure)
+**`Nullable`**
 
-**`default`** no
+during import (specify null if you are unsure)
 
-**`example`** Select true if the crop was harvested for grain, fruit, or tuber:
+**`Default`**
+
+no
+
+**`Example`**
+
+<caption>Select true if the crop was harvested for grain, fruit, or tuber:</caption>
 
 ```js
 "grainFruitTuber": true
 ```
 
-**`example`** Select false if the crop was harvested before maturity for silage or haylage:
+**`Example`**
+
+<caption>Select false if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "grainFruitTuber": false
@@ -123,7 +135,7 @@ Whether the crop was harvest for grain, fruit or tuber.
 
 #### Defined in
 
-[v4-specification.ts:1918](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1918)
+[v4-specification.ts:1987](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1987)
 
 ___
 
@@ -135,9 +147,11 @@ Nori's internal crop event identifier.
 
 Used to synchronize repeated imports.
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
@@ -149,7 +163,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1880](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1880)
 
 ___
 
@@ -159,25 +173,37 @@ ___
 
 Crop residue removed.
 
-**`default`** 0
+**`Default`**
 
-**`minimum`** 0
+0
 
-**`maximum`** 100
+**`Minimum`**
 
-**`example`** Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:
+0
+
+**`Maximum`**
+
+100
+
+**`Example`**
+
+<caption>Enter 0% if the crop was only harvested for grain / fruit / tuber or if it otherwise does not apply:</caption>
 
 ```js
 "residueRemoved": 0
 ```
 
-**`example`** Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:
+**`Example`**
+
+<caption>Enter the % of the remaining crop removed if the hay or stover was removed separately after grain / fruit / tuber harvest:</caption>
 
 ```js
 "residueRemoved": 5
 ```
 
-**`example`** Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:
+**`Example`**
+
+<caption>Enter the total % biomass removed at harvest if the crop was harvested before maturity for silage or haylage:</caption>
 
 ```js
 "residueRemoved": 10
@@ -185,7 +211,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v4-specification.ts:1946](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1946)
+[v4-specification.ts:2015](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2015)
 
 ___
 
@@ -197,15 +223,15 @@ Source of the event
 
 Optional field to indicate what system this data point originated from.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "CDL"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "FMS name"
@@ -217,7 +243,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1901)
 
 ___
 
@@ -229,9 +255,13 @@ The crop yield.
 
 The current version of quantification does not consider yield when producing estimates. As such, we will default to 0 when left out.
 
-**`default`** 0
+**`Default`**
 
-**`example`** When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:
+0
+
+**`Example`**
+
+<caption>When 100 lbs of the crop specified was harvested (using the herein specified `yieldUnit`:</caption>
 
 ```js
 "yield": 100
@@ -239,7 +269,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1882](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1882)
+[v4-specification.ts:1951](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1951)
 
 ___
 
@@ -251,9 +281,13 @@ The crop yield units.
 
 The current version of quantification does not consider yield when producing estimates.
 
-**`default`** "lbs/ac"
+**`Default`**
 
-**`example`** When the unit of the yield is submitted in lbs per acre:
+"lbs/ac"
+
+**`Example`**
+
+<caption>When the unit of the yield is submitted in lbs per acre:</caption>
 
 ```js
 "yieldUnit": "lbs/ac"
@@ -261,4 +295,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1897](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1897)
+[v4-specification.ts:1966](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1966)

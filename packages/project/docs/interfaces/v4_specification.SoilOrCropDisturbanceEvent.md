@@ -6,7 +6,7 @@
 
 Soil or crop disturbance event event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -36,27 +36,29 @@ Soil or crop disturbance event event details.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
 Dates for liming and burning can be approximate or the first day of the crop year.
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "2000-01-01"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`format`** date
+["cropEventDateIsOnOrAfterContainingCropYear"]
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
+**`Format`**
+
+date
+
+**`Error Message`**
 
 #### Inherited from
 
@@ -64,7 +66,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1850](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1850)
 
 ___
 
@@ -76,9 +78,9 @@ External crop event identifier.
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
@@ -90,7 +92,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1865](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1865)
 
 ___
 
@@ -102,9 +104,11 @@ Nori's internal crop event identifier.
 
 Used to synchronize repeated imports.
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
@@ -116,7 +120,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1880](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1880)
 
 ___
 
@@ -126,7 +130,9 @@ ___
 
 The name/alias that the soil or crop disturbance events practice is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`example`** When the name of the soil or crop disturbance used on the crop was known to the supplier as "Orange Tiller":
+**`Example`**
+
+<caption>When the name of the soil or crop disturbance used on the crop was known to the supplier as "Orange Tiller":</caption>
 
 ```js
 "name": "Orange Tiller"
@@ -134,7 +140,7 @@ The name/alias that the soil or crop disturbance events practice is known by. Th
 
 #### Defined in
 
-[v4-specification.ts:1973](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1973)
+[v4-specification.ts:2042](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2042)
 
 ___
 
@@ -146,15 +152,15 @@ Source of the event
 
 Optional field to indicate what system this data point originated from.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "CDL"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "FMS name"
@@ -166,7 +172,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1901)
 
 ___
 
@@ -178,61 +184,81 @@ The soil or crop disturbance events classification type.
 
 You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
-**`example`** Little to no crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>Little to no crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "intensive tillage"
 ```
 
-**`example`** 15-30% of crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>15-30% of crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "reduced tillage"
 ```
 
-**`example`** 30% or more of crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>30% or more of crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "mulch tillage"
 ```
 
-**`example`** 30% or more of crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>30% or more of crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "ridge tillage"
 ```
 
-**`example`** 75% or more of crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>75% or more of crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "strip tillage"
 ```
 
-**`example`** 75% or more of crop residue remains on the surface after tillage:
+**`Example`**
+
+<caption>75% or more of crop residue remains on the surface after tillage:</caption>
 
 ```js
 "type": "no-till planting"
 ```
 
-**`example`** 50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing:
+**`Example`**
+
+<caption>50-60% of standing live and dead plant biomass is cut and left lying as surface residue. The standing live plant is left alive to continue growing:</caption>
 
 ```js
 "type": "mow"
 ```
 
-**`example`** 100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process:
+**`Example`**
+
+<caption>100% of standing live and dead plants are cut, chopped and incorporated into surface residue. The standing live plant is killed in the process:</caption>
 
 ```js
 "type": "crimp"
 ```
 
-**`example`** Cover crop died in winter:
+**`Example`**
+
+<caption>Cover crop died in winter:</caption>
 
 ```js
 "type": "winter kill"
 ```
 
-**`example`** 100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds:
+**`Example`**
+
+<caption>100% of all plants are killed, including both growing crops (e.g. corn, soy, alfalfa) and weeds:</caption>
 
 ```js
 "type": "broad-spectrum herbicide"
@@ -240,4 +266,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:2040](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2040)
+[v4-specification.ts:2109](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2109)

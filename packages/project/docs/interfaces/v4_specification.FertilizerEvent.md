@@ -6,7 +6,7 @@
 
 Fertilizer event details.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -39,27 +39,29 @@ Fertilizer event details.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
 Dates for liming and burning can be approximate or the first day of the crop year.
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "2000-01-01"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`format`** date
+["cropEventDateIsOnOrAfterContainingCropYear"]
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
+**`Format`**
+
+date
+
+**`Error Message`**
 
 #### Inherited from
 
@@ -67,7 +69,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1850](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1850)
 
 ___
 
@@ -79,9 +81,9 @@ External crop event identifier.
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
@@ -93,7 +95,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1865](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1865)
 
 ___
 
@@ -105,9 +107,11 @@ Nori's internal crop event identifier.
 
 Used to synchronize repeated imports.
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
@@ -119,7 +123,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1880](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1880)
 
 ___
 
@@ -129,9 +133,13 @@ ___
 
 Amount of nitrogen applied in lbs/ac.
 
-**`nullable`** during import (specify null if you are unsure)
+**`Nullable`**
 
-**`example`** When 10 lbs of Nitrogen per acre was applied:
+during import (specify null if you are unsure)
+
+**`Example`**
+
+<caption>When 10 lbs of Nitrogen per acre was applied:</caption>
 
 ```js
 "lbsOfNPerAcre": 10
@@ -139,7 +147,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-[v4-specification.ts:2100](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2100)
+[v4-specification.ts:2169](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2169)
 
 ___
 
@@ -149,9 +157,13 @@ ___
 
 The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`** When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":
+this property will be deprecated in the future
+
+**`Example`**
+
+<caption>When the name of the fertilizer used on the crop was known to the supplier as "Joe's fertilizer":</caption>
 
 ```js
 "name": "Joe's fertilizer"
@@ -159,7 +171,7 @@ The name/alias that the fertilizer is known by. This property is used in the to-
 
 #### Defined in
 
-[v4-specification.ts:2071](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2071)
+[v4-specification.ts:2140](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2140)
 
 ___
 
@@ -171,15 +183,15 @@ Source of the event
 
 Optional field to indicate what system this data point originated from.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "CDL"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "FMS name"
@@ -191,7 +203,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1901)
 
 ___
 
@@ -204,9 +216,13 @@ The fertilizer classification type.
 Note that the fertilizer type does not currently impact quantification as it only impacts n2o emissions.
 As such, we default the type to "mixed blends" when this property is excluded/nulled.
 
-**`default`** "mixed blends"
+**`Default`**
 
-**`example`** Potash applied:
+"mixed blends"
+
+**`Example`**
+
+<caption>Potash applied:</caption>
 
 ```js
 "type": "potash (00-00-60)",
@@ -214,4 +230,4 @@ As such, we default the type to "mixed blends" when this property is excluded/nu
 
 #### Defined in
 
-[v4-specification.ts:2087](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2087)
+[v4-specification.ts:2156](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2156)

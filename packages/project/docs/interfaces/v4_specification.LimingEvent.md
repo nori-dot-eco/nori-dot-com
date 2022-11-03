@@ -9,7 +9,7 @@ Liming event details.
 NOTE: The date that the liming occurred. Currently, liming dates do not impact quantification.
 As such, we will default to a reasonable date when this property is left out.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -40,27 +40,29 @@ As such, we will default to a reasonable date when this property is left out.
 
 ### date
 
-• **date**: `Date`
+• **date**: `string`
 
 The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).
 
 Dates for liming and burning can be approximate or the first day of the crop year.
 
-**`example`** When the crop event occurred on January 1st of 2000:
+**`Example`**
+
+<caption>When the crop event occurred on January 1st of 2000:</caption>
 
 ```js
 "date": "2000-01-01"
 ```
 
-**`validationrules`** ["cropEventDateIsOnOrAfterContainingCropYear"]
+**`Validation Rules`**
 
-**`format`** date
+["cropEventDateIsOnOrAfterContainingCropYear"]
 
-**`errormessage`**
-{
-"type": "projectDataError:cropEventDateTypeError",
-"validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-}
+**`Format`**
+
+date
+
+**`Error Message`**
 
 #### Inherited from
 
@@ -68,7 +70,7 @@ Dates for liming and burning can be approximate or the first day of the crop yea
 
 #### Defined in
 
-[v4-specification.ts:1781](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1781)
+[v4-specification.ts:1850](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1850)
 
 ___
 
@@ -80,9 +82,9 @@ External crop event identifier.
 
 Used to correlate data back to the originating system and to synchronize repeated imports.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "externalId": "4dbbddd2-84c5-4f2b-a58f-e1198b531fba"
@@ -94,7 +96,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1796](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1796)
+[v4-specification.ts:1865](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1865)
 
 ___
 
@@ -106,9 +108,11 @@ Nori's internal crop event identifier.
 
 Used to synchronize repeated imports.
 
-**`nullable`** External systems leave this blank for new projects.
+**`Nullable`**
 
-**`example`**
+External systems pass null or omit the property for new projects.
+
+**`Example`**
 
 ```js
 "id": "20e75f5e-05e6-4a4d-92a7-9987de55c586"
@@ -120,7 +124,7 @@ Used to synchronize repeated imports.
 
 #### Defined in
 
-[v4-specification.ts:1811](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1811)
+[v4-specification.ts:1880](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1880)
 
 ___
 
@@ -132,15 +136,15 @@ Source of the event
 
 Optional field to indicate what system this data point originated from.
 
-**`nullable`**
+**`Nullable`**
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "CDL"
 ```
 
-**`example`**
+**`Example`**
 
 ```js
 "source": "FMS name"
@@ -152,7 +156,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1832](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L1832)
+[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1901)
 
 ___
 
@@ -162,9 +166,13 @@ ___
 
 The liming amount (in tons per acre).
 
-**`minimum`** 0
+**`Minimum`**
 
-**`example`** When 100 tons were user per acre:
+0
+
+**`Example`**
+
+<caption>When 100 tons were user per acre:</caption>
 
 ```js
 "tonsPerAcre": 100
@@ -172,7 +180,7 @@ The liming amount (in tons per acre).
 
 #### Defined in
 
-[v4-specification.ts:2354](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2354)
+[v4-specification.ts:2413](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2413)
 
 ___
 
@@ -182,7 +190,9 @@ ___
 
 The liming type.
 
-**`example`** When crushed limestone was the liming type that was used:
+**`Example`**
+
+<caption>When crushed limestone was the liming type that was used:</caption>
 
 ```js
 "type": "crushed limestone"
@@ -190,4 +200,4 @@ The liming type.
 
 #### Defined in
 
-[v4-specification.ts:2341](https://github.com/nori-dot-eco/nori-dot-com/blob/1fbedf1/packages/project/src/v4-specification.ts#L2341)
+[v4-specification.ts:2400](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2400)

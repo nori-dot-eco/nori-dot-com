@@ -16,17 +16,19 @@
 
 Takes input data and checks whether its contents are valid or not. When the data is not valid, context is provided.
 
-**`example`** Validating project data using data that has an invalid number of fields defined:
+**`Example`**
+
+<caption>Validating project data using data that has an invalid number of fields defined:</caption>
 
 ```js
-validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...errors}
+validateProjectData(data); // returns {valid:false, ...errors}
 ```
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `data` | [`Project`](../interfaces/v3_specification.Project.md) |
+| `data` | [`Project`](../interfaces/v4_specification.Project.md) |
 
 #### Returns
 
@@ -35,10 +37,10 @@ validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...er
 | Name | Type |
 | :------ | :------ |
 | `errors?` | { `dataPath`: `string` ; `error`: `ErrorObject`<`string`, `Record`<`string`, `any`\>, `unknown`\> ; `type`: `string`  }[] |
-| `formattedData` | [`Project`](../interfaces/v3_specification.Project.md) |
+| `formattedData` | [`Project`](../interfaces/v4_specification.Project.md) |
 | `message?` | `string` |
 | `valid` | `boolean` |
 
 #### Defined in
 
-[validation.ts:85](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/validation.ts#L85)
+[validation.ts:81](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/validation.ts#L81)

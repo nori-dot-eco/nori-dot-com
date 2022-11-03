@@ -6,7 +6,9 @@
 
 Crop harvest events.
 
-**`example`** When an annual crop had a harvest event:
+**`Example`**
+
+<caption>When an annual crop had a harvest event:</caption>
 
 ```js
  "harvestEvents": [
@@ -48,7 +50,9 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
-**`example`** When crop had at least one harvest event:
+**`Example`**
+
+<caption>When crop had at least one harvest event:</caption>
 
 ```js
  "harvestEvents": [
@@ -58,4 +62,4 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v3-specification.ts:827](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L827)
+[v3-specification.ts:837](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L837)

@@ -6,7 +6,7 @@
 
 Crop properties relevant to planted crops.
 
-**`example`**
+**`Example`**
 
 ```js
 {
@@ -41,9 +41,11 @@ Crop properties relevant to planted crops.
 
 The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
 
-**`todo`** this property will be deprecated in the future
+**`Todo`**
 
-**`example`**
+this property will be deprecated in the future
+
+**`Example`**
 
 ```js
 "name": "Joe's corn"
@@ -51,7 +53,7 @@ The name/alias that the crop is known by. This property is used in the to-be-dep
 
 #### Defined in
 
-[v3-specification.ts:774](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L774)
+[v3-specification.ts:784](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L784)
 
 ___
 
@@ -63,9 +65,13 @@ The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY 
 
 If a crop is ever replanted, define the crop again and add it to a new `CropYear` object with the new `plantingYear`.
 
-**`pattern`** ^02\/(?:[01]\d|2\d)\/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)\/(?:[0-2]\d|3[01])\/(?:20)\d{2}|(?:0[469]|11)\/(?:[0-2]\d|30)\/(?:20)\d{2}|02\/(?:[0-1]\d|2[0-8])\/(?:20)\d{2}$
+**`Pattern`**
 
-**`example`** When the crop was planted on January 1st of year 2000:
+^02/(?:[01]\d|2\d)/(?:20)(?:0[048]|[13579][26]|[2468][048])|(?:0[13578]|10|12)/(?:[0-2]\d|3[01])/(?:20)\d{2}|(?:0[469]|11)/(?:[0-2]\d|30)/(?:20)\d{2}|02/(?:[0-1]\d|2[0-8])/(?:20)\d{2}$
+
+**`Example`**
+
+<caption>When the crop was planted on January 1st of year 2000:</caption>
 
 ```js
 "plantingDate": "01/01/2000"
@@ -73,4 +79,4 @@ If a crop is ever replanted, define the crop again and add it to a new `CropYear
 
 #### Defined in
 
-[v3-specification.ts:789](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L789)
+[v3-specification.ts:799](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L799)

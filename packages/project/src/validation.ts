@@ -1,14 +1,13 @@
 import Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import ajvErrors from 'ajv-errors';
+import addFormats from 'ajv-formats';
 import type { DataValidationCxt } from 'ajv/dist/types';
 import type { UnparsedError } from '@nori-dot-com/errors';
 import { parseError } from '@nori-dot-com/errors';
 
-import * as schema from './json/v3-specification.json';
-import type { CropEvent } from './v3-specification';
-
-import type { Project } from './index';
+import * as schema from './json/v4-specification.json';
+import type { CropEvent, Project } from './v4-specification';
 
 type ProjectDataValidationContext = Omit<DataValidationCxt, 'rootData'> & {
   rootData: Project;
@@ -57,18 +56,15 @@ const validationRules = {
     value: CropEvent['date'];
   }): boolean => {
     const { rootData: project, dataPath } = ctx;
-    const [, fieldIndex, , cropYearIndex] = dataPath.split('/').slice(1);
-    const cropYear =
-      project.fields[Number(fieldIndex)].cropYears[Number(cropYearIndex)]
-        .plantingYear;
-    let isValid: boolean;
     if (typeof value === 'string') {
-      const eventYear = Number(value.split('/').slice(-1));
-      isValid = eventYear >= cropYear;
-    } else {
-      isValid = true; // if the type is not string, let other error handlers handle the error
+      const [, fieldIndex, , cropYearIndex] = dataPath.split('/').slice(1);
+      const cropYear =
+        project.fields[Number(fieldIndex)].cropYears[Number(cropYearIndex)]
+          .plantingYear;
+      const eventYear = new Date(value).getFullYear();
+      return eventYear >= cropYear;
     }
-    return isValid;
+    return true;
   },
 };
 
@@ -78,7 +74,7 @@ const validationRules = {
  * @example <caption>Validating project data using data that has an invalid number of fields defined:</caption>
  *
  * ```js
- * validateProjectData({version:'4.0.0',fields:[]}); // returns {valid:false, ...errors}
+ * validateProjectData(data); // returns {valid:false, ...errors}
  * ```
  *
  */
@@ -95,14 +91,16 @@ export const validateProjectData = (
   formattedData: Project;
 } => {
   const ajv = ajvErrors(
-    new Ajv({
-      useDefaults: 'empty',
-      allErrors: true,
-      inlineRefs: false,
-      $data: true,
-      ajvErrors: true,
-      // allowUnionTypes: true,
-    })
+    addFormats(
+      new Ajv({
+        useDefaults: 'empty',
+        allErrors: true,
+        inlineRefs: false,
+        $data: true,
+        ajvErrors: true,
+        allowUnionTypes: true,
+      })
+    )
   );
   ajv.addKeyword({
     keyword: 'validationRules',

@@ -6,7 +6,9 @@
 
 Crop management details and events.
 
-**`example`** When a crop has associated management events:
+**`Example`**
+
+<caption>When a crop has associated management events:</caption>
 
 ```js
 {
@@ -66,11 +68,15 @@ Crop management details and events.
 
 A burning event, if applicable.
 
-**`nullable`** if no burning ever occurred, explicitly specify `burningEvent` as `null`
+**`Nullable`**
 
-**`default`** { "type": "no burning" }
+if no burning ever occurred, explicitly specify `burningEvent` as `null`
 
-**`example`** When burning occurred after harvesting:
+**`Default`**
+
+**`Example`**
+
+<caption>When burning occurred after harvesting:</caption>
 
 ```js
 "burningEvent": {
@@ -78,7 +84,9 @@ A burning event, if applicable.
 }
 ```
 
-**`example`** When no burning occurred:
+**`Example`**
+
+<caption>When no burning occurred:</caption>
 
 ```js
 "burningEvent": null
@@ -86,7 +94,7 @@ A burning event, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:1004](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L1004)
+[v3-specification.ts:1014](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1014)
 
 ___
 
@@ -96,7 +104,9 @@ ___
 
 A list of fertilizer events, if applicable.
 
-**`example`** When some fertilizer events occurred:
+**`Example`**
+
+<caption>When some fertilizer events occurred:</caption>
 
 ```js
 "fertilizerEvents": [
@@ -112,7 +122,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:900](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L900)
+[v3-specification.ts:910](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L910)
 
 ___
 
@@ -122,9 +132,13 @@ ___
 
 A list of grazing events, if applicable
 
-**`nullable`** during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some grazing events occurred:
+during import (explicitly specify null if grazing did not occur, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some grazing events occurred:</caption>
 
 ```js
 "grazingEvents": [
@@ -140,7 +154,7 @@ A list of grazing events, if applicable
 
 #### Defined in
 
-[v3-specification.ts:981](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L981)
+[v3-specification.ts:991](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L991)
 
 ___
 
@@ -150,7 +164,9 @@ ___
 
 A list of irrigation events, if applicable.
 
-**`example`** When some irrigation events occurred:
+**`Example`**
+
+<caption>When some irrigation events occurred:</caption>
 
 ```js
 "irrigationEvents": [
@@ -164,7 +180,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:940](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L940)
+[v3-specification.ts:950](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L950)
 
 ___
 
@@ -174,9 +190,13 @@ ___
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
 
-**`nullable`** during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some liming events occurred:
+during import (explicitly specify null if no liming events occurred, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some liming events occurred:</caption>
 
 ```js
 "limingEvents": [
@@ -191,7 +211,7 @@ A list of liming events, if applicable. During quantification, liming events are
 
 #### Defined in
 
-[v3-specification.ts:960](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L960)
+[v3-specification.ts:970](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L970)
 
 ___
 
@@ -201,9 +221,13 @@ ___
 
 A list of organic matter and manure application events, if applicable.
 
-**`nullable`** during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+**`Nullable`**
 
-**`example`** When some organic matter was applied:
+during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+
+**`Example`**
+
+<caption>When some organic matter was applied:</caption>
 
 ```js
 "organicMatterEvents": [
@@ -221,7 +245,7 @@ A list of organic matter and manure application events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:923](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L923)
+[v3-specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L933)
 
 ___
 
@@ -233,7 +257,9 @@ A list of soil or crop disturbance events events, if applicable (such as tillage
 
 All crops will need to define a soil or crop disturbance event <= the associated `plantingDate`.
 
-**`example`** When some soil or crop disturbance events occurred:
+**`Example`**
+
+<caption>When some soil or crop disturbance events occurred:</caption>
 
 ```js
 "soilOrCropDisturbanceEvents": [
@@ -247,4 +273,4 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v3-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/841b22c/packages/project/src/v3-specification.ts#L881)
+[v3-specification.ts:891](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L891)

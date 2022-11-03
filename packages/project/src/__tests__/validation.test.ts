@@ -2,27 +2,39 @@
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
-import type { Project, CropEvent } from '../index';
-import * as FULL_FORMATTED_VALID_PROJECT from '../example/v3-example.json';
+import type { Project } from '../v4-specification';
+import * as FULL_FORMATTED_VALID_PROJECT from '../example/v4-example.json';
 import type {
   AnnualCrop,
   HistoricNonCRPLandManagement,
-} from '../v3-specification';
+} from '../v4-specification';
 
 type ProjectOrAny<T> = T extends Project ? Project : any;
 
 const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
-  version: '0.1.0',
+  version: '4.0.7',
+  primaryContact: {},
   fields: [
     {
-      acres: 174.01,
+      legalAcres: 174.01,
       historicLandManagement: {
-        crp: 'No',
+        crp: false,
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
       } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
+      earliestEvidenceYear: 2008,
+      practiceChangesAdopted: {
+        addedOMAD: false,
+        coverCropping: false,
+        increasedBiodiversity: false,
+        noTill: true,
+        reducedFallow: false,
+        reducedTillage: false,
+        stripTill: false,
+      },
+      assignmentOfAuthority: false,
       fieldName: 'zyt0f1mnasi',
       geojson: {
         coordinates: [
@@ -44,36 +56,31 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
             {
               name: 'corn',
               type: 'corn',
-              plantingDate: '04/28/2015',
+              plantingEvents: [{ date: '2015-04-28' }],
               fertilizerEvents: [
                 {
-                  date: '04/28/2015',
+                  date: '2015-04-28',
                   name: 'Corn Starter (Green Demon)',
-                  lbsOfNPerAcre: null,
-                  type: null,
+                  lbsOfNPerAcre: 10,
+                  type: 'mixed blends',
                 },
                 {
-                  date: '04/29/2015',
+                  date: '2015-04-29',
                   name: 'wil corn 32-0-0 [uan]',
                   lbsOfNPerAcre: 38.579_204_996_202_215,
+                  type: 'mixed blends',
                 },
                 {
-                  date: '09/05/2015',
+                  date: '2015-09-05',
                   name: 'wil corn 32-0-0 [uan]',
                   lbsOfNPerAcre: 126.259_177_989_703_79,
+                  type: 'mixed blends',
                 },
               ],
-              organicMatterEvents: [],
-              irrigationEvents: [],
-              limingEvents: null,
-              grazingEvents: null,
-              burningEvent: null,
-              soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
-                  date: '09/18/2015',
+                  date: '2015-09-18',
                   yield: 211.88,
-                  grainFruitTuber: null,
                   residueRemoved: 0,
                   yieldUnit: 'bu/ac',
                 },
@@ -88,17 +95,23 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
 };
 
 const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
-  version: '0.1.0',
+  version: '4.0.7',
+  primaryContact: {},
   fields: [
     {
-      acres: 174.01,
+      legalAcres: 174.01,
       historicLandManagement: {
-        crp: 'No',
+        crp: false,
         preYear1980: 'Irrigation',
         tillageForYears1980To2000: 'Intensive Tillage',
         year1980To2000: 'Irrigated: annual crops in rotation',
       } as any as HistoricNonCRPLandManagement,
       regenerativeStartYear: 2015,
+      earliestEvidenceYear: 2008,
+      practiceChangesAdopted: {
+        noTill: true,
+      },
+      assignmentOfAuthority: false,
       fieldName: 'zyt0f1mnasi',
       geojson: {
         coordinates: [
@@ -120,20 +133,20 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
             {
               name: 'corn',
               type: 'corn plant' as any,
-              plantingDate: '04/28/2015',
+              plantingEvents: [{ date: '2015-04-28' }],
               fertilizerEvents: [
                 {
-                  date: '04/28/2015',
+                  date: '2015-04-28',
                   name: 'Corn Starter (Green Demon)',
                   lbsOfNPerAcre: null,
                 },
                 {
-                  date: '04/29/2015',
+                  date: '2015-04-29',
                   name: 'wil corn 32-0-0 [uan]',
                   lbsOfNPerAcre: 38.579_204_996_202_215,
                 },
                 {
-                  date: '09/05/2015',
+                  date: '2015-09-05',
                   name: 'wil corn 32-0-0 [uan]',
                   lbsOfNPerAcre: 126.259_177_989_703_79,
                 },
@@ -142,11 +155,11 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
               irrigationEvents: [],
               limingEvents: null,
               grazingEvents: null,
-              burningEvent: null,
+              burningEvents: null,
               soilOrCropDisturbanceEvents: [],
               harvestEvents: [
                 {
-                  date: '09/18/2015',
+                  date: '2015-09-18',
                   yield: 211.88,
                   grainFruitTuber: null,
                   residueRemoved: 0,
@@ -201,18 +214,18 @@ describe('validation', () => {
           BASIC_UNFORMATTED_VALID_PROJECT.fields[0].historicLandManagement
         )
       ).toStrictEqual([
-        'No',
+        false,
         'Irrigation',
         'Intensive Tillage',
         'Irrigated: annual crops in rotation',
       ]);
       const formattedData = formatInputData(
-        FULL_FORMATTED_VALID_PROJECT as Project
+        FULL_FORMATTED_VALID_PROJECT as any as Project
       );
       expect(
         Object.values(formattedData.fields[0].historicLandManagement)
       ).toStrictEqual([
-        'no',
+        false,
         'irrigation',
         'intensive tillage',
         'irrigated: annual crops in rotation',
@@ -280,11 +293,11 @@ describe('validation', () => {
           });
         });
         describe('projectFieldsMaximumItemsError', () => {
-          describe('when the number of fields is more than 25', () => {
+          describe('when the number of fields is more than 200', () => {
             it('should throw a validation error', () => {
               const data = {
                 ...BASIC_UNFORMATTED_VALID_PROJECT,
-                fields: Array.from({ length: 26 }).fill(
+                fields: Array.from({ length: 201 }).fill(
                   BASIC_UNFORMATTED_VALID_PROJECT.fields[0]
                 ),
               };
@@ -450,12 +463,24 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data: Project = {
-                version: '0.1.0',
+                version: '4.0.7',
+                primaryContact: {},
                 fields: [
                   {
-                    acres: 174.01,
+                    legalAcres: 174.01,
                     historicLandManagement: null,
                     regenerativeStartYear: 2015,
+                    earliestEvidenceYear: 2008,
+                    assignmentOfAuthority: false,
+                    practiceChangesAdopted: {
+                      addedOMAD: false,
+                      coverCropping: false,
+                      increasedBiodiversity: false,
+                      noTill: false,
+                      reducedFallow: false,
+                      reducedTillage: false,
+                      stripTill: false,
+                    },
                     fieldName: 'zyt0f1mnasi',
                     geojson: {
                       coordinates: [
@@ -497,7 +522,7 @@ describe('validation', () => {
                 (
                   data.fields[0].cropYears[0].crops[0] as AnnualCrop
                 ).harvestEvents[0] = {
-                  date: `09/18/${data.fields[0].cropYears[0].plantingYear - 1}`,
+                  date: `${data.fields[0].cropYears[0].plantingYear - 1}-09-18`,
                   yield: 211.88,
                   grainFruitTuber: undefined,
                   residueRemoved: 0,
@@ -522,11 +547,9 @@ describe('validation', () => {
         describe('cropEventDateTypeError', () => {
           describe('when the type is not a string', () => {
             it('should throw validation errors', () => {
-              const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (
-                data.fields[0].cropYears[0].crops[0] as AnnualCrop
-              ).harvestEvents[0] = {
-                date: 1 as unknown as CropEvent['date'],
+              const data = clone(BASIC_UNFORMATTED_VALID_PROJECT) as any;
+              data.fields[0].cropYears[0].crops[0].harvestEvents[0] = {
+                date: 1,
                 yield: 211.88,
                 grainFruitTuber: undefined,
                 residueRemoved: 0,
@@ -547,10 +570,8 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
-              (
-                data.fields[0].cropYears[0].crops[0] as AnnualCrop
-              ).harvestEvents[0] = {
-                date: null,
+              data.fields[0].cropYears[0].crops[0].harvestEvents[0] = {
+                date: '2018-01-01',
                 yield: 211.88,
                 grainFruitTuber: null,
                 residueRemoved: 0,
