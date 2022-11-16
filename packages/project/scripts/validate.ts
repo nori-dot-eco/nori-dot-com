@@ -1,4 +1,4 @@
-import * as readline from 'node:readline';
+import { inspect } from 'util';
 
 import { Project } from '../src/v4-specification';
 import { validateProjectData } from '../src/validation';
@@ -13,7 +13,18 @@ function validateV4(
 
 export const main = (): void => {
   const input = fs.readFileSync(0, 'utf-8');
-  console.log(validateV4(input as unknown as Project));
+  const result = validateV4(JSON.parse(input) as Project);
+  if (!result.valid) {
+    result.errors?.forEach((err) => {
+      console.log(
+        inspect(err, {
+          showHidden: false,
+          depth: 4,
+          colors: true,
+        })
+      );
+    });
+  }
 };
 
 main();
