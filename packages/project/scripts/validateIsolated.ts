@@ -5,7 +5,6 @@
  */
 
 import * as fs from 'fs';
-import { inspect } from 'util';
 import Ajv from 'ajv';
 // Adds `date` type format support
 import addFormats from 'ajv-formats';
@@ -46,15 +45,8 @@ export const main = (): void => {
   const input = fs.readFileSync(0, 'utf-8');
   const result = validateProjectData(JSON.parse(input) as Project);
   if (!result.valid) {
-    result.errors?.forEach((err) => {
-      console.log(
-        inspect(err, {
-          showHidden: false,
-          depth: 4,
-          colors: true,
-        })
-      );
-    });
+    console.log(JSON.stringify(result.errors, null, 4));
+    process.exit(1);
   }
 };
 
