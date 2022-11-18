@@ -58,332 +58,6 @@
             "title": "Address",
             "type": "object"
         },
-        "AnnualCrop": {
-            "additionalProperties": false,
-            "description": "Crop management details and events for annual crops.",
-            "properties": {
-                "burningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Burning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/BurningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "burningEvents"
-                },
-                "classification": {
-                    "default": "annual crop",
-                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
-                    "enum": [
-                        "annual crop"
-                    ],
-                    "title": "classification",
-                    "type": "string"
-                },
-                "clearingAndRenewalEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/ClearingAndRenewalEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "clearingAndRenewalEvents"
-                },
-                "externalId": {
-                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "fertilizerEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of fertilizer events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/FertilizerEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "fertilizerEvents"
-                },
-                "grazingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of grazing events, if applicable",
-                            "items": {
-                                "$ref": "#/definitions/GrazingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "grazingEvents"
-                },
-                "harvestEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
-                            "items": {
-                                "$ref": "#/definitions/HarvestEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "harvestEvents"
-                },
-                "id": {
-                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "irrigationEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of irrigation events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/IrrigationEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "irrigationEvents"
-                },
-                "limingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
-                            "items": {
-                                "$ref": "#/definitions/LimingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "limingEvents"
-                },
-                "name": {
-                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
-                    "title": "name",
-                    "type": "string"
-                },
-                "organicMatterEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of organic matter and manure application events, if applicable.",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
-                                    }
-                                ]
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "organicMatterEvents"
-                },
-                "plantingEvents": {
-                    "anyOf": [
-                        {
-                            "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
-                            "items": {
-                                "$ref": "#/definitions/PlantingEvent"
-                            },
-                            "maxItems": 1,
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "plantingEvents"
-                },
-                "pruningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Pruning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/PruningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "pruningEvents"
-                },
-                "soilOrCropDisturbanceEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
-                            "items": {
-                                "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "soilOrCropDisturbanceEvents"
-                },
-                "type": {
-                    "description": "The COMET equivalent type of the crop\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
-                    "enum": [
-                        "alfalfa",
-                        "austrian winter pea",
-                        "barley",
-                        "barley-bin run wheat mix",
-                        "black beans",
-                        "broccoli",
-                        "broccoli-coast",
-                        "broccoli-desert",
-                        "buckwheat",
-                        "cabbage",
-                        "camelina",
-                        "canola",
-                        "cantaloupes",
-                        "carrots",
-                        "cauliflower",
-                        "celery",
-                        "chick peas",
-                        "clover",
-                        "corn",
-                        "corn silage",
-                        "cotton",
-                        "cucumbers",
-                        "dry beans",
-                        "dry field beans",
-                        "dry field pea",
-                        "durum wheat",
-                        "eggplants",
-                        "fallow",
-                        "flaxseed",
-                        "garbanzo beans",
-                        "garlic",
-                        "gourds",
-                        "greens",
-                        "hemp (for fiber)",
-                        "hemp (for flowers)",
-                        "hemp (for seed)",
-                        "herbs",
-                        "honeydew melons",
-                        "lentils",
-                        "lettuce",
-                        "lettuce-head",
-                        "lettuce-leaf",
-                        "lettuce-romaine",
-                        "millet",
-                        "misc vegs & fruits",
-                        "mustard",
-                        "navy beans",
-                        "oats",
-                        "onions",
-                        "other small grains",
-                        "peanuts",
-                        "peas",
-                        "peppers",
-                        "pinto beans",
-                        "pop or om corn",
-                        "potatoes",
-                        "pumpkins",
-                        "radishes",
-                        "rapeseed",
-                        "rice",
-                        "rice - flooded",
-                        "rye",
-                        "safflower",
-                        "sorghum",
-                        "sorghum silage",
-                        "soybeans",
-                        "speltz",
-                        "spring wheat",
-                        "squash",
-                        "strawberries",
-                        "sugarbeets",
-                        "sunflower",
-                        "sweet corn",
-                        "sweet potatoes",
-                        "switchgrass",
-                        "tobacco",
-                        "tomatoes",
-                        "tomatoes, fresh",
-                        "tomatoes, processing",
-                        "triticale",
-                        "turnips",
-                        "watermelons",
-                        "wheat",
-                        "winter barley",
-                        "winter grain-other",
-                        "winter oats",
-                        "winter wheat"
-                    ],
-                    "errorMessage": "must specify one of the allowed crop types if you are specifying an annual crop",
-                    "title": "type",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "classification",
-                "type"
-            ],
-            "title": "AnnualCrop",
-            "type": "object"
-        },
         "BurningEvent": {
             "additionalProperties": false,
             "description": "Burning event details.",
@@ -519,52 +193,42 @@
             "title": "ContactInfo",
             "type": "object"
         },
-        "CoverCrop": {
+        "Crop": {
             "additionalProperties": false,
-            "description": "Crop management details and events for cover crops.",
+            "description": "Crop properties relevant to planted crops.",
             "properties": {
                 "burningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Burning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/BurningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "burningEvents"
+                    "default": [],
+                    "description": "Burning events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/BurningEvent"
+                    },
+                    "minItems": 0,
+                    "title": "burningEvents",
+                    "type": "array"
                 },
                 "classification": {
-                    "default": "annual cover",
+                    "default": "annual crop",
                     "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
                     "enum": [
-                        "annual cover"
+                        "annual crop",
+                        "cover crop",
+                        "orchard",
+                        "perennial crop",
+                        "vineyard"
                     ],
                     "title": "classification",
                     "type": "string"
                 },
                 "clearingAndRenewalEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/ClearingAndRenewalEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "clearingAndRenewalEvents"
+                    "default": [],
+                    "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/ClearingAndRenewalEvent"
+                    },
+                    "minItems": 0,
+                    "title": "clearingAndRenewalEvents",
+                    "type": "array"
                 },
                 "externalId": {
                     "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
@@ -575,53 +239,34 @@
                     ]
                 },
                 "fertilizerEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of fertilizer events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/FertilizerEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "fertilizerEvents"
+                    "default": [],
+                    "description": "A list of fertilizer events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/FertilizerEvent"
+                    },
+                    "minItems": 0,
+                    "title": "fertilizerEvents",
+                    "type": "array"
                 },
                 "grazingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of grazing events, if applicable",
-                            "items": {
-                                "$ref": "#/definitions/GrazingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "grazingEvents"
+                    "default": [],
+                    "description": "A list of grazing events, if applicable",
+                    "items": {
+                        "$ref": "#/definitions/GrazingEvent"
+                    },
+                    "minItems": 0,
+                    "title": "grazingEvents",
+                    "type": "array"
                 },
                 "harvestEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
-                            "items": {
-                                "$ref": "#/definitions/HarvestEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "harvestEvents"
+                    "default": [],
+                    "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
+                    "items": {
+                        "$ref": "#/definitions/HarvestEvent"
+                    },
+                    "minItems": 0,
+                    "title": "harvestEvents",
+                    "type": "array"
                 },
                 "id": {
                     "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
@@ -632,37 +277,24 @@
                     ]
                 },
                 "irrigationEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of irrigation events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/IrrigationEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "irrigationEvents"
+                    "default": [],
+                    "description": "A list of irrigation events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/IrrigationEvent"
+                    },
+                    "minItems": 0,
+                    "title": "irrigationEvents",
+                    "type": "array"
                 },
                 "limingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
-                            "items": {
-                                "$ref": "#/definitions/LimingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "limingEvents"
+                    "default": [],
+                    "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
+                    "items": {
+                        "$ref": "#/definitions/LimingEvent"
+                    },
+                    "minItems": 0,
+                    "title": "limingEvents",
+                    "type": "array"
                 },
                 "name": {
                     "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
@@ -670,95 +302,205 @@
                     "type": "string"
                 },
                 "organicMatterEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of organic matter and manure application events, if applicable.",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
-                                    }
-                                ]
+                    "default": [],
+                    "description": "A list of organic matter and manure application events, if applicable.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/SolidOrganicMatterEvent"
                             },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "organicMatterEvents"
+                            {
+                                "$ref": "#/definitions/SlurryOrganicMatterEvent"
+                            }
+                        ]
+                    },
+                    "minItems": 0,
+                    "title": "organicMatterEvents",
+                    "type": "array"
                 },
                 "plantingEvents": {
-                    "anyOf": [
-                        {
-                            "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
-                            "items": {
-                                "$ref": "#/definitions/PlantingEvent"
-                            },
-                            "maxItems": 1,
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "plantingEvents"
+                    "default": [],
+                    "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
+                    "items": {
+                        "$ref": "#/definitions/PlantingEvent"
+                    },
+                    "maxItems": 1,
+                    "minItems": 0,
+                    "title": "plantingEvents",
+                    "type": "array"
                 },
                 "pruningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Pruning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/PruningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "pruningEvents"
+                    "default": [],
+                    "description": "Pruning events, if applicable.",
+                    "items": {
+                        "$ref": "#/definitions/PruningEvent"
+                    },
+                    "minItems": 0,
+                    "title": "pruningEvents",
+                    "type": "array"
                 },
                 "soilOrCropDisturbanceEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
-                            "items": {
-                                "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "soilOrCropDisturbanceEvents"
+                    "default": [],
+                    "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
+                    "items": {
+                        "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
+                    },
+                    "minItems": 0,
+                    "title": "soilOrCropDisturbanceEvents",
+                    "type": "array"
                 },
                 "type": {
-                    "description": "The COMET equivalent type of the crop.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
+                    "description": "Crop type name from Nori's known crop names.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
                     "enum": [
+                        "alfalfa",
+                        "almonds",
                         "annual rye",
                         "annual rye - legume",
                         "annual rye - legume - radish",
+                        "apples",
+                        "apricots",
+                        "asparagus",
+                        "austrian winter pea",
+                        "avocados",
+                        "barley",
+                        "barley-bin run wheat mix",
                         "barley-radish mix",
+                        "black beans",
+                        "blueberries",
+                        "broccoli",
+                        "broccoli-coast",
+                        "broccoli-desert",
+                        "buckwheat",
+                        "cabbage",
+                        "camelina",
+                        "caneberries",
+                        "canola",
+                        "cantaloupes",
+                        "carrots",
+                        "cauliflower",
+                        "celery",
                         "cereal rye",
                         "cereal rye-crimson clover mix",
+                        "cherries",
+                        "chick peas",
+                        "citrus",
+                        "clover",
                         "clover/wildflowers",
+                        "corn",
+                        "corn silage",
+                        "cotton",
+                        "cranberries",
+                        "cucumbers",
+                        "dry beans",
+                        "dry field beans",
+                        "dry field pea",
+                        "durum wheat",
+                        "eggplants",
+                        "english walnuts",
+                        "fallow",
+                        "flaxseed",
                         "forage radish",
+                        "garbanzo beans",
+                        "garlic",
+                        "gourds",
+                        "grape, raisin",
+                        "grape, table",
+                        "grape, wine (1391-1670 gdd)",
+                        "grape, wine (1671-1950 gdd)",
+                        "grape, wine (<1390 gdd)",
+                        "grape, wine (>1950 gdd)",
+                        "grapefruit",
+                        "grapes",
+                        "grass",
                         "grass-legume mix",
+                        "grassland herbaceous",
+                        "greens",
+                        "hazelnuts",
+                        "hemp (for fiber)",
+                        "hemp (for flowers)",
+                        "hemp (for seed)",
+                        "herbaceous wetlands",
+                        "herbs",
+                        "honeydew melons",
+                        "hops",
+                        "lemons",
+                        "lemons & limes",
+                        "lentils",
+                        "lettuce",
+                        "lettuce-head",
+                        "lettuce-leaf",
+                        "lettuce-romaine",
+                        "limes",
+                        "millet",
+                        "mint",
+                        "misc vegs & fruits",
+                        "mustard",
+                        "navy beans",
+                        "nectarines",
+                        "oats",
                         "oilseed radish",
+                        "olives",
+                        "onions",
+                        "oranges",
+                        "other hay/non alfalfa",
+                        "other small grains",
+                        "pasture/grass",
+                        "pasture/hay",
+                        "peaches",
+                        "peaches and nectarines",
+                        "peanuts",
+                        "pears",
+                        "peas",
+                        "pecans",
+                        "peppers",
+                        "pinto beans",
+                        "pistachios",
+                        "plums",
+                        "pomegranates",
+                        "pop or om corn",
+                        "potatoes",
+                        "prunes",
+                        "pumpkins",
                         "radish-crimson clover-barley-dwarf rape mix",
+                        "radishes",
+                        "rapeseed",
+                        "rice",
+                        "rice - flooded",
+                        "rye",
+                        "safflower",
+                        "sod/grass seed",
+                        "sorghum",
+                        "sorghum silage",
+                        "soybeans",
+                        "speltz",
+                        "spring wheat",
+                        "squash",
+                        "strawberries",
+                        "strawberry",
+                        "sugarbeets",
+                        "sugarcane",
+                        "sunflower",
+                        "sweet corn",
+                        "sweet potatoes",
+                        "switchgrass",
+                        "tangerines & mandarins",
+                        "tobacco",
+                        "tomatoes",
+                        "tomatoes, fresh",
+                        "tomatoes, processing",
+                        "triticale",
+                        "turnips",
                         "vetch",
-                        "winter clover"
+                        "walnuts",
+                        "watermelons",
+                        "wheat",
+                        "winter barley",
+                        "winter clover",
+                        "winter grain-other",
+                        "winter oats",
+                        "winter wheat"
                     ],
+                    "errorMessage": "must specify one of the allowed crop types=",
                     "title": "type",
                     "type": "string"
                 }
@@ -767,7 +509,7 @@
                 "classification",
                 "type"
             ],
-            "title": "CoverCrop",
+            "title": "Crop",
             "type": "object"
         },
         "CropYear": {
@@ -775,22 +517,9 @@
             "description": "Crop management details grouped by a planting year.",
             "properties": {
                 "crops": {
-                    "description": "A list of crops for a given planting year.\n\nDue to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)",
+                    "description": "A list of crops for a given planting year.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/definitions/AnnualCrop"
-                            },
-                            {
-                                "$ref": "#/definitions/CoverCrop"
-                            },
-                            {
-                                "$ref": "#/definitions/OrchardOrVineyardCrop"
-                            },
-                            {
-                                "$ref": "#/definitions/PerennialCrop"
-                            }
-                        ]
+                        "$ref": "#/definitions/Crop"
                     },
                     "maxItems": 3,
                     "minItems": 1,
@@ -798,20 +527,14 @@
                     "type": "array"
                 },
                 "dataSourceType": {
-                    "anyOf": [
-                        {
-                            "description": "Enum indicating whether data is historical data reported by the grower,\nor a projection of future data.",
-                            "enum": [
-                                "GROWER_REPORTED",
-                                "PROJECTED"
-                            ],
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
+                    "default": "grower reported",
+                    "description": "Flag indicating whether data is historical data reported by the grower,\nor a projection of future data.",
+                    "enum": [
+                        "grower reported",
+                        "projected"
                     ],
-                    "title": "dataSourceType"
+                    "title": "dataSourceType",
+                    "type": "string"
                 },
                 "plantingYear": {
                     "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
@@ -2468,534 +2191,6 @@
                 "type"
             ],
             "title": "LimingEvent",
-            "type": "object"
-        },
-        "OrchardOrVineyardCrop": {
-            "additionalProperties": false,
-            "description": "Crop management details and events for orchard and vineyard crops.",
-            "properties": {
-                "burningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Burning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/BurningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "burningEvents"
-                },
-                "classification": {
-                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).\n\nNote: if a crop ever changes classifications during the lifetime of the field (i.e. From an annual crop to a perennial), define the crop as a new crop in a new `CropYear` object and assign it the `plantingYear` that the crop switched types. In addition, if the crop is switching types, a harvest or kill event must be defined to signal the end of the life of this crop being the initial crop `type`.",
-                    "enum": [
-                        "orchard",
-                        "vineyard"
-                    ],
-                    "title": "classification",
-                    "type": "string"
-                },
-                "clearingAndRenewalEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/ClearingAndRenewalEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "clearingAndRenewalEvents"
-                },
-                "externalId": {
-                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "fertilizerEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of fertilizer events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/FertilizerEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "fertilizerEvents"
-                },
-                "grazingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of grazing events, if applicable",
-                            "items": {
-                                "$ref": "#/definitions/GrazingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "grazingEvents"
-                },
-                "harvestEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
-                            "items": {
-                                "$ref": "#/definitions/HarvestEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "harvestEvents"
-                },
-                "id": {
-                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "irrigationEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of irrigation events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/IrrigationEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "irrigationEvents"
-                },
-                "limingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
-                            "items": {
-                                "$ref": "#/definitions/LimingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "limingEvents"
-                },
-                "name": {
-                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
-                    "title": "name",
-                    "type": "string"
-                },
-                "organicMatterEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of organic matter and manure application events, if applicable.",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
-                                    }
-                                ]
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "organicMatterEvents"
-                },
-                "plantingEvents": {
-                    "anyOf": [
-                        {
-                            "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
-                            "items": {
-                                "$ref": "#/definitions/PlantingEvent"
-                            },
-                            "maxItems": 1,
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "plantingEvents"
-                },
-                "pruningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Pruning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/PruningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "pruningEvents"
-                },
-                "soilOrCropDisturbanceEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
-                            "items": {
-                                "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "soilOrCropDisturbanceEvents"
-                },
-                "type": {
-                    "description": "The COMET equivalent type of the orchard or vineyard crop.\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
-                    "enum": [
-                        "almonds",
-                        "apples",
-                        "apricots",
-                        "avocados",
-                        "blueberries",
-                        "caneberries",
-                        "cherries",
-                        "citrus",
-                        "cranberries",
-                        "english walnuts",
-                        "grape, raisin",
-                        "grape, table",
-                        "grape, wine (1391-1670 gdd)",
-                        "grape, wine (1671-1950 gdd)",
-                        "grape, wine (<1390 gdd)",
-                        "grape, wine (>1950 gdd)",
-                        "grapefruit",
-                        "grapes",
-                        "hazelnuts",
-                        "lemons",
-                        "lemons & limes",
-                        "limes",
-                        "nectarines",
-                        "olives",
-                        "oranges",
-                        "peaches",
-                        "peaches and nectarines",
-                        "pears",
-                        "pecans",
-                        "pistachios",
-                        "plums",
-                        "pomegranates",
-                        "prunes",
-                        "tangerines & mandarins",
-                        "walnuts"
-                    ],
-                    "title": "type",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "classification",
-                "type"
-            ],
-            "title": "OrchardOrVineyardCrop",
-            "type": "object"
-        },
-        "PerennialCrop": {
-            "additionalProperties": false,
-            "description": "Perennial crop details.",
-            "properties": {
-                "burningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Burning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/BurningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "burningEvents"
-                },
-                "classification": {
-                    "default": "perennial",
-                    "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
-                    "enum": [
-                        "perennial"
-                    ],
-                    "title": "classification",
-                    "type": "string"
-                },
-                "clearingAndRenewalEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Clearing and renewal events for orchards and vineyards, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/ClearingAndRenewalEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "clearingAndRenewalEvents"
-                },
-                "externalId": {
-                    "description": "Crop identifier.  Free form external reference\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "fertilizerEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of fertilizer events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/FertilizerEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "fertilizerEvents"
-                },
-                "grazingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of grazing events, if applicable",
-                            "items": {
-                                "$ref": "#/definitions/GrazingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "grazingEvents"
-                },
-                "harvestEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of harvest events, if applicable.\n\nStraw / Stover harvest exception: If the hay or stover was removed\nseparately after grain / fruit / tuber harvest, do NOT add this as\na second harvest. Instead, enter the percent of the remaining residue\nthat was removed on the grain harvest, regardless of removal date.",
-                            "items": {
-                                "$ref": "#/definitions/HarvestEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "harvestEvents"
-                },
-                "id": {
-                    "description": "Nori's internal crop identifier.\n\nUsed to synchronize repeated imports",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "irrigationEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of irrigation events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/IrrigationEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "irrigationEvents"
-                },
-                "limingEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.",
-                            "items": {
-                                "$ref": "#/definitions/LimingEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "limingEvents"
-                },
-                "name": {
-                    "description": "The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.",
-                    "title": "name",
-                    "type": "string"
-                },
-                "organicMatterEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of organic matter and manure application events, if applicable.",
-                            "items": {
-                                "anyOf": [
-                                    {
-                                        "$ref": "#/definitions/SolidOrganicMatterEvent"
-                                    },
-                                    {
-                                        "$ref": "#/definitions/SlurryOrganicMatterEvent"
-                                    }
-                                ]
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "organicMatterEvents"
-                },
-                "plantingEvents": {
-                    "anyOf": [
-                        {
-                            "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
-                            "items": {
-                                "$ref": "#/definitions/PlantingEvent"
-                            },
-                            "maxItems": 1,
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "plantingEvents"
-                },
-                "pruningEvents": {
-                    "anyOf": [
-                        {
-                            "default": [],
-                            "description": "Pruning events, if applicable.",
-                            "items": {
-                                "$ref": "#/definitions/PruningEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "pruningEvents"
-                },
-                "soilOrCropDisturbanceEvents": {
-                    "anyOf": [
-                        {
-                            "description": "A list of soil or crop disturbance events events, if applicable (such as tillage or termination events).\n\nAll crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.",
-                            "items": {
-                                "$ref": "#/definitions/SoilOrCropDisturbanceEvent"
-                            },
-                            "minItems": 0,
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "soilOrCropDisturbanceEvents"
-                },
-                "type": {
-                    "description": "The COMET equivalent type of the perennial crop\n\nYou can find a list of accepted crops [here](https://go.nori.com/inputs).",
-                    "enum": [
-                        "alfalfa",
-                        "asparagus",
-                        "clover",
-                        "clover/wildflowers",
-                        "grass",
-                        "grass-legume mix",
-                        "grassland herbaceous",
-                        "herbaceous wetlands",
-                        "hops",
-                        "mint",
-                        "other hay/non alfalfa",
-                        "pasture/grass",
-                        "pasture/hay",
-                        "sod/grass seed",
-                        "strawberry",
-                        "sugarcane",
-                        "vetch"
-                    ],
-                    "title": "type",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "classification",
-                "type"
-            ],
-            "title": "PerennialCrop",
             "type": "object"
         },
         "PlantingEvent": {

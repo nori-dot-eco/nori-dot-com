@@ -14,17 +14,11 @@ function validateV4(
 export const main = (): void => {
   const input = fs.readFileSync(0, 'utf-8');
   const result = validateV4(JSON.parse(input) as Project);
+  console.log(`Valid: `, result.valid);
   if (!result.valid) {
-    result.errors?.forEach((err) => {
-      console.log(
-        inspect(err, {
-          showHidden: false,
-          depth: 4,
-          colors: true,
-        })
-      );
-    });
+    console.log(JSON.stringify(result.errors, null, 4));
   }
+  console.log(JSON.stringify(result.formattedData, null, 4));
 };
 
 main();
