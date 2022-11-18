@@ -211,10 +211,10 @@
                     "default": "annual crop",
                     "description": "The crop classification.\n\nYou can find a list of acceptable crop classifications per crop `name` [here](https://go.nori.com/inputs).",
                     "enum": [
+                        "annual cover",
                         "annual crop",
-                        "cover crop",
                         "orchard",
-                        "perennial crop",
+                        "perennial",
                         "vineyard"
                     ],
                     "title": "classification",

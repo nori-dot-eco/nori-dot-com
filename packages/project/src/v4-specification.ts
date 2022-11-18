@@ -1340,12 +1340,11 @@ export interface Crop extends CropEvents {
    * ```js
    * "classification": "annual crop"
    * ```
-   *
    */
   classification:
     | 'annual crop'
-    | 'perennial crop'
-    | 'cover crop'
+    | 'perennial'
+    | 'annual cover'
     | 'orchard'
     | 'vineyard';
 }
