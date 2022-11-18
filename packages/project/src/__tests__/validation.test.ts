@@ -9,7 +9,7 @@ import type { HistoricNonCRPLandManagement } from '../v4-specification';
 type ProjectOrAny<T> = T extends Project ? Project : any;
 
 const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
-  version: '4.0.7',
+  version: '4.1.0',
   primaryContact: {},
   fields: [
     {
@@ -101,7 +101,7 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
 };
 
 const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
-  version: '4.0.7',
+  version: '4.1.0',
   primaryContact: {},
   fields: [
     {
@@ -469,7 +469,7 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data: Project = {
-                version: '4.0.7',
+                version: '4.1.0',
                 primaryContact: {},
                 fields: [
                   {

@@ -3,7 +3,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.0.8
+ * Version: 4.1.0
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -309,11 +309,11 @@ export const limingTypes = [
  *
  * @$id https://schema.nori.com/soil/4-0-7
  *
- * @example <caption>A project that uses specification v4.0.8 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.1.0 and contains a list of fields:</caption>
  *
  * ```js
  * {
- *  "version": "4.0.8",
+ *  "version": "4.1.0",
  *  "fields": [
  *    ...fields
  *  ]
@@ -339,7 +339,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.0.8"
+   * "version": "4.1.0"
    * ```
    *
    */

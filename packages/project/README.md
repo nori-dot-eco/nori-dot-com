@@ -35,7 +35,7 @@ npm i @nori-dot-com/project
 There is a very simple CLI entrypoint to the V4 project schema validation that's used as follows:
 
 ```bash
-yarn validate < myV4Import.json
+yarn validate < myV4Import.json > myOutput.json
 ```
 
 ## Developers
