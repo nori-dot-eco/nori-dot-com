@@ -22,7 +22,8 @@
     "make:schema": "typescript-json-schema ./src/v4-specification.ts Project -o ./src/json/v4-specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
     "prepare": "yarn run build",
     "watch": "tsc -b -w",
-    "build": "yarn run make:schema && tsc -b"
+    "build": "yarn run make:schema && tsc -b",
+    "validate": "ts-node scripts/validate.ts"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

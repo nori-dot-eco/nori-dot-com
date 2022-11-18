@@ -69,7 +69,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1850](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1850)
+[v4-specification.ts:1701](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1701)
 
 ___
 
@@ -95,7 +95,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1865](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1865)
+[v4-specification.ts:1716](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1716)
 
 ___
 
@@ -123,7 +123,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1880](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1880)
+[v4-specification.ts:1731](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1731)
 
 ___
 
@@ -147,7 +147,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v4-specification.ts:2169](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2169)
+[v4-specification.ts:2020](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2020)
 
 ___
 
@@ -171,7 +171,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:2140](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2140)
+[v4-specification.ts:1991](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1991)
 
 ___
 
@@ -203,7 +203,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1901)
+[v4-specification.ts:1752](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1752)
 
 ___
 
@@ -230,4 +230,4 @@ As such, we default the type to "mixed blends" when this property is excluded/nu
 
 #### Defined in
 
-[v4-specification.ts:2156](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L2156)
+[v4-specification.ts:2007](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2007)

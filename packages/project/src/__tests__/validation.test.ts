@@ -2,17 +2,14 @@
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
-import type { Project } from '../v4-specification';
+import type { Crop, Project } from '../v4-specification';
 import * as FULL_FORMATTED_VALID_PROJECT from '../example/v4-example.json';
-import type {
-  AnnualCrop,
-  HistoricNonCRPLandManagement,
-} from '../v4-specification';
+import type { HistoricNonCRPLandManagement } from '../v4-specification';
 
 type ProjectOrAny<T> = T extends Project ? Project : any;
 
 const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
-  version: '4.0.7',
+  version: '4.1.0',
   primaryContact: {},
   fields: [
     {
@@ -52,6 +49,7 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
       cropYears: [
         {
           plantingYear: 2015,
+          dataSourceType: 'grower reported',
           crops: [
             {
               name: 'corn',
@@ -85,6 +83,14 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
                   yieldUnit: 'bu/ac',
                 },
               ],
+              burningEvents: [],
+              clearingAndRenewalEvents: [],
+              grazingEvents: [],
+              irrigationEvents: [],
+              limingEvents: [],
+              organicMatterEvents: [],
+              pruningEvents: [],
+              soilOrCropDisturbanceEvents: [],
               classification: 'annual crop',
             },
           ],
@@ -95,7 +101,7 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
 };
 
 const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
-  version: '4.0.7',
+  version: '4.1.0',
   primaryContact: {},
   fields: [
     {
@@ -463,7 +469,7 @@ describe('validation', () => {
           describe('when the type is excluded or null', () => {
             it('should return true for validation', () => {
               const data: Project = {
-                version: '4.0.7',
+                version: '4.1.0',
                 primaryContact: {},
                 fields: [
                   {
@@ -520,7 +526,7 @@ describe('validation', () => {
               it('should throw validation errors', () => {
                 const data = clone(BASIC_UNFORMATTED_VALID_PROJECT);
                 (
-                  data.fields[0].cropYears[0].crops[0] as AnnualCrop
+                  data.fields[0].cropYears[0].crops[0] as Crop
                 ).harvestEvents[0] = {
                   date: `${data.fields[0].cropYears[0].plantingYear - 1}-09-18`,
                   yield: 211.88,
@@ -560,6 +566,27 @@ describe('validation', () => {
               >(
                 buildExpectedError({
                   errorCode: 'cropEventDateTypeError',
+                  dataPath:
+                    '/fields/0/cropYears/0/crops/0/harvestEvents/0/date',
+                })
+              );
+            });
+          });
+          describe('when the date is before the crop year', () => {
+            it('should throw validation errors', () => {
+              const data = clone(BASIC_UNFORMATTED_VALID_PROJECT) as any;
+              data.fields[0].cropYears[0].crops[0].harvestEvents[0] = {
+                date: '2000-01-01',
+                yield: 211.88,
+                grainFruitTuber: undefined,
+                residueRemoved: 0,
+                yieldUnit: 'bu/ac',
+              };
+              expect(validateProjectData(data)).toStrictEqual<
+                ReturnType<typeof validateProjectData>
+              >(
+                buildExpectedError({
+                  errorCode: 'cropEventDateValidationRuleViolation',
                   dataPath:
                     '/fields/0/cropYears/0/crops/0/harvestEvents/0/date',
                 })

@@ -79,7 +79,7 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1291)
 
 ___
 
@@ -115,7 +115,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1369)
+[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1369)
 
 ___
 
@@ -167,7 +167,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1397)
+[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1397)
 
 ___
 
@@ -193,7 +193,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1431](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1431)
+[v3-specification.ts:1431](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1431)
 
 ___
 
@@ -219,4 +219,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1446](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v3-specification.ts#L1446)
+[v3-specification.ts:1446](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1446)

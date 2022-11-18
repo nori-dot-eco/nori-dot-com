@@ -32,11 +32,9 @@ Crop management details grouped by a planting year.
 
 ### crops
 
-• **crops**: `CropTypes`[]
+• **crops**: [`Crop`](v4_specification.Crop.md)[]
 
 A list of crops for a given planting year.
-
-Due to a limitation at COMET farm, the maximum number of crops per [plantingYear](#plantingYear) is 3. If there are more than 3 crops for a planting year reach out to [Nori support](mailto:support@nori.com)
 
 **`Min Items`**
 
@@ -71,32 +69,32 @@ Due to a limitation at COMET farm, the maximum number of crops per [plantingYear
 
 #### Defined in
 
-[v4-specification.ts:1234](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1234)
+[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1227)
 
 ___
 
 ### dataSourceType
 
-• `Optional` **dataSourceType**: `DataSourceType`
+• `Optional` **dataSourceType**: ``"grower reported"`` \| ``"projected"``
 
-Enum indicating whether data is historical data reported by the grower,
+Flag indicating whether data is historical data reported by the grower,
 or a projection of future data.
 
-**`Nullable`**
+**`Default`**
 
-Nullable for backwards compatibility
+grower reported
 
 **`Example`**
 
 <caption>When data is from a projection of future data:</caption>
 
 ```js
-"dataSourceType": "PROJECTED"
+"dataSourceType": "projected"
 ```
 
 #### Defined in
 
-[v4-specification.ts:1248](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1248)
+[v4-specification.ts:1241](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1241)
 
 ___
 
@@ -124,4 +122,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1203](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1203)
+[v4-specification.ts:1198](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1198)

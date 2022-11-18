@@ -75,7 +75,9 @@ Crop management details and events.
 
 Burning events, if applicable.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -109,7 +111,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1552](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1552)
+[v4-specification.ts:1581](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1581)
 
 ___
 
@@ -119,7 +121,9 @@ ___
 
 Clearing and renewal events for orchards and vineyards, if applicable.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -128,10 +132,6 @@ Clearing and renewal events for orchards and vineyards, if applicable.
 **`Additional Items`**
 
 false
-
-**`Default`**
-
-[]
 
 **`Example`**
 
@@ -153,7 +153,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1602](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1602)
+[v4-specification.ts:1627](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1627)
 
 ___
 
@@ -163,7 +163,9 @@ ___
 
 A list of fertilizer events, if applicable.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -191,7 +193,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1433](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1433)
+[v4-specification.ts:1466](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1466)
 
 ___
 
@@ -201,7 +203,9 @@ ___
 
 A list of grazing events, if applicable
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -210,10 +214,6 @@ A list of grazing events, if applicable
 **`Additional Items`**
 
 false
-
-**`Default`**
-
-[]
 
 **`Example`**
 
@@ -232,7 +232,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1527](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1527)
+[v4-specification.ts:1556](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1556)
 
 ___
 
@@ -247,7 +247,9 @@ separately after grain / fruit / tuber harvest, do NOT add this as
 a second harvest. Instead, enter the percent of the remaining residue
 that was removed on the grain harvest, regardless of removal date.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -269,7 +271,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1624](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1624)
+[v4-specification.ts:1649](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1649)
 
 ___
 
@@ -279,7 +281,9 @@ ___
 
 A list of irrigation events, if applicable.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -305,7 +309,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1479](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1479)
+[v4-specification.ts:1512](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1512)
 
 ___
 
@@ -314,8 +318,6 @@ ___
 • `Optional` **limingEvents**: [`LimingEvent`](v4_specification.LimingEvent.md)[]
 
 A list of liming events, if applicable. During quantification, liming events are aggregated into a single event.
-
-**`Nullable`**
 
 **`Default`**
 
@@ -346,7 +348,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1503](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1503)
+[v4-specification.ts:1534](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1534)
 
 ___
 
@@ -356,9 +358,9 @@ ___
 
 A list of organic matter and manure application events, if applicable.
 
-**`Nullable`**
+**`Default`**
 
-during import (explicitly specify null if no organic matter events occurred, otherwise exclude the property or use an empty array `[]`)
+[]
 
 **`Min Items`**
 
@@ -388,7 +390,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1458](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1458)
+[v4-specification.ts:1491](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1491)
 
 ___
 
@@ -400,7 +402,9 @@ The planting event(s) if there were any for the current crop year otherwise empt
 
 This will contain a single event for annuals and none for perennials outside of the planting year.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -434,7 +438,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1386](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1386)
+[v4-specification.ts:1419](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1419)
 
 ___
 
@@ -444,7 +448,9 @@ ___
 
 Pruning events, if applicable.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -453,10 +459,6 @@ Pruning events, if applicable.
 **`Additional Items`**
 
 false
-
-**`Default`**
-
-[]
 
 **`Example`**
 
@@ -478,7 +480,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1577](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1577)
+[v4-specification.ts:1604](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1604)
 
 ___
 
@@ -490,7 +492,9 @@ A list of soil or crop disturbance events events, if applicable (such as tillage
 
 All crops will need to define a soil or crop disturbance event <= the associated `PlantingEvent`.
 
-**`Nullable`**
+**`Default`**
+
+[]
 
 **`Min Items`**
 
@@ -516,4 +520,4 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1410](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L1410)
+[v4-specification.ts:1443](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1443)
