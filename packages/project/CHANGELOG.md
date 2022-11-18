@@ -1,3 +1,11 @@
+# v4.0.8 (November 17, 2022)
+* Simplified schema to reduce complexity.
+    * Removed `AnnualCrop`, `CoverCrop`, `OrchardOrVineyardCrop` and `PerennialCrop`.
+    * All crop event types must be an array (can be empty) or the property omitted but
+      cannot explicitly be `null`.
+* Converted `CropYear.dataSourceType` values to lower case to be consistent with the rest of the schema and to work around a bug.  Values are now `grower reported` and `projected`.
+* Updates to the unit tests to cover these cases.
+
 # v4.0.7 (October 31, 2022)
 * added `Project.projectName`
 
