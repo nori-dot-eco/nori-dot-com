@@ -40,7 +40,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:875](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L875)
+[v4-specification.ts:883](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L883)
 
 ___
 
@@ -56,7 +56,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:851](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L851)
+[v4-specification.ts:859](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L859)
 
 ___
 
@@ -72,7 +72,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:887](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L887)
+[v4-specification.ts:895](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L895)
 
 ___
 
@@ -88,7 +88,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:857](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L857)
+[v4-specification.ts:865](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L865)
 
 ___
 
@@ -104,7 +104,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:881](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L881)
+[v4-specification.ts:889](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L889)
 
 ___
 
@@ -120,7 +120,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:869](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L869)
+[v4-specification.ts:877](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L877)
 
 ___
 
@@ -136,4 +136,4 @@ false
 
 #### Defined in
 
-[v4-specification.ts:863](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L863)
+[v4-specification.ts:871](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L871)

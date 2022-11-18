@@ -6,7 +6,7 @@
 
 Nori croplands project import file format.
 
-Version: 4.0.7
+Version: 4.1.0
 
 Provides the definitions for Nori croplands project data import using typescript interfaces.
 
@@ -33,11 +33,9 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 ### Interfaces
 
 - [Address](../interfaces/v4_specification.Address.md)
-- [AnnualCrop](../interfaces/v4_specification.AnnualCrop.md)
 - [BurningEvent](../interfaces/v4_specification.BurningEvent.md)
 - [ClearingAndRenewalEvent](../interfaces/v4_specification.ClearingAndRenewalEvent.md)
 - [ContactInfo](../interfaces/v4_specification.ContactInfo.md)
-- [CoverCrop](../interfaces/v4_specification.CoverCrop.md)
 - [Crop](../interfaces/v4_specification.Crop.md)
 - [CropEvent](../interfaces/v4_specification.CropEvent.md)
 - [CropEvents](../interfaces/v4_specification.CropEvents.md)
@@ -51,9 +49,7 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 - [HistoricNonCRPLandManagement](../interfaces/v4_specification.HistoricNonCRPLandManagement.md)
 - [IrrigationEvent](../interfaces/v4_specification.IrrigationEvent.md)
 - [LimingEvent](../interfaces/v4_specification.LimingEvent.md)
-- [OrchardOrVineyardCrop](../interfaces/v4_specification.OrchardOrVineyardCrop.md)
 - [OrganicMatterEvent](../interfaces/v4_specification.OrganicMatterEvent.md)
-- [PerennialCrop](../interfaces/v4_specification.PerennialCrop.md)
 - [PlantingEvent](../interfaces/v4_specification.PlantingEvent.md)
 - [PracticeChangesAdopted](../interfaces/v4_specification.PracticeChangesAdopted.md)
 - [Project](../interfaces/v4_specification.Project.md)
@@ -82,17 +78,17 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 #### Defined in
 
-[v4-specification.ts:33](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L33)
+[v4-specification.ts:33](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L33)
 
 ___
 
 ### coverCropTypes
 
-• `Const` **coverCropTypes**: readonly [``"annual rye"``, ``"annual rye - legume"``, ``"annual rye - legume - radish"``, ``"barley-radish mix"``, ``"cereal rye"``, ``"cereal rye-crimson clover mix"``, ``"clover/wildflowers"``, ``"forage radish"``, ``"grass-legume mix"``, ``"oilseed radish"``, ``"radish-crimson clover-barley-dwarf rape mix"``, ``"vetch"``, ``"winter clover"``]
+• `Const` **coverCropTypes**: readonly [``"alfalfa"``, ``"annual rye"``, ``"annual rye - legume"``, ``"annual rye - legume - radish"``, ``"barley-radish mix"``, ``"buckwheat"``, ``"cereal rye"``, ``"cereal rye-crimson clover mix"``, ``"clover/wildflowers"``, ``"dry field pea"``, ``"forage radish"``, ``"grass-legume mix"``, ``"oats"``, ``"oilseed radish"``, ``"radish-crimson clover-barley-dwarf rape mix"``, ``"sugar beets"``, ``"triticale"``, ``"vetch"``, ``"winter clover"``, ``"winter grain-other"``, ``"winter wheat"``]
 
 #### Defined in
 
-[v4-specification.ts:123](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L123)
+[v4-specification.ts:123](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L123)
 
 ___
 
@@ -102,7 +98,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:226](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L226)
+[v4-specification.ts:234](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L234)
 
 ___
 
@@ -112,7 +108,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:289](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L289)
+[v4-specification.ts:297](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L297)
 
 ___
 
@@ -122,7 +118,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:168](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L168)
+[v4-specification.ts:176](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L176)
 
 ___
 
@@ -132,7 +128,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:206](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L206)
+[v4-specification.ts:214](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L214)
 
 ___
 
@@ -142,7 +138,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:139](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L139)
+[v4-specification.ts:147](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L147)
 
 ___
 
@@ -152,7 +148,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:252](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L252)
+[v4-specification.ts:260](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L260)
 
 ___
 
@@ -162,4 +158,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:147](https://github.com/nori-dot-eco/nori-dot-com/blob/cc4e2a7/packages/project/src/v4-specification.ts#L147)
+[v4-specification.ts:155](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L155)
