@@ -121,19 +121,27 @@ export const annualCropTypes = [
 ] as const;
 
 export const coverCropTypes = [
+  'alfalfa',
   'annual rye',
   'annual rye - legume',
   'annual rye - legume - radish',
   'barley-radish mix',
+  'buckwheat',
   'cereal rye',
   'cereal rye-crimson clover mix',
   'clover/wildflowers',
+  'dry field pea',
   'forage radish',
   'grass-legume mix',
+  'oats',
   'oilseed radish',
   'radish-crimson clover-barley-dwarf rape mix',
+  'sugar beets',
+  'triticale',
   'vetch',
   'winter clover',
+  'winter grain-other',
+  'winter wheat',
 ] as const;
 
 export const slurryOmadTypes = [
