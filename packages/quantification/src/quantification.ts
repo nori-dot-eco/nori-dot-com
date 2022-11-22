@@ -630,3 +630,45 @@ export const getQuantificationSummary = async ({
     quantifyAsOfYear,
   });
 };
+
+/**
+ * Create a quantification summary for each model run in a daycent response,
+ * keyed by modelRun[@name].
+ * 
+ * Note: unlike `getQuantificationSummary`, this assumes that there is a single
+ * model run per field, which assumes that all model runs are separate polygons
+ * which all make up a single parcel. We also don't pass in quantifyAsOfYear,
+ * which could vary per parcel. This is mostly just for the sake of expediency,
+ * since this has almost never been used in practice.
+ */
+export const getQuantificationSummaries = async ({
+  data,
+  maxNumberGrandfatheredYearsForProject,
+  futureScenarioName = 'Future',
+  baselineScenarioName = 'Baseline',
+}: {
+  data: Output.OutputFile<Output.MapUnit>;
+  maxNumberGrandfatheredYearsForProject: number;
+  futureScenarioName?: string;
+  baselineScenarioName?: string;
+}): Promise<{[k: string]: UnadjustedQuantificationSummary}> => {
+  const { parsedJsonOutput } = await parseYearlyMapUnitData({
+    rawJsonOutput: data,
+  });
+  const {
+    Day: {
+      Cropland: { ModelRun: modelRuns },
+    },
+  } = parsedJsonOutput;
+  let modelRunsArray = Array.isArray(modelRuns) ? modelRuns : [modelRuns];
+
+  return Object.fromEntries(modelRunsArray.map((modelRun) => [
+    modelRun['@name'],
+    createQuantificationSummary({
+      modelRuns: [modelRun],
+      futureScenarioName,
+      baselineScenarioName,
+      maxNumberGrandfatheredYearsForProject,
+    }),
+  ]));
+};
