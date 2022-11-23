@@ -651,7 +651,7 @@ export const getQuantificationSummaries = async ({
   maxNumberGrandfatheredYearsForProject: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
-}): Promise<{[k: string]: UnadjustedQuantificationSummary}> => {
+}): Promise<Record<string, UnadjustedQuantificationSummary>> => {
   const { parsedJsonOutput } = await parseYearlyMapUnitData({
     rawJsonOutput: data,
   });
