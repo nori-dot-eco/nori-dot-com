@@ -16,7 +16,7 @@ Crop management details grouped by a planting year.
  "crops": [
    // ... crops that were planted in year 2000
  ],
- "dataSourceType": "GROWER_REPORTED",
+ "dataSourceType": "grower reported",
 }
 ```
 
@@ -69,13 +69,13 @@ A list of crops for a given planting year.
 
 #### Defined in
 
-[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1227)
+[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1227)
 
 ___
 
 ### dataSourceType
 
-• `Optional` **dataSourceType**: ``"grower reported"`` \| ``"projected"``
+• `Optional` **dataSourceType**: ``"grower reported"`` \| ``"projected"`` \| ``"historical extrapolation"``
 
 Flag indicating whether data is historical data reported by the grower,
 or a projection of future data.
@@ -86,15 +86,23 @@ grower reported
 
 **`Example`**
 
-<caption>When data is from a projection of future data:</caption>
+<caption>When data is from a projection of anticipated future practice:</caption>
 
 ```js
 "dataSourceType": "projected"
 ```
 
+**`Example`**
+
+<caption>When historical data is extrapolated back based on more recent practice data:</caption>
+
+```js
+"dataSourceType": "historical extrapolation"
+```
+
 #### Defined in
 
-[v4-specification.ts:1241](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1241)
+[v4-specification.ts:1247](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1247)
 
 ___
 
@@ -122,4 +130,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1198](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1198)
+[v4-specification.ts:1198](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1198)

@@ -94,7 +94,7 @@ if no burning ever occurred, explicitly specify `burningEvent` as `null`
 
 #### Defined in
 
-[v3-specification.ts:1014](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1014)
+[v3-specification.ts:1014](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L1014)
 
 ___
 
@@ -122,7 +122,7 @@ A list of fertilizer events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:910](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L910)
+[v3-specification.ts:910](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L910)
 
 ___
 
@@ -154,7 +154,7 @@ during import (explicitly specify null if grazing did not occur, otherwise exclu
 
 #### Defined in
 
-[v3-specification.ts:991](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L991)
+[v3-specification.ts:991](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L991)
 
 ___
 
@@ -180,7 +180,7 @@ A list of irrigation events, if applicable.
 
 #### Defined in
 
-[v3-specification.ts:950](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L950)
+[v3-specification.ts:950](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L950)
 
 ___
 
@@ -211,7 +211,7 @@ during import (explicitly specify null if no liming events occurred, otherwise e
 
 #### Defined in
 
-[v3-specification.ts:970](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L970)
+[v3-specification.ts:970](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L970)
 
 ___
 
@@ -245,7 +245,7 @@ during import (explicitly specify null if no organic matter events occurred, oth
 
 #### Defined in
 
-[v3-specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L933)
+[v3-specification.ts:933](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L933)
 
 ___
 
@@ -273,4 +273,4 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 #### Defined in
 
-[v3-specification.ts:891](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L891)
+[v3-specification.ts:891](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L891)
