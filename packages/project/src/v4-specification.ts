@@ -3,7 +3,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.1.0
+ * Version: 4.2.0
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -307,13 +307,13 @@ export const limingTypes = [
  * A project may represent either a complete farming operation for a single operator or a batch
  * of fields from a data aggregator.
  *
- * @$id https://schema.nori.com/soil/4-0-7
+ * @$id https://schema.nori.com/soil/4-2-0
  *
- * @example <caption>A project that uses specification v4.1.0 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.2.0 and contains a list of fields:</caption>
  *
  * ```js
  * {
- *  "version": "4.1.0",
+ *  "version": "4.2.0",
  *  "fields": [
  *    ...fields
  *  ]
@@ -339,7 +339,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.1.0"
+   * "version": "4.2.0"
    * ```
    *
    */
@@ -1176,7 +1176,7 @@ export interface Field {
  *  "crops": [
  *    // ... crops that were planted in year 2000
  *  ],
- *  "dataSourceType": "GROWER_REPORTED",
+ *  "dataSourceType": "grower reported",
  * }
  * ```
  *
@@ -1231,14 +1231,20 @@ export interface CropYear {
    *
    * @default grower reported
    *
-   * @example <caption>When data is from a projection of future data:</caption>
+   * @example <caption>When data is from a projection of anticipated future practice:</caption>
    *
    * ```js
    * "dataSourceType": "projected"
    * ```
+   * @example <caption>When historical data is extrapolated back based on more recent practice data:</caption>
+   *
+   * ```js
+   * "dataSourceType": "historical extrapolation"
+   * ```
+   *
    *
    */
-  dataSourceType?: 'grower reported' | 'projected';
+  dataSourceType?: 'grower reported' | 'projected' | 'historical extrapolation';
 }
 
 /**
@@ -2008,7 +2014,7 @@ export interface FertilizerEvent extends CropEvent {
   /**
    * Amount of nitrogen applied in lbs/ac.
    *
-   * @nullable during import (specify null if you are unsure)
+   * @default 0
    *
    * @example <caption>When 10 lbs of Nitrogen per acre was applied:</caption>
    *
