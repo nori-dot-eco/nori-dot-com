@@ -1,3 +1,7 @@
+# v4.2.0 (November 28, 2022)
+* Added `historical extrapolation` as an option to `CropYear.dataSourceType`.
+* Removed nullable annotation from `FertilizerEvent.lbsOfNPerAcre` and applied a schema-level default of 0 to that field.
+
 # v4.1.0 (November 17, 2022)
 * Simplified schema to reduce complexity.
     * Removed `AnnualCrop`, `CoverCrop`, `OrchardOrVineyardCrop` and `PerennialCrop`.

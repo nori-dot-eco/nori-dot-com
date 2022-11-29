@@ -1,5 +1,5 @@
 {
-    "$id": "https://schema.nori.com/soil/4-0-7",
+    "$id": "https://schema.nori.com/soil/4-2-0",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "additionalProperties": false,
     "definitions": {
@@ -532,6 +532,7 @@
                     "description": "Flag indicating whether data is historical data reported by the grower,\nor a projection of future data.",
                     "enum": [
                         "grower reported",
+                        "historical extrapolation",
                         "projected"
                     ],
                     "title": "dataSourceType",
@@ -586,12 +587,10 @@
                     ]
                 },
                 "lbsOfNPerAcre": {
+                    "default": 0,
                     "description": "Amount of nitrogen applied in lbs/ac.",
                     "title": "lbsOfNPerAcre",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "type": "number"
                 },
                 "name": {
                     "description": "The name/alias that the fertilizer is known by. This property is used in the to-be-deprecated supplier intake sheet.",

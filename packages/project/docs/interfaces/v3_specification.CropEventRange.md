@@ -50,7 +50,7 @@ The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 a
 
 #### Defined in
 
-[v3-specification.ts:1333](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1333)
+[v3-specification.ts:1333](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L1333)
 
 ___
 
@@ -74,4 +74,4 @@ The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 
 
 #### Defined in
 
-[v3-specification.ts:1320](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v3-specification.ts#L1320)
+[v3-specification.ts:1320](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v3-specification.ts#L1320)

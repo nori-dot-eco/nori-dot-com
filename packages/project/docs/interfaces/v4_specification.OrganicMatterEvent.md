@@ -67,7 +67,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2174](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2174)
+[v4-specification.ts:2180](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L2180)
 
 ___
 
@@ -103,7 +103,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1701](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1701)
+[v4-specification.ts:1707](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1707)
 
 ___
 
@@ -129,7 +129,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1716](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1716)
+[v4-specification.ts:1722](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1722)
 
 ___
 
@@ -157,7 +157,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1731](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1731)
+[v4-specification.ts:1737](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1737)
 
 ___
 
@@ -181,7 +181,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:2143](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2143)
+[v4-specification.ts:2149](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L2149)
 
 ___
 
@@ -213,7 +213,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2190](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2190)
+[v4-specification.ts:2196](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L2196)
 
 ___
 
@@ -245,7 +245,7 @@ A default based on the selected type will be used if not specified here.
 
 #### Defined in
 
-[v4-specification.ts:2159](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2159)
+[v4-specification.ts:2165](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L2165)
 
 ___
 
@@ -277,4 +277,4 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1752](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1752)
+[v4-specification.ts:1758](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1758)

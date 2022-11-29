@@ -91,7 +91,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1581](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1581)
+[v4-specification.ts:1587](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1587)
 
 ___
 
@@ -115,7 +115,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v4-specification.ts:1344](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1344)
+[v4-specification.ts:1350](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1350)
 
 ___
 
@@ -161,7 +161,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1627](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1627)
+[v4-specification.ts:1633](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1633)
 
 ___
 
@@ -189,7 +189,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1293](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1293)
+[v4-specification.ts:1299](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1299)
 
 ___
 
@@ -233,7 +233,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1466](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1466)
+[v4-specification.ts:1472](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1472)
 
 ___
 
@@ -276,7 +276,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1556](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1556)
+[v4-specification.ts:1562](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1562)
 
 ___
 
@@ -319,7 +319,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1649](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1649)
+[v4-specification.ts:1655](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1655)
 
 ___
 
@@ -344,7 +344,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1310](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1310)
+[v4-specification.ts:1316](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1316)
 
 ___
 
@@ -386,7 +386,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1512](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1512)
+[v4-specification.ts:1518](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1518)
 
 ___
 
@@ -429,7 +429,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1534](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1534)
+[v4-specification.ts:1540](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1540)
 
 ___
 
@@ -451,7 +451,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:1271](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1271)
+[v4-specification.ts:1277](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1277)
 
 ___
 
@@ -497,7 +497,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1491](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1491)
+[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1497)
 
 ___
 
@@ -549,7 +549,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1419](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1419)
+[v4-specification.ts:1425](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1425)
 
 ___
 
@@ -595,7 +595,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1604](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1604)
+[v4-specification.ts:1610](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1610)
 
 ___
 
@@ -639,7 +639,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1443](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1443)
+[v4-specification.ts:1449](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1449)
 
 ___
 
@@ -665,4 +665,4 @@ must specify one of the allowed crop types=
 
 #### Defined in
 
-[v4-specification.ts:1326](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1326)
+[v4-specification.ts:1332](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1332)

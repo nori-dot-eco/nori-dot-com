@@ -66,7 +66,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1701](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1701)
+[v4-specification.ts:1707](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1707)
 
 ___
 
@@ -92,7 +92,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1716](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1716)
+[v4-specification.ts:1722](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1722)
 
 ___
 
@@ -120,7 +120,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1731](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1731)
+[v4-specification.ts:1737](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1737)
 
 ___
 
@@ -140,7 +140,7 @@ The name/alias that the soil or crop disturbance events practice is known by. Th
 
 #### Defined in
 
-[v4-specification.ts:1893](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1893)
+[v4-specification.ts:1899](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1899)
 
 ___
 
@@ -172,7 +172,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1752](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1752)
+[v4-specification.ts:1758](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1758)
 
 ___
 
@@ -266,4 +266,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1960](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1960)
+[v4-specification.ts:1966](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1966)

@@ -65,7 +65,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1701](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1701)
+[v4-specification.ts:1707](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1707)
 
 ___
 
@@ -91,7 +91,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1716](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1716)
+[v4-specification.ts:1722](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1722)
 
 ___
 
@@ -119,7 +119,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1731](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1731)
+[v4-specification.ts:1737](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1737)
 
 ___
 
@@ -151,7 +151,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1752](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1752)
+[v4-specification.ts:1758](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1758)
 
 ___
 
@@ -175,4 +175,4 @@ The irrigation volume in inches. If volume is 0, simply do not define an irrigat
 
 #### Defined in
 
-[v4-specification.ts:2219](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L2219)
+[v4-specification.ts:2225](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L2225)

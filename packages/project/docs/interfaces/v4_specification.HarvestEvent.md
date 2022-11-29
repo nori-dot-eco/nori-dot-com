@@ -73,7 +73,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1701](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1701)
+[v4-specification.ts:1707](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1707)
 
 ___
 
@@ -99,7 +99,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1716](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1716)
+[v4-specification.ts:1722](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1722)
 
 ___
 
@@ -135,7 +135,7 @@ no
 
 #### Defined in
 
-[v4-specification.ts:1838](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1838)
+[v4-specification.ts:1844](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1844)
 
 ___
 
@@ -163,7 +163,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1731](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1731)
+[v4-specification.ts:1737](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1737)
 
 ___
 
@@ -211,7 +211,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v4-specification.ts:1866](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1866)
+[v4-specification.ts:1872](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1872)
 
 ___
 
@@ -243,7 +243,7 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1752](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1752)
+[v4-specification.ts:1758](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1758)
 
 ___
 
@@ -269,7 +269,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1802](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1802)
+[v4-specification.ts:1808](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1808)
 
 ___
 
@@ -295,4 +295,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v4-specification.ts:1817](https://github.com/nori-dot-eco/nori-dot-com/blob/1017fe3/packages/project/src/v4-specification.ts#L1817)
+[v4-specification.ts:1823](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1823)
