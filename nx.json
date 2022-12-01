@@ -16,6 +16,7 @@
       }
     }
   },
+  "hi": "there",
   "targetDefaults": {
     "prepare": {
       "dependsOn": ["^prepare"]
