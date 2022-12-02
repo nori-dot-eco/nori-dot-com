@@ -80,6 +80,12 @@ export interface UnadjustedQuantificationSummary {
   netRemovalsByYear?: AnnualTotalItem[];
 }
 
+/**
+ * Summing the annual differences from the grandfatherable years
+ *
+ * @param param0
+ * @returns
+ */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   grandfatherableYears,
@@ -111,6 +117,17 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
   return { somscAnnualDifferencesBetweenFutureAndBaselineScenarios };
 };
 
+/**
+ * Sums the baseline and future tonnes per year.
+ *
+ * Note that the values provided by Soil Metrics in the Carbon.SoilCarbon property are the amount
+ * of carbon in soil. Negative values from Soil Metrics indicate carbon is sequestered.
+ *
+ * For our purposes, we need the inverse of this number.
+ *
+ * @param param0
+ * @returns
+ */
 const getProjectionFromCometSummaries = ({
   scenarioSummaries,
 }: {
@@ -163,6 +180,13 @@ const getTotalM2 = ({
   return { totalM2 };
 };
 
+/**
+ * Builds an object with baseline and future data by getting the SoilCarbon values
+ * SoilCarbon is negative == sequestration
+ *
+ * @param param0
+ * @returns
+ */
 const getCometScenarioSummaries = ({
   futureScenarioName,
   baselineScenarioName,
@@ -196,6 +220,13 @@ const getCometScenarioSummaries = ({
   return { scenarioSummaries };
 };
 
+/**
+ * Calculates the year-to-year change by taking the difference of next year's value minus
+ * this year's value
+ *
+ * @param param0
+ * @returns
+ */
 const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   mapUnits,
 }: {
@@ -227,6 +258,16 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   return { differencesForMapUnits };
 };
 
+/**
+ * Finds the current, baseline and future scenarios and iterates over each map unit/polygon
+ * to calculate the difference between each year.
+ *
+ * Note: previous limitations in Soil Metrics required splitting each polygon in a parcel's
+ * GeoJSON in to different map units. Map units and polygons can be considered synonymous here
+ *
+ * @param param0
+ * @returns
+ */
 const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   scenarios,
 }: {
@@ -252,6 +293,13 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   return { differencesForPolygon };
 };
 
+/**
+ * Iterates over each model run and pulls out the `Scenario` list to calculate the
+ * differences between each year
+ *
+ * @param param0
+ * @returns
+ */
 const calculateSomscAnnualDifferencesForScenarios = ({
   modelRuns,
 }: {
@@ -270,7 +318,17 @@ const calculateSomscAnnualDifferencesForScenarios = ({
   );
   return { somscAnnualDifferencesForScenarios };
 };
-
+/**
+ * Uses the baseline and future scenarios to calculate difference over the baseline
+ * tonnes of carbon in each polygon per year
+ *
+ * Note: Upstream services send two scenarios to Soil Metrics: one without practice changes
+ * and one with. The difference between these two are used to estimate the carbon
+ * sequestered.
+ *
+ * @param param0
+ * @returns
+ */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
   modeledYears,
   futureScenarioName,
@@ -350,6 +408,15 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
   };
 };
 
+/**
+ * Each project sets its max number of grandfathered years and provides it as input. This
+ * helper function gets the list of years that are grandfatherable based on that input.
+ *
+ * The range extends from the (@todo -- either the switch year or the earliest evidence year)
+ *
+ * @param param0
+ * @returns
+ */
 const getGrandfatherableYears = ({
   modeledYears,
   maxNumberGrandfatheredYearsForProject,
@@ -389,6 +456,16 @@ const getGrandfatherableYears = ({
   };
 };
 
+/**
+ * Creates an object that contains the amount of carbon sequestered, how that number
+ * was derived, the average per acre, and the total number of acres for the parcel.
+ *
+ * The amount is the lesser of the ten-year projected tonnes average and the tonnes removed
+ * in the field
+ *
+ * @param param0
+ * @returns
+ */
 export const getUnadjustedGrandfatheredTonnesPerYear = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
   tenYearProjectedTonnesPerYear,
@@ -418,6 +495,12 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
   return { unadjustedGrandfatheredTonnesPerYear };
 };
 
+/**
+ * Returns data relevant to the grandfathered years
+ *
+ * @param param0
+ * @returns
+ */
 const getGrandfatheredTonneQuantities = ({
   modeledYears,
   totalAcres,
@@ -498,6 +581,13 @@ const getGrandfatheredTonneQuantities = ({
   };
 };
 
+/**
+ * Helper function that creates the quantification summary object by passing model run data
+ * to helper functions
+ *
+ * @param param0
+ * @returns
+ */
 const createQuantificationSummary = ({
   modelRuns,
   futureScenarioName,
@@ -516,6 +606,9 @@ const createQuantificationSummary = ({
       modelRuns,
     });
 
+  /**
+   * The `Future` data and modeled years is expected to be the project's switch year and after
+   */
   const modeledYears = modelRuns[0].Scenario.find(
     (s) => s['@name'] === 'Future : FILE RESULTS'
   ).MapUnit[0].Year.map(Number);
@@ -545,6 +638,7 @@ const createQuantificationSummary = ({
     baselineScenarioName,
   });
 
+  // Converting meters^2 to acres
   const totalAcres = convertM2ToAcres({ m2: totalM2 });
 
   const {
@@ -601,6 +695,17 @@ const createQuantificationSummary = ({
   };
 };
 
+/**
+ * This is the main entry point of this code. It uses several of the other functions in this file
+ * to create calculated data for the various aspects of the Soil Metrics soil quantification
+ *
+ * Some things to note:
+ *   * Each model run is a GeoJSON polygon. Previous limitations on Soil Metrics required
+ *     us to split each polygon in a parcel in to separate model runs
+ *
+ * @param param0
+ * @returns A quantification summary
+ */
 export const getQuantificationSummary = async ({
   data,
   maxNumberGrandfatheredYearsForProject,
@@ -634,7 +739,7 @@ export const getQuantificationSummary = async ({
 /**
  * Create a quantification summary for each model run in a daycent response,
  * keyed by modelRun[@name].
- * 
+ *
  * Note: unlike `getQuantificationSummary`, this assumes that there is a single
  * model run per field, which assumes that all model runs are separate polygons
  * which all make up a single parcel. We also don't pass in quantifyAsOfYear,
@@ -660,15 +765,17 @@ export const getQuantificationSummaries = async ({
       Cropland: { ModelRun: modelRuns },
     },
   } = parsedJsonOutput;
-  let modelRunsArray = Array.isArray(modelRuns) ? modelRuns : [modelRuns];
+  const modelRunsArray = Array.isArray(modelRuns) ? modelRuns : [modelRuns];
 
-  return Object.fromEntries(modelRunsArray.map((modelRun) => [
-    modelRun['@name'],
-    createQuantificationSummary({
-      modelRuns: [modelRun],
-      futureScenarioName,
-      baselineScenarioName,
-      maxNumberGrandfatheredYearsForProject,
-    }),
-  ]));
+  return Object.fromEntries(
+    modelRunsArray.map((modelRun) => [
+      modelRun['@name'],
+      createQuantificationSummary({
+        modelRuns: [modelRun],
+        futureScenarioName,
+        baselineScenarioName,
+        maxNumberGrandfatheredYearsForProject,
+      }),
+    ])
+  );
 };
