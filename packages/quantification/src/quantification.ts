@@ -82,9 +82,6 @@ export interface UnadjustedQuantificationSummary {
 
 /**
  * Summing the annual differences from the grandfatherable years
- *
- * @param param0
- * @returns
  */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
@@ -124,9 +121,6 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
  * of carbon in soil. Negative values from Soil Metrics indicate carbon is sequestered.
  *
  * For our purposes, we need the inverse of this number.
- *
- * @param param0
- * @returns
  */
 const getProjectionFromCometSummaries = ({
   scenarioSummaries,
@@ -183,9 +177,6 @@ const getTotalM2 = ({
 /**
  * Builds an object with baseline and future data by getting the SoilCarbon values
  * SoilCarbon is negative == sequestration
- *
- * @param param0
- * @returns
  */
 const getCometScenarioSummaries = ({
   futureScenarioName,
@@ -223,9 +214,6 @@ const getCometScenarioSummaries = ({
 /**
  * Calculates the year-to-year change by taking the difference of next year's value minus
  * this year's value
- *
- * @param param0
- * @returns
  */
 const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   mapUnits,
@@ -264,9 +252,6 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
  *
  * Note: previous limitations in Soil Metrics required splitting each polygon in a parcel's
  * GeoJSON in to different map units. Map units and polygons can be considered synonymous here
- *
- * @param param0
- * @returns
  */
 const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   scenarios,
@@ -296,9 +281,6 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
 /**
  * Iterates over each model run and pulls out the `Scenario` list to calculate the
  * differences between each year
- *
- * @param param0
- * @returns
  */
 const calculateSomscAnnualDifferencesForScenarios = ({
   modelRuns,
@@ -325,9 +307,6 @@ const calculateSomscAnnualDifferencesForScenarios = ({
  * Note: Upstream services send two scenarios to Soil Metrics: one without practice changes
  * and one with. The difference between these two are used to estimate the carbon
  * sequestered.
- *
- * @param param0
- * @returns
  */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
   modeledYears,
@@ -413,9 +392,6 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
  * helper function gets the list of years that are grandfatherable based on that input.
  *
  * The range extends from the (@todo -- either the switch year or the earliest evidence year)
- *
- * @param param0
- * @returns
  */
 const getGrandfatherableYears = ({
   modeledYears,
@@ -462,9 +438,6 @@ const getGrandfatherableYears = ({
  *
  * The amount is the lesser of the ten-year projected tonnes average and the tonnes removed
  * in the field
- *
- * @param param0
- * @returns
  */
 export const getUnadjustedGrandfatheredTonnesPerYear = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
@@ -497,9 +470,6 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
 
 /**
  * Returns data relevant to the grandfathered years
- *
- * @param param0
- * @returns
  */
 const getGrandfatheredTonneQuantities = ({
   modeledYears,
@@ -584,9 +554,6 @@ const getGrandfatheredTonneQuantities = ({
 /**
  * Helper function that creates the quantification summary object by passing model run data
  * to helper functions
- *
- * @param param0
- * @returns
  */
 const createQuantificationSummary = ({
   modelRuns,
@@ -703,7 +670,6 @@ const createQuantificationSummary = ({
  *   * Each model run is a GeoJSON polygon. Previous limitations on Soil Metrics required
  *     us to split each polygon in a parcel in to separate model runs
  *
- * @param param0
  * @returns A quantification summary
  */
 export const getQuantificationSummary = async ({
