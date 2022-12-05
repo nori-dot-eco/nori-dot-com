@@ -3,7 +3,7 @@
  *
  * Nori croplands project import file format.
  *
- * Version: 4.2.0
+ * Version: 4.2.1
  *
  * Provides the definitions for Nori croplands project data import using typescript interfaces.
  *
@@ -309,11 +309,11 @@ export const limingTypes = [
  *
  * @$id https://schema.nori.com/soil/4-2-0
  *
- * @example <caption>A project that uses specification v4.2.0 and contains a list of fields:</caption>
+ * @example <caption>A project that uses specification v4.2.1 and contains a list of fields:</caption>
  *
  * ```js
  * {
- *  "version": "4.2.0",
+ *  "version": "4.2.1",
  *  "fields": [
  *    ...fields
  *  ]
@@ -339,7 +339,7 @@ export interface Project {
    * @example
    *
    * ```js
-   * "version": "4.2.0"
+   * "version": "4.2.1"
    * ```
    *
    */
@@ -1042,11 +1042,13 @@ export interface Field {
    */
   fieldName: string;
   /**
-   * legalAcres Number of acres in this parcel per your insurance policy.
+   * legalAcres Number of acres in this parcel per your insurance policy if known.
+   *
+   * @nullable
    *
    * @example 152.8
    */
-  legalAcres: number;
+  legalAcres?: number;
   /**
    * assignmentOfAuthority - Is there an assignment of authority in place?
    * i.e. Is the field leased land?
