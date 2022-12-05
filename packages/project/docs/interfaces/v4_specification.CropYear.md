@@ -69,7 +69,7 @@ A list of crops for a given planting year.
 
 #### Defined in
 
-[v4-specification.ts:1227](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1227)
+[v4-specification.ts:1229](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1229)
 
 ___
 
@@ -102,7 +102,7 @@ grower reported
 
 #### Defined in
 
-[v4-specification.ts:1247](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1247)
+[v4-specification.ts:1249](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1249)
 
 ___
 
@@ -130,4 +130,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1198](https://github.com/nori-dot-eco/nori-dot-com/blob/d0f545e/packages/project/src/v4-specification.ts#L1198)
+[v4-specification.ts:1200](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1200)

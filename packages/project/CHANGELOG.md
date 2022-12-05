@@ -1,3 +1,6 @@
+# v4.2.1 (December 5, 2022)
+* `Field.legalAcres` made optional
+
 # v4.2.0 (November 28, 2022)
 * Added `historical extrapolation` as an option to `CropYear.dataSourceType`.
 * Removed nullable annotation from `FertilizerEvent.lbsOfNPerAcre` and applied a schema-level default of 0 to that field.
