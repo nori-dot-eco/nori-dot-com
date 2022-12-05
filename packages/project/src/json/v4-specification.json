@@ -772,9 +772,12 @@
                     "title": "landOwners"
                 },
                 "legalAcres": {
-                    "description": "legalAcres Number of acres in this parcel per your insurance policy.",
+                    "description": "legalAcres Number of acres in this parcel per your insurance policy if known.",
                     "title": "legalAcres",
-                    "type": "number"
+                    "type": [
+                        "number",
+                        "null"
+                    ]
                 },
                 "legalPropertyDescription": {
                     "description": "legalPropertyDescription",
@@ -828,7 +831,6 @@
                 "fieldName",
                 "geojson",
                 "historicLandManagement",
-                "legalAcres",
                 "practiceChangesAdopted",
                 "regenerativeStartYear"
             ],
