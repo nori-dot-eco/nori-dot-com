@@ -28,8 +28,6 @@ yargs
     'Runs Nori quantification logic on a multi-field (i.e. python) results file.',
     quantificationArgs,
     async (argv) => {
-      console.log(`Quantifying ${argv.input}`);
-      console.log(JSON.stringify(argv));
       const data = fs.readFileSync(argv.input as string, 'utf8');
       const results = await getQuantificationSummaries({
         data: JSON.parse(data),
@@ -50,8 +48,6 @@ yargs
       });
     },
     async (argv) => {
-      console.log(`Quantifying ${argv.input}`);
-      console.log(JSON.stringify(argv));
       const data = fs.readFileSync(argv.input as string, 'utf8');
       const results = await getQuantificationSummary({
         data: JSON.parse(data),
