@@ -25,7 +25,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "prepare": "tsc -b",
     "watch": "tsc -b -w",
-    "build": "tsc -b"
+    "build": "tsc -b",
+    "quantify": "ts-node src/scripts/cli.ts"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
@@ -33,5 +34,8 @@
   "dependencies": {
     "@nori-dot-com/ggit": "^1.6.0",
     "@nori-dot-com/math": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.17"
   }
 }
