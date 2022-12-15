@@ -22,10 +22,7 @@ jobs:
           name: Install Dependencies
           command: |
             if [ ! -d "node_modules" ]; then
-              for i in 1 2; do
-                yarn install --prefer-offline && break || sleep 15;
-              done
-              git checkout yarn.lock
+              yarn install --immutable
             fi
       - save_cache:
           key: v-0-0-5-node_modules_dir-{{ checksum "yarn.lock" }}
