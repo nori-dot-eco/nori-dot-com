@@ -28,7 +28,7 @@
     "prepare": "yarn run build",
     "watch": "tsc -b -w",
     "build": "yarn run make:schema && tsc -b",
-    "make:schema": "npx typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
+    "make:schema": "typescript-json-schema src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
@@ -38,6 +38,6 @@
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "node-fetch": "^2.6.1",
-    "typescript-json-schema": "^0.50.0"
+    "typescript-json-schema": "^0.54.0"
   }
 }
