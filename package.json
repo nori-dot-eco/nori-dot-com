@@ -19,7 +19,7 @@
     "build": "nx run-many --target=build --all -- --force",
     "watch": "nx run-many --target=watch --all",
     "test": "jest",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "nx run-many --target=bootstrap --all",
     "prepare": "yarn run build"
   },
   "resolutions": {
