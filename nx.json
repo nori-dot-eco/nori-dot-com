@@ -5,14 +5,7 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "parallel": 5,
-        "cacheableOperations": [
-          "test",
-          "prepare",
-          "watch",
-          "build",
-          "make:schema",
-          "make:docs"
-        ]
+        "cacheableOperations": ["test", "build", "make:schema", "make:docs"]
       }
     }
   },

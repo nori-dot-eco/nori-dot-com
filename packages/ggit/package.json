@@ -30,10 +30,15 @@
     "make:schema": "typescript-json-schema ./src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
   },
   "nx": {
+    "namedInputs": {
+      "inputSchema": [
+        "{projectRoot}/src/input/Input.ts"
+      ]
+    },
     "targets": {
       "make:schema": {
         "inputs": [
-          "{projectRoot}/src/input/Input.ts"
+          "inputSchema"
         ],
         "outputs": [
           "{projectRoot}/src/input/specification.json"
@@ -44,10 +49,12 @@
           "{projectRoot}/src"
         ],
         "outputs": [
-          "{projectRoot}/dist"
+          "{projectRoot}/dist",
+          "!{projectRoot}/src/input/specification.json"
         ],
         "dependsOn": [
-          "make:schema"
+          "make:schema",
+          "^build"
         ]
       }
     }

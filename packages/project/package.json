@@ -25,10 +25,15 @@
     "validate": "ts-node scripts/validate.ts"
   },
   "nx": {
+    "namedInputs": {
+      "schema": [
+        "{projectRoot}/src/v4-specification.ts"
+      ]
+    },
     "targets": {
       "make:schema": {
         "inputs": [
-          "{projectRoot}/src/v4-specification.ts"
+          "schema"
         ],
         "outputs": [
           "{projectRoot}/src/json/v4-specification.json"
@@ -36,7 +41,7 @@
       },
       "make:docs": {
         "inputs": [
-          "{projectRoot}/src/v4-specification.ts"
+          "schema"
         ],
         "outputs": [
           "{projectRoot}/docs"
@@ -47,12 +52,14 @@
       },
       "build": {
         "inputs": [
-          "{projectRoot}/src"
+          "{projectRoot}/src",
+          "!{projectRoot}/src/json/v4-specification.json"
         ],
         "outputs": [
           "{projectRoot}/dist"
         ],
         "dependsOn": [
+          "^build",
           "make:schema"
         ]
       }
