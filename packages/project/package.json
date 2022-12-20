@@ -28,6 +28,11 @@
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
+  "implicitDependencies": [
+    "@nori-dot-com/errors",
+    "@nori-dot-com/ggit",
+    "@nori-dot-com/math"
+  ],
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^29.2.0",

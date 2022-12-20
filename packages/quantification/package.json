@@ -31,6 +31,10 @@
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
+  "implicitDependencies": [
+    "@nori-dot-com/ggit",
+    "@nori-dot-com/math"
+  ],
   "dependencies": {
     "@nori-dot-com/ggit": "^1.6.0",
     "@nori-dot-com/math": "^1.6.0"
