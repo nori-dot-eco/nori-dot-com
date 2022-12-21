@@ -10,9 +10,6 @@
     }
   },
   "targetDefaults": {
-    "prepare": {
-      "dependsOn": ["^prepare"]
-    },
     "install": {
       "dependsOn": ["^install"]
     },
