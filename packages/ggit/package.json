@@ -40,9 +40,6 @@
         ]
       },
       "build": {
-        "inputs": [
-          "{projectRoot}/src"
-        ],
         "outputs": [
           "{projectRoot}/dist",
           "!{projectRoot}/src/input/specification.json"

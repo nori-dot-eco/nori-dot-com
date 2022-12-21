@@ -47,7 +47,7 @@
       },
       "build": {
         "inputs": [
-          "{projectRoot}/src",
+          "default",
           "!{projectRoot}/src/json/v4-specification.json"
         ],
         "outputs": [
