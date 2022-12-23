@@ -105,6 +105,7 @@ const react = ({ rules, dir, typescript, next }) => ({
       : []),
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.jsx', '**/*.js'],
+      processor: '@graphql-eslint/graphql',
       extends: [
         'plugin:react/recommended',
         'airbnb',
