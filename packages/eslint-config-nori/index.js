@@ -186,8 +186,7 @@ module.exports = {
           { selector: 'typeLike', format: ['PascalCase'] },
           {
             selector: ['typeProperty', 'classProperty'],
-            format: ['camelCase', 'UPPER_CASE'],
-            modifiers: ['requiresQuotes'],
+            format: ['camelCase'],
             leadingUnderscore: 'allow',
           },
           {
