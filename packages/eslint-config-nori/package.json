@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fintechstudios/eslint-plugin-chai-as-promised": "3.1.0",
-    "@graphql-eslint/eslint-plugin": "^3.12.0",
+    "@graphql-eslint/eslint-plugin": "^3.13.1",
     "@next/eslint-plugin-next": "^12.1.6",
     "@typescript-eslint/eslint-plugin": "^5.24.0",
     "@typescript-eslint/parser": "^5.24.0",

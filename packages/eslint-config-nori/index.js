@@ -128,13 +128,6 @@ module.exports = {
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
       ],
-      rules: {
-        '@graphql-eslint/known-argument-names': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
-        '@graphql-eslint/known-directives': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
-        '@graphql-eslint/known-type-names': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
-        '@graphql-eslint/provided-required-arguments': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
-        '@graphql-eslint/unique-directive-names-per-location': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
-      },
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
