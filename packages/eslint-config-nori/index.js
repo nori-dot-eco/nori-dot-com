@@ -30,7 +30,7 @@ module.exports = {
         'plugin:@next/next/core-web-vitals',
         'plugin:unicorn/recommended',
         'plugin:eslint-comments/recommended',
-        'plugin:prettier/recommended', // todo define prettier rules in this file
+        'plugin:prettier/recommended', // todo define prettier.rc rules in this file
       ],
       plugins: [
         'react',
@@ -52,7 +52,7 @@ module.exports = {
         'unicorn/prefer-module': [0],
         'unicorn/prefer-switch': [0],
         'unicorn/no-useless-undefined': [0],
-        'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatile version of node (~18)
+        'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatible version of node (~18)
         // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
         //   'warn',
         //   {
@@ -99,7 +99,7 @@ module.exports = {
           { destructuring: 'all', ignoreReadBeforeAssign: false },
         ],
         ...jsdocRules,
-        'import/no-cycle': [0], // todo look into enabling this
+        'import/no-cycle': [0], // todo enable this after fixing all cycles
         'import/extensions': [
           'error',
           'never',
@@ -128,6 +128,13 @@ module.exports = {
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
       ],
+      rules: {
+        '@graphql-eslint/known-argument-names': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
+        '@graphql-eslint/known-directives': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
+        '@graphql-eslint/known-type-names': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
+        '@graphql-eslint/provided-required-arguments': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
+        '@graphql-eslint/unique-directive-names-per-location': 0, // todo problematic with relay (v11) or linter version. figure out how to re-enable this. https://github.com/graphql/graphiql/issues/2071#issuecomment-1099298017
+      },
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
@@ -172,63 +179,33 @@ module.exports = {
           'error',
           { selector: 'class', format: ['PascalCase'] },
           {
-            selector: 'variable',
+            selector: ['function', 'parameter'],
+            format: ['camelCase', 'UPPER_CASE'],
+          },
+          {
+            selector: ['variable'],
             format: [
               'camelCase',
-              'PascalCase', // todo remove
               'UPPER_CASE',
+              'PascalCase', // todo remove PascalCase
             ],
           },
-          {
-            selector: 'default',
-            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
-            format: null,
-          },
-          { selector: 'variableLike', format: ['camelCase', 'UPPER_CASE'] },
           { selector: 'typeLike', format: ['PascalCase'] },
           {
-            selector: ['property'],
-            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
-            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
+            selector: ['typeProperty', 'classProperty'],
+            format: ['camelCase', 'UPPER_CASE'],
             modifiers: ['requiresQuotes'],
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['property'],
-            format: ['camelCase', 'UPPER_CASE'], // overrides format for same selector while persisting "requiresQuotes"
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['objectLiteralProperty'],
-            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
-            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
-            leadingUnderscore: 'allow',
-            modifiers: ['requiresQuotes'],
-          },
-          {
-            selector: ['objectLiteralProperty'],
-            format: ['camelCase', 'PascalCase', 'UPPER_CASE'], // overrides format for same selector while persisting "requiresQuotes"
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['typeProperty'],
-            // eslint-disable-next-line unicorn/no-null -- rule requires null and not undefined
-            format: null, // format must be set in separate rule definition to allow "requireQuotes" (see below)
-            modifiers: ['requiresQuotes'],
-          },
-          {
-            selector: ['typeProperty'],
-            format: ['camelCase', 'PascalCase'], // overrides format for same selector while persisting "requiresQuotes"
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['classProperty'],
-            format: ['camelCase'],
             leadingUnderscore: 'allow',
           },
           {
             selector: ['parameter'],
             format: ['camelCase'],
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: ['variable', 'objectLiteralProperty'],
+            modifiers: ['destructured'],
+            format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case'],
             leadingUnderscore: 'allow',
           },
         ],
@@ -240,7 +217,7 @@ module.exports = {
         // '@typescript-eslint/no-explicit-any': [
         //   'error',
         //   { ignoreRestArgs: true },
-        // ],
+        // ], // todo enable
         '@typescript-eslint/ban-types': ['warn'],
         'no-use-before-define': 'off', // replaced by @typescript-eslint/no-use-before-define
         '@typescript-eslint/no-use-before-define': [
@@ -276,16 +253,6 @@ module.exports = {
       files: ['**/*.tsx'],
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
-        '@typescript-eslint/naming-convention': [
-          'error',
-          // Need PascalCase to allow for functional react components that have generics
-          // on them. Like:
-          //   type MyComponentProps<T> { value: T };
-          //   function MyComponent<T>({value}: MyComponentProps<T>) { ... }
-          // because unfortunately you can't use generics with arrow functions in tsx files:
-          //   const MyComponent = <T>({value}: MyComponentProps<T>) => { ... } //parsing error! // todo verify this is true
-          { selector: 'function', format: ['camelCase', 'PascalCase'] }, // todo remove after verifying the above is false (only allow `const` function components)
-        ],
       },
     },
     {

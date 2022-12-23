@@ -2,9 +2,12 @@
 import { Errors } from '@nori-dot-com/errors';
 
 import { formatInputData, validateProjectData } from '../index';
-import type { Crop, Project } from '../v4-specification';
+import type {
+  Crop,
+  Project,
+  HistoricNonCRPLandManagement,
+} from '../v4-specification';
 import * as FULL_FORMATTED_VALID_PROJECT from '../example/v4-example.json';
-import type { HistoricNonCRPLandManagement } from '../v4-specification';
 
 type ProjectOrAny<T> = T extends Project ? Project : any;
 

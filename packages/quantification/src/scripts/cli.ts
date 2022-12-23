@@ -1,11 +1,13 @@
 #!/usr/bin/env ts-node
 
+import * as fs from 'fs';
+
+import * as yargs from 'yargs';
+
 import {
   getQuantificationSummaries,
   getQuantificationSummary,
 } from '../quantification';
-import * as yargs from 'yargs';
-import * as fs from 'fs';
 
 const quantificationArgs = (yargs: yargs.Argv<{}>): yargs.Argv<{}> => {
   yargs.positional('input', {

@@ -349,12 +349,14 @@ export interface Project {
    *
    * This will be the primary point of contract for verifiers.
    *
+   * @example
    */
   primaryContact: ContactInfo;
   /**
    * farmAddress Mailing address for the farm in question if the file represents a single operation.
    *
    * @nullable if import file represents a batch rather than an entire project for a single farm.
+   * @example
    */
   farmAddress?: Address;
   /**
@@ -429,6 +431,7 @@ export interface Project {
    * The name for the project to be created.
    *
    * @nullable External systems leave this null.
+   * @example
    */
   projectName?: string;
   /**
@@ -474,18 +477,21 @@ export interface ContactInfo {
    * The project's primary contract person.  Provided to the verified.
    *
    * @nullable
+   * @example
    */
   name?: string;
   /**
    * phone
    *
    * @nullable
+   * @example
    */
   phone?: string;
   /**
    * email
    *
    * @nullable
+   * @example
    */
   email?: string;
 }
@@ -855,42 +861,49 @@ export interface PracticeChangesAdopted {
    * Added cover cropping
    *
    * @default false
+   * @example
    */
   coverCropping?: boolean;
   /**
    * Ceased tillage.
    *
    * @default false
+   * @example
    */
   noTill?: boolean;
   /**
    * Switched to strip tillage.
    *
    * @default false
+   * @example
    */
   stripTill?: boolean;
   /**
    * Other reduction in tillage.
    *
    * @default false
+   * @example
    */
   reducedTillage?: boolean;
   /**
    * Added OMAD
    *
    * @default false
+   * @example
    */
   addedOMAD?: boolean;
   /**
    * Reduced fallow in rotation
    *
    * @default false
+   * @example
    */
   reducedFallow?: boolean;
   /**
    * Increased biodiversity of crop rotation
    *
    * @default false
+   * @example
    */
   increasedBiodiversity?: boolean;
 }
@@ -986,6 +999,7 @@ export interface Field {
    * }
    * ```
    *
+   * @example
    */
   practiceChangesAdopted: PracticeChangesAdopted;
   /**
@@ -1071,6 +1085,7 @@ export interface Field {
    * landOwners (as shown on deed, MUST LIST ALL OWNERS)
    *
    * @nullable If this information will be communicated directly to the verifier.
+   * @example
    *
    */
   landOwners?: ContactInfo[];
@@ -1078,6 +1093,7 @@ export interface Field {
    * operator (lessee as shown on lease if land is leased)
    *
    * @nullable if ownwer is operator or if this information will be communicated directly to the verifier.
+   * @example
    *
    */
   farmOperator?: ContactInfo;
@@ -1085,12 +1101,14 @@ export interface Field {
    * mailingAddress Mailing Address (where your property tax notice for lands in question is mailed to)
    *
    * @nullable If this information will be communicated directly to the verifier.
+   * @example
    */
   mailingAddress?: Address;
   /**
    * parcelNumber
    *
    * @nullable
+   * @example
    */
   parcelNumber?: string;
   /**
@@ -1774,7 +1792,7 @@ export interface CropEvent {
  * ```
  *
  */
-export interface PlantingEvent extends CropEvent {}
+export type PlantingEvent = CropEvent;
 
 /**
  * An annual crop's harvest event details.
@@ -2329,7 +2347,7 @@ export interface GrazingEvent extends CropEvent {
  * ```
  *
  */
-export interface PruningEvent extends CropEvent {}
+export type PruningEvent = CropEvent;
 
 /**
  * Clearing and renewal event for orchards / vinyards.
@@ -2373,4 +2391,4 @@ export interface ClearingAndRenewalEvent extends CropEvent {
  * ```
  *
  */
-export interface BurningEvent extends CropEvent {}
+export type BurningEvent = CropEvent;

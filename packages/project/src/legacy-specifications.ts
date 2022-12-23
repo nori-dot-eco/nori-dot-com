@@ -202,7 +202,7 @@ export interface V1IrrigationEvent {
   volume: number;
   frequency?: number;
   depth?: number;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+
   depth_units?: string;
 }
 

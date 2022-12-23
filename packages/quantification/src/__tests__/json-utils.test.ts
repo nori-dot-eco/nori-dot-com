@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { parseYearlyMapUnitData } from '../index';
 
 import { GRANDFATHERABLE_YEARS_OUTPUT } from './example-output';

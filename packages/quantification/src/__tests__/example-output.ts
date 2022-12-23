@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import type { Output } from '@nori-dot-com/ggit';
 
 export const MULTIPOLYGON_OUTPUT: Output.OutputFile<Output.MapUnit> = {
