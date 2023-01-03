@@ -28,7 +28,8 @@
     "targets": {
       "make:schema": {
         "inputs": [
-          "{projectRoot}/src/v4-specification.ts"
+          "default",
+          "!{projectRoot}/src/json/*"
         ],
         "outputs": [
           "{projectRoot}/src/json/v4-specification.json"
@@ -36,19 +37,20 @@
       },
       "make:docs": {
         "inputs": [
-          "{projectRoot}/src/v4-specification.ts"
+          "default",
+          "!{projectRoot}/src/json/*"
         ],
         "outputs": [
           "{projectRoot}/docs"
         ],
         "dependsOn": [
-          "make:schema"
+          "build"
         ]
       },
       "build": {
         "inputs": [
           "default",
-          "!{projectRoot}/src/json/v4-specification.json"
+          "!{projectRoot}/src/json/*"
         ],
         "outputs": [
           "{projectRoot}/dist"
@@ -58,16 +60,16 @@
           "make:schema"
         ]
       }
-    }
+    },
+    "implicitDependencies": [
+      "@nori-dot-com/errors",
+      "@nori-dot-com/ggit",
+      "@nori-dot-com/math"
+    ]
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
-  "implicitDependencies": [
-    "@nori-dot-com/errors",
-    "@nori-dot-com/ggit",
-    "@nori-dot-com/math"
-  ],
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^29.2.0",
