@@ -717,11 +717,13 @@ export const getQuantificationSummaries = async ({
   maxNumberGrandfatheredYearsForProject,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
+  quantifyAsOfYear,
 }: {
   data: Output.OutputFile<Output.MapUnit>;
   maxNumberGrandfatheredYearsForProject: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
+  quantifyAsOfYear?: number;
 }): Promise<Record<string, UnadjustedQuantificationSummary>> => {
   const { parsedJsonOutput } = await parseYearlyMapUnitData({
     rawJsonOutput: data,
@@ -741,6 +743,7 @@ export const getQuantificationSummaries = async ({
         futureScenarioName,
         baselineScenarioName,
         maxNumberGrandfatheredYearsForProject,
+        quantifyAsOfYear,
       }),
     ])
   );

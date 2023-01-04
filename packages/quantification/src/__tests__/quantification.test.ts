@@ -662,6 +662,78 @@ describe('getQuantificationSummaries', () => {
       },
     });
   });
+  it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', async () => {
+    let modelRun = GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
+    modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
+    const modelRunName = modelRun['@name'];
+    expect(
+      await getQuantificationSummaries({
+        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        maxNumberGrandfatheredYearsForProject: 4,
+      })
+    ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummaries>>({
+      [modelRunName]: {
+        methodologyVersion: METHODOLOGY_VERSION,
+        switchYear: 2016,
+        grandfatherableYears: [2016, 2017, 2018],
+        numberOfGrandfatheredYears: 3,
+        modeledYears: [
+          2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
+        ],
+        totalAcres: 119.000_753_503_510_62,
+        totalM2: 481_578.963_586_112_2,
+        tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
+        tenYearProjectedTonnesTotalEstimate: 641.874,
+        tenYearProjectedBaselineTonnesPerYear: -24.6869,
+        tenYearProjectedFutureTonnesPerYear: 64.1874,
+        tenYearProjectedTonnesPerYear: 64.1874,
+        tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
+        tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+          {
+            '2015': 26.237_005_795_497_225,
+            '2016': 15.527_376_378_425_224,
+            '2017': 41.808_167_405_031_04,
+            '2018': 73.329_044_626_437_04,
+            '2019': 70.717_277_518_740_5,
+            '2020': 104.660_508_516_130_16,
+            '2021': 92.358_872_428_480_85,
+            '2022': 57.860_299_141_229_15,
+            '2023': 75.209_361_959_482_37,
+            '2024': Number.NaN,
+          },
+        ],
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2016': 15.527_376_378_425_224,
+          '2017': 41.808_167_405_031_04,
+          '2018': 73.329_044_626_437_04,
+        },
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 43.554_862_803_297_766,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 15.527_376_378_425_224,
+            method: 'somsc',
+            averagePerAcre: 0.130_481_328_237_700_23,
+            totalAcres: 119.000_753_503_510_62,
+          },
+          '2017': {
+            amount: 41.808_167_405_031_04,
+            method: 'somsc',
+            averagePerAcre: 0.351_326_913_268_643,
+            totalAcres: 119.000_753_503_510_62,
+          },
+          '2018': {
+            amount: 64.1874,
+            method: 'projection',
+            averagePerAcre: 0.539_386_500_591_413_7,
+            totalAcres: 119.000_753_503_510_62,
+          },
+        },
+        grandfatheredTonnes: 121.522_943_783_456_27,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.340_398_247_365_919,
+      },
+    });
+  });
   describe('When there are no grandfatherable years', () => {
     let modelRun = NO_GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
