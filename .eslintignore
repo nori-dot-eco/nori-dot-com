@@ -22,3 +22,5 @@ admin_local
 build
 coverage
 schema-types.ts
+**/typechain-types/**
+relay-extensions.graphql

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention -- these are definitions for a third party library */
 /* eslint-disable jsdoc/require-example, jsdoc/check-tag-names */
 import type {
   CURRENT_SCENARIO_NAME,

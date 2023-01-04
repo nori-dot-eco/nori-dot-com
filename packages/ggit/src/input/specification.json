@@ -68,8 +68,7 @@
                             "$ref": "#/definitions/BurnEvent"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "BurnEvent"
                 },
                 "ContinueFromPreviousYear": {
@@ -93,8 +92,7 @@
                             "$ref": "#/definitions/GrazingList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "GrazingList"
                 },
                 "HarvestList": {
@@ -106,8 +104,7 @@
                             "$ref": "#/definitions/HarvestList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "HarvestList"
                 },
                 "IrrigationList": {
@@ -119,8 +116,7 @@
                             "$ref": "#/definitions/IrrigationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "IrrigationList"
                 },
                 "LimingEvent": {
@@ -132,8 +128,7 @@
                             "$ref": "#/definitions/LimingEvent"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "LimingEvent"
                 },
                 "NApplicationList": {
@@ -145,8 +140,7 @@
                             "$ref": "#/definitions/NApplicationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "NApplicationList"
                 },
                 "OMADApplicationList": {
@@ -158,8 +152,7 @@
                             "$ref": "#/definitions/OMADApplicationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "OMADApplicationList"
                 },
                 "Prune": {
@@ -189,8 +182,7 @@
                             "$ref": "#/definitions/TillageList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "TillageList"
                 }
             },
@@ -883,8 +875,7 @@
                             "$ref": "#/definitions/BurnEvent"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "BurnEvent"
                 },
                 "ContinueFromPreviousYear": {
@@ -908,8 +899,7 @@
                             "$ref": "#/definitions/GrazingList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "GrazingList"
                 },
                 "HarvestList": {
@@ -921,8 +911,7 @@
                             "$ref": "#/definitions/HarvestList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "HarvestList"
                 },
                 "IrrigationList": {
@@ -934,8 +923,7 @@
                             "$ref": "#/definitions/IrrigationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "IrrigationList"
                 },
                 "LimingEvent": {
@@ -947,8 +935,7 @@
                             "$ref": "#/definitions/LimingEvent"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "LimingEvent"
                 },
                 "NApplicationList": {
@@ -960,8 +947,7 @@
                             "$ref": "#/definitions/NApplicationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "NApplicationList"
                 },
                 "OMADApplicationList": {
@@ -973,8 +959,7 @@
                             "$ref": "#/definitions/OMADApplicationList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "OMADApplicationList"
                 },
                 "PlantingDate": {
@@ -1010,8 +995,7 @@
                             "$ref": "#/definitions/TillageList"
                         }
                     ],
-                    "default": {
-                    },
+                    "default": {},
                     "title": "TillageList"
                 }
             },

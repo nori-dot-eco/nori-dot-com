@@ -58,54 +58,6 @@
             "title": "Address",
             "type": "object"
         },
-        "BurningEvent": {
-            "additionalProperties": false,
-            "description": "Burning event details.",
-            "properties": {
-                "date": {
-                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
-                    "format": "date",
-                    "title": "date",
-                    "type": "string",
-                    "validationRules": [
-                        "cropEventDateIsOnOrAfterContainingCropYear"
-                    ]
-                },
-                "externalId": {
-                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "source": {
-                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
-                    "title": "source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "date"
-            ],
-            "title": "BurningEvent",
-            "type": "object"
-        },
         "ClearingAndRenewalEvent": {
             "additionalProperties": false,
             "description": "Clearing and renewal event for orchards / vinyards.",
@@ -201,7 +153,7 @@
                     "default": [],
                     "description": "Burning events, if applicable.",
                     "items": {
-                        "$ref": "#/definitions/BurningEvent"
+                        "$ref": "#/definitions/CropEvent"
                     },
                     "minItems": 0,
                     "title": "burningEvents",
@@ -322,7 +274,7 @@
                     "default": [],
                     "description": "The planting event(s) if there were any for the current crop year otherwise empty array or omit property.\n\nThis will contain a single event for annuals and none for perennials outside of the planting year.",
                     "items": {
-                        "$ref": "#/definitions/PlantingEvent"
+                        "$ref": "#/definitions/CropEvent"
                     },
                     "maxItems": 1,
                     "minItems": 0,
@@ -333,7 +285,7 @@
                     "default": [],
                     "description": "Pruning events, if applicable.",
                     "items": {
-                        "$ref": "#/definitions/PruningEvent"
+                        "$ref": "#/definitions/CropEvent"
                     },
                     "minItems": 0,
                     "title": "pruningEvents",
@@ -511,6 +463,54 @@
                 "type"
             ],
             "title": "Crop",
+            "type": "object"
+        },
+        "CropEvent": {
+            "additionalProperties": false,
+            "description": "A crop event that happened on a particular date.",
+            "properties": {
+                "date": {
+                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
+                    "errorMessage": {
+                        "type": "projectDataError:cropEventDateTypeError",
+                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
+                    },
+                    "format": "date",
+                    "title": "date",
+                    "type": "string",
+                    "validationRules": [
+                        "cropEventDateIsOnOrAfterContainingCropYear"
+                    ]
+                },
+                "externalId": {
+                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "title": "externalId",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
+                    "title": "id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
+                    "title": "source",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "date"
+            ],
+            "title": "CropEvent",
             "type": "object"
         },
         "CropYear": {
@@ -2195,54 +2195,6 @@
             "title": "LimingEvent",
             "type": "object"
         },
-        "PlantingEvent": {
-            "additionalProperties": false,
-            "description": "Planting event details.\n\n(formatted as ISO8601 date format (YYYY-MM-DD) with YYYY > 2000 and YYYY < 2100).",
-            "properties": {
-                "date": {
-                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
-                    "format": "date",
-                    "title": "date",
-                    "type": "string",
-                    "validationRules": [
-                        "cropEventDateIsOnOrAfterContainingCropYear"
-                    ]
-                },
-                "externalId": {
-                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "source": {
-                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
-                    "title": "source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "date"
-            ],
-            "title": "PlantingEvent",
-            "type": "object"
-        },
         "PracticeChangesAdopted": {
             "additionalProperties": false,
             "description": "Please indicate for `true` for the *newly adopted* practices only.",
@@ -2291,54 +2243,6 @@
                 }
             },
             "title": "PracticeChangesAdopted",
-            "type": "object"
-        },
-        "PruningEvent": {
-            "additionalProperties": false,
-            "description": "Pruning Event.",
-            "properties": {
-                "date": {
-                    "description": "The date the crop event happened (formatted as ISO8061 date: YYYY-MM-DD and YYYY > 2000 and YYYY < 2100).\n\nDates for liming and burning can be approximate or the first day of the crop year.",
-                    "errorMessage": {
-                        "type": "projectDataError:cropEventDateTypeError",
-                        "validationRules": "projectDataError:cropEventDateValidationRuleViolation"
-                    },
-                    "format": "date",
-                    "title": "date",
-                    "type": "string",
-                    "validationRules": [
-                        "cropEventDateIsOnOrAfterContainingCropYear"
-                    ]
-                },
-                "externalId": {
-                    "description": "External crop event identifier.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
-                    "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "Nori's internal crop event identifier.\n\nUsed to synchronize repeated imports.",
-                    "title": "id",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "source": {
-                    "description": "Source of the event\n\nOptional field to indicate what system this data point originated from.",
-                    "title": "source",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "date"
-            ],
-            "title": "PruningEvent",
             "type": "object"
         },
         "SlurryOrganicMatterEvent": {
