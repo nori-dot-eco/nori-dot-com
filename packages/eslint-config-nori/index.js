@@ -16,6 +16,28 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['*.md'],
+      parser: 'markdown-eslint-parser',
+      extends: ['plugin:prettier/recommended', 'plugin:md/recommended'],
+      rules: {
+        'md/remark': [
+          'error',
+          {
+            plugins: [['lint-maximum-line-length', 120]],
+          },
+        ],
+        'prettier/prettier': [
+          'error',
+          /**
+           * Important to force prettier to use "markdown" parser - otherwise it wouldn't be able to parse *.md files.
+           * You also can configure other options supported by prettier here - "prose-wrap" is
+           * particularly useful for *.md files
+           */
+          { parser: 'markdown' },
+        ],
+      },
+    },
+    {
       files: ['*.js', '*.ts', '*.jsx', '*.tsx'],
       parser: '@typescript-eslint/parser',
       extends: [
