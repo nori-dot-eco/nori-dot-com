@@ -669,7 +669,8 @@ describe('getQuantificationSummaries', () => {
     expect(
       await getQuantificationSummaries({
         data: GRANDFATHERABLE_YEARS_OUTPUT,
-        maxNumberGrandfatheredYearsForProject: 4,
+        maxNumberGrandfatheredYearsForProject: 3,
+        quantifyAsOfYear: 2019,
       })
     ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummaries>>({
       [modelRunName]: {
