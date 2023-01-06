@@ -28,8 +28,8 @@
     "targets": {
       "make:schema": {
         "inputs": [
-          "default",
-          "!{projectRoot}/src/json/*"
+          "{projectRoot}/src/v4-specification.ts",
+          "{projectRoot}/tsconfig.json"
         ],
         "outputs": [
           "{projectRoot}/src/json/v4-specification.json"
@@ -50,10 +50,7 @@
       "build": {
         "inputs": [
           "default",
-          "!{projectRoot}/src/json/*"
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
+          "not-generated"
         ],
         "dependsOn": [
           "^build",
