@@ -154,6 +154,27 @@ const getProjectionFromCometSummaries = ({
   };
 };
 
+/**
+ * Gets the ten year projections for the baseline and future scenarios, and the average of their
+ * difference.
+ *
+ * Algorithm overview:
+ * 1. Calculate the differences from year to year
+ */
+// const getTenYearProjectionsFromModelRuns({
+//   futureScenarioName,
+//   baselineScenarioName,
+//   somscAnnualDifferencesForScenarios,
+//   modelRuns,
+// }: {
+//   futureScenarioName: string;
+//   baselineScenarioName: string;
+//   modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
+//   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
+// }): void => {
+
+// }
+
 const getTotalM2 = ({
   somscAnnualDifferencesForScenarios,
   baselineScenarioName = 'Baseline',
@@ -303,6 +324,13 @@ const calculateSomscAnnualDifferencesForScenarios = ({
 /**
  * Uses the baseline and future scenarios to calculate difference over the baseline
  * tonnes of carbon in each polygon per year
+ *
+ * For each polygon, get the future and baseline scenarios. Iterate over years,
+ * get the socChanges properties for future and baseline.
+ * Filter to modeled years, subtract baseline from the future, then convert in to
+ * tonnes of CO2.
+ *
+ * @todo Could this function be used to get the ten year average for future and baseline?
  *
  * Note: Upstream services send two scenarios to Soil Metrics: one without practice changes
  * and one with. The difference between these two are used to estimate the carbon
@@ -580,6 +608,7 @@ const createQuantificationSummary = ({
     (s) => s['@name'] === 'Future : FILE RESULTS'
   ).MapUnit[0].Year.map(Number);
 
+  // Here we gather up all references to the each polygon and bundle them in an object
   const { somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon } =
     getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon({
       futureScenarioName,
@@ -588,16 +617,49 @@ const createQuantificationSummary = ({
       modeledYears,
     });
 
+  // take the first 10 years of differences and average them out
+  const tenYearProjectedTonnesPerYear =
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon
+      .map((annualDifferencesPerPolygon) => {
+        // Take ten years and sum
+        const years = Object.keys(annualDifferencesPerPolygon)
+          .sort()
+          .map((year) => annualDifferencesPerPolygon[year])
+          .slice(0, 10)
+          .reduce((prevValue, curValue) => {
+            if (Number.isNaN(curValue)) {
+              return prevValue;
+            }
+            return prevValue + curValue;
+          }, 0);
+        return years;
+      })
+      .reduce((prevValue, curValue) => prevValue + curValue, 0) / 10;
+
+  // This is pulling out the soil metrics total of all years; this is probably what I need to change
+  // Next steps: confirm with jennifer this is what I'm thinking it is. Instead of using this number to
+  // calculate the ten year, use above to find the relevant ten years
+  // Probably need to do this for baseline and future
+
+  // Probably not needed
   const { scenarioSummaries } = getCometScenarioSummaries({
     baselineScenarioName,
     futureScenarioName,
     modelRuns,
   });
 
+  // const x1 = getTenYearProjectionsFromModelRuns({
+  //   futureScenarioName,
+  //   baselineScenarioName,
+  //   modelRuns,
+  // });
+
+  // Confirm: do we need the baseline and future tonnes?
+  // Alternatively, we can still get these but the approach is different`
+  // How is baseline tonnes and future tonnes calculated? Would it be the sum of somsc diffs in baseline?
   const {
     tenYearProjectedBaselineTonnesPerYear,
     tenYearProjectedFutureTonnesPerYear,
-    tenYearProjectedTonnesPerYear,
   } = getProjectionFromCometSummaries({ scenarioSummaries });
 
   const { totalM2 } = getTotalM2({
