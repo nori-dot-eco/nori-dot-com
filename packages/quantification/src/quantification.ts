@@ -2,6 +2,7 @@ import { add, divide, multiply, subtract } from '@nori-dot-com/math';
 import type { Output } from '@nori-dot-com/ggit';
 
 import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
+import { validateParsedModelRunsData } from './validations';
 
 import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 
@@ -564,6 +565,11 @@ const createQuantificationSummary = ({
   maxNumberGrandfatheredYearsForProject: number;
   quantifyAsOfYear?: number;
 }): UnadjustedQuantificationSummary => {
+  validateParsedModelRunsData({
+    baselineScenarioName,
+    futureScenarioName,
+    modelRuns,
+  });
   const { somscAnnualDifferencesForScenarios } =
     calculateSomscAnnualDifferencesForScenarios({
       modelRuns,
