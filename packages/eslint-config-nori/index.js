@@ -127,7 +127,22 @@ module.exports = {
           'never',
           { ts: 'never', json: 'always' },
         ],
-        'import/order': ['error', { 'newlines-between': 'always' }],
+        'import/order': [
+          'error',
+          {
+            'newlines-between': 'always',
+            // groups: [
+            //   'builtin',
+            //   'external',
+            //   'internal',
+            //   'parent',
+            //   'sibling',
+            //   'index',
+            //   'object',
+            //   'type',
+            // ],
+          },
+        ],
         'import/prefer-default-export': 0,
         'import/no-extraneous-dependencies': [
           'error',
@@ -196,6 +211,10 @@ module.exports = {
           {
             selector: ['function', 'parameter'],
             format: ['camelCase', 'UPPER_CASE'],
+            filter: {
+              regex: '^(_)$', // allow _ as a parameter name
+              match: false,
+            },
           },
           {
             selector: ['variable'],
