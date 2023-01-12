@@ -63,10 +63,6 @@ export interface UnadjustedQuantificationSummary {
   unadjustedGrandfatheredTonnesPerYear: UnadjustedGrandfatheredTotals;
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: number;
   switchYear: number;
-  tenYearProjectedFutureTonnesPerYear: number;
-  tenYearProjectedFutureTonnesPerYearPerAcre: number;
-  tenYearProjectedBaselineTonnesPerYear: number;
-  tenYearProjectedBaselineTonnesPerYearPerAcre: number;
   totalM2: number;
   totalAcres: number;
   numberOfGrandfatheredYears: number;
@@ -121,14 +117,16 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
  * of carbon in soil. Negative values from Soil Metrics indicate carbon is sequestered.
  *
  * For our purposes, we need the inverse of this number.
+ * 
+ * @deprecated This function does not return the true ten year average, as it relies on inputs to
+ * to only be exactly ten years. Recent changes to upstream systems have begun adding more than
+ * 10 years of data to SoilMetrics inputs.
  */
 const getProjectionFromCometSummaries = ({
   scenarioSummaries,
 }: {
   scenarioSummaries: ScenarioSummaries;
 }): {
-  tenYearProjectedBaselineTonnesPerYear: number;
-  tenYearProjectedFutureTonnesPerYear: number;
   tenYearProjectedTonnesPerYear: number;
 } => {
   const tenYearProjectedBaselineTonnesPerYear: number = multiply(
@@ -148,8 +146,6 @@ const getProjectionFromCometSummaries = ({
     Math.max(tenYearProjectedBaselineTonnesPerYear, 0)
   );
   return {
-    tenYearProjectedBaselineTonnesPerYear,
-    tenYearProjectedFutureTonnesPerYear,
     tenYearProjectedTonnesPerYear,
   };
 };
@@ -595,8 +591,6 @@ const createQuantificationSummary = ({
   });
 
   const {
-    tenYearProjectedBaselineTonnesPerYear,
-    tenYearProjectedFutureTonnesPerYear,
     tenYearProjectedTonnesPerYear,
   } = getProjectionFromCometSummaries({ scenarioSummaries });
 
@@ -643,16 +637,6 @@ const createQuantificationSummary = ({
     grandfatherableYears,
     grandfatheredTonnes,
     unadjustedGrandfatheredTonnesPerYear,
-    tenYearProjectedFutureTonnesPerYear,
-    tenYearProjectedFutureTonnesPerYearPerAcre: divide(
-      tenYearProjectedFutureTonnesPerYear,
-      totalAcres
-    ),
-    tenYearProjectedBaselineTonnesPerYear,
-    tenYearProjectedBaselineTonnesPerYearPerAcre: divide(
-      tenYearProjectedBaselineTonnesPerYear,
-      totalAcres
-    ),
     totalM2,
     totalAcres,
     numberOfGrandfatheredYears,

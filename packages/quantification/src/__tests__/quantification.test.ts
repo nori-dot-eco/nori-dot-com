@@ -150,11 +150,7 @@ describe('getQuantificationSummary', () => {
       totalM2: 481_578.963_586_112_2,
       tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
       tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedBaselineTonnesPerYear: -24.6869,
-      tenYearProjectedFutureTonnesPerYear: 64.1874,
       tenYearProjectedTonnesPerYear: 64.1874,
-      tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -231,11 +227,7 @@ describe('getQuantificationSummary', () => {
       totalM2: 481_578.963_586_112_2,
       tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
       tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedBaselineTonnesPerYear: -24.6869,
-      tenYearProjectedFutureTonnesPerYear: 64.1874,
       tenYearProjectedTonnesPerYear: 64.1874,
-      tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -306,11 +298,7 @@ describe('getQuantificationSummary', () => {
       totalM2: 481_578.963_586_112_2,
       tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
       tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedBaselineTonnesPerYear: -24.6869,
-      tenYearProjectedFutureTonnesPerYear: 64.1874,
       tenYearProjectedTonnesPerYear: 64.1874,
-      tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -388,10 +376,6 @@ describe('getQuantificationSummary', () => {
         grandfatherableYears: [],
         grandfatheredTonnes: 0,
         unadjustedGrandfatheredTonnesPerYear: {},
-        tenYearProjectedFutureTonnesPerYear: 61.3983,
-        tenYearProjectedFutureTonnesPerYearPerAcre: 0.515_948_833_871_784_7,
-        tenYearProjectedBaselineTonnesPerYear: 15.5153,
-        tenYearProjectedBaselineTonnesPerYearPerAcre: 0.130_379_846_708_636_9,
         totalM2: 481_578.963_586_112_2,
         totalAcres: 119.000_753_503_510_62,
         numberOfGrandfatheredYears: 0,
@@ -482,10 +466,6 @@ describe('getQuantificationSummary', () => {
           totalAcres: 145.006_876_755_220_7,
         },
       },
-      tenYearProjectedFutureTonnesPerYear: 78.0638,
-      tenYearProjectedFutureTonnesPerYearPerAcre: 0.538_345_502_963_806_6,
-      tenYearProjectedBaselineTonnesPerYear: -30.0899,
-      tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_506_710_532_034_62,
       totalM2: 586_822.010_489_019_1,
       totalAcres: 145.006_876_755_220_7,
       numberOfGrandfatheredYears: 5,
@@ -519,11 +499,7 @@ describe('getQuantificationSummaries', () => {
         totalM2: 481_578.963_586_112_2,
         tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
         tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedBaselineTonnesPerYear: -24.6869,
-        tenYearProjectedFutureTonnesPerYear: 64.1874,
         tenYearProjectedTonnesPerYear: 64.1874,
-        tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -605,11 +581,7 @@ describe('getQuantificationSummaries', () => {
         totalM2: 481_578.963_586_112_2,
         tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
         tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedBaselineTonnesPerYear: -24.6869,
-        tenYearProjectedFutureTonnesPerYear: 64.1874,
         tenYearProjectedTonnesPerYear: 64.1874,
-        tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -685,11 +657,7 @@ describe('getQuantificationSummaries', () => {
         totalM2: 481_578.963_586_112_2,
         tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
         tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedBaselineTonnesPerYear: -24.6869,
-        tenYearProjectedFutureTonnesPerYear: 64.1874,
         tenYearProjectedTonnesPerYear: 64.1874,
-        tenYearProjectedFutureTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedBaselineTonnesPerYearPerAcre: -0.207_451_627_600_590_9,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -772,10 +740,6 @@ describe('getQuantificationSummaries', () => {
           grandfatherableYears: [],
           grandfatheredTonnes: 0,
           unadjustedGrandfatheredTonnesPerYear: {},
-          tenYearProjectedFutureTonnesPerYear: 61.3983,
-          tenYearProjectedFutureTonnesPerYearPerAcre: 0.515_948_833_871_784_7,
-          tenYearProjectedBaselineTonnesPerYear: 15.5153,
-          tenYearProjectedBaselineTonnesPerYearPerAcre: 0.130_379_846_708_636_9,
           totalM2: 481_578.963_586_112_2,
           totalAcres: 119.000_753_503_510_62,
           numberOfGrandfatheredYears: 0,
