@@ -111,46 +111,6 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
   return { somscAnnualDifferencesBetweenFutureAndBaselineScenarios };
 };
 
-/**
- * Sums the baseline and future tonnes per year.
- *
- * Note that the values provided by Soil Metrics in the Carbon.SoilCarbon property are the amount
- * of carbon in soil. Negative values from Soil Metrics indicate carbon is sequestered.
- *
- * For our purposes, we need the inverse of this number.
- * 
- * @deprecated This function does not return the true ten year average, as it relies on inputs to
- * to only be exactly ten years. Recent changes to upstream systems have begun adding more than
- * 10 years of data to SoilMetrics inputs.
- */
-const getProjectionFromCometSummaries = ({
-  scenarioSummaries,
-}: {
-  scenarioSummaries: ScenarioSummaries;
-}): {
-  tenYearProjectedTonnesPerYear: number;
-} => {
-  const tenYearProjectedBaselineTonnesPerYear: number = multiply(
-    scenarioSummaries.baseline.flat().reduce((accumulator, currentValue) => {
-      return add(accumulator, Number.parseFloat(currentValue));
-    }, 0),
-    -1
-  );
-  const tenYearProjectedFutureTonnesPerYear: number = multiply(
-    scenarioSummaries.future.flat().reduce((accumulator, currentValue) => {
-      return add(accumulator, Number.parseFloat(currentValue));
-    }, 0),
-    -1
-  );
-  const tenYearProjectedTonnesPerYear = subtract(
-    tenYearProjectedFutureTonnesPerYear,
-    Math.max(tenYearProjectedBaselineTonnesPerYear, 0)
-  );
-  return {
-    tenYearProjectedTonnesPerYear,
-  };
-};
-
 const getTotalM2 = ({
   somscAnnualDifferencesForScenarios,
   baselineScenarioName = 'Baseline',
@@ -169,43 +129,6 @@ const getTotalM2 = ({
     0
   );
   return { totalM2 };
-};
-
-/**
- * Builds an object with baseline and future data by getting the SoilCarbon values
- * SoilCarbon is negative == sequestration
- */
-const getCometScenarioSummaries = ({
-  futureScenarioName,
-  baselineScenarioName,
-  modelRuns,
-}: {
-  futureScenarioName: string;
-  baselineScenarioName: string;
-  modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
-}): { scenarioSummaries: ScenarioSummaries } => {
-  const scenarioSummaries = modelRuns.reduce(
-    (aggregatedScenariosForModels, { Scenario: [...scenarios] }) => {
-      scenarios.reduce(
-        (
-          aggregatedScenariosForModel,
-          { '@name': scenarioName, Carbon: carbon }
-        ) => {
-          if (scenarioName === futureScenarioName) {
-            aggregatedScenariosForModel.future.push(carbon.SoilCarbon);
-          }
-          if (scenarioName === baselineScenarioName) {
-            aggregatedScenariosForModel.baseline.push(carbon.SoilCarbon);
-          }
-          return aggregatedScenariosForModel;
-        },
-        aggregatedScenariosForModels
-      );
-      return aggregatedScenariosForModels;
-    },
-    { baseline: [], future: [] }
-  );
-  return { scenarioSummaries };
 };
 
 /**
@@ -549,6 +472,36 @@ const getGrandfatheredTonneQuantities = ({
 };
 
 /**
+ * Takes the year-over-year difference in soil carbon content across multiple polygons,
+ * sums the future and baseline values individually, then provides the average year-over-year
+ * difference over the first 10 years.
+ *
+ * @returns The average year-over-year change for the first 10 years after the switch year
+ */
+const getTenYearProjectedTonnesPerYear = ({
+  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+}: {
+  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
+}): number => {
+  return divide(
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon
+      .map((annualDifferencesPerPolygon) => {
+        const years = Object.keys(annualDifferencesPerPolygon)
+          .sort()
+          .map((year) => annualDifferencesPerPolygon[year])
+          .slice(0, 10)
+          .filter((yearValue) => !Number.isNaN(yearValue));
+
+        return years.reduce((prevValue, curValue) => {
+          return add(prevValue, curValue);
+        }, 0);
+      })
+      .reduce((prevValue, curValue) => add(prevValue, curValue), 0),
+    10
+  );
+};
+
+/**
  * Helper function that creates the quantification summary object by passing model run data
  * to helper functions
  */
@@ -590,15 +543,9 @@ const createQuantificationSummary = ({
       modeledYears,
     });
 
-  const { scenarioSummaries } = getCometScenarioSummaries({
-    baselineScenarioName,
-    futureScenarioName,
-    modelRuns,
+  const tenYearProjectedTonnesPerYear = getTenYearProjectedTonnesPerYear({
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   });
-
-  const {
-    tenYearProjectedTonnesPerYear,
-  } = getProjectionFromCometSummaries({ scenarioSummaries });
 
   const { totalM2 } = getTotalM2({
     somscAnnualDifferencesForScenarios,
