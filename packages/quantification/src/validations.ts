@@ -27,21 +27,21 @@ export const validateParsedModelRunsData = ({
   baselineScenarioName: string;
   futureScenarioName: string;
 }): void => {
-  for (const [nModelRun, modelRun] of modelRuns.entries()) {
+  for (const [modelRunIndex, modelRun] of modelRuns.entries()) {
     const scenarioResults = Array.from(modelRun.Scenario.entries()).filter(
-      ([_nScenario, scenario]) => {
+      ([_, scenario]) => {
         return scenario['@name'].includes(SOIL_METRICS_RESULTS_NAME_SUFFIX);
       }
     );
 
-    if (scenarioResults.length < 2) {
+    if (scenarioResults.length !== 3) {
       throw new Error(
-        `Expected ModelRun.${nModelRun} to have at least 2 results, found ` +
+        `Expected ModelRun.${modelRunIndex} to have 3 results, found ` +
           `${scenarioResults.length}`
       );
     }
 
-    for (const [nScenario, scenario] of scenarioResults) {
+    for (const [scenarioIndex, scenario] of scenarioResults) {
       if (
         scenario['@name'].includes(SOIL_METRICS_RESULTS_NAME_SUFFIX) &&
         (scenario['@name'].includes(baselineScenarioName) ||
@@ -49,30 +49,31 @@ export const validateParsedModelRunsData = ({
       ) {
         if (!scenario?.MapUnit) {
           throw new Error(
-            `Expected ModelRun.${nModelRun}.Scenario.${nScenario} to have MapUnit property`
+            `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex} "${scenario['@name']}" to have ` +
+              `MapUnit property`
           );
         }
 
-        for (const [nMapUnit, mapUnit] of scenario.MapUnit.entries()) {
+        for (const [mapUnitIndex, mapUnit] of scenario.MapUnit.entries()) {
           if (Object.keys(mapUnit.InputCrop).length < 10) {
             throw new Error(
-              `Expected ModelRun.${nModelRun}.Scenario.${nScenario}.MapUnit.${nMapUnit}.InputCrop ` +
-                `to have at least 10 values`
+              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                `MapUnit.${mapUnitIndex}.InputCrop to have at least 10 values`
             );
           }
 
           const somsc = mapUnit?.somsc;
           if (!somsc) {
             throw new Error(
-              `Expected ModelRun.${nModelRun}.Scenario.${nScenario}.MapUnit.${nMapUnit} to have ` +
-                `somsc property`
+              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                `MapUnit.${mapUnitIndex} to have somsc property`
             );
           }
 
           if (Object.keys(somsc).length < 11) {
             throw new Error(
-              `Expected ModelRun.${nModelRun}.Scenario.${nScenario}.MapUnit.${nMapUnit}.somsc to ` +
-                `have at least 11 values`
+              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                `MapUnit.${mapUnitIndex}.somsc to have at least 11 values`
             );
           }
         }
