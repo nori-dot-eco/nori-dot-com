@@ -214,11 +214,6 @@ module.exports = {
           {
             selector: ['parameter'],
             format: ['camelCase'],
-          },
-          {
-            selector: ['parameter'],
-            format: ['camelCase'],
-            modifiers: ['unused'],
             leadingUnderscore: 'allow',
           },
           {
