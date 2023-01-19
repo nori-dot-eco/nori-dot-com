@@ -12,6 +12,7 @@ import {
 } from './example-output';
 
 jest.mock('../constants', () => ({
+  ...jest.requireActual('../constants'),
   get CURRENT_YEAR() {
     return 2021;
   },
@@ -162,7 +163,7 @@ describe('getQuantificationSummary', () => {
           '2021': 92.358_872_428_480_85,
           '2022': 57.860_299_141_229_15,
           '2023': 75.209_361_959_482_37,
-          '2024': Number.NaN,
+          '2024': 49.259_094_477_479_096,
         },
       ],
       somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -239,7 +240,7 @@ describe('getQuantificationSummary', () => {
           '2021': 92.358_872_428_480_85,
           '2022': 57.860_299_141_229_15,
           '2023': 75.209_361_959_482_37,
-          '2024': Number.NaN,
+          '2024': 49.259_094_477_479_096,
         },
       ],
       somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -310,7 +311,7 @@ describe('getQuantificationSummary', () => {
           '2021': 92.358_872_428_480_85,
           '2022': 57.860_299_141_229_15,
           '2023': 75.209_361_959_482_37,
-          '2024': Number.NaN,
+          '2024': 49.259_094_477_479_096,
         },
       ],
       somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -410,7 +411,7 @@ describe('getQuantificationSummary', () => {
           '2021': 92.358_872_428_480_85,
           '2022': 57.860_299_141_229_15,
           '2023': 75.209_361_959_482_37,
-          '2024': Number.NaN,
+          '2024': 49.259_094_477_479_096,
         },
         {
           '2015': 5.746_271_717_264_432,
@@ -422,7 +423,7 @@ describe('getQuantificationSummary', () => {
           '2021': 19.785_112_030_788_145,
           '2022': 12.365_248_164_545_722,
           '2023': 16.370_102_302_508_144,
-          '2024': Number.NaN,
+          '2024': 10.787_277_248_720_404,
         },
       ],
       somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -511,7 +512,7 @@ describe('getQuantificationSummaries', () => {
             '2021': 92.358_872_428_480_85,
             '2022': 57.860_299_141_229_15,
             '2023': 75.209_361_959_482_37,
-            '2024': Number.NaN,
+            '2024': 49.259_094_477_479_096,
           },
         ],
         somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -593,7 +594,7 @@ describe('getQuantificationSummaries', () => {
             '2021': 92.358_872_428_480_85,
             '2022': 57.860_299_141_229_15,
             '2023': 75.209_361_959_482_37,
-            '2024': Number.NaN,
+            '2024': 49.259_094_477_479_096,
           },
         ],
         somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
@@ -669,7 +670,7 @@ describe('getQuantificationSummaries', () => {
             '2021': 92.358_872_428_480_85,
             '2022': 57.860_299_141_229_15,
             '2023': 75.209_361_959_482_37,
-            '2024': Number.NaN,
+            '2024': 49.259_094_477_479_096,
           },
         ],
         somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
