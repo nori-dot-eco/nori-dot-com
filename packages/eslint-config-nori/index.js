@@ -194,7 +194,7 @@ module.exports = {
           'error',
           { selector: 'class', format: ['PascalCase'] },
           {
-            selector: ['function', 'parameter'],
+            selector: ['function'],
             format: ['camelCase', 'UPPER_CASE'],
           },
           {
@@ -204,10 +204,6 @@ module.exports = {
               'UPPER_CASE',
               'PascalCase', // todo remove PascalCase
             ],
-            custom: {
-              regex: '^_$',
-              match: true,
-            },
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           {
@@ -217,7 +213,7 @@ module.exports = {
           },
           {
             selector: ['parameter'],
-            format: ['camelCase'],
+            format: ['camelCase', 'UPPER_CASE'],
             leadingUnderscore: 'allow',
           },
           {
