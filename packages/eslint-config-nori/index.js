@@ -213,7 +213,7 @@ module.exports = {
           },
           {
             selector: ['parameter'],
-            format: ['camelCase', 'UPPER_CASE'],
+            format: ['camelCase'],
             leadingUnderscore: 'allow',
           },
           {
