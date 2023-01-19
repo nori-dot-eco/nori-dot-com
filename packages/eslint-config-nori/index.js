@@ -194,7 +194,7 @@ module.exports = {
           'error',
           { selector: 'class', format: ['PascalCase'] },
           {
-            selector: ['function', 'parameter'],
+            selector: ['function'],
             format: ['camelCase', 'UPPER_CASE'],
           },
           {
@@ -213,7 +213,19 @@ module.exports = {
           },
           {
             selector: ['parameter'],
+            custom: {
+              regex: '^_[a-z][a-zA-Z0-9]*$',
+              match: true,
+            },
+          },
+          {
+            selector: ['parameter'],
             format: ['camelCase'],
+          },
+          {
+            selector: ['parameter'],
+            format: ['camelCase'],
+            modifiers: ['unused'],
             leadingUnderscore: 'allow',
           },
           {
