@@ -59,7 +59,7 @@ describe('validations', () => {
             ],
           })
         ).toThrow(
-          'Expected ModelRun.0.Scenario.0 "Baseline : FILE RESULTS" to have MapUnit property'
+          'Expected ModelRun.0.Scenario.0 \\"Baseline : FILE RESULTS\\" to have MapUnit property'
         );
       });
 
@@ -123,7 +123,7 @@ describe('validations', () => {
             ],
           })
         ).toThrow(
-          'Expected ModelRun.0.Scenario.0("Baseline : FILE RESULTS").MapUnit.0.InputCrop to have at least 10 values'
+          'Expected ModelRun.0.Scenario.0(\\"Baseline : FILE RESULTS\\").MapUnit.0.InputCrop to have at least 10 values'
         );
       });
 
@@ -212,7 +212,7 @@ describe('validations', () => {
             ],
           })
         ).toThrow(
-          'Expected ModelRun.0.Scenario.0("Baseline : FILE RESULTS").MapUnit.0 to have somsc property'
+          'Expected ModelRun.0.Scenario.0(\\"Baseline : FILE RESULTS\\").MapUnit.0 to have somsc property'
         );
       });
 
@@ -314,7 +314,7 @@ describe('validations', () => {
             ],
           })
         ).toThrow(
-          'Expected ModelRun.0.Scenario.2("Future : FILE RESULTS").MapUnit.0.somsc to have at least 11 values'
+          'Expected ModelRun.0.Scenario.2(\\"Future : FILE RESULTS\\").MapUnit.0.somsc to have at least 11 values'
         );
       });
     });

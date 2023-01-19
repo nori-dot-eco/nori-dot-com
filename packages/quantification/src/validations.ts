@@ -1,4 +1,5 @@
 import type { Output } from '@nori-dot-com/ggit';
+import { ContextualError } from '@nori-dot-com/errors';
 
 import { SOIL_METRICS_RESULTS_NAME_SUFFIX } from './constants';
 
@@ -35,10 +36,14 @@ export const validateParsedModelRunsData = ({
     );
 
     if (scenarioResults.length !== 3) {
-      throw new Error(
-        `Expected ModelRun.${modelRunIndex} to have 3 results, found ` +
-          `${scenarioResults.length}`
-      );
+      throw new ContextualError({
+        errorKey: 'quantificationError:insufficientData',
+        context: {
+          message:
+            `Expected ModelRun.${modelRunIndex} to have 3 results, found ` +
+            `${scenarioResults.length}`,
+        },
+      });
     }
 
     for (const [scenarioIndex, scenario] of scenarioResults) {
@@ -48,33 +53,49 @@ export const validateParsedModelRunsData = ({
           scenario['@name'].includes(futureScenarioName))
       ) {
         if (!scenario?.MapUnit) {
-          throw new Error(
-            `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex} "${scenario['@name']}" to have ` +
-              `MapUnit property`
-          );
+          throw new ContextualError({
+            errorKey: 'quantificationError:schema',
+            context: {
+              message:
+                `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex} "${scenario['@name']}" to have ` +
+                `MapUnit property`,
+            },
+          });
         }
 
         for (const [mapUnitIndex, mapUnit] of scenario.MapUnit.entries()) {
           if (Object.keys(mapUnit.InputCrop).length < 10) {
-            throw new Error(
-              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
-                `MapUnit.${mapUnitIndex}.InputCrop to have at least 10 values`
-            );
+            throw new ContextualError({
+              errorKey: 'quantificationError:insufficientData',
+              context: {
+                message:
+                  `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                  `MapUnit.${mapUnitIndex}.InputCrop to have at least 10 values`,
+              },
+            });
           }
 
           const somsc = mapUnit?.somsc;
           if (!somsc) {
-            throw new Error(
-              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
-                `MapUnit.${mapUnitIndex} to have somsc property`
-            );
+            throw new ContextualError({
+              errorKey: 'quantificationError:schema',
+              context: {
+                message:
+                  `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                  `MapUnit.${mapUnitIndex} to have somsc property`,
+              },
+            });
           }
 
           if (Object.keys(somsc).length < 11) {
-            throw new Error(
-              `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
-                `MapUnit.${mapUnitIndex}.somsc to have at least 11 values`
-            );
+            throw new ContextualError({
+              errorKey: 'quantificationError:insufficientData',
+              context: {
+                message:
+                  `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
+                  `MapUnit.${mapUnitIndex}.somsc to have at least 11 values`,
+              },
+            });
           }
         }
       }

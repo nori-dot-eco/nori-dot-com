@@ -315,4 +315,12 @@ export const Errors = {
       message: 'Cannot mint removals from different projects in the same batch',
     },
   },
+  quantificationError: {
+    schema: {
+      message: 'Schema expectations are not met',
+    },
+    insufficientData: {
+      message: 'Output lacks required data',
+    },
+  },
 };
