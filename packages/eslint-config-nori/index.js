@@ -204,6 +204,9 @@ module.exports = {
               'UPPER_CASE',
               'PascalCase', // todo remove PascalCase
             ],
+            custom: {
+                regex: '^_$',
+                match: true
           },
           { selector: 'typeLike', format: ['PascalCase'] },
           {
