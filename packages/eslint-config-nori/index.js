@@ -213,14 +213,12 @@ module.exports = {
           },
           {
             selector: ['parameter'],
+            format: ['camelCase'],
             custom: {
-              regex: '^_[a-z][a-zA-Z0-9]*$',
+              regex: '^_?[a-z][a-zA-Z0-9]*$',
               match: true,
             },
-          },
-          {
-            selector: ['parameter'],
-            format: ['camelCase'],
+            leadingUnderscore: 'allow',
           },
           {
             selector: ['parameter'],
