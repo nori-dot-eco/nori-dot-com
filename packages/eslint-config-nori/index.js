@@ -200,21 +200,23 @@ module.exports = {
           'error',
           'interface',
         ],
-        'no-unused-vars': 0,
+        'no-unused-vars': 0, // replaced by @typescript-eslint/no-unused-vars
         '@typescript-eslint/no-unused-vars': [
           'error',
-          { argsIgnorePattern: 'req|_' },
+          {
+            argsIgnorePattern: '_',
+            args: 'all',
+            caughtErrors: 'all',
+            ignoreRestSiblings: true,
+          },
         ],
         '@typescript-eslint/naming-convention': [
           'error',
           { selector: 'class', format: ['PascalCase'] },
           {
-            selector: ['function'],
-            format: ['camelCase', 'UPPER_CASE'],
-            filter: {
-              regex: '^(_)$', // allow _ as a parameter name
-              match: false,
-            },
+            selector: ['function', 'classMethod'],
+            format: ['camelCase'],
+            leadingUnderscore: 'allow',
           },
           {
             selector: ['variable'],
