@@ -209,7 +209,7 @@ module.exports = {
           'error',
           { selector: 'class', format: ['PascalCase'] },
           {
-            selector: ['function', 'parameter'],
+            selector: ['function'],
             format: ['camelCase', 'UPPER_CASE'],
             filter: {
               regex: '^(_)$', // allow _ as a parameter name
@@ -233,6 +233,16 @@ module.exports = {
           {
             selector: ['parameter'],
             format: ['camelCase'],
+            custom: {
+              regex: '^_?[a-z][a-zA-Z0-9]*$',
+              match: true,
+            },
+            leadingUnderscore: 'allow',
+          },
+          {
+            selector: ['parameter'],
+            format: ['camelCase'],
+            modifiers: ['unused'],
             leadingUnderscore: 'allow',
           },
           {
