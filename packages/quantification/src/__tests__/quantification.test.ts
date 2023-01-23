@@ -9,6 +9,7 @@ import {
   GRANDFATHERABLE_YEARS_OUTPUT,
   NO_GRANDFATHERABLE_YEARS_OUTPUT,
   MULTIPOLYGON_OUTPUT,
+  MULTI_FIELD_OUTPUT,
 } from './example-output';
 
 jest.mock('../constants', () => ({
@@ -149,9 +150,9 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
-      tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedTonnesPerYear: 64.1874,
+      tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+      tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
+      tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -188,26 +189,26 @@ describe('getQuantificationSummary', () => {
           totalAcres: 119.000_753_503_510_62,
         },
         '2018': {
-          amount: 64.1874,
+          amount: 60.696_700_824_693_26,
           method: 'projection',
-          averagePerAcre: 0.539_386_500_591_413_7,
+          averagePerAcre: 0.510_053_079_814_344_7,
           totalAcres: 119.000_753_503_510_62,
         },
         '2019': {
-          amount: 64.1874,
+          amount: 60.696_700_824_693_26,
           method: 'projection',
-          averagePerAcre: 0.539_386_500_591_413_7,
+          averagePerAcre: 0.510_053_079_814_344_7,
           totalAcres: 119.000_753_503_510_62,
         },
         '2020': {
-          amount: 64.1874,
-          averagePerAcre: 0.539_386_500_591_413_7,
+          amount: 60.696_700_824_693_26,
+          averagePerAcre: 0.510_053_079_814_344_7,
           method: 'projection',
           totalAcres: 119.000_753_503_510_62,
         },
       },
-      grandfatheredTonnes: 249.897_743_783_456_26,
-      grandfatheredTonnesPerYearPerAcreAverage: 0.419_993_548_656_116_8,
+      grandfatheredTonnes: 239.425_646_257_536_04,
+      grandfatheredTonnesPerYearPerAcreAverage: 0.402_393_496_189_875_4,
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', async () => {
@@ -226,9 +227,9 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
-      tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedTonnesPerYear: 64.1874,
+      tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+      tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
+      tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -258,26 +259,26 @@ describe('getQuantificationSummary', () => {
           totalAcres: 119.000_753_503_510_62,
         },
         '2018': {
-          amount: 64.1874,
+          amount: 60.696_700_824_693_26,
           method: 'projection',
-          averagePerAcre: 0.539_386_500_591_413_7,
+          averagePerAcre: 0.510_053_079_814_344_7,
           totalAcres: 119.000_753_503_510_62,
         },
         '2019': {
-          amount: 64.1874,
+          amount: 60.696_700_824_693_26,
           method: 'projection',
-          averagePerAcre: 0.539_386_500_591_413_7,
+          averagePerAcre: 0.510_053_079_814_344_7,
           totalAcres: 119.000_753_503_510_62,
         },
         '2020': {
-          amount: 64.1874,
-          averagePerAcre: 0.539_386_500_591_413_7,
+          amount: 60.696_700_824_693_26,
+          averagePerAcre: 0.510_053_079_814_344_7,
           method: 'projection',
           totalAcres: 119.000_753_503_510_62,
         },
       },
-      grandfatheredTonnes: 234.370_367_405_031_03,
-      grandfatheredTonnesPerYearPerAcreAverage: 0.492_371_603_760_721,
+      grandfatheredTonnes: 223.898_269_879_110_8,
+      grandfatheredTonnesPerYearPerAcreAverage: 0.470_371_538_177_919_2,
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', async () => {
@@ -297,9 +298,9 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
-      tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-      tenYearProjectedTonnesTotalEstimate: 641.874,
-      tenYearProjectedTonnesPerYear: 64.1874,
+      tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+      tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
+      tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
       somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
         {
           '2015': 26.237_005_795_497_225,
@@ -334,14 +335,14 @@ describe('getQuantificationSummary', () => {
           totalAcres: 119.000_753_503_510_62,
         },
         '2018': {
-          amount: 64.1874,
+          amount: 60.696_700_824_693_26,
           method: 'projection',
-          averagePerAcre: 0.539_386_500_591_413_7,
+          averagePerAcre: 0.510_053_079_814_344_7,
           totalAcres: 119.000_753_503_510_62,
         },
       },
-      grandfatheredTonnes: 121.522_943_783_456_27,
-      grandfatheredTonnesPerYearPerAcreAverage: 0.340_398_247_365_919,
+      grandfatheredTonnes: 118.032_244_608_149_53,
+      grandfatheredTonnesPerYearPerAcreAverage: 0.330_620_440_440_229_3,
     });
   });
   describe('When there are no grandfatherable years', () => {
@@ -355,10 +356,10 @@ describe('getQuantificationSummary', () => {
         modeledYears: [
           2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
         ],
-        tenYearProjectedTonnesTotalEstimate: 458.83,
+        tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
-        tenYearProjectedTonnesPerYear: 45.883,
-        tenYearProjectedTonnesPerYearPerAcre: 0.385_568_987_163_147_8,
+        tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
+        tenYearProjectedTonnesPerYearPerAcre: 0.283_792_671_728_480_66,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2021': 33.380_606_268_649_07,
@@ -387,92 +388,154 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('should quantify multi-polygon output files', async () => {
-    expect(
-      await getQuantificationSummary({
-        data: MULTIPOLYGON_OUTPUT,
-        maxNumberGrandfatheredYearsForProject: 5,
-      })
-    ).toStrictEqual<ResolvedReturnType<typeof getQuantificationSummary>>({
-      modeledYears: [
-        2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
-      ],
-      tenYearProjectedTonnesTotalEstimate: 780.638,
-      somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 74.456_714_162_597_9,
-      tenYearProjectedTonnesPerYear: 78.0638,
-      tenYearProjectedTonnesPerYearPerAcre: 0.538_345_502_963_806_6,
-      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
-        {
-          '2015': 26.237_005_795_497_225,
-          '2016': 15.527_376_378_425_224,
-          '2017': 41.808_167_405_031_04,
-          '2018': 73.329_044_626_437_04,
-          '2019': 70.717_277_518_740_5,
-          '2020': 104.660_508_516_130_16,
-          '2021': 92.358_872_428_480_85,
-          '2022': 57.860_299_141_229_15,
-          '2023': 75.209_361_959_482_37,
-          '2024': 49.259_094_477_479_096,
+    const result = await getQuantificationSummaries({
+      data: MULTI_FIELD_OUTPUT,
+      maxNumberGrandfatheredYearsForProject: 5,
+    });
+
+    expect(result).toStrictEqual<
+      Record<string, ResolvedReturnType<typeof getQuantificationSummary>>
+    >({
+      'externalId=14d9ac5b-b3d6-4de3-8a4d-c0d3ead56d96': {
+        modeledYears: [
+          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+        ],
+        tenYearProjectedTonnesPerYear: 80.092_410_746_070_4,
+        tenYearProjectedTonnesPerYearPerAcre: 0.456_044_051_917_675_55,
+        tenYearProjectedTonnesTotalEstimate: 800.924_107_460_704,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 120.809_480_377_702_2,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+          {
+            '2012': -129.937_652_180_419_52,
+            '2013': 64.568_292_353_508_27,
+            '2014': 148.961_026_629_237_47,
+            '2015': 166.554_508_359_093_8,
+            '2016': 134.706_494_834_650_64,
+            '2017': -31.960_283_913_257_378,
+            '2018': 201.037_692_692_949_6,
+            '2019': 120.329_836_472_426_93,
+            '2020': 179.933_661_801_741_12,
+            '2021': -53.269_469_589_226_915,
+          },
+        ],
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2016': 134.706_494_834_650_64,
+          '2017': -31.960_283_913_257_378,
+          '2018': 201.037_692_692_949_6,
+          '2019': 120.329_836_472_426_93,
+          '2020': 179.933_661_801_741_12,
         },
-        {
-          '2015': 5.746_271_717_264_432,
-          '2016': 3.406_406_770_065_806,
-          '2017': 8.966_450_274_935_438,
-          '2018': 15.973_293_814_577_158,
-          '2019': 15.374_521_744_567_634,
-          '2020': 22.520_523_764_079_58,
-          '2021': 19.785_112_030_788_145,
-          '2022': 12.365_248_164_545_722,
-          '2023': 16.370_102_302_508_144,
-          '2024': 10.787_277_248_720_404,
+        grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
+        grandfatheredTonnes: 288.409_359_071_024_26,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.328_439_040_594_574_4,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 80.092_410_746_070_4,
+            method: 'projection',
+            averagePerAcre: 0.456_044_051_917_675_55,
+            totalAcres: 175.624_285_437_514_2,
+          },
+          '2017': {
+            amount: -31.960_283_913_257_378,
+            method: 'somsc',
+            averagePerAcre: -0.181_981_004_697_830_4,
+            totalAcres: 175.624_285_437_514_2,
+          },
+          '2018': {
+            amount: 80.092_410_746_070_4,
+            method: 'projection',
+            averagePerAcre: 0.456_044_051_917_675_55,
+            totalAcres: 175.624_285_437_514_2,
+          },
+          '2019': {
+            amount: 80.092_410_746_070_4,
+            method: 'projection',
+            averagePerAcre: 0.456_044_051_917_675_55,
+            totalAcres: 175.624_285_437_514_2,
+          },
+          '2020': {
+            amount: 80.092_410_746_070_4,
+            method: 'projection',
+            averagePerAcre: 0.456_044_051_917_675_55,
+            totalAcres: 175.624_285_437_514_2,
+          },
         },
-      ],
-      somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
-        '2016': 18.933_783_148_491_03,
-        '2017': 50.774_617_679_966_475,
-        '2018': 89.302_338_441_014_2,
-        '2019': 86.091_799_263_308_13,
-        '2020': 127.181_032_280_209_73,
+        totalM2: 710_726.267_452_201_8,
+        totalAcres: 175.624_285_437_514_2,
+        numberOfGrandfatheredYears: 5,
+        switchYear: 2016,
+        methodologyVersion: '1.0.0',
       },
-      grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
-      grandfatheredTonnes: 303.899_800_828_457_5,
-      unadjustedGrandfatheredTonnesPerYear: {
-        '2016': {
-          amount: 18.933_783_148_491_03,
-          method: 'somsc',
-          averagePerAcre: 0.130_571_622_340_727_06,
-          totalAcres: 145.006_876_755_220_7,
+      'externalId=7c8bf8c4-c880-4836-854a-b1b2ec153835': {
+        modeledYears: [
+          2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+        ],
+        tenYearProjectedTonnesTotalEstimate: 76.935_320_636_772_09,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 10.292_001_747_306_955,
+        tenYearProjectedTonnesPerYear: 7.693_532_063_677_209,
+        tenYearProjectedTonnesPerYearPerAcre: 0.547_584_319_099_662_5,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+          {
+            '2012': 0.525_846_857_138_835_9,
+            '2013': -5.183_579_265_870_239_5,
+            '2014': 4.749_087_753_168_133_5,
+            '2015': 7.747_216_675_435_475,
+            '2016': 8.260_583_768_730_98,
+            '2017': 12.675_552_032_674_942,
+            '2018': 12.560_614_438_525_4,
+            '2019': 11.198_154_691_164_232,
+            '2020': 6.765_103_805_439_222,
+            '2021': 17.636_739_880_365_106,
+          },
+        ],
+        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {
+          '2016': 8.260_583_768_730_98,
+          '2017': 12.675_552_032_674_942,
+          '2018': 12.560_614_438_525_4,
+          '2019': 11.198_154_691_164_232,
+          '2020': 6.765_103_805_439_222,
         },
-        '2017': {
-          amount: 50.774_617_679_966_475,
-          method: 'somsc',
-          averagePerAcre: 0.350_153_170_774_629_7,
-          totalAcres: 145.006_876_755_220_7,
+        grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
+        grandfatheredTonnes: 37.539_232_060_148_06,
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 7.693_532_063_677_209,
+            method: 'projection',
+            averagePerAcre: 0.547_584_319_099_662_5,
+            totalAcres: 14.049_949_560_876_588,
+          },
+          '2017': {
+            amount: 7.693_532_063_677_209,
+            method: 'projection',
+            averagePerAcre: 0.547_584_319_099_662_5,
+            totalAcres: 14.049_949_560_876_588,
+          },
+          '2018': {
+            amount: 7.693_532_063_677_209,
+            method: 'projection',
+            averagePerAcre: 0.547_584_319_099_662_5,
+            totalAcres: 14.049_949_560_876_588,
+          },
+          '2019': {
+            amount: 7.693_532_063_677_209,
+            method: 'projection',
+            averagePerAcre: 0.547_584_319_099_662_5,
+            totalAcres: 14.049_949_560_876_588,
+          },
+          '2020': {
+            amount: 6.765_103_805_439_222,
+            method: 'somsc',
+            averagePerAcre: 0.481_503_778_794_857_23,
+            totalAcres: 14.049_949_560_876_588,
+          },
         },
-        '2018': {
-          amount: 78.0638,
-          method: 'projection',
-          averagePerAcre: 0.538_345_502_963_806_6,
-          totalAcres: 145.006_876_755_220_7,
-        },
-        '2019': {
-          amount: 78.0638,
-          method: 'projection',
-          averagePerAcre: 0.538_345_502_963_806_6,
-          totalAcres: 145.006_876_755_220_7,
-        },
-        '2020': {
-          amount: 78.0638,
-          method: 'projection',
-          averagePerAcre: 0.538_345_502_963_806_6,
-          totalAcres: 145.006_876_755_220_7,
-        },
+        totalM2: 56_858.128_614_828_41,
+        totalAcres: 14.049_949_560_876_588,
+        numberOfGrandfatheredYears: 5,
+        switchYear: 2016,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.534_368_211_038_701_6,
+        methodologyVersion: '1.0.0',
       },
-      totalM2: 586_822.010_489_019_1,
-      totalAcres: 145.006_876_755_220_7,
-      numberOfGrandfatheredYears: 5,
-      switchYear: 2016,
-      grandfatheredTonnesPerYearPerAcreAverage: 0.419_152_260_401_355_3,
-      methodologyVersion: '1.0.0',
     });
   });
 });
@@ -498,9 +561,9 @@ describe('getQuantificationSummaries', () => {
         ],
         totalAcres: 119.000_753_503_510_62,
         totalM2: 481_578.963_586_112_2,
-        tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedTonnesPerYear: 64.1874,
+        tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
+        tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+        tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -537,26 +600,26 @@ describe('getQuantificationSummaries', () => {
             totalAcres: 119.000_753_503_510_62,
           },
           '2018': {
-            amount: 64.1874,
+            amount: 60.696_700_824_693_26,
             method: 'projection',
-            averagePerAcre: 0.539_386_500_591_413_7,
+            averagePerAcre: 0.510_053_079_814_344_7,
             totalAcres: 119.000_753_503_510_62,
           },
           '2019': {
-            amount: 64.1874,
+            amount: 60.696_700_824_693_26,
             method: 'projection',
-            averagePerAcre: 0.539_386_500_591_413_7,
+            averagePerAcre: 0.510_053_079_814_344_7,
             totalAcres: 119.000_753_503_510_62,
           },
           '2020': {
-            amount: 64.1874,
-            averagePerAcre: 0.539_386_500_591_413_7,
+            amount: 60.696_700_824_693_26,
+            averagePerAcre: 0.510_053_079_814_344_7,
             method: 'projection',
             totalAcres: 119.000_753_503_510_62,
           },
         },
-        grandfatheredTonnes: 249.897_743_783_456_26,
-        grandfatheredTonnesPerYearPerAcreAverage: 0.419_993_548_656_116_8,
+        grandfatheredTonnes: 239.425_646_257_536_04,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.402_393_496_189_875_4,
       },
     });
   });
@@ -580,9 +643,9 @@ describe('getQuantificationSummaries', () => {
         ],
         totalAcres: 119.000_753_503_510_62,
         totalM2: 481_578.963_586_112_2,
-        tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedTonnesPerYear: 64.1874,
+        tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
+        tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+        tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -612,26 +675,26 @@ describe('getQuantificationSummaries', () => {
             totalAcres: 119.000_753_503_510_62,
           },
           '2018': {
-            amount: 64.1874,
+            amount: 60.696_700_824_693_26,
             method: 'projection',
-            averagePerAcre: 0.539_386_500_591_413_7,
+            averagePerAcre: 0.510_053_079_814_344_7,
             totalAcres: 119.000_753_503_510_62,
           },
           '2019': {
-            amount: 64.1874,
+            amount: 60.696_700_824_693_26,
             method: 'projection',
-            averagePerAcre: 0.539_386_500_591_413_7,
+            averagePerAcre: 0.510_053_079_814_344_7,
             totalAcres: 119.000_753_503_510_62,
           },
           '2020': {
-            amount: 64.1874,
-            averagePerAcre: 0.539_386_500_591_413_7,
+            amount: 60.696_700_824_693_26,
+            averagePerAcre: 0.510_053_079_814_344_7,
             method: 'projection',
             totalAcres: 119.000_753_503_510_62,
           },
         },
-        grandfatheredTonnes: 234.370_367_405_031_03,
-        grandfatheredTonnesPerYearPerAcreAverage: 0.492_371_603_760_721,
+        grandfatheredTonnes: 223.898_269_879_110_8,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.470_371_538_177_919_2,
       },
     });
   });
@@ -656,9 +719,9 @@ describe('getQuantificationSummaries', () => {
         ],
         totalAcres: 119.000_753_503_510_62,
         totalM2: 481_578.963_586_112_2,
-        tenYearProjectedTonnesPerYearPerAcre: 0.539_386_500_591_413_7,
-        tenYearProjectedTonnesTotalEstimate: 641.874,
-        tenYearProjectedTonnesPerYear: 64.1874,
+        tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
+        tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
+        tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
           {
             '2015': 26.237_005_795_497_225,
@@ -693,14 +756,14 @@ describe('getQuantificationSummaries', () => {
             totalAcres: 119.000_753_503_510_62,
           },
           '2018': {
-            amount: 64.1874,
+            amount: 60.696_700_824_693_26,
             method: 'projection',
-            averagePerAcre: 0.539_386_500_591_413_7,
+            averagePerAcre: 0.510_053_079_814_344_7,
             totalAcres: 119.000_753_503_510_62,
           },
         },
-        grandfatheredTonnes: 121.522_943_783_456_27,
-        grandfatheredTonnesPerYearPerAcreAverage: 0.340_398_247_365_919,
+        grandfatheredTonnes: 118.032_244_608_149_53,
+        grandfatheredTonnesPerYearPerAcreAverage: 0.330_620_440_440_229_3,
       },
     });
   });
@@ -719,10 +782,10 @@ describe('getQuantificationSummaries', () => {
           modeledYears: [
             2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
           ],
-          tenYearProjectedTonnesTotalEstimate: 458.83,
           somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
-          tenYearProjectedTonnesPerYear: 45.883,
-          tenYearProjectedTonnesPerYearPerAcre: 0.385_568_987_163_147_8,
+          tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
+          tenYearProjectedTonnesPerYearPerAcre: 0.283_792_671_728_480_66,
+          tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
           somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
             {
               '2021': 33.380_606_268_649_07,
