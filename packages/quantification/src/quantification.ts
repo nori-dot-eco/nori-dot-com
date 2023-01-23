@@ -1,5 +1,6 @@
 import { add, divide, multiply, subtract } from '@nori-dot-com/math';
 import type { Output } from '@nori-dot-com/ggit';
+import { ContextualError } from '@nori-dot-com/errors';
 
 import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
 import { validateParsedModelRunsData } from './validations';
@@ -483,22 +484,38 @@ const getTenYearProjectedTonnesPerYear = ({
 }: {
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
 }): number => {
-  return divide(
-    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon
-      .map((annualDifferencesPerPolygon) => {
+  const sumOfEachPolygon =
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.map(
+      (annualDifferencesPerPolygon, annualDifferencesPerPolygonIndex) => {
         const years = Object.keys(annualDifferencesPerPolygon)
           .sort()
           .map((year) => annualDifferencesPerPolygon[year])
           .slice(0, 10)
           .filter((yearValue) => !Number.isNaN(yearValue));
 
+        if (years.length < 10) {
+          throw new ContextualError({
+            errorKey: 'quantificationError:insufficientData',
+            context: {
+              message:
+                `Expected somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.` +
+                `${annualDifferencesPerPolygonIndex} to have 10 values`,
+            },
+          });
+        }
+
         return years.reduce((prevValue, curValue) => {
           return add(prevValue, curValue);
         }, 0);
-      })
-      .reduce((prevValue, curValue) => add(prevValue, curValue), 0),
-    10
+      }
+    );
+
+  const sumOfAllPolygons = sumOfEachPolygon.reduce(
+    (prevValue, curValue) => add(prevValue, curValue),
+    0
   );
+
+  return divide(sumOfAllPolygons, 10);
 };
 
 /**
