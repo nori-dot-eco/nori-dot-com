@@ -20,10 +20,49 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "make:docs": "yarn run typedoc --readme none --excludeInternal --excludeExternals --plugin typedoc-plugin-markdown src/v4-specification.ts src/v3-specification.ts src/validation.ts src/utils/convertFromV2ToV1.ts",
     "make:schema": "typescript-json-schema ./src/v4-specification.ts Project -o ./src/json/v4-specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true --validationKeywords errorMessage validationRules",
-    "prepare": "yarn run build",
     "watch": "tsc -b -w",
-    "build": "yarn run make:schema && tsc -b",
+    "build": "tsc -b",
     "validate": "ts-node scripts/validate.ts"
+  },
+  "nx": {
+    "targets": {
+      "make:schema": {
+        "inputs": [
+          "{projectRoot}/src/v4-specification.ts",
+          "{projectRoot}/tsconfig.json"
+        ],
+        "outputs": [
+          "{projectRoot}/src/json/v4-specification.json"
+        ]
+      },
+      "make:docs": {
+        "inputs": [
+          "default",
+          "!{projectRoot}/src/json/*"
+        ],
+        "outputs": [
+          "{projectRoot}/docs"
+        ],
+        "dependsOn": [
+          "build"
+        ]
+      },
+      "build": {
+        "inputs": [
+          "default",
+          "not-generated"
+        ],
+        "dependsOn": [
+          "^build",
+          "make:schema"
+        ]
+      }
+    },
+    "implicitDependencies": [
+      "@nori-dot-com/errors",
+      "@nori-dot-com/ggit",
+      "@nori-dot-com/math"
+    ]
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

@@ -25,10 +25,34 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "prepare": "yarn run build",
     "watch": "tsc -b -w",
-    "build": "yarn run make:schema && tsc -b",
+    "build": "tsc -b",
     "make:schema": "typescript-json-schema ./src/input/input.ts InputData -o ./src/input/specification.json --strictNullChecks=true --required=true --titles=true --noExtraProps=true  --validationKeywords errorMessage validationRules"
+  },
+  "nx": {
+    "targets": {
+      "make:schema": {
+        "inputs": [
+          "{projectRoot}/src/input/Input.ts"
+        ],
+        "outputs": [
+          "{projectRoot}/src/input/specification.json"
+        ]
+      },
+      "build": {
+        "outputs": [
+          "{projectRoot}/dist",
+          "!{projectRoot}/src/input/specification.json"
+        ],
+        "dependsOn": [
+          "make:schema",
+          "^build"
+        ]
+      }
+    },
+    "implicitDependencies": [
+      "@nori-dot-com/errors"
+    ]
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"

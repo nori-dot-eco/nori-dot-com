@@ -16,11 +16,9 @@
     "nx": "14.3.6"
   },
   "scripts": {
-    "build": "nx run-many --target=build --all -- --force",
+    "build": "nx run-many --target=build --all",
     "watch": "nx run-many --target=watch --all",
-    "test": "jest",
-    "bootstrap": "lerna bootstrap",
-    "prepare": "yarn run build"
+    "test": "jest"
   },
   "resolutions": {
     "@types/react-dom": "~17",
