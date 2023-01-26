@@ -309,4 +309,5 @@ module.exports = {
       files: ['*.toml'],
     },
   ],
+  plugins: ['only-warn'],
 };
