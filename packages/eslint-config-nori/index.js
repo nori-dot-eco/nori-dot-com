@@ -308,6 +308,9 @@ module.exports = {
       extends: ['airbnb-base', 'plugin:toml/standard'],
       files: ['*.toml'],
     },
+    {
+      files: ['*'],
+      plugins: ['only-warn'],
+    }
   ],
-  plugins: ['only-warn'],
 };
