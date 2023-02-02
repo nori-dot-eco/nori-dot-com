@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const schemaPath = './nori-graphql/src/schema.graphql';
+const schemaPath = './nori-graphql/artifacts/schema.graphql';
 const documents = '**/*.graphql.ts';
 
 const relayExtensions = path.join(__dirname, './relay-extensions.graphql');
