@@ -125,22 +125,19 @@ jobs:
           command: |
             echo "Publishing packages...";
 
-            echo "Stubbing out package publishing process...";
-            echo "TODO - use alternate yarnrc file";
-            echo "TODO ----- .nori.yarnrc ?";
-            echo "TODO ----- generated within CI ?";
-
-
+            echo "Detecting updated packages...";
             AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
               | jq -r '.projects | join(" ")'
             ) );
 
             for PACKAGE in ${AFFECTED_PACKAGES[@]};
             do
-              echo "TODO - publish package";
-              echo "yarn workspace $PACKAGE publish ...";
+              echo "Publishing $PACKAGE...";
+              # export package variable so that jq can reference it
+              export PACKAGE=$PACKAGE
+              CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | grep "{" | jq -r '.data[env.PACKAGE]');
+              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION;
             done
-
 
 workflows:
   version: 2
