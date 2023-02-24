@@ -12,12 +12,6 @@ defaults: &defaults
 jobs:
   upgrade-packages:
     <<: *defaults
-    filters:
-      branches:
-        only:
-          - master
-          - /.*-qa/
-          - NO-2768-package-upgrade-spike
     steps:
       - checkout 
       - nx/set-shas
@@ -108,7 +102,13 @@ workflows:
   version: 2
   test:
     jobs:
-      - upgrade-packages
+      - upgrade-packages:
+          filters:
+            branches:
+              only:
+                - master
+                - /.*-qa/
+                - NO-2768-package-upgrade-spike
       - setup-tests:
           requires:
             - upgrade-packages
