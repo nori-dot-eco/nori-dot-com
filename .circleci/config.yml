@@ -23,7 +23,7 @@ commands:
             git config --global user.name "Circle CI";
 
 jobs:  
-  setup-tests:
+  install-dependencies:
     <<: *defaults
     steps:
       - checkout
@@ -55,6 +55,7 @@ jobs:
           root: /home/circleci
           paths:
             - repo
+            - .ssh
 
   upgrade-packages:
     <<: *defaults
@@ -118,10 +119,10 @@ workflows:
   version: 2
   test:
     jobs:
-      - setup-tests
+      - install-dependencies
       - upgrade-packages:
           requires:
-            - setup-tests
+            - install-dependencies
           filters:
             branches:
               only:
