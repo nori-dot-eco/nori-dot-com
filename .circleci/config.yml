@@ -108,7 +108,10 @@ workflows:
   version: 2
   test:
     jobs:
-      - setup-tests
+      - upgrade-packages
+      - setup-tests:
+          requires:
+            - upgrade-packages
       - run-regular-tests:
           requires:
             - setup-tests
