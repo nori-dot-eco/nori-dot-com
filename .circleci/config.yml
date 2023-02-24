@@ -12,13 +12,15 @@ defaults: &defaults
 
 commands:
   setup_environment: 
-    description: Shared steps for configuring environment variables for installed npm cli tools
+    description: Shared steps for configuring environment variables and common configurations
     steps:
       - run:
           name: Setup Environment
           command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
+            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV;
+            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV;
+            git config --global user.email "circleci@nori.com";
+            git config --global user.name "Circle CI";
 
 jobs:  
   setup-tests:
