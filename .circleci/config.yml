@@ -1,4 +1,7 @@
 version: 2
+orbs:
+  nx: nrwl/nx@1.6.1
+
 defaults: &defaults
   working_directory: ~/repo
   environment:
@@ -7,6 +10,44 @@ defaults: &defaults
     - image: circleci/node:14.18.1
 
 jobs:
+  upgrade-packages:
+    <<: *defaults
+    filters:
+      branches:
+        only:
+          - master
+          - /.*-qa/
+          - NO-2768-package-upgrade-spike
+    steps:
+      - checkout 
+      - nx/set-shas
+      - run:
+          name: Upgrade Packages
+          command: |
+            echo "upgrading packages (stubbed)";
+
+            AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
+              | jq -r '.projects | join(" ")'
+            ) );
+
+            for PACKAGE in ${AFFECTED_PACKAGES[@]}
+            do
+              yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version
+            done
+            ######
+            echo "TODO identify the affected packages";
+            echo "TODO upgrade the affected packages";
+      - run:
+          name: Commit Upgraded Package Versions
+          command: |
+            echo "upgrading packages (stubbed)";
+            echo "TODO commit the affected packages with the [ci skip] flag";
+            echo "TODO push the upgraded packages to master";
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - repo
+      
   setup-tests:
     <<: *defaults
     steps:
