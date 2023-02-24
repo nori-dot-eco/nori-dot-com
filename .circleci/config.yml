@@ -66,7 +66,7 @@ jobs:
       - run:
           name: Upgrade Packages
           command: |
-            echo "upgrading packages (stubbed)";
+            echo "Upgrading packages...";
 
             AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
               | jq -r '.projects | join(" ")'
@@ -77,17 +77,20 @@ jobs:
               yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version;
             done
 
-            echo "Upgrade package versions";
+            echo "Upgraded package versions";
       - run:
           name: Commit Upgraded Package Versions
           command: |
-            echo "upgrading packages (stubbed)";
+            echo "Committing upgraded package versions to source control...";
 
             git add **/package.json;
-            git commit -m "Auto-incrementing affected package versions [ci-skip]";
+
+            # Only commit if there are tracked changes
+            git diff-index --quiet --cached HEAD || \
+              git commit -m "Auto-incrementing affected package versions [ci-skip]";
             git push origin ${CIRCLE_BRANCH};
 
-            echo "Completed upgrade of affected packages";
+            echo "Committed package upgrades";
       - persist_to_workspace:
           root: /home/circleci
           paths:
