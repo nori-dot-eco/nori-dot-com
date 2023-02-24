@@ -102,16 +102,16 @@ workflows:
   version: 2
   test:
     jobs:
+      - setup-tests
       - upgrade-packages:
+          requires:
+            - setup-tests
           filters:
             branches:
               only:
                 - master
                 - /.*-qa/
                 - NO-2768-package-upgrade-spike
-      - setup-tests:
-          requires:
-            - upgrade-packages
       - run-regular-tests:
           requires:
-            - setup-tests
+            - upgrade-packages
