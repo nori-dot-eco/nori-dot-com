@@ -9,16 +9,22 @@ defaults: &defaults
   docker:
     - image: cimg/node:14.18.1
 
-jobs:  
-  setup-tests:
-    <<: *defaults
+commands:
+  setup_environment: 
+    description: Shared steps for configuring environment variables for installed npm cli tools
     steps:
-      - checkout
       - run:
           name: Setup Environment
           command: |
             echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
             echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
+
+jobs:  
+  setup-tests:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_environment
       - restore_cache:
           key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
       - run:
@@ -52,6 +58,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /home/circleci
+      - setup_environment
       - nx/set-shas
       - run:
           name: Upgrade Packages
@@ -88,11 +95,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /home/circleci
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
+      - setup_environment
       - run:
           name: Run Tests and Collect Coverage
           command: |
