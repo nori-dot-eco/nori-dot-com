@@ -88,7 +88,7 @@ jobs:
 
             # Only commit if there are tracked changes
             git diff-index --quiet --cached HEAD || \
-              git commit -m "Auto-incrementing affected package versions [ci-skip]";
+              git commit -m "Auto-incrementing affected package versions [ci skip]";
             git push origin ${CIRCLE_BRANCH};
 
             echo "Committed package upgrades";
