@@ -9,42 +9,7 @@ defaults: &defaults
   docker:
     - image: cimg/node:14.18.1
 
-jobs:
-  upgrade-packages:
-    <<: *defaults
-    steps:
-      - checkout 
-      - nx/set-shas
-      - run:
-          name: Upgrade Packages
-          command: |
-            echo "upgrading packages (stubbed)";
-
-            AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
-              | jq -r '.projects | join(" ")'
-            ) );
-
-            for PACKAGE in ${AFFECTED_PACKAGES[@]};
-            do
-              yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version;
-            done
-
-            echo "Upgrade package versions";
-      - run:
-          name: Commit Upgraded Package Versions
-          command: |
-            echo "upgrading packages (stubbed)";
-
-            git add **/package.json;
-            git commit -m "Auto-incrementing affected package versions [ci-skip]";
-            git push origin ${CIRCLE_BRANCH};
-
-            echo "Completed upgrade of affected packages";
-      - persist_to_workspace:
-          root: /home/circleci
-          paths:
-            - repo
-      
+jobs:  
   setup-tests:
     <<: *defaults
     steps:
@@ -77,10 +42,52 @@ jobs:
             - packages/cspell/node_modules
             - node_modules
             - ~/.cache
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - repo
+
+  upgrade-packages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - nx/set-shas
+      - run:
+          name: Upgrade Packages
+          command: |
+            echo "upgrading packages (stubbed)";
+
+            AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
+              | jq -r '.projects | join(" ")'
+            ) );
+
+            for PACKAGE in ${AFFECTED_PACKAGES[@]};
+            do
+              yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version;
+            done
+
+            echo "Upgrade package versions";
+      - run:
+          name: Commit Upgraded Package Versions
+          command: |
+            echo "upgrading packages (stubbed)";
+
+            git add **/package.json;
+            git commit -m "Auto-incrementing affected package versions [ci-skip]";
+            git push origin ${CIRCLE_BRANCH};
+
+            echo "Completed upgrade of affected packages";
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - repo
+
   run-regular-tests:
     <<: *defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: /home/circleci
       - run:
           name: Setup Environment
           command: |
