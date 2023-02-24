@@ -113,6 +113,35 @@ jobs:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
 
+  publish-packages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - setup_environment
+      - nx/set-shas
+      - run:
+          name: Publishing Packages
+          command: |
+            echo "Publishing packages...";
+
+            echo "Stubbing out package publishing process...";
+            echo "TODO - use alternate yarnrc file";
+            echo "TODO ----- .nori.yarnrc ?";
+            echo "TODO ----- generated within CI ?";
+
+
+            AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
+              | jq -r '.projects | join(" ")'
+            ) );
+
+            for PACKAGE in ${AFFECTED_PACKAGES[@]};
+            do
+              echo "TODO - publish package";
+              echo "yarn workspace $PACKAGE publish ...";
+            done
+
+
 workflows:
   version: 2
   test:
@@ -127,6 +156,18 @@ workflows:
                 - master
                 - /.*-qa/
                 - NO-2768-package-upgrade-spike
+                - kyclark-package-publishing-spike
       - run-regular-tests:
           requires:
             - upgrade-packages
+      - publish-packages:
+          requires:
+            - run-regular-tests
+          filters:
+            branches:
+              only:
+                - master
+                - /.*-qa/
+                - NO-2768-package-upgrade-spike
+                - kyclark-package-publishing-spike
+
