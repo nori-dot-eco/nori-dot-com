@@ -6,6 +6,7 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     NODE_ENV: test
+    MAIN_BRANCH_NAME: master
   docker:
     - image: cimg/node:14.18.1
 
