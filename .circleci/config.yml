@@ -141,6 +141,7 @@ jobs:
           command: |
             echo "Publishing packages...";
             echo "Configuring registry auth...";
+            touch ~/.npmrc;
             yarn run artifactregistry-login;
 
             echo "Detecting updated packages...";
