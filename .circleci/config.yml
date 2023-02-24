@@ -30,19 +30,22 @@ jobs:
               | jq -r '.projects | join(" ")'
             ) );
 
-            for PACKAGE in ${AFFECTED_PACKAGES[@]}
+            for PACKAGE in ${AFFECTED_PACKAGES[@]};
             do
-              yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version
+              yarn workspace $PACKAGE version --patch --no-commit-hooks --no-git-tag-version;
             done
-            ######
-            echo "TODO identify the affected packages";
-            echo "TODO upgrade the affected packages";
+
+            echo "Upgrade package versions";
       - run:
           name: Commit Upgraded Package Versions
           command: |
             echo "upgrading packages (stubbed)";
-            echo "TODO commit the affected packages with the [ci skip] flag";
-            echo "TODO push the upgraded packages to master";
+
+            git add **/package.json;
+            git commit -m "Auto-incrementing affected package versions [ci-skip]";
+            git push origin ${CIRCLE_BRANCH};
+
+            echo "Completed upgrade of affected packages";
       - persist_to_workspace:
           root: /home/circleci
           paths:
