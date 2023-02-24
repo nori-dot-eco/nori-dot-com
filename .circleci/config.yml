@@ -140,6 +140,8 @@ jobs:
           name: Publishing Packages
           command: |
             echo "Publishing packages...";
+            echo "Configuring registry auth...";
+            yarn run artifactregistry-login;
 
             echo "Detecting updated packages...";
             AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
