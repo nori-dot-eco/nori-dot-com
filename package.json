@@ -22,7 +22,7 @@
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build",
-    "artifactregistry-login": "npx google-artifactregistry-auth"
+    "artifactregistry-login": "npx google-artifactregistry-auth --repo-config='.yarnrc'"
   },
   "resolutions": {
     "@types/react-dom": "~17",
