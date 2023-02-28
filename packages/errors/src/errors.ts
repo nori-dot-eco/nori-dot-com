@@ -8,6 +8,7 @@ export const Errors = {
     ggitInputDataUnknownError: {
       message: 'An unknown error occurred within the GGIT input data',
     },
+    
   },
   projectDataError: {
     projectUnknownError: {
