@@ -1,6 +1,6 @@
 name: package auto-updater
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - edited
@@ -12,6 +12,10 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v3
+          ref: ${{github.event.pull_request.head.ref}}
+          submodules: true
+          token: ${{ secrets.NORI_ESLINT_PAT }}
+          fetch-depth: '0'
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
