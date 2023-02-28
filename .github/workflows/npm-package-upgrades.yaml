@@ -5,6 +5,7 @@ on:
     types:
       - opened
       - edited
+      - synchronize
 jobs:
   package-auto-updater:
     # TODO fix broken if condition
