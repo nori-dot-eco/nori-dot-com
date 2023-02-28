@@ -7,7 +7,8 @@ on:
       - edited
 jobs:
   package-auto-updater:
-    if: ${{ github.event.changes == null || github.event.changes.base != null }} 
+    # TODO fix broken if condition
+    # if: ${{ github.event.changes == null || github.event.changes.base != null }} 
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     permissions:
       id-token: write
