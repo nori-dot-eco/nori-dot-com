@@ -24,5 +24,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
         # TODO implement the below command against either ALL or against UPDATED packages
-      - run: yarn workspace @nori-dot-com/quantification version --patch --no-commit-hooks --no-git-tag-version
+      - run: yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version
+      - run: git push
 
