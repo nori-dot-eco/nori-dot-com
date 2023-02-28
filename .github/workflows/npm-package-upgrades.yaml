@@ -24,6 +24,17 @@ jobs:
         with:
           node-version-file: '.nvmrc'
         # TODO implement the below command against either ALL or against UPDATED packages
-      - run: yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version
-      - run: git push
+      - run: |
+          yarn version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version;
+
+          git add .;
+          git commit -m "Upgrading package versions";
+          git push;
 
