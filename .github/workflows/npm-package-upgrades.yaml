@@ -3,6 +3,7 @@ on:
   pull_request:
     types:
       - opened
+      - edited
 jobs:
   package-auto-updater:
     runs-on: ubuntu-latest # check if this is best, or a yarn image
