@@ -1,12 +1,11 @@
 name: package auto-updater
 on:
-  pull_request_target:
+  pull_request_review_comment:
     types:
-      - opened
-      - synchronize
+      - created
 jobs:
   package-auto-updater:
-    if: github.event.action == 'opened' || github.event.pull_request.head.ref == github.event.pull_request.base.ref
+    # if: github.event.comment.user.email == 'github@nori.com' && github.event.comment.body == 'Bump package versions'
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     permissions:
       id-token: write
@@ -23,6 +22,9 @@ jobs:
           node-version-file: '.nvmrc'
         # TODO implement the below command against either ALL or against UPDATED packages
       - run: |
+          # TODO - compare package versions to master
+          # if master's are newer, increment them by one patch number
+
           yarn version --patch --no-git-tag-version;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
@@ -35,5 +37,5 @@ jobs:
           git config --global user.email "github@nori.com";
           git config --global user.name "Github";
           git add .;
-          git commit -m "Upgrading package versions";
+          git diff --staged --quiet || git commit -m "Upgrading package versions";
           git push;
