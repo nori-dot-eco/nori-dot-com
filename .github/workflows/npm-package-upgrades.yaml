@@ -1,4 +1,28 @@
+name: package auto-updater
+
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types:
+      - opened
+      - edited
+jobs:
+  package-auto-updater:
+    if: ${{ github.event.changes == null || github.event.changes.base != null }} 
+    runs-on: ubuntu-latest # check if this is best, or a yarn image
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+          submodules: true
+          token: ${{ secrets.NORI_ESLINT_PAT }} # TODO change this to something better
+          fetch-depth: '0'
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+        # TODO implement the below command against either ALL or against UPDATED packages
+      - run: yarn workspace @nori-dot-com/quantification version --patch --no-commit-hooks --no-git-tag-version
+
