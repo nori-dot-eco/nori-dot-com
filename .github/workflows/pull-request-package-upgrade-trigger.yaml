@@ -1,4 +1,4 @@
-name: package auto-updater
+name: package auto-update trigger
 on:
   pull_request_target:
     types:
