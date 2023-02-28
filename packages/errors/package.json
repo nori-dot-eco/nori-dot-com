@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/errors",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "Errors and error messaging for Nori",
   "author": "jaycenhorton <jaycen@nori.com>",
   "homepage": "https://github.com/nori-dot-eco/nori-dot-com#readme",
