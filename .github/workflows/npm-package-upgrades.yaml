@@ -1,0 +1,37 @@
+name: package auto-updater
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+jobs:
+  package-auto-updater:
+    runs-on: ubuntu-latest # check if this is best, or a yarn image
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+        ref: ${{github.event.pull_request.head.ref}}
+        submodules: true
+        token: ${{ secrets.NORI_ESLINT_PAT }}
+        fetch-depth: '0'
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+        # TODO implement the below command against either ALL or against UPDATED packages
+      - run: |
+          yarn version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version;
+          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version;
+      - run: |
+          git config --global user.email "github@nori.com";
+          git config --global user.name "Github";
+          git add .;
+          git commit -m "Upgrading package versions";
+          git push;
