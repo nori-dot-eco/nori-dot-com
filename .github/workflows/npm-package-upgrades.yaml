@@ -33,8 +33,9 @@ jobs:
           yarn workspace @nori-dot-com/math version --patch --no-git-tag-version;
           yarn workspace @nori-dot-com/project version --patch --no-git-tag-version;
           yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version;
-
+      - run: |
+          git config --global user.email "github@nori.com";
+          git config --global user.name "Github";
           git add .;
           git commit -m "Upgrading package versions";
           git push;
-
