@@ -6,7 +6,16 @@ on:
       - created
 
 jobs:
+  label-prs-for-package-upgrades:
+    if: ${{ !github.event.label }} # Only for PR creation
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          number: ${{ github.event.number }}
+          labels: upgrade-patch-version
   package-auto-updater:
+    # If this event is for a PR creation, or has a specific label
     if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     steps:
