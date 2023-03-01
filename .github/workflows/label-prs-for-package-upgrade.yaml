@@ -5,11 +5,26 @@ on:
       - kyclark-package-upgrade-base-branch
 
 jobs:
-  label-prs-for-package-upgrades:
+  identify-affected-pull-requests:
+    runs-on: ubuntu-latest
+    outputs:
+      pull-requests-to-label: ${{ steps.list-affected-pull-requests.outputs }}
+      steps:
+        - run: echo '[ 253 ]';
+          id: list-affected-pull-requests
+
+  label-pull-requests-for-package-upgrades:
     runs-on: ubuntu-latest # check if this is best, or a yarn image
+    needs:
+      - identify-affected-pull-requests
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix: 
+        pull-request-id: ${{ fromJSON(needs.identify-affected-pull-requests.pull-requests-to-label) }}
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.NORI_ESLINT_PAT }}
-          number: 253
+          number: ${{ matrix.pull-request-id }}
           labels: upgrade-patch-version
