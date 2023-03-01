@@ -36,9 +36,13 @@ jobs:
           git fetch origin ${{ github.event.pull_request.base.ref }};
           git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
 
+          echo "BASE_VERSION=$(npm pkg get version | sed 's/\"//g');"
           BASE_VERSION=$(npm pkg get version | sed 's/"//g');
+          echo "BASE_VERSION=$BASE_VERSION";
+
           git reset --hard HEAD;
 
+          echo "Starting version reversions...";
           yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
