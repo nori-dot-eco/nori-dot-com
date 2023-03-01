@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
+          github_token: ${{ secrets.NORI_ESLINT_PAT }}
           number: 253
           labels: upgrade-patch-version

@@ -26,7 +26,7 @@ jobs:
         with:
           ref: ${{github.event.pull_request.head.ref}}
           submodules: true
-          github_token: ${{ secrets.NORI_ESLINT_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: '0'
       - uses: actions/setup-node@v3
         with:
