@@ -3,6 +3,7 @@ on:
   pull_request_target:
     types:
       - labeled
+      - unlabeled
       - created
 
 jobs:
@@ -17,7 +18,16 @@ jobs:
 
   package-auto-updater:
     # If this event is for a PR creation, or has a specific label
-    if: ${{ !github.event.label || github.event.label.name == 'upgrade-version' }}
+    if: |
+      ${{ 
+        !github.event.label 
+        || github.event.label.name == 'major' 
+        || github.event.label.name == 'minor' 
+        ||  (
+              github.event.label.name == 'upgrade-version' 
+              && github.event.action == 'labeled'
+            )
+      }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout source
