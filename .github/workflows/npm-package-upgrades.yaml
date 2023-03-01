@@ -33,7 +33,7 @@ jobs:
           # TODO - compare package versions to master
           # if master's are newer, increment them by one patch number
 
-          yarn version --patch --no-git-tag-version;
+          yarn version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
