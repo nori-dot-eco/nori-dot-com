@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     permissions:
       id-token: write
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v3
         with:
