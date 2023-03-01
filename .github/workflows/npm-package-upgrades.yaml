@@ -1,6 +1,6 @@
 name: Auto-Update package versions
 on:
-  pull_request_target:
+  pull_request:
     types:
       - labeled
       - created
@@ -18,6 +18,9 @@ jobs:
     # If this event is for a PR creation, or has a specific label
     if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
     runs-on: ubuntu-latest # check if this is best, or a yarn image
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v3
         with:
