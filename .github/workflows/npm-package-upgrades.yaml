@@ -12,9 +12,6 @@ jobs:
     #     # && (github.event.comment.user.email == 'jaycen@nori.com' || github.event.comment.user.email == 'kyle@nori.com' )
     #   }
     runs-on: ubuntu-latest # check if this is best, or a yarn image
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v3
         with:
