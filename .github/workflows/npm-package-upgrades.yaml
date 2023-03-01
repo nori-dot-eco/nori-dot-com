@@ -6,8 +6,17 @@ on:
       - created
 
 jobs:
+  label-prs-for-package-upgrades:
+    if: ${{ !github.event.label }} # Only for PR creation
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          number: ${{ github.event.number }}
+          labels: upgrade-patch-version
   package-auto-updater:
-    if: ${{ github.event.label.name == 'upgrade-patch-version' }}
+    # If this event is for a PR creation, or has a specific label
+    if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +33,7 @@ jobs:
           # TODO - compare package versions to master
           # if master's are newer, increment them by one patch number
 
-          yarn version --patch --no-git-tag-version;
+          yarn version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
@@ -38,7 +47,7 @@ jobs:
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
           git push;
-      - uses: actions-ecosystem/remove-add-labels@v1
+      - uses: actions-ecosystem/action-remove-labels@v1
         with:
           number: ${{ github.event.number }}
           labels: upgrade-patch-version
