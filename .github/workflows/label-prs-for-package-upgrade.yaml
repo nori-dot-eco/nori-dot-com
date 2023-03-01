@@ -8,9 +8,12 @@ jobs:
   identify-affected-pull-requests:
     runs-on: ubuntu-latest
     outputs:
-      pull-requests-to-label: ${{ steps.list-affected-pull-requests.outputs.pull-request-ids }}
+      pull-requests-matrix: ${{ steps.list-affected-pull-requests.outputs.pull-request-ids }}
     steps:
-      - run: echo "pull-request-ids=[253]" >> $GITHUB_OUTPUT;
+      - run: |
+          echo 'pull-request-id-matrix={
+            "pull-request-id": [253] >> $GITHUB_OUTPUT;
+          }' >> $GITHUB_OUTPUT;
         id: list-affected-pull-requests
 
   label-pull-requests-for-package-upgrades:
@@ -20,8 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 6
-      matrix: 
-        pull-request-id: ${{ fromJSON(needs.identify-affected-pull-requests.pull-requests-to-label) }}
+      matrix: ${{ fromJSON(needs.identify-affected-pull-requests.pull-requests-matrix) }}
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
