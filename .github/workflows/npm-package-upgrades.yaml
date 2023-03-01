@@ -1,11 +1,17 @@
 name: package auto-updater
 on:
-  pull_request_review_comment:
+  issue_comment:
     types:
       - created
 jobs:
   package-auto-updater:
     # if: github.event.comment.user.email == 'github@nori.com' && github.event.comment.body == 'Bump package versions'
+    if: |
+      ${
+        github.event.issue.pull_request
+        && github.event.comment.body == 'Bump package versions'
+        # && (github.event.comment.user.email == 'jaycen@nori.com' || github.event.comment.user.email == 'kyle@nori.com' )
+      }
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     permissions:
       id-token: write
@@ -13,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{github.event.pull_request.head.ref}}
+          ref: ${{github.event.issue.pull_request.head.ref}}
           submodules: true
           token: ${{ secrets.NORI_ESLINT_PAT }}
           fetch-depth: '0'
