@@ -29,10 +29,8 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - run: |
-          # TODO - compare package versions to base branch
-          echo "git fetch origin ${{ github.event.pull_request.base.ref }}";
           git fetch origin ${{ github.event.pull_request.base.ref }};
-          git checkout ${{ github.event.pull_request.base.ref }} -- package.json;
+          git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
       - name: Extract version from package.json
         uses: sergeysova/jq-action@v2
         id: version
