@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 6
-      matrix: ${{ fromJSON(needs.identify-affected-pull-requests.pull-request-id-matrix) }}
+      matrix: ${{ fromJSON(needs.identify-affected-pull-requests.outputs.pull-request-id-matrix) }}
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
