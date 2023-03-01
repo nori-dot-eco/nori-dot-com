@@ -1,56 +1,101 @@
 name: Auto-Update package versions
 on:
-  pull_request:
+  pull_request_target:
     types:
       - labeled
+      - unlabeled
       - created
 
 jobs:
-  label-prs-for-package-upgrades:
-    if: ${{ !github.event.label }} # Only for PR creation
+  remove-package-upgrade-label:
+    if: ${{ github.event.label }} # If PR was triggered with label
     runs-on: ubuntu-latest 
     steps:
-      - uses: actions-ecosystem/action-add-labels@v1
+      - uses: actions-ecosystem/action-remove-labels@v1
         with:
           number: ${{ github.event.number }}
-          labels: upgrade-patch-version
+          labels: apply-version-upgrade
+
   package-auto-updater:
     # If this event is for a PR creation, or has a specific label
-    if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
-    runs-on: ubuntu-latest # check if this is best, or a yarn image
-    permissions:
-      id-token: write
-      contents: read
+    if: |
+      ${{ 
+        !github.event.label 
+        || github.event.label.name == 'major-version' 
+        || github.event.label.name == 'minor-version' 
+        || github.event.label.name == 'patch-version' 
+        ||  (
+              github.event.label.name == 'apply-version-upgrade' 
+              && github.event.action == 'labeled'
+            )
+      }}
+    runs-on: ubuntu-latest
+    concurrency: auto-updater-${{ github.event.pull_request.head.ref }}
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout source
+        uses: actions/checkout@v3
         with:
           ref: ${{github.event.pull_request.head.ref}}
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: '0'
-      - uses: actions/setup-node@v3
+      - name: setup node
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-        # TODO implement the below command against either ALL or against UPDATED packages
-      - run: |
-          # TODO - compare package versions to master
-          # if master's are newer, increment them by one patch number
-
-          yarn version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version --no-commit-hooks;
-      - run: |
+      - name: reset package versions to the base
+        run: |
           git config --global user.email "github@nori.com";
           git config --global user.name "Github";
+
+          git diff --staged --quiet || git commit -m "Upgrading package versions";
+          git fetch origin ${{ github.event.pull_request.base.ref }};
+          git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
+
+          BASE_VERSION=$(
+            cat package.json \
+              | grep "^\s*\"version\": \"" \
+              | awk '{ print $2 }' \
+              | sed 's|[",]||g'
+            );
+
+          git reset --hard HEAD;
+
+          yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+
+          git add .;
+          git diff --staged --quiet || git commit -m "Reset package versions to match base";
+      - name: increment package versions
+        run: |
+          if ${{ contains(github.event.pull_request.labels.*.name, 'major-version') }}; then
+            VERSION_UPGRADE_TYPE="--major";
+          elif ${{ contains(github.event.pull_request.labels.*.name, 'minor-version') }}; then
+            VERSION_UPGRADE_TYPE="--minor";
+          elif ${{ contains(github.event.pull_request.labels.*.name, 'patch-version') }}; then
+            VERSION_UPGRADE_TYPE="--patch";
+          else
+            git add .;
+            git diff --staged --quiet || git commit -m "Syncing package versions with base branch";
+            exit 0;
+          fi
+
+          yarn version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
-          git push;
-      - uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          number: ${{ github.event.number }}
-          labels: upgrade-patch-version
+      - name: push updates to pr branch
+        run: git push;
