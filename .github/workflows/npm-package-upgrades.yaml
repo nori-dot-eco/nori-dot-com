@@ -36,9 +36,12 @@ jobs:
           git fetch origin ${{ github.event.pull_request.base.ref }};
           git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
 
-          echo "BASE_VERSION=\$(npm pkg get version | sed 's/\"//g');"
-          BASE_VERSION=$(npm pkg get version | sed 's/"//g');
-          echo "BASE_VERSION=$BASE_VERSION";
+          BASE_VERSION=$(
+            cat package.json \
+              | grep "^\s*\"version\": \"" \
+              | awk '{ print $2 }' \
+              | sed 's|[",]||g'
+            );
 
           git reset --hard HEAD;
 
