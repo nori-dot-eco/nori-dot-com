@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pull-requests-to-label: ${{ steps.list-affected-pull-requests.outputs }}
-      steps:
-        - run: echo '[ 253 ]';
-          id: list-affected-pull-requests
+    steps:
+      - run: echo '[ 253 ]';
+        id: list-affected-pull-requests
 
   label-pull-requests-for-package-upgrades:
     runs-on: ubuntu-latest # check if this is best, or a yarn image
