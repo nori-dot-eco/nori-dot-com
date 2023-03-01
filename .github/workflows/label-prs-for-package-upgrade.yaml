@@ -8,9 +8,9 @@ jobs:
   identify-affected-pull-requests:
     runs-on: ubuntu-latest
     outputs:
-      pull-requests-to-label: ${{ steps.list-affected-pull-requests.outputs }}
+      pull-requests-to-label: ${{ steps.list-affected-pull-requests.outputs.pull-request-ids }}
     steps:
-      - run: echo "[ 253 ]" >> $GITHUB_OUTPUT;
+      - run: echo "pull-request-ids=[ 253 ]" >> $GITHUB_OUTPUT;
         id: list-affected-pull-requests
 
   label-pull-requests-for-package-upgrades:
