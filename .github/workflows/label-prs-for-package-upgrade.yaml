@@ -1,0 +1,14 @@
+name: Label PRs for package upgrades
+on:
+  push:
+    branches:
+      - kyclark-package-upgrade-base-branch
+
+jobs:
+  label-prs-for-package-upgrades:
+    runs-on: ubuntu-latest # check if this is best, or a yarn image
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          number: 253
+          labels: upgrade-patch-version
