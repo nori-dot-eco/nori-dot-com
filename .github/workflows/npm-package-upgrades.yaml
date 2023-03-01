@@ -28,11 +28,29 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-        # TODO implement the below command against either ALL or against UPDATED packages
       - run: |
-          # TODO - compare package versions to master
-          # if master's are newer, increment them by one patch number
+          # TODO - compare package versions to base branch
+          echo "get fetch origin ${{ github.event.pull_request.base.ref }}";
+          git fetch origin ${{ github.event.pull_request.base.ref }};
+          get checkout ${{ github.event.pull_request.base.ref }} -- package.json;
+      - name: Extract version from package.json
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: 'jq .version package.json -r'
+      - run: |
+          BASE_VERSION="${{ steps.version.outputs.value }}";
+          git reset --hard HEAD;
 
+          yarn version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version --no-commit-hooks;
+      - run: |
           yarn version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
