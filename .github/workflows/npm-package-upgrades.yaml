@@ -38,7 +38,7 @@ jobs:
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
           git push;
-      - uses: actions-ecosystem/remove-add-labels@v1
+      - uses: actions-ecosystem/action-remove-labels@v1
         with:
           number: ${{ github.event.number }}
           labels: upgrade-patch-version
