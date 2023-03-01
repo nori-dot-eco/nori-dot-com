@@ -1,0 +1,15 @@
+name: Label PR for patch upgrade
+on:
+  pull_request_target:
+    type:
+      - opened
+
+jobs:
+  tag-pull-request-with-patch-upgrade-label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.NORI_ESLINT_PAT }}
+          number: ${{ github.event.pull_request.number }}
+          labels: patch-version
