@@ -5,13 +5,12 @@ on:
       - created
 jobs:
   package-auto-updater:
-    # if: github.event.comment.user.email == 'github@nori.com' && github.event.comment.body == 'Bump package versions'
-    if: |
-      ${
-        github.event.issue.pull_request
-        && github.event.comment.body == 'Bump package versions'
-        # && (github.event.comment.user.email == 'jaycen@nori.com' || github.event.comment.user.email == 'kyle@nori.com' )
-      }
+    # if: |
+    #   ${
+    #     github.event.issue.pull_request
+    #     && github.event.comment.body == 'Bump package versions'
+    #     # && (github.event.comment.user.email == 'jaycen@nori.com' || github.event.comment.user.email == 'kyle@nori.com' )
+    #   }
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     permissions:
       id-token: write
@@ -21,7 +20,7 @@ jobs:
         with:
           ref: ${{github.event.issue.pull_request.head.ref}}
           submodules: true
-          token: ${{ secrets.NORI_ESLINT_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: '0'
       - uses: actions/setup-node@v3
         with:
