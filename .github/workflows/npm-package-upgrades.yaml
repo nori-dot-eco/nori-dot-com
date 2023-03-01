@@ -44,6 +44,10 @@ jobs:
           node-version-file: '.nvmrc'
       - name: reset package versions to the base
         run: |
+          git config --global user.email "github@nori.com";
+          git config --global user.name "Github";
+
+          git diff --staged --quiet || git commit -m "Upgrading package versions";
           git fetch origin ${{ github.event.pull_request.base.ref }};
           git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
 
@@ -64,6 +68,9 @@ jobs:
           yarn workspace @nori-dot-com/math version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/project version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+
+          git add .;
+          git diff --staged --quiet || git commit -m "Reset package versions to match base";
       - name: increment package versions
         run: |
 
@@ -83,10 +90,8 @@ jobs:
           yarn workspace @nori-dot-com/math version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/project version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/quantification version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
-      - name: push updates to pr branch
-        run: |
-          git config --global user.email "github@nori.com";
-          git config --global user.name "Github";
+
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
-          git push;
+      - name: push updates to pr branch
+        run: git push;
