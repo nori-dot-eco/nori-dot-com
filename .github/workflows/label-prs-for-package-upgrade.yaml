@@ -10,8 +10,11 @@ jobs:
     outputs:
       pull-request-id-matrix: ${{ steps.list-affected-pull-requests.outputs.value }}
     steps:
+      - name: checkout source
+        uses: actions/checkout@v3
       - run: |
-          gh pr list --base ${{ github.event.ref }} --json number --jq '{ "pull-request-id": [.[].number] }';
+          PR_BASE_REF=$(git branch --show-current);
+          gh pr list --base $PR_BASE_REF --json number --jq '{ "pull-request-id": [.[].number] }';
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: list-affected-pull-requests
