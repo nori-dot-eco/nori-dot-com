@@ -14,17 +14,18 @@ jobs:
       - uses: actions-ecosystem/action-remove-labels@v1
         with:
           number: ${{ github.event.number }}
-          labels: upgrade-version
+          labels: apply-version-upgrade
 
   package-auto-updater:
     # If this event is for a PR creation, or has a specific label
     if: |
       ${{ 
         !github.event.label 
-        || github.event.label.name == 'major' 
-        || github.event.label.name == 'minor' 
+        || github.event.label.name == 'major-version' 
+        || github.event.label.name == 'minor-version' 
+        || github.event.label.name == 'patch-version' 
         ||  (
-              github.event.label.name == 'upgrade-version' 
+              github.event.label.name == 'apply-version-upgrade' 
               && github.event.action == 'labeled'
             )
       }}
@@ -73,13 +74,16 @@ jobs:
           git diff --staged --quiet || git commit -m "Reset package versions to match base";
       - name: increment package versions
         run: |
-
-          if ${{ contains(github.event.pull_request.labels.*.name, 'major') }}; then
+          if ${{ contains(github.event.pull_request.labels.*.name, 'major-version') }}; then
             VERSION_UPGRADE_TYPE="--major";
-          elif ${{ contains(github.event.pull_request.labels.*.name, 'minor') }}; then
+          elif ${{ contains(github.event.pull_request.labels.*.name, 'minor-version') }}; then
             VERSION_UPGRADE_TYPE="--minor";
-          else
+          elif ${{ contains(github.event.pull_request.labels.*.name, 'patch-version') }}; then
             VERSION_UPGRADE_TYPE="--patch";
+          else
+            git add .;
+            git diff --staged --quiet || git commit -m "Syncing package versions with base branch";
+            exit 0;
           fi
 
           yarn version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
