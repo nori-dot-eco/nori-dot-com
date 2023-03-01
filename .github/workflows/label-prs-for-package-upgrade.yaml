@@ -8,13 +8,14 @@ jobs:
   identify-affected-pull-requests:
     runs-on: ubuntu-latest
     outputs:
-      pull-request-id-matrix: ${{ steps.list-affected-pull-requests.outputs.value }}
+      pr-number-matrix: ${{ steps.list-affected-pull-requests.outputs.pr_number_matrix }}
     steps:
       - name: checkout source
         uses: actions/checkout@v3
       - run: |
           PR_BASE_REF=$(git branch --show-current);
-          gh pr list --base $PR_BASE_REF --json number --jq '{ "pull-request-id": [.[].number] }' >> $GITHUB_OUTPUT;
+          PR_NUMBER_MATRIX=$(gh pr list --base $PR_BASE_REF --json number --jq '{ "pull-request-id": [.[].number] }');
+          echo "pr_number_matrix=$PR_NUMBER_MATRIX" >> $GITHUB_OUTPUT;
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: list-affected-pull-requests
@@ -26,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 6
-      matrix: ${{ fromJSON(needs.identify-affected-pull-requests.outputs.pull-request-id-matrix) }}
+      matrix: ${{ fromJSON(needs.identify-affected-pull-requests.outputs.pr-number-matrix) }}
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
