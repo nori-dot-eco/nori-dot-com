@@ -40,14 +40,14 @@ jobs:
           BASE_VERSION="${{ steps.version.outputs.value }}";
           git reset --hard HEAD;
 
-          yarn version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version --no-commit-hooks;
+          yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
       - run: |
           yarn version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
