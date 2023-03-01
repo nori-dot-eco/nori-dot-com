@@ -7,6 +7,12 @@ on:
 jobs:
   tag-pull-request-with-patch-upgrade-label:
     runs-on: ubuntu-latest
+    if: |
+      ${{
+          !contains(github.event.pull_request.labels.*.name, 'major-version') 
+          && !contains(github.event.pull_request.labels.*.name, 'minor-version') 
+          && !contains(github.event.pull_request.labels.*.name, 'patch-version') 
+      }}
     steps:
       - uses: actions-ecosystem/action-add-labels@v1
         with:
