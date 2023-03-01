@@ -1,32 +1,13 @@
 name: package auto-updater
 on:
-  issue_comment:
+  pull_request_target:
     types:
-      - created
-  pull_request_review_comment:
-    types:
+      - labeled
       - created
 
 jobs:
   package-auto-updater:
-    if: |
-      ${{ 
-        (
-          (
-            github.event.issue 
-            && github.event.issue.pull_request
-            && github.event.issue.pull_request
-          ) 
-          || github.event.pull_request
-        )
-        && github.event.comment.body == 'Bump package versions'
-      }}
-    # if: |
-    #   ${
-    #     github.event.issue.pull_request
-    #     && github.event.comment.body == 'Bump package versions'
-    #     # && (github.event.comment.user.email == 'jaycen@nori.com' || github.event.comment.user.email == 'kyle@nori.com' )
-    #   }
+    if: ${{ github.event.label.name == 'upgrade-patch-version' }}
     runs-on: ubuntu-latest # check if this is best, or a yarn image
     steps:
       - uses: actions/checkout@v3
@@ -57,3 +38,7 @@ jobs:
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
           git push;
+      - uses: actions-ecosystem/remove-add-labels@v1
+        with:
+          number: ${{ github.event.number }}
+          labels: upgrade-patch-version
