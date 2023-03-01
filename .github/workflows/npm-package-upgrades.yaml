@@ -27,6 +27,11 @@ jobs:
         ||  (
               github.event.label.name == 'apply-version-upgrade' 
               && github.event.action == 'labeled'
+              && (
+                contains(github.event.pull_request.labels.*.name, 'patch-version')
+                || contains(github.event.pull_request.labels.*.name, 'minor-version')
+                || contains(github.event.pull_request.labels.*.name, 'major-version')
+              )
             )
       }}
     runs-on: ubuntu-latest
