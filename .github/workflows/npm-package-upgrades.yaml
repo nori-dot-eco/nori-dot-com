@@ -1,4 +1,4 @@
-name: package auto-updater
+name: Auto-Update package versions
 on:
   pull_request_target:
     types:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{github.event.issue.pull_request.head.ref}}
+          ref: ${{github.event.pull_request.head.ref}}
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: '0'
