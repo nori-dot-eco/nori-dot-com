@@ -68,7 +68,7 @@ jobs:
 
           if [[ ${{ contains(github.event.pull_request.labels.*.name, 'major') }} ]]; then
             VERSION_UPGRADE_TYPE="--major";
-          elif  [[ ${{ contains(github.event.pull_request.labels.*.name, 'major') }} ]]; then
+          elif  [[ ${{ contains(github.event.pull_request.labels.*.name, 'minor') }} ]]; then
             VERSION_UPGRADE_TYPE="--minor";
           else
             VERSION_UPGRADE_TYPE="--patch";
