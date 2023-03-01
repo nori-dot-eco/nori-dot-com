@@ -13,11 +13,11 @@ jobs:
       - uses: actions-ecosystem/action-remove-labels@v1
         with:
           number: ${{ github.event.number }}
-          labels: upgrade-patch-version
+          labels: upgrade-version
 
   package-auto-updater:
     # If this event is for a PR creation, or has a specific label
-    if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
+    if: ${{ !github.event.label || github.event.label.name == 'upgrade-version' }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout source
@@ -45,7 +45,6 @@ jobs:
 
           git reset --hard HEAD;
 
-          echo "Starting version reversions...";
           yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
@@ -56,14 +55,23 @@ jobs:
           yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
       - name: increment package versions
         run: |
-          yarn version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/eslint-config-nori version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/ggit version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/math version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/project version --patch --no-git-tag-version --no-commit-hooks;
-          yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version --no-commit-hooks;
+
+          if [[ ${{ contains(github.event.pull_request.labels.*.name, 'major') }} ]]; then
+            VERSION_UPGRADE_TYPE="--major";
+          elif  [[ ${{ contains(github.event.pull_request.labels.*.name, 'major') }} ]]; then
+            VERSION_UPGRADE_TYPE="--minor";
+          else
+            VERSION_UPGRADE_TYPE="--patch";
+          fi
+
+          yarn version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
       - name: push updates to pr branch
         run: |
           git config --global user.email "github@nori.com";
