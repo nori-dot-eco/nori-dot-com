@@ -11,7 +11,7 @@ jobs:
       pull-request-id-matrix: ${{ steps.list-affected-pull-requests.outputs.value }}
     steps:
       - run: |
-          gh pr list --base ${{ github.event.base_ref }} --json number --jq '{ "pull-request-id": [.[].number] }';
+          gh pr list --base ${{ github.event.ref }} --json number --jq '{ "pull-request-id": [.[].number] }';
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: list-affected-pull-requests
