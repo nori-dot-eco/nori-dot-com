@@ -14,31 +14,29 @@ jobs:
         with:
           number: ${{ github.event.number }}
           labels: upgrade-patch-version
-          
+
   package-auto-updater:
     # If this event is for a PR creation, or has a specific label
     if: ${{ !github.event.label || github.event.label.name == 'upgrade-patch-version' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout source
+        uses: actions/checkout@v3
         with:
           ref: ${{github.event.pull_request.head.ref}}
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: '0'
-      - uses: actions/setup-node@v3
+      - name: setup node
+        uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - run: |
+      - name: reset package versions to the base
+        run: |
           git fetch origin ${{ github.event.pull_request.base.ref }};
           git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
-      - name: Extract version from package.json
-        uses: sergeysova/jq-action@v2
-        id: version
-        with:
-          cmd: 'jq .version package.json -r'
-      - run: |
-          BASE_VERSION="${{ steps.version.outputs.value }}";
+
+          BASE_VERSION=$(npm pkg get version | sed 's/"//g');
           git reset --hard HEAD;
 
           yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
@@ -49,7 +47,8 @@ jobs:
           yarn workspace @nori-dot-com/math version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/project version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
-      - run: |
+      - name: increment package versions
+        run: |
           yarn version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/cspell version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/errors version --patch --no-git-tag-version --no-commit-hooks;
@@ -58,13 +57,10 @@ jobs:
           yarn workspace @nori-dot-com/math version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/project version --patch --no-git-tag-version --no-commit-hooks;
           yarn workspace @nori-dot-com/quantification version --patch --no-git-tag-version --no-commit-hooks;
-      - run: |
+      - name: push updates to pr branch
+        run: |
           git config --global user.email "github@nori.com";
           git config --global user.name "Github";
           git add .;
           git diff --staged --quiet || git commit -m "Upgrading package versions";
           git push;
-      - uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          number: ${{ github.event.number }}
-          labels: upgrade-patch-version
