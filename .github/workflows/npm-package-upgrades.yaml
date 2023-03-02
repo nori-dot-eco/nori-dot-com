@@ -50,7 +50,7 @@ jobs:
           node-version-file: '.nvmrc'
       - name: merge base into PR branch
         run: | 
-          git pull origin ${{ github.event.pull_request.base.ref }};
+          git pull origin ${{ github.event.pull_request.base.ref }} --no-rebase;
       - name: increment package versions
         run: |
           if ${{ contains(github.event.pull_request.labels.*.name, 'major-version') }}; then
