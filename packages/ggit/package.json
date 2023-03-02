@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/ggit",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "description": "utilities for interacting with the Soil Metrics GGIT API",
   "keywords": [
     "nori",
