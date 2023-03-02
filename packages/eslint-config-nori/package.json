@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/eslint-config-nori",
-  "version": "1.6.17",
+  "version": "1.7.0",
   "description": "eslint config for Nori",
   "keywords": [
     "eslint"
