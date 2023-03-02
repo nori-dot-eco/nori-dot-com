@@ -54,6 +54,25 @@ jobs:
           git config --global user.name "Github";
 
           git pull origin ${{ github.event.pull_request.base.ref }} --no-rebase;
+      - name: reset packages to match master
+        run: |
+          git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
+          BASE_VERSION=$(
+            cat package.json \
+              | grep "^\s*\"version\": \"" \
+              | awk '{ print $2 }' \
+              | sed 's|[",]||g'
+            );
+          git reset --hard HEAD;
+
+          yarn version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/cspell version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/errors version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/eslint-config-nori version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/ggit version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/math version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/project version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
+          yarn workspace @nori-dot-com/quantification version --new-version $BASE_VERSION --no-git-tag-version --no-commit-hooks;
       - name: increment package versions
         run: |
           if ${{ contains(github.event.pull_request.labels.*.name, 'major-version') }}; then
@@ -63,15 +82,9 @@ jobs:
           elif ${{ contains(github.event.pull_request.labels.*.name, 'patch-version') }}; then
             VERSION_UPGRADE_TYPE="--patch";
           else
-            git checkout origin/${{ github.event.pull_request.base.ref }} -- package.json;
-            BASE_VERSION=$(
-              cat package.json \
-                | grep "^\s*\"version\": \"" \
-                | awk '{ print $2 }' \
-                | sed 's|[",]||g'
-              );
-            git reset --hard HEAD;
-            VERSION_UPGRADE_TYPE="--new-version $BASE_VERSION";
+            git add .;
+            git diff --staged --quiet || git commit -m "Syncing package versions with master";
+            exit 0;
           fi
 
           yarn version $VERSION_UPGRADE_TYPE --no-git-tag-version --no-commit-hooks;
