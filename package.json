@@ -13,7 +13,7 @@
     "lerna": "^5.1.6",
     "ts-jest": "^29.0.3",
     "typescript": "^4.6.2",
-    "nx": "14.3.6"
+    "nx": "15.8.3"
   },
   "scripts": {
     "build": "nx run-many --target=build --all -- --force",
