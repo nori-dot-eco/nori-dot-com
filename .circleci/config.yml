@@ -6,7 +6,6 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     NODE_ENV: test
-    MAIN_BRANCH_NAME: kyclark-package-publishing-spike
   docker:
     - image: cimg/node:14.18.1
 
@@ -133,10 +132,6 @@ jobs:
           name: Publishing Packages
           command: |
             echo "Publishing packages...";
-            AFFECTED_PACKAGES=( $(nx print-affected --base=$NX_BASE --head=$NX_HEAD \
-              | jq -r '.projects | join(" ")'
-            ) );
-
             for PACKAGE in ${PACKAGES_TO_PUBLISH[@]};
             do
               echo "Publishing $PACKAGE...";
