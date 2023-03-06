@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
   gcp-cli: circleci/gcp-cli@3.0.1
-  nx: nrwl/nx@1.6.1
 
 defaults: &defaults
   working_directory: ~/repo
@@ -98,7 +97,6 @@ jobs:
       - attach_workspace:
           at: /home/circleci
       - setup-environment
-      - nx/set-shas
       - auth-gcloud
       - run:
           name: Checking for Existing Packages
