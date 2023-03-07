@@ -108,7 +108,8 @@ jobs:
             WORKSPACE_PACKAGES=( $(yarn workspaces info --json | sed '$d' | tail -n +2 | jq -r 'keys | join(" ")') );
 
             echo "Detecting existing packages...";
-            PACKAGES_TO_PUBLISH=();
+
+            touch /tmp/packages_to_publish.txt;
             for PACKAGE in ${WORKSPACE_PACKAGES[@]};
             do
               export PACKAGE=$PACKAGE
@@ -125,7 +126,7 @@ jobs:
               );
 
               if [[ "$VERSION_EXISTS" = "false" ]]; then
-                PACKAGES_TO_PUBLISH+=($PACKAGE);
+                echo $PACKAGE >> /tmp/packages_to_publish.txt;
               fi
             done
 
@@ -135,7 +136,7 @@ jobs:
           name: Publishing Packages
           command: |
             echo "Publishing packages...";
-            for PACKAGE in ${PACKAGES_TO_PUBLISH[@]};
+            for PACKAGE in $(cat /tmp/packages_to_publish.txt);
             do
               export PACKAGE=$PACKAGE;
               echo "Publishing $PACKAGE...";
