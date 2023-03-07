@@ -46,7 +46,8 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            yarn install --prefer-offline --frozen-lockfile;
+            yarn install --prefer-offline;
+            git checkout -- yarn.lock;
       - save_cache:
           key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
           paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
