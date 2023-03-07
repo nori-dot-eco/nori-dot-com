@@ -116,6 +116,8 @@ jobs:
 
               VERSION_EXISTS=$(
                 gcloud artifacts versions list \
+                  --location us-central1 \
+                  --repository npm-release \
                   --package=$PACKAGE \
                   --format json | jq \
                     '[.[].name | capture(".*/versions/(?<version>.*)").version | contains(env.CURRENT_VERSION)] 
