@@ -46,12 +46,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            if [ ! -d "node_modules" ]; then
-              for i in 1 2; do
-                yarn install --prefer-offline && break || sleep 15;
-              done
-              git checkout yarn.lock
-            fi
+            yarn install --prefer-offline --frozen-lockfile;
       - save_cache:
           key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
           paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
@@ -69,6 +64,7 @@ jobs:
           paths:
             - repo
             - .ssh
+            - .cache
 
   run-regular-tests:
     <<: *defaults
@@ -79,9 +75,9 @@ jobs:
       - run:
           name: Run Tests and Collect Coverage
           command: |
-            cd ~/repo
-            nx run-many --target=build --all
-            yarn run test --coverage -w=2
+            cd ~/repo;
+            yarn run build;
+            yarn run test --coverage -w=2;
       - run:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
