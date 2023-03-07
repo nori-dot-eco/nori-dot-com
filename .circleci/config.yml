@@ -46,8 +46,12 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            yarn install --prefer-offline;
-            git checkout -- yarn.lock;
+            if [ ! -d "node_modules" ]; then
+              for i in 1 2; do
+                yarn install --prefer-offline && break || sleep 15;
+              done
+              git checkout yarn.lock
+            fi
       - save_cache:
           key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
           paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
@@ -98,10 +102,10 @@ jobs:
           name: Checking for Existing Packages
           command: |
             echo "Configuring registry auth...";
+            touch ~/.npmrc;
             yarn run artifactregistry-login;
 
             WORKSPACE_PACKAGES=( $(yarn workspaces info --json | sed '$d' | tail -n +2 | jq -r 'keys | join(" ")') );
-
 
             echo "Detecting existing packages...";
             PACKAGES_TO_PUBLISH=();
