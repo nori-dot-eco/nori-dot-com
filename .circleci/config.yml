@@ -109,7 +109,7 @@ jobs:
 
             echo "Detecting existing packages...";
 
-            touch /tmp/packages_to_publish.txt;
+            touch /tmp/packages_to_publish;
             for PACKAGE in ${WORKSPACE_PACKAGES[@]};
             do
               export PACKAGE=$PACKAGE
@@ -126,17 +126,17 @@ jobs:
               );
 
               if [[ "$VERSION_EXISTS" = "false" ]]; then
-                echo $PACKAGE >> /tmp/packages_to_publish.txt;
+                echo $PACKAGE >> /tmp/packages_to_publish;
               fi
             done
 
-            echo "Identified packages to publish: $PACKAGES_TO_PUBLISH";
-            echo "export PACKAGES_TO_PUBLISH=( $PACKAGES_TO_PUBLISH )" >> $BASH_ENV;
+            echo "Identified packages to publish:";
+            cat /tmp/packages_to_publish;
       - run:
           name: Publishing Packages
           command: |
             echo "Publishing packages...";
-            for PACKAGE in $(cat /tmp/packages_to_publish.txt);
+            for PACKAGE in $(cat /tmp/packages_to_publish);
             do
               export PACKAGE=$PACKAGE;
               echo "Publishing $PACKAGE...";
@@ -158,5 +158,5 @@ workflows:
             branches:
               only:
                 - master
-                - /.*-qa/
+                - /.*-release/
 
