@@ -159,5 +159,4 @@ workflows:
               only:
                 - master
                 - /.*-qa/
-                - NO-2773-publish-npm-packages-on-changed-versions
 
