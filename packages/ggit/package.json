@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/ggit",
-  "version": "1.5.20",
+  "version": "1.6.0",
   "description": "utilities for interacting with the Soil Metrics GGIT API",
   "keywords": [
     "nori",
@@ -34,7 +34,7 @@
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
   },
   "dependencies": {
-    "@nori-dot-com/errors": "^1.5.0",
+    "@nori-dot-com/errors": "^1.6.0",
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "node-fetch": "^2.6.1",

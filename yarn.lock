@@ -1805,10 +1805,10 @@
     fastq "^1.6.0"
 
 "@nori-dot-com/errors@^1.6.0":
-  version "1.5.9"
+  version "1.6.0"
 
 "@nori-dot-com/ggit@^1.6.0":
-  version "1.5.9"
+  version "1.6.0"
   dependencies:
     "@nori-dot-com/errors" "^1.6.0"
     ajv "^7.2.4"
@@ -1817,7 +1817,7 @@
     typescript-json-schema "^0.54.0"
 
 "@nori-dot-com/math@^1.6.0":
-  version "1.5.9"
+  version "1.6.0"
   dependencies:
     mathjs "^9.5.1"
 
