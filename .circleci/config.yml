@@ -99,7 +99,7 @@ jobs:
       - setup-environment
       - auth-gcloud
       - run:
-          name: Checking for Existing Packages
+          name: Check for Existing Packages
           command: |
             echo "Configuring registry auth...";
             touch ~/.npmrc;
@@ -133,7 +133,7 @@ jobs:
             echo "Identified packages to publish:";
             cat /tmp/packages_to_publish;
       - run:
-          name: Publishing Packages
+          name: Publish Packages
           command: |
             echo "Publishing packages...";
             for PACKAGE in $(cat /tmp/packages_to_publish);
