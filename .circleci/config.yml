@@ -36,7 +36,7 @@ commands:
             gcloud config set project nori-internal;
 
 jobs:  
-  install-dependencies:
+  setup-tests:
     <<: *defaults
     steps:
       - checkout
@@ -147,10 +147,10 @@ jobs:
 workflows:
   continuous-integration:
     jobs:
-      - install-dependencies
+      - setup-tests
       - run-regular-tests:
           requires:
-            - install-dependencies
+            - setup-tests
       - publish-packages:
           requires:
             - run-regular-tests
