@@ -1,34 +1,59 @@
-version: 2
+version: 2.1
+orbs:
+  gcp-cli: circleci/gcp-cli@3.0.1
+
 defaults: &defaults
   working_directory: ~/repo
   environment:
     NODE_ENV: test
   docker:
-    - image: circleci/node:14.18.1
+    - image: cimg/node:14.18.1
 
-jobs:
+commands:
+  setup-environment: 
+    description: Shared steps for configuring environment variables and common configurations
+    steps:
+      - run:
+          name: Setup Environment
+          command: |
+            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV;
+            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV;
+            git config --global user.email "circleci@nori.com";
+            git config --global user.name "Circle CI";
+  auth-gcloud:
+    description: 'Authenticate with google cloud'
+    steps:
+      - gcp-cli/install
+      - run:
+          name: Authenticate with gcloud
+          command: |
+            sudo mkdir -p /var/secrets/google;
+            sudo chown -R circleci:circleci /var/secrets/google;
+            echo $NORI_INTERNAL_SERVICE_KEY > /var/secrets/google/key.json;
+            echo 'export GOOGLE_APPLICATION_CREDENTIALS=/var/secrets/google/key.json' >> $BASH_ENV;
+
+            gcloud auth activate-service-account --key-file /var/secrets/google/key.json;
+            gcloud config set project nori-internal;
+
+jobs:  
   setup-tests:
     <<: *defaults
     steps:
       - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
+      - setup-environment
       - restore_cache:
-          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-5-node_modules_dir-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: |
             if [ ! -d "node_modules" ]; then
               for i in 1 2; do
-                yarn install --prefer-offline && break || sleep 15;
+                yarn install --prefer-offline --frozen-lockfile && break || sleep 15;
               done
               git checkout yarn.lock
             fi
       - save_cache:
-          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-5-node_modules_dir-{{ checksum "yarn.lock" }}
           paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
             - packages/project/node_modules
             - packages/quantification/node_modules
@@ -39,32 +64,99 @@ jobs:
             - packages/cspell/node_modules
             - node_modules
             - ~/.cache
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - repo
+            - .ssh
+            - .cache
+
   run-regular-tests:
     <<: *defaults
     steps:
-      - checkout
-      - run:
-          name: Setup Environment
-          command: |
-            echo 'export PATH=./node_modules/.bin:$PATH' >> $BASH_ENV
-            echo 'export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH' >> $BASH_ENV
-      - restore_cache:
-          key: v-0-0-4-node_modules_dir-{{ checksum "yarn.lock" }}
+      - attach_workspace:
+          at: /home/circleci
+      - setup-environment
       - run:
           name: Run Tests and Collect Coverage
           command: |
-            cd ~/repo
-            nx run-many --target=build --all
-            yarn run test --coverage -w=2
+            cd ~/repo;
+            yarn run build;
+            yarn run test --coverage -w=2;
       - run:
           name: Upload Coverage Reports
           command: codecov --disable=gcov --token=$CODECOV_TOKEN
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - repo
+
+  publish-packages:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /home/circleci
+      - setup-environment
+      - auth-gcloud
+      - run:
+          name: Checking for Existing Packages
+          command: |
+            echo "Configuring registry auth...";
+            touch ~/.npmrc;
+            yarn run artifactregistry-login;
+
+            WORKSPACE_PACKAGES=( $(yarn workspaces info --json | sed '$d' | tail -n +2 | jq -r 'keys | join(" ")') );
+
+            echo "Detecting existing packages...";
+
+            touch /tmp/packages_to_publish;
+            for PACKAGE in ${WORKSPACE_PACKAGES[@]};
+            do
+              export PACKAGE=$PACKAGE
+              export CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
+
+              VERSION_EXISTS=$(
+                gcloud artifacts versions list \
+                  --location us-central1 \
+                  --repository npm-release \
+                  --package=$PACKAGE \
+                  --format json | jq \
+                    '[.[].name | capture(".*/versions/(?<version>.*)").version | contains(env.CURRENT_VERSION)] 
+                    | max'
+              );
+
+              if [[ "$VERSION_EXISTS" = "false" ]]; then
+                echo $PACKAGE >> /tmp/packages_to_publish;
+              fi
+            done
+
+            echo "Identified packages to publish:";
+            cat /tmp/packages_to_publish;
+      - run:
+          name: Publishing Packages
+          command: |
+            echo "Publishing packages...";
+            for PACKAGE in $(cat /tmp/packages_to_publish);
+            do
+              export PACKAGE=$PACKAGE;
+              echo "Publishing $PACKAGE...";
+              CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
+              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION;
+            done
 
 workflows:
-  version: 2
-  test:
+  continuous-integration:
     jobs:
       - setup-tests
       - run-regular-tests:
           requires:
             - setup-tests
+      - publish-packages:
+          requires:
+            - run-regular-tests
+          filters:
+            branches:
+              only:
+                - master
+                - /.*-release/
+
