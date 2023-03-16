@@ -1,5 +1,3 @@
-const { importRules } = require('./rules');
-
 module.exports = {
   extends: '@nori-dot-com/eslint-config-nori',
   overrides: [
@@ -9,9 +7,8 @@ module.exports = {
         'plugin:cypress/recommended',
         'plugin:chai-friendly/recommended',
       ],
-      processor: '@graphql-eslint/graphql', // todo merge with following overrides block?
+      processor: '@graphql-eslint/graphql',
       rules: {
-        ...importRules({ dir: __dirname }),
         'cypress/no-force': 'error',
         'cypress/assertion-before-screenshot': 'error',
         'cypress/require-data-selectors': 'error',
