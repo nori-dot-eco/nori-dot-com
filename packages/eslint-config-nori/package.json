@@ -14,7 +14,8 @@
     "package.json",
     "rules.js",
     "eslint-local-rules/index.js",
-    "eslint-local-rules/waffle-as-promised.js"
+    "eslint-local-rules/waffle-as-promised.js",
+    "cypress.js"
   ],
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-chai-expect": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.2.2",
