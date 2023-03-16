@@ -25,7 +25,7 @@ module.exports = {
           {
             allowPattern: '^[A-Z]+', // allow upper pascal cased index access (e.g., allows process.env['NODE_ENV'])
           },
-        ], // this package uses a strict set of tsconfig that uses noPropertyAccessFromIndexSignature which can break this rule
+        ],
         'no-unused-expressions': 0, // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
         'chai-friendly/no-unused-expressions': 'error', // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
       },
