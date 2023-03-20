@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   gcp-cli: circleci/gcp-cli@3.0.1
+  nori-package-management-orb: nori-dot-com/nori-package-management-orb@dev:alpha
 
 defaults: &defaults
   working_directory: ~/repo
@@ -96,53 +97,7 @@ jobs:
     steps:
       - attach_workspace:
           at: /home/circleci
-      - setup-environment
-      - auth-gcloud
-      - run:
-          name: Checking for Existing Packages
-          command: |
-            echo "Configuring registry auth...";
-            touch ~/.npmrc;
-            yarn run artifactregistry-login;
-
-            WORKSPACE_PACKAGES=( $(yarn workspaces info --json | sed '$d' | tail -n +2 | jq -r 'keys | join(" ")') );
-
-            echo "Detecting existing packages...";
-
-            touch /tmp/packages_to_publish;
-            for PACKAGE in ${WORKSPACE_PACKAGES[@]};
-            do
-              export PACKAGE=$PACKAGE
-              export CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
-
-              VERSION_EXISTS=$(
-                gcloud artifacts versions list \
-                  --location us-central1 \
-                  --repository npm-release \
-                  --package=$PACKAGE \
-                  --format json | jq \
-                    '[.[].name | capture(".*/versions/(?<version>.*)").version | contains(env.CURRENT_VERSION)] 
-                    | max'
-              );
-
-              if [[ "$VERSION_EXISTS" = "false" ]]; then
-                echo $PACKAGE >> /tmp/packages_to_publish;
-              fi
-            done
-
-            echo "Identified packages to publish:";
-            cat /tmp/packages_to_publish;
-      - run:
-          name: Publishing Packages
-          command: |
-            echo "Publishing packages...";
-            for PACKAGE in $(cat /tmp/packages_to_publish);
-            do
-              export PACKAGE=$PACKAGE;
-              echo "Publishing $PACKAGE...";
-              CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
-              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION;
-            done
+      - nori-package-management-orb/publish-packages
 
 workflows:
   continuous-integration:
