@@ -1,6 +1,6 @@
 {
   "name": "@nori-dot-com/quantification",
-  "version": "1.4.5",
+  "version": "1.4.8",
   "description": "utilities for quantifying Nori's soil methodology based projects",
   "keywords": [
     "nori",
