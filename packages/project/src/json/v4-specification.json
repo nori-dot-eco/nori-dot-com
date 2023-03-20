@@ -721,7 +721,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
                         },
                         {
                             "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
@@ -912,7 +912,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1031,7 +1031,7 @@
                             "$ref": "#/definitions/GeoJSON.MultiPolygon"
                         },
                         {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection"
                         }
                     ],
                     "description": "The feature's geometry",
@@ -1152,7 +1152,7 @@
             "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
-        "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
+        "GeoJSON.GeometryCollection": {
             "additionalProperties": false,
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
             "properties": {
@@ -1228,7 +1228,7 @@
                                 "$ref": "#/definitions/GeoJSON.MultiPolygon"
                             },
                             {
-                                "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                                "$ref": "#/definitions/GeoJSON.GeometryCollection"
                             }
                         ],
                         "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
@@ -1249,7 +1249,7 @@
                 "geometries",
                 "type"
             ],
-            "title": "GeoJSON.GeometryCollection<GeoJSON.Geometry>",
+            "title": "GeoJSON.GeometryCollection",
             "type": "object"
         },
         "GeoJSON.LineString": {
@@ -2628,6 +2628,14 @@
         "id": {
             "description": "Nori's internal project identifier.\n\nUsed to synchronize repeated imports.",
             "title": "id",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "importJobId": {
+            "description": "Nori's internal identifier for the entity associated\nwith the import of this project",
+            "title": "importJobId",
             "type": [
                 "string",
                 "null"
