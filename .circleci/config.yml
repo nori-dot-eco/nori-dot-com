@@ -140,8 +140,8 @@ jobs:
             do
               export PACKAGE=$PACKAGE;
               echo "Publishing $PACKAGE...";
-              CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
-              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION;
+              PACKAGE_PATH=$(yarn workspaces info --json  | sed '$d' | tail -n +2 | jq -r '.[env.PACKAGE].location');
+              (cd $PACKAGE_PATH && npm publish);
             done
 
 workflows:
