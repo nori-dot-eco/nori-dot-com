@@ -413,19 +413,18 @@ export interface Project {
    */
   id?: string;
   /**
-   * Nori's internal identifier for the entity associated
-   * with the import of this project
+   * Nori's internal identifier for this project's import transaction.
    *
    * @nullable External systems pass null or omit the property for new projects.
    *
    * @example
    *
    * ```js
-   * "id": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
+   * "transactionId": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
    * ```
    *
    */
-  importJobId?: string;
+  transactionId?: string;
   /**
    * Nori's internal supplier identifier.
    *
