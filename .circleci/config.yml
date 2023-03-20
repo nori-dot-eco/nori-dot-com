@@ -136,12 +136,13 @@ jobs:
           name: Publishing Packages
           command: |
             echo "Publishing packages...";
+            TARGET_REGISTRY="https://us-central1-npm.pkg.dev/nori-internal/npm-release/";
             for PACKAGE in $(cat /tmp/packages_to_publish);
             do
               export PACKAGE=$PACKAGE;
               echo "Publishing $PACKAGE...";
               CURRENT_VERSION=$(yarn workspace $PACKAGE versions --json | sed '$d' | tail -n +2 | jq -r '.data[env.PACKAGE]');
-              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION;
+              yarn workspace $PACKAGE publish --new-version $CURRENT_VERSION --registry $TARGET_REGISTRY;
             done
 
 workflows:
