@@ -141,6 +141,10 @@ export const Errors = {
       message:
         'There was an error parsing grazing data in the sheet. Please check the sheet for missing or invalid data.',
     },
+    cropIrrigationMissingFrequencyError: {
+      message:
+        'Irrigation events that define both a start and end date with different values must also define a frequency.',
+    },
     cropIrrigationDateOverlapError: {
       message: `Irrigation dates can not overlap with the next crop's harvest date`,
     },
