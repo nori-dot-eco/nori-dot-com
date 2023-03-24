@@ -75,6 +75,7 @@ module.exports = {
         'unicorn/prefer-switch': [0],
         'unicorn/no-useless-undefined': [0],
         'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatible version of node (~18)
+        'unicorn/prefer-ternary': ['error', 'only-single-line'],
         // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
         //   'warn',
         //   {
