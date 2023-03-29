@@ -68,7 +68,12 @@
           "<rootDir>/packages/ggit/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "ggit",
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "globals": {
+          "ts-jest": {
+            "tsconfig": "./packages/ggit/tsconfig.json"
+          }
+        }
       },
       {
         "testMatch": [
