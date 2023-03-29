@@ -16,8 +16,8 @@
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "build": "nx run-many --target=build --all -- --force",
-    "watch": "tsc -b --watch --force",
+    "build": "tsc -b",
+    "watch": "tsc -b --watch",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build",
