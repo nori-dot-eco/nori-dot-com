@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "nx run-many --target=build --all -- --force",
-    "watch": "nx run-many --target=watch --all",
+    "watch": "tsc -b --watch --force",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build",

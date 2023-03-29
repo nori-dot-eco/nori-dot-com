@@ -1,15 +1,31 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "module": "CommonJS",
     "target": "ES2018",
     "lib": ["esnext", "dom"],
     "declaration": true,
-    "composite": true,
-    "outDir": "./dist",
-    "rootDir": ".",
+    "declarationMap": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "resolveJsonModule": true
   },
-  "exclude": ["node_modules", "dist"]
+  "files": [],
+  "references": [
+    {
+      "path": "packages/errors"
+    },
+    {
+      "path": "packages/ggit"
+    },
+    {
+      "path": "packages/math"
+    },
+    {
+      "path": "packages/project"
+    },
+    {
+      "path": "packages/quantification"
+    }
+  ]
 }
