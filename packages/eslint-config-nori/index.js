@@ -16,7 +16,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.md'],
+      files: ['README.md'],
       parser: 'markdown-eslint-parser',
       extends: ['plugin:prettier/recommended', 'plugin:md/recommended'],
       rules: {
@@ -312,6 +312,6 @@ module.exports = {
     {
       files: ['*'],
       plugins: ['only-warn'],
-    }
+    },
   ],
 };
