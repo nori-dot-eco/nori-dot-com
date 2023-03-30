@@ -8,6 +8,10 @@ declare type ResolvedReturnType<T extends AnyFunction> = Resolved<
   ReturnType<T>
 >;
 
+/**
+ *
+ * @example
+ */
 interface ClassType<T> {
   new (...args: any[]): T;
 }
