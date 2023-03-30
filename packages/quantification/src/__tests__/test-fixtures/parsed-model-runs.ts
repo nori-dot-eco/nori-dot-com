@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention -- test fixture */
-
 import type { Output } from '@nori-dot-com/ggit';
 
 export const PARSED_SOIL_METRICS_OUTPUT: Output.OutputFile<Output.ParsedMapUnit> =
