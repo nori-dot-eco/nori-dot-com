@@ -4,6 +4,7 @@
     "target": "ES2018",
     "lib": ["esnext", "dom"],
     "declaration": true,
+    "declarationMap": true,
     "composite": true,
     "outDir": "./dist",
     "rootDir": ".",
