@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention -- the naming conventions used here are dictated by an external service  */
 
 /**
  *
@@ -55,7 +55,9 @@ export type ErrorResponse = InputValidationError | AllErrors;
  * @example
  */
 export interface InputValidationError {
-  InputErrors: InputErrors;
+  InputErrors: {
+    InputValidationErrors: SoilMetricsError;
+  };
 }
 
 /**
@@ -64,7 +66,7 @@ export interface InputValidationError {
  */
 export interface AllErrors {
   AllErrors: {
-    Errors: Error;
+    Errors: SoilMetricsError;
   };
 }
 
@@ -72,30 +74,15 @@ export interface AllErrors {
  *
  * @example
  */
-export interface Errors {
-  AllErrors: InputErrors;
-}
-/**
- *
- * @example
- */
-interface InputErrors {
-  InputValidationErrors: Error;
+interface SoilMetricsError {
+  ModelRun: ModelRunErrors | ModelRunErrors[];
 }
 
 /**
  *
  * @example
  */
-interface Error {
-  ModelRun: ModelRunErrors;
-}
-
-/**
- *
- * @example
- */
-interface ModelRunErrors {
+export interface ModelRunErrors {
   '@name': string;
   Error: Error | Error[];
 }
