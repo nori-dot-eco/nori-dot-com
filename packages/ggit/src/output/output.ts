@@ -48,15 +48,23 @@ export interface OutputFile<M> {
   Day: Daycent<M>;
 }
 
-export type ErrorResponse = InputValidationError | AllErrors;
-
 /**
  *
  * @example
  */
-export interface InputValidationError {
-  InputErrors: {
-    InputValidationErrors: SoilMetricsError;
+export interface ErrorResponse {
+  AllErrors?: {
+    Errors: {
+      ModelRun: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
+  };
+  InputErrors?: {
+    InputValidationErrors?: {
+      ModelRun: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
+    APIBuildErrors?: {
+      BuildError: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
   };
 }
 
@@ -64,34 +72,17 @@ export interface InputValidationError {
  *
  * @example
  */
-export interface AllErrors {
-  AllErrors: {
-    Errors: SoilMetricsError;
-  };
-}
-
-/**
- *
- * @example
- */
-interface SoilMetricsError {
-  ModelRun: ModelRunErrors | ModelRunErrors[];
-}
-
-/**
- *
- * @example
- */
-export interface ModelRunErrors {
+export interface ModelRunErrorCollection {
   '@name': string;
-  Error: Error | Error[];
+  '#text'?: string;
+  Error?: ModelRunError | ModelRunError[];
 }
 
 /**
  *
  * @example
  */
-interface Error {
+interface ModelRunError {
   '@index': string;
   '@message': string;
 }
