@@ -252,7 +252,7 @@ export const Errors = {
     },
     priceOrFeeMismatch: {
       message:
-        'The totalPricePerTonneInCents on this order does not match the current on-chain pricing.',
+        'The price for NRTs has changed. Please refresh the page and try again.',
     },
   },
   authenticationError: {
