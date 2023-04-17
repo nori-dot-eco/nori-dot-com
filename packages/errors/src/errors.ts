@@ -250,6 +250,10 @@ export const Errors = {
     specialOrderTransactionInProgress: {
       message: 'A transaction has already been created for this order.',
     },
+    priceOrFeeMismatch: {
+      message:
+        'The totalPricePerTonneInCents on this order does not match the current on-chain pricing.',
+    },
   },
   authenticationError: {
     userNotFound: {
