@@ -250,6 +250,10 @@ export const Errors = {
     specialOrderTransactionInProgress: {
       message: 'A transaction has already been created for this order.',
     },
+    priceOrFeeMismatch: {
+      message:
+        'The price for NRTs has changed. Please refresh the page and try again.',
+    },
   },
   authenticationError: {
     userNotFound: {
