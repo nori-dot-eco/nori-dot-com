@@ -1,4 +1,4 @@
-import { FlatGGITError, GGITErrorClassification } from '../ggit-error';
+import { FlatGGITError, GGITErrorClassification } from '../flat-ggit-error';
 import type { ErrorResponse } from '../output';
 
 describe('ggit-error', () => {

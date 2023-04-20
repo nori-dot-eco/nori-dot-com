@@ -4,7 +4,6 @@ export * from './upload';
 export * from './api';
 export * from './auth';
 export * from './validation';
-export * from './ggit-error';
-export * from './modeled-ggit-response';
+export * from './flat-ggit-error';
 export * as Input from './input';
 export * as Output from './output';
