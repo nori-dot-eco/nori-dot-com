@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention -- the naming conventions used here are dictated by an external service  */
 
 /**
  *
@@ -48,23 +48,23 @@ export interface OutputFile<M> {
   Day: Daycent<M>;
 }
 
-export type ErrorResponse = InputValidationError | AllErrors;
-
 /**
  *
  * @example
  */
-export interface InputValidationError {
-  InputErrors: InputErrors;
-}
-
-/**
- *
- * @example
- */
-export interface AllErrors {
-  AllErrors: {
-    Errors: Error;
+export interface ErrorResponse {
+  AllErrors?: {
+    Errors: {
+      ModelRun: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
+  };
+  InputErrors?: {
+    InputValidationErrors?: {
+      ModelRun: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
+    APIBuildErrors?: {
+      BuildError: ModelRunErrorCollection | ModelRunErrorCollection[];
+    };
   };
 }
 
@@ -72,39 +72,17 @@ export interface AllErrors {
  *
  * @example
  */
-export interface Errors {
-  AllErrors: InputErrors;
-}
-/**
- *
- * @example
- */
-interface InputErrors {
-  InputValidationErrors: Error;
-}
-
-/**
- *
- * @example
- */
-interface Error {
-  ModelRun: ModelRunErrors;
-}
-
-/**
- *
- * @example
- */
-interface ModelRunErrors {
+export interface ModelRunErrorCollection {
   '@name': string;
-  Error: Error | Error[];
+  '#text'?: string;
+  Error?: ModelRunError | ModelRunError[];
 }
 
 /**
  *
  * @example
  */
-interface Error {
+interface ModelRunError {
   '@index': string;
   '@message': string;
 }
