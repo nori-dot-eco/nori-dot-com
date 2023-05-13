@@ -8,10 +8,10 @@ defaults: &defaults
   environment:
     NODE_ENV: test
   docker:
-    - image: cimg/node:14.18.1
+    - image: cimg/node:18.15.0
 
 commands:
-  setup-environment: 
+  setup-environment:
     description: Shared steps for configuring environment variables and common configurations
     steps:
       - run:
@@ -22,7 +22,7 @@ commands:
             git config --global user.email "circleci@nori.com";
             git config --global user.name "Circle CI";
 
-jobs:  
+jobs:
   setup-tests:
     <<: *defaults
     steps:
@@ -99,4 +99,3 @@ workflows:
               only:
                 - master
                 - /.*-release/
-
