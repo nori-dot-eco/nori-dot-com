@@ -3,6 +3,13 @@ export const Errors = {
     invalidArguments: {
       message: 'The arguments you provided are invalid',
     },
+    exceedsNrtQuota: {
+      message: 'The request exceeds your remaining NRT quota',
+      http: {
+        code: 403,
+        reason: 'QUOTA_EXCEEDED',
+      },
+    },
   },
   ggitInputError: {
     ggitInputDataUnknownError: {
