@@ -166,6 +166,9 @@ module.exports = {
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
       ],
+      rules: {
+        '@graphql-eslint/known-directives': 0,
+      },
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
