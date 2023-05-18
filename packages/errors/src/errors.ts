@@ -254,6 +254,10 @@ export const Errors = {
       message:
         'The price for NRTs has changed. Please refresh the page and try again.',
     },
+    climateReservationError: {
+      message:
+        'There was an error creating or confirming a Climate Reservation with the Stripe Climate API.',
+    },
   },
   authenticationError: {
     userNotFound: {
