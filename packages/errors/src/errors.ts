@@ -338,4 +338,4 @@ export const Errors = {
       message: 'Output lacks required data',
     },
   },
-};
+} as const;
