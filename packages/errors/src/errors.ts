@@ -258,6 +258,12 @@ export const Errors = {
       message:
         'There was an error creating or confirming a Climate Reservation with the Stripe Climate API.',
     },
+    climateReservationNotFound: {
+      message: 'The climate reservation for this order was not found.',
+    },
+    climateReservationCancelled: {
+      message: 'The climate reservation for this order was cancelled.',
+    },
   },
   authenticationError: {
     userNotFound: {
