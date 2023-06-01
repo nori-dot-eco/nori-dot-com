@@ -157,35 +157,39 @@ const convertV3CropToV4Crop = (
     burningEvents,
   };
   switch (v3Crop.classification) {
-    case 'annual crop':
+    case 'annual crop': {
       return {
         classification: 'annual crop',
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      } as V4.Crop; // TODO: translation function for updated crop types;
-    case 'annual cover':
+      } as V4.Crop;
+    } // TODO: translation function for updated crop types;
+    case 'annual cover': {
       return {
         classification: 'annual cover',
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      } as V4.Crop; // TODO: translation function for updated crop types
-    case 'perennial':
+      } as V4.Crop;
+    } // TODO: translation function for updated crop types
+    case 'perennial': {
       return {
         classification: 'perennial',
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      } as V4.Crop; // TODO: translation function for updated crop types
+      } as V4.Crop;
+    } // TODO: translation function for updated crop types
     case 'vineyard':
-    case 'orchard':
+    case 'orchard': {
       return {
         classification: v3Crop.classification,
         name: v3Crop.name,
         type: v3Crop.type,
         ...events,
-      } as V4.Crop; // TODO: translation function for updated crop types
+      } as V4.Crop;
+    } // TODO: translation function for updated crop types
   }
 };
 

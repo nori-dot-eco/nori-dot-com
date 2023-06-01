@@ -529,6 +529,7 @@ export const translateCoverCrop = ({
                    * This is the flag that tells daycent/ggit that the crop was terminated.
                    * cover crops are not harvested. However, in the legacy sheet we used harvest
                    * events with a yield of 0 to signal the end of life for a crop.
+                   *
                    */
                   yield: 0,
                 },

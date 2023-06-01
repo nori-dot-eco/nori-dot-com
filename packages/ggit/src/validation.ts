@@ -66,7 +66,6 @@ const validationRules = {};
  * ```js
  * validateInputData({}); // returns {valid:false, ...errors}
  * ```
- *
  */
 export const validateInputData = (
   data: Input.InputData

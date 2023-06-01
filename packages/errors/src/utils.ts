@@ -10,7 +10,7 @@ type ObjectPaths<T extends object> = {
 }[T extends any[] ? number & keyof T : keyof T];
 type KeysOfUnion<T> = T extends T ? keyof T : never;
 export type ErrorType = keyof typeof Errors;
-export type ErrorCode = KeysOfUnion<typeof Errors[ErrorType]>;
+export type ErrorCode = KeysOfUnion<(typeof Errors)[ErrorType]>;
 export type UnparsedError = ObjectPaths<typeof Errors>;
 export type ErrorMessage = string;
 

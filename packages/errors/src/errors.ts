@@ -213,6 +213,7 @@ export const Errors = {
   },
   /**
    * checkoutError's are NOT retried by the task queue
+   *
    */
   checkoutError: {
     insufficientStock: {

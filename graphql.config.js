@@ -1,5 +1,6 @@
 /**
  * This file is used by eslint as well as the vscode-graphql plugin
+ *
  */
 
 const path = require('path');

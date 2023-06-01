@@ -19,7 +19,7 @@ type ProjectDataValidationContext = Omit<DataValidationCxt, 'rootData'> & {
  * @internal
  */
 export const formatInputData = (data: Project): Project => {
-  const toLowercase = (key: string, value: any): string =>
+  const toLowercase = (_key: string, value: any): string =>
     typeof value === 'string' &&
     ![
       'multipolygon',
@@ -76,7 +76,6 @@ const validationRules = {
  * ```js
  * validateProjectData(data); // returns {valid:false, ...errors}
  * ```
- *
  */
 export const validateProjectData = (
   data: Project

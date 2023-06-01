@@ -17,6 +17,7 @@ export interface AnnualTotals {
 /**
  * Meant to be used in place of `AnnualTotals`, this interface is preferable
  * to allow for better type inference with graphql.
+ *
  */
 export interface AnnualTotalItem {
   year: string;
@@ -74,12 +75,14 @@ export interface UnadjustedQuantificationSummary {
   /**
    * The net carbon removed by year, calculated by the algorithm in
    * [net-quantification.ts](./net-quantification.ts)
+   *
    */
   netRemovalsByYear?: AnnualTotalItem[];
 }
 
 /**
  * Summing the annual differences from the grandfatherable years
+ *
  */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
@@ -135,6 +138,7 @@ const getTotalM2 = ({
 /**
  * Calculates the year-to-year change by taking the difference of next year's value minus
  * this year's value
+ *
  */
 const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
   mapUnits,
@@ -173,6 +177,7 @@ const calculateSomscAnnualDifferencesForScenarioMapUnits = ({
  *
  * Note: previous limitations in Soil Metrics required splitting each polygon in a parcel's
  * GeoJSON in to different map units. Map units and polygons can be considered synonymous here
+ *
  */
 const calculateSomscAnnualDifferencesForScenarioPolygons = ({
   scenarios,
@@ -202,6 +207,7 @@ const calculateSomscAnnualDifferencesForScenarioPolygons = ({
 /**
  * Iterates over each model run and pulls out the `Scenario` list to calculate the
  * differences between each year
+ *
  */
 const calculateSomscAnnualDifferencesForScenarios = ({
   modelRuns,
@@ -228,6 +234,7 @@ const calculateSomscAnnualDifferencesForScenarios = ({
  * Note: Upstream services send two scenarios to Soil Metrics: one without practice changes
  * and one with. The difference between these two are used to estimate the carbon
  * sequestered.
+ *
  */
 const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
   modeledYears,
@@ -313,6 +320,7 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
  * helper function gets the list of years that are grandfatherable based on that input.
  *
  * The range extends from the (@todo -- either the switch year or the earliest evidence year)
+ *
  */
 const getGrandfatherableYears = ({
   modeledYears,
@@ -359,6 +367,7 @@ const getGrandfatherableYears = ({
  *
  * The amount is the lesser of the ten-year projected tonnes average and the tonnes removed
  * in the field
+ *
  */
 export const getUnadjustedGrandfatheredTonnesPerYear = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
@@ -391,6 +400,7 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
 
 /**
  * Returns data relevant to the grandfathered years
+ *
  */
 const getGrandfatheredTonneQuantities = ({
   modeledYears,
@@ -521,6 +531,7 @@ const getTenYearProjectedTonnesPerYear = ({
 /**
  * Helper function that creates the quantification summary object by passing model run data
  * to helper functions
+ *
  */
 const createQuantificationSummary = ({
   modelRuns,
@@ -547,6 +558,7 @@ const createQuantificationSummary = ({
 
   /**
    * The `Future` data and modeled years is expected to be the project's switch year and after
+   *
    */
   const modeledYears = modelRuns[0].Scenario.find(
     (s) => s['@name'] === 'Future : FILE RESULTS'
@@ -665,6 +677,7 @@ export const getQuantificationSummary = async ({
  * which all make up a single parcel. We also don't pass in quantifyAsOfYear,
  * which could vary per parcel. This is mostly just for the sake of expediency,
  * since this has almost never been used in practice.
+ *
  */
 export const getQuantificationSummaries = async ({
   data,
