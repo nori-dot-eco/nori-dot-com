@@ -24,7 +24,13 @@ const jsdocRules = {
       contexts: ['TSInterfaceDeclaration', 'TSPropertySignature'],
     },
   ],
-  'jsdoc/newline-after-description': 1,
+  'jsdoc/tag-lines': [
+    'error',
+    'never',
+    {
+      startLines: 1,
+    },
+  ],
   'jsdoc/no-types': 1,
   'jsdoc/no-undefined-types': 1,
   'jsdoc/require-description': 1,
