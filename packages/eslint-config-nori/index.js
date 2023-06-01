@@ -64,7 +64,6 @@ module.exports = {
         'jsdoc',
         'jest',
         'mui-unused-classes',
-        'local-rules',
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
