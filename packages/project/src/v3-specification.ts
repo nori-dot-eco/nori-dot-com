@@ -1417,7 +1417,6 @@ export interface SoilOrCropDisturbanceEvent extends CropEvent {
    * ```js
    * "type": "broad-spectrum herbicide"
    * ```
-   *
    */
   type: (typeof soilOrCropDisturbanceTypes)[number];
 }
