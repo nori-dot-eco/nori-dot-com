@@ -64,6 +64,7 @@ module.exports = {
         'relay',
         'jsdoc',
         'jest',
+        'jest-extended',
         'mui-unused-classes',
       ],
       processor: '@graphql-eslint/graphql',
@@ -286,7 +287,7 @@ module.exports = {
       },
     },
     {
-      extends: ['plugin:jest/recommended'],
+      extends: ['plugin:jest/recommended', 'plugin:jest-extended/all'],
       files: [
         '**.test.js',
         '**/__mocks__/**.js',
