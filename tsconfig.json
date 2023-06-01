@@ -10,7 +10,8 @@
     "rootDir": ".",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist"]
 }
