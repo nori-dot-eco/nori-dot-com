@@ -16,7 +16,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.md'],
+      files: ['README.md'],
       parser: 'markdown-eslint-parser',
       extends: ['plugin:prettier/recommended', 'plugin:md/recommended'],
       rules: {
@@ -32,6 +32,7 @@ module.exports = {
            * Important to force prettier to use "markdown" parser - otherwise it wouldn't be able to parse *.md files.
            * You also can configure other options supported by prettier here - "prose-wrap" is
            * particularly useful for *.md files
+           *
            */
           { parser: 'markdown' },
         ],
@@ -64,7 +65,6 @@ module.exports = {
         'jsdoc',
         'jest',
         'mui-unused-classes',
-        'local-rules',
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
@@ -166,6 +166,9 @@ module.exports = {
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
       ],
+      rules: {
+        '@graphql-eslint/known-directives': 0,
+      },
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
@@ -312,6 +315,6 @@ module.exports = {
     {
       files: ['*'],
       plugins: ['only-warn'],
-    }
+    },
   ],
 };

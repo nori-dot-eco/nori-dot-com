@@ -181,7 +181,6 @@ const checkEventDates = (
  * @param fieldName The name of the field currently being checked.
  * @param earliestCropYear The year of the earliest crop year that appears in this field.
  * @param errorCollector The error collector aggregating all errors for this import file.
- *
  * @returns The original crop but with offending events removed.
  */
 const checkFertilizerTillageDateEdgeCase = (

@@ -3,6 +3,13 @@ export const Errors = {
     invalidArguments: {
       message: 'The arguments you provided are invalid',
     },
+    exceedsNrtQuota: {
+      message: 'The request exceeds your remaining NRT quota',
+      http: {
+        code: 403,
+        reason: 'QUOTA_EXCEEDED',
+      },
+    },
   },
   ggitInputError: {
     ggitInputDataUnknownError: {
@@ -203,6 +210,7 @@ export const Errors = {
   },
   /**
    * checkoutError's are NOT retried by the task queue
+   *
    */
   checkoutError: {
     insufficientStock: {
@@ -246,6 +254,20 @@ export const Errors = {
     },
     specialOrderTransactionInProgress: {
       message: 'A transaction has already been created for this order.',
+    },
+    priceOrFeeMismatch: {
+      message:
+        'The price for NRTs has changed. Please refresh the page and try again.',
+    },
+    climateReservationError: {
+      message:
+        'There was an error creating or confirming a Climate Reservation with the Stripe Climate API.',
+    },
+    climateReservationNotFound: {
+      message: 'The climate reservation for this order was not found.',
+    },
+    climateReservationCancelled: {
+      message: 'The climate reservation for this order was cancelled.',
     },
   },
   authenticationError: {
@@ -324,4 +346,4 @@ export const Errors = {
       message: 'Output lacks required data',
     },
   },
-};
+} as const;

@@ -19,7 +19,6 @@ import type { Output } from '@nori-dot-com/ggit';
  * * If properties can't be parsed as numbers, they are defaulted to their string values
  *
  * @todo Refactor assignment of `parsedMapUnit` property to return new shallow copy
- *
  * @returns A shallow copy of the original object with parsed fields
  */
 export const parseYearlyMapUnitData = ({
@@ -27,6 +26,7 @@ export const parseYearlyMapUnitData = ({
 }: {
   /**
    * The response from Soil Metrics
+   *
    */
   rawJsonOutput: Output.OutputFile<Output.MapUnit>;
 }): { parsedJsonOutput: Output.OutputFile<Output.ParsedMapUnit> } => {

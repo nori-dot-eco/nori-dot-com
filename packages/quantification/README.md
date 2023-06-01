@@ -4,13 +4,14 @@ Quantification utilities
 
 ## Usage
 
-```ts
+```typescript
 import { getQuantificationSummary } from '@nori-dot-com/quantification';
 ```
 
 ## CLI Usage
 
 ### Setup
+
 ```sh
 $ yarn install
 ```

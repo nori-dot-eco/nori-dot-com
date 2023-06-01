@@ -91,6 +91,7 @@ export const getNetQuantificationProjection = (
   /**
    * CAUTION -- years are represented as strings and sorted alphabetically. If for some reason, we
    * begin supporting years < 1000 or > 9999, we'll need to rework this sort
+   *
    */
   const yearsOrderedAsc = Array.from(years.values()).sort();
   logger?.debug('All years:', yearsOrderedAsc);
