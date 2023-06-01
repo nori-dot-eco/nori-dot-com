@@ -152,9 +152,6 @@ export const Errors = {
       message:
         'Irrigation events that define both a start and end date with different values must also define a frequency.',
     },
-    cropIrrigationDateOverlapError: {
-      message: `Irrigation dates can not overlap with the next crop's harvest date`,
-    },
     cropIrrigationMissingStartDateError: {
       message: `You are missing irrigation start dates for a crop. Either remove all irrigation inputs for that crop or enter the state date.`,
     },

@@ -1,9 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "outDir": "./dist",
     "rootDir": "./src"
   },
   "include": ["./src", "./src/input/specification.json", "./.eslintrc.js"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist"],
+  "references": [
+    {
+      "path": "../errors"
+    }
+  ]
 }

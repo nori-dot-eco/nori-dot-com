@@ -16,8 +16,8 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "build": "nx run-many --target=build --all -- --force",
-    "watch": "nx run-many --target=watch --all",
+    "build": "tsc -b",
+    "watch": "tsc -b --watch",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build",
@@ -68,7 +68,12 @@
           "<rootDir>/packages/ggit/src/**/?(*.)+(test).[jt]s?(x)"
         ],
         "displayName": "ggit",
-        "preset": "ts-jest"
+        "preset": "ts-jest",
+        "globals": {
+          "ts-jest": {
+            "tsconfig": "./packages/ggit/tsconfig.json"
+          }
+        }
       },
       {
         "testMatch": [
