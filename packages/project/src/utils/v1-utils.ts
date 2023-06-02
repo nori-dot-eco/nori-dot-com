@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment = require('moment');
 import type { ErrorCollector } from '@nori-dot-com/errors/dist';
 
 import type { V1CropYear, V1Crop, V1Data } from '../index';
@@ -24,7 +24,7 @@ export const sanitizeV1Data = ({
             for (const [k, cy] of f?.cropYears.entries()) {
               sanitizedProject.projects[index].fieldSets[index_].cropYears[k] =
                 JSON.parse(
-                  JSON.stringify(cy, (key, value) => {
+                  JSON.stringify(cy, (_key, value) => {
                     return value?.toLowerCase?.() ?? (value || '');
                   })
                 ) as V1CropYear;
@@ -259,7 +259,7 @@ export const collectV1Errors = (
                   }
                 );
                 if (cropYear?.crops)
-                  for (const [l, crop] of cropYear?.crops.entries()) {
+                  for (const [l] of cropYear?.crops.entries()) {
                     filteredProject.projects[index].fieldSets[index_].cropYears[
                       k
                     ].crops[l].irrigationEvents = [];

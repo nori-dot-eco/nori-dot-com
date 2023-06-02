@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   extends: '@nori-dot-com/eslint-config-nori',
   overrides: [
     {

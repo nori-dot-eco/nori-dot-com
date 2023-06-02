@@ -1,4 +1,5 @@
 {
+  // todo extends strictest
   "compilerOptions": {
     "incremental": true,
     "module": "CommonJS",
@@ -27,6 +28,9 @@
     },
     {
       "path": "packages/quantification"
+    },
+    {
+      "path": "packages/eslint-config-nori"
     }
   ]
 }

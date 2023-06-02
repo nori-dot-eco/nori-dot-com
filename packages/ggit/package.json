@@ -38,6 +38,6 @@
     "ajv": "^7.2.4",
     "ajv-errors": "^2.0.1",
     "node-fetch": "^2.6.1",
-    "typescript-json-schema": "^0.54.0"
+    "typescript-json-schema": "^0.56.0"
   }
 }

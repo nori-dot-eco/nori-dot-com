@@ -81,6 +81,13 @@
         ],
         "displayName": "errors",
         "preset": "ts-jest"
+      },
+      {
+        "testMatch": [
+          "<rootDir>/packages/eslint-config-nori/src/**/?(*.)+(test).[jt]s?(x)"
+        ],
+        "displayName": "eslint-config-nori",
+        "preset": "ts-jest"
       }
     ]
   },
