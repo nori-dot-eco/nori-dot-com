@@ -1,4 +1,6 @@
-export default {
+import type { Linter } from 'eslint';
+
+export = {
   extends: '@nori-dot-com/eslint-config-nori',
   overrides: [
     {
@@ -31,4 +33,4 @@ export default {
       },
     },
   ],
-};
+} satisfies Linter.Config;

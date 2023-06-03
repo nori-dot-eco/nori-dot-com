@@ -1,15 +1,13 @@
-import {
-  jsdocRules,
-  dotNotationRules,
-  noUnusedVarsRule,
-  namingConventionRules,
-} from './rules';
+import type { Linter } from 'eslint';
+
+import { jsdocRules, noUnusedVarsRule } from './settings/misc';
+import { namingConventionRules } from './settings/naming-conventions';
 
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = [...jsExtensions, ...tsExtensions];
 
-const config = {
+export = {
   settings: {
     'import/extensions': allExtensions,
     'import/parsers': { '@typescript-eslint/parser': tsExtensions },
@@ -173,6 +171,8 @@ const config = {
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
@@ -194,8 +194,6 @@ const config = {
         'no-shadow': 'off', // replaced by ts-eslint rule below
         '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
-        'require-await': 'off', // replaced by @typescript-eslint/require-await
-        '@typescript-eslint/require-await': 'error', // replaces require-await
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
@@ -228,7 +226,6 @@ const config = {
         ],
         '@typescript-eslint/consistent-type-imports': 'warn',
         'require-path-exists/exists': [0],
-        ...dotNotationRules,
       },
     },
     {
@@ -267,6 +264,4 @@ const config = {
       plugins: ['only-warn'],
     },
   ],
-};
-
-export = config;
+} satisfies Linter.Config;
