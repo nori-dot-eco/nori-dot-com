@@ -30,6 +30,7 @@
     "react-dom": "~17"
   },
   "dependencies": {
+    "@types/eslint":"^8.40.0",
     "@fintechstudios/eslint-plugin-chai-as-promised": "3.1.0",
     "@graphql-eslint/eslint-plugin": "^3.19.1",
     "@next/eslint-plugin-next": "^13.4.4",

@@ -701,7 +701,35 @@
                     "type": "string"
                 },
                 "geojson": {
-                    "$ref": "#/definitions/GeoJSON.GeoJSON",
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                        }
+                    ],
                     "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
                     "title": "geojson"
                 },
@@ -864,7 +892,29 @@
                     "title": "bbox"
                 },
                 "geometry": {
-                    "$ref": "#/definitions/GeoJSON.Geometry",
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                        }
+                    ],
                     "description": "The feature's geometry",
                     "title": "geometry"
                 },
@@ -877,7 +927,15 @@
                     ]
                 },
                 "properties": {
-                    "$ref": "#/definitions/GeoJSON.GeoJsonProperties",
+                    "anyOf": [
+                        {
+                            "additionalProperties": {},
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Properties associated with this feature.",
                     "title": "properties"
                 },
@@ -953,7 +1011,29 @@
                     "title": "bbox"
                 },
                 "geometry": {
-                    "$ref": "#/definitions/GeoJSON.Geometry",
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GeoJSON.Point"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPoint"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.LineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiLineString"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.Polygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                        },
+                        {
+                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                        }
+                    ],
                     "description": "The feature's geometry",
                     "title": "geometry"
                 },
@@ -966,7 +1046,15 @@
                     ]
                 },
                 "properties": {
-                    "$ref": "#/definitions/GeoJSON.GeoJsonProperties",
+                    "anyOf": [
+                        {
+                            "additionalProperties": {},
+                            "type": "object"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "description": "Properties associated with this feature.",
                     "title": "properties"
                 },
@@ -1064,78 +1152,6 @@
             "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
         },
-        "GeoJSON.GeoJSON": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/GeoJSON.Point"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiPoint"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.LineString"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiLineString"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.Polygon"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
-                }
-            ],
-            "description": "Union of GeoJSON objects.",
-            "title": "GeoJSON.GeoJSON"
-        },
-        "GeoJSON.GeoJsonProperties": {
-            "anyOf": [
-                {
-                    "additionalProperties": {},
-                    "type": "object"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "title": "GeoJSON.GeoJsonProperties"
-        },
-        "GeoJSON.Geometry": {
-            "anyOf": [
-                {
-                    "$ref": "#/definitions/GeoJSON.Point"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiPoint"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.LineString"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiLineString"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.Polygon"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                },
-                {
-                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                }
-            ],
-            "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3",
-            "title": "GeoJSON.Geometry"
-        },
         "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
             "additionalProperties": false,
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
@@ -1192,7 +1208,30 @@
                 },
                 "geometries": {
                     "items": {
-                        "$ref": "#/definitions/GeoJSON.Geometry"
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/GeoJSON.Point"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiPoint"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.LineString"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiLineString"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.Polygon"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                            },
+                            {
+                                "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                            }
+                        ],
+                        "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
                     },
                     "title": "geometries",
                     "type": "array"
