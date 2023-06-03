@@ -188,10 +188,10 @@ const clone = (object: Project): Project => JSON.parse(JSON.stringify(object));
 
 const buildExpectedError = ({
   errorCode,
-  dataPath,
+  instancePath,
 }: {
   errorCode: keyof typeof Errors.projectDataError;
-  dataPath: string;
+  instancePath: string;
 }): {
   valid: boolean;
   errors: any;
@@ -204,7 +204,7 @@ const buildExpectedError = ({
       expect.objectContaining({
         error: expect.objectContaining({
           message: `projectDataError:${errorCode}`,
-          dataPath,
+          instancePath,
         }),
       }),
     ]),
@@ -268,7 +268,7 @@ describe('validation', () => {
         describe('projectUnknownError', () => {
           it('should throw a validation error when an unknown error is encountered', () =>
             // todo use this desc/it combo as pattern for this test
-            // todo test dataPath everywhere
+            // todo test instancePath everywhere
             {
               const data = {};
               expect(
@@ -276,7 +276,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'projectUnknownError',
-                  dataPath: '',
+                  instancePath: '',
                 })
               );
             });
@@ -295,7 +295,7 @@ describe('validation', () => {
               >(
                 buildExpectedError({
                   errorCode: 'projectFieldsMinimumItemsError',
-                  dataPath: '/fields',
+                  instancePath: '/fields',
                 })
               );
             });
@@ -315,7 +315,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'projectFieldsMaximumItemsError',
-                  dataPath: '/fields',
+                  instancePath: '/fields',
                 })
               );
             });
@@ -334,7 +334,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'projectFieldsTypeError',
-                  dataPath: '/fields',
+                  instancePath: '/fields',
                 })
               );
             });
@@ -354,7 +354,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'projectVersionTypeError',
-                  dataPath: '/version',
+                  instancePath: '/version',
                 })
               );
             });
@@ -370,7 +370,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'projectVersionTypeError',
-                  dataPath: '/version',
+                  instancePath: '/version',
                 })
               );
             });
@@ -404,7 +404,7 @@ describe('validation', () => {
             ).toStrictEqual<ReturnType<typeof validateProjectData>>(
               buildExpectedError({
                 errorCode: 'fieldUnknownAdditionalProperty',
-                dataPath: '/fields/0',
+                instancePath: '/fields/0',
               })
             );
           });
@@ -422,7 +422,7 @@ describe('validation', () => {
             ).toStrictEqual<ReturnType<typeof validateProjectData>>(
               buildExpectedError({
                 errorCode: 'fieldRequiredPropertyMissing',
-                dataPath: '/fields/0',
+                instancePath: '/fields/0',
               })
             );
           });
@@ -438,7 +438,7 @@ describe('validation', () => {
             ).toStrictEqual<ReturnType<typeof validateProjectData>>(
               buildExpectedError({
                 errorCode: 'fieldRequiredPropertyMissing',
-                dataPath: '/fields/0',
+                instancePath: '/fields/0',
               })
             );
           });
@@ -457,7 +457,7 @@ describe('validation', () => {
               ).toStrictEqual<ReturnType<typeof validateProjectData>>(
                 buildExpectedError({
                   errorCode: 'fieldNameTypeError',
-                  dataPath: '/fields/0/fieldName',
+                  instancePath: '/fields/0/fieldName',
                 })
               );
             });
@@ -542,7 +542,7 @@ describe('validation', () => {
                 >(
                   buildExpectedError({
                     errorCode: 'cropEventDateValidationRuleViolation',
-                    dataPath:
+                    instancePath:
                       '/fields/0/cropYears/0/crops/0/harvestEvents/0/date',
                   })
                 );
@@ -569,7 +569,7 @@ describe('validation', () => {
               >(
                 buildExpectedError({
                   errorCode: 'cropEventDateTypeError',
-                  dataPath:
+                  instancePath:
                     '/fields/0/cropYears/0/crops/0/harvestEvents/0/date',
                 })
               );
@@ -590,7 +590,7 @@ describe('validation', () => {
               >(
                 buildExpectedError({
                   errorCode: 'cropEventDateValidationRuleViolation',
-                  dataPath:
+                  instancePath:
                     '/fields/0/cropYears/0/crops/0/harvestEvents/0/date',
                 })
               );

@@ -55,9 +55,9 @@ const validationRules = {
     ctx: ProjectDataValidationContext;
     value: CropEvent['date'];
   }): boolean => {
-    const { rootData: project, dataPath } = ctx;
+    const { rootData: project, instancePath } = ctx;
     if (typeof value === 'string') {
-      const [, fieldIndex, , cropYearIndex] = dataPath.split('/').slice(1);
+      const [, fieldIndex, , cropYearIndex] = instancePath.split('/').slice(1);
       const cropYear =
         project.fields[Number(fieldIndex)].cropYears[Number(cropYearIndex)]
           .plantingYear;
@@ -84,7 +84,7 @@ export const validateProjectData = (
   message?: string;
   errors?: {
     type: ErrorObject['message'];
-    dataPath: ErrorObject['dataPath'];
+    instancePath: ErrorObject['instancePath'];
     error: ErrorObject;
   }[];
   formattedData: Project;
@@ -96,7 +96,6 @@ export const validateProjectData = (
         allErrors: true,
         inlineRefs: false,
         $data: true,
-        ajvErrors: true,
         allowUnionTypes: true,
       })
     )
@@ -129,7 +128,7 @@ export const validateProjectData = (
         type,
         code,
         message,
-        dataPath: error.dataPath,
+        instancePath: error.instancePath,
         error,
       };
     }) ?? undefined;
