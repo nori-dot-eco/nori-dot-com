@@ -35,9 +35,9 @@
   },
   "dependencies": {
     "@nori-dot-com/errors": "^1.6.0",
-    "ajv": "^7.2.4",
-    "ajv-errors": "^2.0.1",
-    "node-fetch": "^2.6.1",
+    "ajv": "8.12.0",
+    "ajv-errors": "3.0.0",
+    "node-fetch": "^3.3.1",
     "typescript-json-schema": "^0.56.0"
   }
 }

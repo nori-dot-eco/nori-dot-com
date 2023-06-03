@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0"
   },
   "files": [],
   "references": [
