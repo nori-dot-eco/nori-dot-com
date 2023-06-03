@@ -178,6 +178,9 @@ export = {
       ],
       plugins: ['@typescript-eslint'],
       rules: {
+        '@typescript-eslint/no-unnecessary-boolean-literal-compare': 0, // todo enable (Requires strict null checks enabled)
+        '@typescript-eslint/prefer-nullish-coalescing': 0, // todo enable (Requires strict null checks enabled)
+        '@typescript-eslint/no-unnecessary-condition': 0, // todo enable (Requires strict null checks enabled)
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
