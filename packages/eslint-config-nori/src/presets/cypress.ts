@@ -30,6 +30,7 @@ export = {
         ],
         'no-unused-expressions': 0, // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
         'chai-friendly/no-unused-expressions': 'error', // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
+        '@typescript-eslint/no-floating-promises': 0, // Cypress promises work differently than normal promises
       },
     },
   ],
