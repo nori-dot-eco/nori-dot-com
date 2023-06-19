@@ -10,9 +10,7 @@ import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
 export * from './constants';
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 
-export interface AnnualTotals {
-  [year: string]: number;
-}
+export type AnnualTotals = Record<string, number>;
 
 /**
  * Meant to be used in place of `AnnualTotals`, this interface is preferable
@@ -24,31 +22,29 @@ export interface AnnualTotalItem {
   value: number;
 }
 
-export interface UnadjustedGrandfatheredTotals {
-  [year: string]: {
+export type UnadjustedGrandfatheredTotals = Record<
+  string,
+  {
     amount: number;
     method: 'projection' | 'somsc';
     averagePerAcre: number;
     totalAcres: number;
-  };
-}
+  }
+>;
 
-export interface MapUnitAnnualTotals {
-  [mapUnit: string]: AnnualTotals;
-}
+export type MapUnitAnnualTotals = Record<string, AnnualTotals>;
 
 export interface ScenarioSummaries {
-  baseline: Array<string[]>;
-  future: Array<string[]>;
+  baseline: string[][];
+  future: string[][];
 }
 
-export interface AnnualSomscDifferencesForMapUnit {
-  [mapUnit: string]: MapUnitSummary;
-}
+export type AnnualSomscDifferencesForMapUnit = Record<string, MapUnitSummary>;
 
-export interface SomscAnnualDifferencesForPolygon {
-  [scenario: string]: AnnualSomscDifferencesForMapUnit;
-}
+export type SomscAnnualDifferencesForPolygon = Record<
+  string,
+  AnnualSomscDifferencesForMapUnit
+>;
 
 export interface MapUnitSummary {
   area: number;
@@ -316,13 +312,16 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
 };
 
 /**
- * Each project sets its max number of grandfathered years and provides it as input. This
- * helper function gets the list of years that are grandfatherable based on that input.
+ * Each project sets its max number of grandfathered years and provides it as input. This helper function gets the list
+ * of years that are grandfatherable based on that input.
  *
- * The range extends from the (@todo -- either the switch year or the earliest evidence year)
- *
+ * @param options.modeledYears The list of modeled years.
+ * @param options.maxNumberGrandfatheredYearsForProject The maximum number of grandfathered years for the project.
+ * @param options.quantifyAsOfYear The year to quantify as. If undefined, defaults to the current year.
+ * @returns An object containing the grandfatherable years (extending from the switch year to the `quantifyAsOfYear` if
+ * defined, otherwise to the current year), the number of grandfathered years, and the first grandfatherable year.
  */
-const getGrandfatherableYears = ({
+export const getGrandfatherableYears = ({
   modeledYears,
   maxNumberGrandfatheredYearsForProject,
   quantifyAsOfYear,
@@ -337,19 +336,18 @@ const getGrandfatherableYears = ({
 } => {
   const effectiveCurrentYear = quantifyAsOfYear ?? CURRENT_YEAR;
   const startYearIndex = Math.max(
-    modeledYears.findIndex(
-      (e) =>
-        e ===
-        subtract(effectiveCurrentYear, maxNumberGrandfatheredYearsForProject)
+    modeledYears.indexOf(
+      subtract(effectiveCurrentYear, maxNumberGrandfatheredYearsForProject)
     ),
     0
   );
-  const grandfatherableYears = modeledYears.slice(
-    startYearIndex,
-    modeledYears.indexOf(effectiveCurrentYear)
-  );
+  const endYearIndex = modeledYears.indexOf(effectiveCurrentYear);
+  const grandfatherableYears =
+    endYearIndex === -1
+      ? modeledYears.slice(startYearIndex)
+      : modeledYears.slice(startYearIndex, endYearIndex);
   const firstGrandfatherableYear =
-    Number(grandfatherableYears[0]) || effectiveCurrentYear;
+    grandfatherableYears[0] ?? effectiveCurrentYear;
   const numberOfGrandfatheredYears = subtract(
     effectiveCurrentYear,
     firstGrandfatherableYear
