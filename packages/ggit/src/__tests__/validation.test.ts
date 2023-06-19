@@ -424,10 +424,10 @@ const INPUT_DATA: Input.InputData = {
 // todo extend jest to expect NoriError
 const buildExpectedError = ({
   errorCode,
-  dataPath,
+  instancePath,
 }: {
   errorCode: keyof typeof Errors.ggitInputError;
-  dataPath: string;
+  instancePath: string;
 }): {
   valid: boolean;
   errors: any;
@@ -440,7 +440,7 @@ const buildExpectedError = ({
       expect.objectContaining({
         error: expect.objectContaining({
           message: `ggitInputError:${errorCode}`,
-          dataPath,
+          instancePath,
         }),
       }),
     ]),
@@ -479,7 +479,7 @@ describe('validation', () => {
             ).toStrictEqual<ReturnType<typeof validateInputData>>(
               buildExpectedError({
                 errorCode: 'ggitInputDataUnknownError',
-                dataPath: '',
+                instancePath: '',
               })
             );
           });

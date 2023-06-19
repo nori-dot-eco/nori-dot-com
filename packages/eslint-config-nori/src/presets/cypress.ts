@@ -1,4 +1,6 @@
-module.exports = {
+import type { Linter } from 'eslint';
+
+export = {
   extends: '@nori-dot-com/eslint-config-nori',
   overrides: [
     {
@@ -28,7 +30,8 @@ module.exports = {
         ],
         'no-unused-expressions': 0, // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
         'chai-friendly/no-unused-expressions': 'error', // https://github.com/cypress-io/eslint-plugin-cypress#chai-and-no-unused-expressions
+        '@typescript-eslint/no-floating-promises': 0, // Cypress promises work differently than normal promises
       },
     },
   ],
-};
+} satisfies Linter.Config;

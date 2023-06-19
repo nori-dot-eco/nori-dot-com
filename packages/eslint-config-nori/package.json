@@ -8,19 +8,19 @@
   "author": "jaycen horton <jaycen@nori.com>",
   "homepage": "http://nori.com",
   "license": "MIT",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "index.js",
-    "package.json",
-    "rules.js",
-    "cypress.js"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nori-dot-eco/nori-dot-com.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "prepare": "yarn run build",
+    "watch": "tsc -b -w",
+    "build": "tsc -b"
   },
   "bugs": {
     "url": "https://github.com/nori-dot-eco/nori-dot-com/issues"
@@ -30,6 +30,7 @@
     "react-dom": "~17"
   },
   "dependencies": {
+    "@types/eslint": "8.4.3",
     "@fintechstudios/eslint-plugin-chai-as-promised": "3.1.0",
     "@graphql-eslint/eslint-plugin": "^3.19.1",
     "@next/eslint-plugin-next": "^13.4.4",
@@ -48,6 +49,7 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jest-extended": "^2.0.0",
     "eslint-plugin-jsdoc": "^46.1.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-md": "1.0.19",
