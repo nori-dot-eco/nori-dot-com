@@ -1,26 +1,139 @@
-import { METHODOLOGY_VERSION } from '../constants';
+import * as constants from '../constants';
 import {
   getQuantificationSummaries,
   getQuantificationSummary,
   getUnadjustedGrandfatheredTonnesPerYear,
+  getGrandfatherableYears,
 } from '../index';
 
 import {
   GRANDFATHERABLE_YEARS_OUTPUT,
   NO_GRANDFATHERABLE_YEARS_OUTPUT,
-  MULTIPOLYGON_OUTPUT,
   MULTI_FIELD_OUTPUT,
 } from './example-output';
 
-jest.mock('../constants', () => ({
+/* //////////////////////////////////////////////////////////////
+                              MOCKS
+////////////////////////////////////////////////////////////// */
+
+jest.mock<typeof constants>('../constants', () => ({
   ...jest.requireActual('../constants'),
   get CURRENT_YEAR() {
     return 2021;
   },
   get METHODOLOGY_VERSION() {
-    return '1.0.0';
+    return '1.0.0' as const;
   },
 }));
+
+/* //////////////////////////////////////////////////////////////
+                            CONSTANTS
+////////////////////////////////////////////////////////////// */
+const { METHODOLOGY_VERSION, CURRENT_YEAR } = constants;
+
+/* //////////////////////////////////////////////////////////////
+                              TESTS
+////////////////////////////////////////////////////////////// */
+describe('getGrandfatherableYears', () => {
+  it.concurrent.each([
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that was imported and `quantifyAsOfYear` as 2023',
+      quantifyAsOfYear: 2023,
+      modeledYears: [
+        // imported projects contain 10 years of modeled future years
+        2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+      ],
+      expected: {
+        firstGrandfatherableYear: 2018,
+        grandfatherableYears: [2018, 2019, 2020, 2021, 2022],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that uses the intake sheet and `quantifyAsOfYear` as 2023',
+      quantifyAsOfYear: 2023,
+      modeledYears: [
+        // fields that use the intake sheet contain 10 modeled future years up to 2030
+        2015,
+        2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
+        2028, 2029, 2030,
+      ],
+      expected: {
+        firstGrandfatherableYear: 2018,
+        grandfatherableYears: [2018, 2019, 2020, 2021, 2022],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that was imported and `quantifyAsOfYear` as 2022',
+      quantifyAsOfYear: 2022,
+      modeledYears: [
+        // imported projects contain 10 years of modeled future years
+        2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+      ],
+      expected: {
+        firstGrandfatherableYear: 2017,
+        grandfatherableYears: [2017, 2018, 2019, 2020, 2021],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that uses the intake sheet and `quantifyAsOfYear` as 2022',
+      quantifyAsOfYear: 2022,
+      modeledYears: [
+        // fields that use the intake sheet contain 10 modeled future years up to 2030
+        2015,
+        2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
+        2028, 2029, 2030,
+      ],
+      expected: {
+        firstGrandfatherableYear: 2017,
+        grandfatherableYears: [2017, 2018, 2019, 2020, 2021],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that was imported and `quantifyAsOfYear` as undefined',
+      quantifyAsOfYear: undefined,
+      modeledYears: Array.from({ length: 10 }) // 10 modeled years starting from 10 years prior to CURRENT_YEAR
+        .map((_, i) => CURRENT_YEAR - i)
+        .reverse(),
+      expected: {
+        firstGrandfatherableYear: 2016,
+        grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+    {
+      description:
+        'Gets the grandfatherable years for the quantification run of a field that uses the intake sheet and `quantifyAsOfYear` as undefined',
+      modeledYears: [
+        // fields that use the intake sheet contain 10 modeled future years up to 2030
+        2015,
+        2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027,
+        2028, 2029, 2030,
+      ],
+      expected: {
+        firstGrandfatherableYear: 2016,
+        grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
+        numberOfGrandfatheredYears: 5,
+      },
+    },
+  ])('$description', ({ quantifyAsOfYear, expected, modeledYears }) => {
+    expect(
+      getGrandfatherableYears({
+        modeledYears,
+        maxNumberGrandfatheredYearsForProject: 5,
+        quantifyAsOfYear,
+      })
+    ).toStrictEqual<ReturnType<typeof getGrandfatherableYears>>(expected);
+  });
+});
 
 describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
   describe('When all annuals are net positive', () => {
