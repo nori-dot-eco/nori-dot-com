@@ -29,3 +29,15 @@ export const parseError = ({
     (Errors[type] as any)?.[code]?.message ?? defaultErrorMessage;
   return { message, type, code };
 };
+
+/** Return the http error for an error which has a `message` value that matches the provided `message` argument. */
+export const getApiErrorByMessage = ({
+  message,
+}: {
+  message: string;
+}): (typeof Errors)['apiError'][keyof (typeof Errors)['apiError']]['http'] => {
+  const error = Object.values(Errors.apiError).find(
+    (e) => e.message === message
+  );
+  return error?.http;
+};

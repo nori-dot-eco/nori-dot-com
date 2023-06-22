@@ -1,7 +1,25 @@
 export const Errors = {
   apiError: {
+    unauthorized: {
+      message: 'Not Authorised!',
+      http: {
+        code: 401,
+        reason: 'UNAUTHORIZED',
+      },
+    },
+    unknown: {
+      message: 'An unknown error occurred within the API.',
+      http: {
+        code: 500,
+        reason: 'UNKNOWN',
+      },
+    },
     invalidArguments: {
       message: 'The arguments you provided are invalid',
+      http: {
+        code: 403,
+        reason: 'UNKNOWN',
+      },
     },
     exceedsNrtQuota: {
       message: 'The request exceeds your remaining NRT quota',
