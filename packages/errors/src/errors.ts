@@ -1,31 +1,45 @@
 export const Errors = {
   apiError: {
+    malformedRequest: {
+      message: 'The request is malformed.',
+      http: {
+        code: 400,
+        reason: 'Bad Request',
+      },
+    },
     unauthorized: {
       message: 'Not Authorised!',
       http: {
         code: 401,
-        reason: 'UNAUTHORIZED',
+        reason: 'Unauthorized',
+      },
+    },
+    invalidCredentials: {
+      message: 'API Login failed: Invalid credentials.',
+      http: {
+        code: 401,
+        reason: 'Unauthorized',
       },
     },
     unknown: {
       message: 'An unknown error occurred within the API.',
       http: {
         code: 500,
-        reason: 'UNKNOWN',
+        reason: 'Unknown',
       },
     },
     invalidArguments: {
       message: 'The arguments you provided are invalid',
       http: {
-        code: 403,
-        reason: 'UNKNOWN',
+        code: 400,
+        reason: 'Malformed Request',
       },
     },
     exceedsNrtQuota: {
       message: 'The request exceeds your remaining NRT quota',
       http: {
         code: 403,
-        reason: 'QUOTA_EXCEEDED',
+        reason: 'Quota Exceeded',
       },
     },
   },

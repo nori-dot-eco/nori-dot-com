@@ -36,8 +36,11 @@ export const getApiErrorByMessage = ({
 }: {
   message: string;
 }): (typeof Errors)['apiError'][keyof (typeof Errors)['apiError']]['http'] => {
-  const error = Object.values(Errors.apiError).find(
-    (e) => e.message === message
+  let error = Object.values(Errors.apiError).find((e) =>
+    message.includes(e.message)
   );
+  if (!Boolean(error) && message.includes('Variable "$')) {
+    error = Errors.apiError.malformedRequest;
+  }
   return error?.http;
 };
