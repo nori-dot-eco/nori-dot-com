@@ -42,6 +42,13 @@ export const Errors = {
         reason: 'Quota Exceeded',
       },
     },
+    insufficientStock: {
+      message: 'There is not enough stock remaining to fulfill this order.',
+      http: {
+        code: 409,
+        reason: 'Supply Unavailable',
+      },
+    },
   },
   ggitInputError: {
     ggitInputDataUnknownError: {
