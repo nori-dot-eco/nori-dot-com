@@ -14,13 +14,6 @@ export const Errors = {
         reason: 'Unauthorized',
       },
     },
-    invalidCredentials: {
-      message: 'API Login failed: Invalid credentials.',
-      http: {
-        code: 401,
-        reason: 'Unauthorized',
-      },
-    },
     unknown: {
       message: 'An unknown error occurred within the API.',
       http: {
