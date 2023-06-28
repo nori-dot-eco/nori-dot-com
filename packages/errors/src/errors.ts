@@ -28,13 +28,6 @@ export const Errors = {
         reason: 'Unknown',
       },
     },
-    invalidArguments: {
-      message: 'The arguments you provided are invalid',
-      http: {
-        code: 400,
-        reason: 'Malformed Request',
-      },
-    },
     exceedsNrtQuota: {
       message: 'The request exceeds your remaining NRT quota',
       http: {
