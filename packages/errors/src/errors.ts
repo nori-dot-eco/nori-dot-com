@@ -1,13 +1,38 @@
 export const Errors = {
   apiError: {
-    invalidArguments: {
-      message: 'The arguments you provided are invalid',
+    malformedRequest: {
+      message: 'The request is malformed.',
+      http: {
+        code: 400,
+        reason: 'Bad Request',
+      },
+    },
+    unauthorized: {
+      message: 'Not Authorised!',
+      http: {
+        code: 401,
+        reason: 'Unauthorized',
+      },
+    },
+    unknown: {
+      message: 'An unknown error occurred within the API.',
+      http: {
+        code: 500,
+        reason: 'Unknown',
+      },
     },
     exceedsNrtQuota: {
       message: 'The request exceeds your remaining NRT quota',
       http: {
         code: 403,
-        reason: 'QUOTA_EXCEEDED',
+        reason: 'Quota Exceeded',
+      },
+    },
+    insufficientStock: {
+      message: 'There is not enough stock remaining to fulfill this order.',
+      http: {
+        code: 409,
+        reason: 'Supply Unavailable',
       },
     },
   },
