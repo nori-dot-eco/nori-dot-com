@@ -22,7 +22,7 @@ export const Errors = {
       },
     },
     exceedsNrtQuota: {
-      message: 'The request exceeds your remaining NRT quota',
+      message: 'The request exceeds your remaining NRT quota.',
       http: {
         code: 403,
         reason: 'Quota Exceeded',
