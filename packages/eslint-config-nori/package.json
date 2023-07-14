@@ -32,7 +32,7 @@
   "dependencies": {
     "@types/eslint": "8.4.3",
     "@fintechstudios/eslint-plugin-chai-as-promised": "3.1.0",
-    "@graphql-eslint/eslint-plugin": "^3.19.1",
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@next/eslint-plugin-next": "^13.4.4",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
@@ -41,7 +41,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "^13.4.4",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-config-typescript": "^3.0.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-chai-expect": "^3.0.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
