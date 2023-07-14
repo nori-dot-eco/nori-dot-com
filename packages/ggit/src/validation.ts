@@ -66,7 +66,6 @@ const validationRules = {};
  * ```js
  * validateInputData({}); // returns {valid:false, ...errors}
  * ```
- *
  */
 export const validateInputData = (
   data: Input.InputData
@@ -75,7 +74,7 @@ export const validateInputData = (
   message?: string;
   errors?: {
     type: ErrorObject['message'];
-    dataPath: ErrorObject['dataPath'];
+    instancePath: ErrorObject['instancePath'];
     error: ErrorObject;
   }[];
   formattedData: Input.InputData;
@@ -86,7 +85,6 @@ export const validateInputData = (
       allErrors: true,
       inlineRefs: false,
       $data: true,
-      ajvErrors: true,
       // allowUnionTypes: true,
     })
   );
@@ -94,13 +92,13 @@ export const validateInputData = (
     keyword: 'validationRules',
     validate: (
       rules: (keyof typeof validationRules)[],
-      value,
+      _value,
       _schema,
-      context: InputDataValidationContext
+      _context: InputDataValidationContext
     ) => {
       const allRulesAreSatisfied =
         rules?.every(
-          (rule) => true
+          (_rule) => true
           // todo
           // !value || // if there is no value, leave validation up to default schema validation rules
           // validationRules[rule]({ ctx, value }) === true
@@ -119,7 +117,7 @@ export const validateInputData = (
         type,
         code,
         message,
-        dataPath: error.dataPath,
+        instancePath: error.instancePath,
         error,
       };
     }) ?? undefined;

@@ -6,6 +6,7 @@ import { getNetQuantificationProjection } from '../net-quantification';
 /**
  * If you'd like to see the output from the algorithm, add `console` as the second
  * parameter to `getNetQuantificationProjection`
+ *
  */
 describe('getNetQuantificationProjection', () => {
   it('should return a total of 18 NRT', () => {
@@ -297,12 +298,14 @@ describe('getNetQuantificationProjection', () => {
 
   /**
    * These examples were established to be correct by a SAM and developer
+   *
    */
   describe('IRL examples', () => {
     /**
      * Validation date: 6/20/2022
      * Developer: Dave Martinez
      * SAM: Rebekah Carlson
+     *
      */
     it('Knuth Farm', () => {
       const testData = JSON.parse(

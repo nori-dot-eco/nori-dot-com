@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment = require('moment');
 
 import type {
   AnnualCrop,
@@ -111,7 +111,7 @@ export const convertFromV3ToV1 = ({
                               moment(dates[0]).diff(dates[1], 'days')
                             );
                             const startDate = dates[0];
-                            const endDate = dates[dates.length - 1];
+                            const endDate = dates.at(-1);
                             // Rebekah says volume doesn't matter - it's not incorporated into the SoilMetrics model
                             // We'll just use whatever the first value is for all.
                             const volume = crop.irrigationEvents[0].volume;

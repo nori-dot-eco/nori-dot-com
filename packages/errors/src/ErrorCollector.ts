@@ -41,9 +41,9 @@ export class ContextualError extends Error {
     this.type =
       'message' in args ? undefined : parseError({ error: errorKey }).type;
     super.message =
-      typeof context !== 'undefined'
-        ? `${title}: ${JSON.stringify(context)} [${originalMessage}]`
-        : title;
+      context === undefined
+        ? title
+        : `${title}: ${JSON.stringify(context)} [${originalMessage}]`;
   }
 }
 

@@ -1,7 +1,39 @@
 export const Errors = {
   apiError: {
-    invalidArguments: {
-      message: 'The arguments you provided are invalid',
+    malformedRequest: {
+      message: 'The request is malformed.',
+      http: {
+        code: 400,
+        reason: 'Bad Request',
+      },
+    },
+    unauthorized: {
+      message: 'Not Authorised!',
+      http: {
+        code: 401,
+        reason: 'Unauthorized',
+      },
+    },
+    unknown: {
+      message: 'An unknown error occurred within the API.',
+      http: {
+        code: 500,
+        reason: 'Unknown',
+      },
+    },
+    exceedsNrtQuota: {
+      message: 'The request exceeds your remaining NRT quota',
+      http: {
+        code: 403,
+        reason: 'Quota Exceeded',
+      },
+    },
+    insufficientStock: {
+      message: 'There is not enough stock remaining to fulfill this order.',
+      http: {
+        code: 409,
+        reason: 'Supply Unavailable',
+      },
     },
   },
   ggitInputError: {
@@ -145,9 +177,6 @@ export const Errors = {
       message:
         'Irrigation events that define both a start and end date with different values must also define a frequency.',
     },
-    cropIrrigationDateOverlapError: {
-      message: `Irrigation dates can not overlap with the next crop's harvest date`,
-    },
     cropIrrigationMissingStartDateError: {
       message: `You are missing irrigation start dates for a crop. Either remove all irrigation inputs for that crop or enter the state date.`,
     },
@@ -206,6 +235,7 @@ export const Errors = {
   },
   /**
    * checkoutError's are NOT retried by the task queue
+   *
    */
   checkoutError: {
     insufficientStock: {
@@ -253,6 +283,16 @@ export const Errors = {
     priceOrFeeMismatch: {
       message:
         'The price for NRTs has changed. Please refresh the page and try again.',
+    },
+    climateReservationError: {
+      message:
+        'There was an error creating or confirming a Climate Reservation with the Stripe Climate API.',
+    },
+    climateReservationNotFound: {
+      message: 'The climate reservation for this order was not found.',
+    },
+    climateReservationCancelled: {
+      message: 'The climate reservation for this order was cancelled.',
     },
   },
   authenticationError: {
@@ -331,4 +371,4 @@ export const Errors = {
       message: 'Output lacks required data',
     },
   },
-};
+} as const;

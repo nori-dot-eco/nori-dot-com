@@ -201,6 +201,7 @@ query
 ratio
 reddit
 refetch
+refetchable
 registrar
 renderer
 repo

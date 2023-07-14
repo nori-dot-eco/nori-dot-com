@@ -10,7 +10,7 @@ type ObjectPaths<T extends object> = {
 }[T extends any[] ? number & keyof T : keyof T];
 type KeysOfUnion<T> = T extends T ? keyof T : never;
 export type ErrorType = keyof typeof Errors;
-export type ErrorCode = KeysOfUnion<typeof Errors[ErrorType]>;
+export type ErrorCode = KeysOfUnion<(typeof Errors)[ErrorType]>;
 export type UnparsedError = ObjectPaths<typeof Errors>;
 export type ErrorMessage = string;
 
@@ -28,4 +28,19 @@ export const parseError = ({
   const message: ErrorMessage =
     (Errors[type] as any)?.[code]?.message ?? defaultErrorMessage;
   return { message, type, code };
+};
+
+/** Return the http error for an error which has a `message` value that matches the provided `message` argument. */
+export const getApiErrorByMessage = ({
+  message,
+}: {
+  message: string;
+}): (typeof Errors)['apiError'][keyof (typeof Errors)['apiError']]['http'] => {
+  let error = Object.values(Errors.apiError).find((e) =>
+    message.includes(e.message)
+  );
+  if (!Boolean(error) && message.includes('Variable "$')) {
+    error = Errors.apiError.malformedRequest;
+  }
+  return error?.http;
 };

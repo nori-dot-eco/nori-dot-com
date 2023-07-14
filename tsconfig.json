@@ -1,16 +1,37 @@
 {
+  // todo extends strictest
   "compilerOptions": {
+    "incremental": true,
     "module": "CommonJS",
     "target": "ES2018",
     "lib": ["esnext", "dom"],
     "declaration": true,
     "declarationMap": true,
-    "composite": true,
-    "outDir": "./dist",
-    "rootDir": ".",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0"
   },
-  "exclude": ["node_modules", "dist"]
+  "files": [],
+  "references": [
+    {
+      "path": "packages/errors"
+    },
+    {
+      "path": "packages/ggit"
+    },
+    {
+      "path": "packages/math"
+    },
+    {
+      "path": "packages/project"
+    },
+    {
+      "path": "packages/quantification"
+    },
+    {
+      "path": "packages/eslint-config-nori"
+    }
+  ]
 }

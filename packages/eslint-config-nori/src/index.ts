@@ -1,10 +1,13 @@
-const { jsdocRules } = require('./rules');
+import type { Linter } from 'eslint';
+
+import { jsdocRules, noUnusedVarsRule } from './settings/misc';
+import { namingConventionRules } from './settings/naming-conventions';
 
 const jsExtensions = ['.js', '.jsx'];
 const tsExtensions = ['.ts', '.tsx'];
 const allExtensions = [...jsExtensions, ...tsExtensions];
 
-module.exports = {
+export = {
   settings: {
     'import/extensions': allExtensions,
     'import/parsers': { '@typescript-eslint/parser': tsExtensions },
@@ -29,9 +32,9 @@ module.exports = {
         'prettier/prettier': [
           'error',
           /**
-           * Important to force prettier to use "markdown" parser - otherwise it wouldn't be able to parse *.md files.
-           * You also can configure other options supported by prettier here - "prose-wrap" is
-           * particularly useful for *.md files
+           * Important to force prettier to use “markdown” parser - otherwise it wouldn't be able to parse *.md files.
+           * You also can configure other options supported by prettier here - “prose-wrap” is
+           * particularly useful for *.md files.
            */
           { parser: 'markdown' },
         ],
@@ -63,8 +66,8 @@ module.exports = {
         'relay',
         'jsdoc',
         'jest',
+        'jest-extended',
         'mui-unused-classes',
-        'local-rules',
       ],
       processor: '@graphql-eslint/graphql',
       rules: {
@@ -74,15 +77,8 @@ module.exports = {
         'unicorn/prefer-module': [0],
         'unicorn/prefer-switch': [0],
         'unicorn/no-useless-undefined': [0],
-        'unicorn/prefer-node-protocol': [0], // todo enable this when we have a compatible version of node (~18)
         'unicorn/prefer-ternary': ['error', 'only-single-line'],
-        // 'unicorn/filename-case': [ // todo enable this after running kebab-case codemod to rename files
-        //   'warn',
-        //   {
-        //     case: 'kebabCase',
-        //   },
-        // ],
-        'unicorn/filename-case': [0], // todo remove this after running kebab-case codemod to rename files
+        'unicorn/filename-case': ['warn', { case: 'kebabCase' }],
         'unicorn/no-useless-promise-resolve-reject': [0],
         'unicorn/prevent-abbreviations': [
           'error',
@@ -101,7 +97,7 @@ module.exports = {
             ignore: ['[a-z]'],
           },
         ],
-        'unicorn/prefer-spread': [0],
+        'unicorn/prefer-spread': [0], // todo enable
         'eslint-comments/require-description': ['error'], // requires eslint directive comments to have descriptions
         'eslint-comments/disable-enable-pair': [
           'error',
@@ -110,6 +106,7 @@ module.exports = {
         'eslint-comments/no-unused-disable': ['error'],
         'no-restricted-syntax': [
           'error',
+          'ForStatement',
           'ForInStatement',
           'LabeledStatement',
           'WithStatement',
@@ -153,7 +150,6 @@ module.exports = {
             peerDependencies: false,
           },
         ],
-
         'relay/generated-flow-types': 0,
         'require-path-exists/exists': [2, { extensions: allExtensions }],
         'max-classes-per-file': 0, // todo deprecate
@@ -166,18 +162,25 @@ module.exports = {
         'plugin:@graphql-eslint/schema-recommended',
         'plugin:@graphql-eslint/relay',
       ],
+      rules: {
+        '@graphql-eslint/known-directives': 0,
+      },
     },
     {
       files: ['**/*.ts', '**/*.tsx'],
       extends: [
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        'plugin:@typescript-eslint/strict',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
       plugins: ['@typescript-eslint'],
       rules: {
-        camelcase: [0], // replaced by @typescript-eslint/naming-convention rules
+        '@typescript-eslint/no-unnecessary-boolean-literal-compare': 0, // todo enable (Requires strict null checks enabled)
+        '@typescript-eslint/prefer-nullish-coalescing': 0, // todo enable (Requires strict null checks enabled)
+        '@typescript-eslint/no-unnecessary-condition': 0, // todo enable (Requires strict null checks enabled)
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
@@ -194,67 +197,13 @@ module.exports = {
         'no-shadow': 'off', // replaced by ts-eslint rule below
         '@typescript-eslint/no-shadow': 'error', // replaces by no-shadow
         // 'id-denylist': ['error', 'FC', 'React.FC', 'React.FunctionComponent'], // todo enable (disallows type usage)
-        'require-await': 'off', // replaced by @typescript-eslint/require-await
-        '@typescript-eslint/require-await': 'error', // replaces require-await
         '@typescript-eslint/member-ordering': 'warn',
         '@typescript-eslint/consistent-type-definitions': [
           'error',
           'interface',
         ],
-        'no-unused-vars': 0, // replaced by @typescript-eslint/no-unused-vars
-        '@typescript-eslint/no-unused-vars': [
-          'error',
-          {
-            argsIgnorePattern: '_',
-            args: 'all',
-            caughtErrors: 'all',
-            ignoreRestSiblings: true,
-          },
-        ],
-        '@typescript-eslint/naming-convention': [
-          'error',
-          { selector: 'class', format: ['PascalCase'] },
-          {
-            selector: ['function', 'classMethod'],
-            format: ['camelCase'],
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['variable'],
-            format: [
-              'camelCase',
-              'UPPER_CASE',
-              'PascalCase', // todo remove PascalCase
-            ],
-          },
-          { selector: 'typeLike', format: ['PascalCase'] },
-          {
-            selector: ['typeProperty', 'classProperty'],
-            format: ['camelCase'],
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['parameter'],
-            format: ['camelCase'],
-            custom: {
-              regex: '^_?[a-z][a-zA-Z0-9]*$',
-              match: true,
-            },
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['parameter'],
-            format: ['camelCase'],
-            modifiers: ['unused'],
-            leadingUnderscore: 'allow',
-          },
-          {
-            selector: ['variable', 'objectLiteralProperty'],
-            modifiers: ['destructured'],
-            format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case'],
-            leadingUnderscore: 'allow',
-          },
-        ],
+        ...noUnusedVarsRule,
+        ...namingConventionRules,
         '@typescript-eslint/explicit-member-accessibility': 0,
         '@typescript-eslint/explicit-function-return-type': [
           'warn',
@@ -283,7 +232,7 @@ module.exports = {
       },
     },
     {
-      extends: ['plugin:jest/recommended'],
+      extends: ['plugin:jest/recommended', 'plugin:jest-extended/all'],
       files: [
         '**.test.js',
         '**/__mocks__/**.js',
@@ -293,7 +242,11 @@ module.exports = {
         'integration-util.ts',
       ],
       env: { node: true, jest: true },
-      rules: { 'dot-notation': [0], 'jest/prefer-strict-equal': 'warn' },
+      rules: {
+        'dot-notation': [0],
+        '@typescript-eslint/dot-notation': [0],
+        'jest/prefer-strict-equal': 'warn',
+      },
     },
     {
       files: ['**/*.tsx'],
@@ -314,4 +267,4 @@ module.exports = {
       plugins: ['only-warn'],
     },
   ],
-};
+} satisfies Linter.Config;

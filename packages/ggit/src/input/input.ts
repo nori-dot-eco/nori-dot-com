@@ -13,7 +13,6 @@ import type {
  * {
  * "_": "ggitInputError:ggitInputDataUnknownError"
  * }
- *
  */
 export interface InputData {
   '@cometEmailId': CometEmailId;
@@ -22,6 +21,7 @@ export interface InputData {
 
 /**
  * Soil Metrics API email address or GGIT email address.
+ *
  */
 export type CometEmailId = string; // todo template literal string
 
@@ -49,21 +49,25 @@ export interface Cropland {
 
 /**
  * Name of this field.
+ *
  */
 export type Name = string;
 
 /**
  * Historic management between 1980 - 2000. Check GGIT_API_File_Specification.xlsx for complete list.
+ *
  */
 export type Year1980To2000 = CrpManagementOption;
 
 /**
  * Tillage from 1980 - 2000.
+ *
  */
 export type Year1980To2000Tillage = CrpTillageOption;
 
 /**
  * Historic management data input. Pre-1980. See GGIT_API_File_Specification.xlsx Pre-1980 history by LRR tab.
+ *
  */
 export type Pre1980 =
   | 'upland non-irrigated (pre 1980s)' // todo string template literal project spec pre 1980 + (pre1980s)
@@ -73,11 +77,13 @@ export type Pre1980 =
 
 /**
  * CRP.
+ *
  */
 export type CRP = 'no' | 'yes';
 
 /**
  * CRP Type. Dependant on CRP.
+ *
  */
 export type CRPType = 'none' | '100% grass' | 'grass/legume mixture';
 
@@ -103,36 +109,43 @@ export type CrpTillageOption =
 
 /**
  * CRP start year. Must be YYYY.
+ *
  */
 export type CRPStartYear = [string?]; // todo number?
 
 /**
  * CRP end year. Must be YYYY.
+ *
  */
 export type CRPEndYear = [string?]; // todo number?
 
 /**
  * Pre-CRP management.
+ *
  */
 export type PreCRPManagement = [CrpManagementOption?];
 
 /**
  * Pre-CRP tillage.
+ *
  */
 export type PreCRPTillage = [CrpTillageOption?];
 
 /**
  * Post CRP management.
+ *
  */
 export type PostCRPManagement = [CrpManagementOption?];
 
 /**
  * Post-CRP tillage.
+ *
  */
 export type PostCRPTillage = [CrpTillageOption?];
 
 /**
  * Cropland management scenario.
+ *
  */
 export interface CropScenario {
   '@Name': CropScenarioName;
@@ -141,6 +154,7 @@ export interface CropScenario {
 
 /**
  * Name of this crop scenario.
+ *
  */
 export type CropScenarioName =
   | typeof CURRENT_SCENARIO_NAME
@@ -148,6 +162,7 @@ export type CropScenarioName =
 
 /**
  * Crop event year.
+ *
  */
 export interface CropYear<
   CropType extends ContinuedCrop | NewCrop = ContinuedCrop | NewCrop
@@ -158,6 +173,7 @@ export interface CropYear<
 
 /**
  * Year for this crop event.
+ *
  */
 export type Year = number; // todo number range
 
@@ -165,6 +181,7 @@ type EmptyObject = Record<string, never>;
 
 /**
  * Crop event
+ *
  */
 export interface BaseCrop {
   '@CropNumber': CropNumber;
@@ -217,6 +234,7 @@ export interface ContinuedCrop extends BaseCrop {
    * Yes = continue crop growth for non-woody perennial crops
    * (like alfalfa, perennial grass hay or pasture) from
    * previous year without re-planting.
+   *
    */
   ContinueFromPreviousYear: 'y';
 }
@@ -227,6 +245,7 @@ export interface ContinuedCrop extends BaseCrop {
 export interface NewCrop extends BaseCrop {
   /**
    * Planting Date should be omitted when ContinueFromPreviousYear is set to 'y'
+   *
    */
   PlantingDate: PlantingDate;
   /**
@@ -234,17 +253,20 @@ export interface NewCrop extends BaseCrop {
    * Yes = continue crop growth for non-woody perennial crops
    * (like alfalfa, perennial grass hay or pasture) from
    * previous year without re-planting.
+   *
    */
   ContinueFromPreviousYear: 'n';
 }
 
 /**
  * Crop number for this crop event. Can have up to 3 crops for one crop year
+ *
  */
 export type CropNumber = 1 | 2 | 3;
 
 /**
  * Prune. Yes = woody perennial crops are pruned.
+ *
  */
 export type Prune = 'yes' | 'no';
 
@@ -252,11 +274,13 @@ export type Prune = 'yes' | 'no';
  * Renew. Yes = remove and replant orchard. All coarse and fine branches
  * and all coarse roots are removed, soil is plowed, and new saplings
  * assumed to be 2 yrs old are planted.
+ *
  */
 export type Renew = 'yes' | 'no';
 
 /**
  * Name of crop. Check GGIT_API_File_Specification.xlsx tab CropName for complete list
+ *
  */
 export type CropName =
   | 'alfalfa'
@@ -331,6 +355,7 @@ export type PlantingDate = string;
 
 /**
  * Grazing event
+ *
  */
 export interface GrazingEvent {
   GrazingStartDate: GrazingStartDate;
@@ -355,16 +380,19 @@ export type GrazingEndDate = string;
 
 /**
  * Rest Period. Any number of days less than 365.
+ *
  */
 export type RestPeriod = number; // todo (max, min )
 
 /**
  * Utilization Percentage. Any percentage, in whole or real numbers, between 0 and 100.
+ *
  */
 export type UtilizationPct = number; // todo (max 100, min 0)
 
 /**
  * List of grazing events.
+ *
  */
 export interface GrazingList {
   GrazingEvent: GrazingEvent[];
@@ -372,6 +400,7 @@ export interface GrazingList {
 
 /**
  * List of irrigation events.
+ *
  */
 export interface IrrigationList {
   IrrigationEvent: IrrigationEvent[];
@@ -379,6 +408,7 @@ export interface IrrigationList {
 
 /**
  * Irrigation Event
+ *
  */
 export interface IrrigationEvent {
   IrrigationDate: IrrigationDate;
@@ -394,11 +424,13 @@ export type IrrigationDate = string;
 
 /**
  * Irrigation Inches
+ *
  */
 export type IrrigationInches = number; // todo max/min
 
 /**
  * Liming event.
+ *
  */
 export interface LimingEvent {
   LimingDate: LimingDate;
@@ -415,6 +447,7 @@ export type LimingDate = string;
 
 /**
  * Liming Method
+ *
  */
 export type LimingMethod =
   | 'none'
@@ -424,11 +457,13 @@ export type LimingMethod =
 
 /**
  * Liming Rate. units in tons/acre
+ *
  */
 export type LimingRate = number; // todo max/min
 
 /**
  * List of manure application events. (Organic Amendment)
+ *
  */
 export interface OMADApplicationList {
   OMADApplicationEvent: OMADApplicationEvent[];
@@ -436,6 +471,7 @@ export interface OMADApplicationList {
 
 /**
  * Organic Amendment Application event
+ *
  */
 export interface OMADApplicationEvent {
   OMADApplicationDate: OMADApplicationDate;
@@ -454,6 +490,7 @@ export type OMADApplicationDate = string;
 
 /**
  * Organic Amendment Type. see GGIT_API_File_Specification.xlsx tab Organic Amendment Types for details
+ *
  */
 export type OMADType =
   | 'alfalfa meal'
@@ -482,21 +519,25 @@ export type OMADType =
 
 /**
  * Organic Amendment Amount units in tons dry matter per acre
+ *
  */
 export type OMADAmount = number; // todo max/min
 
 /**
  * Organic Amendment Percent. Units in %N
+ *
  */
 export type OMADPercentN = number; // todo max/min
 
 /**
  * Organic Amendment Ratio
+ *
  */
 export type OMADCNRatio = number; // todo max/min
 
 /**
  * Burn event.
+ *
  */
 export interface BurnEvent {
   BurnTime: BurnTime;
@@ -504,6 +545,7 @@ export interface BurnEvent {
 
 /**
  * Time burn event occurred.
+ *
  */
 export type BurnTime =
   | 'no burning'
@@ -512,6 +554,7 @@ export type BurnTime =
 
 /**
  * List of nitrogen applications.
+ *
  */
 export interface NApplicationList {
   NApplicationEvent: NApplicationEvent[];
@@ -538,6 +581,7 @@ export type NApplicationDate = string;
 
 /**
  * Nitrogen application type.
+ *
  */
 export type NApplicationType =
   | 'ammonium nitrate (34-0-0)'
@@ -564,11 +608,13 @@ export type NApplicationType =
 
 /**
  * Nitrogen application amount. Units in lbs N/acre
+ *
  */
 export type NApplicationAmount = number; // todo max/min
 
 /**
  * Nitrogen application method.
+ *
  */
 export type NApplicationMethod =
   | 'surface broadcast'
@@ -585,11 +631,13 @@ export const eepTypes = [
 
 /**
  * Enhanced efficiency product.
+ *
  */
-export type EEP = typeof eepTypes[number];
+export type EEP = (typeof eepTypes)[number];
 
 /**
  * List of tillage events.
+ *
  */
 export interface TillageList {
   TillageEvent: TillageEvent[];
@@ -597,6 +645,7 @@ export interface TillageList {
 
 /**
  * Tillage event.
+ *
  */
 export interface TillageEvent {
   TillageDate: TillageDate;
@@ -612,6 +661,7 @@ export type TillageDate = string;
 
 /**
  * Tillage type.
+ *
  */
 export type TillageType =
   | 'intensive tillage'
@@ -628,6 +678,7 @@ export type TillageType =
 
 /**
  * List of harvest events.
+ *
  */
 export interface HarvestList {
   HarvestEvent: HarvestEvent[];
@@ -635,6 +686,7 @@ export interface HarvestList {
 
 /**
  * Harvest event
+ *
  */
 export interface HarvestEvent {
   HarvestDate: HarvestDate;
@@ -652,21 +704,25 @@ export type HarvestDate = string;
 
 /**
  * Is this a grain harvest
+ *
  */
 export type Grain = 'yes' | 'no';
 
 /**
  * Yield amount. See crop type spec for yield units in GGIT_API_File_Specification.xlsx.
+ *
  */
 export type Yield = number; // todo max/min
 
 /**
  * % of straw/stover/have/residue removal.
+ *
  */
 export type StrawStoverHayRemoval = number; // todo max/min
 
 /**
  * Geometry, point or polygon. Polygon has maximum about of vertices, 1000.  Max size is 10,000 acres. SRID any
+ *
  */
 export interface GEOM {
   '@SRID': SRID;
@@ -676,11 +732,13 @@ export interface GEOM {
 
 /**
  * Standard spatial reference identifier.
+ *
  */
 export type SRID = typeof WORLD_GEODETIC_SYSTEM_1984;
 
 /**
  * Area of this geometry in acres.
+ *
  */
 export type AREA = number; // todo max 10k
 

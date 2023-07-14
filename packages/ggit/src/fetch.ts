@@ -12,7 +12,6 @@ import type {
 } from './index';
 
 /**
- *
  * @example
  */
 export interface Options<ApiType extends ApiCall> extends RequestInit {
@@ -60,9 +59,8 @@ export class Fetch<ApiType extends ApiCall> {
         throw new Error(JSON.stringify(response));
       }
       const data = await response.json();
-      return data;
+      return data as ApiType['response'];
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error('Error making request', error);
       throw error;
     }
