@@ -19,7 +19,6 @@
     "build": "tsc -b",
     "watch": "tsc -b --watch",
     "test": "jest",
-    "bootstrap": "lerna bootstrap",
     "prepare": "yarn run build",
     "artifactregistry-login": "npx google-artifactregistry-auth"
   },
