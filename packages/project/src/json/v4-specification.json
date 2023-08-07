@@ -701,35 +701,7 @@
                     "type": "string"
                 },
                 "geojson": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
-                        }
-                    ],
+                    "$ref": "#/definitions/GeoJSON.GeoJSON",
                     "description": "The geographic boundaries (defined as GeoJSON) associated with crop management practices.\n\nFor additional guidance and limitation of boundary files, [refer to the FAQ here](https://docs.google.com/document/d/1vnJKwFzU6drCjTD-eVXUK_59togcmROliyOU1y8Ne1U/edit?ts=5ed8f2d1#heading=h.fbiiknhrzhg8)",
                     "title": "geojson"
                 },
@@ -892,29 +864,7 @@
                     "title": "bbox"
                 },
                 "geometry": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                        }
-                    ],
+                    "$ref": "#/definitions/GeoJSON.Geometry",
                     "description": "The feature's geometry",
                     "title": "geometry"
                 },
@@ -927,23 +877,13 @@
                     ]
                 },
                 "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {},
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/definitions/GeoJSON.GeoJsonProperties",
                     "description": "Properties associated with this feature.",
                     "title": "properties"
                 },
                 "type": {
+                    "const": "Feature",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Feature"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1011,29 +951,7 @@
                     "title": "bbox"
                 },
                 "geometry": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/definitions/GeoJSON.Point"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPoint"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.LineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiLineString"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.Polygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                        },
-                        {
-                            "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                        }
-                    ],
+                    "$ref": "#/definitions/GeoJSON.Geometry",
                     "description": "The feature's geometry",
                     "title": "geometry"
                 },
@@ -1046,23 +964,13 @@
                     ]
                 },
                 "properties": {
-                    "anyOf": [
-                        {
-                            "additionalProperties": {},
-                            "type": "object"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/definitions/GeoJSON.GeoJsonProperties",
                     "description": "Properties associated with this feature.",
                     "title": "properties"
                 },
                 "type": {
+                    "const": "Feature",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Feature"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1137,10 +1045,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "FeatureCollection",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "FeatureCollection"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1151,6 +1057,78 @@
             ],
             "title": "GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>",
             "type": "object"
+        },
+        "GeoJSON.GeoJSON": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/GeoJSON.Point"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiPoint"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.LineString"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiLineString"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.Polygon"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.FeatureCollection<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
+                }
+            ],
+            "description": "Union of GeoJSON objects.",
+            "title": "GeoJSON.GeoJSON"
+        },
+        "GeoJSON.GeoJsonProperties": {
+            "anyOf": [
+                {
+                    "additionalProperties": {},
+                    "type": "object"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "title": "GeoJSON.GeoJsonProperties"
+        },
+        "GeoJSON.Geometry": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/GeoJSON.Point"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiPoint"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.LineString"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiLineString"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.Polygon"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.MultiPolygon"
+                },
+                {
+                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                }
+            ],
+            "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3",
+            "title": "GeoJSON.Geometry"
         },
         "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
             "additionalProperties": false,
@@ -1208,39 +1186,14 @@
                 },
                 "geometries": {
                     "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/definitions/GeoJSON.Point"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiPoint"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.LineString"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiLineString"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.Polygon"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.MultiPolygon"
-                            },
-                            {
-                                "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
-                            }
-                        ],
-                        "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3"
+                        "$ref": "#/definitions/GeoJSON.Geometry"
                     },
                     "title": "geometries",
                     "type": "array"
                 },
                 "type": {
+                    "const": "GeometryCollection",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "GeometryCollection"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1318,10 +1271,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "LineString",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "LineString"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1402,10 +1353,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "MultiLineString",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiLineString"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1483,10 +1432,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "MultiPoint",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiPoint"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1570,10 +1517,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "MultiPolygon",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "MultiPolygon"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1648,10 +1593,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "Point",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Point"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1732,10 +1675,8 @@
                     "type": "array"
                 },
                 "type": {
+                    "const": "Polygon",
                     "description": "Specifies the type of GeoJSON object.",
-                    "enum": [
-                        "Polygon"
-                    ],
                     "title": "type",
                     "type": "string"
                 }
@@ -1903,11 +1844,9 @@
             "description": "Details surrounding how the field was managed before year 2000\n\nNote that the state the field exists within restricts the allowed values per object property. To find applicable values per location, see [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vQQnIlyxCENwJvw5Luyg2Ikbn_X0FvMTNr2J6n5Y2xwcR6oi4OA2jNW-B2DrslTKtrmQxg03byZ_aRV/pubhtml)",
             "properties": {
                 "crp": {
+                    "const": true,
                     "default": true,
                     "description": "Whether the field participated in CRP or not.",
-                    "enum": [
-                        true
-                    ],
                     "title": "crp",
                     "type": "boolean"
                 },
@@ -2017,11 +1956,9 @@
             "description": "Land management details for when a field did not participate in CRP",
             "properties": {
                 "crp": {
+                    "const": false,
                     "default": false,
                     "description": "Whether the field participated in CRP or not.",
-                    "enum": [
-                        false
-                    ],
                     "title": "crp",
                     "type": "boolean"
                 },
