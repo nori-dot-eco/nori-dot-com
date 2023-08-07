@@ -50,14 +50,8 @@
             "additionalProperties": false,
             "properties": {
                 "@CropNumber": {
-                    "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
-                    "enum": [
-                        1,
-                        2,
-                        3
-                    ],
-                    "title": "@CropNumber",
-                    "type": "number"
+                    "$ref": "#/definitions/CropNumber",
+                    "title": "@CropNumber"
                 },
                 "BurnEvent": {
                     "anyOf": [
@@ -72,10 +66,8 @@
                     "title": "BurnEvent"
                 },
                 "ContinueFromPreviousYear": {
+                    "const": "y",
                     "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
-                    "enum": [
-                        "y"
-                    ],
                     "title": "ContinueFromPreviousYear",
                     "type": "string"
                 },
@@ -269,6 +261,16 @@
             ],
             "title": "CropName",
             "type": "string"
+        },
+        "CropNumber": {
+            "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
+            "enum": [
+                1,
+                2,
+                3
+            ],
+            "title": "CropNumber",
+            "type": "number"
         },
         "CropScenario": {
             "additionalProperties": false,
@@ -536,9 +538,8 @@
             "description": "Geometry, point or polygon. Polygon has maximum about of vertices, 1000.  Max size is 10,000 acres. SRID any",
             "properties": {
                 "#text": {
-                    "description": "WKT string of geometry polygon.",
-                    "title": "#text",
-                    "type": "string"
+                    "$ref": "#/definitions/WKT",
+                    "title": "#text"
                 },
                 "@AREA": {
                     "description": "Area of this geometry in acres.",
@@ -546,10 +547,8 @@
                     "type": "number"
                 },
                 "@SRID": {
+                    "const": "4326",
                     "description": "Standard spatial reference identifier.",
-                    "enum": [
-                        "4326"
-                    ],
                     "title": "@SRID",
                     "type": "string"
                 }
@@ -857,14 +856,8 @@
             "additionalProperties": false,
             "properties": {
                 "@CropNumber": {
-                    "description": "Crop number for this crop event. Can have up to 3 crops for one crop year",
-                    "enum": [
-                        1,
-                        2,
-                        3
-                    ],
-                    "title": "@CropNumber",
-                    "type": "number"
+                    "$ref": "#/definitions/CropNumber",
+                    "title": "@CropNumber"
                 },
                 "BurnEvent": {
                     "anyOf": [
@@ -879,10 +872,8 @@
                     "title": "BurnEvent"
                 },
                 "ContinueFromPreviousYear": {
+                    "const": "n",
                     "description": "Was this crop planted in the previous year.\nYes = continue crop growth for non-woody perennial crops\n(like alfalfa, perennial grass hay or pasture) from\nprevious year without re-planting.",
-                    "enum": [
-                        "n"
-                    ],
                     "title": "ContinueFromPreviousYear",
                     "type": "string"
                 },
@@ -1171,6 +1162,11 @@
                 "winter kill"
             ],
             "title": "TillageType",
+            "type": "string"
+        },
+        "WKT": {
+            "description": "WKT string of geometry polygon.",
+            "title": "WKT",
             "type": "string"
         }
     },
