@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node
 
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 
 import * as yargs from 'yargs';
 
@@ -9,7 +9,7 @@ import {
   getQuantificationSummary,
 } from '../quantification';
 
-const quantificationArgs = (yargs: yargs.Argv<{}>): yargs.Argv<{}> => {
+const quantificationArgs = (yargs: yargs.Argv): yargs.Argv => {
   yargs.positional('input', {
     type: 'string',
     describe: 'the soil metrics output file',
@@ -33,8 +33,7 @@ yargs
       const data = fs.readFileSync(argv.input as string, 'utf8');
       const results = await getQuantificationSummaries({
         data: JSON.parse(data),
-        maxNumberGrandfatheredYearsForProject:
-          argv.maxGrandfatherableYears as number,
+        maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
       });
       console.log(JSON.stringify(results, null, 4));
     }
@@ -51,10 +50,9 @@ yargs
     },
     async (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
-      const results = await getQuantificationSummary({
+      const results = getQuantificationSummary({
         data: JSON.parse(data),
-        maxNumberGrandfatheredYearsForProject:
-          argv.maxGrandfatherableYears as number,
+        maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
         quantifyAsOfYear: argv.quantifyAsOfYear as number,
       });
       console.log(JSON.stringify(results, null, 4));
