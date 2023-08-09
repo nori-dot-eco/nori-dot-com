@@ -33,7 +33,8 @@
   },
   "dependencies": {
     "@nori-dot-com/ggit": "^1.6.0",
-    "@nori-dot-com/math": "^1.6.0"
+    "@nori-dot-com/math": "^1.6.0",
+    "@nori-dot-com/errors": "^1.6.0"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.17"

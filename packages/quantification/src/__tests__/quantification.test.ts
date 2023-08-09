@@ -654,16 +654,16 @@ describe('getQuantificationSummary', () => {
 });
 
 describe('getQuantificationSummaries', () => {
-  it('will get the tonnes that are grandfatherable given a COMET output file for 5 grandfatherable years', async () => {
+  it('will get the tonnes that are grandfatherable given a COMET output file for 5 grandfatherable years', () => {
     let modelRun = GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
     expect(
-      await getQuantificationSummaries({
+      getQuantificationSummaries({
         data: GRANDFATHERABLE_YEARS_OUTPUT,
         maxNumberOfGrandfatheredYears: 5,
       })
-    ).toStrictEqual<Awaited<ReturnType<typeof getQuantificationSummaries>>>({
+    ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
       [modelRunName]: {
         methodologyVersion: METHODOLOGY_VERSION,
         switchYear: 2016,
@@ -736,16 +736,16 @@ describe('getQuantificationSummaries', () => {
       },
     });
   });
-  it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', async () => {
+  it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', () => {
     let modelRun = GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
     expect(
-      await getQuantificationSummaries({
+      getQuantificationSummaries({
         data: GRANDFATHERABLE_YEARS_OUTPUT,
         maxNumberOfGrandfatheredYears: 4,
       })
-    ).toStrictEqual<Awaited<ReturnType<typeof getQuantificationSummaries>>>({
+    ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
       [modelRunName]: {
         methodologyVersion: METHODOLOGY_VERSION,
         switchYear: 2017,
@@ -811,17 +811,17 @@ describe('getQuantificationSummaries', () => {
       },
     });
   });
-  it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', async () => {
+  it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', () => {
     let modelRun = GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
     expect(
-      await getQuantificationSummaries({
+      getQuantificationSummaries({
         data: GRANDFATHERABLE_YEARS_OUTPUT,
         maxNumberOfGrandfatheredYears: 3,
         quantifyAsOfYear: 2019,
       })
-    ).toStrictEqual<Awaited<ReturnType<typeof getQuantificationSummaries>>>({
+    ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
       [modelRunName]: {
         methodologyVersion: METHODOLOGY_VERSION,
         switchYear: 2016,
@@ -884,13 +884,13 @@ describe('getQuantificationSummaries', () => {
     let modelRun = NO_GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
-    it('will still return quantification for given a COMET output file', async () => {
+    it('will still return quantification for given a COMET output file', () => {
       expect(
-        await getQuantificationSummaries({
+        getQuantificationSummaries({
           data: NO_GRANDFATHERABLE_YEARS_OUTPUT,
           maxNumberOfGrandfatheredYears: 5,
         })
-      ).toStrictEqual<Awaited<ReturnType<typeof getQuantificationSummaries>>>({
+      ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
         [modelRunName]: {
           modeledYears: [
             2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,

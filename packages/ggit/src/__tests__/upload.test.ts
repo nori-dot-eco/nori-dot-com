@@ -35,7 +35,7 @@ describe('Upload', () => {
     describe('fetch', () => {
       it('should send data to upload to the API', async () => {
         mockTokenEndpoint();
-        const client = await Client.createWithCredentials(CREDENTIALS);
+        const client = await new Client().configure(CREDENTIALS);
         expect(client.jwt).toStrictEqual<Client['jwt']>({
           id: expect.any(String),
           jwtToken: expect.any(String),

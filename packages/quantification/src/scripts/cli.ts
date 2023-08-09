@@ -31,7 +31,7 @@ yargs
     quantificationArgs,
     async (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
-      const results = await getQuantificationSummaries({
+      const results = getQuantificationSummaries({
         data: JSON.parse(data),
         maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
       });

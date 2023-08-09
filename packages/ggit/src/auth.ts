@@ -6,8 +6,8 @@ import type { Options, ApiEndpoint, ApiMethod, Method, Email } from './index';
  * @example
  */
 export interface UnparsedTokenApiRequestBody {
-  Email: Email;
-  Password: string;
+  email: Email;
+  password: string;
 }
 
 export type TokenApiRequestBody = string;
@@ -73,11 +73,11 @@ export class Token implements ApiEndpoint {
     email,
     password,
   }: {
-    email: UnparsedTokenApiRequestBody['Email'];
-    password: UnparsedTokenApiRequestBody['Password'];
+    email: UnparsedTokenApiRequestBody['email'];
+    password: UnparsedTokenApiRequestBody['password'];
   }): Promise<TokenApiResponse> {
     return this.#apiFetcher.fetch({
-      body: JSON.stringify({ Email: email, Password: password }),
+      body: JSON.stringify({ email, password }),
       headers: this.#headers,
     });
   }
