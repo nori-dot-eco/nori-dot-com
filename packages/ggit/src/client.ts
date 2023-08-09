@@ -13,9 +13,10 @@ export class Client {
 
   #jwt: TokenApiResponse;
 
-  constructor() {
+  constructor({ jwt }: { jwt: TokenApiResponse }) {
     this.#auth = new Auth();
     this.#upload = new Upload();
+    this.#jwt = jwt;
   }
 
   get jwt(): TokenApiResponse {
@@ -38,24 +39,14 @@ export class Client {
     return { authorization: `Bearer ${jwtToken}` as const };
   }
 
-  async configure({
+  static async createWithCredentials({
     email,
     password,
   }: {
     email: UnparsedTokenApiRequestBody['Email'];
     password: UnparsedTokenApiRequestBody['Password'];
-  }): Promise<this> {
-    this.#jwt = await this.#auth.token.fetch({ email, password });
-    return this;
+  }): Promise<Client> {
+    const jwt = await new Auth().token.fetch({ email, password });
+    return new Client({ jwt });
   }
 }
-
-export const createClient = async ({
-  email,
-  password,
-}: {
-  email: UnparsedTokenApiRequestBody['Email'];
-  password: UnparsedTokenApiRequestBody['Password'];
-}): Promise<Client> => {
-  return new Client().configure({ email, password });
-};

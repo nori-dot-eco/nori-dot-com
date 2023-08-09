@@ -36,7 +36,7 @@ export interface TokenApiRequest extends Options<TokenApiCall> {
 export interface TokenApiResponse {
   jwtToken: string;
   id: string;
-  tokenExpirationTime: string;
+  tokenExpirationTime: number;
 }
 
 export class Auth implements ApiMethod {
