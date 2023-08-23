@@ -316,18 +316,18 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
  * of years that are grandfatherable based on that input.
  *
  * @param options.modeledYears The list of modeled years.
- * @param options.maxNumberGrandfatheredYearsForProject The maximum number of grandfathered years for the project.
+ * @param options.maxNumberOfGrandfatheredYears The maximum number of grandfathered years for the project.
  * @param options.quantifyAsOfYear The year to quantify as. If undefined, defaults to the current year.
  * @returns An object containing the grandfatherable years (extending from the switch year to the `quantifyAsOfYear` if
  * defined, otherwise to the current year), the number of grandfathered years, and the first grandfatherable year.
  */
 export const getGrandfatherableYears = ({
   modeledYears,
-  maxNumberGrandfatheredYearsForProject,
+  maxNumberOfGrandfatheredYears,
   quantifyAsOfYear,
 }: {
   modeledYears: number[];
-  maxNumberGrandfatheredYearsForProject: number;
+  maxNumberOfGrandfatheredYears: number;
   quantifyAsOfYear?: number;
 }): {
   grandfatherableYears: UnadjustedQuantificationSummary['grandfatherableYears'];
@@ -337,7 +337,7 @@ export const getGrandfatherableYears = ({
   const effectiveCurrentYear = quantifyAsOfYear ?? CURRENT_YEAR;
   const startYearIndex = Math.max(
     modeledYears.indexOf(
-      subtract(effectiveCurrentYear, maxNumberGrandfatheredYearsForProject)
+      subtract(effectiveCurrentYear, maxNumberOfGrandfatheredYears)
     ),
     0
   );
@@ -405,14 +405,14 @@ const getGrandfatheredTonneQuantities = ({
   totalAcres,
   tenYearProjectedTonnesPerYear,
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
-  maxNumberGrandfatheredYearsForProject,
+  maxNumberOfGrandfatheredYears,
   quantifyAsOfYear,
 }: {
   modeledYears: number[];
   totalAcres: UnadjustedQuantificationSummary['totalAcres'];
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon'];
   tenYearProjectedTonnesPerYear: UnadjustedQuantificationSummary['tenYearProjectedTonnesPerYear'];
-  maxNumberGrandfatheredYearsForProject: number;
+  maxNumberOfGrandfatheredYears: number;
   quantifyAsOfYear?: number;
 }): {
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage'];
@@ -430,7 +430,7 @@ const getGrandfatheredTonneQuantities = ({
     numberOfGrandfatheredYears,
   } = getGrandfatherableYears({
     modeledYears,
-    maxNumberGrandfatheredYearsForProject,
+    maxNumberOfGrandfatheredYears,
     quantifyAsOfYear,
   });
 
@@ -535,13 +535,13 @@ const createQuantificationSummary = ({
   modelRuns,
   futureScenarioName,
   baselineScenarioName,
-  maxNumberGrandfatheredYearsForProject,
+  maxNumberOfGrandfatheredYears,
   quantifyAsOfYear,
 }: {
   modelRuns: Output.ModelRun<Output.ParsedMapUnit>[];
   futureScenarioName: string;
   baselineScenarioName: string;
-  maxNumberGrandfatheredYearsForProject: number;
+  maxNumberOfGrandfatheredYears: number;
   quantifyAsOfYear?: number;
 }): UnadjustedQuantificationSummary => {
   validateParsedModelRunsData({
@@ -596,7 +596,7 @@ const createQuantificationSummary = ({
     modeledYears,
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
     totalAcres,
-    maxNumberGrandfatheredYearsForProject,
+    maxNumberOfGrandfatheredYears,
     quantifyAsOfYear,
   });
 
@@ -636,20 +636,20 @@ const createQuantificationSummary = ({
  *
  * @returns A quantification summary
  */
-export const getQuantificationSummary = async ({
+export const getQuantificationSummary = ({
   data,
-  maxNumberGrandfatheredYearsForProject,
+  maxNumberOfGrandfatheredYears,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
   quantifyAsOfYear,
 }: {
   data: Output.OutputFile<Output.MapUnit>;
-  maxNumberGrandfatheredYearsForProject: number;
+  maxNumberOfGrandfatheredYears: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
   quantifyAsOfYear?: number;
-}): Promise<UnadjustedQuantificationSummary> => {
-  const { parsedJsonOutput } = await parseYearlyMapUnitData({
+}): UnadjustedQuantificationSummary => {
+  const { parsedJsonOutput } = parseYearlyMapUnitData({
     rawJsonOutput: data,
   });
   const {
@@ -661,7 +661,7 @@ export const getQuantificationSummary = async ({
     modelRuns: Array.isArray(modelRuns) ? modelRuns : [modelRuns],
     futureScenarioName,
     baselineScenarioName,
-    maxNumberGrandfatheredYearsForProject,
+    maxNumberOfGrandfatheredYears,
     quantifyAsOfYear,
   });
 };
@@ -672,25 +672,23 @@ export const getQuantificationSummary = async ({
  *
  * Note: unlike `getQuantificationSummary`, this assumes that there is a single
  * model run per field, which assumes that all model runs are separate polygons
- * which all make up a single parcel. We also don't pass in quantifyAsOfYear,
- * which could vary per parcel. This is mostly just for the sake of expediency,
- * since this has almost never been used in practice.
+ * which all make up a single parcel.
  *
  */
-export const getQuantificationSummaries = async ({
+export const getQuantificationSummaries = ({
   data,
-  maxNumberGrandfatheredYearsForProject,
+  maxNumberOfGrandfatheredYears,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
   quantifyAsOfYear,
 }: {
   data: Output.OutputFile<Output.MapUnit>;
-  maxNumberGrandfatheredYearsForProject: number;
+  maxNumberOfGrandfatheredYears: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
   quantifyAsOfYear?: number;
-}): Promise<Record<string, UnadjustedQuantificationSummary>> => {
-  const { parsedJsonOutput } = await parseYearlyMapUnitData({
+}): Record<string, UnadjustedQuantificationSummary> => {
+  const { parsedJsonOutput } = parseYearlyMapUnitData({
     rawJsonOutput: data,
   });
   const {
@@ -707,7 +705,7 @@ export const getQuantificationSummaries = async ({
         modelRuns: [modelRun],
         futureScenarioName,
         baselineScenarioName,
-        maxNumberGrandfatheredYearsForProject,
+        maxNumberOfGrandfatheredYears,
         quantifyAsOfYear,
       }),
     ])

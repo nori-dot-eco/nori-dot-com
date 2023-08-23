@@ -42,8 +42,8 @@ export class Client {
     email,
     password,
   }: {
-    email: UnparsedTokenApiRequestBody['Email'];
-    password: UnparsedTokenApiRequestBody['Password'];
+    email: UnparsedTokenApiRequestBody['email'];
+    password: UnparsedTokenApiRequestBody['password'];
   }): Promise<this> {
     this.#jwt = await this.#auth.token.fetch({ email, password });
     return this;
@@ -54,8 +54,8 @@ export const createClient = async ({
   email,
   password,
 }: {
-  email: UnparsedTokenApiRequestBody['Email'];
-  password: UnparsedTokenApiRequestBody['Password'];
+  email: UnparsedTokenApiRequestBody['email'];
+  password: UnparsedTokenApiRequestBody['password'];
 }): Promise<Client> => {
   return new Client().configure({ email, password });
 };
