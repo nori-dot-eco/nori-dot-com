@@ -29,7 +29,7 @@ yargs
     'multi [input]',
     'Runs Nori quantification logic on a multi-field (i.e. python) results file.',
     quantificationArgs,
-    async (argv) => {
+    (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
       const results = getQuantificationSummaries({
         data: JSON.parse(data),
@@ -48,7 +48,7 @@ yargs
           'Force the year to grandfather as of. Defaults to the current year',
       });
     },
-    async (argv) => {
+    (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
       const results = getQuantificationSummary({
         data: JSON.parse(data),
