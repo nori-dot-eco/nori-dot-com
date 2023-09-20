@@ -284,15 +284,15 @@ export const Errors = {
       message:
         'The price for NRTs has changed. Please refresh the page and try again.',
     },
-    climateReservationError: {
+    stripeClimateOrderError: {
       message:
-        'There was an error creating or confirming a Climate Reservation with the Stripe Climate API.',
+        'There was an error creating or confirming a Climate Order with the Stripe Climate API.',
     },
-    climateReservationNotFound: {
-      message: 'The climate reservation for this order was not found.',
+    stripeClimateOrderNotFound: {
+      message: 'The stripe climate order for this order was not found.',
     },
-    climateReservationCancelled: {
-      message: 'The climate reservation for this order was cancelled.',
+    stripeClimateOrderCancelled: {
+      message: 'The stripe climate order for this order was cancelled.',
     },
   },
   authenticationError: {
