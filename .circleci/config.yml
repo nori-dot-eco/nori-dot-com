@@ -1,7 +1,4 @@
 version: 2.1
-orbs:
-  gcp-cli: circleci/gcp-cli@3.0.1
-  nori-package-management-orb: nori-dot-com/nori-package-management-orb@0.0.1
 
 defaults: &defaults
   working_directory: ~/repo
