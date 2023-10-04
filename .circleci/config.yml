@@ -85,11 +85,3 @@ workflows:
       - run-regular-tests:
           requires:
             - setup-tests
-      - publish-packages:
-          requires:
-            - run-regular-tests
-          filters:
-            branches:
-              only:
-                - master
-                - /.*-release/
