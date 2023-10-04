@@ -78,12 +78,6 @@ jobs:
           paths:
             - repo
 
-  publish-packages:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: /home/circleci
-      - nori-package-management-orb/publish-packages
 workflows:
   continuous-integration:
     jobs:
