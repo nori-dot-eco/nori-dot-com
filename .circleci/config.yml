@@ -1,7 +1,4 @@
 version: 2.1
-orbs:
-  gcp-cli: circleci/gcp-cli@3.0.1
-  nori-package-management-orb: nori-dot-com/nori-package-management-orb@0.0.1
 
 defaults: &defaults
   working_directory: ~/repo
@@ -78,12 +75,6 @@ jobs:
           paths:
             - repo
 
-  publish-packages:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: /home/circleci
-      - nori-package-management-orb/publish-packages
 workflows:
   continuous-integration:
     jobs:
@@ -91,11 +82,3 @@ workflows:
       - run-regular-tests:
           requires:
             - setup-tests
-      - publish-packages:
-          requires:
-            - run-regular-tests
-          filters:
-            branches:
-              only:
-                - master
-                - /.*-release/
