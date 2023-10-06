@@ -196,6 +196,7 @@ const convertV3CropToV4Crop = (
 export const convertV3FieldToV4Field = (v3Field: FieldV3): FieldV4 => {
   return {
     ...v3Field,
+    externalId: v3Field.fieldName,
     legalAcres: v3Field.acres,
     assignmentOfAuthority: false,
     historicLandManagement: convertHistoricLandManagement(

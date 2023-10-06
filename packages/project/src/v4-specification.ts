@@ -1087,15 +1087,15 @@ export interface Field {
    * Field identifier from external system.
    *
    * Used to correlate data back to the originating system and to synchronize repeated imports.
-   *
-   * @nullable
+   * This field must be unique within a project.
+   * 
    * @example
    *
    * ```js
    * "externalId": "faec5e0b-8ce2-4161-93ff-4c9734f22334"
    * ```
    */
-  externalId?: string;
+  externalId: string;
   /**
    * Nori's internal field identifier.
    *
