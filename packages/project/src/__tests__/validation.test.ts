@@ -17,6 +17,7 @@ const BASIC_UNFORMATTED_VALID_PROJECT: Project = {
   fields: [
     {
       legalAcres: 174.01,
+      externalId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
       historicLandManagement: {
         crp: false,
         preYear1980: 'Irrigation',
@@ -109,6 +110,7 @@ const BASIC_UNFORMATTED_INVALID_PROJECT: Project = {
   fields: [
     {
       legalAcres: 174.01,
+      externalId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
       historicLandManagement: {
         crp: false,
         preYear1980: 'Irrigation',
@@ -477,6 +479,7 @@ describe('validation', () => {
                 fields: [
                   {
                     legalAcres: 174.01,
+                    externalId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
                     historicLandManagement: null,
                     regenerativeStartYear: 2015,
                     earliestEvidenceYear: 2008,

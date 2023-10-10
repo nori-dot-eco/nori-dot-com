@@ -672,12 +672,9 @@
                     "type": "number"
                 },
                 "externalId": {
-                    "description": "Field identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.",
+                    "description": "Field identifier from external system.\n\nUsed to correlate data back to the originating system and to synchronize repeated imports.\nThis field must be unique within a project.",
                     "title": "externalId",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "farmOperator": {
                     "anyOf": [
@@ -800,6 +797,7 @@
                 "assignmentOfAuthority",
                 "cropYears",
                 "earliestEvidenceYear",
+                "externalId",
                 "fieldName",
                 "geojson",
                 "historicLandManagement",
