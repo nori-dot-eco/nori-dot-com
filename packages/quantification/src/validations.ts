@@ -65,13 +65,19 @@ export const validateParsedModelRunsData = ({
         }
 
         for (const [mapUnitIndex, mapUnit] of scenario.MapUnit.entries()) {
-          if (Object.keys(mapUnit.InputCrop).length < 10) {
+          const inputCropYears = Object.keys(mapUnit.InputCrop)
+            .map(Number)
+            .sort();
+          if (
+            inputCropYears.length === 0 ||
+            inputCropYears.at(-1) - inputCropYears[0] < 10
+          ) {
             throw new ContextualError({
               errorKey: 'quantificationError:insufficientData',
               context: {
                 message:
                   `Expected ModelRun.${modelRunIndex}.Scenario.${scenarioIndex}("${scenario['@name']}").` +
-                  `MapUnit.${mapUnitIndex}.InputCrop to have at least 10 values`,
+                  `MapUnit.${mapUnitIndex}.InputCrop values to span at least 10 years`,
               },
             });
           }
