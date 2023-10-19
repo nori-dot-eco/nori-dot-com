@@ -54,8 +54,11 @@ yargs
     },
     (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
+      const yearlyMapUnitData = parseYearlyMapUnitData({
+        rawJsonOutput: JSON.parse(data),
+      });
       const results = getQuantificationSummary({
-        data: JSON.parse(data),
+        parsedJsonOutput: yearlyMapUnitData.parsedJsonOutput,
         maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
         quantifyAsOfYear: argv.quantifyAsOfYear as number,
       });

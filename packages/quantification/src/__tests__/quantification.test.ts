@@ -1,7 +1,7 @@
 import * as constants from '../constants';
+import type { getQuantificationSummary } from '../index';
 import {
   getQuantificationSummaries,
-  getQuantificationSummary,
   getUnadjustedGrandfatheredTonnesPerYear,
   getGrandfatherableYears,
   parseYearlyMapUnitData,
@@ -249,12 +249,14 @@ describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
 
 describe('getQuantificationSummary', () => {
   it('will get the tonnes that are grandfatherable given a COMET output file for 5 grandfatherable years', () => {
-    expect(
-      getQuantificationSummary({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
-        maxNumberOfGrandfatheredYears: 5,
-      })
-    ).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
+    const { parsedJsonOutput } = parseYearlyMapUnitData({
+      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+    });
+    const result = getQuantificationSummaries({
+      parsedJsonOutput,
+      maxNumberOfGrandfatheredYears: 5,
+    });
+    expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
       switchYear: 2016,
       grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
@@ -326,12 +328,14 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', () => {
-    expect(
-      getQuantificationSummary({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
-        maxNumberOfGrandfatheredYears: 4,
-      })
-    ).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
+    const { parsedJsonOutput } = parseYearlyMapUnitData({
+      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+    });
+    const result = getQuantificationSummaries({
+      parsedJsonOutput,
+      maxNumberOfGrandfatheredYears: 4,
+    });
+    expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
       switchYear: 2017,
       grandfatherableYears: [2017, 2018, 2019, 2020],
@@ -396,13 +400,15 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', () => {
-    expect(
-      getQuantificationSummary({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
-        maxNumberOfGrandfatheredYears: 3,
-        quantifyAsOfYear: 2019,
-      })
-    ).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
+    const { parsedJsonOutput } = parseYearlyMapUnitData({
+      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+    });
+    const result = getQuantificationSummaries({
+      parsedJsonOutput,
+      maxNumberOfGrandfatheredYears: 3,
+      quantifyAsOfYear: 2019,
+    });
+    expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
       switchYear: 2016,
       grandfatherableYears: [2016, 2017, 2018],
@@ -461,44 +467,48 @@ describe('getQuantificationSummary', () => {
   });
   describe('When there are no grandfatherable years', () => {
     it('will still return quantification for given a COMET output file', () => {
-      expect(
-        getQuantificationSummary({
-          data: NO_GRANDFATHERABLE_YEARS_OUTPUT,
-          maxNumberOfGrandfatheredYears: 5,
-        })
-      ).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
-        modeledYears: [
-          2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
-        ],
-        tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
-        somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
-        tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
-        tenYearProjectedTonnesPerYearPerAcre: 0.283_792_671_728_480_66,
-        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
-          {
-            '2021': 33.380_606_268_649_07,
-            '2022': 71.901_934_532_841_17,
-            '2023': 72.653_966_335_144_74,
-            '2024': 74.060_478_714_426_85,
-            '2025': 47.216_289_963_699_694,
-            '2026': 38.910_730_828_159_62,
-            '2027': 15.547_572_872_048_205,
-            '2028': -0.663_414_771_981_846_1,
-            '2029': 27.045_851_621_710_32,
-            '2030': -42.338_598_620_061_42,
-          },
-        ],
-        somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {},
-        grandfatherableYears: [],
-        grandfatheredTonnes: 0,
-        unadjustedGrandfatheredTonnesPerYear: {},
-        totalM2: 481_578.963_586_112_2,
-        totalAcres: 119.000_753_503_510_62,
-        numberOfGrandfatheredYears: 0,
-        switchYear: 2021,
-        grandfatheredTonnesPerYearPerAcreAverage: 0,
-        methodologyVersion: '1.0.0',
+      const { parsedJsonOutput } = parseYearlyMapUnitData({
+        rawJsonOutput: NO_GRANDFATHERABLE_YEARS_OUTPUT,
       });
+      const result = getQuantificationSummaries({
+        parsedJsonOutput,
+        maxNumberOfGrandfatheredYears: 5,
+      });
+      expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>(
+        {
+          modeledYears: [
+            2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
+          ],
+          tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
+          somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
+          tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
+          tenYearProjectedTonnesPerYearPerAcre: 0.283_792_671_728_480_66,
+          somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+            {
+              '2021': 33.380_606_268_649_07,
+              '2022': 71.901_934_532_841_17,
+              '2023': 72.653_966_335_144_74,
+              '2024': 74.060_478_714_426_85,
+              '2025': 47.216_289_963_699_694,
+              '2026': 38.910_730_828_159_62,
+              '2027': 15.547_572_872_048_205,
+              '2028': -0.663_414_771_981_846_1,
+              '2029': 27.045_851_621_710_32,
+              '2030': -42.338_598_620_061_42,
+            },
+          ],
+          somscAnnualDifferencesBetweenFutureAndBaselineScenarios: {},
+          grandfatherableYears: [],
+          grandfatheredTonnes: 0,
+          unadjustedGrandfatheredTonnesPerYear: {},
+          totalM2: 481_578.963_586_112_2,
+          totalAcres: 119.000_753_503_510_62,
+          numberOfGrandfatheredYears: 0,
+          switchYear: 2021,
+          grandfatheredTonnesPerYearPerAcreAverage: 0,
+          methodologyVersion: '1.0.0',
+        }
+      );
     });
   });
   it('should quantify multi-polygon output files', () => {
