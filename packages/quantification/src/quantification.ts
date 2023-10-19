@@ -676,21 +676,18 @@ export const getQuantificationSummary = ({
  *
  */
 export const getQuantificationSummaries = ({
-  data,
+  parsedJsonOutput,
   maxNumberOfGrandfatheredYears,
   futureScenarioName = 'Future',
   baselineScenarioName = 'Baseline',
   quantifyAsOfYear,
 }: {
-  data: Output.OutputFile<Output.MapUnit>;
+  parsedJsonOutput: Output.OutputFile<Output.ParsedMapUnit>;
   maxNumberOfGrandfatheredYears: number;
   futureScenarioName?: string;
   baselineScenarioName?: string;
   quantifyAsOfYear?: number;
 }): Record<string, UnadjustedQuantificationSummary> => {
-  const { parsedJsonOutput } = parseYearlyMapUnitData({
-    rawJsonOutput: data,
-  });
   const {
     Day: {
       Cropland: { ModelRun: modelRuns },

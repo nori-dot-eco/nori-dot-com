@@ -31,8 +31,10 @@ yargs
     quantificationArgs,
     (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
+
+      const parsedJsonOutput = parseYearlyMapUnitData({ rawJsonOutput: data });
       const results = getQuantificationSummaries({
-        data: JSON.parse(data),
+        parsedJsonOutput,
         maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
       });
       console.log(JSON.stringify(results, null, 4));

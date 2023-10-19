@@ -4,6 +4,7 @@ import {
   getQuantificationSummary,
   getUnadjustedGrandfatheredTonnesPerYear,
   getGrandfatherableYears,
+  parseYearlyMapUnitData,
 } from '../index';
 
 import {
@@ -502,7 +503,7 @@ describe('getQuantificationSummary', () => {
   });
   it('should quantify multi-polygon output files', () => {
     const result = getQuantificationSummaries({
-      data: MULTI_FIELD_OUTPUT,
+      ...parseYearlyMapUnitData({ rawJsonOutput: MULTI_FIELD_OUTPUT }),
       maxNumberOfGrandfatheredYears: 5,
     });
 
@@ -660,7 +661,9 @@ describe('getQuantificationSummaries', () => {
     const modelRunName = modelRun['@name'];
     expect(
       getQuantificationSummaries({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        ...parseYearlyMapUnitData({
+          rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+        }),
         maxNumberOfGrandfatheredYears: 5,
       })
     ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
@@ -742,7 +745,9 @@ describe('getQuantificationSummaries', () => {
     const modelRunName = modelRun['@name'];
     expect(
       getQuantificationSummaries({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        ...parseYearlyMapUnitData({
+          rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+        }),
         maxNumberOfGrandfatheredYears: 4,
       })
     ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
@@ -817,7 +822,9 @@ describe('getQuantificationSummaries', () => {
     const modelRunName = modelRun['@name'];
     expect(
       getQuantificationSummaries({
-        data: GRANDFATHERABLE_YEARS_OUTPUT,
+        ...parseYearlyMapUnitData({
+          rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
+        }),
         maxNumberOfGrandfatheredYears: 3,
         quantifyAsOfYear: 2019,
       })
@@ -887,7 +894,9 @@ describe('getQuantificationSummaries', () => {
     it('will still return quantification for given a COMET output file', () => {
       expect(
         getQuantificationSummaries({
-          data: NO_GRANDFATHERABLE_YEARS_OUTPUT,
+          ...parseYearlyMapUnitData({
+            rawJsonOutput: NO_GRANDFATHERABLE_YEARS_OUTPUT,
+          }),
           maxNumberOfGrandfatheredYears: 5,
         })
       ).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>({
