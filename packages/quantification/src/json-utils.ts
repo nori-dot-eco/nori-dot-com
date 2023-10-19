@@ -74,13 +74,12 @@ export const parseYearlyMapUnitData = ({
                             providedValue.toLowerCase() === 'true' ||
                             providedValue.toLowerCase() === 'false'
                           ) {
-                            accumulator[year] =
-                              providedValue.toLowerCase() === 'true';
+                            accumulator[year] = providedValue.toLowerCase()
                           } else {
                             accumulator[year] =
                               typeof accumulator[year] === 'string'
                                 ? (accumulator[year] as string)
-                                    .concat(', ')
+                                    .concat(',')
                                     .concat(providedValue)
                                 : providedValue;
                           }
@@ -103,7 +102,7 @@ export const parseYearlyMapUnitData = ({
                       }
                       return parsedMapUnit;
                     },
-                    {}
+                    {} as Output.ParsedMapUnit
                   );
                 }
               ),

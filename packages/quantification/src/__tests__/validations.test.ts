@@ -123,7 +123,7 @@ describe('validations', () => {
             ],
           })
         ).toThrow(
-          'Expected ModelRun.0.Scenario.0(\\"Baseline : FILE RESULTS\\").MapUnit.0.InputCrop to have at least 10 values'
+          'Expected ModelRun.0.Scenario.0(\\"Baseline : FILE RESULTS\\").MapUnit.0.InputCrop values to span at least 10 years'
         );
       });
 

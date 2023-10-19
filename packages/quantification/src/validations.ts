@@ -70,7 +70,7 @@ export const validateParsedModelRunsData = ({
             .sort();
           if (
             inputCropYears.length === 0 ||
-            inputCropYears.at(-1) - inputCropYears[0] < 10
+            inputCropYears.at(-1) - inputCropYears[0] + 1 < 10
           ) {
             throw new ContextualError({
               errorKey: 'quantificationError:insufficientData',
