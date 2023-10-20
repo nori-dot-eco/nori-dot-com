@@ -6,12 +6,8 @@ import {
   getGrandfatherableYears,
   parseYearlyMapUnitData,
 } from '../index';
-
-import {
-  GRANDFATHERABLE_YEARS_OUTPUT,
-  NO_GRANDFATHERABLE_YEARS_OUTPUT,
-  MULTI_FIELD_OUTPUT,
-} from './example-output';
+import { GRANDFATHERABLE_YEARS_OUTPUT, NO_GRANDFATHERABLE_YEARS_OUTPUT } from './example-output';
+import { GRANDFATHERABLE_YEARS_PARSED_OUTPUT, MULTI_FIELD_PARSED_OUTPUT, NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT } from './example-parsed-output';
 
 /* //////////////////////////////////////////////////////////////
                               MOCKS
@@ -249,11 +245,8 @@ describe('getUnadjustedGrandfatheredTonnesPerYear', () => {
 
 describe('getQuantificationSummary', () => {
   it('will get the tonnes that are grandfatherable given a COMET output file for 5 grandfatherable years', () => {
-    const { parsedJsonOutput } = parseYearlyMapUnitData({
-      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
-    });
     const result = getQuantificationSummary({
-      parsedJsonOutput,
+      parsedJsonOutput: GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 5,
     });
 
@@ -329,11 +322,8 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 4 grandfatherable years', () => {
-    const { parsedJsonOutput } = parseYearlyMapUnitData({
-      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
-    });
     const result = getQuantificationSummary({
-      parsedJsonOutput,
+      parsedJsonOutput: GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 4,
     });
 
@@ -402,11 +392,8 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('will get the tonnes that are grandfatherable given a COMET output file for 3 grandfatherable years and a custom quantifyAsOfYear value', () => {
-    const { parsedJsonOutput } = parseYearlyMapUnitData({
-      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
-    });
     const result = getQuantificationSummary({
-      parsedJsonOutput,
+      parsedJsonOutput: GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 3,
       quantifyAsOfYear: 2019,
     });
@@ -470,11 +457,8 @@ describe('getQuantificationSummary', () => {
   });
   describe('When there are no grandfatherable years', () => {
     it('will still return quantification for given a COMET output file', () => {
-      const { parsedJsonOutput } = parseYearlyMapUnitData({
-        rawJsonOutput: NO_GRANDFATHERABLE_YEARS_OUTPUT,
-      });
       const result = getQuantificationSummary({
-        parsedJsonOutput,
+        parsedJsonOutput: NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
         maxNumberOfGrandfatheredYears: 5,
       });
 
@@ -516,11 +500,8 @@ describe('getQuantificationSummary', () => {
     });
   });
   it('should quantify multi-polygon output files', () => {
-    const { parsedJsonOutput } = parseYearlyMapUnitData({
-      rawJsonOutput: MULTI_FIELD_OUTPUT,
-    });
     const result = getQuantificationSummaries({
-      parsedJsonOutput,
+        parsedJsonOutput: MULTI_FIELD_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 5,
     });
 
@@ -676,11 +657,8 @@ describe('getQuantificationSummaries', () => {
     let modelRun = GRANDFATHERABLE_YEARS_OUTPUT.Day.Cropland.ModelRun;
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
-    const { parsedJsonOutput } = parseYearlyMapUnitData({
-      rawJsonOutput: GRANDFATHERABLE_YEARS_OUTPUT,
-    });
     const result = getQuantificationSummaries({
-      parsedJsonOutput,
+      parsedJsonOutput: GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 5,
     });
     expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummaries>>(
@@ -915,11 +893,8 @@ describe('getQuantificationSummaries', () => {
     modelRun = Array.isArray(modelRun) ? modelRun[0] : modelRun;
     const modelRunName = modelRun['@name'];
     it('will still return quantification for given a COMET output file', () => {
-      const { parsedJsonOutput } = parseYearlyMapUnitData({
-        rawJsonOutput: NO_GRANDFATHERABLE_YEARS_OUTPUT,
-      });
       const result = getQuantificationSummaries({
-        parsedJsonOutput,
+        parsedJsonOutput: NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
         maxNumberOfGrandfatheredYears: 5,
       });
       expect(result).toStrictEqual<
