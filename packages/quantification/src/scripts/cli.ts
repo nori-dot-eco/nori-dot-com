@@ -8,6 +8,7 @@ import {
   getQuantificationSummaries,
   getQuantificationSummary,
 } from '../quantification';
+import { parseYearlyMapUnitData } from '../json-utils';
 
 const quantificationArgs = (yargs: yargs.Argv): yargs.Argv => {
   yargs.positional('input', {
@@ -31,8 +32,11 @@ yargs
     quantificationArgs,
     (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
+      const { parsedJsonOutput } = parseYearlyMapUnitData({
+        rawJsonOutput: JSON.parse(data),
+      });
       const results = getQuantificationSummaries({
-        data: JSON.parse(data),
+        parsedJsonOutput,
         maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
       });
       console.log(JSON.stringify(results, null, 4));
@@ -50,8 +54,11 @@ yargs
     },
     (argv) => {
       const data = fs.readFileSync(argv.input as string, 'utf8');
+      const { parsedJsonOutput } = parseYearlyMapUnitData({
+        rawJsonOutput: JSON.parse(data),
+      });
       const results = getQuantificationSummary({
-        data: JSON.parse(data),
+        parsedJsonOutput,
         maxNumberOfGrandfatheredYears: argv.maxGrandfatherableYears as number,
         quantifyAsOfYear: argv.quantifyAsOfYear as number,
       });
