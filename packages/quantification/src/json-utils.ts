@@ -50,27 +50,42 @@ export const parseYearlyMapUnitData = ({
             return {
               MapUnit: (Array.isArray(mapUnits) ? mapUnits : [mapUnits]).map(
                 (mapUnit) => {
-                  return Object.entries(mapUnit).reduce(
+                  return Object.entries(mapUnit).reduce<Output.ParsedMapUnit>(
                     (
                       parsedMapUnit,
-                      [key, value]: [keyof Output.ParsedMapUnit, any]
+                      [key, value]: [keyof Output.ParsedMapUnit, string]
                     ) => {
                       if (
                         !['Year', '@area', '@id'].includes(key) &&
                         value.includes(',')
                       ) {
                         const data = value.split(',').filter(Boolean);
-                        const annualData = Array.from(
+                        const yearValueTuples = Array.from(
                           { length: Math.ceil(data.length / 2) },
-                          (v, index) => data.slice(index * 2, index * 2 + 2)
-                        ).reduce((accumulator, [year, annualMeasurement]) => {
-                          accumulator[year] = Number.isNaN(
-                            Number(annualMeasurement)
-                          )
-                            ? annualMeasurement
-                            : Number(annualMeasurement);
+                          (_, index) => data.slice(index * 2, index * 2 + 2)
+                        );
+
+                        const annualData = yearValueTuples.reduce<
+                          Record<string, any>
+                        >((accumulator, [year, providedValue]) => {
+                          if (!Number.isNaN(Number(providedValue))) {
+                            accumulator[year] = Number(providedValue);
+                          } else if (
+                            providedValue.toLowerCase() === 'true' ||
+                            providedValue.toLowerCase() === 'false'
+                          ) {
+                            accumulator[year] = providedValue.toLowerCase()
+                          } else {
+                            accumulator[year] =
+                              typeof accumulator[year] === 'string'
+                                ? (accumulator[year] as string)
+                                    .concat(',')
+                                    .concat(providedValue)
+                                : providedValue;
+                          }
                           return accumulator;
-                        }, {} as Output.ParsedMapUnit);
+                        }, {});
+                        // @ts-expect-error - the keys we are setting here all have values of type Record<string, any>
                         parsedMapUnit[key] = annualData;
                       } else if (key === 'Year') {
                         const data = value.split(',').filter(Boolean);
@@ -80,6 +95,7 @@ export const parseYearlyMapUnitData = ({
                       } else if (key === '@id') {
                         parsedMapUnit[key] = value;
                       } else {
+                        // @ts-expect-error - this statement is intended to handle results of both string and number types
                         parsedMapUnit[key] = Number.isNaN(Number(value))
                           ? value
                           : Number(value);
