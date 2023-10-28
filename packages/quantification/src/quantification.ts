@@ -52,6 +52,7 @@ export interface MapUnitSummary {
 }
 
 export interface UnadjustedQuantificationSummary {
+  allModeledYearsProjectedTonnesTotalEstimate: number;
   tenYearProjectedTonnesTotalEstimate: number;
   tenYearProjectedTonnesPerYear: number;
   tenYearProjectedTonnesPerYearPerAcre: number;
@@ -482,6 +483,40 @@ const getGrandfatheredTonneQuantities = ({
 
 /**
  * Takes the year-over-year difference in soil carbon content across multiple polygons,
+ * sums the future and baseline values individually and then returns the total sum
+ * for all modeled years.
+ *
+ * @returns The average year-over-year change for the first 10 years after the switch year
+ */
+const getAllModeledYearsProjectedTonnesTotalEstimate = ({
+  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+}: {
+  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
+}): number => {
+  const sumOfEachPolygon =
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.map(
+      (annualDifferencesPerPolygon, annualDifferencesPerPolygonIndex) => {
+        const years = Object.keys(annualDifferencesPerPolygon)
+          .sort()
+          .map((year) => annualDifferencesPerPolygon[year])
+          .filter((yearValue) => !Number.isNaN(yearValue));
+
+        return years.reduce((prevValue, curValue) => {
+          return add(prevValue, curValue);
+        }, 0);
+      }
+    );
+
+  const sumOfAllPolygons = sumOfEachPolygon.reduce(
+    (prevValue, curValue) => add(prevValue, curValue),
+    0
+  );
+
+  return sumOfAllPolygons;
+};
+
+/**
+ * Takes the year-over-year difference in soil carbon content across multiple polygons,
  * sums the future and baseline values individually, then provides the average year-over-year
  * difference over the first 10 years.
  *
@@ -574,6 +609,11 @@ const createQuantificationSummary = ({
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   });
 
+  const allModeledYearsProjectedTonnesTotalEstimate =
+    getAllModeledYearsProjectedTonnesTotalEstimate({
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+    });
+
   const { totalM2 } = getTotalM2({
     somscAnnualDifferencesForScenarios,
     baselineScenarioName,
@@ -602,9 +642,10 @@ const createQuantificationSummary = ({
 
   return {
     modeledYears,
+    allModeledYearsProjectedTonnesTotalEstimate,
     tenYearProjectedTonnesTotalEstimate: multiply(
       tenYearProjectedTonnesPerYear,
-      modeledYears.length
+      10
     ),
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage,
     tenYearProjectedTonnesPerYear,

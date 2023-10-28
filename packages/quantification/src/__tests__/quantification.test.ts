@@ -6,8 +6,16 @@ import {
   getGrandfatherableYears,
   parseYearlyMapUnitData,
 } from '../index';
-import { GRANDFATHERABLE_YEARS_OUTPUT, NO_GRANDFATHERABLE_YEARS_OUTPUT } from './example-output';
-import { GRANDFATHERABLE_YEARS_PARSED_OUTPUT, MULTI_FIELD_PARSED_OUTPUT, NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT } from './example-parsed-output';
+
+import {
+  GRANDFATHERABLE_YEARS_OUTPUT,
+  NO_GRANDFATHERABLE_YEARS_OUTPUT,
+} from './example-output';
+import {
+  GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
+  MULTI_FIELD_PARSED_OUTPUT,
+  NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
+} from './example-parsed-output';
 
 /* //////////////////////////////////////////////////////////////
                               MOCKS
@@ -260,6 +268,7 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
+      allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
       tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
@@ -337,6 +346,7 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
+      allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
       tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
@@ -408,6 +418,7 @@ describe('getQuantificationSummary', () => {
       ],
       totalAcres: 119.000_753_503_510_62,
       totalM2: 481_578.963_586_112_2,
+      allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
       tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
       tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
@@ -467,6 +478,7 @@ describe('getQuantificationSummary', () => {
           modeledYears: [
             2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
           ],
+          allModeledYearsProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
           tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
           somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
           tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
@@ -501,7 +513,7 @@ describe('getQuantificationSummary', () => {
   });
   it('should quantify multi-polygon output files', () => {
     const result = getQuantificationSummaries({
-        parsedJsonOutput: MULTI_FIELD_PARSED_OUTPUT,
+      parsedJsonOutput: MULTI_FIELD_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 5,
     });
 
@@ -512,6 +524,7 @@ describe('getQuantificationSummary', () => {
         modeledYears: [
           2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
         ],
+        allModeledYearsProjectedTonnesTotalEstimate: 800.924_107_460_704,
         tenYearProjectedTonnesPerYear: 80.092_410_746_070_4,
         tenYearProjectedTonnesPerYearPerAcre: 0.456_044_051_917_675_55,
         tenYearProjectedTonnesTotalEstimate: 800.924_107_460_704,
@@ -582,6 +595,7 @@ describe('getQuantificationSummary', () => {
         modeledYears: [
           2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
         ],
+        allModeledYearsProjectedTonnesTotalEstimate: 76.935_320_636_772_09,
         tenYearProjectedTonnesTotalEstimate: 76.935_320_636_772_09,
         somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 10.292_001_747_306_955,
         tenYearProjectedTonnesPerYear: 7.693_532_063_677_209,
@@ -673,6 +687,7 @@ describe('getQuantificationSummaries', () => {
           ],
           totalAcres: 119.000_753_503_510_62,
           totalM2: 481_578.963_586_112_2,
+          allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
           tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
           tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
           tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
@@ -759,6 +774,7 @@ describe('getQuantificationSummaries', () => {
           ],
           totalAcres: 119.000_753_503_510_62,
           totalM2: 481_578.963_586_112_2,
+          allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
           tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
           tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
           tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
@@ -839,6 +855,7 @@ describe('getQuantificationSummaries', () => {
           ],
           totalAcres: 119.000_753_503_510_62,
           totalM2: 481_578.963_586_112_2,
+          allModeledYearsProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
           tenYearProjectedTonnesPerYear: 60.696_700_824_693_26,
           tenYearProjectedTonnesPerYearPerAcre: 0.510_053_079_814_344_7,
           tenYearProjectedTonnesTotalEstimate: 606.967_008_246_932_6,
@@ -905,6 +922,7 @@ describe('getQuantificationSummaries', () => {
             2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030,
           ],
           somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage: 0,
+          allModeledYearsProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
           tenYearProjectedTonnesPerYear: 33.771_541_774_463_635,
           tenYearProjectedTonnesPerYearPerAcre: 0.283_792_671_728_480_66,
           tenYearProjectedTonnesTotalEstimate: 337.715_417_744_636_34,
