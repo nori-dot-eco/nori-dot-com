@@ -247,9 +247,9 @@ export const Errors = {
     invalidIsoLocation: {
       message: 'The specified ISO location is invalid',
     },
-    paymentMethodNull: {
+    paymentMethodError: {
       message:
-        'We were unable to process your payment. Please check your payment information and try again.',
+        'We were unable to process your payment. Please check your payment and billing information and try again.',
     },
     notEnoughNori: {
       message:
