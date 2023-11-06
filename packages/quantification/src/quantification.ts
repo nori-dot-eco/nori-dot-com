@@ -278,41 +278,6 @@ const convertGramsPerM2ToTonnes = ({
   return tonnesOfCO2eForMapUnit;
 };
 
-// const combineAnnualTotals = ({
-//   annualTotals,
-//   annualTotalsToCombine,
-// }: {
-//   annualTotals: AnnualTotals;
-//   annualTotalsToCombine: AnnualTotals;
-// }): AnnualTotals => {
-//   return Object.entries(annualTotalsToCombine).reduce(
-//     (
-//       annualTotalsAccumulator,
-//       [
-//         year,
-//         {
-//           additionalTonnesOfCO2eForMapUnit,
-//           futureTonnesOfCarbon,
-//           baselineTonnesOfCarbon,
-//         },
-//       ]
-//     ) => {
-//       annualTotalsAccumulator[year] = {
-//         additionalTonnesOfCO2eForMapUnit: add(
-//           annualTotals[year].additionalTonnesOfCO2eForMapUnit ?? 0,
-//           additionalTonnesOfCO2eForMapUnit
-//         ),
-//         futureTonnesOfCarbon: add(futureTonnesOfCarbon, annualTotals[year]),
-//         baselineTonnesOfCarbon: add(baselineTonnesOfCarbon, annualTotals[year]),
-//       };
-//       return annualTotalsAccumulator;
-//     },
-//     {
-//       ...annualTotals,
-//     }
-//   );
-// };
-
 /**
  * Uses the baseline and future scenarios to calculate difference over the baseline
  * tonnes of carbon in each polygon per year
