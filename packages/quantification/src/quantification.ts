@@ -2,15 +2,25 @@ import { add, divide, multiply, subtract } from '@nori-dot-com/math';
 import type { Output } from '@nori-dot-com/ggit';
 import { ContextualError } from '@nori-dot-com/errors';
 
-import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
+import {
+  CURRENT_YEAR,
+  METHODOLOGY_VERSION,
+  ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C,
+} from './constants';
 import { validateParsedModelRunsData } from './validations';
 
-import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
+import { convertM2ToAcres } from './index';
 
 export * from './constants';
-export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
 
-export type AnnualTotals = Record<string, number>;
+export type AnnualTotals = Record<
+  string,
+  {
+    additionalTonnesOfCO2eForMapUnit: number;
+    baselineTonnesOfCarbon: number;
+    futureTonnesOfCarbon: number;
+  }
+>;
 
 /**
  * Meant to be used in place of `AnnualTotals`, this interface is preferable
@@ -93,12 +103,33 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.reduce(
       (annualTotals: AnnualTotals, polygonAnnuals) => {
         const polygonTotal = Object.entries(polygonAnnuals).reduce(
-          (polygonAnnualTotals, [year, value]) => {
+          (
+            polygonAnnualTotals,
+            [
+              year,
+              {
+                additionalTonnesOfCO2eForMapUnit,
+                futureTonnesOfCarbon,
+                baselineTonnesOfCarbon,
+              },
+            ]
+          ) => {
             if (grandfatherableYears.includes(Number(year))) {
-              polygonAnnualTotals[year] = add(
-                polygonAnnualTotals[year] || 0,
-                value
-              );
+              polygonAnnualTotals[year] = {
+                additionalTonnesOfCO2eForMapUnit: add(
+                  polygonAnnualTotals[year].additionalTonnesOfCO2eForMapUnit ??
+                    0,
+                  additionalTonnesOfCO2eForMapUnit
+                ),
+                futureTonnesOfCarbon: add(
+                  polygonAnnualTotals[year].futureTonnesOfCarbon ?? 0,
+                  futureTonnesOfCarbon
+                ),
+                baselineTonnesOfCarbon: add(
+                  polygonAnnualTotals[year].baselineTonnesOfCarbon ?? 0,
+                  baselineTonnesOfCarbon
+                ),
+              };
             }
             return polygonAnnualTotals;
           },
@@ -223,6 +254,65 @@ const calculateSomscAnnualDifferencesForScenarios = ({
   );
   return { somscAnnualDifferencesForScenarios };
 };
+
+/**
+ * Converts grams per meter squared and a map area in meters squared to the total tonnes of CO2e
+ *
+ */
+const convertGramsPerM2ToTonnes = ({
+  gramsPerM2,
+  mapUnitAreaInM2,
+}: {
+  gramsPerM2: number;
+  mapUnitAreaInM2: number;
+}): number => {
+  const gramsOfCarbonForMapUnitInM2 = multiply(gramsPerM2, mapUnitAreaInM2);
+  const tonnesOfCarbonForMapUnit = divide(
+    gramsOfCarbonForMapUnitInM2,
+    1_000_000 // 1 million
+  );
+  const tonnesOfCO2eForMapUnit = multiply(
+    tonnesOfCarbonForMapUnit,
+    ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C
+  );
+  return tonnesOfCO2eForMapUnit;
+};
+
+// const combineAnnualTotals = ({
+//   annualTotals,
+//   annualTotalsToCombine,
+// }: {
+//   annualTotals: AnnualTotals;
+//   annualTotalsToCombine: AnnualTotals;
+// }): AnnualTotals => {
+//   return Object.entries(annualTotalsToCombine).reduce(
+//     (
+//       annualTotalsAccumulator,
+//       [
+//         year,
+//         {
+//           additionalTonnesOfCO2eForMapUnit,
+//           futureTonnesOfCarbon,
+//           baselineTonnesOfCarbon,
+//         },
+//       ]
+//     ) => {
+//       annualTotalsAccumulator[year] = {
+//         additionalTonnesOfCO2eForMapUnit: add(
+//           annualTotals[year].additionalTonnesOfCO2eForMapUnit ?? 0,
+//           additionalTonnesOfCO2eForMapUnit
+//         ),
+//         futureTonnesOfCarbon: add(futureTonnesOfCarbon, annualTotals[year]),
+//         baselineTonnesOfCarbon: add(baselineTonnesOfCarbon, annualTotals[year]),
+//       };
+//       return annualTotalsAccumulator;
+//     },
+//     {
+//       ...annualTotals,
+//     }
+//   );
+// };
+
 /**
  * Uses the baseline and future scenarios to calculate difference over the baseline
  * tonnes of carbon in each polygon per year
@@ -264,25 +354,25 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
         mapUnitTotals[mapUnitId] = Object.keys(futureMapUnitSocChanges)
           .filter((annualTotals) => modeledYears.includes(Number(annualTotals)))
           .reduce((annualTotals: AnnualTotals, year) => {
-            const additionalGramsOfCarbonPerM2 = subtract(
-              futureMapUnitSocChanges[year],
+            const futureTonnesOfCarbon = convertGramsPerM2ToTonnes({
+              gramsPerM2: futureMapUnitSocChanges[year],
+              mapUnitAreaInM2,
+            });
+            const baselineTonnesOfCarbon = convertGramsPerM2ToTonnes({
+              gramsPerM2: baselineMapUnitSocChanges[year],
+              mapUnitAreaInM2,
+            });
+            const additionalTonnesOfCO2eForMapUnit = subtract(
+              futureTonnesOfCarbon,
               // If the baseline amount is < 0, that indicates there was net emissions prior to the practice switch.
               // Since we do not give credit for emission reductions, we need to do the following
-              Math.max(0, baselineMapUnitSocChanges[year])
+              Math.max(0, baselineTonnesOfCarbon)
             );
-            const additionalGramsOfCarbonForMapUnitInM2 = multiply(
-              additionalGramsOfCarbonPerM2,
-              mapUnitAreaInM2
-            );
-            const additionalTonnesOfCarbonForMapUnit = divide(
-              additionalGramsOfCarbonForMapUnitInM2,
-              1_000_000 // 1 million
-            );
-            const additionalTonnesOfCO2eForMapUnit = multiply(
-              additionalTonnesOfCarbonForMapUnit,
-              ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C
-            );
-            annualTotals[year] = additionalTonnesOfCO2eForMapUnit;
+            annualTotals[year] = {
+              additionalTonnesOfCO2eForMapUnit,
+              baselineTonnesOfCarbon,
+              futureTonnesOfCarbon,
+            };
             return annualTotals;
           }, {});
         return mapUnitTotals;
@@ -294,10 +384,20 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
       ).reduce((mapUnitDifferences: AnnualTotals, annualTotals) => {
         return Object.keys(annualTotals).reduce(
           (polygonTotals: AnnualTotals, year) => {
-            polygonTotals[year] = add(
-              mapUnitDifferences[year] ?? 0,
-              annualTotals[year]
-            );
+            polygonTotals[year] = {
+              baselineTonnesOfCarbon: add(
+                mapUnitDifferences[year].baselineTonnesOfCarbon ?? 0,
+                annualTotals[year].baselineTonnesOfCarbon
+              ),
+              futureTonnesOfCarbon: add(
+                mapUnitDifferences[year].futureTonnesOfCarbon ?? 0,
+                annualTotals[year].futureTonnesOfCarbon
+              ),
+              additionalTonnesOfCO2eForMapUnit: add(
+                mapUnitDifferences[year].additionalTonnesOfCO2eForMapUnit ?? 0,
+                annualTotals[year].additionalTonnesOfCO2eForMapUnit
+              ),
+            };
             return polygonTotals;
           },
           {}
@@ -381,12 +481,24 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
   const unadjustedGrandfatheredTonnesPerYear = Object.entries(
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios
   ).reduce(
-    (grandfatheredTotals: UnadjustedGrandfatheredTotals, [year, value]) => {
-      const amount = Math.min(tenYearProjectedTonnesPerYear, value);
+    (
+      grandfatheredTotals: UnadjustedGrandfatheredTotals,
+      [year, { additionalTonnesOfCO2eForMapUnit }]
+    ) => {
+      const amount = Math.min(
+        tenYearProjectedTonnesPerYear,
+        additionalTonnesOfCO2eForMapUnit
+      );
       grandfatheredTotals[year] = {
         amount,
-        method: tenYearProjectedTonnesPerYear < value ? 'projection' : 'somsc',
-        averagePerAcre: divide(Math.min(amount, value), totalAcres),
+        method:
+          tenYearProjectedTonnesPerYear < additionalTonnesOfCO2eForMapUnit
+            ? 'projection'
+            : 'somsc',
+        averagePerAcre: divide(
+          Math.min(amount, additionalTonnesOfCO2eForMapUnit),
+          totalAcres
+        ),
         totalAcres,
       };
       return grandfatheredTotals;
@@ -443,11 +555,14 @@ const getGrandfatheredTonneQuantities = ({
   const somscGrandfatherableTonnesTotal = Object.values(
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios
   ).reduce((total, somscGrandfatherableTonnesForYear) => {
-    return add(total, somscGrandfatherableTonnesForYear);
+    return add(
+      total,
+      somscGrandfatherableTonnesForYear.additionalTonnesOfCO2eForMapUnit
+    );
   }, 0);
 
   const somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage =
-    divide(somscGrandfatherableTonnesTotal, grandfatherableYears.length) || 0;
+    divide(somscGrandfatherableTonnesTotal, grandfatherableYears.length) ?? 0;
 
   const { unadjustedGrandfatheredTonnesPerYear } =
     getUnadjustedGrandfatheredTonnesPerYear({
@@ -466,7 +581,7 @@ const getGrandfatheredTonneQuantities = ({
     divide(
       divide(grandfatheredTonnes, totalAcres),
       numberOfGrandfatheredYears
-    ) || 0;
+    ) ?? 0;
 
   return {
     grandfatheredTonnesPerYearPerAcreAverage,
@@ -497,7 +612,10 @@ const getTenYearProjectedTonnesPerYear = ({
       (annualDifferencesPerPolygon, annualDifferencesPerPolygonIndex) => {
         const years = Object.keys(annualDifferencesPerPolygon)
           .sort()
-          .map((year) => annualDifferencesPerPolygon[year])
+          .map(
+            (year) =>
+              annualDifferencesPerPolygon[year].additionalTonnesOfCO2eForMapUnit
+          )
           .slice(0, 10)
           .filter((yearValue) => !Number.isNaN(yearValue));
 
