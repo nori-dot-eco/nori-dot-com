@@ -9,18 +9,11 @@ import {
 } from './constants';
 import { validateParsedModelRunsData } from './validations';
 
-import { convertM2ToAcres } from './index';
+import { convertGramsPerM2ToTonnes, convertM2ToAcres } from './index';
 
 export * from './constants';
 
-export type AnnualTotals = Record<
-  string,
-  {
-    additionalTonnesOfCO2eForMapUnit: number;
-    baselineTonnesOfCarbon: number;
-    futureTonnesOfCarbon: number;
-  }
->;
+export type AnnualTotals = Record<string, number>;
 
 /**
  * Meant to be used in place of `AnnualTotals`, this interface is preferable
@@ -42,7 +35,14 @@ export type UnadjustedGrandfatheredTotals = Record<
   }
 >;
 
-export type MapUnitAnnualTotals = Record<string, AnnualTotals>;
+export type MapUnitAnnualTotals = Record<
+  string,
+  {
+    differencesBetweenBaselineAndFutureScenarios: AnnualTotals;
+    totalsBaselineScenario: AnnualTotals;
+    totalsFutureScenario: AnnualTotals;
+  }
+>;
 
 export interface ScenarioSummaries {
   baseline: string[][];
@@ -67,6 +67,10 @@ export interface UnadjustedQuantificationSummary {
   tenYearProjectedTonnesPerYearPerAcre: number;
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios: AnnualTotals;
+  somscAnnualTotalsFutureScenarioPerPolygon: AnnualTotals[];
+  somscAnnualTotalsBaselineScenarioPerPolygon: AnnualTotals[];
+  somscAnnualTotalsFutureScenario: AnnualTotals;
+  somscAnnualTotalsBaselineScenario: AnnualTotals;
   grandfatherableYears: number[];
   grandfatheredTonnes: number;
   unadjustedGrandfatheredTonnesPerYear: UnadjustedGrandfatheredTotals;
@@ -103,33 +107,12 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenarios = ({
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.reduce(
       (annualTotals: AnnualTotals, polygonAnnuals) => {
         const polygonTotal = Object.entries(polygonAnnuals).reduce(
-          (
-            polygonAnnualTotals,
-            [
-              year,
-              {
-                additionalTonnesOfCO2eForMapUnit,
-                futureTonnesOfCarbon,
-                baselineTonnesOfCarbon,
-              },
-            ]
-          ) => {
+          (polygonAnnualTotals, [year, totalForYear]) => {
             if (grandfatherableYears.includes(Number(year))) {
-              polygonAnnualTotals[year] = {
-                additionalTonnesOfCO2eForMapUnit: add(
-                  polygonAnnualTotals[year].additionalTonnesOfCO2eForMapUnit ??
-                    0,
-                  additionalTonnesOfCO2eForMapUnit
-                ),
-                futureTonnesOfCarbon: add(
-                  polygonAnnualTotals[year].futureTonnesOfCarbon ?? 0,
-                  futureTonnesOfCarbon
-                ),
-                baselineTonnesOfCarbon: add(
-                  polygonAnnualTotals[year].baselineTonnesOfCarbon ?? 0,
-                  baselineTonnesOfCarbon
-                ),
-              };
+              polygonAnnualTotals[year] = add(
+                polygonAnnualTotals[year] ?? 0,
+                totalForYear
+              );
             }
             return polygonAnnualTotals;
           },
@@ -256,29 +239,6 @@ const calculateSomscAnnualDifferencesForScenarios = ({
 };
 
 /**
- * Converts grams per meter squared and a map area in meters squared to the total tonnes of CO2e
- *
- */
-const convertGramsPerM2ToTonnes = ({
-  gramsPerM2,
-  mapUnitAreaInM2,
-}: {
-  gramsPerM2: number;
-  mapUnitAreaInM2: number;
-}): number => {
-  const gramsOfCarbonForMapUnitInM2 = multiply(gramsPerM2, mapUnitAreaInM2);
-  const tonnesOfCarbonForMapUnit = divide(
-    gramsOfCarbonForMapUnitInM2,
-    1_000_000 // 1 million
-  );
-  const tonnesOfCO2eForMapUnit = multiply(
-    tonnesOfCarbonForMapUnit,
-    ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C
-  );
-  return tonnesOfCO2eForMapUnit;
-};
-
-/**
  * Uses the baseline and future scenarios to calculate difference over the baseline
  * tonnes of carbon in each polygon per year
  *
@@ -298,16 +258,33 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
   baselineScenarioName: string;
   somscAnnualDifferencesForScenarios: SomscAnnualDifferencesForPolygon[];
 }): {
+  somscAnnualTotalsFutureScenarioPerPolygon: AnnualTotals[];
+  somscAnnualTotalsBaselineScenarioPerPolygon: AnnualTotals[];
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
 } => {
-  const somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon =
-    somscAnnualDifferencesForScenarios.map((polygonSummary) => {
+  const {
+    somscAnnualTotalsFutureScenarioPerPolygon,
+    somscAnnualTotalsBaselineScenarioPerPolygon,
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+  } = somscAnnualDifferencesForScenarios.reduce<{
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
+    somscAnnualTotalsFutureScenarioPerPolygon: AnnualTotals[];
+    somscAnnualTotalsBaselineScenarioPerPolygon: AnnualTotals[];
+  }>(
+    (
+      {
+        somscAnnualTotalsFutureScenarioPerPolygon,
+        somscAnnualTotalsBaselineScenarioPerPolygon,
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+      },
+      polygonSummary
+    ) => {
       const futureAnnualSomscDifferences =
         polygonSummary[`${futureScenarioName} : FILE RESULTS`];
       const baselineAnnualSomscDifferences =
         polygonSummary[`${baselineScenarioName} : FILE RESULTS`];
 
-      const mapUnitAnnualDifferences = Object.keys(
+      const mapUnitAnnualTotals = Object.keys(
         futureAnnualSomscDifferences
       ).reduce((mapUnitTotals: MapUnitAnnualTotals, mapUnitId) => {
         const { socChanges: futureMapUnitSocChanges, area: mapUnitAreaInM2 } =
@@ -318,62 +295,204 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
         // todo extract to function
         mapUnitTotals[mapUnitId] = Object.keys(futureMapUnitSocChanges)
           .filter((annualTotals) => modeledYears.includes(Number(annualTotals)))
-          .reduce((annualTotals: AnnualTotals, year) => {
-            const futureTonnesOfCarbon = convertGramsPerM2ToTonnes({
-              gramsPerM2: futureMapUnitSocChanges[year],
-              mapUnitAreaInM2,
-            });
-            const baselineTonnesOfCarbon = convertGramsPerM2ToTonnes({
-              gramsPerM2: baselineMapUnitSocChanges[year],
-              mapUnitAreaInM2,
-            });
-            const additionalTonnesOfCO2eForMapUnit = subtract(
-              futureTonnesOfCarbon,
-              // If the baseline amount is < 0, that indicates there was net emissions prior to the practice switch.
-              // Since we do not give credit for emission reductions, we need to do the following
-              Math.max(0, baselineTonnesOfCarbon)
-            );
-            annualTotals[year] = {
-              additionalTonnesOfCO2eForMapUnit,
-              baselineTonnesOfCarbon,
-              futureTonnesOfCarbon,
-            };
-            return annualTotals;
-          }, {});
+          .reduce(
+            (
+              {
+                differencesBetweenBaselineAndFutureScenarios,
+                totalsBaselineScenario,
+                totalsFutureScenario,
+              }: {
+                differencesBetweenBaselineAndFutureScenarios: AnnualTotals;
+                totalsBaselineScenario: AnnualTotals;
+                totalsFutureScenario: AnnualTotals;
+              },
+              year: string
+            ) => {
+              const futureTonnesOfCarbon = convertGramsPerM2ToTonnes({
+                gramsPerM2: futureMapUnitSocChanges[year],
+                mapUnitAreaInM2,
+              });
+              const baselineTonnesOfCarbon = convertGramsPerM2ToTonnes({
+                gramsPerM2: baselineMapUnitSocChanges[year],
+                mapUnitAreaInM2,
+              });
+              const additionalTonnesOfCO2eForMapUnit = subtract(
+                futureTonnesOfCarbon,
+                // If the baseline amount is < 0, that indicates there was net emissions prior to the practice switch.
+                // Since we do not give credit for emission reductions, we need to do the following
+                Math.max(0, baselineTonnesOfCarbon)
+              );
+              differencesBetweenBaselineAndFutureScenarios[year] =
+                additionalTonnesOfCO2eForMapUnit;
+              totalsBaselineScenario[year] = baselineTonnesOfCarbon;
+              totalsFutureScenario[year] = futureTonnesOfCarbon;
+
+              return {
+                differencesBetweenBaselineAndFutureScenarios,
+                totalsBaselineScenario,
+                totalsFutureScenario,
+              };
+            },
+            {
+              differencesBetweenBaselineAndFutureScenarios: {},
+              totalsBaselineScenario: {},
+              totalsFutureScenario: {},
+            }
+          );
         return mapUnitTotals;
       }, {});
 
-      // todo extract to function
-      const polygonAnnualDifferences = Object.values(
-        mapUnitAnnualDifferences
-      ).reduce((mapUnitDifferences: AnnualTotals, annualTotals) => {
-        return Object.keys(annualTotals).reduce(
-          (polygonTotals: AnnualTotals, year) => {
-            polygonTotals[year] = {
-              baselineTonnesOfCarbon: add(
-                mapUnitDifferences[year].baselineTonnesOfCarbon ?? 0,
-                annualTotals[year].baselineTonnesOfCarbon
-              ),
-              futureTonnesOfCarbon: add(
-                mapUnitDifferences[year].futureTonnesOfCarbon ?? 0,
-                annualTotals[year].futureTonnesOfCarbon
-              ),
-              additionalTonnesOfCO2eForMapUnit: add(
-                mapUnitDifferences[year].additionalTonnesOfCO2eForMapUnit ?? 0,
-                annualTotals[year].additionalTonnesOfCO2eForMapUnit
-              ),
-            };
-            return polygonTotals;
-          },
-          {}
-        );
-      }, {});
+      // TODO: DRY For the following functions
 
-      return polygonAnnualDifferences;
-    });
+      // For differencesBetweenBaselineAndFutureScenarios, totalsBaselineScenario, and totalsFutureScenario, sum the values for each year for each map unit
+      const futureScenarioTotals = Object.values(mapUnitAnnualTotals).reduce(
+        (
+          futureScenarioTotals: AnnualTotals,
+          {
+            totalsFutureScenario,
+          }: {
+            totalsFutureScenario: AnnualTotals;
+          }
+        ) => {
+          for (const [year, futureScenarioTotal] of Object.entries(
+            totalsFutureScenario
+          )) {
+            futureScenarioTotals[year] = add(
+              futureScenarioTotals[year] ?? 0,
+              futureScenarioTotal
+            );
+          }
+
+          return futureScenarioTotals;
+        },
+        {}
+      );
+
+      const baselineScenarioTotals = Object.values(mapUnitAnnualTotals).reduce(
+        (
+          baselineScenarioTotals: AnnualTotals,
+          {
+            totalsBaselineScenario,
+          }: {
+            totalsBaselineScenario: AnnualTotals;
+          }
+        ) => {
+          for (const [year, baselineScenarioTotal] of Object.entries(
+            totalsBaselineScenario
+          )) {
+            baselineScenarioTotals[year] = add(
+              baselineScenarioTotals[year] ?? 0,
+              baselineScenarioTotal
+            );
+          }
+
+          return baselineScenarioTotals;
+        },
+        {}
+      );
+
+      const polygonAnnualDifferences = Object.values(
+        mapUnitAnnualTotals
+      ).reduce(
+        (
+          polygonAnnualDifferences: AnnualTotals,
+          {
+            differencesBetweenBaselineAndFutureScenarios,
+          }: {
+            differencesBetweenBaselineAndFutureScenarios: AnnualTotals;
+          }
+        ) => {
+          for (const [
+            year,
+            differenceBetweenBaselineAndFutureScenarios,
+          ] of Object.entries(differencesBetweenBaselineAndFutureScenarios)) {
+            polygonAnnualDifferences[year] = add(
+              polygonAnnualDifferences[year] ?? 0,
+              differenceBetweenBaselineAndFutureScenarios
+            );
+          }
+
+          return polygonAnnualDifferences;
+        },
+        {}
+      );
+
+      return {
+        somscAnnualTotalsFutureScenarioPerPolygon: [
+          ...somscAnnualTotalsFutureScenarioPerPolygon,
+          futureScenarioTotals,
+        ],
+        somscAnnualTotalsBaselineScenarioPerPolygon: [
+          ...somscAnnualTotalsBaselineScenarioPerPolygon,
+          baselineScenarioTotals,
+        ],
+        somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [
+          ...somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+          polygonAnnualDifferences,
+        ],
+      };
+    },
+    {
+      somscAnnualTotalsFutureScenarioPerPolygon: [],
+      somscAnnualTotalsBaselineScenarioPerPolygon: [],
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: [],
+    }
+  );
+
   return {
+    somscAnnualTotalsFutureScenarioPerPolygon,
+    somscAnnualTotalsBaselineScenarioPerPolygon,
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   };
+};
+
+const getSomscAnnualTotalsForFutureAndBaselineScenarios = ({
+  somscAnnualTotalsFutureScenarioPerPolygon,
+  somscAnnualTotalsBaselineScenarioPerPolygon,
+}: {
+  somscAnnualTotalsFutureScenarioPerPolygon: UnadjustedQuantificationSummary['somscAnnualTotalsFutureScenarioPerPolygon'];
+  somscAnnualTotalsBaselineScenarioPerPolygon: UnadjustedQuantificationSummary['somscAnnualTotalsBaselineScenarioPerPolygon'];
+}): {
+  somscAnnualTotalsFutureScenario: AnnualTotals;
+  somscAnnualTotalsBaselineScenario: AnnualTotals;
+} => {
+  const somscAnnualTotalsFutureScenario =
+    somscAnnualTotalsFutureScenarioPerPolygon.reduce(
+      (annualTotals: AnnualTotals, polygonAnnuals) => {
+        const polygonTotal = Object.entries(polygonAnnuals).reduce(
+          (polygonAnnualTotals, [year, totalForYear]) => {
+            polygonAnnualTotals[year] = add(
+              polygonAnnualTotals[year] ?? 0,
+              totalForYear
+            );
+            return polygonAnnualTotals;
+          },
+          annualTotals
+        );
+        return polygonTotal;
+      },
+      {}
+    );
+
+  const somscAnnualTotalsBaselineScenario =
+    somscAnnualTotalsBaselineScenarioPerPolygon.reduce(
+      (annualTotals: AnnualTotals, polygonAnnuals) => {
+        const polygonTotal = Object.entries(polygonAnnuals).reduce(
+          (polygonAnnualTotals, [year, totalForYear]) => {
+            polygonAnnualTotals[year] = add(
+              polygonAnnualTotals[year] ?? 0,
+              totalForYear
+            );
+            return polygonAnnualTotals;
+          },
+          annualTotals
+        );
+        return polygonTotal;
+      },
+      {}
+    );
+
+  return { somscAnnualTotalsFutureScenario, somscAnnualTotalsBaselineScenario };
 };
 
 /**
@@ -446,24 +565,12 @@ export const getUnadjustedGrandfatheredTonnesPerYear = ({
   const unadjustedGrandfatheredTonnesPerYear = Object.entries(
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios
   ).reduce(
-    (
-      grandfatheredTotals: UnadjustedGrandfatheredTotals,
-      [year, { additionalTonnesOfCO2eForMapUnit }]
-    ) => {
-      const amount = Math.min(
-        tenYearProjectedTonnesPerYear,
-        additionalTonnesOfCO2eForMapUnit
-      );
+    (grandfatheredTotals: UnadjustedGrandfatheredTotals, [year, total]) => {
+      const amount = Math.min(tenYearProjectedTonnesPerYear, total);
       grandfatheredTotals[year] = {
         amount,
-        method:
-          tenYearProjectedTonnesPerYear < additionalTonnesOfCO2eForMapUnit
-            ? 'projection'
-            : 'somsc',
-        averagePerAcre: divide(
-          Math.min(amount, additionalTonnesOfCO2eForMapUnit),
-          totalAcres
-        ),
+        method: tenYearProjectedTonnesPerYear < total ? 'projection' : 'somsc',
+        averagePerAcre: divide(Math.min(amount, total), totalAcres),
         totalAcres,
       };
       return grandfatheredTotals;
@@ -520,10 +627,7 @@ const getGrandfatheredTonneQuantities = ({
   const somscGrandfatherableTonnesTotal = Object.values(
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios
   ).reduce((total, somscGrandfatherableTonnesForYear) => {
-    return add(
-      total,
-      somscGrandfatherableTonnesForYear.additionalTonnesOfCO2eForMapUnit
-    );
+    return add(total, somscGrandfatherableTonnesForYear);
   }, 0);
 
   const somscAnnualDifferencesBetweenFutureAndBaselineScenariosAverage =
@@ -577,10 +681,7 @@ const getTenYearProjectedTonnesPerYear = ({
       (annualDifferencesPerPolygon, annualDifferencesPerPolygonIndex) => {
         const years = Object.keys(annualDifferencesPerPolygon)
           .sort()
-          .map(
-            (year) =>
-              annualDifferencesPerPolygon[year].additionalTonnesOfCO2eForMapUnit
-          )
+          .map((year) => annualDifferencesPerPolygon[year])
           .slice(0, 10)
           .filter((yearValue) => !Number.isNaN(yearValue));
 
@@ -645,12 +746,21 @@ const createQuantificationSummary = ({
     (s) => s['@name'] === 'Future : FILE RESULTS'
   ).MapUnit[0].Year.map(Number);
 
-  const { somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon } =
-    getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon({
-      futureScenarioName,
-      baselineScenarioName,
-      somscAnnualDifferencesForScenarios,
-      modeledYears,
+  const {
+    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+    somscAnnualTotalsFutureScenarioPerPolygon,
+    somscAnnualTotalsBaselineScenarioPerPolygon,
+  } = getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon({
+    futureScenarioName,
+    baselineScenarioName,
+    somscAnnualDifferencesForScenarios,
+    modeledYears,
+  });
+
+  const { somscAnnualTotalsFutureScenario, somscAnnualTotalsBaselineScenario } =
+    getSomscAnnualTotalsForFutureAndBaselineScenarios({
+      somscAnnualTotalsFutureScenarioPerPolygon,
+      somscAnnualTotalsBaselineScenarioPerPolygon,
     });
 
   const tenYearProjectedTonnesPerYear = getTenYearProjectedTonnesPerYear({
@@ -697,6 +807,10 @@ const createQuantificationSummary = ({
     ),
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
     somscAnnualDifferencesBetweenFutureAndBaselineScenarios,
+    somscAnnualTotalsFutureScenarioPerPolygon,
+    somscAnnualTotalsBaselineScenarioPerPolygon,
+    somscAnnualTotalsFutureScenario,
+    somscAnnualTotalsBaselineScenario,
     grandfatherableYears,
     grandfatheredTonnes,
     unadjustedGrandfatheredTonnesPerYear,
