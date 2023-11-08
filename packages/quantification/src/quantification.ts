@@ -309,11 +309,11 @@ const getsomscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon = ({
               year: string
             ) => {
               const futureTonnesOfCarbon = convertGramsPerM2ToTonnes({
-                gramsPerM2: futureMapUnitSocChanges[year],
+                gramsPerM2: futureMapUnitSocChanges[year] ?? 0,
                 mapUnitAreaInM2,
               });
               const baselineTonnesOfCarbon = convertGramsPerM2ToTonnes({
-                gramsPerM2: baselineMapUnitSocChanges[year],
+                gramsPerM2: baselineMapUnitSocChanges[year] ?? 0,
                 mapUnitAreaInM2,
               });
               const additionalTonnesOfCO2eForMapUnit = subtract(
