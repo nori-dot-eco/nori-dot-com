@@ -331,6 +331,9 @@ export const Errors = {
     mustHaveIsoLocation: {
       message: 'Parcel must have ISO location set',
     },
+    mustBeGeocoded: {
+      message: 'Parcel must be geocoded with country and admin codes',
+    },
     mustHaveNetRemovals: {
       message: 'Parcel must have net removals calculated',
     },
