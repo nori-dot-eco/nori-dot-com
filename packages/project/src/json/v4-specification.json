@@ -2479,7 +2479,6 @@
                 },
                 "tonsPerAcre": {
                     "description": "Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).",
-                    "maximum": 200,
                     "minimum": 0,
                     "title": "tonsPerAcre",
                     "type": "number"

@@ -1911,7 +1911,6 @@ export interface SolidOrganicMatterEvent extends OrganicMatterEvent {
    * Amount of organic matter or manure applied per acre (in tons per acre for solid/dry organic matter or gallons per acre for slurry).
    *
    * @minimum 0
-   * @maximum 200
    * @example <caption>When the amount of organic matter or manure applied to the crop per acre was 2 tons per acre for a solid/dry manure:</caption>
    *
    * ```js
