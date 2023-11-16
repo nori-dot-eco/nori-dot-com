@@ -52,7 +52,7 @@ export interface MapUnitSummary {
 }
 
 export interface UnadjustedQuantificationSummary {
-  allModeledYearsProjectedTonnesTotalEstimate: number;
+  allIssuableYearsProjectedTonnesPerYear: AnnualTotals;
   tenYearProjectedTonnesTotalEstimate: number;
   tenYearProjectedTonnesPerYear: number;
   tenYearProjectedTonnesPerYearPerAcre: number;
@@ -482,37 +482,41 @@ const getGrandfatheredTonneQuantities = ({
 };
 
 /**
- * Takes the year-over-year difference in soil carbon content across multiple polygons,
- * sums the future and baseline values individually and then returns the total sum
- * for all modeled years.
+ * Applies the same logic as `getGrandfatheredTonneQuantities` but for the entire range of
+ * modeled years, starting with the first grandfatherable year and ending with the latest
+ * year with somsc difference data. i.e. takes the minimum of either the projected value or
+ * the ten year average for each year.
  *
- * @returns The average year-over-year change for the first 10 years after the switch year
+ * @returns The projected issuable number of NRTs for the entire range of modeled years starting
+ * with the first grandfatherable year and ending with the latest year with somsc difference data.
  */
-const getAllModeledYearsProjectedTonnesTotalEstimate = ({
+export const getAllIssuableYearsProjectedTonnesPerYear = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+  tenYearProjectedTonnesPerYear,
+  firstGrandfatherableYear,
 }: {
   somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon: AnnualTotals[];
-}): number => {
-  const sumOfEachPolygon =
-    somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.map(
-      (annualDifferencesPerPolygon, annualDifferencesPerPolygonIndex) => {
-        const years = Object.keys(annualDifferencesPerPolygon)
-          .sort()
-          .map((year) => annualDifferencesPerPolygon[year])
-          .filter((yearValue) => !Number.isNaN(yearValue));
-
-        return years.reduce((prevValue, curValue) => {
-          return add(prevValue, curValue);
-        }, 0);
-      }
-    );
-
-  const sumOfAllPolygons = sumOfEachPolygon.reduce(
-    (prevValue, curValue) => add(prevValue, curValue),
-    0
+  tenYearProjectedTonnesPerYear: number;
+  firstGrandfatherableYear: number;
+}): AnnualTotals => {
+  const sumOfEachPolygon: AnnualTotals = {};
+  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.forEach(
+    (polygon) => {
+      Object.entries(polygon).forEach(([year, value]) => {
+        if (Number(year) >= firstGrandfatherableYear) {
+          sumOfEachPolygon[year] = add(sumOfEachPolygon[year] || 0, value);
+        }
+      });
+    }
   );
-
-  return sumOfAllPolygons;
+  const minimizedAdjustedSums: AnnualTotals = {};
+  Object.entries(sumOfEachPolygon).forEach(([year, value]) => {
+    minimizedAdjustedSums[year] =
+      value > tenYearProjectedTonnesPerYear
+        ? tenYearProjectedTonnesPerYear
+        : value;
+  });
+  return minimizedAdjustedSums;
 };
 
 /**
@@ -609,11 +613,6 @@ const createQuantificationSummary = ({
     somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
   });
 
-  const allModeledYearsProjectedTonnesTotalEstimate =
-    getAllModeledYearsProjectedTonnesTotalEstimate({
-      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
-    });
-
   const { totalM2 } = getTotalM2({
     somscAnnualDifferencesForScenarios,
     baselineScenarioName,
@@ -640,9 +639,16 @@ const createQuantificationSummary = ({
     quantifyAsOfYear,
   });
 
+  const allIssuableYearsProjectedTonnesPerYear =
+    getAllIssuableYearsProjectedTonnesPerYear({
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon,
+      tenYearProjectedTonnesPerYear,
+      firstGrandfatherableYear,
+    });
+
   return {
     modeledYears,
-    allModeledYearsProjectedTonnesTotalEstimate,
+    allIssuableYearsProjectedTonnesPerYear,
     tenYearProjectedTonnesTotalEstimate: multiply(
       tenYearProjectedTonnesPerYear,
       10
