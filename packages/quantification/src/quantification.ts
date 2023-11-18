@@ -5,7 +5,7 @@ import { ContextualError } from '@nori-dot-com/errors';
 import { CURRENT_YEAR, METHODOLOGY_VERSION } from './constants';
 import { validateParsedModelRunsData } from './validations';
 
-import { convertM2ToAcres, parseYearlyMapUnitData } from './index';
+import { convertM2ToAcres } from './index';
 
 export * from './constants';
 export const ATOMIC_WEIGHT_RATIO_OF_CO2_TO_C = divide(44, 12);
@@ -500,22 +500,21 @@ export const getAllIssuableYearsProjectedTonnesPerYear = ({
   firstGrandfatherableYear: number;
 }): AnnualTotals => {
   const sumOfEachPolygon: AnnualTotals = {};
-  somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon.forEach(
-    (polygon) => {
-      Object.entries(polygon).forEach(([year, value]) => {
-        if (Number(year) >= firstGrandfatherableYear) {
-          sumOfEachPolygon[year] = add(sumOfEachPolygon[year] || 0, value);
-        }
-      });
+  for (const polygon of somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon) {
+    for (const [year, value] of Object.entries(polygon)) {
+      if (Number(year) >= firstGrandfatherableYear) {
+        sumOfEachPolygon[year] = add(sumOfEachPolygon[year] || 0, value);
+      }
     }
-  );
+  }
+
   const minimizedAdjustedSums: AnnualTotals = {};
-  Object.entries(sumOfEachPolygon).forEach(([year, value]) => {
+  for (const [year, value] of Object.entries(sumOfEachPolygon)) {
     minimizedAdjustedSums[year] =
       value > tenYearProjectedTonnesPerYear
         ? tenYearProjectedTonnesPerYear
         : value;
-  });
+  }
   return minimizedAdjustedSums;
 };
 
