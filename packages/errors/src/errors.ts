@@ -328,9 +328,6 @@ export const Errors = {
     unexpectedError: 'An unexpected error occurred',
   },
   parcelError: {
-    mustHaveIsoLocation: {
-      message: 'Parcel must have ISO location set',
-    },
     mustBeGeocoded: {
       message: 'Parcel must be geocoded with country and admin codes',
     },
