@@ -346,6 +346,10 @@ export const Errors = {
     parcelHasIssuanceCannotDeleteError: {
       message: 'This parcel has an issuance and cannot be deleted.',
     },
+    parcelHasPositiveNetNrtsError: {
+      message:
+        'This parcel has net positive NRTs and cannot be delisted from the UI',
+    },
   },
   mintingError: {
     emptyBatch: {
