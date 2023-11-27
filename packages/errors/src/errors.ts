@@ -366,6 +366,18 @@ export const Errors = {
       message: 'Cannot mint removals from different projects in the same batch',
     },
   },
+  listingError: {
+    emptyBatch: {
+      message: 'Cannot list empty batch of removals',
+    },
+    missingData: {
+      message: 'Missing required data for listing',
+    },
+    transactionSubmissionError: {
+      message:
+        'There was an error submitting the `consign` transaction to the blockchain',
+    },
+  },
   quantificationError: {
     schema: {
       message: 'Schema expectations are not met',
