@@ -351,8 +351,8 @@ export const Errors = {
     emptyBatch: {
       message: 'Cannot mint empty batch of removals',
     },
-    missingProjectData: {
-      message: 'Missing required project metadata',
+    missingData: {
+      message: 'Missing required data for minting',
     },
     scheduleDurationNotSet: {
       message:
