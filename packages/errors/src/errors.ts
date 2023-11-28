@@ -328,9 +328,6 @@ export const Errors = {
     unexpectedError: 'An unexpected error occurred',
   },
   parcelError: {
-    mustHaveIsoLocation: {
-      message: 'Parcel must have ISO location set',
-    },
     mustBeGeocoded: {
       message: 'Parcel must be geocoded with country and admin codes',
     },
@@ -351,8 +348,8 @@ export const Errors = {
     emptyBatch: {
       message: 'Cannot mint empty batch of removals',
     },
-    missingProjectData: {
-      message: 'Missing required project metadata',
+    missingData: {
+      message: 'Missing required data for minting',
     },
     scheduleDurationNotSet: {
       message:
@@ -364,6 +361,18 @@ export const Errors = {
     },
     differentProjects: {
       message: 'Cannot mint removals from different projects in the same batch',
+    },
+  },
+  listingError: {
+    emptyBatch: {
+      message: 'Cannot list empty batch of removals',
+    },
+    missingData: {
+      message: 'Missing required data for listing',
+    },
+    transactionSubmissionError: {
+      message:
+        'There was an error submitting the `consign` transaction to the blockchain',
     },
   },
   quantificationError: {
