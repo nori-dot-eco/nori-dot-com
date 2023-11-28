@@ -904,7 +904,7 @@ export interface Field {
    *
    * For more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).
    *
-   * @minimum 2010
+   * @minimum 2012
    * @example <caption>When regenerative practices started in year 2015:</caption>
    *
    * ```js
@@ -1088,7 +1088,7 @@ export interface Field {
    *
    * Used to correlate data back to the originating system and to synchronize repeated imports.
    * This field must be unique within a project.
-   * 
+   *
    * @example
    *
    * ```js
@@ -1128,9 +1128,12 @@ export interface Field {
  */
 export interface CropYear {
   /**
-   * The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
+   * The planting year that the herein defined [crops](#crops) property is associated with.
+   * Note that a requirement to run quantification is that all crop management practices be
+   * mapped to a particular planting year as early as year 2000. Specific crops planted in
+   * 1999 and terminated in 2000 are also relevant to the quantification model.
    *
-   * @minimum 2000
+   * @minimum 1999
    * @maximum 2099
    * @example <caption>When the herein defined crops were planted in year 2000:</caption>
    *
