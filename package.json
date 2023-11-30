@@ -91,6 +91,6 @@
   },
   "dependencies": {
     "typedoc": "0.25.0",
-    "typedoc-plugin-markdown": "3.13.6"
+    "typedoc-plugin-markdown": "^3.17.1"
   }
 }

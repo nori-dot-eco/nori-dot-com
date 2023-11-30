@@ -32,9 +32,15 @@ email
 
 **`Nullable`**
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:490](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L490)
+[v4-specification.ts:479](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L479)
 
 ___
 
@@ -46,9 +52,15 @@ The project's primary contract person.  Provided to the verified.
 
 **`Nullable`**
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:478](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L478)
+[v4-specification.ts:465](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L465)
 
 ___
 
@@ -60,6 +72,12 @@ phone
 
 **`Nullable`**
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:484](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L484)
+[v4-specification.ts:472](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L472)
