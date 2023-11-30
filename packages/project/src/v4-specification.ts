@@ -1128,10 +1128,7 @@ export interface Field {
  */
 export interface CropYear {
   /**
-   * The planting year that the herein defined [crops](#crops) property is associated with.
-   * Note that a requirement to run quantification is that all crop management practices be
-   * mapped to a particular planting year as early as year 2000. Specific crops planted in
-   * 1999 and terminated in 2000 are also relevant to the quantification model.
+   * The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000. Specific crops planted in 1999 and terminated in 2000 are also relevant to the quantification model.
    *
    * @minimum 1999
    * @maximum 2099
