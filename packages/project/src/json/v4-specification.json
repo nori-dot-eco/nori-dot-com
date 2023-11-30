@@ -539,7 +539,7 @@
                     "type": "string"
                 },
                 "plantingYear": {
-                    "description": "The planting year that the herein defined [crops](#crops) property is associated with.\nNote that a requirement to run quantification is that all crop management practices be\nmapped to a particular planting year as early as year 2000. Specific crops planted in\n1999 and terminated in 2000 are also relevant to the quantification model.",
+                    "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000. Specific crops planted in 1999 and terminated in 2000 are also relevant to the quantification model.",
                     "maximum": 2099,
                     "minimum": 1999,
                     "title": "plantingYear",
