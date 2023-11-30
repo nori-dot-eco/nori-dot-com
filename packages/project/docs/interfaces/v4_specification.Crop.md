@@ -47,13 +47,15 @@ Crop properties relevant to planted crops.
 
 ### burningEvents
 
-• `Optional` **burningEvents**: [`BurningEvent`](v4_specification.BurningEvent.md)[]
+• `Optional` **burningEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 Burning events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -65,7 +67,9 @@ false
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Example`**
 
@@ -91,13 +95,13 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1589](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1589)
+[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1497)
 
 ___
 
 ### classification
 
-• **classification**: ``"annual crop"`` \| ``"perennial"`` \| ``"annual cover"`` \| ``"orchard"`` \| ``"vineyard"``
+• **classification**: ``"orchard"`` \| ``"vineyard"`` \| ``"perennial"`` \| ``"annual cover"`` \| ``"annual crop"``
 
 The crop classification.
 
@@ -105,7 +109,9 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 **`Default`**
 
+```ts
 "annual crop"
+```
 
 **`Example`**
 
@@ -115,7 +121,7 @@ You can find a list of acceptable crop classifications per crop `name` [here](ht
 
 #### Defined in
 
-[v4-specification.ts:1352](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1352)
+[v4-specification.ts:1280](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1280)
 
 ___
 
@@ -127,7 +133,9 @@ Clearing and renewal events for orchards and vineyards, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -161,7 +169,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1537](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1537)
 
 ___
 
@@ -189,7 +197,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1301](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1301)
+[v4-specification.ts:1234](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1234)
 
 ___
 
@@ -201,7 +209,9 @@ A list of fertilizer events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -233,7 +243,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1474](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1474)
+[v4-specification.ts:1394](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1394)
 
 ___
 
@@ -245,7 +255,9 @@ A list of grazing events, if applicable
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -276,7 +288,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1564](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1564)
+[v4-specification.ts:1476](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1476)
 
 ___
 
@@ -293,7 +305,9 @@ that was removed on the grain harvest, regardless of removal date.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -319,7 +333,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1657](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1657)
+[v4-specification.ts:1557](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1557)
 
 ___
 
@@ -344,7 +358,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1318](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1318)
+[v4-specification.ts:1249](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1249)
 
 ___
 
@@ -356,7 +370,9 @@ A list of irrigation events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -386,7 +402,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1520](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1520)
+[v4-specification.ts:1436](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1436)
 
 ___
 
@@ -398,7 +414,9 @@ A list of liming events, if applicable. During quantification, liming events are
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -429,7 +447,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1542](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1542)
+[v4-specification.ts:1456](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1456)
 
 ___
 
@@ -451,7 +469,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:1279](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1279)
+[v4-specification.ts:1215](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1215)
 
 ___
 
@@ -463,7 +481,9 @@ A list of organic matter and manure application events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -497,13 +517,13 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1499](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1499)
+[v4-specification.ts:1417](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1417)
 
 ___
 
 ### plantingEvents
 
-• `Optional` **plantingEvents**: [`PlantingEvent`](v4_specification.PlantingEvent.md)[]
+• `Optional` **plantingEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 The planting event(s) if there were any for the current crop year otherwise empty array or omit property.
 
@@ -511,7 +531,9 @@ This will contain a single event for annuals and none for perennials outside of 
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -549,19 +571,21 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1427](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1427)
+[v4-specification.ts:1351](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1351)
 
 ___
 
 ### pruningEvents
 
-• `Optional` **pruningEvents**: [`PruningEvent`](v4_specification.PruningEvent.md)[]
+• `Optional` **pruningEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 Pruning events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -595,7 +619,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1612](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1612)
+[v4-specification.ts:1517](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1517)
 
 ___
 
@@ -609,7 +633,9 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -639,13 +665,13 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1451](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1451)
+[v4-specification.ts:1373](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1373)
 
 ___
 
 ### type
 
-• **type**: ``"alfalfa"`` \| ``"austrian winter pea"`` \| ``"barley"`` \| ``"barley-bin run wheat mix"`` \| ``"black beans"`` \| ``"broccoli"`` \| ``"broccoli-coast"`` \| ``"broccoli-desert"`` \| ``"buckwheat"`` \| ``"cabbage"`` \| ``"camelina"`` \| ``"canola"`` \| ``"cantaloupes"`` \| ``"carrots"`` \| ``"cauliflower"`` \| ``"celery"`` \| ``"chick peas"`` \| ``"clover"`` \| ``"corn"`` \| ``"corn silage"`` \| ``"cotton"`` \| ``"cucumbers"`` \| ``"dry beans"`` \| ``"dry field beans"`` \| ``"dry field pea"`` \| ``"durum wheat"`` \| ``"eggplants"`` \| ``"fallow"`` \| ``"flaxseed"`` \| ``"garbanzo beans"`` \| ``"garlic"`` \| ``"gourds"`` \| ``"greens"`` \| ``"hemp (for fiber)"`` \| ``"hemp (for flowers)"`` \| ``"hemp (for seed)"`` \| ``"herbs"`` \| ``"honeydew melons"`` \| ``"lentils"`` \| ``"lettuce"`` \| ``"lettuce-head"`` \| ``"lettuce-leaf"`` \| ``"lettuce-romaine"`` \| ``"millet"`` \| ``"misc vegs & fruits"`` \| ``"mustard"`` \| ``"navy beans"`` \| ``"oats"`` \| ``"onions"`` \| ``"other small grains"`` \| ``"peanuts"`` \| ``"peas"`` \| ``"peppers"`` \| ``"pinto beans"`` \| ``"pop or om corn"`` \| ``"potatoes"`` \| ``"pumpkins"`` \| ``"radishes"`` \| ``"rapeseed"`` \| ``"rice"`` \| ``"rice - flooded"`` \| ``"rye"`` \| ``"safflower"`` \| ``"sorghum"`` \| ``"sorghum silage"`` \| ``"soybeans"`` \| ``"speltz"`` \| ``"spring wheat"`` \| ``"squash"`` \| ``"strawberries"`` \| ``"sugarbeets"`` \| ``"sunflower"`` \| ``"sweet corn"`` \| ``"sweet potatoes"`` \| ``"switchgrass"`` \| ``"tobacco"`` \| ``"tomatoes"`` \| ``"tomatoes, fresh"`` \| ``"tomatoes, processing"`` \| ``"triticale"`` \| ``"turnips"`` \| ``"watermelons"`` \| ``"wheat"`` \| ``"winter barley"`` \| ``"winter grain-other"`` \| ``"winter oats"`` \| ``"winter wheat"`` \| ``"annual rye"`` \| ``"annual rye - legume"`` \| ``"annual rye - legume - radish"`` \| ``"barley-radish mix"`` \| ``"cereal rye"`` \| ``"cereal rye-crimson clover mix"`` \| ``"clover/wildflowers"`` \| ``"forage radish"`` \| ``"grass-legume mix"`` \| ``"oilseed radish"`` \| ``"radish-crimson clover-barley-dwarf rape mix"`` \| ``"sugar beets"`` \| ``"vetch"`` \| ``"winter clover"`` \| ``"almonds"`` \| ``"apples"`` \| ``"apricots"`` \| ``"avocados"`` \| ``"blueberries"`` \| ``"caneberries"`` \| ``"cherries"`` \| ``"citrus"`` \| ``"cranberries"`` \| ``"english walnuts"`` \| ``"grape, raisin"`` \| ``"grape, table"`` \| ``"grape, wine (<1390 gdd)"`` \| ``"grape, wine (>1950 gdd)"`` \| ``"grape, wine (1391-1670 gdd)"`` \| ``"grape, wine (1671-1950 gdd)"`` \| ``"grapefruit"`` \| ``"grapes"`` \| ``"hazelnuts"`` \| ``"lemons"`` \| ``"lemons & limes"`` \| ``"limes"`` \| ``"nectarines"`` \| ``"olives"`` \| ``"oranges"`` \| ``"peaches"`` \| ``"peaches and nectarines"`` \| ``"pears"`` \| ``"pecans"`` \| ``"pistachios"`` \| ``"plums"`` \| ``"pomegranates"`` \| ``"prunes"`` \| ``"tangerines & mandarins"`` \| ``"walnuts"`` \| ``"asparagus"`` \| ``"grass"`` \| ``"grassland herbaceous"`` \| ``"herbaceous wetlands"`` \| ``"hops"`` \| ``"mint"`` \| ``"other hay/non alfalfa"`` \| ``"pasture/grass"`` \| ``"pasture/hay"`` \| ``"sod/grass seed"`` \| ``"strawberry"`` \| ``"sugarcane"``
+• **type**: ``"barley"`` \| ``"broccoli-coast"`` \| ``"broccoli-desert"`` \| ``"carrots"`` \| ``"cauliflower"`` \| ``"corn"`` \| ``"corn silage"`` \| ``"cotton"`` \| ``"dry field beans"`` \| ``"dry field pea"`` \| ``"fallow"`` \| ``"grass-legume mix"`` \| ``"lettuce-head"`` \| ``"lettuce-leaf"`` \| ``"lettuce-romaine"`` \| ``"millet"`` \| ``"oats"`` \| ``"rice - flooded"`` \| ``"rye"`` \| ``"sorghum"`` \| ``"sorghum silage"`` \| ``"spring wheat"`` \| ``"strawberry"`` \| ``"sugar beets"`` \| ``"sunflower"`` \| ``"switchgrass"`` \| ``"tomatoes, fresh"`` \| ``"tomatoes, processing"`` \| ``"winter wheat"`` \| ``"annual rye"`` \| ``"annual rye - legume"`` \| ``"annual rye - legume - radish"`` \| ``"austrian winter pea"`` \| ``"cereal rye"`` \| ``"forage radish"`` \| ``"oilseed radish"`` \| ``"vetch"`` \| ``"winter grain-other"`` \| ``"avocados"`` \| ``"cherries"`` \| ``"english walnuts"`` \| ``"grape, raisin"`` \| ``"grape, table"`` \| ``"grape, wine (<1390 gdd)"`` \| ``"grape, wine (>1950 gdd)"`` \| ``"grape, wine (1391-1670 gdd)"`` \| ``"grape, wine (1671-1950 gdd)"`` \| ``"grapefruit"`` \| ``"lemons & limes"`` \| ``"olives"`` \| ``"oranges"`` \| ``"peaches and nectarines"`` \| ``"pistachios"`` \| ``"tangerines & mandarins"`` \| ``"alfalfa"`` \| ``"clover"`` \| ``"grass"`` \| ``"barley-bin run wheat mix"`` \| ``"black beans"`` \| ``"broccoli"`` \| ``"buckwheat"`` \| ``"cabbage"`` \| ``"camelina"`` \| ``"canola"`` \| ``"cantaloupes"`` \| ``"celery"`` \| ``"chick peas"`` \| ``"cucumbers"`` \| ``"dry beans"`` \| ``"durum wheat"`` \| ``"eggplants"`` \| ``"flaxseed"`` \| ``"garbanzo beans"`` \| ``"garlic"`` \| ``"gourds"`` \| ``"greens"`` \| ``"hemp (for fiber)"`` \| ``"hemp (for flowers)"`` \| ``"hemp (for seed)"`` \| ``"herbs"`` \| ``"honeydew melons"`` \| ``"lentils"`` \| ``"lettuce"`` \| ``"misc vegs & fruits"`` \| ``"mustard"`` \| ``"navy beans"`` \| ``"onions"`` \| ``"other small grains"`` \| ``"peanuts"`` \| ``"peas"`` \| ``"peppers"`` \| ``"pinto beans"`` \| ``"pop or om corn"`` \| ``"potatoes"`` \| ``"pumpkins"`` \| ``"radishes"`` \| ``"rapeseed"`` \| ``"rice"`` \| ``"safflower"`` \| ``"soybeans"`` \| ``"speltz"`` \| ``"squash"`` \| ``"strawberries"`` \| ``"sugarbeets"`` \| ``"sweet corn"`` \| ``"sweet potatoes"`` \| ``"tobacco"`` \| ``"tomatoes"`` \| ``"triticale"`` \| ``"turnips"`` \| ``"watermelons"`` \| ``"wheat"`` \| ``"winter barley"`` \| ``"winter oats"`` \| ``"barley-radish mix"`` \| ``"cereal rye-crimson clover mix"`` \| ``"clover/wildflowers"`` \| ``"radish-crimson clover-barley-dwarf rape mix"`` \| ``"winter clover"`` \| ``"almonds"`` \| ``"apples"`` \| ``"apricots"`` \| ``"blueberries"`` \| ``"caneberries"`` \| ``"citrus"`` \| ``"cranberries"`` \| ``"grapes"`` \| ``"hazelnuts"`` \| ``"lemons"`` \| ``"limes"`` \| ``"nectarines"`` \| ``"peaches"`` \| ``"pears"`` \| ``"pecans"`` \| ``"plums"`` \| ``"pomegranates"`` \| ``"prunes"`` \| ``"walnuts"`` \| ``"asparagus"`` \| ``"grassland herbaceous"`` \| ``"herbaceous wetlands"`` \| ``"hops"`` \| ``"mint"`` \| ``"other hay/non alfalfa"`` \| ``"pasture/grass"`` \| ``"pasture/hay"`` \| ``"sod/grass seed"`` \| ``"sugarcane"``
 
 Crop type name from Nori's known crop names.
 
@@ -665,4 +691,4 @@ must specify one of the allowed crop types=
 
 #### Defined in
 
-[v4-specification.ts:1334](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1334)
+[v4-specification.ts:1263](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1263)

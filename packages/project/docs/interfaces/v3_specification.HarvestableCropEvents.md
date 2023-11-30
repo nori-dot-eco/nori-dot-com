@@ -62,4 +62,4 @@ that was removed on the grain harvest, regardless of removal date.
 
 #### Defined in
 
-[v3-specification.ts:837](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L837)
+[v3-specification.ts:780](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L780)

@@ -58,7 +58,7 @@ The last date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 a
 
 #### Defined in
 
-[v3-specification.ts:1333](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1333)
+[v3-specification.ts:1231](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1231)
 
 ___
 
@@ -96,7 +96,7 @@ Zero and one are equivalent and indicate continuous grazing.
 
 #### Defined in
 
-[v3-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1901)
+[v3-specification.ts:1729](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1729)
 
 ___
 
@@ -124,7 +124,7 @@ The first date that the event occurred (formatted as MM/DD/YYYY and YYYY > 2000 
 
 #### Defined in
 
-[v3-specification.ts:1320](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1320)
+[v3-specification.ts:1220](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1220)
 
 ___
 
@@ -152,4 +152,4 @@ The percentage of forage consumed by the animals per rest period days.
 
 #### Defined in
 
-[v3-specification.ts:1915](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1915)
+[v3-specification.ts:1741](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1741)

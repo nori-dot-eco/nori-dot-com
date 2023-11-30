@@ -32,7 +32,7 @@
     "@types/geojson": "^7946.0.7",
     "@types/jest": "^29.5.2",
     "typedoc": "^0.25.0",
-    "typedoc-plugin-markdown": "^3.15.3"
+    "typedoc-plugin-markdown": "^3.17.1"
   },
   "dependencies": {
     "@nori-dot-com/errors": "^1.6.0",

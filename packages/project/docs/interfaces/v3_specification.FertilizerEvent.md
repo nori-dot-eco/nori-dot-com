@@ -75,7 +75,7 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1194)
 
 ___
 
@@ -99,7 +99,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1611](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1611)
+[v3-specification.ts:1473](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1473)
 
 ___
 
@@ -123,7 +123,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:1583](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1583)
+[v3-specification.ts:1449](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1449)
 
 ___
 
@@ -137,7 +137,9 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 **`Default`**
 
+```ts
 "mixed blends"
+```
 
 **`Example`**
 
@@ -149,4 +151,4 @@ Note that the fertilizer type does not currently impact quantification as it onl
 
 #### Defined in
 
-[v3-specification.ts:1598](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1598)
+[v3-specification.ts:1462](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1462)
