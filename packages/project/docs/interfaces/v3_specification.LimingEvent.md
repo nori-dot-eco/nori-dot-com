@@ -46,7 +46,7 @@ The date that the liming occurred. Currently, liming dates do not impact quantif
 
 #### Defined in
 
-[v3-specification.ts:1861](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1861)
+[v3-specification.ts:1693](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1693)
 
 ___
 
@@ -70,7 +70,7 @@ The liming amount (in tons per acre).
 
 #### Defined in
 
-[v3-specification.ts:1848](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1848)
+[v3-specification.ts:1682](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1682)
 
 ___
 
@@ -90,4 +90,4 @@ The liming type.
 
 #### Defined in
 
-[v3-specification.ts:1835](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1835)
+[v3-specification.ts:1671](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1671)

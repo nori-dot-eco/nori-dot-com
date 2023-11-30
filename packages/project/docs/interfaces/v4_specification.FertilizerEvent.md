@@ -69,7 +69,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1709](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1709)
+[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1605)
 
 ___
 
@@ -95,7 +95,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1724](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1724)
+[v4-specification.ts:1618](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1618)
 
 ___
 
@@ -123,7 +123,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1739](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1739)
+[v4-specification.ts:1631](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1631)
 
 ___
 
@@ -135,7 +135,9 @@ Amount of nitrogen applied in lbs/ac.
 
 **`Default`**
 
+```ts
 0
+```
 
 **`Example`**
 
@@ -147,7 +149,7 @@ Amount of nitrogen applied in lbs/ac.
 
 #### Defined in
 
-[v4-specification.ts:2028](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L2028)
+[v4-specification.ts:1883](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1883)
 
 ___
 
@@ -171,7 +173,7 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v4-specification.ts:1999](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1999)
+[v4-specification.ts:1858](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1858)
 
 ___
 
@@ -203,13 +205,13 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1760](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1760)
+[v4-specification.ts:1649](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1649)
 
 ___
 
 ### type
 
-• `Optional` **type**: ``"ammonium nitrate (34-0-0)"`` \| ``"ammonium nitrate phosphate (23-23-00)"`` \| ``"ammonium nitrate phosphate (27-14-00)"`` \| ``"ammonium phosphate sulphate (16-20-00)"`` \| ``"ammonium polyphosphate solution (10-34-00)"`` \| ``"ammonium sulphate (21-00-00)"`` \| ``"ammonium thiosulphate solution (12-00-00)"`` \| ``"anhydrous ammonia (gas) (82-00-00)"`` \| ``"calcium ammonium nitrate"`` \| ``"calcium nitrate"`` \| ``"diammonium phosphate (18-46-00)"`` \| ``"element-n (n)"`` \| ``"element-p (p)"`` \| ``"mixed blends"`` \| ``"monoammonium phosphate (11-55-00)"`` \| ``"monoammonium phosphate (12-51-00)"`` \| ``"phosphate (00-32-00)"`` \| ``"potash (00-00-60)"`` \| ``"potassium nitrate"`` \| ``"urea (46-00-00)"`` \| ``"urea ammonium nitrate (30-00-00)"`` \| ``"urea ammonium phosphate (27-27-00)"`` \| ``"urea ammonium phosphate (34-17-00)"``
+• `Optional` **type**: ``"ammonium nitrate (34-0-0)"`` \| ``"ammonium nitrate phosphate (23-23-00)"`` \| ``"ammonium nitrate phosphate (27-14-00)"`` \| ``"ammonium phosphate sulphate (16-20-00)"`` \| ``"ammonium polyphosphate solution (10-34-00)"`` \| ``"ammonium sulphate (21-00-00)"`` \| ``"ammonium thiosulphate solution (12-00-00)"`` \| ``"anhydrous ammonia (gas) (82-00-00)"`` \| ``"calcium ammonium nitrate"`` \| ``"calcium nitrate"`` \| ``"diammonium phosphate (18-46-00)"`` \| ``"element-n (n)"`` \| ``"element-p (p)"`` \| ``"mixed blends"`` \| ``"monoammonium phosphate (11-55-00)"`` \| ``"monoammonium phosphate (12-51-00)"`` \| ``"potassium nitrate"`` \| ``"urea (46-00-00)"`` \| ``"urea ammonium nitrate (30-00-00)"`` \| ``"urea ammonium phosphate (27-27-00)"`` \| ``"urea ammonium phosphate (34-17-00)"`` \| ``"phosphate (00-32-00)"`` \| ``"potash (00-00-60)"``
 
 The fertilizer classification type.
 
@@ -218,7 +220,9 @@ As such, we default the type to "mixed blends" when this property is excluded/nu
 
 **`Default`**
 
+```ts
 "mixed blends"
+```
 
 **`Example`**
 
@@ -230,4 +234,4 @@ As such, we default the type to "mixed blends" when this property is excluded/nu
 
 #### Defined in
 
-[v4-specification.ts:2015](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L2015)
+[v4-specification.ts:1872](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1872)

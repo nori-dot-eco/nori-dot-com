@@ -539,9 +539,9 @@
                     "type": "string"
                 },
                 "plantingYear": {
-                    "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.",
+                    "description": "The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000. Specific crops planted in 1999 and terminated in 2000 are also relevant to the quantification model.",
                     "maximum": 2099,
-                    "minimum": 2000,
+                    "minimum": 1999,
                     "title": "plantingYear",
                     "type": "number"
                 }
@@ -788,7 +788,7 @@
                 },
                 "regenerativeStartYear": {
                     "description": "The year that you most recently adopted regenerative agricultural practices. aka Switch Year\n\nFor more information on how to select a start year see [here](https://go.nori.com/enrollment-manual).",
-                    "minimum": 2010,
+                    "minimum": 2012,
                     "title": "regenerativeStartYear",
                     "type": "number"
                 }

@@ -72,7 +72,7 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1194)
 
 ___
 
@@ -90,7 +90,9 @@ this property will be deprecated in the future
 
 **`Default`**
 
+```ts
 "no tillage"
+```
 
 **`Example`**
 
@@ -102,13 +104,13 @@ this property will be deprecated in the future
 
 #### Defined in
 
-[v3-specification.ts:1479](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1479)
+[v3-specification.ts:1359](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1359)
 
 ___
 
 ### type
 
-• **type**: ``"crimp"`` \| ``"intensive tillage"`` \| ``"mow"`` \| ``"mulch tillage"`` \| ``"reduced tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"broad-spectrum herbicide"`` \| ``"no tillage"`` \| ``"growing season cultivation"`` \| ``"winter killed"``
+• **type**: ``"intensive tillage"`` \| ``"reduced tillage"`` \| ``"mulch tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"no tillage"`` \| ``"growing season cultivation"`` \| ``"mow"`` \| ``"crimp"`` \| ``"winter killed"`` \| ``"broad-spectrum herbicide"``
 
 The soil or crop disturbance events classification type.
 
@@ -204,4 +206,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v3-specification.ts:1552](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1552)
+[v3-specification.ts:1421](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1421)

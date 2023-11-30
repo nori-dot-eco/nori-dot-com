@@ -61,7 +61,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:397](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L397)
+[v4-specification.ts:390](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L390)
 
 ___
 
@@ -75,9 +75,15 @@ farmAddress Mailing address for the farm in question if the file represents a si
 
 if import file represents a batch rather than an entire project for a single farm.
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:359](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L359)
+[v4-specification.ts:355](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L355)
 
 ___
 
@@ -107,7 +113,7 @@ An array of fields defining annual crop management practices.
 
 #### Defined in
 
-[v4-specification.ts:457](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L457)
+[v4-specification.ts:444](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L444)
 
 ___
 
@@ -131,7 +137,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:412](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L412)
+[v4-specification.ts:403](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L403)
 
 ___
 
@@ -143,9 +149,15 @@ primaryContact Contact info for the operator or data aggregator preparing this f
 
 This will be the primary point of contract for verifiers.
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:353](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L353)
+[v4-specification.ts:348](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L348)
 
 ___
 
@@ -159,9 +171,15 @@ The name for the project to be created.
 
 External systems leave this null.
 
+**`Example`**
+
+```ts
+
+```
+
 #### Defined in
 
-[v4-specification.ts:433](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L433)
+[v4-specification.ts:423](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L423)
 
 ___
 
@@ -185,7 +203,7 @@ External systems leave this null.
 
 #### Defined in
 
-[v4-specification.ts:427](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L427)
+[v4-specification.ts:416](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L416)
 
 ___
 
@@ -207,7 +225,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:383](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L383)
+[v4-specification.ts:377](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L377)
 
 ___
 
@@ -229,7 +247,7 @@ if import file represents a batch rather than an entire project for a single far
 
 #### Defined in
 
-[v4-specification.ts:371](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L371)
+[v4-specification.ts:366](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L366)
 
 ___
 
@@ -249,4 +267,4 @@ The specification version. This information is used to determine the logic Nori 
 
 #### Defined in
 
-[v4-specification.ts:346](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L346)
+[v4-specification.ts:340](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L340)

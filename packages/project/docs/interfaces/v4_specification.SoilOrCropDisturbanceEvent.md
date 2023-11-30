@@ -66,7 +66,7 @@ date
 
 #### Defined in
 
-[v4-specification.ts:1709](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1709)
+[v4-specification.ts:1605](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1605)
 
 ___
 
@@ -92,7 +92,7 @@ Used to correlate data back to the originating system and to synchronize repeate
 
 #### Defined in
 
-[v4-specification.ts:1724](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1724)
+[v4-specification.ts:1618](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1618)
 
 ___
 
@@ -120,7 +120,7 @@ External systems pass null or omit the property for new projects.
 
 #### Defined in
 
-[v4-specification.ts:1739](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1739)
+[v4-specification.ts:1631](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1631)
 
 ___
 
@@ -140,7 +140,7 @@ The name/alias that the soil or crop disturbance events practice is known by. Th
 
 #### Defined in
 
-[v4-specification.ts:1901](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1901)
+[v4-specification.ts:1773](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1773)
 
 ___
 
@@ -172,13 +172,13 @@ Optional field to indicate what system this data point originated from.
 
 #### Defined in
 
-[v4-specification.ts:1760](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1760)
+[v4-specification.ts:1649](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1649)
 
 ___
 
 ### type
 
-• **type**: ``"bedder/hipper"`` \| ``"chisel plow"`` \| ``"crimp"`` \| ``"cultipacker"`` \| ``"cultivator"`` \| ``"cultivator - field"`` \| ``"cultivator - row"`` \| ``"disk"`` \| ``"finisher"`` \| ``"harrow"`` \| ``"herbicide burn down"`` \| ``"hipper bedder"`` \| ``"intensive tillage"`` \| ``"landstar"`` \| ``"minimum tillage"`` \| ``"moldboard plow"`` \| ``"mow"`` \| ``"mulch tillage"`` \| ``"mulcher"`` \| ``"no-till planting"`` \| ``"reduced tillage"`` \| ``"residue tillage"`` \| ``"ridge tillage"`` \| ``"ripper - disk"`` \| ``"ripper - inline"`` \| ``"roller"`` \| ``"speed till"`` \| ``"strip till"`` \| ``"strip tillage"`` \| ``"tandem disk"`` \| ``"vertical"`` \| ``"zone till"`` \| ``"winter kill"`` \| ``"broad-spectrum herbicide"``
+• **type**: ``"intensive tillage"`` \| ``"reduced tillage"`` \| ``"mulch tillage"`` \| ``"ridge tillage"`` \| ``"strip tillage"`` \| ``"mow"`` \| ``"crimp"`` \| ``"broad-spectrum herbicide"`` \| ``"bedder/hipper"`` \| ``"chisel plow"`` \| ``"cultipacker"`` \| ``"cultivator"`` \| ``"cultivator - field"`` \| ``"cultivator - row"`` \| ``"disk"`` \| ``"finisher"`` \| ``"harrow"`` \| ``"herbicide burn down"`` \| ``"hipper bedder"`` \| ``"landstar"`` \| ``"minimum tillage"`` \| ``"moldboard plow"`` \| ``"mulcher"`` \| ``"no-till planting"`` \| ``"residue tillage"`` \| ``"ripper - disk"`` \| ``"ripper - inline"`` \| ``"roller"`` \| ``"speed till"`` \| ``"strip till"`` \| ``"tandem disk"`` \| ``"vertical"`` \| ``"zone till"`` \| ``"winter kill"``
 
 The soil or crop disturbance events classification type.
 
@@ -266,4 +266,4 @@ You can find a list of common equivalents [here](https://go.nori.com/inputs).
 
 #### Defined in
 
-[v4-specification.ts:1968](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1968)
+[v4-specification.ts:1830](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1830)

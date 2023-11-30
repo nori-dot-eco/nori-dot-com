@@ -79,7 +79,7 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1194)
 
 ___
 
@@ -115,7 +115,7 @@ during import (specify null if you are unsure)
 
 #### Defined in
 
-[v3-specification.ts:1369](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1369)
+[v3-specification.ts:1263](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1263)
 
 ___
 
@@ -127,7 +127,9 @@ Crop residue removed.
 
 **`Default`**
 
+```ts
 0
+```
 
 **`Minimum`**
 
@@ -167,7 +169,7 @@ Crop residue removed.
 
 #### Defined in
 
-[v3-specification.ts:1397](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1397)
+[v3-specification.ts:1286](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1286)
 
 ___
 
@@ -181,7 +183,9 @@ The current version of quantification does not consider yield when producing est
 
 **`Default`**
 
+```ts
 0
+```
 
 **`Example`**
 
@@ -193,7 +197,7 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1431](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1431)
+[v3-specification.ts:1317](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1317)
 
 ___
 
@@ -207,7 +211,9 @@ The current version of quantification does not consider yield when producing est
 
 **`Default`**
 
+```ts
 "lbs/ac"
+```
 
 **`Example`**
 
@@ -219,4 +225,4 @@ The current version of quantification does not consider yield when producing est
 
 #### Defined in
 
-[v3-specification.ts:1446](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1446)
+[v3-specification.ts:1330](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1330)

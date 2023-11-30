@@ -71,13 +71,15 @@ Crop management details and events.
 
 ### burningEvents
 
-• `Optional` **burningEvents**: [`BurningEvent`](v4_specification.BurningEvent.md)[]
+• `Optional` **burningEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 Burning events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -89,7 +91,9 @@ false
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Example`**
 
@@ -111,7 +115,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1589](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1589)
+[v4-specification.ts:1497](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1497)
 
 ___
 
@@ -123,7 +127,9 @@ Clearing and renewal events for orchards and vineyards, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -153,7 +159,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1635](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1635)
+[v4-specification.ts:1537](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1537)
 
 ___
 
@@ -165,7 +171,9 @@ A list of fertilizer events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -193,7 +201,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1474](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1474)
+[v4-specification.ts:1394](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1394)
 
 ___
 
@@ -205,7 +213,9 @@ A list of grazing events, if applicable
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -232,7 +242,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1564](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1564)
+[v4-specification.ts:1476](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1476)
 
 ___
 
@@ -249,7 +259,9 @@ that was removed on the grain harvest, regardless of removal date.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -271,7 +283,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1657](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1657)
+[v4-specification.ts:1557](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1557)
 
 ___
 
@@ -283,7 +295,9 @@ A list of irrigation events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -309,7 +323,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1520](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1520)
+[v4-specification.ts:1436](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1436)
 
 ___
 
@@ -321,7 +335,9 @@ A list of liming events, if applicable. During quantification, liming events are
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -348,7 +364,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1542](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1542)
+[v4-specification.ts:1456](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1456)
 
 ___
 
@@ -360,7 +376,9 @@ A list of organic matter and manure application events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -390,13 +408,13 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1499](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1499)
+[v4-specification.ts:1417](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1417)
 
 ___
 
 ### plantingEvents
 
-• `Optional` **plantingEvents**: [`PlantingEvent`](v4_specification.PlantingEvent.md)[]
+• `Optional` **plantingEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 The planting event(s) if there were any for the current crop year otherwise empty array or omit property.
 
@@ -404,7 +422,9 @@ This will contain a single event for annuals and none for perennials outside of 
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -438,19 +458,21 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1427](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1427)
+[v4-specification.ts:1351](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1351)
 
 ___
 
 ### pruningEvents
 
-• `Optional` **pruningEvents**: [`PruningEvent`](v4_specification.PruningEvent.md)[]
+• `Optional` **pruningEvents**: [`CropEvent`](v4_specification.CropEvent.md)[]
 
 Pruning events, if applicable.
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -480,7 +502,7 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1612](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1612)
+[v4-specification.ts:1517](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1517)
 
 ___
 
@@ -494,7 +516,9 @@ All crops will need to define a soil or crop disturbance event <= the associated
 
 **`Default`**
 
+```ts
 []
+```
 
 **`Min Items`**
 
@@ -520,4 +544,4 @@ false
 
 #### Defined in
 
-[v4-specification.ts:1451](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1451)
+[v4-specification.ts:1373](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1373)

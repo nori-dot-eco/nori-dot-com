@@ -73,4 +73,4 @@ during import (note: when dates are defined as null in an import file, the data 
 
 #### Defined in
 
-[v3-specification.ts:1291](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L1291)
+[v3-specification.ts:1194](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L1194)
