@@ -332,7 +332,7 @@ export const getGrandfatherableYears = ({
 }): {
   grandfatherableYears: UnadjustedQuantificationSummary['grandfatherableYears'];
   numberOfGrandfatheredYears: UnadjustedQuantificationSummary['numberOfGrandfatheredYears'];
-  firstGrandfatherableYear: UnadjustedQuantificationSummary['switchYear'];
+  firstGrandfatherableYear: number;
 } => {
   const effectiveCurrentYear = quantifyAsOfYear ?? CURRENT_YEAR;
   const startYearIndex = Math.max(
@@ -419,7 +419,7 @@ const getGrandfatheredTonneQuantities = ({
   somscAnnualDifferencesBetweenFutureAndBaselineScenarios: UnadjustedQuantificationSummary['somscAnnualDifferencesBetweenFutureAndBaselineScenarios'];
   grandfatherableYears: UnadjustedQuantificationSummary['grandfatherableYears'];
   numberOfGrandfatheredYears: UnadjustedQuantificationSummary['numberOfGrandfatheredYears'];
-  firstGrandfatherableYear: UnadjustedQuantificationSummary['switchYear'];
+  firstGrandfatherableYear: number;
   unadjustedGrandfatheredTonnesPerYear: UnadjustedQuantificationSummary['unadjustedGrandfatheredTonnesPerYear'];
   grandfatheredTonnes: UnadjustedQuantificationSummary['grandfatheredTonnes'];
   grandfatheredTonnesPerYearPerAcreAverage: UnadjustedQuantificationSummary['grandfatheredTonnesPerYearPerAcreAverage'];
@@ -599,6 +599,11 @@ const createQuantificationSummary = ({
     maxNumberOfGrandfatheredYears,
     quantifyAsOfYear,
   });
+  const switchYear = Math.min(
+    ...Object.keys(
+      somscAnnualDifferencesBetweenFutureAndBaselineScenariosPerPolygon[0]
+    ).map(Number)
+  );
 
   return {
     modeledYears,
@@ -620,7 +625,7 @@ const createQuantificationSummary = ({
     totalM2,
     totalAcres,
     numberOfGrandfatheredYears,
-    switchYear: firstGrandfatherableYear,
+    switchYear,
     grandfatheredTonnesPerYearPerAcreAverage,
     methodologyVersion: METHODOLOGY_VERSION,
   };

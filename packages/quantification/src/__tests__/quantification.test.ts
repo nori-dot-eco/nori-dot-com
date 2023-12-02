@@ -6,8 +6,16 @@ import {
   getGrandfatherableYears,
   parseYearlyMapUnitData,
 } from '../index';
-import { GRANDFATHERABLE_YEARS_OUTPUT, NO_GRANDFATHERABLE_YEARS_OUTPUT } from './example-output';
-import { GRANDFATHERABLE_YEARS_PARSED_OUTPUT, MULTI_FIELD_PARSED_OUTPUT, NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT } from './example-parsed-output';
+
+import {
+  GRANDFATHERABLE_YEARS_OUTPUT,
+  NO_GRANDFATHERABLE_YEARS_OUTPUT,
+} from './example-output';
+import {
+  GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
+  MULTI_FIELD_PARSED_OUTPUT,
+  NO_GRANDFATHERABLE_YEARS_PARSED_OUTPUT,
+} from './example-parsed-output';
 
 /* //////////////////////////////////////////////////////////////
                               MOCKS
@@ -252,7 +260,7 @@ describe('getQuantificationSummary', () => {
 
     expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
-      switchYear: 2016,
+      switchYear: 2015,
       grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
       numberOfGrandfatheredYears: 5,
       modeledYears: [
@@ -329,7 +337,7 @@ describe('getQuantificationSummary', () => {
 
     expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
-      switchYear: 2017,
+      switchYear: 2015,
       grandfatherableYears: [2017, 2018, 2019, 2020],
       numberOfGrandfatheredYears: 4,
       modeledYears: [
@@ -400,7 +408,7 @@ describe('getQuantificationSummary', () => {
 
     expect(result).toStrictEqual<ReturnType<typeof getQuantificationSummary>>({
       methodologyVersion: METHODOLOGY_VERSION,
-      switchYear: 2016,
+      switchYear: 2015,
       grandfatherableYears: [2016, 2017, 2018],
       numberOfGrandfatheredYears: 3,
       modeledYears: [
@@ -501,7 +509,7 @@ describe('getQuantificationSummary', () => {
   });
   it('should quantify multi-polygon output files', () => {
     const result = getQuantificationSummaries({
-        parsedJsonOutput: MULTI_FIELD_PARSED_OUTPUT,
+      parsedJsonOutput: MULTI_FIELD_PARSED_OUTPUT,
       maxNumberOfGrandfatheredYears: 5,
     });
 
@@ -575,7 +583,7 @@ describe('getQuantificationSummary', () => {
         totalM2: 710_726.267_452_201_8,
         totalAcres: 175.624_285_437_514_2,
         numberOfGrandfatheredYears: 5,
-        switchYear: 2016,
+        switchYear: 2012,
         methodologyVersion: '1.0.0',
       },
       'externalId=7c8bf8c4-c880-4836-854a-b1b2ec153835': {
@@ -644,7 +652,7 @@ describe('getQuantificationSummary', () => {
         totalM2: 56_858.128_614_828_41,
         totalAcres: 14.049_949_560_876_588,
         numberOfGrandfatheredYears: 5,
-        switchYear: 2016,
+        switchYear: 2012,
         grandfatheredTonnesPerYearPerAcreAverage: 0.534_368_211_038_701_6,
         methodologyVersion: '1.0.0',
       },
@@ -665,7 +673,7 @@ describe('getQuantificationSummaries', () => {
       {
         [modelRunName]: {
           methodologyVersion: METHODOLOGY_VERSION,
-          switchYear: 2016,
+          switchYear: 2015,
           grandfatherableYears: [2016, 2017, 2018, 2019, 2020],
           numberOfGrandfatheredYears: 5,
           modeledYears: [
@@ -751,7 +759,7 @@ describe('getQuantificationSummaries', () => {
       {
         [modelRunName]: {
           methodologyVersion: METHODOLOGY_VERSION,
-          switchYear: 2017,
+          switchYear: 2015,
           grandfatherableYears: [2017, 2018, 2019, 2020],
           numberOfGrandfatheredYears: 4,
           modeledYears: [
@@ -831,7 +839,7 @@ describe('getQuantificationSummaries', () => {
       {
         [modelRunName]: {
           methodologyVersion: METHODOLOGY_VERSION,
-          switchYear: 2016,
+          switchYear: 2015,
           grandfatherableYears: [2016, 2017, 2018],
           numberOfGrandfatheredYears: 3,
           modeledYears: [
