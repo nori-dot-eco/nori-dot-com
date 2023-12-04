@@ -33,7 +33,6 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 ### Interfaces
 
 - [Address](../interfaces/v4_specification.Address.md)
-- [BurningEvent](../interfaces/v4_specification.BurningEvent.md)
 - [ClearingAndRenewalEvent](../interfaces/v4_specification.ClearingAndRenewalEvent.md)
 - [ContactInfo](../interfaces/v4_specification.ContactInfo.md)
 - [Crop](../interfaces/v4_specification.Crop.md)
@@ -50,13 +49,17 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 - [IrrigationEvent](../interfaces/v4_specification.IrrigationEvent.md)
 - [LimingEvent](../interfaces/v4_specification.LimingEvent.md)
 - [OrganicMatterEvent](../interfaces/v4_specification.OrganicMatterEvent.md)
-- [PlantingEvent](../interfaces/v4_specification.PlantingEvent.md)
 - [PracticeChangesAdopted](../interfaces/v4_specification.PracticeChangesAdopted.md)
 - [Project](../interfaces/v4_specification.Project.md)
-- [PruningEvent](../interfaces/v4_specification.PruningEvent.md)
 - [SlurryOrganicMatterEvent](../interfaces/v4_specification.SlurryOrganicMatterEvent.md)
 - [SoilOrCropDisturbanceEvent](../interfaces/v4_specification.SoilOrCropDisturbanceEvent.md)
 - [SolidOrganicMatterEvent](../interfaces/v4_specification.SolidOrganicMatterEvent.md)
+
+### Type Aliases
+
+- [BurningEvent](v4_specification.md#burningevent)
+- [PlantingEvent](v4_specification.md#plantingevent)
+- [PruningEvent](v4_specification.md#pruningevent)
 
 ### Variables
 
@@ -70,6 +73,68 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 - [soilOrCropDisturbanceTypes](v4_specification.md#soilorcropdisturbancetypes)
 - [solidOmadTypes](v4_specification.md#solidomadtypes)
 
+## Type Aliases
+
+### BurningEvent
+
+Ƭ **BurningEvent**: [`CropEvent`](../interfaces/v4_specification.CropEvent.md)
+
+Burning event details.
+
+**`Example`**
+
+```js
+{
+ "date": "2008-10-31"
+}
+```
+
+#### Defined in
+
+[v4-specification.ts:2193](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L2193)
+
+___
+
+### PlantingEvent
+
+Ƭ **PlantingEvent**: [`CropEvent`](../interfaces/v4_specification.CropEvent.md)
+
+Planting event details.
+
+(formatted as ISO8601 date format (YYYY-MM-DD) with YYYY > 2000 and YYYY < 2100).
+
+**`Example`**
+
+```js
+{
+ "date": "2000-03-02",
+}
+```
+
+#### Defined in
+
+[v4-specification.ts:1665](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1665)
+
+___
+
+### PruningEvent
+
+Ƭ **PruningEvent**: [`CropEvent`](../interfaces/v4_specification.CropEvent.md)
+
+Pruning Event.
+
+**`Example`**
+
+```js
+{
+ "date": "2008-10-31"
+}
+```
+
+#### Defined in
+
+[v4-specification.ts:2153](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L2153)
+
 ## Variables
 
 ### annualCropTypes
@@ -78,7 +143,7 @@ You can find definitions for all of the interfaces in Nori croplands project fro
 
 #### Defined in
 
-[v4-specification.ts:33](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L33)
+[v4-specification.ts:32](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L32)
 
 ___
 
@@ -88,7 +153,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:123](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L123)
+[v4-specification.ts:122](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L122)
 
 ___
 
@@ -98,7 +163,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:234](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L234)
+[v4-specification.ts:233](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L233)
 
 ___
 
@@ -108,7 +173,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:297](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L297)
+[v4-specification.ts:296](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L296)
 
 ___
 
@@ -118,7 +183,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:176](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L176)
+[v4-specification.ts:175](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L175)
 
 ___
 
@@ -128,7 +193,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:214](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L214)
+[v4-specification.ts:213](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L213)
 
 ___
 
@@ -138,7 +203,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:147](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L147)
+[v4-specification.ts:146](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L146)
 
 ___
 
@@ -148,7 +213,7 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:260](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L260)
+[v4-specification.ts:259](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L259)
 
 ___
 
@@ -158,4 +223,4 @@ ___
 
 #### Defined in
 
-[v4-specification.ts:155](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L155)
+[v4-specification.ts:154](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L154)

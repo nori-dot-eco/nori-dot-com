@@ -56,7 +56,9 @@ Whether the field participated in CRP or not.
 
 **`Default`**
 
+```ts
 "yes"
+```
 
 **`Example`**
 
@@ -68,7 +70,7 @@ Whether the field participated in CRP or not.
 
 #### Defined in
 
-[v3-specification.ts:418](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L418)
+[v3-specification.ts:396](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L396)
 
 ___
 
@@ -96,7 +98,7 @@ The CRP end year
 
 #### Defined in
 
-[v3-specification.ts:463](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L463)
+[v3-specification.ts:435](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L435)
 
 ___
 
@@ -124,7 +126,7 @@ The CRP start year
 
 #### Defined in
 
-[v3-specification.ts:449](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L449)
+[v3-specification.ts:423](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L423)
 
 ___
 
@@ -152,7 +154,7 @@ The type of CRP the field participated in. Only applicable if [crp](#crp) is set
 
 #### Defined in
 
-[v3-specification.ts:435](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L435)
+[v3-specification.ts:411](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L411)
 
 ___
 
@@ -172,7 +174,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[v3-specification.ts:509](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L509)
+[v3-specification.ts:478](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L478)
 
 ___
 
@@ -190,7 +192,7 @@ How was the field managed after tillage
 
 #### Defined in
 
-[v3-specification.ts:529](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L529)
+[v3-specification.ts:497](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L497)
 
 ___
 
@@ -210,7 +212,7 @@ To find applicable values per field location, see [here](https://docs.google.com
 
 #### Defined in
 
-[v3-specification.ts:476](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L476)
+[v3-specification.ts:447](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L447)
 
 ___
 
@@ -228,7 +230,7 @@ How was the field tilled before the field entered into CRP
 
 #### Defined in
 
-[v3-specification.ts:496](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L496)
+[v3-specification.ts:466](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L466)
 
 ___
 
@@ -276,4 +278,4 @@ A description of how the land was managed before 1980.
 
 #### Defined in
 
-[v3-specification.ts:296](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v3-specification.ts#L296)
+[v3-specification.ts:284](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v3-specification.ts#L284)

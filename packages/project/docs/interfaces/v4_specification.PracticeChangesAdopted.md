@@ -36,11 +36,19 @@ Added OMAD
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:883](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L883)
+[v4-specification.ts:842](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L842)
 
 ___
 
@@ -52,11 +60,19 @@ Added cover cropping
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:859](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L859)
+[v4-specification.ts:814](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L814)
 
 ___
 
@@ -68,11 +84,19 @@ Increased biodiversity of crop rotation
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:895](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L895)
+[v4-specification.ts:856](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L856)
 
 ___
 
@@ -84,11 +108,19 @@ Ceased tillage.
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:865](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L865)
+[v4-specification.ts:821](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L821)
 
 ___
 
@@ -100,11 +132,19 @@ Reduced fallow in rotation
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:889](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L889)
+[v4-specification.ts:849](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L849)
 
 ___
 
@@ -116,11 +156,19 @@ Other reduction in tillage.
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:877](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L877)
+[v4-specification.ts:835](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L835)
 
 ___
 
@@ -132,8 +180,16 @@ Switched to strip tillage.
 
 **`Default`**
 
+```ts
 false
+```
+
+**`Example`**
+
+```ts
+
+```
 
 #### Defined in
 
-[v4-specification.ts:871](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L871)
+[v4-specification.ts:828](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L828)

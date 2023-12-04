@@ -69,7 +69,7 @@ A list of crops for a given planting year.
 
 #### Defined in
 
-[v4-specification.ts:1229](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1229)
+[v4-specification.ts:1171](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1171)
 
 ___
 
@@ -82,7 +82,9 @@ or a projection of future data.
 
 **`Default`**
 
+```ts
 grower reported
+```
 
 **`Example`**
 
@@ -102,7 +104,7 @@ grower reported
 
 #### Defined in
 
-[v4-specification.ts:1249](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1249)
+[v4-specification.ts:1188](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1188)
 
 ___
 
@@ -110,11 +112,14 @@ ___
 
 • **plantingYear**: `number`
 
-The planting year that the herein defined [crops](#crops) property is associated with. Note that a requirement to run quantification is that all crop management practices be mapped to a particular planting year as early as year 2000.
+The planting year that the herein defined [crops](#crops) property is associated with.
+Note that a requirement to run quantification is that all crop management practices be
+mapped to a particular planting year as early as year 2000. Specific crops planted in
+1999 and terminated in 2000 are also relevant to the quantification model.
 
 **`Minimum`**
 
-2000
+1999
 
 **`Maximum`**
 
@@ -130,4 +135,4 @@ The planting year that the herein defined [crops](#crops) property is associated
 
 #### Defined in
 
-[v4-specification.ts:1200](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/v4-specification.ts#L1200)
+[v4-specification.ts:1144](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/v4-specification.ts#L1144)

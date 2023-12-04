@@ -12,14 +12,14 @@
 
 ### convertFromV2ToV1
 
-▸ **convertFromV2ToV1**(`__namedParameters`): `V1Data`
+▸ **convertFromV2ToV1**(`«destructured»`): `V1Data`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `__namedParameters` | `Object` |
-| `__namedParameters.v2Data` | `V2Data` |
+| `«destructured»` | `Object` |
+| › `v2Data` | `V2Data` |
 
 #### Returns
 
@@ -27,4 +27,4 @@
 
 #### Defined in
 
-[utils/convertFromV2ToV1.ts:14](https://github.com/nori-dot-eco/nori-dot-com/blob/475ed1b/packages/project/src/utils/convertFromV2ToV1.ts#L14)
+[utils/convertFromV2ToV1.ts:14](https://github.com/nori-dot-eco/nori-dot-com/blob/4c0d342/packages/project/src/utils/convertFromV2ToV1.ts#L14)
