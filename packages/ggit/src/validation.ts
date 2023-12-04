@@ -1,6 +1,7 @@
 import Ajv from 'ajv';
 import type { ErrorObject } from 'ajv';
 import ajvErrors from 'ajv-errors';
+import addFormats from 'ajv-formats';
 import type { DataValidationCxt } from 'ajv/dist/types';
 import type { UnparsedError } from '@nori-dot-com/errors';
 import { parseError } from '@nori-dot-com/errors';
@@ -80,13 +81,15 @@ export const validateInputData = (
   formattedData: Input.InputData;
 } => {
   const ajv = ajvErrors(
-    new Ajv({
-      useDefaults: 'empty',
-      allErrors: true,
-      inlineRefs: false,
-      $data: true,
-      // allowUnionTypes: true,
-    })
+    addFormats(
+      new Ajv({
+        useDefaults: 'empty',
+        allErrors: true,
+        inlineRefs: false,
+        $data: true,
+        // allowUnionTypes: true,
+      })
+    )
   );
   ajv.addKeyword({
     keyword: 'validationRules',

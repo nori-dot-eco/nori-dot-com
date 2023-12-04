@@ -26,7 +26,7 @@ jobs:
       - checkout
       - setup-environment
       - restore_cache:
-          key: v-0-0-5-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-6-node_modules_dir-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: |
@@ -37,7 +37,7 @@ jobs:
               git checkout yarn.lock
             fi
       - save_cache:
-          key: v-0-0-5-node_modules_dir-{{ checksum "yarn.lock" }}
+          key: v-0-0-6-node_modules_dir-{{ checksum "yarn.lock" }}
           paths: # todo use generate-lockfile for each package and split cache keys by directories to improve performance when dependencies change https://circleci.com/docs/2.0/caching-strategy/#split-cache-keys-by-directory
             - packages/project/node_modules
             - packages/quantification/node_modules
