@@ -1,4 +1,4 @@
-import { bignumber, round } from 'mathjs';
+import { bignumber, round, sum as _sum, mean as _mean } from 'mathjs';
 
 type BigNumberArgument = Parameters<typeof bignumber>[0];
 
@@ -13,6 +13,12 @@ export const add = (x: BigNumberArgument, y: BigNumberArgument): number =>
 
 export const subtract = (x: BigNumberArgument, y: BigNumberArgument): number =>
   bignumber(x).sub(bignumber(y)).toNumber();
+
+export const sum = (...n: BigNumberArgument[]): number =>
+  _sum(...n.map((e) => bignumber(e))).toNumber();
+
+export const mean = (...n: BigNumberArgument[]): number =>
+  _mean(...n.map((e) => bignumber(e))).toNumber();
 
 export const roundToDigit = (
   number: BigNumberArgument,
