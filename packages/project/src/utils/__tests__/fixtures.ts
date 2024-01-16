@@ -1,7 +1,8 @@
 /* eslint-disable unicorn/no-null -- undefined is not a valid JSON value so we need to use null instead */
 import type { Input } from '@nori-dot-com/ggit';
 
-import type { V2Data, Project } from '../../index';
+import type { V2Data } from '../../index';
+import type { Project } from '../../v3-specification';
 
 // todo BUG likely impacts quantification: multi tillage dates getting applied to same crop. see: 2018 no till planting for one crops and should have been for each crop
 // todo ^ check for multi tillage events on same crop

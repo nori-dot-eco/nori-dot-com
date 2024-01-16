@@ -577,7 +577,8 @@ export interface Field {
    */
   historicLandManagement:
     | HistoricNonCRPLandManagement
-    | HistoricCRPLandManagement;
+    | HistoricCRPLandManagement
+    | null;
   /**
    * The name of the field.
    *
@@ -605,7 +606,7 @@ export interface Field {
    * "acres": 100
    * ```
    */
-  acres: number;
+  acres: number | null;
   /**
    * The geographic boundaries (defined as GeoJSON) associated with crop management practices.
    *
@@ -722,13 +723,14 @@ export interface PlantedCrop {
    * The name/alias that the crop is known by. This property is used in the to-be-deprecated supplier intake sheet.
    *
    * @todo this property will be deprecated in the future
+   * @nullable
    * @example
    *
    * ```js
    * "name": "Joe's corn"
    * ```
    */
-  name?: string;
+  name?: string | null;
   /**
    * The date the crop was planted (formatted as MM/DD/YYYY and YYYY > 2000 and YYYY < 2100).
    *
@@ -868,7 +870,9 @@ export interface CropEvents {
    * ]
    * ```
    */
-  organicMatterEvents?: (SolidOrganicMatterEvent | SlurryOrganicMatterEvent)[];
+  organicMatterEvents?:
+    | (SolidOrganicMatterEvent | SlurryOrganicMatterEvent)[]
+    | null;
   /**
    * A list of irrigation events, if applicable.
    *
@@ -902,7 +906,7 @@ export interface CropEvents {
    * ]
    * ```
    */
-  limingEvents?: LimingEvent[];
+  limingEvents?: LimingEvent[] | null;
   /**
    * A list of grazing events, if applicable
    *
@@ -921,7 +925,7 @@ export interface CropEvents {
    * ]
    * ```
    */
-  grazingEvents?: GrazingEvent[];
+  grazingEvents?: GrazingEvent[] | null;
   /**
    * A burning event, if applicable.
    *
@@ -940,7 +944,7 @@ export interface CropEvents {
    * "burningEvent": null
    * ```
    */
-  burningEvent?: BurningEvent;
+  burningEvent?: BurningEvent | null;
 }
 
 /**
@@ -1260,7 +1264,7 @@ export interface CropManagementEvent extends CropEvent {
    * "grainFruitTuber": "no"
    * ```
    */
-  grainFruitTuber: 'yes' | 'no';
+  grainFruitTuber: 'yes' | 'no' | null;
   /**
    * Crop residue removed.
    *
@@ -1470,7 +1474,7 @@ export interface FertilizerEvent extends CropEvent {
    * "lbsOfNPerAcre": 150
    * ```
    */
-  lbsOfNPerAcre: number;
+  lbsOfNPerAcre: number | null;
 }
 
 /**
@@ -1586,7 +1590,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * "percentNitrogen": 9
    * ```
    */
-  percentNitrogen: number;
+  percentNitrogen: number | null;
   /**
    * The carbon to nitrogen ratio in the organic matter or manure.
    *
@@ -1601,7 +1605,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * "carbonNitrogenRatio": 30
    * ```
    */
-  carbonNitrogenRatio: number;
+  carbonNitrogenRatio: number | null;
   /**
    * The percent moisture of the organic matter or manure
    *
@@ -1615,7 +1619,7 @@ export interface OrganicMatterEvent extends CropEvent {
    * "percentMoisture": 15
    * ```
    */
-  percentMoisture: number;
+  percentMoisture: number | null;
 }
 
 /**

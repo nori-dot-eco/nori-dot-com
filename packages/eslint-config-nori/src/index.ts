@@ -111,7 +111,6 @@ export = {
           'LabeledStatement',
           'WithStatement',
         ], // overrides airbnb restricted syntax rules and allows for of loops
-        'no-extra-boolean-cast': 0, // todo remove once strict is enabled for all tsconfigs
         'mui-unused-classes/unused-classes': 'warn',
         '@next/next/no-html-link-for-pages': 0, // we must manually override this in each next app with a custom pages dir
         'prefer-const': [
@@ -172,15 +171,12 @@ export = {
         'plugin:import/errors',
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:@typescript-eslint/strict',
+        'plugin:@typescript-eslint/strict', // todo use plugin:@typescript-eslint/strict-type-checked instead
         'plugin:import/typescript',
         'plugin:prettier/recommended',
       ],
       plugins: ['@typescript-eslint'],
       rules: {
-        '@typescript-eslint/no-unnecessary-boolean-literal-compare': 0, // todo enable (Requires strict null checks enabled)
-        '@typescript-eslint/prefer-nullish-coalescing': 0, // todo enable (Requires strict null checks enabled)
-        '@typescript-eslint/no-unnecessary-condition': 0, // todo enable (Requires strict null checks enabled)
         '@typescript-eslint/strict-boolean-expressions': [
           'warn',
           {
