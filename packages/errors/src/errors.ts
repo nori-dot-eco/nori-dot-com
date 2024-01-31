@@ -92,9 +92,9 @@ export const Errors = {
       message:
         'This event must be entered manually, there is not yet a crop in the same year as this event.',
     },
-    projectHasIssuanceCannotDeleteError: {
+    projectHasRemovalCannotDeleteError: {
       message:
-        'This project has a parcel with an issuance and cannot be deleted.',
+        'This project has a parcel with at least one removal and cannot be deleted.',
     },
   },
   unknownErrorCode: {
@@ -334,14 +334,14 @@ export const Errors = {
     mustHaveNetRemovals: {
       message: 'Parcel must have net removals calculated',
     },
-    alreadyHasIssuance: {
-      message: 'Parcel already has an issuance created',
+    alreadyHasRemoval: {
+      message: 'Parcel already has at least one removal created',
     },
     hasMintedRemovals: {
       message: 'Parcel already has at least one removal minted to chain',
     },
-    parcelHasIssuanceCannotDeleteError: {
-      message: 'This parcel has an issuance and cannot be deleted.',
+    parcelHasRemovalCannotDeleteError: {
+      message: 'This parcel has at least one removal and cannot be deleted.',
     },
   },
   mintingError: {
