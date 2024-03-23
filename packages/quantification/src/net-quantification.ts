@@ -7,9 +7,11 @@ import type {
 } from './quantification';
 
 export type NetQuantificationInput = {
-  unadjustedGrandfatheredTonnesPerYear: {
-    [year: string]: Pick<UnadjustedGrandfatheredTotals[string], 'amount'>;
-  };
+  unadjustedGrandfatheredTonnesPerYear: Record<
+    string,
+    Pick<UnadjustedGrandfatheredTotals[string], 'amount'>
+  >;
+  deductedUnadjustedGrandfatheredTonnesPerYear?: Record<string, number>;
 }[];
 
 /**
@@ -72,12 +74,23 @@ export const getNetQuantificationProjection = (
   logger?: Pick<Console, 'debug' | 'table'>
 ): AnnualTotalItem[][] => {
   const netQuantifications: AnnualTotals[] = quantificationSummaries.map(
-    (quantificationSummary) =>
-      Object.fromEntries(
-        Object.entries(
-          quantificationSummary.unadjustedGrandfatheredTonnesPerYear
-        ).map(([year, { amount }]) => [year, amount])
-      )
+    (quantificationSummary) => {
+      let annualTotals;
+      if (
+        quantificationSummary.deductedUnadjustedGrandfatheredTonnesPerYear ===
+        undefined
+      ) {
+        annualTotals = Object.fromEntries(
+          Object.entries(
+            quantificationSummary.unadjustedGrandfatheredTonnesPerYear
+          ).map(([year, { amount }]) => [year, amount])
+        );
+      } else {
+        annualTotals =
+          quantificationSummary.deductedUnadjustedGrandfatheredTonnesPerYear;
+      }
+      return annualTotals;
+    }
   );
 
   // Get the set of years in all quantifications
