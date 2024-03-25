@@ -86,8 +86,11 @@ export const getNetQuantificationProjection = (
           ).map(([year, { amount }]) => [year, amount])
         );
       } else {
-        annualTotals =
-          quantificationSummary.deductedUnadjustedGrandfatheredTonnesPerYear;
+        annualTotals = Object.fromEntries(
+          Object.entries(
+            quantificationSummary.deductedUnadjustedGrandfatheredTonnesPerYear
+          ).map(([year, amount]) => [year, amount])
+        );
       }
       return annualTotals;
     }
