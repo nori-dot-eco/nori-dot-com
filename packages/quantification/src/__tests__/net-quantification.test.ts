@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
 
 import { getNetQuantificationProjection } from '../net-quantification';
 
@@ -293,6 +293,63 @@ describe('getNetQuantificationProjection', () => {
         { year: '2017', value: 0 },
       ],
       [{ year: '2016', value: 5 }],
+    ]);
+  });
+  it.only('should use deducted unadjusted values if they are present', () => {
+    const testData = [
+      {
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: -30,
+          },
+          '2015': {
+            amount: 10,
+          },
+          '2017': {
+            amount: 9,
+          },
+          '2014': {
+            amount: 0,
+          },
+        },
+        deductedUnadjustedGrandfatheredTonnesPerYear: {
+          '2016': -25,
+          '2015': 5,
+          '2017': 4,
+          '2014': 0,
+        },
+      },
+      {
+        unadjustedGrandfatheredTonnesPerYear: {
+          '2016': {
+            amount: 10,
+          },
+          '2017': {
+            amount: 9,
+          },
+          '2018': {
+            amount: 0,
+          },
+          '2015': {
+            amount: 10,
+          },
+        },
+      },
+    ];
+
+    expect(getNetQuantificationProjection(testData)).toStrictEqual([
+      [
+        { year: '2014', value: 0 },
+        { year: '2015', value: 0 },
+        { year: '2016', value: 3 },
+        { year: '2017', value: 0 },
+      ],
+      [
+        { year: '2015', value: 0 },
+        { year: '2016', value: 0 },
+        { year: '2017', value: 0 },
+        { year: '2018', value: 10 },
+      ],
     ]);
   });
 
