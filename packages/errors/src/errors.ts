@@ -384,6 +384,9 @@ export const Errors = {
     },
   },
   deductionError: {
+    noQuantificationFound: {
+      message: 'No quantification found for parcel',
+    },
     deductionTooLarge: {
       message: 'Deduction exceeds the total tonnes of the quantification',
     },
