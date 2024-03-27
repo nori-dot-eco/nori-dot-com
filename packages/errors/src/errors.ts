@@ -351,10 +351,6 @@ export const Errors = {
     missingData: {
       message: 'Missing required data for minting',
     },
-    scheduleDurationNotSet: {
-      message:
-        'Schedule duration has not been set in RestrictedNORI contract for this methodology and version',
-    },
     transactionSubmissionError: {
       message:
         'There was an error submitting the `mintBatch` transaction to the blockchain',
