@@ -383,4 +383,9 @@ export const Errors = {
       message: 'Output lacks required data',
     },
   },
+  deductionError: {
+    deductionTooLarge: {
+      message: 'Deduction exceeds the total tonnes of the quantification',
+    },
+  },
 } as const;
