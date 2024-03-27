@@ -390,5 +390,8 @@ export const Errors = {
     deductionTooLarge: {
       message: 'Deduction exceeds the total tonnes of the quantification',
     },
+    negativeDeduction: {
+      message: 'Deduction must be a positive number',
+    },
   },
 } as const;
