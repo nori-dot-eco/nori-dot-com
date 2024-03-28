@@ -379,4 +379,18 @@ export const Errors = {
       message: 'Output lacks required data',
     },
   },
+  deductionError: {
+    noQuantificationFound: {
+      message: 'No quantification found for parcel',
+    },
+    deductionTooLarge: {
+      message: 'Deduction exceeds the total tonnes of the quantification',
+    },
+    negativeDeduction: {
+      message: 'Deduction must be a positive number',
+    },
+    alreadyHasRemovals: {
+      message: 'Project already has removals, cannot apply deductions',
+    },
+  },
 } as const;
