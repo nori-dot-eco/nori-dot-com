@@ -393,5 +393,8 @@ export const Errors = {
     negativeDeduction: {
       message: 'Deduction must be a positive number',
     },
+    alreadyHasRemovals: {
+      message: 'Project already has removals, cannot apply deductions',
+    },
   },
 } as const;
