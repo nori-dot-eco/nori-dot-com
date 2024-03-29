@@ -362,6 +362,9 @@ export const Errors = {
     differentProjects: {
       message: 'Cannot mint removals from different projects in the same batch',
     },
+    missingRole: {
+      message: 'The to address for minting does not have the CONSIGNOR_ROLE.',
+    },
   },
   listingError: {
     emptyBatch: {
