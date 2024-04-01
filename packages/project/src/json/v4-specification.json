@@ -1077,7 +1077,7 @@
                     "$ref": "#/definitions/GeoJSON.MultiPolygon"
                 },
                 {
-                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                    "$ref": "#/definitions/GeoJSON.GeometryCollection"
                 },
                 {
                     "$ref": "#/definitions/GeoJSON.Feature<GeoJSON.Geometry,GeoJSON.GeoJsonProperties>"
@@ -1122,13 +1122,13 @@
                     "$ref": "#/definitions/GeoJSON.MultiPolygon"
                 },
                 {
-                    "$ref": "#/definitions/GeoJSON.GeometryCollection<GeoJSON.Geometry>"
+                    "$ref": "#/definitions/GeoJSON.GeometryCollection"
                 }
             ],
             "description": "Geometry object.\nhttps://tools.ietf.org/html/rfc7946#section-3",
             "title": "GeoJSON.Geometry"
         },
-        "GeoJSON.GeometryCollection<GeoJSON.Geometry>": {
+        "GeoJSON.GeometryCollection": {
             "additionalProperties": false,
             "description": "Geometry Collection\nhttps://tools.ietf.org/html/rfc7946#section-3.1.8",
             "properties": {
@@ -1200,7 +1200,7 @@
                 "geometries",
                 "type"
             ],
-            "title": "GeoJSON.GeometryCollection<GeoJSON.Geometry>",
+            "title": "GeoJSON.GeometryCollection",
             "type": "object"
         },
         "GeoJSON.LineString": {
