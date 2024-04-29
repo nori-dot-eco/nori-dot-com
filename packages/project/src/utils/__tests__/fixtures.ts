@@ -1886,8 +1886,7 @@ export const ggitInputData: Input.InputData = {
   '@cometEmailId': 'comet@nori.com',
   Cropland: [
     {
-      '@Name':
-        'ggit schema|example field|U3VwcGxpZXJQcm9qZWN0UGFyY2VsOlVzZXIsNDcwNTU5NzgzMDIwMTM0NCxTdXBwbGllclByb2ZpbGUsNTg4ODc1MDQ4MTU3MTg0MCxTdXBwbGllclByb2plY3QsNTQ1ODIzMDQyMTQ4NzYxNixTdXBwbGllclByb2plY3RQYXJjZWwsNTQyODQ5NDM0OTYzMTQ4OA==|025039656b07efbdd7aef67fc6e0cb643f158e7e|2021-03-09T16:52:15.223Z|6|0',
+      '@Name': 'externalId=1234',
       GEOM: {
         '@SRID': '4326',
         '@AREA': 6,
