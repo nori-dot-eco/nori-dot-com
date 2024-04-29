@@ -1881,13 +1881,12 @@ export const v3DataForIrrigationTests: Project = {
     },
   ],
 };
-export const EXAMPLE_EXTERNAL_ID = 'example-external-id';
 
 export const ggitInputData: Input.InputData = {
   '@cometEmailId': 'comet@nori.com',
   Cropland: [
     {
-      '@Name': EXAMPLE_EXTERNAL_ID,
+      '@Name': 'example-external-id',
       GEOM: {
         '@SRID': '4326',
         '@AREA': 6,
